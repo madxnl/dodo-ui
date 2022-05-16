@@ -2,6 +2,15 @@
   "name": "dodo-ui",
   "private": true,
   "version": "0.0.0",
+  "files": ["dist"],
+  "main": "./dist/dodo-ui.umd.js",
+  "module": "./dist/dodo-ui.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/dodo-ui.es.js",
+      "require": "./dist/dodo-ui.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
