@@ -11,6 +11,9 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
+    "allowJs": true,
+    "outDir": "dist/types",
+    "declaration": true,
     "skipLibCheck": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
