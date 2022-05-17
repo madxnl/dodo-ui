@@ -22,7 +22,7 @@ import Dialog from '../dialog/Dialog.vue';
 // import { Button, Dialog } from '..'
 import { useCrashInfo } from './crashInfo';
 
-const crashInfo = useCrashInfo()
+const crashInfo = useCrashInfo()!
 
 function reload() {
   location.reload()
