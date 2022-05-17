@@ -4,7 +4,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from "vue";
-import { useSettings } from "./settings";
+import { useSettings } from "../settings";
 const { gapSizes } = useSettings()
 
 const props = defineProps<{

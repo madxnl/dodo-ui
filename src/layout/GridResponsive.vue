@@ -6,16 +6,20 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useSettings } from './settings';
+import { useSettings } from '../settings';
 const { gapSizes } = useSettings()
 
 // This component creates a responsive grid layout using grid-template-columns + auto-fill
 const props = defineProps<{
   /**
-   * Minimum width of each column
-   * @example column="400px"
+   * Minimum width of each column before wrapping
+   * @example column-width="400px"
    */
-  column: string
+  columnWidth: string
+  /**
+   * Stretch contents to fill empty space
+   */
+  stretch?: boolean
   /**
    * Same as Flex gap
    */
@@ -28,7 +32,8 @@ function spacingToCSS(str: string) {
 
 const css = computed(() => {
   let s = ''
-  s += `grid-template-columns: repeat(auto-fill, minmax(${props.column}, 1fr));`
+  const fitFill = props.stretch ? 'auto-fit' : 'auto-fill'
+  s += `grid-template-columns: repeat(${fitFill}, minmax(${props.columnWidth}, 1fr));`
   if (props.gap) s += `gap:${spacingToCSS(props.gap)};`
   return s
 })

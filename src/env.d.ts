@@ -12,3 +12,9 @@ declare module '*:doc' {
   const componentDoc: ComponentDoc
   export default componentDoc
 }
+
+
+declare module '*:text' {
+  const text: string
+  export default text
+}
