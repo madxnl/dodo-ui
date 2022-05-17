@@ -1,66 +1,91 @@
-import { defineComponent, ref, openBlock, createElementBlock, Fragment, createElementVNode, toDisplayString, pushScopeId, popScopeId, createTextVNode } from "vue";
-var HelloWorld_vue_vue_type_style_index_0_scoped_true_lang = "";
-var _export_sfc = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
-};
-const _withScopeId = (n) => (pushScopeId("data-v-6c91385e"), n = n(), popScopeId(), n);
-const _hoisted_1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createElementVNode("p", null, [
-  /* @__PURE__ */ createTextVNode(" Recommended IDE setup: "),
-  /* @__PURE__ */ createElementVNode("a", {
-    href: "https://code.visualstudio.com/",
-    target: "_blank"
-  }, "VS Code"),
-  /* @__PURE__ */ createTextVNode(" + "),
-  /* @__PURE__ */ createElementVNode("a", {
-    href: "https://github.com/johnsoncodehk/volar",
-    target: "_blank"
-  }, "Volar")
-], -1));
-const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createElementVNode("p", null, [
-  /* @__PURE__ */ createTextVNode("See "),
-  /* @__PURE__ */ createElementVNode("code", null, "README.md"),
-  /* @__PURE__ */ createTextVNode(" for more information.")
-], -1));
-const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createElementVNode("p", null, [
-  /* @__PURE__ */ createElementVNode("a", {
-    href: "https://vitejs.dev/guide/features.html",
-    target: "_blank"
-  }, " Vite Docs "),
-  /* @__PURE__ */ createTextVNode(" | "),
-  /* @__PURE__ */ createElementVNode("a", {
-    href: "https://v3.vuejs.org/",
-    target: "_blank"
-  }, "Vue 3 Docs")
-], -1));
-const _hoisted_4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createElementVNode("p", null, [
-  /* @__PURE__ */ createTextVNode(" Edit "),
-  /* @__PURE__ */ createElementVNode("code", null, "components/HelloWorld.vue"),
-  /* @__PURE__ */ createTextVNode(" to test hot module replacement. ")
-], -1));
-const _sfc_main = /* @__PURE__ */ defineComponent({
+import { defineComponent, computed, openBlock, createElementBlock, normalizeStyle, unref, renderSlot } from "vue";
+function useSettings() {
+  return {
+    gapSizes: {
+      0: 0,
+      xs: 4,
+      s: 8,
+      m: 16,
+      l: 32,
+      xl: 64
+    }
+  };
+}
+var Flex_vue_vue_type_style_index_0_lang = "";
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   props: {
-    msg: null
+    gap: null,
+    pad: null,
+    column: { type: Boolean },
+    grow: { type: Boolean },
+    justify: null,
+    align: null,
+    wrap: { type: Boolean },
+    background: null
   },
   setup(__props) {
-    const count = ref(0);
+    const props = __props;
+    const { gapSizes } = useSettings();
+    function spacingToCSS(str) {
+      return str.split(" ").map((x) => (gapSizes[x] || "0") + "px").join(" ");
+    }
+    const css = computed(() => {
+      let s = "";
+      if (props.gap)
+        s += `gap:${spacingToCSS(props.gap)};`;
+      if (props.pad)
+        s += `padding:${spacingToCSS(props.pad)};`;
+      if (props.column)
+        s += `flex-flow:column;`;
+      if (props.grow)
+        s += `flex-grow:1;`;
+      if (props.wrap)
+        s += `flex-wrap:wrap;`;
+      if (props.justify)
+        s += `justify-content:${props.justify};`;
+      if (props.align)
+        s += `align-items:${props.align};`;
+      if (props.background)
+        s += `background:${props.background};`;
+      return s;
+    });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [
-        createElementVNode("h1", null, toDisplayString(__props.msg), 1),
-        _hoisted_1,
-        _hoisted_2,
-        _hoisted_3,
-        createElementVNode("button", {
-          type: "button",
-          onClick: _cache[0] || (_cache[0] = ($event) => count.value++)
-        }, "count is: " + toDisplayString(count.value), 1),
-        _hoisted_4
-      ], 64);
+      return openBlock(), createElementBlock("div", {
+        class: "Flex",
+        style: normalizeStyle(unref(css))
+      }, [
+        renderSlot(_ctx.$slots, "default")
+      ], 4);
     };
   }
 });
-var HelloWorld = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6c91385e"]]);
-export { HelloWorld };
+var GridResponsive_vue_vue_type_style_index_0_lang = "";
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  props: {
+    column: null,
+    gap: null
+  },
+  setup(__props) {
+    const props = __props;
+    const { gapSizes } = useSettings();
+    function spacingToCSS(str) {
+      return str.split(" ").map((x) => (gapSizes[x] || "0") + "px").join(" ");
+    }
+    const css = computed(() => {
+      let s = "";
+      s += `grid-template-columns: repeat(auto-fill, minmax(${props.column}, 1fr));`;
+      if (props.gap)
+        s += `gap:${spacingToCSS(props.gap)};`;
+      return s;
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: "GridResponsive",
+        style: normalizeStyle(unref(css))
+      }, [
+        renderSlot(_ctx.$slots, "default")
+      ], 4);
+    };
+  }
+});
+export { _sfc_main$1 as Flex, _sfc_main as GridResponsive };

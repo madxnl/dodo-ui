@@ -1,7 +1,23 @@
 declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<{
-    gap: number;
+    /**
+     * Minimum width of each column
+     * @example column="400px"
+     */
+    column: string;
+    /**
+     * Same as Flex gap
+     */
+    gap?: string | undefined;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
-    gap: number;
+    /**
+     * Minimum width of each column
+     * @example column="400px"
+     */
+    column: string;
+    /**
+     * Same as Flex gap
+     */
+    gap?: string | undefined;
 }>>>, {}>;
 export default _default;
 declare type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

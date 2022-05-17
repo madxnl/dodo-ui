@@ -6,3 +6,9 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare module '*:doc' {
+  import type { ComponentDoc } from 'vue-docgen-api'
+  const componentDoc: ComponentDoc
+  export default componentDoc
+}

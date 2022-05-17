@@ -1,0 +1,1 @@
+.Flex{display:flex}.GridResponsive{display:grid}html,body{margin:0;height:100%;font-size:14px;line-height:1.4;font-family:sans-serif}#app{height:100%;display:flex;flex-flow:column;overflow:auto}table{border-collapse:collapse}th{text-align:left;padding:8px}td{border:1px solid rgba(0,0,0,.2);padding:8px;vertical-align:top}code{font-size:13px;font-family:monospace;line-height:1.2}
