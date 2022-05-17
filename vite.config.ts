@@ -26,6 +26,7 @@ function docgen(): Plugin {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: 'dodo-ui', // match path for madxnl.github.io/dodo-ui/
   plugins: [
     vue(),
     docgen(),

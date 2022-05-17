@@ -1,3 +1,3 @@
 # DodoUI
 
-[Documentation](./docs/)
+[Documentation](https://madxnl.github.io/dodo-ui/)
