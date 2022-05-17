@@ -14,28 +14,19 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --emitDeclarationOnly",
     "preview": "vite preview",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "publish": "npm run build && npm publish",
-    "chromatic": "npx chromatic --project-token=55e47f8c11f5"
+    "build:docs": "vite build",
+    "build:npm": "vite build --config vite.npm.ts && vue-tsc --emitDeclarationOnly",
+    "build": "npm run build:npm && npm run build:docs",
+    "publish": "npm run build:npm && npm publish"
   },
   "dependencies": {
     "vue": "^3.2.25"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@storybook/addon-actions": "^6.4.22",
-    "@storybook/addon-essentials": "^6.4.22",
-    "@storybook/addon-links": "^6.4.22",
-    "@storybook/vue3": "^6.4.22",
     "@vitejs/plugin-vue": "^2.3.3",
-    "babel-loader": "^8.2.5",
-    "chromatic": "^6.5.4",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
-    "vue-loader": "^16.8.3",
     "vue-tsc": "^0.34.7"
   },
   "description": "Dodo UI Framework for Vue.js",
