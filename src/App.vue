@@ -4,6 +4,19 @@
     <Flex column style="max-width:1200px">
       <h1>DodoUI</h1>
       <h2>Versatile components for Vue</h2>
+      <h3>Installation</h3>
+      <code>
+        npm install -D @madxnl/dodo-ui
+      </code>
+      <br>
+      <h3>Usage</h3>
+      <code>
+        <pre>
+import { Flex } from '@madxnl/dodo-ui'
+
+&lt;Flex&gt;...&lt;/Flex&gt;
+        </pre>
+      </code>
       <template v-for="chapter in chapters">
         <br>
         <h3>{{ chapter.doc.displayName }}</h3>
