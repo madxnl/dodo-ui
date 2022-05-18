@@ -1,32 +1,54 @@
 <template>
-  <button class="Button" :style="css"><slot></slot></button>
+  <button
+    class="Button"
+    :style="css"
+    @click="click"
+    :class="{ loading }"
+  ><slot></slot></button>
 </template>
 <script lang="ts" setup>
-import { computed } from "vue";
+import { computed, ref, useAttrs } from "vue";
 
 const props = defineProps<{
+  /** Any valid CSS color
+   * @example color="#FFAA00"
+   * @example :color="success"
+   */
   color?: string
-  secondary?: boolean
-  // clickAsync?: () => any
-  // loading?: boolean
+  /** Button scales with fontsize when using default theme
+   * @example fontsize="200%"
+   * @example fontsize="12px"
+   * @example :fontsize="headingSize"
+   */
+  fontsize?: string
 }>()
-
-const brightness = computed(() => {
-  if (!props.color) return true
-  const el = document.createElement('span')
-  el.style.color = props.color ?? ''
-  const rgb = getComputedStyle(el).color
-  const [_, r, g, b] = rgb.split(/\D+/).map(Number)
-  const brightness = (r + r + b + g + g + g) / 6
-  console.log('el', el)
-  return getComputedStyle(el)
-})
 
 const css = computed(() => {
   let s = ''
   if (props.color) s += `--color:${props.color};`
+  if (props.fontsize) s += `font-size:${props.fontsize};`
   return s
 })
+
+const attrs = useAttrs()
+
+const loading = ref(false)
+
+function click(event: Event) {
+  if (loading.value) {
+    return
+  }
+  const { onClick } = attrs
+  if (onClick instanceof Function) {
+    const result = onClick(event)
+    if (result instanceof Promise) {
+      loading.value = true
+      result.finally(() => {
+        loading.value = false
+      })
+    }
+  }
+}
 </script>
 
 <style>
@@ -37,6 +59,17 @@ const css = computed(() => {
   background: var(--color, grey);
   color: white;
   border-radius: 4px;
-  padding: 4px 8px;
+  padding: .25em .65em;
+  position: relative;
+}
+.Button:hover {
+  filter: brightness(105%);
+}
+.Button:active {
+  filter: brightness(90%);
+}
+.Button.loading {
+  opacity: 0.5;
+  cursor: wait;
 }
 </style>

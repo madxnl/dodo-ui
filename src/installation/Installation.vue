@@ -1,15 +1,12 @@
 <template>
   <h3>Installation</h3>
-  <code>
-    npm install -D @madxnl/dodo-ui
-  </code>
-  <br>
-  <h3>Usage</h3>
-  <code>
-    <pre>
-import { Flex } from '@madxnl/dodo-ui'
+  <blockquote><code>
+      npm install -D @madxnl/dodo-ui
+  </code></blockquote>
+  <p>Using a component:</p>
+  <blockquote><code><pre>
+import { Button } from '@madxnl/dodo-ui'
 
-&lt;Flex&gt;...&lt;/Flex&gt;
-    </pre>
-  </code>
+&lt;Button&gt;...&lt;/Button&gt;
+  </pre></code></blockquote>
 </template>

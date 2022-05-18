@@ -16,29 +16,33 @@ const props = defineProps<{
   gap?: 'xs'|'s'|'m'|'l'|'xl'|string
   /**
    * Amount of padding around the contents. Use array to set padding for each side separately.
-   * @example pad="m" // medium padding
-   * @example pad="s 0 s s" // small padding on all sides except right
+   * @example pad="m"
+   * @example pad="s 0 s s"
    */
   pad?: 'xs'|'s'|'m'|'l'|'xl'|string
   /**
    * Toggle column orientation instead of row
-   * @example <Flex column>
+   * @example column
    */
   column?: boolean,
   /**
    * Grow to take up available space (when nested inside another Flex)
+   * @example grow
    */
   grow?: boolean
   /**
    * Justify contents
+   * @example justify="space-between"
    */
   justify?: 'center'|'end'|'start'|'stretch'|'space-between'|'space-around'|'space-evenly'
   /**
    * Align contents
+   * @example align="end"
    */
   align?: 'center'|'end'|'start'|'stretch'
   /**
    * Wrap contents over multiple rows instead of shrinking
+   * @example wrap
    */
   wrap?: boolean
   /**

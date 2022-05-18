@@ -1,9 +1,16 @@
 <template>
-  <Button>Button 1</Button>
-  <Button color="steelblue">Button 2</Button>
-  <Button class="border" color="ultramarine">Button 3</Button>
-  <Button class="text" color="#f00">Button 4</Button>
+  <Button color="#00aa55">Button</Button>
+  <Button class="text" color="blue">Text</Button>
+  <Button class="border" fontsize="22px" color="#f00">
+    Border
+  </Button>
+  <Button @click="myAsyncSubmit">Async support (click me)</Button>
 </template>
 <script lang="ts" setup>
 import Button from './Button.vue';
+
+async function myAsyncSubmit() {
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  // throw new Error('foo')
+}
 </script>
