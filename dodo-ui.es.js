@@ -1,4 +1,4 @@
-import { defineComponent, computed, openBlock, createElementBlock, normalizeClass, normalizeStyle, unref, renderSlot, createBlock, Teleport, createElementVNode, inject, reactive, withCtx, createVNode, createCommentVNode, createTextVNode, Fragment, renderList, toDisplayString } from "vue";
+import { defineComponent, computed, openBlock, createElementBlock, normalizeStyle, unref, renderSlot, createBlock, Teleport, createElementVNode, inject, reactive, withCtx, createVNode, createCommentVNode, createTextVNode, Fragment, renderList, toDisplayString } from "vue";
 var Button_vue_vue_type_style_index_0_lang = "";
 const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   props: {
@@ -7,6 +7,17 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const props = __props;
+    computed(() => {
+      var _a;
+      if (!props.color)
+        return true;
+      const el = document.createElement("span");
+      el.style.color = (_a = props.color) != null ? _a : "";
+      const rgb = getComputedStyle(el).color;
+      rgb.split(/\D+/).map(Number);
+      console.log("el", el);
+      return getComputedStyle(el);
+    });
     const css = computed(() => {
       let s = "";
       if (props.color)
@@ -15,13 +26,11 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("button", {
-        class: normalizeClass(["Button", {
-          secondary: props.secondary
-        }]),
+        class: "Button",
         style: normalizeStyle(unref(css))
       }, [
         renderSlot(_ctx.$slots, "default")
-      ], 6);
+      ], 4);
     };
   }
 });

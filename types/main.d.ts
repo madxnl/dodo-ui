@@ -1,1 +1,1 @@
-export {};
+import './themes/default.css';
