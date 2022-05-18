@@ -1,0 +1,9 @@
+.Button.border {
+  background: transparent;
+  color: var(--color, black);
+  border: 1px solid var(--color, grey);
+}
+.Button.text {
+  background: transparent;
+  color: var(--color, black);
+}
