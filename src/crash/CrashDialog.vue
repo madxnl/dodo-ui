@@ -10,7 +10,7 @@
       </template>
       <template #controls>
         <Button class="border" @click="ignore">Ignore</Button>
-        <Button color="blue" variant="solid" @click="reload">Reload page</Button>
+        <Button color="var(--info)" variant="solid" @click="reload">Reload page</Button>
       </template>
     </Dialog>
   </Teleport>
@@ -35,6 +35,6 @@ function reload() {
 }
 
 function ignore() {
-  currentError.value = null
+  delete currentError.value
 }
 </script>

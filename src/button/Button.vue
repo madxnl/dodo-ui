@@ -42,8 +42,10 @@ function click(event: Event) {
   if (onClick instanceof Function) {
     const result = onClick(event)
     if (result instanceof Promise) {
+      document.body.style.cursor = 'wait'
       loading.value = true
       result.finally(() => {
+        document.body.style.cursor = ''
         loading.value = false
       })
     }
@@ -70,6 +72,6 @@ function click(event: Event) {
 }
 .Button.loading {
   opacity: 0.5;
-  cursor: wait;
+  pointer-events: none;
 }
 </style>

@@ -1,3 +1,9 @@
+:root {
+  --info: #3a86ff;
+  --success: #2a9d8f;
+  --warn: #e9c46a;
+  --danger: #e76f51;
+}
 .Button.border {
   background: transparent;
   color: var(--color, black);
