@@ -1,13 +1,13 @@
 <template>
-  <Button color="#00aa55">Button</Button>
-  <Button class="text" color="blue">Text</Button>
-  <Button class="border" fontsize="22px" color="#f00">
+  <UiButton color="success">UiButton</UiButton>
+  <UiButton variant="text" color="info">Text</UiButton>
+  <UiButton variant="border" fontsize="22px" color="danger">
     Border
-  </Button>
-  <Button @click="myAsyncSubmit">Async (click me!)</Button>
+  </UiButton>
+  <UiButton @click="myAsyncSubmit">Async (click me!)</UiButton>
 </template>
 <script lang="ts" setup>
-import Button from './Button.vue';
+import UiButton from './UiButton.vue';
 
 async function myAsyncSubmit() {
   await new Promise(resolve => setTimeout(resolve, 1000))

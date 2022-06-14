@@ -9,8 +9,8 @@
         <div>Please contact us if the problem persists.</div>
       </template>
       <template #controls>
-        <Button class="border" @click="ignore">Ignore</Button>
-        <Button color="var(--info)" variant="solid" @click="reload">Reload page</Button>
+        <UiButton variant="border" @click="ignore">Ignore</UiButton>
+        <UiButton color="info" @click="reload">Reload page</UiButton>
       </template>
     </Dialog>
   </Teleport>
@@ -20,7 +20,7 @@
 
 <script lang="ts" setup>
 import { onErrorCaptured, ref } from 'vue';
-import Button from '../button/Button.vue';
+import UiButton from '../button/UiButton.vue';
 import Dialog from '../dialog/Dialog.vue';
 
 const currentError = ref<Error>()

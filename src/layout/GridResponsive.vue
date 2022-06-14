@@ -21,7 +21,7 @@ const props = defineProps<{
    */
   stretch?: boolean
   /**
-   * Same as Flex gap
+   * Same as UiFlex gap
    */
   gap?: 'xs'|'s'|'m'|'l'|'xl'|string
 }>()

@@ -1,28 +1,28 @@
 <template>
   <teleport to="body">
     <div class="Dialog" :style="css">
-    <div class="Dialog_window">
-      <Flex column pad="m" gap="m">
+      <div class="Dialog_window">
+        <UiFlex column pad="m" gap="m">
           <div>
             {{ title }}
           </div>
-      <slot name=content></slot>
-        <!-- <BaseLayout :padding="24" :gap="8">
-          <slot name="content"></slot>
-        </BaseLayout>
-        <hr>-->
-        </Flex>
-        <Flex pad="m" justify="end" gap="s">
+          <slot name=content></slot>
+          <!-- <BaseLayout :padding="24" :gap="8">
+            <slot name="content"></slot>
+          </BaseLayout>
+          <hr>-->
+        </UiFlex>
+        <UiFlex pad="m" justify="end" gap="s">
           <slot name="controls">
           </slot>
-        </Flex>
-    </div>
+        </UiFlex>
+      </div>
     </div>
   </teleport>
 </template>
 <script lang="ts" setup>
 import { computed } from "vue";
-import Flex from "../layout/Flex.vue";
+import UiFlex from "../layout/UiFlex.vue";
 
 const props = defineProps<{
   title: string
@@ -33,7 +33,6 @@ const css = computed(() => {
   return s
 })
 </script>
-
 <style>
 .Dialog {
   position: fixed;
@@ -50,8 +49,6 @@ const css = computed(() => {
   background: white;
   border-radius: 8px;
   width: 500px;
-}
-.Dialog {
 }
 .Dialog_window {
   box-shadow: var(--shadow-5);

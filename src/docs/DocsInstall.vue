@@ -5,8 +5,8 @@
   </code></blockquote>
   <p>Using a component:</p>
   <blockquote><code><pre>
-import { Button } from '@madxnl/dodo-ui'
+import { UiButton } from '@madxnl/dodo-ui'
 
-&lt;Button&gt;...&lt;/Button&gt;
+&lt;UiButton&gt;...&lt;/UiButton&gt;
   </pre></code></blockquote>
 </template>

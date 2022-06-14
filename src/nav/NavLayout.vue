@@ -1,10 +1,10 @@
 <template>
   <div class="NavLayout" :style="css">
-    <Flex column pad=l class="NavLayout_bar">
+    <UiFlex column pad=l class="NavLayout_bar">
       <template v-for="item in items">
         <a :href="item.href" class="NavLayout_item">{{ item.label }}</a>
       </template>
-    </Flex>
+    </UiFlex>
     <div class="NavLayout_content">
       <slot></slot>
     </div>
@@ -12,7 +12,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from "vue";
-import Flex from "../layout/Flex.vue";
+import UiFlex from "../layout/UiFlex.vue";
 
 const props = defineProps<{
   items: {

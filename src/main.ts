@@ -1,5 +1,10 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import './themes/default.css'
+import App from './docs/App.vue'
+import { createTheme } from './theme'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+createTheme(app, theme => {
+})
+
+app.mount('#app')

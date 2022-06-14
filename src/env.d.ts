@@ -7,14 +7,10 @@ declare module '*.vue' {
   export default component
 }
 
-declare module '*:doc' {
+declare module '*:docgen' {
   import type { ComponentDoc } from 'vue-docgen-api'
-  const componentDoc: ComponentDoc
-  export default componentDoc
-}
-
-
-declare module '*:text' {
+  const docs: ComponentDoc
   const text: string
-  export default text
+  export const text
+  export const docs
 }
