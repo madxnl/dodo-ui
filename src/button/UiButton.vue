@@ -29,7 +29,9 @@ const props = defineProps<{
    * @example size="small"
    */
   size?: 'default'|'small'|'large'
-
+  /** Square button for icons
+   * @example square
+   */
   square?: boolean
 }>()
 
@@ -55,13 +57,7 @@ const attrs = useAttrs()
 const loading = ref(false)
 
 function onClick(event: Event) {
-  if (loading.value) {
-    return
-  }
-  console.log(Object.keys(attrs))
-  if (attrs.onClick instanceof Function) {
-    event.stopPropagation()
-    event.preventDefault()
+  if (!loading.value && typeof attrs.onClick === 'function') {
     const result = attrs.onClick(event)
     if (result instanceof Promise) {
       loading.value = true

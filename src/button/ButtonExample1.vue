@@ -1,36 +1,37 @@
 <template>
   <div>
-    <UiButton color="success">UiButton</UiButton>
+    <UiButton color="success">Color</UiButton>
     <UiButton variant="text">Text</UiButton>
     <UiButton variant="border" color="danger">Border</UiButton>
   </div>
-  <div>
-    <UiButton color="info" disabled>Disabled</UiButton>
-    <UiButton color="info" size="small">Small <UiIcon name="delete"  /></UiButton>
-    <UiButton color="info" size="large">Large</UiButton>
-  </div>
+
+  <UiButton color="info" size="small">
+    Small
+    <UiIcon name="heart"  />
+  </UiButton>
+
+  <UiButton color="info" size="large">
+    Large
+    <UiIcon name="heart"  />
+  </UiButton>
+
   <div>
     <UiButton variant="text" color="danger">
-      Heart <UiIcon name="heart" />
-    </UiButton>
-    <UiButton color="danger">
-      <UiIcon name="plus"  />
-      Heart
+      Icon
+      <UiIcon name="heart" />
     </UiButton>
     <UiButton square color="danger">
-      <UiIcon name="close" size="large" />
-    </UiButton>
-    <UiButton square variant="text" color="danger">
-      <UiIcon name="close" size="large" />
-    </UiButton>
-    <UiButton square color="danger">
-      <UiIcon name="delete" size="large" />
-    </UiButton>
-    <UiButton square variant="text" color="danger">
-      <UiIcon name="delete" size="large" />
+      <UiIcon name="heart" size="large" />
     </UiButton>
   </div>
-  <UiButton @click="myAsyncSubmit" color="info">Async (click me!)</UiButton>
+
+  <UiButton color="info" disabled>
+    Disabled
+  </UiButton>
+
+  <UiButton @click="myAsyncSubmit" color="info">
+    Async click event
+  </UiButton>
 </template>
 <script lang="ts" setup>
 import UiIcon from '../icon/UiIcon.vue';

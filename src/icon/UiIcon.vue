@@ -42,6 +42,7 @@ const css = computed(() => {
 .UiIcon {
   width: 1.25em;
   height: 1.25em;
+  vertical-align: middle;
 }
 .UiIcon_small {
   width: 1em;

@@ -6,7 +6,7 @@
   </div>
   <div>
     <template v-for="icon in Object.keys(theme.icons)">
-      <UiIcon :name="icon" color="info">UiIcon</UiIcon>
+      <UiIcon :name="icon" color="info" size="large">UiIcon</UiIcon>
     </template>
   </div>
 </template>
