@@ -35,6 +35,6 @@ function reload() {
 }
 
 function ignore() {
-  delete currentError.value
+  currentError.value = undefined
 }
 </script>

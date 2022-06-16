@@ -18,12 +18,6 @@
   "main": "./dist/dodo-ui.umd.js",
   "module": "./dist/dodo-ui.es.js",
   "types": "./dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/dodo-ui.es.js",
-      "require": "./dist/dodo-ui.umd.js"
-    }
-  },
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
@@ -33,6 +27,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "@mdi/js": "^6.7.96",
     "vue": "^3.2.25"
   },
   "devDependencies": {

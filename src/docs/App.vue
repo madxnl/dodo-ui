@@ -68,16 +68,15 @@
   </CrashDialog>
 </template>
 <script setup lang="ts">
-// import ButtonDoc from 'docgen:../button/UiButton.vue';
-// import ButtonExample1Text from 'text:../button/ButtonExample1.vue';
 // import FlexDoc from 'docgen:../layout/UiFlex.vue';
 import { PropDescriptor } from 'vue-docgen-api';
 import ButtonExample1Vue from '../button/ButtonExample1.vue';
 import { text as ButtonExample1Text } from '../button/ButtonExample1.vue:docgen';
 import { docs as ButtonDoc } from '../button/UiButton.vue:docgen';
-// import ButtonDoc from 'docgen:../button/UiButton.vue';
-// import ButtonExample1Text from 'text:../button/ButtonExample1.vue';
 import CrashDialog from '../crash/CrashDialog.vue';
+import IconExampleVue from '../icon/IconExample.vue';
+import { text as IconExampleText } from '../icon/IconExample.vue:docgen';
+import { docs as IconDoc } from '../icon/UiIcon.vue:docgen';
 // import CrashDialogDoc from 'docgen:../crash/CrashDialog.vue';
 // import DialogDoc from 'docgen:../dialog/Dialog.vue';
 import GridResponsive from '../layout/GridResponsive.vue';
@@ -98,6 +97,12 @@ const chapters = [{
   doc: ButtonDoc,
   examples: ButtonExample1Vue,
   examplesText: ButtonExample1Text,
+}, {
+  label: IconDoc.displayName,
+  href: '#' + IconDoc.displayName,
+  doc: IconDoc,
+  examples: IconExampleVue,
+  examplesText: IconExampleText,
 // }, {
 //   label: FlexDoc.displayName,
 //   href: '#' + FlexDoc.displayName,
