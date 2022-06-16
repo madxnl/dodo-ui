@@ -260,10 +260,8 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
         const result = attrs.onClick(event);
         if (result instanceof Promise) {
           loading.value = true;
-          document.body.style.cursor = "wait";
           result.finally(() => {
             loading.value = false;
-            document.body.style.cursor = "";
           });
         }
       }
