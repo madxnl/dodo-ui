@@ -4,7 +4,9 @@
     :style="css"
     :class="classes"
     v-bind="{ ...$attrs, onClick }"
-  ><slot></slot></button>
+  >
+    <slot></slot>
+  </button>
 </template>
 <script lang="ts"> // use normal <script> to declare options
 export default {
@@ -35,10 +37,6 @@ const props = defineProps<{
   square?: boolean
 }>()
 
-// defineEmits<{
-//   (e: 'click', ev: Event): void
-// }>()
-
 const css = computed(() => {
   let s = ''
   if (props.color) s += '--color: ' + useThemeColor(props.color)
@@ -61,10 +59,8 @@ function onClick(event: Event) {
     const result = attrs.onClick(event)
     if (result instanceof Promise) {
       loading.value = true
-      document.body.style.cursor = 'wait'
       result.finally(() => {
         loading.value = false
-        document.body.style.cursor = ''
       })
     }
   }
