@@ -7,29 +7,33 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
     gap?: string | undefined;
     /**
      * Amount of padding around the contents. Use array to set padding for each side separately.
-     * @example pad="m" // medium padding
-     * @example pad="s 0 s s" // small padding on all sides except right
+     * @example pad="m"
+     * @example pad="s 0 s s"
      */
     pad?: string | undefined;
     /**
      * Toggle column orientation instead of row
-     * @example <Flex column>
+     * @example column
      */
     column?: boolean | undefined;
     /**
-     * Grow to take up available space (when nested inside another Flex)
+     * Grow to take up available space (when nested inside another UiFlex)
+     * @example grow
      */
     grow?: boolean | undefined;
     /**
      * Justify contents
+     * @example justify="space-between"
      */
     justify?: "center" | "end" | "start" | "stretch" | "space-between" | "space-around" | "space-evenly" | undefined;
     /**
      * Align contents
+     * @example align="end"
      */
     align?: "center" | "end" | "start" | "stretch" | undefined;
     /**
      * Wrap contents over multiple rows instead of shrinking
+     * @example wrap
      */
     wrap?: boolean | undefined;
     /**
@@ -46,29 +50,33 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
     gap?: string | undefined;
     /**
      * Amount of padding around the contents. Use array to set padding for each side separately.
-     * @example pad="m" // medium padding
-     * @example pad="s 0 s s" // small padding on all sides except right
+     * @example pad="m"
+     * @example pad="s 0 s s"
      */
     pad?: string | undefined;
     /**
      * Toggle column orientation instead of row
-     * @example <Flex column>
+     * @example column
      */
     column?: boolean | undefined;
     /**
-     * Grow to take up available space (when nested inside another Flex)
+     * Grow to take up available space (when nested inside another UiFlex)
+     * @example grow
      */
     grow?: boolean | undefined;
     /**
      * Justify contents
+     * @example justify="space-between"
      */
     justify?: "center" | "end" | "start" | "stretch" | "space-between" | "space-around" | "space-evenly" | undefined;
     /**
      * Align contents
+     * @example align="end"
      */
     align?: "center" | "end" | "start" | "stretch" | undefined;
     /**
      * Wrap contents over multiple rows instead of shrinking
+     * @example wrap
      */
     wrap?: boolean | undefined;
     /**

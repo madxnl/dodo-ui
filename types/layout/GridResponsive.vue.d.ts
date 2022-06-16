@@ -9,7 +9,7 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      */
     stretch?: boolean | undefined;
     /**
-     * Same as Flex gap
+     * Same as UiFlex gap
      */
     gap?: string | undefined;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
@@ -23,7 +23,7 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      */
     stretch?: boolean | undefined;
     /**
-     * Same as Flex gap
+     * Same as UiFlex gap
      */
     gap?: string | undefined;
 }>>>, {}>;
