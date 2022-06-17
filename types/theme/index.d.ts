@@ -1,11 +1,11 @@
-import { App } from "vue";
+import { Plugin } from "vue";
 declare type Theme = {
     colors: Record<string, string>;
     buttonClasses: Record<string, string>;
     textClasses: Record<string, string>;
     icons: Record<string, string>;
 };
-export declare function createTheme(app: App, customize?: (theme: Theme) => void): void;
+export declare function provideCustomTheme(customize?: (theme: Theme) => void): Plugin;
 export declare function useTheme(): {
     readonly colors: {
         readonly [x: string]: string;

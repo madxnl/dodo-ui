@@ -181,11 +181,15 @@ const baseTheme = {
   }
 };
 const key = Symbol("themeKey");
-function createTheme(app, customize) {
-  const theme = reactive(baseTheme);
-  app.provide(key, theme);
-  if (customize)
-    customize(theme);
+function provideCustomTheme(customize) {
+  return {
+    install(app) {
+      const theme = reactive(baseTheme);
+      app.provide(key, theme);
+      if (customize)
+        customize(theme);
+    }
+  };
 }
 function useTheme() {
   return readonly(inject(key, baseTheme));
@@ -540,4 +544,4 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-export { _sfc_main$3 as CrashDialog, _sfc_main$4 as Dialog, _sfc_main$1 as GridResponsive, _sfc_main as NavBar, _sfc_main$6 as UiButton, _sfc_main$5 as UiFlex, _sfc_main$2 as UiIcon, createTheme, useButtonVariant, useCustomTheme, useIconSvgPath, useTextVariant, useTheme, useThemeColor };
+export { _sfc_main$3 as CrashDialog, _sfc_main$4 as Dialog, _sfc_main$1 as GridResponsive, _sfc_main as NavBar, _sfc_main$6 as UiButton, _sfc_main$5 as UiFlex, _sfc_main$2 as UiIcon, provideCustomTheme, useButtonVariant, useCustomTheme, useIconSvgPath, useTextVariant, useTheme, useThemeColor };
