@@ -273,10 +273,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
       }
     }
     return (_ctx, _cache) => {
+      var _a;
       return openBlock(), createElementBlock("button", mergeProps({
         class: ["UiButton", unref(classes)],
         style: unref(css),
-        type: __props.type
+        type: (_a = __props.type) != null ? _a : "button"
       }, __spreadProps(__spreadValues({}, _ctx.$attrs), { onClick })), [
         renderSlot(_ctx.$slots, "default")
       ], 16, _hoisted_1$4);
