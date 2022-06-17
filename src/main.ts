@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import App from './docs/App.vue'
-import { createTheme } from './theme'
+import { provideCustomTheme } from './theme'
 
 const app = createApp(App)
 
-createTheme(app, theme => {
-})
+app.use(provideCustomTheme(theme => {
+}))
 
 app.mount('#app')

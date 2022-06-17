@@ -1,5 +1,5 @@
 import { mdiAccount, mdiAccountGroup, mdiAccountMultiple, mdiAlert, mdiArrowDown, mdiArrowLeft, mdiArrowRight, mdiArrowUp, mdiAt, mdiAttachment, mdiBell, mdiBookmark, mdiBullhorn, mdiCalendar, mdiCalendarClock, mdiCamera, mdiCart, mdiCartArrowDown, mdiChartArc, mdiCheck, mdiCheckBold, mdiChevronDown, mdiChevronLeft, mdiChevronRight, mdiChevronUp, mdiClockOutline, mdiClose, mdiCloudUpload, mdiCog, mdiCross, mdiDelete, mdiDotsHorizontal, mdiDotsVertical, mdiDownload, mdiEmail, mdiEye, mdiFacebook, mdiFile, mdiFilter, mdiFolder, mdiHammer, mdiHeart, mdiHelp, mdiHome, mdiImage, mdiImageMultipleOutline, mdiInformation, mdiLink, mdiLinkedin, mdiLoading, mdiMagnify, mdiMapMarker, mdiMenu, mdiMessage, mdiMicrophone, mdiMinus, mdiOfficeBuilding, mdiPause, mdiPencil, mdiPhone, mdiPlay, mdiPlus, mdiShare, mdiSpeaker, mdiTrendingUp, mdiTwitter, mdiUpload, mdiVideo, mdiViewGrid, mdiViewList } from '@mdi/js';
-import { App, inject, InjectionKey, reactive, readonly } from "vue";
+import { inject, InjectionKey, Plugin, reactive, readonly } from "vue";
 
 type Theme = {
   colors: Record<string, string>,
@@ -103,10 +103,14 @@ const baseTheme: Theme = {
 
 const key: InjectionKey<Theme> = Symbol('themeKey')
 
-export function createTheme(app: App, customize?: (theme: Theme) => void) {
-  const theme = reactive(baseTheme)
-  app.provide(key, theme)
-  if (customize) customize(theme)
+export function provideCustomTheme(customize?: (theme: Theme) => void): Plugin {
+  return {
+    install(app) {
+      const theme = reactive(baseTheme)
+      app.provide(key, theme)
+      if (customize) customize(theme)
+    },
+  }
 }
 
 export function useTheme() {
