@@ -2,6 +2,7 @@
   <button
     class="UiButton"
     :style="css"
+    :type="type"
     :class="classes"
     v-bind="{ ...$attrs, onClick }"
   >
@@ -31,6 +32,10 @@ const props = defineProps<{
    * @example size="small"
    */
   size?: 'default'|'small'|'large'
+  /** Set button type to 'submit' to trigger form submit
+   * @example type="submit"
+   */
+  type?: 'button'|'submit'
   /** Square button for icons
    * @example square
    */
