@@ -2,7 +2,7 @@
   <button
     class="UiButton"
     :style="css"
-    :type="type"
+    :type="type ?? 'button'"
     :class="classes"
     v-bind="{ ...$attrs, onClick }"
   >
