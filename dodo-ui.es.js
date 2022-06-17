@@ -230,6 +230,7 @@ function useIconSvgPath(name) {
   return theme.icons[name];
 }
 var UiButton_vue_vue_type_style_index_0_lang = "";
+const _hoisted_1$4 = ["type"];
 const __default__ = {
   inheritAttrs: false
 };
@@ -238,6 +239,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
     color: null,
     variant: null,
     size: null,
+    type: null,
     square: { type: Boolean }
   },
   setup(__props) {
@@ -273,10 +275,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("button", mergeProps({
         class: ["UiButton", unref(classes)],
-        style: unref(css)
+        style: unref(css),
+        type: __props.type
       }, __spreadProps(__spreadValues({}, _ctx.$attrs), { onClick })), [
         renderSlot(_ctx.$slots, "default")
-      ], 16);
+      ], 16, _hoisted_1$4);
     };
   }
 }));

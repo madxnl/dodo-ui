@@ -12,6 +12,10 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      * @example size="small"
      */
     size?: "small" | "default" | "large" | undefined;
+    /** Set button type to 'submit' to trigger form submit
+     * @example type="submit"
+     */
+    type?: "button" | "submit" | undefined;
     /** Square button for icons
      * @example square
      */
@@ -30,6 +34,10 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      * @example size="small"
      */
     size?: "small" | "default" | "large" | undefined;
+    /** Set button type to 'submit' to trigger form submit
+     * @example type="submit"
+     */
+    type?: "button" | "submit" | undefined;
     /** Square button for icons
      * @example square
      */
