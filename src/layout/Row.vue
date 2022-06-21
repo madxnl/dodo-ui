@@ -1,10 +1,10 @@
 
 <template>
-  <div class="uiFlex" :style="css"><slot></slot></div>
+  <div class="uiFlex" :style="css"><slot /></div>
 </template>
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useSpacing, useThemeCssVars } from '../theme';
+import { computed } from 'vue'
+import { useSpacing, useThemeCssVars } from '../theme'
 
 const props = defineProps<{
   /**
@@ -52,8 +52,8 @@ const css = computed(() => {
   let s = ''
   if (props.gap) s += `gap:${useSpacing(props.gap)};`
   if (props.pad) s += `padding:${useSpacing(props.pad)};`
-  if (props.grow) s += `flex-grow:1;`
-  if (props.wrap) s += `flex-wrap:wrap;`
+  if (props.grow) s += 'flex-grow:1;'
+  if (props.wrap) s += 'flex-wrap:wrap;'
   if (props.justify) s += `justify-content:${props.justify};`
   if (props.align) s += `align-items:${props.align};`
   return s

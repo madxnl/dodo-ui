@@ -1,1 +1,1 @@
-export { default as CrashDialog } from './CrashDialog.vue';
+export { default as CrashDialog } from './CrashDialog.vue'

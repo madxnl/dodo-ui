@@ -9,8 +9,8 @@
   </svg>
 </template>
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useIconSvgPath, useThemeColor } from "../theme";
+import { computed } from 'vue'
+import { useIconSvgPath, useThemeColor } from '../theme'
 
 const props = defineProps<{
   /** The icon name

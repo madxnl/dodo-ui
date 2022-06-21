@@ -1,12 +1,12 @@
 <template>
   <div class="GridResponsive" :style="css">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useSpacing } from '../theme';
+import { computed } from 'vue'
+import { useSpacing } from '../theme'
 
 // This component creates a responsive grid layout using grid-template-columns + auto-fill
 const props = defineProps<{

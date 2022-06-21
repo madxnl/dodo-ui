@@ -1,20 +1,20 @@
 <template>
   <div class="NavLayout" :style="css">
-    <Container pad=l class="NavLayout_bar">
-      <template v-for="item in items">
+    <Container pad="l" class="NavLayout_bar">
+      <template v-for="item in items" :key="item.href">
         <a :href="item.href" class="NavLayout_item">{{ item.label }}</a>
       </template>
     </Container>
     <div class="NavLayout_content">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { computed } from "vue";
-import Container from "../layout/Container.vue";
+import { computed } from 'vue'
+import Container from '../layout/Container.vue'
 
-const props = defineProps<{
+defineProps<{
   items: {
     label: string
     href: string
@@ -22,7 +22,7 @@ const props = defineProps<{
 }>()
 
 const css = computed(() => {
-  let s = ''
+  const s = ''
   return s
 })
 </script>

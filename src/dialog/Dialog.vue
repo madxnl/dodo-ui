@@ -6,31 +6,30 @@
           <div>
             {{ title }}
           </div>
-          <slot name=content></slot>
+          <slot name="content" />
           <!-- <BaseLayout :padding="24" :gap="8">
             <slot name="content"></slot>
           </BaseLayout>
           <hr>-->
         </Container>
         <Row pad="m" justify="end" gap="s">
-          <slot name="controls">
-          </slot>
+          <slot name="controls" />
         </Row>
       </div>
     </div>
   </teleport>
 </template>
 <script lang="ts" setup>
-import { computed } from "vue";
-import Container from "../layout/Container.vue";
-import Row from "../layout/Row.vue";
+import { computed } from 'vue'
+import Container from '../layout/Container.vue'
+import Row from '../layout/Row.vue'
 
-const props = defineProps<{
+defineProps<{
   title: string
 }>()
 
 const css = computed(() => {
-  let s = ''
+  const s = ''
   return s
 })
 </script>

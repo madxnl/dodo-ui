@@ -8,8 +8,8 @@
   </svg>
 </template>
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useThemeCssVars } from "../theme";
+import { computed } from 'vue'
+import { useThemeCssVars } from '../theme'
 
 useThemeCssVars()
 

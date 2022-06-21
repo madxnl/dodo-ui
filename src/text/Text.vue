@@ -1,16 +1,13 @@
 <template>
-  <component
-    class="uiText"
-    :class="classes"
-    :is="tag"
-    :style="css"
-  ><slot></slot></component>
+  <component :is="tag" class="uiText" :class="classes" :style="css">
+    <slot />
+  </component>
 </template>
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useTextVariant, useThemeColor } from "../theme";
+import { computed } from 'vue'
+import { useTextVariant, useThemeColor } from '../theme'
 
-const props = withDefaults(defineProps<{
+const props = defineProps<{
   /** Change text color
    * @example color="#FFAA00"
    * @example :color="success"
@@ -28,9 +25,7 @@ const props = withDefaults(defineProps<{
   /** Set text-align property
    */
   textAlign?: 'left'|'center'|'right'
-}>(), {
-  variant: 'p',
-})
+}>()
 
 const css = computed(() => {
   let s = ''
@@ -38,11 +33,11 @@ const css = computed(() => {
   return s
 })
 
-const classes = computed(() => useTextVariant(props.variant))
+const classes = computed(() => useTextVariant(props.variant ?? 'p'))
 
 const textTags = 'p b strong i em mark small pre h1 h2 h3 h4 h5 h6 blockquote code'.split(' ')
 
-const tag = computed(() => textTags.includes(props.variant) ? props.variant : 'span')
+const tag = computed(() => textTags.includes(props.variant ?? 'p') ? props.variant : 'span')
 </script>
 <style>
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap'); */
@@ -60,7 +55,6 @@ html, body {
   line-height: 1.4;
   font-family: var(--font-base);
 } */
-
 
 body {
   font-family: 'Inter', sans-serif;

@@ -22,17 +22,24 @@
     "dev": "vite",
     "preview": "vite preview",
     "build:docs": "vite build",
+    "lint": "eslint . --ext .js,.ts,.vue",
     "build:npm": "vite build --config vite.npm.ts && vue-tsc --emitDeclarationOnly",
     "build": "npm run build:npm && npm run build:docs",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@mdi/js": "^6.7.96",
+    "@typescript-eslint/parser": "^5.29.0",
     "vue": "^3.2.25"
   },
   "devDependencies": {
     "@types/node": "^17.0.34",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/eslint-config-typescript": "^11.0.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-vue": "^9.1.1",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
     "vue-docgen-api": "^4.46.0",

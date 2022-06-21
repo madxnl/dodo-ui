@@ -2,13 +2,13 @@
   <Row gap="s">
     <Button variant="solid" color="success">Color</Button>
     <Button variant="text">Text</Button>
-    <Button >Text</Button>
-    <Button  color="foreground">Border</Button>
+    <Button>Text</Button>
+    <Button color="foreground">Border</Button>
   </Row>
 
   <Button variant="solid" color="info" small>
     Small
-    <UiIcon name="heart"  />
+    <UiIcon name="heart" />
   </Button>
 
   <Button>
@@ -29,16 +29,15 @@
     Disabled
   </Button>
 
-  <Button @click="myAsyncSubmit" color="info">Async click handler</Button>
-  <Button variant="solid" @click="myAsyncSubmit" color="info">Async click handler</Button>
+  <Button color="info" @click="myAsyncSubmit">Async click handler</Button>
+  <Button variant="solid" color="info" @click="myAsyncSubmit">Async click handler</Button>
 </template>
 <script lang="ts" setup>
-import UiIcon from '../icon/UiIcon.vue';
-import Row from '../layout/Row.vue';
-import Button from './Button.vue';
+import UiIcon from '../icon/UiIcon.vue'
+import Row from '../layout/Row.vue'
+import Button from './Button.vue'
 
 async function myAsyncSubmit() {
   await new Promise(resolve => setTimeout(resolve, 3000))
-  console.log('done')
 }
 </script>

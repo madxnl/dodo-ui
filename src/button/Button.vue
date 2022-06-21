@@ -6,41 +6,36 @@
     :class="classes"
     v-bind="{ ...$attrs, onClick }"
   >
-    <div class="uiButton_content"><slot></slot></div>
+    <div class="uiButton_content"><slot /></div>
     <uiSpinner v-if="loading" class="uiButton_spinner" />
   </button>
 </template>
-<script lang="ts"> // use normal <script> to declare options
-export default {
-  inheritAttrs: false
-}
-</script>
 <script lang="ts" setup>
-import { computed, ref, useAttrs } from "vue";
-import uiSpinner from "../spinner/Spinner.vue";
-import { useButtonVariant, useThemeColorRGB, useThemeCssVars } from "../theme";
+import { computed, ref, useAttrs } from 'vue'
+import uiSpinner from '../spinner/Spinner.vue'
+import { useButtonVariant, useThemeColorRGB, useThemeCssVars } from '../theme'
 
 const props = defineProps<{
-  /** Set button color
-   * @example color="success"
-   */
+/** Set button color
+ * @example color="success"
+ */
   color?: string
-  /** Set button variant
-   * @example variant="border"
-   * @example variant="text"
-   */
+/** Set button variant
+ * @example variant="border"
+ * @example variant="text"
+ */
   variant?: string
-  /** Set button type to 'submit' to trigger form submit
-   * @example type="submit"
-   */
+/** Set button type to 'submit' to trigger form submit
+ * @example type="submit"
+ */
   type?: 'button'|'submit'
-  /** Square button for icons
-   * @example square
-   */
+/** Square button for icons
+ * @example square
+ */
   square?: boolean
-  /** Change button size
-   * @example small
-   */
+/** Change button size
+ * @example small
+ */
   small?: boolean
 }>()
 
@@ -55,7 +50,7 @@ const css = computed(() => {
 const classes = computed(() => [
   { uiButton_loading: loading.value },
   useButtonVariant(props.variant ?? 'default'),
-  props.small ? `uiButton_small` : null,
+  props.small ? 'uiButton_small' : null,
   props.square ? 'uiButton_square' : null,
 ])
 
@@ -75,7 +70,11 @@ async function onClick(event: Event) {
   }
 }
 </script>
-
+<script lang="ts"> // use normal <script> to declare options
+export default {
+  inheritAttrs: false,
+}
+</script>
 <style lang="css">
 .uiButton {
   border: 0;

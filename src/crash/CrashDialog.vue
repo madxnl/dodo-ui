@@ -1,5 +1,5 @@
 <template>
-  <Teleport to=body v-if="currentError">
+  <Teleport v-if="currentError" to="body">
     <Dialog title="Something went wrong">
       <template #content>
         <div>
@@ -15,17 +15,18 @@
     </Dialog>
   </Teleport>
 
-  <slot></slot>
+  <slot />
 </template>
 
 <script lang="ts" setup>
-import { onErrorCaptured, ref } from 'vue';
-import Button from '../button/Button.vue';
-import Dialog from '../dialog/Dialog.vue';
+import { onErrorCaptured, ref } from 'vue'
+import Button from '../button/Button.vue'
+import Dialog from '../dialog/Dialog.vue'
 
 const currentError = ref<Error>()
 
 onErrorCaptured((err, component, info) => {
+  // eslint-disable-next-line no-console
   console.log('onErrorCaptured')
   currentError.value = err
 })

@@ -1,10 +1,15 @@
 
 <template>
-  <div class="uiContainer" :style="css"><slot></slot></div>
+  <div
+    class="uiContainer"
+    :style="css"
+  >
+    <slot />
+  </div>
 </template>
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useSpacing, useThemeCssVars } from '../theme';
+import { computed } from 'vue'
+import { useSpacing, useThemeCssVars } from '../theme'
 
 const props = defineProps<{
   /**
@@ -23,7 +28,7 @@ const props = defineProps<{
    * Toggle column orientation instead of row
    * @example column
    */
-  column?: boolean,
+  column?: boolean
   /**
    * Grow to take up available space (when nested inside another uiFlex)
    * @example grow
@@ -57,8 +62,8 @@ const css = computed(() => {
   let s = ''
   if (props.gap) s += `gap:${useSpacing(props.gap)};`
   if (props.pad) s += `padding:${useSpacing(props.pad)};`
-  if (props.grow) s += `flex-grow:1;`
-  if (props.wrap) s += `flex-wrap:wrap;`
+  if (props.grow) s += 'flex-grow:1;'
+  if (props.wrap) s += 'flex-wrap:wrap;'
   if (props.justify) s += `justify-content:${props.justify};`
   if (props.align) s += `align-items:${props.align};`
   if (props.background) s += `background:${props.background};`
