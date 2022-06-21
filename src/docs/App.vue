@@ -7,7 +7,7 @@
       <div style="max-width:1100px">
         <h1>DodoUI</h1>
         <h2>Versatile components for Vue</h2>
-        <UiFlex column gap=l>
+        <Container gap=l>
           <template v-for="chapter in chapters">
             <h2 :id="chapter.label">
               {{ chapter.label }}
@@ -17,9 +17,9 @@
 
             <template v-if="chapter.examples">
               <GridResponsive column-width="500px" stretch>
-                <UiFlex column align=start pad=m gap=s class="App_Example">
+                <Container align=start pad=m class="App_Example">
                   <component :is="chapter.examples" />
-                </UiFlex>
+                </Container>
 
                 <div v-if="chapter.examplesText" class="App_ExampleText">
                   <pre><code>{{ getExampleTemplate(chapter.examplesText) }}</code></pre>
@@ -50,11 +50,11 @@
                     <template v-if="prop.required">(Required)</template>
                   </td>
                   <td>
-                    <UiFlex column gap="s">
+                    <Container gap="s">
                       <template v-for="example in prop.tags?.example">
                         <code>{{ (example as any).description }}</code>
                       </template>
-                    </UiFlex>
+                    </Container>
                   </td>
                   <!-- <td>{{ prop }}</td> -->
                 </tr>
@@ -62,27 +62,29 @@
               </div>
             </template>
           </template>
-        </UiFlex>
+        </Container>
       </div>
     </NavLayout>
   </CrashDialog>
 </template>
 <script setup lang="ts">
-// import FlexDoc from 'docgen:../layout/UiFlex.vue';
+// import FlexDoc from 'docgen:../layout/Row.vue';
 import { PropDescriptor } from 'vue-docgen-api';
+import { docs as ButtonDoc } from '../button/Button.vue:docgen';
 import ButtonExample1Vue from '../button/ButtonExample1.vue';
 import { text as ButtonExample1Text } from '../button/ButtonExample1.vue:docgen';
-import { docs as ButtonDoc } from '../button/UiButton.vue:docgen';
 import CrashDialog from '../crash/CrashDialog.vue';
 import IconExampleVue from '../icon/IconExample.vue';
 import { text as IconExampleText } from '../icon/IconExample.vue:docgen';
 import { docs as IconDoc } from '../icon/UiIcon.vue:docgen';
+import Container from "../layout/Container.vue";
 // import CrashDialogDoc from 'docgen:../crash/CrashDialog.vue';
 // import DialogDoc from 'docgen:../dialog/Dialog.vue';
 import GridResponsive from '../layout/GridResponsive.vue';
-// import GridResponsiveDoc from 'docgen:../layout/GridResponsive.vue';
-import UiFlex from '../layout/UiFlex.vue';
 import NavLayout from '../nav/NavLayout.vue';
+import { docs as TextDoc } from '../text/Text.vue:docgen';
+import TextExampleVue from '../text/TextExample.vue';
+import { text as TextExampleText } from '../text/TextExample.vue:docgen';
 import DocsInstall from './DocsInstall.vue';
 
 console.log('buttondoc', ButtonDoc)
@@ -97,6 +99,12 @@ const chapters = [{
   doc: ButtonDoc,
   examples: ButtonExample1Vue,
   examplesText: ButtonExample1Text,
+}, {
+  label: TextDoc.displayName,
+  href: '#' + TextDoc.displayName,
+  doc: TextDoc,
+  examples: TextExampleVue,
+  examplesText: TextExampleText,
 }, {
   label: IconDoc.displayName,
   href: '#' + IconDoc.displayName,
@@ -137,18 +145,9 @@ function getExampleTemplate(source: string) {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Code+Pro&display=swap');
-:root {
-  --font-base: 'Inter', sans-serif;
-  --font-mono: 'Source Code Pro', monospace;
-}
 html, body {
   margin: 0;
   height: 100%;
-  font-size: 14px;
-  line-height: 1.4;
-  font-family: var(--font-base);
 }
 #app {
   height: 100%;

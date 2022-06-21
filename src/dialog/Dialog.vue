@@ -2,7 +2,7 @@
   <teleport to="body">
     <div class="Dialog" :style="css">
       <div class="Dialog_window">
-        <UiFlex column pad="m" gap="m">
+        <Container pad="m">
           <div>
             {{ title }}
           </div>
@@ -11,18 +11,19 @@
             <slot name="content"></slot>
           </BaseLayout>
           <hr>-->
-        </UiFlex>
-        <UiFlex pad="m" justify="end" gap="s">
+        </Container>
+        <Row pad="m" justify="end" gap="s">
           <slot name="controls">
           </slot>
-        </UiFlex>
+        </Row>
       </div>
     </div>
   </teleport>
 </template>
 <script lang="ts" setup>
 import { computed } from "vue";
-import UiFlex from "../layout/UiFlex.vue";
+import Container from "../layout/Container.vue";
+import Row from "../layout/Row.vue";
 
 const props = defineProps<{
   title: string

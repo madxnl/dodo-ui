@@ -6,8 +6,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useSettings } from '../settings';
-const { gapSizes } = useSettings()
+import { useSpacing } from '../theme';
 
 // This component creates a responsive grid layout using grid-template-columns + auto-fill
 const props = defineProps<{
@@ -26,15 +25,11 @@ const props = defineProps<{
   gap?: 'xs'|'s'|'m'|'l'|'xl'|string
 }>()
 
-function spacingToCSS(str: string) {
-  return str.split(' ').map(x => ((gapSizes as any)[x] || '0') + 'px').join(' ')
-}
-
 const css = computed(() => {
   let s = ''
   const fitFill = props.stretch ? 'auto-fit' : 'auto-fill'
   s += `grid-template-columns: repeat(${fitFill}, minmax(${props.columnWidth}, 1fr));`
-  if (props.gap) s += `gap:${spacingToCSS(props.gap)};`
+  if (props.gap) s += `gap:${useSpacing(props.gap)};`
   return s
 })
 </script>

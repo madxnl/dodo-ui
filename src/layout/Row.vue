@@ -1,11 +1,10 @@
 
 <template>
-  <div class="UiFlex" :style="css"><slot></slot></div>
+  <div class="uiFlex" :style="css"><slot></slot></div>
 </template>
 <script lang="ts" setup>
 import { computed } from "vue";
-import { useSettings } from "../settings";
-const { gapSizes } = useSettings()
+import { useSpacing, useThemeCssVars } from '../theme';
 
 const props = defineProps<{
   /**
@@ -26,7 +25,7 @@ const props = defineProps<{
    */
   column?: boolean,
   /**
-   * Grow to take up available space (when nested inside another UiFlex)
+   * Grow to take up available space (when nested inside another uiFlex)
    * @example grow
    */
   grow?: boolean
@@ -45,33 +44,25 @@ const props = defineProps<{
    * @example wrap
    */
   wrap?: boolean
-  /**
-   * Set a background color
-   * @example background="#cccccc"
-   */
-  background?: string
 }>()
 
-function spacingToCSS(str: string) {
-  return str.split(' ').map(x => ((gapSizes as any)[x] || '0') + 'px').join(' ')
-}
+useThemeCssVars()
 
 const css = computed(() => {
   let s = ''
-  if (props.gap) s += `gap:${spacingToCSS(props.gap)};`
-  if (props.pad) s += `padding:${spacingToCSS(props.pad)};`
-  if (props.column) s += `flex-flow:column;`
+  if (props.gap) s += `gap:${useSpacing(props.gap)};`
+  if (props.pad) s += `padding:${useSpacing(props.pad)};`
   if (props.grow) s += `flex-grow:1;`
   if (props.wrap) s += `flex-wrap:wrap;`
   if (props.justify) s += `justify-content:${props.justify};`
   if (props.align) s += `align-items:${props.align};`
-  if (props.background) s += `background:${props.background};`
   return s
 })
 </script>
 
 <style>
-.UiFlex {
+.uiFlex {
   display: flex;
+  gap: var(--spacing-s);
 }
 </style>

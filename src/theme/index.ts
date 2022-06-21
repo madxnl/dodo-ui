@@ -1,11 +1,13 @@
 import { mdiAccount, mdiAccountGroup, mdiAccountMultiple, mdiAlert, mdiArrowDown, mdiArrowLeft, mdiArrowRight, mdiArrowUp, mdiAt, mdiAttachment, mdiBell, mdiBookmark, mdiBullhorn, mdiCalendar, mdiCalendarClock, mdiCamera, mdiCart, mdiCartArrowDown, mdiChartArc, mdiCheck, mdiCheckBold, mdiChevronDown, mdiChevronLeft, mdiChevronRight, mdiChevronUp, mdiClockOutline, mdiClose, mdiCloudUpload, mdiCog, mdiCross, mdiDelete, mdiDotsHorizontal, mdiDotsVertical, mdiDownload, mdiEmail, mdiEye, mdiFacebook, mdiFile, mdiFilter, mdiFolder, mdiHammer, mdiHeart, mdiHelp, mdiHome, mdiImage, mdiImageMultipleOutline, mdiInformation, mdiLink, mdiLinkedin, mdiLoading, mdiMagnify, mdiMapMarker, mdiMenu, mdiMessage, mdiMicrophone, mdiMinus, mdiOfficeBuilding, mdiPause, mdiPencil, mdiPhone, mdiPlay, mdiPlus, mdiShare, mdiSpeaker, mdiTrendingUp, mdiTwitter, mdiUpload, mdiVideo, mdiViewGrid, mdiViewList } from '@mdi/js';
-import { inject, InjectionKey, Plugin, reactive, readonly } from "vue";
+import { inject, InjectionKey, Plugin, reactive, readonly, watchEffect } from "vue";
 
 type Theme = {
   colors: Record<string, string>,
   buttonClasses: Record<string, string>,
   textClasses: Record<string, string>,
+  fonts: Record<string, string>,
   icons: Record<string, string>,
+  spacings: Record<string, string>,
 }
 
 const baseTheme: Theme = {
@@ -14,18 +16,35 @@ const baseTheme: Theme = {
     success: '#2a9d8f',
     warn: '#e9c46a',
     danger: '#e76f51',
+    background: '#ffffff',
+    foreground: '#4e5d78',
+    container: '#f7f8f9',
+    heading: '#000000',
+  },
+  fonts: {
+    heading: 'sans-serif',
+    body: 'sans-serif',
+    monospace: 'monospace',
   },
   buttonClasses: {
-    default: 'UiButton_default',
-    border: 'UiButton_border',
-    text: 'UiButton_text'
+    default: 'uiButton_default',
+    solid: 'uiButton_solid',
+    text: 'uiButton_text'
   },
   textClasses: {
-    p: 'UiText_p',
-    h1: 'UiText_h1',
-    h2: 'UiText_h2',
-    h3: 'UiText_h3',
-    small: 'UiText_small'
+    p: 'uiText_p',
+    h1: 'uiText_h1',
+    h2: 'uiText_h2',
+    h3: 'uiText_h3',
+    small: 'uiText_small'
+  },
+  spacings: {
+    '0': '0px',
+    xs: '4px',
+    s: '8px',
+    m: '16px',
+    l: '32px',
+    xl: '64px',
   },
   icons: {
     'account-group': mdiAccountGroup,
@@ -151,4 +170,32 @@ export function useIconSvgPath(name: string) {
     throw new Error(`"${name}" is not a valid icon name (${Object.keys(theme.icons)})`)
   }
   return theme.icons[name]
+}
+
+export function useSpacing(name: string) {
+  const theme = useTheme() ?? baseTheme
+  if (!theme.spacings[name]) {
+    throw new Error(`"${name}" is not a valid icon name (${Object.keys(theme.spacings)})`)
+  }
+  return theme.spacings[name]
+}
+
+export function useThemeCssVars() {
+  watchEffect(() => {
+    const theme = useCustomTheme() ?? baseTheme
+    const vars = [
+      ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v};`),
+      ...Object.entries(theme.fonts).map(([k, v]) => `--font-${k}:${v};`),
+      ...Object.entries(theme.spacings).map(([k, v]) => `--spacing-${k}:${v};`),
+    ].join('')
+    const css = `:root{${vars}}`
+    const id = 'dodoui-theme-vars'
+    let style = document.querySelector('#' + id)
+    if (!style) {
+      style = document.createElement('style')
+      style.id = id
+      document.head.appendChild(style)
+    }
+    style.innerHTML = css
+  })
 }

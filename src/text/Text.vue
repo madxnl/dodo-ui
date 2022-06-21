@@ -1,6 +1,6 @@
 <template>
   <component
-    class="Text"
+    class="uiText"
     :class="classes"
     :is="tag"
     :style="css"
@@ -40,33 +40,57 @@ const css = computed(() => {
 
 const classes = computed(() => useTextVariant(props.variant))
 
-const textTags = 'p b strong i em mark small pre h1 h2 h3 h4 h5 h6 blockquote code'
+const textTags = 'p b strong i em mark small pre h1 h2 h3 h4 h5 h6 blockquote code'.split(' ')
 
 const tag = computed(() => textTags.includes(props.variant) ? props.variant : 'span')
 </script>
 <style>
-.UiText {
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap'); */
+/* @import url('https://font/s.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Code+Pro&display=swap'); */
+/*@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); */
+/*
+:root {
+  --font-base: 'Inter', sans-serif;
+  --font-mono: 'Source Code Pro', monospace;
+}
+html, body {
+  margin: 0;
+  height: 100%;
+  font-size: 14px;
+  line-height: 1.4;
+  font-family: var(--font-base);
+} */
+
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.uiText {
+  font-size: 14px;
+  font-family: var(--font-body, sans-serif);
+  line-height: 1.4;
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
 }
-.UiText_p {
-  font: 14px/22px sans-serif;
-  color: #222222;
-}
-.UiText_h1 {
-  font: 24px/30px sans-serif;
+.uiText_h1,
+.uiText_h2,
+.uiText_h3 {
+  font-size: 24px;
+  font-family: var(--font-heading, sans-serif);
+  line-height: 1.2;
   color: black;
 }
-.UiText_h2 {
-  font: 20px/22px sans-serif;
-  color: black;
+.uiText_h2 {
+  font-size: 20px;
+  line-height: 22px;
 }
-.UiText_h3 {
-  font: 16px/22px sans-serif;
-  color: black;
+.uiText_h3 {
+  font-size: 16px;
+  line-height: 22px;
 }
-.UiText_small {
+.uiText_small {
   font-size: 12px;
 }
 </style>

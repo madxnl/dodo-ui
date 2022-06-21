@@ -1,41 +1,42 @@
 <template>
-  <div>
-    <UiButton color="success">Color</UiButton>
-    <UiButton variant="text">Text</UiButton>
-    <UiButton variant="border" color="danger">Border</UiButton>
-  </div>
+  <Row gap="s">
+    <Button variant="solid" color="success">Color</Button>
+    <Button variant="text">Text</Button>
+    <Button >Text</Button>
+    <Button  color="foreground">Border</Button>
+  </Row>
 
-  <UiButton color="info" size="small">
+  <Button variant="solid" color="info" small>
     Small
     <UiIcon name="heart"  />
-  </UiButton>
+  </Button>
 
-  <UiButton color="info" size="large">
-    Large
-    <UiIcon name="heart"  />
-  </UiButton>
+  <Button>
+    Some button
+  </Button>
 
-  <div>
-    <UiButton variant="text" color="danger">
+  <Row gap="s">
+    <Button  color="danger">
       Icon
       <UiIcon name="heart" />
-    </UiButton>
-    <UiButton square color="danger">
+    </Button>
+    <Button variant="solid" square color="danger">
       <UiIcon name="heart" size="large" />
-    </UiButton>
-  </div>
+    </Button>
+  </Row>
 
-  <UiButton color="info" disabled>
+  <Button variant="solid" color="info" disabled>
     Disabled
-  </UiButton>
+  </Button>
 
-  <UiButton @click="myAsyncSubmit" color="info">
+  <Button variant="solid" @click="myAsyncSubmit" color="info">
     Async click event
-  </UiButton>
+  </Button>
 </template>
 <script lang="ts" setup>
 import UiIcon from '../icon/UiIcon.vue';
-import UiButton from './UiButton.vue';
+import Row from '../layout/Row.vue';
+import Button from './Button.vue';
 
 async function myAsyncSubmit() {
   await new Promise(resolve => setTimeout(resolve, 1000))
