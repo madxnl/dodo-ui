@@ -1,4 +1,4 @@
-import { Plugin } from "vue";
+import { Plugin } from 'vue';
 declare type Theme = {
     colors: Record<string, string>;
     buttonClasses: Record<string, string>;

@@ -117,7 +117,7 @@ const baseTheme = {
     small: "uiText_small"
   },
   spacings: {
-    "0": "0px",
+    0: "0px",
     xs: "4px",
     s: "8px",
     m: "16px",
@@ -127,72 +127,72 @@ const baseTheme = {
   icons: {
     "account-group": mdiAccountGroup,
     "account-multiple": mdiAccountMultiple,
-    "account": mdiAccount,
-    "alert": mdiAlert,
+    account: mdiAccount,
+    alert: mdiAlert,
     "arrow-down": mdiArrowDown,
     "arrow-left": mdiArrowLeft,
     "arrow-right": mdiArrowRight,
     "arrow-up": mdiArrowUp,
-    "at": mdiAt,
-    "attachment": mdiAttachment,
-    "bell": mdiBell,
-    "bookmark": mdiBookmark,
-    "bullhorn": mdiBullhorn,
+    at: mdiAt,
+    attachment: mdiAttachment,
+    bell: mdiBell,
+    bookmark: mdiBookmark,
+    bullhorn: mdiBullhorn,
     "calendar-clock": mdiCalendarClock,
-    "calendar": mdiCalendar,
-    "camera": mdiCamera,
+    calendar: mdiCalendar,
+    camera: mdiCamera,
     "cart-arrow-down": mdiCartArrowDown,
-    "cart": mdiCart,
+    cart: mdiCart,
     "chart-arc": mdiChartArc,
     "check-bold": mdiCheckBold,
-    "check": mdiCheck,
+    check: mdiCheck,
     "chevron-down": mdiChevronDown,
     "chevron-left": mdiChevronLeft,
     "chevron-right": mdiChevronRight,
     "chevron-up": mdiChevronUp,
     "clock-outline": mdiClockOutline,
-    "close": mdiClose,
+    close: mdiClose,
     "cloud-upload": mdiCloudUpload,
-    "cog": mdiCog,
-    "cross": mdiCross,
-    "delete": mdiDelete,
+    cog: mdiCog,
+    cross: mdiCross,
+    delete: mdiDelete,
     "dots-horizontal": mdiDotsHorizontal,
     "dots-vertical": mdiDotsVertical,
-    "download": mdiDownload,
-    "email": mdiEmail,
-    "eye": mdiEye,
-    "facebook": mdiFacebook,
-    "file": mdiFile,
-    "filter": mdiFilter,
-    "folder": mdiFolder,
-    "hammer": mdiHammer,
-    "heart": mdiHeart,
-    "help": mdiHelp,
-    "home": mdiHome,
+    download: mdiDownload,
+    email: mdiEmail,
+    eye: mdiEye,
+    facebook: mdiFacebook,
+    file: mdiFile,
+    filter: mdiFilter,
+    folder: mdiFolder,
+    hammer: mdiHammer,
+    heart: mdiHeart,
+    help: mdiHelp,
+    home: mdiHome,
     "image-multiple-outline": mdiImageMultipleOutline,
-    "image": mdiImage,
-    "information": mdiInformation,
-    "link": mdiLink,
-    "linkedin": mdiLinkedin,
-    "loading": mdiLoading,
-    "magnify": mdiMagnify,
+    image: mdiImage,
+    information: mdiInformation,
+    link: mdiLink,
+    linkedin: mdiLinkedin,
+    loading: mdiLoading,
+    magnify: mdiMagnify,
     "map-marker": mdiMapMarker,
-    "menu": mdiMenu,
-    "message": mdiMessage,
-    "microphone": mdiMicrophone,
-    "minus": mdiMinus,
+    menu: mdiMenu,
+    message: mdiMessage,
+    microphone: mdiMicrophone,
+    minus: mdiMinus,
     "office-building": mdiOfficeBuilding,
-    "pause": mdiPause,
-    "pencil": mdiPencil,
-    "phone": mdiPhone,
-    "play": mdiPlay,
-    "plus": mdiPlus,
-    "share": mdiShare,
-    "speaker": mdiSpeaker,
+    pause: mdiPause,
+    pencil: mdiPencil,
+    phone: mdiPhone,
+    play: mdiPlay,
+    plus: mdiPlus,
+    share: mdiShare,
+    speaker: mdiSpeaker,
     "trending-up": mdiTrendingUp,
-    "twitter": mdiTwitter,
-    "upload": mdiUpload,
-    "video": mdiVideo,
+    twitter: mdiTwitter,
+    upload: mdiUpload,
+    video: mdiVideo,
     "view-grid": mdiViewGrid,
     "view-list": mdiViewList
   }
@@ -332,7 +332,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
       return [
         { uiButton_loading: loading.value },
         useButtonVariant((_a = props.variant) != null ? _a : "default"),
-        props.small ? `uiButton_small` : null,
+        props.small ? "uiButton_small" : null,
         props.square ? "uiButton_square" : null
       ];
     });
@@ -389,9 +389,9 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
       if (props.pad)
         s += `padding:${useSpacing(props.pad)};`;
       if (props.grow)
-        s += `flex-grow:1;`;
+        s += "flex-grow:1;";
       if (props.wrap)
-        s += `flex-wrap:wrap;`;
+        s += "flex-wrap:wrap;";
       if (props.justify)
         s += `justify-content:${props.justify};`;
       if (props.align)
@@ -431,9 +431,9 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
       if (props.pad)
         s += `padding:${useSpacing(props.pad)};`;
       if (props.grow)
-        s += `flex-grow:1;`;
+        s += "flex-grow:1;";
       if (props.wrap)
-        s += `flex-wrap:wrap;`;
+        s += "flex-wrap:wrap;";
       if (props.justify)
         s += `justify-content:${props.justify};`;
       if (props.align)
@@ -458,7 +458,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const css = computed(() => {
-      let s = "";
+      const s = "";
       return s;
     });
     return (_ctx, _cache) => {
@@ -614,7 +614,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const css = computed(() => {
-      let s = "";
+      const s = "";
       return s;
     });
     return (_ctx, _cache) => {
@@ -629,10 +629,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           default: withCtx(() => [
             (openBlock(true), createElementBlock(Fragment, null, renderList(__props.items, (item) => {
               return openBlock(), createElementBlock("a", {
+                key: item.href,
                 href: item.href,
                 class: "NavLayout_item"
               }, toDisplayString(item.label), 9, _hoisted_1);
-            }), 256))
+            }), 128))
           ]),
           _: 1
         }),
