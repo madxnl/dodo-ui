@@ -30,6 +30,11 @@ export declare function useTheme(): {
 };
 export declare function useCustomTheme(): Theme | undefined;
 export declare function useThemeColor(name: string): string;
+/**
+ * Returns color as RGB array: [255, 255, 255], used when modifying colors
+ */
+export declare function useThemeColorRGB(name: string): number[];
+export declare function hexToRGB(hex: string): number[];
 export declare function useTextVariant(name: string): string;
 export declare function useButtonVariant(name: string): string;
 export declare function useIconSvgPath(name: string): string;

@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { reactive, readonly, inject, watchEffect, defineComponent, computed, useAttrs, ref, openBlock, createElementBlock, mergeProps, unref, renderSlot, normalizeStyle, createBlock, Teleport, createElementVNode, createVNode, withCtx, toDisplayString, onErrorCaptured, Fragment, createCommentVNode, createTextVNode, normalizeClass, renderList } from "vue";
+import { reactive, readonly, inject, watchEffect, defineComponent, computed, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, useAttrs, ref, mergeProps, renderSlot, createBlock, createCommentVNode, normalizeStyle, Teleport, createVNode, withCtx, toDisplayString, onErrorCaptured, Fragment, createTextVNode, renderList } from "vue";
 var mdiAccount = "M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z";
 var mdiAccountGroup = "M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z";
 var mdiAccountMultiple = "M16 17V19H2V17S2 13 9 13 16 17 16 17M12.5 7.5A3.5 3.5 0 1 0 9 11A3.5 3.5 0 0 0 12.5 7.5M15.94 13A5.32 5.32 0 0 1 18 17V19H22V17S22 13.37 15.94 13M15 4A3.39 3.39 0 0 0 13.07 4.59A5 5 0 0 1 13.07 10.41A3.39 3.39 0 0 0 15 11A3.5 3.5 0 0 0 15 4Z";
@@ -222,6 +222,13 @@ function useThemeColor(name) {
   }
   return theme.colors[name];
 }
+function useThemeColorRGB(name) {
+  return hexToRGB(useThemeColor(name));
+}
+function hexToRGB(hex) {
+  const [r, g, b] = hex.match(/(\w\w)/g);
+  return [r, g, b].map((x) => parseInt(x, 16));
+}
 function useTextVariant(name) {
   var _a;
   const theme = (_a = useTheme()) != null ? _a : baseTheme;
@@ -260,6 +267,7 @@ function useThemeCssVars() {
     const theme = (_a = useCustomTheme()) != null ? _a : baseTheme;
     const vars = [
       ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v};`),
+      ...Object.entries(theme.colors).map(([k, v]) => `--rgb-${k}:${hexToRGB(v)};`),
       ...Object.entries(theme.fonts).map(([k, v]) => `--font-${k}:${v};`),
       ...Object.entries(theme.spacings).map(([k, v]) => `--spacing-${k}:${v};`)
     ].join("");
@@ -274,8 +282,31 @@ function useThemeCssVars() {
     style.innerHTML = css;
   });
 }
+var Spinner_vue_vue_type_style_index_0_lang = "";
+const _hoisted_1$5 = /* @__PURE__ */ createElementVNode("path", {
+  stroke: "currentColor",
+  fill: "none",
+  d: "M 9 1 A 8 8 0 0 1 9 17",
+  "stroke-width": "2"
+}, null, -1);
+const _hoisted_2$3 = [
+  _hoisted_1$5
+];
+const _sfc_main$8 = /* @__PURE__ */ defineComponent({
+  setup(__props) {
+    useThemeCssVars();
+    const classes = computed(() => []);
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("svg", {
+        class: normalizeClass(["uiSpinner", unref(classes)]),
+        viewBox: "0 0 18 18"
+      }, _hoisted_2$3, 2);
+    };
+  }
+});
 var Button_vue_vue_type_style_index_0_lang = "";
 const _hoisted_1$4 = ["type"];
+const _hoisted_2$2 = { class: "uiButton_content" };
 const __default__ = {
   inheritAttrs: false
 };
@@ -293,7 +324,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
     const css = computed(() => {
       let s = "";
       if (props.color)
-        s += "--color: " + useThemeColor(props.color);
+        s += `--rgb:${useThemeColorRGB(props.color)};`;
       return s;
     });
     const classes = computed(() => {
@@ -325,7 +356,13 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
         style: unref(css),
         type: (_a = __props.type) != null ? _a : "button"
       }, __spreadProps(__spreadValues({}, _ctx.$attrs), { onClick })), [
-        renderSlot(_ctx.$slots, "default")
+        createElementVNode("div", _hoisted_2$2, [
+          renderSlot(_ctx.$slots, "default")
+        ]),
+        loading.value ? (openBlock(), createBlock(_sfc_main$8, {
+          key: 0,
+          class: "uiButton_spinner"
+        })) : createCommentVNode("", true)
       ], 16, _hoisted_1$4);
     };
   }
@@ -606,4 +643,4 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-export { _sfc_main$7 as Button, _sfc_main$6 as Container, _sfc_main$3 as CrashDialog, _sfc_main$4 as Dialog, _sfc_main$1 as GridResponsive, _sfc_main as NavBar, _sfc_main$5 as Row, _sfc_main$2 as UiIcon, provideCustomTheme, useButtonVariant, useCustomTheme, useIconSvgPath, useSpacing, useTextVariant, useTheme, useThemeColor, useThemeCssVars };
+export { _sfc_main$7 as Button, _sfc_main$6 as Container, _sfc_main$3 as CrashDialog, _sfc_main$4 as Dialog, _sfc_main$1 as GridResponsive, _sfc_main as NavBar, _sfc_main$5 as Row, _sfc_main$2 as UiIcon, hexToRGB, provideCustomTheme, useButtonVariant, useCustomTheme, useIconSvgPath, useSpacing, useTextVariant, useTheme, useThemeColor, useThemeColorRGB, useThemeCssVars };
