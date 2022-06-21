@@ -148,6 +148,18 @@ export function useThemeColor(name: string) {
   return theme.colors[name]
 }
 
+/**
+ * Returns color as RGB array: [255, 255, 255], used when modifying colors
+ */
+export function useThemeColorRGB(name: string) {
+  return hexToRGB(useThemeColor(name))
+}
+
+export function hexToRGB(hex: string) {
+  const [r, g, b] = hex.match(/(\w\w)/g)!
+  return [r, g, b].map(x => parseInt(x, 16))
+}
+
 export function useTextVariant(name: string) {
   const theme = useTheme() ?? baseTheme
   if (!theme.textClasses[name]) {
@@ -185,6 +197,7 @@ export function useThemeCssVars() {
     const theme = useCustomTheme() ?? baseTheme
     const vars = [
       ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v};`),
+      ...Object.entries(theme.colors).map(([k, v]) => `--rgb-${k}:${hexToRGB(v)};`),
       ...Object.entries(theme.fonts).map(([k, v]) => `--font-${k}:${v};`),
       ...Object.entries(theme.spacings).map(([k, v]) => `--spacing-${k}:${v};`),
     ].join('')

@@ -6,7 +6,8 @@
     :class="classes"
     v-bind="{ ...$attrs, onClick }"
   >
-    <slot></slot>
+    <div class="uiButton_content"><slot></slot></div>
+    <uiSpinner v-if="loading" class="uiButton_spinner" />
   </button>
 </template>
 <script lang="ts"> // use normal <script> to declare options
@@ -16,7 +17,8 @@ export default {
 </script>
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from "vue";
-import { useButtonVariant, useThemeColor, useThemeCssVars } from "../theme";
+import uiSpinner from "../spinner/Spinner.vue";
+import { useButtonVariant, useThemeColorRGB, useThemeCssVars } from "../theme";
 
 const props = defineProps<{
   /** Set button color
@@ -46,7 +48,7 @@ useThemeCssVars()
 
 const css = computed(() => {
   let s = ''
-  if (props.color) s += '--color: ' + useThemeColor(props.color)
+  if (props.color) s += `--rgb:${useThemeColorRGB(props.color)};`
   return s
 })
 
@@ -79,41 +81,48 @@ async function onClick(event: Event) {
   border: 0;
   cursor: pointer;
   font: inherit;
-  background: transparent;
-  color: var(--color, var(--color-heading));
+  background: var(--color-background);
+  color: rgb(var(--rgb, var(--rgb-heading)));
   border-radius: 4px;
-  padding: 2px 14px;
-  min-height: 36px;
-  min-width: 36px;
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   user-select: none;
+  vertical-align: middle;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  vertical-align: middle;
+  padding: 2px 14px;
+  min-height: 36px;
+  min-width: 36px;
+}
+.uiButton_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 4px;
 }
 .uiButton_solid {
-  background: var(--color, var(--color-heading));
+  background: rgb(var(--rgb, var(--rgb-heading)));
   color: white;
 }
-.uiButton_default:before {
-  content: '';
-  border-radius: inherit;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  opacity: 0.35;
-  pointer-events: none;
-  border: 1px solid currentColor;
+.uiButton_default {
+  border: 1px solid rgba(var(--rgb, var(--rgb-heading)), 0.35);
 }
 .uiButton_text {
   background: transparent;
-  color: var(--color, inherit);
+  color: inherit;
+  color: rgb(var(--rgb));
   box-shadow: none;
 }
 .uiButton_loading {
   pointer-events: none;
+}
+.uiButton_loading .uiButton_content {
+  visibility: hidden;
+}
+.uiButton_spinner {
+  position: absolute;
+  top: auto; left: auto; right: auto; bottom: auto;
 }
 .uiButton:active,
 .uiButton.uiButton_loading {

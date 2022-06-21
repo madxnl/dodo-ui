@@ -16,7 +16,7 @@
   </Button>
 
   <Row gap="s">
-    <Button  color="danger">
+    <Button>
       Icon
       <UiIcon name="heart" />
     </Button>
@@ -29,9 +29,8 @@
     Disabled
   </Button>
 
-  <Button variant="solid" @click="myAsyncSubmit" color="info">
-    Async click event
-  </Button>
+  <Button @click="myAsyncSubmit" color="info">Async click handler</Button>
+  <Button variant="solid" @click="myAsyncSubmit" color="info">Async click handler</Button>
 </template>
 <script lang="ts" setup>
 import UiIcon from '../icon/UiIcon.vue';
@@ -39,7 +38,7 @@ import Row from '../layout/Row.vue';
 import Button from './Button.vue';
 
 async function myAsyncSubmit() {
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await new Promise(resolve => setTimeout(resolve, 3000))
   console.log('done')
 }
 </script>
