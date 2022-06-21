@@ -8,10 +8,6 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      * @example variant="text"
      */
     variant?: string | undefined;
-    /** Change button size
-     * @example size="small"
-     */
-    size?: "small" | "default" | "large" | undefined;
     /** Set button type to 'submit' to trigger form submit
      * @example type="submit"
      */
@@ -20,6 +16,10 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      * @example square
      */
     square?: boolean | undefined;
+    /** Change button size
+     * @example small
+     */
+    small?: boolean | undefined;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
     /** Set button color
      * @example color="success"
@@ -30,10 +30,6 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      * @example variant="text"
      */
     variant?: string | undefined;
-    /** Change button size
-     * @example size="small"
-     */
-    size?: "small" | "default" | "large" | undefined;
     /** Set button type to 'submit' to trigger form submit
      * @example type="submit"
      */
@@ -42,6 +38,10 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      * @example square
      */
     square?: boolean | undefined;
+    /** Change button size
+     * @example small
+     */
+    small?: boolean | undefined;
 }>>>, {}>;
 export default _default;
 declare type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

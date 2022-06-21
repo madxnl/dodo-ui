@@ -3,7 +3,9 @@ declare type Theme = {
     colors: Record<string, string>;
     buttonClasses: Record<string, string>;
     textClasses: Record<string, string>;
+    fonts: Record<string, string>;
     icons: Record<string, string>;
+    spacings: Record<string, string>;
 };
 export declare function provideCustomTheme(customize?: (theme: Theme) => void): Plugin;
 export declare function useTheme(): {
@@ -16,7 +18,13 @@ export declare function useTheme(): {
     readonly textClasses: {
         readonly [x: string]: string;
     };
+    readonly fonts: {
+        readonly [x: string]: string;
+    };
     readonly icons: {
+        readonly [x: string]: string;
+    };
+    readonly spacings: {
         readonly [x: string]: string;
     };
 };
@@ -25,4 +33,6 @@ export declare function useThemeColor(name: string): string;
 export declare function useTextVariant(name: string): string;
 export declare function useButtonVariant(name: string): string;
 export declare function useIconSvgPath(name: string): string;
+export declare function useSpacing(name: string): string;
+export declare function useThemeCssVars(): void;
 export {};

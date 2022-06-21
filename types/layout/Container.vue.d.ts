@@ -17,7 +17,7 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      */
     column?: boolean | undefined;
     /**
-     * Grow to take up available space (when nested inside another UiFlex)
+     * Grow to take up available space (when nested inside another uiFlex)
      * @example grow
      */
     grow?: boolean | undefined;
@@ -60,7 +60,7 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      */
     column?: boolean | undefined;
     /**
-     * Grow to take up available space (when nested inside another UiFlex)
+     * Grow to take up available space (when nested inside another uiFlex)
      * @example grow
      */
     grow?: boolean | undefined;

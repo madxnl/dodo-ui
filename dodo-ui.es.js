@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { reactive, readonly, inject, defineComponent, computed, useAttrs, ref, openBlock, createElementBlock, mergeProps, unref, renderSlot, normalizeStyle, createBlock, Teleport, createElementVNode, createVNode, withCtx, toDisplayString, onErrorCaptured, Fragment, createCommentVNode, createTextVNode, normalizeClass, renderList } from "vue";
+import { reactive, readonly, inject, watchEffect, defineComponent, computed, useAttrs, ref, openBlock, createElementBlock, mergeProps, unref, renderSlot, normalizeStyle, createBlock, Teleport, createElementVNode, createVNode, withCtx, toDisplayString, onErrorCaptured, Fragment, createCommentVNode, createTextVNode, normalizeClass, renderList } from "vue";
 var mdiAccount = "M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z";
 var mdiAccountGroup = "M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z";
 var mdiAccountMultiple = "M16 17V19H2V17S2 13 9 13 16 17 16 17M12.5 7.5A3.5 3.5 0 1 0 9 11A3.5 3.5 0 0 0 12.5 7.5M15.94 13A5.32 5.32 0 0 1 18 17V19H22V17S22 13.37 15.94 13M15 4A3.39 3.39 0 0 0 13.07 4.59A5 5 0 0 1 13.07 10.41A3.39 3.39 0 0 0 15 11A3.5 3.5 0 0 0 15 4Z";
@@ -93,19 +93,36 @@ const baseTheme = {
     info: "#3a86ff",
     success: "#2a9d8f",
     warn: "#e9c46a",
-    danger: "#e76f51"
+    danger: "#e76f51",
+    background: "#ffffff",
+    foreground: "#4e5d78",
+    container: "#f7f8f9",
+    heading: "#000000"
+  },
+  fonts: {
+    heading: "sans-serif",
+    body: "sans-serif",
+    monospace: "monospace"
   },
   buttonClasses: {
-    default: "UiButton_default",
-    border: "UiButton_border",
-    text: "UiButton_text"
+    default: "uiButton_default",
+    solid: "uiButton_solid",
+    text: "uiButton_text"
   },
   textClasses: {
-    p: "UiText_p",
-    h1: "UiText_h1",
-    h2: "UiText_h2",
-    h3: "UiText_h3",
-    small: "UiText_small"
+    p: "uiText_p",
+    h1: "uiText_h1",
+    h2: "uiText_h2",
+    h3: "uiText_h3",
+    small: "uiText_small"
+  },
+  spacings: {
+    "0": "0px",
+    xs: "4px",
+    s: "8px",
+    m: "16px",
+    l: "32px",
+    xl: "64px"
   },
   icons: {
     "account-group": mdiAccountGroup,
@@ -229,21 +246,50 @@ function useIconSvgPath(name) {
   }
   return theme.icons[name];
 }
-var UiButton_vue_vue_type_style_index_0_lang = "";
+function useSpacing(name) {
+  var _a;
+  const theme = (_a = useTheme()) != null ? _a : baseTheme;
+  if (!theme.spacings[name]) {
+    throw new Error(`"${name}" is not a valid icon name (${Object.keys(theme.spacings)})`);
+  }
+  return theme.spacings[name];
+}
+function useThemeCssVars() {
+  watchEffect(() => {
+    var _a;
+    const theme = (_a = useCustomTheme()) != null ? _a : baseTheme;
+    const vars = [
+      ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v};`),
+      ...Object.entries(theme.fonts).map(([k, v]) => `--font-${k}:${v};`),
+      ...Object.entries(theme.spacings).map(([k, v]) => `--spacing-${k}:${v};`)
+    ].join("");
+    const css = `:root{${vars}}`;
+    const id = "dodoui-theme-vars";
+    let style = document.querySelector("#" + id);
+    if (!style) {
+      style = document.createElement("style");
+      style.id = id;
+      document.head.appendChild(style);
+    }
+    style.innerHTML = css;
+  });
+}
+var Button_vue_vue_type_style_index_0_lang = "";
 const _hoisted_1$4 = ["type"];
 const __default__ = {
   inheritAttrs: false
 };
-const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__), {
+const _sfc_main$7 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__), {
   props: {
     color: null,
     variant: null,
-    size: null,
     type: null,
-    square: { type: Boolean }
+    square: { type: Boolean },
+    small: { type: Boolean }
   },
   setup(__props) {
     const props = __props;
+    useThemeCssVars();
     const css = computed(() => {
       let s = "";
       if (props.color)
@@ -253,20 +299,20 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
     const classes = computed(() => {
       var _a;
       return [
-        { UiButton_loading: loading.value },
+        { uiButton_loading: loading.value },
         useButtonVariant((_a = props.variant) != null ? _a : "default"),
-        props.size ? `UiButton_${props.size}` : null,
-        props.square ? "UiButton_square" : null
+        props.small ? `uiButton_small` : null,
+        props.square ? "uiButton_square" : null
       ];
     });
     const attrs = useAttrs();
     const loading = ref(false);
-    function onClick(event) {
+    async function onClick(event) {
       if (!loading.value && typeof attrs.onClick === "function") {
         const result = attrs.onClick(event);
         if (result instanceof Promise) {
           loading.value = true;
-          result.finally(() => {
+          await result.finally(() => {
             loading.value = false;
           });
         }
@@ -275,7 +321,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
     return (_ctx, _cache) => {
       var _a;
       return openBlock(), createElementBlock("button", mergeProps({
-        class: ["UiButton", unref(classes)],
+        class: ["uiButton", unref(classes)],
         style: unref(css),
         type: (_a = __props.type) != null ? _a : "button"
       }, __spreadProps(__spreadValues({}, _ctx.$attrs), { onClick })), [
@@ -284,20 +330,8 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
     };
   }
 }));
-function useSettings() {
-  return {
-    gapSizes: {
-      0: 0,
-      xs: 4,
-      s: 8,
-      m: 16,
-      l: 32,
-      xl: 64
-    }
-  };
-}
-var UiFlex_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+var Container_vue_vue_type_style_index_0_lang = "";
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   props: {
     gap: null,
     pad: null,
@@ -310,18 +344,13 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const props = __props;
-    const { gapSizes } = useSettings();
-    function spacingToCSS(str) {
-      return str.split(" ").map((x) => (gapSizes[x] || "0") + "px").join(" ");
-    }
+    useThemeCssVars();
     const css = computed(() => {
       let s = "";
       if (props.gap)
-        s += `gap:${spacingToCSS(props.gap)};`;
+        s += `gap:${useSpacing(props.gap)};`;
       if (props.pad)
-        s += `padding:${spacingToCSS(props.pad)};`;
-      if (props.column)
-        s += `flex-flow:column;`;
+        s += `padding:${useSpacing(props.pad)};`;
       if (props.grow)
         s += `flex-grow:1;`;
       if (props.wrap)
@@ -336,7 +365,47 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
     });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", {
-        class: "UiFlex",
+        class: "uiContainer",
+        style: normalizeStyle(unref(css))
+      }, [
+        renderSlot(_ctx.$slots, "default")
+      ], 4);
+    };
+  }
+});
+var Row_vue_vue_type_style_index_0_lang = "";
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+  props: {
+    gap: null,
+    pad: null,
+    column: { type: Boolean },
+    grow: { type: Boolean },
+    justify: null,
+    align: null,
+    wrap: { type: Boolean }
+  },
+  setup(__props) {
+    const props = __props;
+    useThemeCssVars();
+    const css = computed(() => {
+      let s = "";
+      if (props.gap)
+        s += `gap:${useSpacing(props.gap)};`;
+      if (props.pad)
+        s += `padding:${useSpacing(props.pad)};`;
+      if (props.grow)
+        s += `flex-grow:1;`;
+      if (props.wrap)
+        s += `flex-wrap:wrap;`;
+      if (props.justify)
+        s += `justify-content:${props.justify};`;
+      if (props.align)
+        s += `align-items:${props.align};`;
+      return s;
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: "uiFlex",
         style: normalizeStyle(unref(css))
       }, [
         renderSlot(_ctx.$slots, "default")
@@ -362,11 +431,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           style: normalizeStyle(unref(css))
         }, [
           createElementVNode("div", _hoisted_1$3, [
-            createVNode(_sfc_main$5, {
-              column: "",
-              pad: "m",
-              gap: "m"
-            }, {
+            createVNode(_sfc_main$6, { pad: "m" }, {
               default: withCtx(() => [
                 createElementVNode("div", null, toDisplayString(__props.title), 1),
                 renderSlot(_ctx.$slots, "content")
@@ -418,16 +483,14 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
               _hoisted_2$1
             ]),
             controls: withCtx(() => [
-              createVNode(_sfc_main$6, {
-                variant: "border",
-                onClick: ignore
-              }, {
+              createVNode(_sfc_main$7, { onClick: ignore }, {
                 default: withCtx(() => [
                   _hoisted_3
                 ]),
                 _: 1
               }),
-              createVNode(_sfc_main$6, {
+              createVNode(_sfc_main$7, {
+                variant: "solid",
                 color: "info",
                 onClick: reload
               }, {
@@ -487,16 +550,12 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const props = __props;
-    const { gapSizes } = useSettings();
-    function spacingToCSS(str) {
-      return str.split(" ").map((x) => (gapSizes[x] || "0") + "px").join(" ");
-    }
     const css = computed(() => {
       let s = "";
       const fitFill = props.stretch ? "auto-fit" : "auto-fill";
       s += `grid-template-columns: repeat(${fitFill}, minmax(${props.columnWidth}, 1fr));`;
       if (props.gap)
-        s += `gap:${spacingToCSS(props.gap)};`;
+        s += `gap:${useSpacing(props.gap)};`;
       return s;
     });
     return (_ctx, _cache) => {
@@ -526,8 +585,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         class: "NavLayout",
         style: normalizeStyle(unref(css))
       }, [
-        createVNode(_sfc_main$5, {
-          column: "",
+        createVNode(_sfc_main$6, {
           pad: "l",
           class: "NavLayout_bar"
         }, {
@@ -548,4 +606,4 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-export { _sfc_main$3 as CrashDialog, _sfc_main$4 as Dialog, _sfc_main$1 as GridResponsive, _sfc_main as NavBar, _sfc_main$6 as UiButton, _sfc_main$5 as UiFlex, _sfc_main$2 as UiIcon, provideCustomTheme, useButtonVariant, useCustomTheme, useIconSvgPath, useTextVariant, useTheme, useThemeColor };
+export { _sfc_main$7 as Button, _sfc_main$6 as Container, _sfc_main$3 as CrashDialog, _sfc_main$4 as Dialog, _sfc_main$1 as GridResponsive, _sfc_main as NavBar, _sfc_main$5 as Row, _sfc_main$2 as UiIcon, provideCustomTheme, useButtonVariant, useCustomTheme, useIconSvgPath, useSpacing, useTextVariant, useTheme, useThemeColor, useThemeCssVars };
