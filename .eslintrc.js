@@ -1,8 +1,8 @@
 module.exports = {
   root: true,
   ignorePatterns: [
-    'docs/',
-    'dist/',
+    '/docs/',
+    '/dist/',
   ],
   env: {
     node: true,
@@ -36,6 +36,6 @@ module.exports = {
   },
   parserOptions: {
     parser: '@typescript-eslint/parser',
-    extraFileExtensions: ['.vue'],
+    extraFileExtensions: ['.vue', '.d.ts'],
   },
 }

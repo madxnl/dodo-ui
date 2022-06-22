@@ -1,8 +1,8 @@
 <template>
   <svg
-    class="UiIcon"
+    class="uiIcon"
     :style="css"
-    :class="size && `UiIcon_${size}`"
+    :class="size && `uiIcon_${size}`"
     viewBox="0 0 24 24"
   >
     <path fill="currentColor" :d="path" />
@@ -39,16 +39,16 @@ const css = computed(() => {
 </script>
 
 <style lang="css">
-.UiIcon {
+.uiIcon {
   width: 1.25em;
   height: 1.25em;
   vertical-align: middle;
 }
-.UiIcon_small {
+.uiIcon_small {
   width: 1em;
   height: 1em;
 }
-.UiIcon_large {
+.uiIcon_large {
   width: 1.75em;
   height: 1.75em;
 }

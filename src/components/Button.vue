@@ -12,11 +12,11 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
-import uiSpinner from '../spinner/Spinner.vue'
+import uiSpinner from './Spinner.vue'
 import { useButtonVariant, useThemeColorRGB, useThemeCssVars } from '../theme'
 
 const props = defineProps<{
-/** Set button color
+/** Set button colorss
  * @example color="success"
  */
   color?: string
@@ -93,6 +93,7 @@ export default {
   padding: 2px 14px;
   min-height: 36px;
   min-width: 36px;
+  white-space: nowrap;
 }
 .uiButton_content {
   display: flex;

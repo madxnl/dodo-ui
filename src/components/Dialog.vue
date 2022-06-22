@@ -21,8 +21,8 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import Container from '../layout/Container.vue'
-import Row from '../layout/Row.vue'
+import Container from './Container.vue'
+import Row from './Row.vue'
 
 defineProps<{
   title: string

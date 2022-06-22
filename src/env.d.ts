@@ -5,12 +5,9 @@ declare module '*.vue' {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
   const component: DefineComponent<{}, {}, any>
   export default component
-}
 
-declare module '*:docgen' {
   import type { ComponentDoc } from 'vue-docgen-api'
   const docs: ComponentDoc
-  const text: string
-  export const text
-  export const docs
+  const source: string
+  export { source, docs }
 }

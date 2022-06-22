@@ -6,6 +6,6 @@
   <Text variant="small">A quick brown fox jumps over the lazy dog</Text>
 </template>
 <script lang="ts" setup>
-import Text from './Text.vue'
+import { Text } from '..'
 
 </script>

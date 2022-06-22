@@ -20,8 +20,8 @@
 
 <script lang="ts" setup>
 import { onErrorCaptured, ref } from 'vue'
-import Button from '../button/Button.vue'
-import Dialog from '../dialog/Dialog.vue'
+import Button from './Button.vue'
+import Dialog from './Dialog.vue'
 
 const currentError = ref<Error>()
 

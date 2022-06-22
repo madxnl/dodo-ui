@@ -23,7 +23,7 @@ const props = defineProps<{
    * Toggle column orientation instead of row
    * @example column
    */
-  column?: boolean,
+  column?: boolean
   /**
    * Grow to take up available space (when nested inside another uiFlex)
    * @example grow
@@ -63,6 +63,7 @@ const css = computed(() => {
 <style>
 .uiFlex {
   display: flex;
+  align-items: center;
   gap: var(--spacing-s);
 }
 </style>
