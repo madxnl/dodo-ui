@@ -33,10 +33,18 @@ const props = defineProps<{
  * @example square
  */
   square?: boolean
+/** Square button for icons
+ * @example square
+ */
+  rounded?: boolean
 /** Change button size
  * @example small
  */
   small?: boolean
+/** Style button as active
+ * @example active
+ */
+  active?: boolean
 }>()
 
 useThemeCssVars()
@@ -52,6 +60,8 @@ const classes = computed(() => [
   useButtonVariant(props.variant ?? 'default'),
   props.small ? 'uiButton_small' : null,
   props.square ? 'uiButton_square' : null,
+  props.active ? 'uiButton_active' : null,
+  props.rounded ? 'uiButton_rounded' : null,
 ])
 
 const attrs = useAttrs()
@@ -108,6 +118,9 @@ export default {
 .uiButton_default {
   border: 1px solid rgba(var(--rgb, var(--rgb-heading)), 0.35);
 }
+.uiButton_rounded {
+  border-radius: 99px;
+}
 .uiButton_text {
   background: transparent;
   color: inherit;
@@ -125,6 +138,7 @@ export default {
   top: auto; left: auto; right: auto; bottom: auto;
 }
 .uiButton:active,
+.uiButton_active,
 .uiButton.uiButton_loading {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
 }
@@ -136,7 +150,7 @@ export default {
   padding: 2px 12px;
   min-height: 30px;
   min-width: 30px;
-  font-size: 95%;
+  font-size: 90%;
 }
 .uiButton_square {
   padding: 2px;
@@ -155,6 +169,7 @@ export default {
   opacity: 0.1;
 }
 .uiButton:active:after,
+.uiButton_active:after,
 .uiButton.uiButton_loading:after {
   opacity: 0.2;
 }

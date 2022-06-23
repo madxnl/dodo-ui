@@ -28,8 +28,9 @@ module.exports = {
     'vue/max-attributes-per-line': 'off',
     'vue/multi-word-component-names': 'off',
 
-    '@typescript-eslint/func-call-spacing': ['warn'],
+    'func-call-spacing': 'off',
     indent: 'off',
+    '@typescript-eslint/func-call-spacing': ['warn'],
     '@typescript-eslint/indent': ['warn', 2],
     '@typescript-eslint/member-delimiter-style': ['warn', { multiline: { delimiter: 'none' } }],
 

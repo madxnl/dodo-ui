@@ -4,7 +4,7 @@
       Color
     </Button>
     <Button variant="text">Text</Button>
-    <Button>Text</Button>
+    <Button rounded>Rounded</Button>
     <Button color="foreground">Border</Button>
 
     <Button variant="solid" color="info" small>
@@ -23,8 +23,8 @@
       Disabled
     </Button>
 
-    <Button color="info" small variant="text" @click="myAsyncSubmit">Async click handler</Button>
-    <Button variant="solid" color="info" @click="myAsyncSubmit">Async click handler</Button>
+    <Button color="info" small variant="text" @click="myAsyncSubmit">Async click</Button>
+    <Button variant="solid" color="info" @click="myAsyncSubmit">Async click</Button>
   </Row>
 </template>
 <script lang="ts" setup>

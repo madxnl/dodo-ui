@@ -5,6 +5,8 @@ import { docs as TextDoc } from '../components/Text.vue'
 import TextExample, { source as TextExampleText } from './TextExample.vue'
 import DocsInstall from './DocsInstall.vue'
 import { docs as ButtonDoc } from '../components/Button.vue'
+import { docs as SelectButtonsDoc } from '../components/SelectButtons.vue'
+import SelectButtonsExample, { source as SelectButtonsExampleText } from './SelectButtonsExample.vue'
 
 export const chapters = [{
   label: 'Installation',
@@ -28,6 +30,12 @@ export const chapters = [{
   doc: IconDoc,
   examples: IconExample,
   examplesText: IconExampleText,
+}, {
+  label: SelectButtonsDoc.displayName,
+  href: '#' + SelectButtonsDoc.displayName,
+  doc: SelectButtonsDoc,
+  examples: SelectButtonsExample,
+  examplesText: SelectButtonsExampleText,
 // }, {
 //   label: FlexDoc.displayName,
 //   href: '#' + FlexDoc.displayName,
