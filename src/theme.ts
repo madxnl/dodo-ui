@@ -137,7 +137,7 @@ export function useTheme() {
 }
 
 export function useCustomTheme() {
-  return inject(key)
+  return inject(key, undefined)
 }
 
 export function useThemeColor(name: string) {
