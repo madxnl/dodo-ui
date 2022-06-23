@@ -23,7 +23,7 @@
     "preview": "vite preview",
     "build:docs": "vite build",
     "lint": "eslint . --ext .js,.ts,.vue",
-    "build:npm": "vite build --config vite.npm.ts && vue-tsc --emitDeclarationOnly",
+    "build:npm": "vite build --config vite.npm.ts && vue-tsc --emitDeclarationOnly -p tsconfig.npm.json",
     "build": "npm run build:npm && npm run build:docs",
     "prepublishOnly": "npm run build"
   },
