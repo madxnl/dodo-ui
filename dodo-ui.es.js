@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { reactive, readonly, inject, watchEffect, defineComponent, computed, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, useAttrs, ref, mergeProps, renderSlot, createBlock, createCommentVNode, normalizeStyle, Teleport, createVNode, withCtx, toDisplayString, onErrorCaptured, Fragment, createTextVNode, renderList } from "vue";
+import { reactive, readonly, inject, watchEffect, defineComponent, computed, openBlock, createElementBlock, normalizeClass, unref, createElementVNode, useAttrs, ref, mergeProps, renderSlot, createBlock, createCommentVNode, normalizeStyle, Teleport, createVNode, withCtx, toDisplayString, onErrorCaptured, Fragment, createTextVNode, renderList, resolveDynamicComponent } from "vue";
 var mdiAccount = "M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z";
 var mdiAccountGroup = "M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z";
 var mdiAccountMultiple = "M16 17V19H2V17S2 13 9 13 16 17 16 17M12.5 7.5A3.5 3.5 0 1 0 9 11A3.5 3.5 0 0 0 12.5 7.5M15.94 13A5.32 5.32 0 0 1 18 17V19H22V17S22 13.37 15.94 13M15 4A3.39 3.39 0 0 0 13.07 4.59A5 5 0 0 1 13.07 10.41A3.39 3.39 0 0 0 15 11A3.5 3.5 0 0 0 15 4Z";
@@ -292,7 +292,7 @@ const _hoisted_1$5 = /* @__PURE__ */ createElementVNode("path", {
 const _hoisted_2$3 = [
   _hoisted_1$5
 ];
-const _sfc_main$8 = /* @__PURE__ */ defineComponent({
+const _sfc_main$9 = /* @__PURE__ */ defineComponent({
   setup(__props) {
     useThemeCssVars();
     const classes = computed(() => []);
@@ -310,7 +310,7 @@ const _hoisted_2$2 = { class: "uiButton_content" };
 const __default__ = {
   inheritAttrs: false
 };
-const _sfc_main$7 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__), {
+const _sfc_main$8 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__), {
   props: {
     color: null,
     variant: null,
@@ -359,7 +359,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
         createElementVNode("div", _hoisted_2$2, [
           renderSlot(_ctx.$slots, "default")
         ]),
-        loading.value ? (openBlock(), createBlock(_sfc_main$8, {
+        loading.value ? (openBlock(), createBlock(_sfc_main$9, {
           key: 0,
           class: "uiButton_spinner"
         })) : createCommentVNode("", true)
@@ -368,7 +368,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
   }
 }));
 var Container_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
   props: {
     gap: null,
     pad: null,
@@ -411,7 +411,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   }
 });
 var Row_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   props: {
     gap: null,
     pad: null,
@@ -452,7 +452,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
 });
 var Dialog_vue_vue_type_style_index_0_lang = "";
 const _hoisted_1$3 = { class: "Dialog_window" };
-const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   props: {
     title: null
   },
@@ -468,14 +468,14 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           style: normalizeStyle(unref(css))
         }, [
           createElementVNode("div", _hoisted_1$3, [
-            createVNode(_sfc_main$6, { pad: "m" }, {
+            createVNode(_sfc_main$7, { pad: "m" }, {
               default: withCtx(() => [
                 createElementVNode("div", null, toDisplayString(__props.title), 1),
                 renderSlot(_ctx.$slots, "content")
               ]),
               _: 3
             }),
-            createVNode(_sfc_main$5, {
+            createVNode(_sfc_main$6, {
               pad: "m",
               justify: "end",
               gap: "s"
@@ -495,7 +495,7 @@ const _hoisted_1$2 = /* @__PURE__ */ createElementVNode("div", null, " An unexpe
 const _hoisted_2$1 = /* @__PURE__ */ createElementVNode("div", null, "Please contact us if the problem persists.", -1);
 const _hoisted_3 = /* @__PURE__ */ createTextVNode("Ignore");
 const _hoisted_4 = /* @__PURE__ */ createTextVNode("Reload page");
-const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const currentError = ref();
     onErrorCaptured((err, component, info) => {
@@ -514,19 +514,19 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
           key: 0,
           to: "body"
         }, [
-          createVNode(_sfc_main$4, { title: "Something went wrong" }, {
+          createVNode(_sfc_main$5, { title: "Something went wrong" }, {
             content: withCtx(() => [
               _hoisted_1$2,
               _hoisted_2$1
             ]),
             controls: withCtx(() => [
-              createVNode(_sfc_main$7, { onClick: ignore }, {
+              createVNode(_sfc_main$8, { onClick: ignore }, {
                 default: withCtx(() => [
                   _hoisted_3
                 ]),
                 _: 1
               }),
-              createVNode(_sfc_main$7, {
+              createVNode(_sfc_main$8, {
                 variant: "solid",
                 color: "info",
                 onClick: reload
@@ -545,41 +545,47 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var UiIcon_vue_vue_type_style_index_0_lang = "";
-const _hoisted_1$1 = ["d"];
-const _sfc_main$2 = /* @__PURE__ */ defineComponent({
+var NavLayout_vue_vue_type_style_index_0_lang = "";
+const _hoisted_1$1 = ["href"];
+const _hoisted_2 = { class: "NavLayout_content" };
+const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   props: {
-    name: null,
-    color: null,
-    size: null
+    items: null
   },
   setup(__props) {
-    const props = __props;
-    const path = computed(() => {
-      return useIconSvgPath(props.name);
-    });
     const css = computed(() => {
-      let s = "";
-      if (props.color)
-        s += "color: " + useThemeColor(props.color);
+      const s = "";
       return s;
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("svg", {
-        class: normalizeClass(["UiIcon", __props.size && `UiIcon_${__props.size}`]),
-        style: normalizeStyle(unref(css)),
-        viewBox: "0 0 24 24"
+      return openBlock(), createElementBlock("div", {
+        class: "NavLayout",
+        style: normalizeStyle(unref(css))
       }, [
-        createElementVNode("path", {
-          fill: "currentColor",
-          d: unref(path)
-        }, null, 8, _hoisted_1$1)
-      ], 6);
+        createVNode(_sfc_main$7, {
+          pad: "l",
+          class: "NavLayout_bar"
+        }, {
+          default: withCtx(() => [
+            (openBlock(true), createElementBlock(Fragment, null, renderList(__props.items, (item) => {
+              return openBlock(), createElementBlock("a", {
+                key: item.href,
+                href: item.href,
+                class: "NavLayout_item"
+              }, toDisplayString(item.label), 9, _hoisted_1$1);
+            }), 128))
+          ]),
+          _: 1
+        }),
+        createElementVNode("div", _hoisted_2, [
+          renderSlot(_ctx.$slots, "default")
+        ])
+      ], 4);
     };
   }
 });
 var GridResponsive_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   props: {
     columnWidth: null,
     stretch: { type: Boolean },
@@ -605,43 +611,75 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-var NavLayout_vue_vue_type_style_index_0_lang = "";
-const _hoisted_1 = ["href"];
-const _hoisted_2 = { class: "NavLayout_content" };
-const _sfc_main = /* @__PURE__ */ defineComponent({
+var Text_vue_vue_type_style_index_0_lang = "";
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   props: {
-    items: null
+    color: null,
+    variant: null,
+    nowrap: { type: Boolean },
+    textAlign: null
   },
   setup(__props) {
+    const props = __props;
     const css = computed(() => {
-      const s = "";
+      let s = "";
+      if (props.color)
+        s += `color:${useThemeColor(props.color)};`;
       return s;
     });
+    const classes = computed(() => {
+      var _a;
+      return useTextVariant((_a = props.variant) != null ? _a : "p");
+    });
+    const textTags = "p b strong i em mark small pre h1 h2 h3 h4 h5 h6 blockquote code".split(" ");
+    const tag = computed(() => {
+      var _a;
+      return textTags.includes((_a = props.variant) != null ? _a : "p") ? props.variant : "span";
+    });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        class: "NavLayout",
+      return openBlock(), createBlock(resolveDynamicComponent(unref(tag)), {
+        class: normalizeClass(["uiText", unref(classes)]),
         style: normalizeStyle(unref(css))
-      }, [
-        createVNode(_sfc_main$6, {
-          pad: "l",
-          class: "NavLayout_bar"
-        }, {
-          default: withCtx(() => [
-            (openBlock(true), createElementBlock(Fragment, null, renderList(__props.items, (item) => {
-              return openBlock(), createElementBlock("a", {
-                key: item.href,
-                href: item.href,
-                class: "NavLayout_item"
-              }, toDisplayString(item.label), 9, _hoisted_1);
-            }), 128))
-          ]),
-          _: 1
-        }),
-        createElementVNode("div", _hoisted_2, [
+      }, {
+        default: withCtx(() => [
           renderSlot(_ctx.$slots, "default")
-        ])
-      ], 4);
+        ]),
+        _: 3
+      }, 8, ["class", "style"]);
     };
   }
 });
-export { _sfc_main$7 as Button, _sfc_main$6 as Container, _sfc_main$3 as CrashDialog, _sfc_main$4 as Dialog, _sfc_main$1 as GridResponsive, _sfc_main as NavBar, _sfc_main$5 as Row, _sfc_main$2 as UiIcon, hexToRGB, provideCustomTheme, useButtonVariant, useCustomTheme, useIconSvgPath, useSpacing, useTextVariant, useTheme, useThemeColor, useThemeColorRGB, useThemeCssVars };
+var Icon_vue_vue_type_style_index_0_lang = "";
+const _hoisted_1 = ["d"];
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  props: {
+    name: null,
+    color: null,
+    size: null
+  },
+  setup(__props) {
+    const props = __props;
+    const path = computed(() => {
+      return useIconSvgPath(props.name);
+    });
+    const css = computed(() => {
+      let s = "";
+      if (props.color)
+        s += "color: " + useThemeColor(props.color);
+      return s;
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("svg", {
+        class: normalizeClass(["uiIcon", __props.size && `uiIcon_${__props.size}`]),
+        style: normalizeStyle(unref(css)),
+        viewBox: "0 0 24 24"
+      }, [
+        createElementVNode("path", {
+          fill: "currentColor",
+          d: unref(path)
+        }, null, 8, _hoisted_1)
+      ], 6);
+    };
+  }
+});
+export { _sfc_main$8 as Button, _sfc_main$7 as Container, _sfc_main$4 as CrashDialog, _sfc_main$5 as Dialog, _sfc_main$2 as GridResponsive, _sfc_main as Icon, _sfc_main$3 as NavBar, _sfc_main$3 as NavLayout, _sfc_main$6 as Row, _sfc_main$9 as Spinner, _sfc_main$1 as Text, hexToRGB, provideCustomTheme, useButtonVariant, useCustomTheme, useIconSvgPath, useSpacing, useTextVariant, useTheme, useThemeColor, useThemeColorRGB, useThemeCssVars };
