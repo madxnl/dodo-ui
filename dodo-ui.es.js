@@ -292,7 +292,7 @@ const _hoisted_1$5 = /* @__PURE__ */ createElementVNode("path", {
 const _hoisted_2$3 = [
   _hoisted_1$5
 ];
-const _sfc_main$9 = /* @__PURE__ */ defineComponent({
+const _sfc_main$a = /* @__PURE__ */ defineComponent({
   setup(__props) {
     useThemeCssVars();
     const classes = computed(() => []);
@@ -310,13 +310,15 @@ const _hoisted_2$2 = { class: "uiButton_content" };
 const __default__ = {
   inheritAttrs: false
 };
-const _sfc_main$8 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__), {
+const _sfc_main$9 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues({}, __default__), {
   props: {
     color: null,
     variant: null,
     type: null,
     square: { type: Boolean },
-    small: { type: Boolean }
+    rounded: { type: Boolean },
+    small: { type: Boolean },
+    active: { type: Boolean }
   },
   setup(__props) {
     const props = __props;
@@ -333,7 +335,9 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
         { uiButton_loading: loading.value },
         useButtonVariant((_a = props.variant) != null ? _a : "default"),
         props.small ? "uiButton_small" : null,
-        props.square ? "uiButton_square" : null
+        props.square ? "uiButton_square" : null,
+        props.active ? "uiButton_active" : null,
+        props.rounded ? "uiButton_rounded" : null
       ];
     });
     const attrs = useAttrs();
@@ -359,7 +363,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
         createElementVNode("div", _hoisted_2$2, [
           renderSlot(_ctx.$slots, "default")
         ]),
-        loading.value ? (openBlock(), createBlock(_sfc_main$9, {
+        loading.value ? (openBlock(), createBlock(_sfc_main$a, {
           key: 0,
           class: "uiButton_spinner"
         })) : createCommentVNode("", true)
@@ -368,7 +372,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent(__spreadProps(__spreadValues
   }
 }));
 var Container_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$7 = /* @__PURE__ */ defineComponent({
+const _sfc_main$8 = /* @__PURE__ */ defineComponent({
   props: {
     gap: null,
     pad: null,
@@ -411,7 +415,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
   }
 });
 var Row_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$6 = /* @__PURE__ */ defineComponent({
+const _sfc_main$7 = /* @__PURE__ */ defineComponent({
   props: {
     gap: null,
     pad: null,
@@ -452,7 +456,7 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
 });
 var Dialog_vue_vue_type_style_index_0_lang = "";
 const _hoisted_1$3 = { class: "Dialog_window" };
-const _sfc_main$5 = /* @__PURE__ */ defineComponent({
+const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   props: {
     title: null
   },
@@ -468,14 +472,14 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
           style: normalizeStyle(unref(css))
         }, [
           createElementVNode("div", _hoisted_1$3, [
-            createVNode(_sfc_main$7, { pad: "m" }, {
+            createVNode(_sfc_main$8, { pad: "m" }, {
               default: withCtx(() => [
                 createElementVNode("div", null, toDisplayString(__props.title), 1),
                 renderSlot(_ctx.$slots, "content")
               ]),
               _: 3
             }),
-            createVNode(_sfc_main$6, {
+            createVNode(_sfc_main$7, {
               pad: "m",
               justify: "end",
               gap: "s"
@@ -495,7 +499,7 @@ const _hoisted_1$2 = /* @__PURE__ */ createElementVNode("div", null, " An unexpe
 const _hoisted_2$1 = /* @__PURE__ */ createElementVNode("div", null, "Please contact us if the problem persists.", -1);
 const _hoisted_3 = /* @__PURE__ */ createTextVNode("Ignore");
 const _hoisted_4 = /* @__PURE__ */ createTextVNode("Reload page");
-const _sfc_main$4 = /* @__PURE__ */ defineComponent({
+const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const currentError = ref();
     onErrorCaptured((err, component, info) => {
@@ -514,19 +518,19 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           key: 0,
           to: "body"
         }, [
-          createVNode(_sfc_main$5, { title: "Something went wrong" }, {
+          createVNode(_sfc_main$6, { title: "Something went wrong" }, {
             content: withCtx(() => [
               _hoisted_1$2,
               _hoisted_2$1
             ]),
             controls: withCtx(() => [
-              createVNode(_sfc_main$8, { onClick: ignore }, {
+              createVNode(_sfc_main$9, { onClick: ignore }, {
                 default: withCtx(() => [
                   _hoisted_3
                 ]),
                 _: 1
               }),
-              createVNode(_sfc_main$8, {
+              createVNode(_sfc_main$9, {
                 variant: "solid",
                 color: "info",
                 onClick: reload
@@ -548,7 +552,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
 var NavLayout_vue_vue_type_style_index_0_lang = "";
 const _hoisted_1$1 = ["href"];
 const _hoisted_2 = { class: "NavLayout_content" };
-const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+const _sfc_main$4 = /* @__PURE__ */ defineComponent({
   props: {
     items: null
   },
@@ -562,7 +566,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
         class: "NavLayout",
         style: normalizeStyle(unref(css))
       }, [
-        createVNode(_sfc_main$7, {
+        createVNode(_sfc_main$8, {
           pad: "l",
           class: "NavLayout_bar"
         }, {
@@ -585,7 +589,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   }
 });
 var GridResponsive_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$2 = /* @__PURE__ */ defineComponent({
+const _sfc_main$3 = /* @__PURE__ */ defineComponent({
   props: {
     columnWidth: null,
     stretch: { type: Boolean },
@@ -612,7 +616,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   }
 });
 var Text_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   props: {
     color: null,
     variant: null,
@@ -651,7 +655,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
 });
 var Icon_vue_vue_type_style_index_0_lang = "";
 const _hoisted_1 = ["d"];
-const _sfc_main = /* @__PURE__ */ defineComponent({
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   props: {
     name: null,
     color: null,
@@ -682,4 +686,62 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     };
   }
 });
-export { _sfc_main$8 as Button, _sfc_main$7 as Container, _sfc_main$4 as CrashDialog, _sfc_main$5 as Dialog, _sfc_main$2 as GridResponsive, _sfc_main as Icon, _sfc_main$3 as NavBar, _sfc_main$3 as NavLayout, _sfc_main$6 as Row, _sfc_main$9 as Spinner, _sfc_main$1 as Text, hexToRGB, provideCustomTheme, useButtonVariant, useCustomTheme, useIconSvgPath, useSpacing, useTextVariant, useTheme, useThemeColor, useThemeColorRGB, useThemeCssVars };
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  props: {
+    options: null,
+    modelValue: null,
+    multiple: { type: Boolean },
+    disabled: { type: Boolean }
+  },
+  emits: ["update:modelValue"],
+  setup(__props, { emit }) {
+    const props = __props;
+    const modelValueArray = computed(() => {
+      return props.multiple ? [props.modelValue].flat() : [props.modelValue];
+    });
+    function compareValue(option, value) {
+      return JSON.stringify(option.value) === JSON.stringify(value);
+    }
+    function isSelected(option) {
+      return modelValueArray.value.some((x) => compareValue(option, x));
+    }
+    function toggle(option) {
+      let newValue = option.value;
+      const alreadySelected = isSelected(option);
+      if (alreadySelected && props.multiple) {
+        newValue = modelValueArray.value.filter((x) => !compareValue(option, x));
+      } else if (props.multiple) {
+        newValue = [...modelValueArray.value, option.value];
+      }
+      emit("update:modelValue", newValue);
+    }
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(_sfc_main$7, { wrap: "" }, {
+        default: withCtx(() => [
+          (openBlock(true), createElementBlock(Fragment, null, renderList(__props.options, (option, i) => {
+            return openBlock(), createBlock(_sfc_main$9, mergeProps({
+              key: option.label,
+              variant: "default",
+              rounded: ""
+            }, isSelected(option) ? { active: true, color: "info" } : {}, {
+              disabled: __props.disabled,
+              onClick: ($event) => toggle(option)
+            }), {
+              default: withCtx(() => [
+                renderSlot(_ctx.$slots, "default", {
+                  option,
+                  index: i
+                }, () => [
+                  createTextVNode(toDisplayString(option.label || option.value), 1)
+                ])
+              ]),
+              _: 2
+            }, 1040, ["disabled", "onClick"]);
+          }), 128))
+        ]),
+        _: 3
+      });
+    };
+  }
+});
+export { _sfc_main$9 as Button, _sfc_main$8 as Container, _sfc_main$5 as CrashDialog, _sfc_main$6 as Dialog, _sfc_main$3 as GridResponsive, _sfc_main$1 as Icon, _sfc_main$4 as NavBar, _sfc_main$4 as NavLayout, _sfc_main$7 as Row, _sfc_main as SelectButtons, _sfc_main$a as Spinner, _sfc_main$2 as Text, hexToRGB, provideCustomTheme, useButtonVariant, useCustomTheme, useIconSvgPath, useSpacing, useTextVariant, useTheme, useThemeColor, useThemeColorRGB, useThemeCssVars };

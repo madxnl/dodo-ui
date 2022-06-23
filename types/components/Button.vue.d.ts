@@ -16,10 +16,18 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      * @example square
      */
     square?: boolean | undefined;
+    /** Square button for icons
+     * @example square
+     */
+    rounded?: boolean | undefined;
     /** Change button size
      * @example small
      */
     small?: boolean | undefined;
+    /** Style button as active
+     * @example active
+     */
+    active?: boolean | undefined;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
     /** Set button colorss
      * @example color="success"
@@ -38,10 +46,18 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimePr
      * @example square
      */
     square?: boolean | undefined;
+    /** Square button for icons
+     * @example square
+     */
+    rounded?: boolean | undefined;
     /** Change button size
      * @example small
      */
     small?: boolean | undefined;
+    /** Style button as active
+     * @example active
+     */
+    active?: boolean | undefined;
 }>>>, {}>;
 export default _default;
 declare type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
