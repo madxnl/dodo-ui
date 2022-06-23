@@ -1,55 +1,44 @@
-import ButtonExample, { source as ButtonExample1Text } from './ButtonExample.vue'
-import IconExample, { source as IconExampleText } from './IconExample.vue'
-import { docs as IconDoc } from '../components/Icon.vue'
-import { docs as TextDoc } from '../components/Text.vue'
-import TextExample, { source as TextExampleText } from './TextExample.vue'
-import DocsInstall from './DocsInstall.vue'
-import { docs as ButtonDoc } from '../components/Button.vue'
-import { docs as SelectButtonsDoc } from '../components/SelectButtons.vue'
-import SelectButtonsExample, { source as SelectButtonsExampleText } from './SelectButtonsExample.vue'
+import * as components from '../components'
+import { DefineComponent, onMounted, shallowRef } from 'vue'
+import { ComponentDoc } from 'vue-docgen-api'
 
-export const chapters = [{
-  label: 'Installation',
-  href: '#Installation',
-  component: DocsInstall,
-}, {
-  label: ButtonDoc.displayName,
-  href: '#' + ButtonDoc.displayName,
-  doc: ButtonDoc,
-  examples: ButtonExample,
-  examplesText: ButtonExample1Text,
-}, {
-  label: TextDoc.displayName,
-  href: '#' + TextDoc.displayName,
-  doc: TextDoc,
-  examples: TextExample,
-  examplesText: TextExampleText,
-}, {
-  label: IconDoc.displayName,
-  href: '#' + IconDoc.displayName,
-  doc: IconDoc,
-  examples: IconExample,
-  examplesText: IconExampleText,
-}, {
-  label: SelectButtonsDoc.displayName,
-  href: '#' + SelectButtonsDoc.displayName,
-  doc: SelectButtonsDoc,
-  examples: SelectButtonsExample,
-  examplesText: SelectButtonsExampleText,
-// }, {
-//   label: FlexDoc.displayName,
-//   href: '#' + FlexDoc.displayName,
-//   doc: FlexDoc
-// }, {
-//   label: GridResponsiveDoc.displayName,
-//   href: '#' + GridResponsiveDoc.displayName,
-//   doc: GridResponsiveDoc
-// }, {
-//   label: DialogDoc.displayName,
-//   href: '#' + DialogDoc.displayName,
-//   doc: DialogDoc
-// }, {
-//   label: CrashDialogDoc.displayName,
-//   href: '#' + CrashDialogDoc.displayName,
-//   doc: CrashDialogDoc
-}]
+import DocsInstall from './DocsInstall.vue'
+
+export interface Chapter {
+  label: string
+  href: string
+  component?: DefineComponent<any, any, any>
+  examples?: DefineComponent<any, any, any>
+  doc?: ComponentDoc
+  examplesText?: string
+}
+
+export function useChapters() {
+  const chapters = shallowRef<Chapter[]>([])
+
+  onMounted(async () => {
+    chapters.value.push({
+      label: 'Installation',
+      href: '#Installation',
+      component: DocsInstall,
+    })
+
+    const names = Object.keys(components)
+    const componentChapters = await Promise.all(names.map(async name => {
+      const chapter: Chapter = { label: name, href: '#' + name }
+      try {
+        const { source, default: example } = await import(`./${name}Example.vue`)
+        chapter.examples = example
+        chapter.examplesText = source
+      } catch {}
+      try {
+        chapter.doc = (await import(`../components/${name}.vue`)).docs
+      } catch {}
+      return chapter
+    }))
+
+    chapters.value = chapters.value.concat(componentChapters)
+  })
+
+  return chapters
+}

@@ -1,11 +1,7 @@
 
 <template>
   <CrashDialog>
-    <NavLayout
-      :items="[
-        ...chapters,
-      ]"
-    >
+    <NavLayout v-if="chapters" :items="chapters">
       <div style="max-width:1100px">
         <h1>DodoUI</h1>
         <h2>Versatile components for Vue</h2>
@@ -71,7 +67,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { PropDescriptor } from 'vue-docgen-api'
-import { chapters } from './chapters'
+import { useChapters } from './chapters'
 import { Container, CrashDialog, NavLayout, GridResponsive } from '..'
 
 function getPropType(prop: PropDescriptor) {
@@ -82,7 +78,9 @@ function getPropType(prop: PropDescriptor) {
   return s
 }
 
-onMounted(() => {
+const chapters = useChapters()
+
+onMounted(async () => {
   const hash = location.hash
   location.hash = ''
   location.hash = hash

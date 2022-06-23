@@ -20,17 +20,17 @@ import { computed } from 'vue'
 import Button from './Button.vue'
 import Row from './Row.vue'
 
-export interface Option {
-  value: unknown
-  label?: string
-}
-
 const props = defineProps<{
-  options: Option[]
+  options: {
+    value: unknown
+    label?: string
+  }[]
   modelValue?: unknown
   multiple?: boolean
   disabled?: boolean
 }>()
+
+type Option = typeof props.options[0]
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: unknown): void
