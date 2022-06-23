@@ -46,6 +46,8 @@
     "eslint": "^8.18.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.3",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-vue": "^9.1.1",
     "jsdom": "^20.0.0",
     "typescript": "^4.5.4",
