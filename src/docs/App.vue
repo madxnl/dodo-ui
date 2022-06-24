@@ -29,12 +29,13 @@
             :key="info.docs.displayName"
             :title="info.docs.displayName"
           >
-            <component :is="info.guide" v-if="info.guide" />
-            <p v-else>Todo</p>
+            <!-- <component :is="info.guide" v-if="info.guide" /> -->
+            <!-- <p v-else>Todo</p> -->
+            <p>Todo</p>
 
             <Example
-              v-for="(example, i) in info.examples" :key="i"
-              :component="example.component" :source="example.source"
+              v-for="(e, i) in info.examples" :key="i"
+              :component="e.default" :code="e.source"
             />
 
             <PropsTable :doc="info.docs" />
@@ -45,14 +46,22 @@
   </ErrorBoundary>
 </template>
 <script setup lang="ts">
-import { nextTick, watch, computed } from 'vue'
-import { useComponentsInfo } from './chapters'
+import { computed, onMounted } from 'vue'
 import { Container, ErrorBoundary, NavLayout } from '..'
 import DocsPage from './DocsPage.vue'
 import PropsTable from './PropsTable.vue'
 import Example from './Example.vue'
+import { ComponentDoc } from 'vue-inbrowser-compiler-utils'
 
-const componentsInfo = useComponentsInfo()
+const examples = import.meta.globEager('./*Example.vue')
+const modules = import.meta.globEager('../components/*.vue')
+
+const componentsInfo = Object.values(modules).map(({ docs, source }) => ({
+  docs: docs as ComponentDoc,
+  source: source as string,
+  examples: Object.values(examples)
+    .filter(e => e.docs.displayName.startsWith(docs.displayName + 'Example')),
+}))
 
 const navItems = computed(() => [
   {
@@ -61,16 +70,15 @@ const navItems = computed(() => [
   },
   {
     label: 'Components',
-    href: '',
-    items: componentsInfo.value.map(info => ({
-      label: info.docs.displayName,
-      href: '#' + info.docs.displayName,
+    href: '#Components',
+    items: Object.values(modules).map(({ docs }) => ({
+      label: docs.displayName,
+      href: '#' + docs.displayName,
     })),
   },
 ])
 
-watch(() => componentsInfo.value, async () => {
-  await nextTick()
+onMounted(() => {
   const hash = location.hash
   location.hash = ''
   location.hash = hash
@@ -105,16 +113,6 @@ td {
 code {
   font-family: var(--font-mono, monospace);
   white-space: pre-wrap;
-}
-.App_Example {
-  border: 1px solid rgba(0,0,0,0.15);
-}
-.App_Example {
-  border: 1px solid rgba(0,0,0,0.15);
-}
-.App_ExampleText {
-  background: rgba(0,0,0,0.15);
-  padding: 16px;
 }
 pre {
   margin: 0;

@@ -27,6 +27,7 @@ module.exports = {
     'vue/singleline-html-element-content-newline': 'off',
     'vue/max-attributes-per-line': 'off',
     'vue/multi-word-component-names': 'off',
+    'vue/no-v-html': 'off',
 
     'func-call-spacing': 'off',
     indent: 'off',
