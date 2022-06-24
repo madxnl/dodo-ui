@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Deselect 1`] = `
-"<div class=\\"uiFlex\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
+"<div class=\\"uiRow\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
     <div class=\\"uiButton_content\\">Option one</div>
     <!--v-if-->
   </button><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
@@ -14,7 +14,7 @@ exports[`Deselect 1`] = `
 `;
 
 exports[`Select a value 1`] = `
-"<div class=\\"uiFlex\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
+"<div class=\\"uiRow\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
     <div class=\\"uiButton_content\\">Option one</div>
     <!--v-if-->
   </button><button class=\\"uiButton uiButton_default uiButton_rounded\\" type=\\"button\\">
@@ -27,7 +27,7 @@ exports[`Select a value 1`] = `
 `;
 
 exports[`Select multiple 1`] = `
-"<div class=\\"uiFlex\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
+"<div class=\\"uiRow\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
     <div class=\\"uiButton_content\\">Option one</div>
     <!--v-if-->
   </button><button class=\\"uiButton uiButton_default uiButton_rounded\\" type=\\"button\\">
