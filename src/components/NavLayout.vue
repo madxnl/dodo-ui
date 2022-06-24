@@ -1,8 +1,11 @@
 <template>
   <div class="NavLayout" :style="css">
-    <Container pad="l" class="NavLayout_bar">
+    <Container pad="l" gap="s" class="NavLayout_bar">
       <template v-for="item in items" :key="item.href">
         <a :href="item.href" class="NavLayout_item">{{ item.label }}</a>
+        <template v-for="subitem in item.items" :key="subitem.href">
+          <a :href="subitem.href" class="NavLayout_subitem">{{ subitem.label }}</a>
+        </template>
       </template>
     </Container>
     <div class="NavLayout_content">
@@ -12,14 +15,21 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
+import { useThemeCssVars } from '../theme'
 import Container from './Container.vue'
 
 defineProps<{
   items: {
     label: string
     href: string
+    items?: {
+      label: string
+      href: string
+    }[]
   }[]
 }>()
+
+useThemeCssVars()
 
 const css = computed(() => {
   const s = ''
@@ -34,6 +44,16 @@ const css = computed(() => {
 }
 .NavLayout_bar {
   overflow: auto;
+  background: rgba(var(--rgb-foreground), 0.1);
+  border-right: 1px solid rgba(var(--rgb-foreground), 0.2);
+}
+.NavLayout_item,
+.NavLayout_subitem {
+  color: inherit;
+  text-decoration: none;
+}
+.NavLayout_subitem {
+  padding-left: 16px;
 }
 hr {
   margin: 0;

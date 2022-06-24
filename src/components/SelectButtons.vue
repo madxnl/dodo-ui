@@ -22,7 +22,7 @@ import Row from './Row.vue'
 
 const props = defineProps<{
   options: {
-    value: unknown
+    value: any
     label?: string
   }[]
   modelValue?: unknown
@@ -41,7 +41,7 @@ const modelValueArray = computed(() => {
 })
 
 function compareValue(option: Option, value: unknown) {
-  return JSON.stringify(option.value) === JSON.stringify(value)
+  return option.value === value
 }
 
 function isSelected(option: Option) {

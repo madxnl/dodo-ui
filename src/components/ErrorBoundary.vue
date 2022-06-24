@@ -23,12 +23,17 @@ import { onErrorCaptured, ref } from 'vue'
 import Button from './Button.vue'
 import Dialog from './Dialog.vue'
 
+const emit = defineEmits<{
+  (e: 'error', error: Error): void
+}>()
+
 const currentError = ref<Error>()
 
 onErrorCaptured((err, component, info) => {
   // eslint-disable-next-line no-console
   console.log('onErrorCaptured')
   currentError.value = err
+  emit('error', err)
 })
 
 function reload() {

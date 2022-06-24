@@ -1,86 +1,76 @@
 
 <template>
-  <CrashDialog>
-    <NavLayout v-if="chapters" :items="chapters">
+  <ErrorBoundary>
+    <NavLayout v-if="componentsInfo" :items="navItems">
       <div style="max-width:1100px">
         <h1>DodoUI</h1>
         <h2>Versatile components for Vue</h2>
         <Container gap="l">
-          <template v-for="chapter in chapters" :key="chapter.label">
-            <h2 :id="chapter.label">
-              {{ chapter.label }}
-            </h2>
+          <DocsPage title="Installation">
+            <blockquote>
+              <code>npm install -D @madxnl/dodo-ui</code>
+            </blockquote>
+            <p>Import styling in main.ts:</p>
+            <blockquote>
+              <code>import '@madxnl/dodo-ui/dist/style.css'</code>
+            </blockquote>
+            <p>Using a component:</p>
+            <blockquote>
+              <code><pre>import { Button } from '@madxnl/dodo-ui'<br><br>&lt;Button&gt;...&lt;/Button&gt;</pre></code>
+            </blockquote>
+          </DocsPage>
 
-            <component :is="chapter.component" v-if="chapter.component" />
+          <DocsPage title="Components">
+            Todo
+          </DocsPage>
 
-            <template v-if="chapter.examples">
-              <GridResponsive column-width="500px" stretch>
-                <Container align="start" pad="m" class="App_Example">
-                  <component :is="chapter.examples" />
-                </Container>
+          <DocsPage
+            v-for="info in componentsInfo"
+            :key="info.docs.displayName"
+            :title="info.docs.displayName"
+          >
+            <component :is="info.guide" v-if="info.guide" />
+            <p v-else>Todo</p>
 
-                <div v-if="chapter.examplesText" class="App_ExampleText">
-                  <pre><code>{{ chapter.examplesText }}</code></pre>
-                </div>
-              </GridResponsive>
-              <br>
-            </template>
+            <Example
+              v-for="(example, i) in info.examples" :key="i"
+              :component="example.component" :source="example.source"
+            />
 
-            <template v-if="chapter.doc?.props?.length">
-              <div style="overflow:auto">
-                <table>
-                  <tr>
-                    <th width="10%">Prop</th>
-                    <th width="25%">Type</th>
-                    <th width="35%">Description</th>
-                    <th width="30%">Example</th>
-                  </tr>
-                  <tr v-for="prop in chapter.doc.props ?? []" :key="prop.name">
-                    <td>
-                      <code>{{ prop.name }}<template v-if="!prop.required">?</template></code>
-                    </td>
-                    <td>
-                      <code>{{ getPropType(prop) }}</code>
-                    </td>
-                    <td>
-                      {{ prop.description }}
-                      <template v-if="prop.required">(Required)</template>
-                    </td>
-                    <td>
-                      <Container gap="s">
-                        <template v-for="example in prop.tags?.example" :key="example">
-                          <code>{{ (example as any).description }}</code>
-                        </template>
-                      </Container>
-                    </td>
-                  <!-- <td>{{ prop }}</td> -->
-                  </tr>
-                </table>
-              </div>
-            </template>
-          </template>
+            <PropsTable :doc="info.docs" />
+          </DocsPage>
         </Container>
       </div>
     </NavLayout>
-  </CrashDialog>
+  </ErrorBoundary>
 </template>
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { PropDescriptor } from 'vue-docgen-api'
-import { useChapters } from './chapters'
-import { Container, CrashDialog, NavLayout, GridResponsive } from '..'
+import { nextTick, watch, computed } from 'vue'
+import { useComponentsInfo } from './chapters'
+import { Container, ErrorBoundary, NavLayout } from '..'
+import DocsPage from './DocsPage.vue'
+import PropsTable from './PropsTable.vue'
+import Example from './Example.vue'
 
-function getPropType(prop: PropDescriptor) {
-  let s = ''
-  const elements = (prop.type as any)?.elements
-  if (elements) s += elements.map((e: any) => e.name).join(' | ')
-  else if (prop.type) s += prop.type.name
-  return s
-}
+const componentsInfo = useComponentsInfo()
 
-const chapters = useChapters()
+const navItems = computed(() => [
+  {
+    label: 'Installation',
+    href: '#Installation',
+  },
+  {
+    label: 'Components',
+    href: '',
+    items: componentsInfo.value.map(info => ({
+      label: info.docs.displayName,
+      href: '#' + info.docs.displayName,
+    })),
+  },
+])
 
-onMounted(async () => {
+watch(() => componentsInfo.value, async () => {
+  await nextTick()
   const hash = location.hash
   location.hash = ''
   location.hash = hash
@@ -113,7 +103,8 @@ td {
   vertical-align: top;
 }
 code {
-  font-family: var(--font-mono);
+  font-family: var(--font-mono, monospace);
+  white-space: pre-wrap;
 }
 .App_Example {
   border: 1px solid rgba(0,0,0,0.15);

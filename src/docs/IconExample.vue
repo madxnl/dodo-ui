@@ -1,19 +1,23 @@
 <template>
   <div>
-    <Icon name="heart" color="danger" size="small">Icon</Icon>
-    <Icon name="heart" color="info">Icon</Icon>
-    <Icon name="heart" color="success" size="large">Icon</Icon>
+    <Icon name="favorite" color="danger" size="s" fill />
+    <Icon name="favorite" color="info" fill />
+    <Icon name="favorite" color="success" size="l" fill />
   </div>
   <div>
-    <template v-for="icon in Object.keys(theme.icons)" :key="icon">
-      <Icon :name="icon" color="info" size="large">Icon</Icon>
-    </template>
+    <Icon name="check_box" />
+    <Icon name="map" />
+    <Icon name="help" />
+    <Icon name="download" />
+    <Icon name="chevron_right" />
+    <Icon name="add_circle" />
+    <Icon name="add" />
+    <Icon name="high_quality" />
+    <Icon name="fullscreen" />
+    <Icon name="menu" />
   </div>
 </template>
 <script lang="ts" setup>
-import { useTheme } from '../theme'
 import { Icon } from '..'
-
-const theme = useTheme()
 
 </script>

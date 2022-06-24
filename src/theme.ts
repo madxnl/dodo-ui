@@ -6,8 +6,12 @@ type Theme = {
   buttonClasses: Record<string, string>
   textClasses: Record<string, string>
   fonts: Record<string, string>
-  icons: Record<string, string>
   spacings: Record<string, string>
+  icons: {
+    style: 'Outlined'|'Sharp'|'Rounded'
+    weight: 100|200|300|400|500|600|700
+    fill: boolean
+  }
 }
 
 const baseTheme: Theme = {
@@ -47,76 +51,9 @@ const baseTheme: Theme = {
     xl: '64px',
   },
   icons: {
-    'account-group': mdiAccountGroup,
-    'account-multiple': mdiAccountMultiple,
-    account: mdiAccount,
-    alert: mdiAlert,
-    'arrow-down': mdiArrowDown,
-    'arrow-left': mdiArrowLeft,
-    'arrow-right': mdiArrowRight,
-    'arrow-up': mdiArrowUp,
-    at: mdiAt,
-    attachment: mdiAttachment,
-    bell: mdiBell,
-    bookmark: mdiBookmark,
-    bullhorn: mdiBullhorn,
-    'calendar-clock': mdiCalendarClock,
-    calendar: mdiCalendar,
-    camera: mdiCamera,
-    'cart-arrow-down': mdiCartArrowDown,
-    cart: mdiCart,
-    'chart-arc': mdiChartArc,
-    'check-bold': mdiCheckBold,
-    check: mdiCheck,
-    'chevron-down': mdiChevronDown,
-    'chevron-left': mdiChevronLeft,
-    'chevron-right': mdiChevronRight,
-    'chevron-up': mdiChevronUp,
-    'clock-outline': mdiClockOutline,
-    close: mdiClose,
-    'cloud-upload': mdiCloudUpload,
-    cog: mdiCog,
-    cross: mdiCross,
-    delete: mdiDelete,
-    'dots-horizontal': mdiDotsHorizontal,
-    'dots-vertical': mdiDotsVertical,
-    download: mdiDownload,
-    email: mdiEmail,
-    eye: mdiEye,
-    facebook: mdiFacebook,
-    file: mdiFile,
-    filter: mdiFilter,
-    folder: mdiFolder,
-    hammer: mdiHammer,
-    heart: mdiHeart,
-    help: mdiHelp,
-    home: mdiHome,
-    'image-multiple-outline': mdiImageMultipleOutline,
-    image: mdiImage,
-    information: mdiInformation,
-    link: mdiLink,
-    linkedin: mdiLinkedin,
-    loading: mdiLoading,
-    magnify: mdiMagnify,
-    'map-marker': mdiMapMarker,
-    menu: mdiMenu,
-    message: mdiMessage,
-    microphone: mdiMicrophone,
-    minus: mdiMinus,
-    'office-building': mdiOfficeBuilding,
-    pause: mdiPause,
-    pencil: mdiPencil,
-    phone: mdiPhone,
-    play: mdiPlay,
-    plus: mdiPlus,
-    share: mdiShare,
-    speaker: mdiSpeaker,
-    'trending-up': mdiTrendingUp,
-    twitter: mdiTwitter,
-    upload: mdiUpload,
-    video: mdiVideo,
-    'view-grid': mdiViewGrid,
-    'view-list': mdiViewList,
+    style: 'Outlined',
+    weight: 300,
+    fill: false,
   },
 }
 
@@ -174,14 +111,6 @@ export function useButtonVariant(name: string) {
     throw new Error(`"${name}" is not a valid button variant (${Object.keys(theme.buttonClasses)})`)
   }
   return theme.buttonClasses[name]
-}
-
-export function useIconSvgPath(name: string) {
-  const theme = useTheme() ?? baseTheme
-  if (!theme.icons[name]) {
-    throw new Error(`"${name}" is not a valid icon name (${Object.keys(theme.icons)})`)
-  }
-  return theme.icons[name]
 }
 
 export function useSpacing(name: string) {

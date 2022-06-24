@@ -13,10 +13,10 @@
 
     <Button>
       Icon
-      <Icon name="heart" />
+      <Icon name="exclamation" />
     </Button>
     <Button variant="solid" square color="danger">
-      <Icon name="heart" size="large" />
+      <Icon name="favorite" size="l" fill />
     </Button>
 
     <Button variant="solid" color="info" disabled>

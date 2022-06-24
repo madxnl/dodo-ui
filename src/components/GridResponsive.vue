@@ -20,7 +20,7 @@ const props = defineProps<{
    */
   stretch?: boolean
   /**
-   * Same as UiFlex gap
+   * Same as Row gap
    */
   gap?: 'xs'|'s'|'m'|'l'|'xl'|string
 }>()
