@@ -1,18 +1,17 @@
 <template>
-  <span :style="css" :class="classes">{{ loading ? '' : name }}</span>
+  <span ref="el" :style="css" :class="classes">
+    {{ loading ? '' : name }}
+  </span>
 </template>
 <script lang="ts" setup>
-import { computed, ref, watchEffect } from 'vue'
+import { computed, nextTick, ref, watchEffect } from 'vue'
 import { useTheme, useThemeColor } from '../theme'
-import { icons } from '../icons'
-
-type IconName = typeof icons[number]
 
 const props = defineProps<{
   /** The icon name
    * @example icon="plus"
    */
-  name: IconName
+  name: string
   /** Change icon color
    * @example color="success"
    */
@@ -29,6 +28,7 @@ const props = defineProps<{
 const theme = useTheme()
 
 const loading = ref(true)
+const el = ref<HTMLElement>()
 
 watchEffect(async () => {
   const id = 'material-symbols-css'
@@ -60,6 +60,16 @@ watchEffect(async () => {
   }
 })
 
+watchEffect(async () => {
+  // Detect if the icon name is a valid font ligature
+  if (!loading.value && el.value) {
+    await nextTick()
+    if (props.name.length < 2 || el.value.scrollWidth !== el.value.clientWidth) {
+      throw new Error('Invalid Icon name: ' + props.name)
+    }
+  }
+})
+
 const classes = computed(() => {
   let s = 'uiIcon material-symbols-' + theme.icons.style.toLowerCase()
   if (props.size) s += ` uiIcon_${props.size}`
@@ -76,8 +86,8 @@ const css = computed(() => {
 
 <style lang="css">
 .uiIcon {
-  min-height: 1em;
-  min-width: 1em;
+  height: 1em;
+  width: 1em;
   font-size: 24px;
   user-select: none;
 }

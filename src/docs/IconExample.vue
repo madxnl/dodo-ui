@@ -14,6 +14,9 @@
     <Icon name="add" />
     <Icon name="high_quality" />
     <Icon name="fullscreen" />
+    <Icon name="new_releases" />
+    <Icon name="account_circle" />
+    <Icon name="face" />
     <Icon name="menu" />
   </div>
 </template>
