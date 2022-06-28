@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
 import uiSpinner from './Spinner.vue'
-import { useButtonVariant, useThemeColorRGB, useThemeCssVars } from '../theme'
+import { useThemeColorRGB, useThemeCssVars } from '../theme'
 
 const props = defineProps<{
 /** Set button colorss
@@ -24,7 +24,7 @@ const props = defineProps<{
  * @example variant="border"
  * @example variant="text"
  */
-  variant?: string
+  variant?: 'text'|'solid'
 /** Set button type to 'submit' to trigger form submit
  * @example type="submit"
  */
@@ -57,7 +57,7 @@ const css = computed(() => {
 
 const classes = computed(() => [
   { uiButton_loading: loading.value },
-  useButtonVariant(props.variant ?? 'default'),
+  `uiButton_${props.variant ?? 'default'}`,
   props.small ? 'uiButton_small' : null,
   props.square ? 'uiButton_square' : null,
   props.active ? 'uiButton_active' : null,

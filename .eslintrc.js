@@ -28,6 +28,7 @@ module.exports = {
     'vue/max-attributes-per-line': 'off',
     'vue/multi-word-component-names': 'off',
     'vue/no-v-html': 'off',
+    'vue/no-undef-components': 'error',
 
     'func-call-spacing': 'off',
     indent: 'off',

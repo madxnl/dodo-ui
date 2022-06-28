@@ -1,11 +1,11 @@
 <template>
-  <component :is="tag" class="uiText" :class="classes" :style="css">
+  <component :is="tag ?? 'span'" class="uiText" :class="classes" :style="css">
     <slot />
   </component>
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useTextVariant, useThemeColor } from '../theme'
+import { useThemeColor } from '../theme'
 
 const props = defineProps<{
   /** Change text color
@@ -18,14 +18,19 @@ const props = defineProps<{
    * @example fontsize="12px"
    * @example :fontsize="headingSize"
    */
-  variant?: string
+  tag?: 'h1'|'h2'|'h3'|'strong'|'em'|'p'|'small'|'mark'|'blockquote'|'code'|'label'|'a'
   /** Show ellipsis instead of wrapping if text does not fit on one line
    */
   nowrap?: boolean
-  /** Set text-align property
+  /** Set CSS text-align
    */
   textAlign?: 'left'|'center'|'right'
 }>()
+
+const classes = computed(() => {
+  const s = ''
+  return s
+})
 
 const css = computed(() => {
   let s = ''
@@ -33,58 +38,37 @@ const css = computed(() => {
   return s
 })
 
-const classes = computed(() => useTextVariant(props.variant ?? 'p'))
-
-const textTags = 'p b strong i em mark small pre h1 h2 h3 h4 h5 h6 blockquote code'.split(' ')
-
-const tag = computed(() => textTags.includes(props.variant ?? 'p') ? props.variant : 'span')
 </script>
 <style>
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap'); */
 /* @import url('https://font/s.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Code+Pro&display=swap'); */
 /*@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); */
-/*
-:root {
-  --font-base: 'Inter', sans-serif;
-  --font-mono: 'Source Code Pro', monospace;
-}
-html, body {
-  margin: 0;
-  height: 100%;
-  font-size: 14px;
-  line-height: 1.4;
-  font-family: var(--font-base);
-} */
-
-body {
-  font-family: 'Inter', sans-serif;
-}
 
 .uiText {
-  font-size: 14px;
   font-family: var(--font-body, sans-serif);
   line-height: 1.4;
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
+  font-size: 14px;
 }
-.uiText_h1,
-.uiText_h2,
-.uiText_h3 {
+h1.uiText,
+h2.uiText,
+h3.uiText {
   font-size: 24px;
   font-family: var(--font-heading, sans-serif);
   line-height: 1.2;
   color: black;
 }
-.uiText_h2 {
+h2.uiText {
   font-size: 20px;
   line-height: 22px;
 }
-.uiText_h3 {
+h3.uiText {
   font-size: 16px;
   line-height: 22px;
 }
-.uiText_small {
+small.uiText {
   font-size: 12px;
 }
 </style>

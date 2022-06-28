@@ -1,17 +1,12 @@
-import { mdiAccount, mdiAccountGroup, mdiAccountMultiple, mdiAlert, mdiArrowDown, mdiArrowLeft, mdiArrowRight, mdiArrowUp, mdiAt, mdiAttachment, mdiBell, mdiBookmark, mdiBullhorn, mdiCalendar, mdiCalendarClock, mdiCamera, mdiCart, mdiCartArrowDown, mdiChartArc, mdiCheck, mdiCheckBold, mdiChevronDown, mdiChevronLeft, mdiChevronRight, mdiChevronUp, mdiClockOutline, mdiClose, mdiCloudUpload, mdiCog, mdiCross, mdiDelete, mdiDotsHorizontal, mdiDotsVertical, mdiDownload, mdiEmail, mdiEye, mdiFacebook, mdiFile, mdiFilter, mdiFolder, mdiHammer, mdiHeart, mdiHelp, mdiHome, mdiImage, mdiImageMultipleOutline, mdiInformation, mdiLink, mdiLinkedin, mdiLoading, mdiMagnify, mdiMapMarker, mdiMenu, mdiMessage, mdiMicrophone, mdiMinus, mdiOfficeBuilding, mdiPause, mdiPencil, mdiPhone, mdiPlay, mdiPlus, mdiShare, mdiSpeaker, mdiTrendingUp, mdiTwitter, mdiUpload, mdiVideo, mdiViewGrid, mdiViewList } from '@mdi/js'
 import { inject, InjectionKey, Plugin, reactive, readonly, watchEffect } from 'vue'
 
 type Theme = {
   colors: Record<string, string>
-  buttonClasses: Record<string, string>
-  textClasses: Record<string, string>
   fonts: Record<string, string>
   spacings: Record<string, string>
-  icons: {
-    style: 'Outlined'|'Sharp'|'Rounded'
-    weight: 100|200|300|400|500|600|700
-    fill: boolean
-  }
+  iconStyle: 'Outlined'|'Sharp'|'Rounded'
+  iconWeight: 100|200|300|400|500|600|700
+  iconFill: boolean
 }
 
 const baseTheme: Theme = {
@@ -26,21 +21,21 @@ const baseTheme: Theme = {
     heading: '#000000',
   },
   fonts: {
-    heading: 'sans-serif',
-    body: 'sans-serif',
-    monospace: 'monospace',
-  },
-  buttonClasses: {
-    default: 'uiButton_default',
-    solid: 'uiButton_solid',
-    text: 'uiButton_text',
-  },
-  textClasses: {
-    p: 'uiText_p',
-    h1: 'uiText_h1',
-    h2: 'uiText_h2',
-    h3: 'uiText_h3',
-    small: 'uiText_small',
+    // heading: {
+    //    family: 'Open Sans, sans-serif',
+    //    import: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600',
+    //    size: '14px',
+    // },
+    // body: {
+    //    family: 'Open Sans, sans-serif',
+    //    import: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600',
+    //    size: '14px',
+    // },
+    // monospace: {
+    //    family: 'monospace',
+    //    import: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600',
+    //    size: '14px',
+    // },
   },
   spacings: {
     0: '0px',
@@ -50,11 +45,9 @@ const baseTheme: Theme = {
     l: '32px',
     xl: '64px',
   },
-  icons: {
-    style: 'Outlined',
-    weight: 300,
-    fill: false,
-  },
+  iconStyle: 'Outlined',
+  iconWeight: 300,
+  iconFill: false,
 }
 
 const key: InjectionKey<Theme> = Symbol('themeKey')
@@ -95,22 +88,6 @@ export function useThemeColorRGB(name: string) {
 export function hexToRGB(hex: string) {
   const [r, g, b] = hex.match(/(\w\w)/g)!
   return [r, g, b].map(x => parseInt(x, 16))
-}
-
-export function useTextVariant(name: string) {
-  const theme = useTheme() ?? baseTheme
-  if (!theme.textClasses[name]) {
-    throw new Error(`"${name}" is not a valid text variant (${Object.keys(theme.textClasses)})`)
-  }
-  return theme.textClasses[name]
-}
-
-export function useButtonVariant(name: string) {
-  const theme = useTheme() ?? baseTheme
-  if (!theme.buttonClasses[name]) {
-    throw new Error(`"${name}" is not a valid button variant (${Object.keys(theme.buttonClasses)})`)
-  }
-  return theme.buttonClasses[name]
 }
 
 export function useSpacing(name: string) {

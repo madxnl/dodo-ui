@@ -32,7 +32,6 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@mdi/js": "^6.7.96",
     "@typescript-eslint/parser": "^5.29.0",
     "vue": "^3.2.25"
   },

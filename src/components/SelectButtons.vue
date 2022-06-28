@@ -3,7 +3,6 @@
     <Button
       v-for="(option,i) in options"
       :key="option.label"
-      variant="default"
       rounded
       v-bind="isSelected(option) ? { active: true, color: 'info' } : {}"
       :disabled="disabled"

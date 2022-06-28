@@ -4,7 +4,7 @@
   </span>
 </template>
 <script lang="ts" setup>
-import { computed, nextTick, ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { useTheme, useThemeColor } from '../theme'
 
 const props = defineProps<{
@@ -41,29 +41,33 @@ watchEffect(async () => {
     document.head.appendChild(link)
   }
   // Reactively load icon font based on theme settings
-  const { weight, style } = theme.icons
-  const url = `https://fonts.googleapis.com/css2?family=Material+Symbols+${style}:wght,FILL@${weight},0..1`
+  const url = 'https://fonts.googleapis.com/css2?family=' +
+    `Material+Symbols+${theme.iconStyle}:wght,FILL@${theme.iconWeight},0..1`
   // If the url changed, update the link and reset loading
   if (link.getAttribute('href') !== url) {
     link.setAttribute('href', url)
     link.removeAttribute('data-loaded')
   }
   // Track font loading
-  loading.value = !link.hasAttribute('data-loaded')
-  if (loading.value) {
+  if (!link.hasAttribute('data-loaded')) {
     await new Promise((resolve, reject) => {
       link!.addEventListener('load', resolve)
-      link!.addEventListener('error', () => reject(new Error('Failed to load icon webfont')))
+      link!.addEventListener('error', () => {
+        reject(new Error('Failed to load icons'))
+      })
     })
-    link.setAttribute('data-loaded', 'true')
-    loading.value = false
+    link!.setAttribute('data-loaded', 'true')
   }
+  loading.value = false
 })
 
 watchEffect(async () => {
   // Detect if the icon name is a valid font ligature
   if (!loading.value && el.value) {
-    await nextTick()
+    await document.fonts.ready
+    if (!document.fonts.check('24px Material Symbols ' + theme.iconStyle)) {
+      throw new Error('Icon font check failed')
+    }
     if (props.name.length < 2 || el.value.scrollWidth !== el.value.clientWidth) {
       throw new Error('Invalid Icon name: ' + props.name)
     }
@@ -71,7 +75,7 @@ watchEffect(async () => {
 })
 
 const classes = computed(() => {
-  let s = 'uiIcon material-symbols-' + theme.icons.style.toLowerCase()
+  let s = 'uiIcon material-symbols-' + theme.iconStyle.toLowerCase()
   if (props.size) s += ` uiIcon_${props.size}`
   return s
 })
