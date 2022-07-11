@@ -1,19 +1,19 @@
 <template>
   <Row gap="s" wrap>
     <Button variant="solid" color="success">
-      Color
+      Button 1
     </Button>
-    <Button variant="text">Text</Button>
-    <Button rounded>Rounded</Button>
-    <Button color="foreground">Border</Button>
+    <Button variant="text">Button 2</Button>
+    <Button rounded>Button 3</Button>
+    <Button color="info">Button 4</Button>
 
     <Button variant="solid" color="info" small>
-      Small
+      Button 5
     </Button>
 
-    <Button>
-      Icon
-      <Icon name="exclamation" />
+    <Button color="success">
+      Button 6
+      <Icon name="thumb_up" fill size="s" />
     </Button>
     <Button variant="solid" square color="danger">
       <Icon name="favorite" size="l" fill />
@@ -23,8 +23,8 @@
       Disabled
     </Button>
 
-    <Button color="info" small variant="text" @click="myAsyncSubmit">Async click</Button>
-    <Button variant="solid" color="info" @click="myAsyncSubmit">Async click</Button>
+    <Button color="info" small variant="text" @click="myAsyncSubmit">Async 1</Button>
+    <Button variant="solid" color="info" @click="myAsyncSubmit">Async 2</Button>
   </Row>
 </template>
 <script lang="ts" setup>

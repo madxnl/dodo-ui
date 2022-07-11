@@ -1,89 +1,60 @@
 <template>
   <span ref="el" :style="css" :class="classes">
-    {{ loading ? '' : name }}
+    {{ name }}
   </span>
 </template>
 <script lang="ts" setup>
 import { computed, ref, watchEffect } from 'vue'
 import { useTheme, useThemeColor } from '../theme'
+import { IconName } from './iconNames'
 
 const props = defineProps<{
   /** The icon name
    * @example icon="plus"
    */
-  name: string
+  name: IconName
   /** Change icon color
    * @example color="success"
    */
   color?: string
-  /** Change icon size
-   * @example size="s"
-   */
-  size?: 's'|'l'
   /** Filled variant
    */
   fill?: boolean
+  small?: boolean
+  large?: boolean
 }>()
 
 const theme = useTheme()
 
-const loading = ref(true)
 const el = ref<HTMLElement>()
 
-watchEffect(async () => {
-  const id = 'material-symbols-css'
+watchEffect(() => {
+  const id = 'ui-icon-import'
+  const href = 'https://fonts.googleapis.com/css2?family=' +
+    `Material+Symbols+${theme.iconStyle}:wght,FILL@${theme.iconWeight},0..1`
   let link = document.getElementById(id)
-  // Create the <link> element once
   if (!link) {
     link = document.createElement('link')
-    link.setAttribute('id', id)
     link.setAttribute('rel', 'stylesheet')
+    link.setAttribute('id', id)
     document.head.appendChild(link)
   }
-  // Reactively load icon font based on theme settings
-  const url = 'https://fonts.googleapis.com/css2?family=' +
-    `Material+Symbols+${theme.iconStyle}:wght,FILL@${theme.iconWeight},0..1`
-  // If the url changed, update the link and reset loading
-  if (link.getAttribute('href') !== url) {
-    link.setAttribute('href', url)
-    link.removeAttribute('data-loaded')
-  }
-  // Track font loading
-  if (!link.hasAttribute('data-loaded')) {
-    await new Promise((resolve, reject) => {
-      link!.addEventListener('load', resolve)
-      link!.addEventListener('error', () => {
-        reject(new Error('Failed to load icons'))
-      })
-    })
-    link!.setAttribute('data-loaded', 'true')
-  }
-  loading.value = false
-})
-
-watchEffect(async () => {
-  // Detect if the icon name is a valid font ligature
-  if (!loading.value && el.value) {
-    await document.fonts.ready
-    if (!document.fonts.check('24px Material Symbols ' + theme.iconStyle)) {
-      throw new Error('Icon font check failed')
-    }
-    if (props.name.length < 2 || el.value.scrollWidth !== el.value.clientWidth) {
-      throw new Error('Invalid Icon name: ' + props.name)
-    }
+  if (link.getAttribute('href') !== href) {
+    link.setAttribute('href', href)
   }
 })
 
 const classes = computed(() => {
   let s = 'uiIcon material-symbols-' + theme.iconStyle.toLowerCase()
-  if (props.size) s += ` uiIcon_${props.size}`
+  if (props.small) s += ' uiIcon_small'
+  if (props.large) s += ' uiIcon_large'
+  if (props.fill) s += ' uiIcon_fill'
   return s
 })
 
 const css = computed(() => {
   let s = ''
   if (props.color) s += `color: ${useThemeColor(props.color)};`
-  if (props.fill) s += "font-variation-settings: 'FILL' 1;"
   return s
 })
 </script>
@@ -94,11 +65,15 @@ const css = computed(() => {
   width: 1em;
   font-size: 24px;
   user-select: none;
+  vertical-align: middle;
 }
-.uiIcon.uiIcon_s {
+.uiIcon.uiIcon_small {
   font-size: 18px;
 }
-.uiIcon.uiIcon_l {
+.uiIcon.uiIcon_large {
   font-size: 32px;
+}
+.uiIcon_fill {
+  font-variation-settings: 'FILL' 1;
 }
 </style>

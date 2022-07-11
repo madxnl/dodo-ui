@@ -1,23 +1,23 @@
 
 <template>
-  <ErrorBoundary>
+  <CrashDialog>
     <NavLayout v-if="componentsInfo" :items="navItems">
-      <div style="max-width:1100px">
-        <h1>DodoUI</h1>
-        <h2>Versatile components for Vue</h2>
+      <Container style="max-width:1100px">
+        <Text h1>DodoUI</Text>
+        <Text h2>Versatile components for Vue</Text>
         <Container gap="l">
           <DocsPage title="Installation">
-            <blockquote>
+            <Text blockquote>
               <code>npm install -D @madxnl/dodo-ui</code>
-            </blockquote>
-            <p>Import styling in main.ts:</p>
-            <blockquote>
+            </Text>
+            <Text p>Import styling in main.ts:</Text>
+            <Text blockquote>
               <code>import '@madxnl/dodo-ui/dist/style.css'</code>
-            </blockquote>
-            <p>Using a component:</p>
-            <blockquote>
-              <code><pre>import { Button } from '@madxnl/dodo-ui'<br><br>&lt;Button&gt;...&lt;/Button&gt;</pre></code>
-            </blockquote>
+            </Text>
+            <Text p>Using a component:</Text>
+            <Text blockquote>
+              <code>import { Button } from '@madxnl/dodo-ui'<br><br>&lt;Button&gt;...&lt;/Button&gt;</code>
+            </Text>
           </DocsPage>
 
           <DocsPage title="Components">
@@ -31,29 +31,29 @@
           >
             <!-- <component :is="info.guide" v-if="info.guide" /> -->
             <!-- <p v-else>Todo</p> -->
-            <p>Todo</p>
+            <Text p>Todo</Text>
 
             <Example
               v-for="(e, i) in info.examples" :key="i"
-              :component="e.default" :code="e.source"
+              :component="e.default" :code="sourceWithinTemplate(e.source)"
             />
 
             <PropsTable :doc="info.docs" />
           </DocsPage>
         </Container>
-      </div>
+      </Container>
     </NavLayout>
-  </ErrorBoundary>
+  </CrashDialog>
 </template>
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { Container, ErrorBoundary, NavLayout } from '..'
-import DocsPage from './DocsPage.vue'
-import PropsTable from './PropsTable.vue'
-import Example from './Example.vue'
 import { ComponentDoc } from 'vue-inbrowser-compiler-utils'
+import { Container, CrashDialog, NavLayout, Text } from '..'
+import DocsPage from './DocsPage.vue'
+import Example from './Example.vue'
+import PropsTable from './PropsTable.vue'
 
-const examples = import.meta.globEager('./*Example.vue')
+const examples = import.meta.globEager('../examples/*.vue')
 const modules = import.meta.globEager('../components/*.vue')
 
 const componentsInfo = Object.values(modules).map(({ docs, source }) => ({
@@ -84,6 +84,12 @@ onMounted(() => {
   location.hash = hash
 })
 
+function sourceWithinTemplate(code: string) {
+  const txt = /<template>\s*\n(.*)\s*<\/template>/gms.exec(code)![1]
+  const spaces = Math.min(...txt.trimEnd().split('\n').map(s => s.length - s.trimStart().length))
+  return txt.split('\n').map(l => l.slice(spaces)).join('\n')
+}
+
 </script>
 
 <style>
@@ -109,13 +115,5 @@ td {
   border-width: 1px 0;
   padding: 8px;
   vertical-align: top;
-}
-code {
-  font-family: var(--font-mono, monospace);
-  white-space: pre-wrap;
-}
-pre {
-  margin: 0;
-  white-space: pre-wrap;
 }
 </style>

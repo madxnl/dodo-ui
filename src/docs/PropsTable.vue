@@ -1,7 +1,7 @@
 <template>
   <template v-if="doc.props?.length">
     <div style="overflow:auto">
-      <table>
+      <table class="uiTable">
         <tr>
           <th width="10%">Prop</th>
           <th width="25%">Type</th>
@@ -51,6 +51,9 @@ defineProps<{
 }>()
 </script>
 <style>
+.uiTable {
+  font: var(--ui-font);
+}
 .App_chapter {
   min-height: 100vh;
   padding: 32px 0;

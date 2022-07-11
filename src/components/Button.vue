@@ -7,13 +7,13 @@
     v-bind="{ ...$attrs, onClick }"
   >
     <div class="uiButton_content"><slot /></div>
-    <uiSpinner v-if="loading" class="uiButton_spinner" />
+    <Spinner v-if="loading" :small="small" class="uiButton_spinner" />
   </button>
 </template>
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
-import uiSpinner from './Spinner.vue'
 import { useThemeColorRGB, useThemeCssVars } from '../theme'
+import Spinner from './Spinner.vue'
 
 const props = defineProps<{
 /** Set button colorss
@@ -89,7 +89,8 @@ export default {
 .uiButton {
   border: 0;
   cursor: pointer;
-  font: inherit;
+  font: var(--ui-font);
+  font-weight: 500;
   background: var(--color-background);
   color: rgb(var(--rgb, var(--rgb-heading)));
   border-radius: 4px;

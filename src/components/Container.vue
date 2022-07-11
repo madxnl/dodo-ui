@@ -9,7 +9,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useSpacing, useThemeCssVars } from '../theme'
+import { useSpacing, useThemeColor, useThemeCssVars } from '../theme'
 
 const props = defineProps<{
   /**
@@ -24,16 +24,16 @@ const props = defineProps<{
    * @example pad="s 0 s s"
    */
   pad?: 'xs'|'s'|'m'|'l'|'xl'|string
-  /**
-   * Toggle column orientation instead of row
-   * @example column
-   */
-  column?: boolean
-  /**
-   * Grow to take up available space (when nested inside another uiFlex)
-   * @example grow
-   */
-  grow?: boolean
+  // /**
+  //  * Toggle column orientation instead of row
+  //  * @example column
+  //  */
+  // column?: boolean
+  // /**
+  //  * Grow to take up available space (when nested inside another uiFlex)
+  //  * @example grow
+  //  */
+  // grow?: boolean
   /**
    * Justify contents
    * @example justify="space-between"
@@ -44,16 +44,21 @@ const props = defineProps<{
    * @example align="end"
    */
   align?: 'center'|'end'|'start'|'stretch'
-  /**
-   * Wrap contents over multiple rows instead of shrinking
-   * @example wrap
-   */
-  wrap?: boolean
+  // /**
+  //  * Wrap contents over multiple rows instead of shrinking
+  //  * @example wrap
+  //  */
+  // wrap?: boolean
   /**
    * Set a background color
-   * @example background="#cccccc"
+   * @example background="info"
    */
   background?: string
+  /**
+   * Enable responsive column layout
+   * @example column-width="400px"
+   */
+  columnWidth?: string
 }>()
 
 useThemeCssVars()
@@ -62,11 +67,12 @@ const css = computed(() => {
   let s = ''
   if (props.gap) s += `gap:${useSpacing(props.gap)};`
   if (props.pad) s += `padding:${useSpacing(props.pad)};`
-  if (props.grow) s += 'flex-grow:1;'
-  if (props.wrap) s += 'flex-wrap:wrap;'
+  // if (props.grow) s += 'flex-grow:1;'
+  // if (props.wrap) s += 'flex-wrap:wrap;'
   if (props.justify) s += `justify-content:${props.justify};`
   if (props.align) s += `align-items:${props.align};`
-  if (props.background) s += `background:${props.background};`
+  if (props.background) s += `background:${useThemeColor(props.background)};`
+  if (props.columnWidth) s += `grid-template-columns:repeat(auto-fit,minmax(${props.columnWidth},1fr));`
   return s
 })
 </script>

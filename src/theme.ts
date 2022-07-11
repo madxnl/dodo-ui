@@ -1,42 +1,23 @@
 import { inject, InjectionKey, Plugin, reactive, readonly, watchEffect } from 'vue'
 
-type Theme = {
-  colors: Record<string, string>
-  fonts: Record<string, string>
-  spacings: Record<string, string>
-  iconStyle: 'Outlined'|'Sharp'|'Rounded'
-  iconWeight: 100|200|300|400|500|600|700
-  iconFill: boolean
-}
-
-const baseTheme: Theme = {
+const baseTheme = {
   colors: {
     info: '#3a86ff',
-    success: '#2a9d8f',
-    warn: '#e9c46a',
+    success: '#00b188',
+    warn: '#dfb235',
     danger: '#e76f51',
     background: '#ffffff',
     foreground: '#4e5d78',
     container: '#f7f8f9',
     heading: '#000000',
+  } as Record<string, string>,
+
+  font: {
+    size: 14,
+    family: 'Open Sans, sans-serif',
+    externalCss: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600',
   },
-  fonts: {
-    // heading: {
-    //    family: 'Open Sans, sans-serif',
-    //    import: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600',
-    //    size: '14px',
-    // },
-    // body: {
-    //    family: 'Open Sans, sans-serif',
-    //    import: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600',
-    //    size: '14px',
-    // },
-    // monospace: {
-    //    family: 'monospace',
-    //    import: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600',
-    //    size: '14px',
-    // },
-  },
+
   spacings: {
     0: '0px',
     xs: '4px',
@@ -44,11 +25,14 @@ const baseTheme: Theme = {
     m: '16px',
     l: '32px',
     xl: '64px',
-  },
-  iconStyle: 'Outlined',
-  iconWeight: 300,
+  } as Record<string, string>,
+
+  iconStyle: 'Outlined' as 'Outlined'|'Sharp'|'Rounded',
+  iconWeight: 300 as 100|200|300|400|500|600|700,
   iconFill: false,
 }
+
+type Theme = typeof baseTheme
 
 const key: InjectionKey<Theme> = Symbol('themeKey')
 
@@ -102,11 +86,12 @@ export function useThemeCssVars() {
   watchEffect(() => {
     const theme = useCustomTheme() ?? baseTheme
     const vars = [
-      ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v};`),
-      ...Object.entries(theme.colors).map(([k, v]) => `--rgb-${k}:${hexToRGB(v)};`),
-      ...Object.entries(theme.fonts).map(([k, v]) => `--font-${k}:${v};`),
-      ...Object.entries(theme.spacings).map(([k, v]) => `--spacing-${k}:${v};`),
-    ].join('')
+      ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v}`),
+      ...Object.entries(theme.colors).map(([k, v]) => `--rgb-${k}:${hexToRGB(v)}`),
+      ...Object.entries(theme.spacings).map(([k, v]) => `--spacing-${k}:${v}`),
+      `--ui-font-size: ${theme.font.size}px`,
+      `--ui-font: ${theme.font.size}px/calc(1em + 6px) ${theme.font.family}`,
+    ].join(';')
     const css = `:root{${vars}}`
     const id = 'dodoui-theme-vars'
     let style = document.querySelector('#' + id)

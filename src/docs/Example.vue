@@ -1,18 +1,17 @@
 <template>
-  <GridResponsive column-width="500px" stretch>
+  <Container column-width="500px" gap="0">
     <Container align="start" pad="m" class="App_Example">
       <component :is="component" />
     </Container>
 
     <pre class="App_ExampleText language-html" v-html="html" />
-  </GridResponsive>
+  </Container>
 </template>
 <script setup lang="ts">
-import { DefineComponent, computed } from 'vue'
-import Container from '../components/Container.vue'
-import GridResponsive from '../components/GridResponsive.vue'
 import { highlight, languages } from 'prismjs'
 import 'prismjs/themes/prism.min.css'
+import { computed, DefineComponent } from 'vue'
+import Container from '../components/Container.vue'
 
 const props = defineProps<{
   component: DefineComponent<any, any, any>

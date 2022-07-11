@@ -51,6 +51,7 @@ const css = computed(() => {
 .NavLayout_subitem {
   color: inherit;
   text-decoration: none;
+  font: var(--ui-font);
 }
 .NavLayout_subitem {
   padding-left: 16px;
