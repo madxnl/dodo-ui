@@ -4,7 +4,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { Spacing, useSpacing, useThemeCssVars } from '../theme'
+import { Spacing, useSpacing, useTheme } from '../theme'
 
 const props = defineProps<{
   /**
@@ -46,7 +46,7 @@ const props = defineProps<{
   wrap?: boolean
 }>()
 
-useThemeCssVars()
+useTheme()
 
 const css = computed(() => {
   let s = ''

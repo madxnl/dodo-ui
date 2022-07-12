@@ -1,6 +1,6 @@
-import { inject, InjectionKey, Plugin, reactive, readonly, ref, Ref, watchEffect } from 'vue'
+import { inject, InjectionKey, Plugin, reactive, ref, Ref, watchEffect } from 'vue'
 
-const baseTheme = {
+const createTheme = () => reactive({
   colors: {
     info: '#3a86ff',
     success: '#00b188',
@@ -30,9 +30,9 @@ const baseTheme = {
   iconStyle: 'Outlined' as 'Outlined'|'Sharp'|'Rounded',
   iconWeight: 300 as 100|200|300|400|500|600|700,
   iconFill: false,
-}
+})
 
-type Theme = typeof baseTheme
+type Theme = ReturnType<typeof createTheme>
 
 export type CustomColor = { hex: Ref<string> }
 export const useCustomColor = (hex: string): CustomColor => ({ hex: ref(hex) })
@@ -46,7 +46,7 @@ const key: InjectionKey<Theme> = Symbol('themeKey')
 export function provideCustomTheme(customize?: (theme: Theme) => void): Plugin {
   return {
     install(app) {
-      const theme = reactive(baseTheme)
+      const theme = createTheme()
       app.provide(key, theme)
       if (customize) customize(theme)
     },
@@ -54,16 +54,36 @@ export function provideCustomTheme(customize?: (theme: Theme) => void): Plugin {
 }
 
 export function useTheme() {
-  return readonly(inject(key, baseTheme))
-}
+  const theme = inject(key, undefined) ?? createTheme()
 
-export function useCustomTheme() {
-  return inject(key, undefined)
+  watchEffect(() => {
+    const id = 'dodoui-theme-css'
+    const vars = [
+      ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v};`),
+      ...Object.entries(theme.colors).map(([k, v]) => `--rgb-${k}:${hexToRGB(v)};`),
+      ...Object.entries(theme.spacings).map(([k, v]) => `--spacing-${k}:${v};`),
+      `--ui-font-size: ${theme.font.size}px;`,
+      `--ui-font: ${theme.font.size}px/calc(1em + 6px) ${theme.font.family};`,
+    ]
+    const css = [
+      `@import url("${theme.font.externalCss}");`,
+      `:root{\n${vars.join('\n')}\n}`,
+    ]
+    let style = document.querySelector('#' + id)
+    if (!style) {
+      style = document.createElement('style')
+      style.id = id
+      document.head.appendChild(style)
+    }
+    style.innerHTML = css.join('\n')
+  })
+
+  return theme
 }
 
 export function useThemeColor(color: ThemeColor) {
   if (typeof color !== 'string') return color.hex.value
-  const theme = useTheme() ?? baseTheme
+  const theme = useTheme()
   return theme.colors[color]
 }
 
@@ -80,28 +100,6 @@ export function hexToRGB(hex: string) {
 }
 
 export function useSpacing(name: Spacing) {
-  const theme = useTheme() ?? baseTheme
+  const theme = useTheme()
   return [name].flat().map(n => theme.spacings[n]).join(' ')
-}
-
-export function useThemeCssVars() {
-  watchEffect(() => {
-    const theme = useCustomTheme() ?? baseTheme
-    const vars = [
-      ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v}`),
-      ...Object.entries(theme.colors).map(([k, v]) => `--rgb-${k}:${hexToRGB(v)}`),
-      ...Object.entries(theme.spacings).map(([k, v]) => `--spacing-${k}:${v}`),
-      `--ui-font-size: ${theme.font.size}px`,
-      `--ui-font: ${theme.font.size}px/calc(1em + 6px) ${theme.font.family}`,
-    ].join(';')
-    const css = `:root{${vars}}`
-    const id = 'dodoui-theme-vars'
-    let style = document.querySelector('#' + id)
-    if (!style) {
-      style = document.createElement('style')
-      style.id = id
-      document.head.appendChild(style)
-    }
-    style.innerHTML = css
-  })
 }

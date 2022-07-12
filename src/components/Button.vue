@@ -12,7 +12,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
-import { ThemeColor, useThemeColorRGB, useThemeCssVars } from '../theme'
+import { ThemeColor, useTheme, useThemeColorRGB } from '../theme'
 import Spinner from './Spinner.vue'
 
 const props = defineProps<{
@@ -47,7 +47,7 @@ const props = defineProps<{
   active?: boolean
 }>()
 
-useThemeCssVars()
+useTheme()
 
 const css = computed(() => {
   let s = ''

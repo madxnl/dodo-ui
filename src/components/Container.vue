@@ -9,7 +9,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { Spacing, ThemeColor, useSpacing, useThemeColor, useThemeCssVars } from '../theme'
+import { Spacing, ThemeColor, useSpacing, useTheme, useThemeColor } from '../theme'
 
 const props = defineProps<{
   /**
@@ -61,7 +61,7 @@ const props = defineProps<{
   columnWidth?: string
 }>()
 
-useThemeCssVars()
+useTheme()
 
 const css = computed(() => {
   let s = ''

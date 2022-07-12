@@ -15,7 +15,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useThemeCssVars } from '../theme'
+import { useTheme } from '../theme'
 import Container from './Container.vue'
 
 defineProps<{
@@ -29,7 +29,7 @@ defineProps<{
   }[]
 }>()
 
-useThemeCssVars()
+useTheme()
 
 const css = computed(() => {
   const s = ''

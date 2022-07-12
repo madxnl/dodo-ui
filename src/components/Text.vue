@@ -4,7 +4,7 @@
   </component>
 </template>
 <script lang="ts" setup>
-import { computed, watchEffect } from 'vue'
+import { computed } from 'vue'
 import { ThemeColor, useTheme, useThemeColor } from '../theme'
 
 const props = defineProps<{
@@ -59,23 +59,7 @@ const css = computed(() => {
   return s
 })
 
-const theme = useTheme()
-
-watchEffect(() => {
-  const id = 'ui-font-import'
-  const href = theme.font.externalCss
-  if (!href) return
-  let link = document.getElementById(id)
-  if (!link) {
-    link = document.createElement('link')
-    link.setAttribute('rel', 'stylesheet')
-    link.setAttribute('id', id)
-    document.head.appendChild(link)
-  }
-  if (link.getAttribute('href') !== href) {
-    link.setAttribute('href', href)
-  }
-})
+useTheme()
 
 </script>
 <style>
