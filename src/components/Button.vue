@@ -148,9 +148,9 @@ export default {
   pointer-events: none;
 }
 .uiButton_small {
-  padding: 2px 12px;
-  min-height: 30px;
-  min-width: 30px;
+  padding: 2px 10px;
+  min-height: 28px;
+  min-width: 28px;
   font-size: 90%;
 }
 .uiButton_square {

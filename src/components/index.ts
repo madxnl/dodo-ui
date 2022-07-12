@@ -1,4 +1,5 @@
 export { default as Button } from './Button.vue'
+export { default as Chip } from './Chip.vue'
 export { default as Container } from './Container.vue'
 export { default as CrashDialog } from './CrashDialog.vue'
 export { default as Icon } from './Icon.vue'
