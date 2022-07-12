@@ -1,4 +1,4 @@
-import { inject, InjectionKey, Plugin, reactive, readonly, watchEffect } from 'vue'
+import { inject, InjectionKey, Plugin, reactive, readonly, ref, Ref, watchEffect } from 'vue'
 
 const baseTheme = {
   colors: {
@@ -34,7 +34,10 @@ const baseTheme = {
 
 type Theme = typeof baseTheme
 
-export type ThemeColor = keyof Theme['colors']
+export type CustomColor = { hex: Ref<string> }
+export const useCustomColor = (hex: string): CustomColor => ({ hex: ref(hex) })
+
+export type ThemeColor = CustomColor | keyof Theme['colors']
 export type SpacingName = '0'|'xs'|'s'|'m'|'l'|'xl'
 export type Spacing = SpacingName[]|SpacingName
 
@@ -58,9 +61,10 @@ export function useCustomTheme() {
   return inject(key, undefined)
 }
 
-export function useThemeColor(name: ThemeColor) {
+export function useThemeColor(color: ThemeColor) {
+  if (typeof color !== 'string') return color.hex.value
   const theme = useTheme() ?? baseTheme
-  return theme.colors[name]
+  return theme.colors[color]
 }
 
 /**

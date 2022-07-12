@@ -7,7 +7,7 @@
     <Button rounded>Button 3</Button>
     <Button color="info">Button 4</Button>
 
-    <Button variant="solid" color="info" small>
+    <Button variant="solid" :color="customColor" small>
       Button 5
     </Button>
 
@@ -28,7 +28,9 @@
   </Row>
 </template>
 <script lang="ts" setup>
-import { Icon, Row, Button } from '..'
+import { Button, Icon, Row, useCustomColor } from '..'
+
+const customColor = useCustomColor('#ff8888')
 
 async function myAsyncSubmit() {
   await new Promise(resolve => setTimeout(resolve, 3000))
