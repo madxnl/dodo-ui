@@ -9,7 +9,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useSpacing, useThemeColor, useThemeCssVars } from '../theme'
+import { Spacing, ThemeColor, useSpacing, useThemeColor, useThemeCssVars } from '../theme'
 
 const props = defineProps<{
   /**
@@ -17,13 +17,13 @@ const props = defineProps<{
    * @example
     * gap="s"
    */
-  gap?: 'xs'|'s'|'m'|'l'|'xl'|string
+  gap?: Spacing
   /**
    * Amount of padding around the contents. Use array to set padding for each side separately.
    * @example pad="m"
    * @example pad="s 0 s s"
    */
-  pad?: 'xs'|'s'|'m'|'l'|'xl'|string
+  pad?: Spacing
   // /**
   //  * Toggle column orientation instead of row
   //  * @example column
@@ -53,7 +53,7 @@ const props = defineProps<{
    * Set a background color
    * @example background="info"
    */
-  background?: string
+  background?: ThemeColor
   /**
    * Enable responsive column layout
    * @example column-width="400px"

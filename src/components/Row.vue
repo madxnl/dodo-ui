@@ -4,7 +4,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useSpacing, useThemeCssVars } from '../theme'
+import { Spacing, useSpacing, useThemeCssVars } from '../theme'
 
 const props = defineProps<{
   /**
@@ -12,13 +12,13 @@ const props = defineProps<{
    * @example
     * gap="s"
    */
-  gap?: 'xs'|'s'|'m'|'l'|'xl'|string
+  gap?: Spacing
   /**
    * Amount of padding around the contents. Use array to set padding for each side separately.
    * @example pad="m"
    * @example pad="s 0 s s"
    */
-  pad?: 'xs'|'s'|'m'|'l'|'xl'|string
+  pad?: Spacing
   /**
    * Toggle column orientation instead of row
    * @example column

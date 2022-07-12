@@ -12,14 +12,14 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
-import { useThemeColorRGB, useThemeCssVars } from '../theme'
+import { ThemeColor, useThemeColorRGB, useThemeCssVars } from '../theme'
 import Spinner from './Spinner.vue'
 
 const props = defineProps<{
 /** Set button colorss
  * @example color="success"
  */
-  color?: string
+  color?: ThemeColor
 /** Set button variant
  * @example variant="border"
  * @example variant="text"

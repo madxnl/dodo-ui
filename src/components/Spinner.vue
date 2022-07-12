@@ -10,14 +10,14 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useThemeColor, useThemeCssVars } from '../theme'
+import { ThemeColor, useThemeColor, useThemeCssVars } from '../theme'
 
 useThemeCssVars()
 
 const props = withDefaults(defineProps<{
   /** Change spinner color
    */
-  color?: string
+  color?: ThemeColor
   /** Change spinner size
    */
   small?: boolean

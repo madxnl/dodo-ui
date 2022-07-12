@@ -5,14 +5,13 @@
 </template>
 <script lang="ts" setup>
 import { computed, watchEffect } from 'vue'
-import { useTheme, useThemeColor } from '../theme'
+import { ThemeColor, useTheme, useThemeColor } from '../theme'
 
 const props = defineProps<{
   /** Change text color
-   * @example color="#FFAA00"
    * @example :color="success"
    */
-  color?: string
+  color?: ThemeColor
   /** Change text variant
    * @example fontsize="200%"
    * @example fontsize="12px"

@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref, watchEffect } from 'vue'
-import { useTheme, useThemeColor } from '../theme'
+import { ThemeColor, useTheme, useThemeColor } from '../theme'
 import { IconName } from './iconNames'
 
 const props = defineProps<{
@@ -16,7 +16,7 @@ const props = defineProps<{
   /** Change icon color
    * @example color="success"
    */
-  color?: string
+  color?: ThemeColor
   /** Filled variant
    */
   fill?: boolean

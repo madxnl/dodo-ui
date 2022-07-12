@@ -10,7 +10,7 @@ const baseTheme = {
     foreground: '#4e5d78',
     container: '#f7f8f9',
     heading: '#000000',
-  } as Record<string, string>,
+  },
 
   font: {
     size: 14,
@@ -25,7 +25,7 @@ const baseTheme = {
     m: '16px',
     l: '32px',
     xl: '64px',
-  } as Record<string, string>,
+  },
 
   iconStyle: 'Outlined' as 'Outlined'|'Sharp'|'Rounded',
   iconWeight: 300 as 100|200|300|400|500|600|700,
@@ -33,6 +33,10 @@ const baseTheme = {
 }
 
 type Theme = typeof baseTheme
+
+export type ThemeColor = keyof Theme['colors']
+export type SpacingName = '0'|'xs'|'s'|'m'|'l'|'xl'
+export type Spacing = SpacingName[]|SpacingName
 
 const key: InjectionKey<Theme> = Symbol('themeKey')
 
@@ -54,18 +58,15 @@ export function useCustomTheme() {
   return inject(key, undefined)
 }
 
-export function useThemeColor(name: string) {
+export function useThemeColor(name: ThemeColor) {
   const theme = useTheme() ?? baseTheme
-  if (!theme.colors[name]) {
-    throw new Error(`"${name}" is not a valid theme color (${Object.keys(theme.colors)})`)
-  }
   return theme.colors[name]
 }
 
 /**
  * Returns color as RGB array: [255, 255, 255], used when modifying colors
  */
-export function useThemeColorRGB(name: string) {
+export function useThemeColorRGB(name: ThemeColor) {
   return hexToRGB(useThemeColor(name))
 }
 
@@ -74,12 +75,9 @@ export function hexToRGB(hex: string) {
   return [r, g, b].map(x => parseInt(x, 16))
 }
 
-export function useSpacing(name: string) {
+export function useSpacing(name: Spacing) {
   const theme = useTheme() ?? baseTheme
-  if (!theme.spacings[name]) {
-    throw new Error(`"${name}" is not a valid icon name (${Object.keys(theme.spacings)})`)
-  }
-  return theme.spacings[name]
+  return [name].flat().map(n => theme.spacings[n]).join(' ')
 }
 
 export function useThemeCssVars() {
