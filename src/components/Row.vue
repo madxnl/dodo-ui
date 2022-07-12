@@ -65,6 +65,6 @@ const css = computed(() => {
   display: flex;
   align-items: center;
   gap: var(--spacing-s);
-  overflow: auto;
+  min-width: 0;
 }
 </style>

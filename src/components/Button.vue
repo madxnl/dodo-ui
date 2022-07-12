@@ -101,16 +101,17 @@ export default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 2px 14px;
-  min-height: 36px;
-  min-width: 36px;
+  padding: 0 14px;
+  --height: 36px;
+  min-width: var(--height);
+  min-height: var(--height);
+  line-height: var(--height);
   white-space: nowrap;
+  box-sizing: border-box;
 }
 .uiButton_content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .uiButton_solid {
   background: rgb(var(--rgb, var(--rgb-heading)));
@@ -148,13 +149,12 @@ export default {
   pointer-events: none;
 }
 .uiButton_small {
-  padding: 2px 10px;
-  min-height: 28px;
-  min-width: 28px;
-  font-size: 90%;
+  padding: 0 10px;
+  --height: 28px;
+  font-size: calc(var(--ui-font-size) - 1px);
 }
 .uiButton_square {
-  padding: 2px;
+  padding: 0;
 }
 .uiButton:after {
   content: '';

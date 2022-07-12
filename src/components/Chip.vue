@@ -5,46 +5,51 @@
     :style="css"
     :class="classes"
   >
-    <slot />
+    <span class="uiChip_text">
+      <slot />
+    </span>
+    <Icon v-if="closable" name="close" small />
   </component>
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { ThemeColor, useThemeColorRGB } from '../theme'
+import Icon from './Icon.vue'
 
 const props = defineProps<{
   color?: ThemeColor
+  /* Show close icon */
+  closable?: boolean
+}>()
+
+defineEmits<{
+  (e: 'close'): void
 }>()
 
 const css = computed(() => {
   let s = ''
-  if (props.color) s += `--tag-rgb:${useThemeColorRGB(props.color)};`
+  if (props.color) s += `--chip-rgb:${useThemeColorRGB(props.color)};`
   return s
 })
 
-const classes = computed(() => [
-  // { uiButton_loading: loading.value },
-  // `uiButton_${props.variant ?? 'default'}`,
-  // props.small ? 'uiButton_small' : null,
-  // props.square ? 'uiButton_square' : null,
-  // props.active ? 'uiButton_active' : null,
-  // props.rounded ? 'uiButton_rounded' : null,
-])
+const classes = computed(() => [])
 
 </script>
 <style>
 .uiChip {
   font: var(--ui-font);
+  font-size: calc(var(--ui-font-size) - 1px);
   font-weight: 500;
-  padding: 0 12px;
-  height: 28px;
-  line-height: 28px;
+  padding: 0 10px;
+  --height: 28px;
+  height: var(--height);
+  line-height: var(--height);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: rgb(var(--tag-rgb, var(--rgb-foreground)));
-  background: rgba(var(--tag-rgb, var(--rgb-foreground)), 0.2);
-  display: inline-block;
+  color: rgb(var(--chip-rgb, var(--rgb-foreground)));
+  background: rgba(var(--chip-rgb, var(--rgb-foreground)), 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 4px;
   vertical-align: middle;
   border: 0;
@@ -52,6 +57,10 @@ const classes = computed(() => [
   cursor: default;
   box-sizing: border-box;
   max-width: 350px;
+}
+.uiChip_text {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 button.uiChip {
   cursor: pointer;

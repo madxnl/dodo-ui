@@ -1,14 +1,18 @@
 <template>
-  <Row gap="s" wrap>
-    <Chip color="success">Chip 1</Chip>
-    <Chip>Chip 2</Chip>
-    <Chip color="info" @click="click">Chip 3 <Icon name="close" small /></Chip>
-    <Chip>Chip long long long long long long long long long long long long long long long long long long long long</Chip>
+  <Row gap="xs" wrap>
+    <Chip>Chip 1</Chip>
+    <Chip color="success">Chip 2</Chip>
+    <Chip color="info" closable @click="close">
+      Chip 3
+    </Chip>
+    <Chip>
+      Looooooooooooooooooooooooooooooooooooooooooooong
+    </Chip>
   </Row>
 </template>
 <script lang="ts" setup>
-import { Chip, Icon, Row } from '..'
+import { Chip, Row } from '..'
 
-function click() {
+function close() {
 }
 </script>

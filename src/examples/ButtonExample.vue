@@ -13,10 +13,10 @@
 
     <Button color="success">
       Button 6
-      <Icon name="thumb_up" fill size="s" />
+      <Icon name="thumb_up" fill small />
     </Button>
     <Button variant="solid" square color="danger">
-      <Icon name="favorite" size="l" fill />
+      <Icon name="favorite" large fill />
     </Button>
 
     <Button variant="solid" color="info" disabled>
@@ -25,6 +25,7 @@
 
     <Button color="info" small variant="text" @click="myAsyncSubmit">Async 1</Button>
     <Button variant="solid" color="info" @click="myAsyncSubmit">Async 2</Button>
+    <Button>Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong</Button>
   </Row>
 </template>
 <script lang="ts" setup>
