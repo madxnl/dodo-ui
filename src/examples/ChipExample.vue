@@ -6,12 +6,12 @@
       Chip 3
     </Chip>
     <Chip>
-      <Text>Looooooooooooooooooooooooooooooooooooooooooooong</Text>
+      Looooooooooooooooooooooooooooooooooooooooooooong
     </Chip>
   </Row>
 </template>
 <script lang="ts" setup>
-import { Chip, Row, Text } from '..'
+import { Chip, Row } from '..'
 
 function close() {
 }
