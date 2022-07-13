@@ -110,7 +110,9 @@ export default {
   box-sizing: border-box;
 }
 .uiButton_content {
-  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   overflow: hidden;
 }
 .uiButton_solid {

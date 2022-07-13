@@ -5,9 +5,7 @@
     :style="css"
     :class="classes"
   >
-    <span class="uiChip_text">
-      <slot />
-    </span>
+    <slot />
     <Icon v-if="closable" name="close" small />
   </component>
 </template>
@@ -46,21 +44,17 @@ const classes = computed(() => [])
   line-height: var(--height);
   white-space: nowrap;
   color: rgb(var(--chip-rgb, var(--rgb-foreground)));
-  background: rgba(var(--chip-rgb, var(--rgb-foreground)), 0.2);
+  background: rgba(var(--chip-rgb, var(--rgb-foreground)), 0.15);
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
   vertical-align: middle;
   border: 0;
   border-radius: 99px;
   cursor: default;
   box-sizing: border-box;
-  max-width: 350px;
-}
-.uiChip_text {
+  max-width: 300px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  gap: 4px;
 }
 button.uiChip {
   cursor: pointer;

@@ -64,18 +64,23 @@ useTheme()
 </script>
 <style>
 .uiText {
-  font: var(--ui-font);
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: default;
   margin: 0;
+  font: var(--ui-font);
+}
+.uiText .uiText {
+  font: inherit;
 }
 .uiText_nowrap {
   white-space: nowrap;
 }
+/* p.uiText, .uiText p {} */
 h1.uiText,
 h2.uiText,
 h3.uiText {
+  font: var(--ui-font);
   font-weight: bold;
   color: black;
 }
@@ -88,9 +93,6 @@ h2.uiText {
 h3.uiText {
   font-size: calc(var(--ui-font-size) + 2px);
 }
-small.uiText, .uiText small {
-  font-size: calc(var(--ui-font-size) - 2px);
-}
 code.uiText, .uiText code {
   font-family: monospace;
 }
@@ -100,6 +102,9 @@ a.uiText, .uiText a {
 blockquote.uiText, .uiText blockquote {
   padding-left: 16px;
   border-left: 2px solid rgba(var(--rgb-foreground), 0.25);
+}
+small.uiText, .uiText small {
+  font-size: calc(var(--ui-font-size) - 2px);
 }
 /* code {
   font-family: var(--font-mono, monospace);

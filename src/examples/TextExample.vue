@@ -6,7 +6,9 @@
   <Text p>{{ paragraph }}</Text>
   <Text small align="right">{{ text }}</Text>
   <Text h1>
-    Rich <em>text</em> <a href="#">example</a>
+    <Text color="danger">Rich</Text>
+    <em> text </em>
+    <a href="#">example</a>
   </Text>
 </template>
 <script lang="ts" setup>

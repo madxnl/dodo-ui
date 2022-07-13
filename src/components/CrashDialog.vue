@@ -1,11 +1,11 @@
 <template>
   <Modal :active="showDialog">
     <Text h2>Something went wrong</Text>
-    <Text>
+    <Text p>
       An unexpected error occurred and the application may not function correctly until the page is reloaded.
       Any unsaved changes will be lost if you choose to reload the page.
     </Text>
-    <Text>Please contact us if the problem persists.</Text>
+    <Text p>Please contact us if the problem persists.</Text>
     <template #controls>
       <Button variant="text" @click="ignore">Ignore</Button>
       <Button variant="solid" color="info" @click="reload">Reload page</Button>
