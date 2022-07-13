@@ -57,7 +57,6 @@ export function useTheme() {
   const theme = inject(key, undefined) ?? createTheme()
 
   watchEffect(() => {
-    const id = 'dodoui-theme-css'
     const vars = [
       ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v};`),
       ...Object.entries(theme.colors).map(([k, v]) => `--rgb-${k}:${hexToRGB(v)};`),
@@ -65,19 +64,22 @@ export function useTheme() {
       `--ui-font-size: ${theme.font.size}px;`,
       `--ui-font: ${theme.font.size}px/calc(1em + 6px) ${theme.font.family};`,
     ]
-    const css = [
+    const lines = [
       `@import url("${theme.font.externalCss}");`,
       `:root{\n${vars.join('\n')}\n}`,
     ]
+    const id = 'dodoui-theme-css'
     let style = document.querySelector('#' + id)
     if (!style) {
       style = document.createElement('style')
       style.id = id
       document.head.appendChild(style)
     }
-    style.innerHTML = css.join('\n')
+    const css = lines.join('\n')
+    if (style.innerHTML !== css) {
+      style.innerHTML = css
+    }
   })
-
   return theme
 }
 

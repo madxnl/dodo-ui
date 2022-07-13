@@ -11,20 +11,23 @@
   <SelectButtons
     v-slot="{ option }"
     v-model="currentMultipleValue"
+    small
     multiple
     :options="[
       { value: 1 },
       { value: 2 },
       { value: 3 },
+      { value: 4 },
     ]"
   >
     Multiple {{ option.value }}
   </SelectButtons>
 </template>
 <script lang="ts" setup>
-import { SelectButtons } from '..'
 import { ref } from 'vue'
+import { SelectButtons } from '..'
 
 const currentValue = ref(1)
-const currentMultipleValue = ref([1, 2])
+const currentMultipleValue = ref([1, 2, 4])
+
 </script>

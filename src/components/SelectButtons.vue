@@ -6,6 +6,7 @@
       rounded
       v-bind="isSelected(option) ? { active: true, color: 'info' } : {}"
       :disabled="disabled"
+      :small="small"
       @click="toggle(option)"
     >
       <slot :option="option" :index="i">
@@ -27,6 +28,7 @@ const props = defineProps<{
   modelValue?: unknown
   multiple?: boolean
   disabled?: boolean
+  small?: boolean
 }>()
 
 type Option = typeof props.options[0]
