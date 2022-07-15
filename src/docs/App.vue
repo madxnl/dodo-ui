@@ -1,46 +1,20 @@
 
 <template>
   <CrashDialog>
-    <NavLayout v-if="componentsInfo" :items="navItems">
-      <Container style="max-width:1100px">
-        <Text h1>DodoUI</Text>
-        <Text h2>Versatile components for Vue</Text>
-        <Container gap="l">
-          <DocsPage title="Installation">
-            <Text blockquote>
-              <code>npm install -D @madxnl/dodo-ui</code>
-            </Text>
-            <Text p>Import styling in main.ts:</Text>
-            <Text blockquote>
-              <code>import '@madxnl/dodo-ui/dist/style.css'</code>
-            </Text>
-            <Text p>Using a component:</Text>
-            <Text blockquote>
-              <code>import { Button } from '@madxnl/dodo-ui'<br><br>&lt;Button&gt;...&lt;/Button&gt;</code>
-            </Text>
-          </DocsPage>
-
-          <DocsPage title="Components">
-            Todo
-          </DocsPage>
-
-          <DocsPage
-            v-for="info in componentsInfo"
-            :key="info.docs.displayName"
-            :title="info.docs.displayName"
-          >
-            <!-- <component :is="info.guide" v-if="info.guide" /> -->
-            <!-- <p v-else>Todo</p> -->
-            <Text p>Todo</Text>
+    <NavLayout v-if="componentsInfo" :chapters="chapters">
+      <Container gap="xxl">
+        <template v-for="(chapter, i) in chapters" :key="i">
+          <DocsPage v-for="page in chapter.pages" :key="page.href" :title="page.title">
+            <component :is="getPageText(page.title)" v-if="getPageText(page.title)" />
 
             <Example
-              v-for="(e, i) in info.examples" :key="i"
+              v-for="(e, j) in getExamples(page.title)" :key="j"
               :component="e.default" :code="sourceWithinTemplate(e.source)"
             />
 
-            <PropsTable :doc="info.docs" />
+            <PropsTable v-if="getPropsData(page.title)" :doc="getPropsData(page.title)!.docs" />
           </DocsPage>
-        </Container>
+        </template>
       </Container>
     </NavLayout>
   </CrashDialog>
@@ -48,31 +22,33 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { ComponentDoc } from 'vue-inbrowser-compiler-utils'
-import { Container, CrashDialog, NavLayout, Text } from '..'
+import { Container, CrashDialog } from '..'
+import { NavLayout } from '../components-wip'
 import DocsPage from './DocsPage.vue'
 import Example from './Example.vue'
 import PropsTable from './PropsTable.vue'
 
 const examples = import.meta.globEager('../examples/*.vue')
-const modules = import.meta.globEager('../components/*.vue')
+const components = import.meta.globEager('../components/*.vue')
+const docs = import.meta.globEager('./content/*Docs.vue')
 
-const componentsInfo = Object.values(modules).map(({ docs, source }) => ({
+const componentsInfo = Object.values(components).map(({ docs, source }) => ({
   docs: docs as ComponentDoc,
   source: source as string,
   examples: Object.values(examples)
     .filter(e => e.docs.displayName.startsWith(docs.displayName + 'Example')),
 }))
 
-const navItems = computed(() => [
+const chapters = computed(() => [
   {
-    label: 'Installation',
-    href: '#Installation',
+    pages: [
+      { title: 'Dodo UI', href: '#intro' },
+      { title: 'Installation', href: '#Installation' },
+    ],
   },
   {
-    label: 'Components',
-    href: '#Components',
-    items: Object.values(modules).map(({ docs }) => ({
-      label: docs.displayName,
+    pages: Object.values(components).map(({ docs }) => ({
+      title: docs.displayName,
       href: '#' + docs.displayName,
     })),
   },
@@ -84,10 +60,32 @@ onMounted(() => {
   location.hash = hash
 })
 
+function tokenize(pageTitle: string) {
+  return pageTitle.replace(/\W/g, '')
+}
+
+function getExamples(pageTitle: string) {
+  const key = tokenize(pageTitle)
+  return Object.keys(examples)
+    .filter(s => s.includes(`/${key}Example`))
+    .map(x => examples[x])
+}
+
+function getPropsData(pageTitle: string) {
+  const key = tokenize(pageTitle)
+  return Object.values(components).find(m => m.docs.displayName === key)
+}
+
 function sourceWithinTemplate(code: string) {
   const txt = /<template>\s*\n(.*)\s*<\/template>/gms.exec(code)![1]
   const spaces = Math.min(...txt.trimEnd().split('\n').map(s => s.length - s.trimStart().length))
   return txt.split('\n').map(l => l.slice(spaces)).join('\n')
+}
+
+function getPageText(pageTitle: string) {
+  const key = tokenize(pageTitle)
+  const file = Object.keys(docs).find(s => s.includes(`/${key}Docs`))
+  return file ? docs[file].default : null
 }
 
 </script>
@@ -99,9 +97,7 @@ html, body {
 }
 #app {
   height: 100%;
-  display: flex;
-  flex-flow: column;
-  overflow: auto;
+  display: grid;
 }
 table {
   border-collapse: collapse;

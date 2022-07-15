@@ -7,9 +7,9 @@ const createTheme = () => reactive({
     warn: '#dfb235',
     danger: '#e76f51',
     background: '#ffffff',
-    foreground: '#4e5d78',
+    foreground: '#213547',
     container: '#f7f8f9',
-    heading: '#000000',
+    muted: '#888888',
   },
 
   font: {
@@ -25,6 +25,7 @@ const createTheme = () => reactive({
     m: '16px',
     l: '32px',
     xl: '64px',
+    xxl: '128px',
   },
 
   iconStyle: 'Outlined' as 'Outlined'|'Sharp'|'Rounded',
@@ -38,7 +39,7 @@ export type CustomColor = { hex: Ref<string> }
 export const useCustomColor = (hex: string): CustomColor => ({ hex: ref(hex) })
 
 export type ThemeColor = CustomColor | keyof Theme['colors']
-export type SpacingName = '0'|'xs'|'s'|'m'|'l'|'xl'
+export type SpacingName = '0'|'xs'|'s'|'m'|'l'|'xl'|'xxl'
 export type Spacing = SpacingName[]|SpacingName
 
 const key: InjectionKey<Theme> = Symbol('themeKey')

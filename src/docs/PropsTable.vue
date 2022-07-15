@@ -54,8 +54,4 @@ defineProps<{
 .uiTable {
   font: var(--ui-font);
 }
-.App_chapter {
-  min-height: 100vh;
-  padding: 32px 0;
-}
 </style>

@@ -64,31 +64,30 @@ useTheme()
 </script>
 <style>
 .uiText {
-  overflow: hidden;
   text-overflow: ellipsis;
   cursor: default;
   margin: 0;
   font: var(--ui-font);
+  color: var(--color-foreground);
 }
 .uiText .uiText {
   font: inherit;
 }
 .uiText_nowrap {
+  overflow: hidden;
   white-space: nowrap;
 }
 /* p.uiText, .uiText p {} */
 h1.uiText,
 h2.uiText,
 h3.uiText {
-  font: var(--ui-font);
   font-weight: bold;
-  color: black;
 }
 h1.uiText {
-  font-size: calc(var(--ui-font-size) + 8px);
+  font-size: calc(var(--ui-font-size) + 10px);
 }
 h2.uiText {
-  font-size: calc(var(--ui-font-size) + 4px);
+  font-size: calc(var(--ui-font-size) + 6px);
 }
 h3.uiText {
   font-size: calc(var(--ui-font-size) + 2px);

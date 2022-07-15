@@ -23,10 +23,6 @@ const html = computed(() => {
 })
 </script>
 <style>
-.App_chapter {
-  min-height: 100vh;
-  padding: 32px 0;
-}
 .App_Example {
   border: 1px solid rgba(0,0,0,0.15);
 }

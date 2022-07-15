@@ -1,6 +1,6 @@
 <template>
   <Modal :active="showDialog">
-    <Text h2>Something went wrong</Text>
+    <Text h3>Something went wrong</Text>
     <Text p>
       An unexpected error occurred and the application may not function correctly until the page is reloaded.
       Any unsaved changes will be lost if you choose to reload the page.

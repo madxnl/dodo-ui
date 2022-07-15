@@ -12,8 +12,8 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
+import { Spinner } from '../components-wip'
 import { ThemeColor, useTheme, useThemeColorRGB } from '../theme'
-import Spinner from './Spinner.vue'
 
 const props = defineProps<{
 /** Set button colorss
@@ -51,7 +51,7 @@ useTheme()
 
 const css = computed(() => {
   let s = ''
-  if (props.color) s += `--rgb:${useThemeColorRGB(props.color)};`
+  if (props.color) s += `--bnt-rgb:${useThemeColorRGB(props.color)};`
   return s
 })
 
@@ -92,10 +92,10 @@ export default {
   font: var(--ui-font);
   font-weight: 500;
   background: var(--color-background);
-  color: rgb(var(--rgb, var(--rgb-heading)));
+  color: rgb(var(--bnt-rgb, var(--rgb-foreground)));
   border-radius: 4px;
   position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   user-select: none;
   vertical-align: middle;
   display: inline-flex;
@@ -116,19 +116,18 @@ export default {
   overflow: hidden;
 }
 .uiButton_solid {
-  background: rgb(var(--rgb, var(--rgb-heading)));
+  background: rgb(var(--bnt-rgb, var(--rgb-foreground)));
   color: white;
 }
 .uiButton_default {
-  border: 1px solid rgba(var(--rgb, var(--rgb-heading)), 0.35);
+  border: 1px solid rgba(var(--bnt-rgb, var(--rgb-foreground)), 0.35);
 }
 .uiButton_rounded {
   border-radius: 99px;
 }
 .uiButton_text {
   background: transparent;
-  color: inherit;
-  color: rgb(var(--rgb));
+  color: rgb(var(--bnt-rgb, var(--rgb-foreground)));
   box-shadow: none;
 }
 .uiButton_loading {

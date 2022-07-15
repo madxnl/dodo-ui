@@ -1,14 +1,11 @@
 
 <template>
-  <div
-    class="uiContainer"
-    :style="css"
-  >
-    <slot />
+  <div ref="el" class="uiContainer" :style="css2">
+    <div class="uiContainer_scroll" :style="css"><slot /></div>
   </div>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { Spacing, ThemeColor, useSpacing, useTheme, useThemeColor } from '../theme'
 
 const props = defineProps<{
@@ -24,16 +21,6 @@ const props = defineProps<{
    * @example pad="s 0 s s"
    */
   pad?: Spacing
-  // /**
-  //  * Toggle column orientation instead of row
-  //  * @example column
-  //  */
-  // column?: boolean
-  // /**
-  //  * Grow to take up available space (when nested inside another uiFlex)
-  //  * @example grow
-  //  */
-  // grow?: boolean
   /**
    * Justify contents
    * @example justify="space-between"
@@ -44,11 +31,6 @@ const props = defineProps<{
    * @example align="end"
    */
   align?: 'center'|'end'|'start'|'stretch'
-  // /**
-  //  * Wrap contents over multiple rows instead of shrinking
-  //  * @example wrap
-  //  */
-  // wrap?: boolean
   /**
    * Set a background color
    * @example background="info"
@@ -59,9 +41,32 @@ const props = defineProps<{
    * @example column-width="400px"
    */
   columnWidth?: string
+  scrollable?: boolean
 }>()
 
+const emit = defineEmits<{
+  (e: 'scroll', el: HTMLDivElement): void
+}>()
+
+const el = ref<HTMLDivElement>()
+
+function onScroll() {
+  emit('scroll', el.value!)
+}
+
+watchEffect(() => {
+  if (el.value && props.scrollable) {
+    el.value.addEventListener('scroll', onScroll, { passive: true })
+  }
+})
+
 useTheme()
+
+const css2 = computed(() => {
+  let s = ''
+  if (props.scrollable) s += 'overflow:auto;'
+  return s
+})
 
 const css = computed(() => {
   let s = ''
@@ -79,6 +84,10 @@ const css = computed(() => {
 
 <style>
 .uiContainer {
+  display: grid;
+  align-content: start;
+}
+.uiContainer_scroll {
   display: grid;
   align-content: start;
   gap: var(--spacing-m);

@@ -4,5 +4,5 @@
   <Spinner small />
 </template>
 <script lang="ts" setup>
-import { Spinner } from '..'
+import { Spinner } from '../components-wip'
 </script>
