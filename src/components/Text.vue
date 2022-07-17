@@ -105,6 +105,9 @@ blockquote.uiText, .uiText blockquote {
 small.uiText, .uiText small {
   font-size: calc(var(--ui-font-size) - 2px);
 }
+strong.uiText, .uiText strong {
+  font-weight: bold;
+}
 /* code {
   font-family: var(--font-mono, monospace);
   white-space: pre-wrap;

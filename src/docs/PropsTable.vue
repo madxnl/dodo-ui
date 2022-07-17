@@ -2,40 +2,43 @@
   <template v-if="doc.props?.length">
     <div style="overflow:auto">
       <table class="uiTable">
-        <tr>
-          <th width="10%">Prop</th>
-          <th width="25%">Type</th>
-          <th width="35%">Description</th>
-          <th width="30%">Example</th>
-        </tr>
+        <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
         <tr v-for="prop in doc.props ?? []" :key="prop.name">
-          <td>
-            <component :is="prop.required ? 'b' : 'span'">
-              <code>{{ prop.name }}<template v-if="!prop.required">?</template></code>
-            </component>
-          </td>
-          <td>
-            <code>{{ getPropType(prop) }}</code>
-          </td>
-          <td>
-            {{ prop.description }}
-          </td>
-          <td>
-            <Container gap="s">
-              <template v-for="example in prop.tags?.example" :key="example">
-                <code>{{ (example as any).description }}</code>
-              </template>
-            </Container>
-          </td>
-          <!-- <td>{{ prop }}</td> -->
+          <td><code>{{ prop.name }}<template v-if="!prop.required">?</template></code></td>
+          <td><SyntaxHighlight :code="getPropType(prop)" lang="ts" /></td>
+          <td>{{ prop.description }}</td>
+        </tr>
+      </table>
+    </div>
+  </template>
+  <template v-if="doc.events?.length">
+    <div style="overflow:auto">
+      <table class="uiTable">
+        <tr><th>Event</th><th>Signature</th><th>Description</th></tr>
+        <tr v-for="ev in doc.events ?? []" :key="ev.name">
+          <td><code>{{ ev.name }}</code></td>
+          <td><SyntaxHighlight :code="getEventType(ev)" lang="ts" /></td>
+          <td>{{ ev.description }}</td>
+        </tr>
+      </table>
+    </div>
+  </template>
+  <template v-if="doc.slots?.length">
+    <div style="overflow:auto">
+      <table class="uiTable">
+        <tr><th>Slot</th><th>Scope</th><th>Description</th></tr>
+        <tr v-for="slot in doc.slots ?? []" :key="slot.name">
+          <td><code>{{ slot.name }}</code></td>
+          <td><SyntaxHighlight :code="getSlotType(slot)" lang="ts" /></td>
+          <td>{{ slot.description }}</td>
         </tr>
       </table>
     </div>
   </template>
 </template>
 <script setup lang="ts">
-import { ComponentDoc, PropDescriptor } from 'vue-docgen-api'
-import Container from '../components/Container.vue'
+import { ComponentDoc, EventDescriptor, PropDescriptor, SlotDescriptor } from 'vue-docgen-api'
+import SyntaxHighlight from './SyntaxHighlight.vue'
 
 function getPropType(prop: PropDescriptor) {
   let s = ''
@@ -46,12 +49,44 @@ function getPropType(prop: PropDescriptor) {
   return s
 }
 
+function getEventType(ev: EventDescriptor) {
+  const params = (ev.properties ?? []).map(p => `${p.name}: ${p.type.names.join('|')}`)
+  return `(${params.join(', ')}): void`
+  // return `${params.join(', ')}`
+}
+
+function getSlotType(slot: SlotDescriptor) {
+  const bindings = (slot.bindings ?? []).map(b => `${b.name}: ${b.type?.name}`)
+  return bindings.length ? `{\n  ${bindings.join(';\n  ')};\n}` : '{}'
+}
+
+// const props = defineProps<{
 defineProps<{
   doc: ComponentDoc
 }>()
+
+// const hasPropExamples = computed(() => (props.doc.props ?? []).some(p => p.tags?.example))
 </script>
 <style>
 .uiTable {
   font: var(--ui-font);
+  font-size: calc(var(--ui-font-size) - 1px);
+}
+table {
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+  padding: 8px;
+}
+td {
+  border-width: 1px 0;
+  padding: 8px;
+  vertical-align: top;
+  max-width: 350px;
+  min-width: 150px;
+}
+tr:nth-child(even) {
+  background: rgba(0,0,0,0.05);
 }
 </style>

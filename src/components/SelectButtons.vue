@@ -9,6 +9,11 @@
       :small="small"
       @click="toggle(option)"
     >
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->
       <slot :option="option" :index="i">
         {{ option.label || option.value }}
       </slot>
@@ -21,19 +26,28 @@ import Button from './Button.vue'
 import Row from './Row.vue'
 
 const props = defineProps<{
+  /** Array of available options */
   options: {
     value: any
     label?: string
   }[]
+  /** Currently selected value(s) */
   modelValue?: unknown
+  /** Allow multiple values to be selected (use array for modelValue) */
   multiple?: boolean
+  /** Toggle disable */
   disabled?: boolean
+  /** Small buttons */
   small?: boolean
 }>()
 
 type Option = typeof props.options[0]
 
 const emit = defineEmits<{
+  /**
+   * Update of selected value(s), used by v-model syntax
+   * @arg {any} value
+   */
   (e: 'update:modelValue', value: unknown): void
 }>()
 

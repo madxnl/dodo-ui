@@ -22,6 +22,10 @@ import Modal from './Modal.vue'
 import Text from './Text.vue'
 
 const emit = defineEmits<{
+  /**
+   * Emitted after an error has been detected or ignored
+   * @arg {Error} error error
+   */
   (e: 'error', error: Error): void
 }>()
 

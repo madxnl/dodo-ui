@@ -4,23 +4,19 @@
       <component :is="component" />
     </Container>
 
-    <pre class="App_ExampleText language-html" v-html="html" />
+    <SyntaxHighlight class="App_ExampleText" :code="code" lang="html" />
   </Container>
 </template>
 <script setup lang="ts">
-import { highlight, languages } from 'prismjs'
-import 'prismjs/themes/prism.min.css'
-import { computed, DefineComponent } from 'vue'
+import { DefineComponent } from 'vue'
 import Container from '../components/Container.vue'
+import SyntaxHighlight from './SyntaxHighlight.vue'
 
-const props = defineProps<{
+defineProps<{
   component: DefineComponent<any, any, any>
   code: string
 }>()
 
-const html = computed(() => {
-  return highlight(props.code, languages.html, 'html')
-})
 </script>
 <style>
 .App_Example {

@@ -1,11 +1,12 @@
 
 <template>
-  <div ref="el" class="uiContainer" :style="css2">
-    <div class="uiContainer_scroll" :style="css"><slot /></div>
+  <div v-if="scrollable" class="uiContainer_scroll">
+    <div class="uiContainer" :style="css"><slot /></div>
   </div>
+  <div v-else class="uiContainer" :style="css"><slot /></div>
 </template>
 <script lang="ts" setup>
-import { computed, ref, watchEffect } from 'vue'
+import { computed } from 'vue'
 import { Spacing, ThemeColor, useSpacing, useTheme, useThemeColor } from '../theme'
 
 const props = defineProps<{
@@ -44,29 +45,7 @@ const props = defineProps<{
   scrollable?: boolean
 }>()
 
-const emit = defineEmits<{
-  (e: 'scroll', el: HTMLDivElement): void
-}>()
-
-const el = ref<HTMLDivElement>()
-
-function onScroll() {
-  emit('scroll', el.value!)
-}
-
-watchEffect(() => {
-  if (el.value && props.scrollable) {
-    el.value.addEventListener('scroll', onScroll, { passive: true })
-  }
-})
-
 useTheme()
-
-const css2 = computed(() => {
-  let s = ''
-  if (props.scrollable) s += 'overflow:auto;'
-  return s
-})
 
 const css = computed(() => {
   let s = ''
@@ -86,10 +65,11 @@ const css = computed(() => {
 .uiContainer {
   display: grid;
   align-content: start;
+  gap: var(--spacing-m);
 }
 .uiContainer_scroll {
   display: grid;
   align-content: start;
-  gap: var(--spacing-m);
+  overflow: auto;
 }
 </style>

@@ -2,9 +2,15 @@
 <template>
   <CrashDialog>
     <NavLayout v-if="componentsInfo" :chapters="chapters">
-      <Container gap="xxl">
+      <Container gap="xl">
         <template v-for="(chapter, i) in chapters" :key="i">
-          <DocsPage v-for="page in chapter.pages" :key="page.href" :title="page.title">
+          <Container
+            v-for="page in chapter.pages" :id="page.title"
+            :key="page.href" pad="l"
+            gap="l" class="App_chapter"
+          >
+            <Text h1>{{ page.title }}</Text>
+
             <component :is="getPageText(page.title)" v-if="getPageText(page.title)" />
 
             <Example
@@ -13,7 +19,7 @@
             />
 
             <PropsTable v-if="getPropsData(page.title)" :doc="getPropsData(page.title)!.docs" />
-          </DocsPage>
+          </Container>
         </template>
       </Container>
     </NavLayout>
@@ -22,9 +28,8 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { ComponentDoc } from 'vue-inbrowser-compiler-utils'
-import { Container, CrashDialog } from '..'
+import { Container, CrashDialog, Text } from '..'
 import { NavLayout } from '../components-wip'
-import DocsPage from './DocsPage.vue'
 import Example from './Example.vue'
 import PropsTable from './PropsTable.vue'
 
@@ -42,7 +47,7 @@ const componentsInfo = Object.values(components).map(({ docs, source }) => ({
 const chapters = computed(() => [
   {
     pages: [
-      { title: 'Dodo UI', href: '#intro' },
+      { title: 'Dodo UI', href: '#Dodo UI' },
       { title: 'Installation', href: '#Installation' },
     ],
   },
@@ -98,18 +103,5 @@ html, body {
 #app {
   height: 100%;
   display: grid;
-}
-table {
-  border-collapse: collapse;
-}
-th {
-  text-align: left;
-  padding: 8px;
-}
-td {
-  border: 1px solid rgba(0,0,0,0.15);
-  border-width: 1px 0;
-  padding: 8px;
-  vertical-align: top;
 }
 </style>

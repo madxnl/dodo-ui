@@ -16,7 +16,7 @@ import { Spinner } from '../components-wip'
 import { ThemeColor, useTheme, useThemeColorRGB } from '../theme'
 
 const props = defineProps<{
-/** Set button colorss
+/** Set button color
  * @example color="success"
  */
   color?: ThemeColor

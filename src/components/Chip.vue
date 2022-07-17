@@ -23,6 +23,7 @@ const props = defineProps<{
 }>()
 
 defineEmits<{
+  /** Chip was clicked */
   (e: 'close'): void
 }>()
 
