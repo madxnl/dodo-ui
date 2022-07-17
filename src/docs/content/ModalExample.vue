@@ -16,7 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Button, Modal, Row, Text } from '..'
+import { Button, Modal, Row, Text } from '../..'
 
 const showModal = ref(false)
 </script>

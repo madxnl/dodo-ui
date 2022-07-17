@@ -33,8 +33,8 @@ import { NavLayout } from '../components-wip'
 import Example from './Example.vue'
 import PropsTable from './PropsTable.vue'
 
-const examples = import.meta.globEager('../examples/*.vue')
 const components = import.meta.globEager('../components/*.vue')
+const examples = import.meta.globEager('./content/*Example*.vue')
 const docs = import.meta.globEager('./content/*Docs.vue')
 
 const componentsInfo = Object.values(components).map(({ docs, source }) => ({

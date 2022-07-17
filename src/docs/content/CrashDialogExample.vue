@@ -7,7 +7,7 @@
 </template>
 <script lang="ts" setup>
 import { onErrorCaptured } from 'vue'
-import { Button, CrashDialog } from '..'
+import { Button, CrashDialog } from '../..'
 
 const message = 'Test error'
 

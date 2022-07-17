@@ -25,7 +25,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { SelectButtons } from '..'
+import { SelectButtons } from '../..'
 
 const currentValue = ref(1)
 const currentMultipleValue = ref([1, 2, 4])

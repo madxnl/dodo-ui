@@ -11,7 +11,7 @@
   </Row>
 </template>
 <script lang="ts" setup>
-import { Chip, Row } from '..'
+import { Chip, Row } from '../..'
 
 function close() {
 }

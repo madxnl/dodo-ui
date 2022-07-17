@@ -16,5 +16,5 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { Icon } from '..'
+import { Icon } from '../..'
 </script>

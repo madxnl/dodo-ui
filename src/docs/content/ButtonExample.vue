@@ -29,7 +29,7 @@
   </Row>
 </template>
 <script lang="ts" setup>
-import { Button, Icon, Row, useCustomColor } from '..'
+import { Button, Icon, Row, useCustomColor } from '../..'
 
 const customColor = useCustomColor('#ff8888')
 

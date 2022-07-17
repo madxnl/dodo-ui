@@ -12,7 +12,7 @@
   </Text>
 </template>
 <script lang="ts" setup>
-import { Text } from '..'
+import { Text } from '../..'
 
 const text = 'A quick brown fox jumps over the lazy dog'
 const paragraph = 'A quick brown fox jumps over the lazy dog. '.repeat(5)
