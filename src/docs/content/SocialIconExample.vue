@@ -11,6 +11,8 @@
     <Button variant="solid" color="info">
       <SocialIcon name="google" white />
       <SocialIcon name="twitter" white />
+      <SocialIcon name="facebook" white />
+      <SocialIcon name="linkedin" white />
       <SocialIcon name="slack" white />
     </Button>
   </Row>
