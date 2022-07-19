@@ -1,18 +1,20 @@
 <template>
   <Row>
-    <SocialIcon name="google" large />
-    <SocialIcon name="twitter" large />
-    <SocialIcon name="slack" large />
-    <SocialIcon name="facebook" large />
-    <SocialIcon name="linkedin" large />
-    <SocialIcon name="whatsapp" large />
+    <SocialIcon name="google" />
+    <SocialIcon name="twitter" />
+    <SocialIcon name="slack" />
+    <SocialIcon name="facebook" />
+    <SocialIcon name="linkedin" />
+    <SocialIcon name="whatsapp" />
   </Row>
-  <Row style="background:silver" pad="s">
-    <SocialIcon name="google" white large />
-    <SocialIcon name="twitter" white large />
-    <SocialIcon name="slack" white large />
+  <Row>
+    <Button variant="solid" color="info">
+      <SocialIcon name="google" white />
+      <SocialIcon name="twitter" white />
+      <SocialIcon name="slack" white />
+    </Button>
   </Row>
 </template>
 <script lang="ts" setup>
-import { Row, SocialIcon } from '../..'
+import { Button, Row, SocialIcon } from '../..'
 </script>
