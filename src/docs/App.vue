@@ -11,7 +11,9 @@
           >
             <Text h1>{{ page.title }}</Text>
 
-            <component :is="getPageText(page.title)" v-if="getPageText(page.title)" />
+            <Container gap="s">
+              <component :is="getPageText(page.title)" v-if="getPageText(page.title)" />
+            </Container>
 
             <Example
               v-for="(e, j) in getExamples(page.title)" :key="j"

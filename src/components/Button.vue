@@ -7,12 +7,12 @@
     v-bind="{ ...$attrs, onClick }"
   >
     <div class="uiButton_content"><slot /></div>
-    <Spinner v-if="loading" :small="small" class="uiButton_spinner" />
+    <Spinner v-if="loading" :small="small" class="uiButton_spinner" color="inherit" />
   </button>
 </template>
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
-import { Spinner } from '../components-wip'
+import { Spinner } from '../components'
 import { ThemeColor, useTheme, useThemeColorRGB } from '../theme'
 
 const props = defineProps<{

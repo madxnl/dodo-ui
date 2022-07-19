@@ -21,14 +21,6 @@ import Button from './Button.vue'
 import Modal from './Modal.vue'
 import Text from './Text.vue'
 
-const emit = defineEmits<{
-  /**
-   * Emitted after an error has been detected or ignored
-   * @arg {Error} error error
-   */
-  (e: 'error', error: Error): void
-}>()
-
 const showDialog = ref(false)
 const ignored = ref(false)
 const ignoreDuration = 600 * 1000
@@ -40,7 +32,6 @@ onErrorCaptured((err, component, info) => {
   if (!ignored.value) {
     showDialog.value = true
   }
-  emit('error', err)
 })
 
 function reload() {
