@@ -1,40 +1,94 @@
 // Vitest Snapshot v1
 
 exports[`Deselect 1`] = `
-"<div class=\\"uiRow\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
-    <div class=\\"uiButton_content\\">Option one</div>
+"<div class=\\"uiRow\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\">
+    <div class=\\"uiButton_content\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option one
+    </div>
     <!--v-if-->
-  </button><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
-    <div class=\\"uiButton_content\\">Option two</div>
+  </button><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\">
+    <div class=\\"uiButton_content\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option two
+    </div>
     <!--v-if-->
   </button><button class=\\"uiButton uiButton_default uiButton_rounded\\" type=\\"button\\">
-    <div class=\\"uiButton_content\\">Option three</div>
+    <div class=\\"uiButton_content\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option three
+    </div>
     <!--v-if-->
   </button></div>"
 `;
 
 exports[`Select a value 1`] = `
-"<div class=\\"uiRow\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
-    <div class=\\"uiButton_content\\">Option one</div>
+"<div class=\\"uiRow\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\">
+    <div class=\\"uiButton_content\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option one
+    </div>
     <!--v-if-->
   </button><button class=\\"uiButton uiButton_default uiButton_rounded\\" type=\\"button\\">
-    <div class=\\"uiButton_content\\">Option two</div>
+    <div class=\\"uiButton_content\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option two
+    </div>
     <!--v-if-->
   </button><button class=\\"uiButton uiButton_default uiButton_rounded\\" type=\\"button\\">
-    <div class=\\"uiButton_content\\">Option three</div>
+    <div class=\\"uiButton_content\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option three
+    </div>
     <!--v-if-->
   </button></div>"
 `;
 
 exports[`Select multiple 1`] = `
-"<div class=\\"uiRow\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--rgb: 58,134,255;\\" type=\\"button\\">
-    <div class=\\"uiButton_content\\">Option one</div>
+"<div class=\\"uiRow\\" style=\\"flex-wrap: wrap;\\"><button class=\\"uiButton uiButton_default uiButton_active uiButton_rounded\\" style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\">
+    <div class=\\"uiButton_content\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option one
+    </div>
     <!--v-if-->
   </button><button class=\\"uiButton uiButton_default uiButton_rounded\\" type=\\"button\\">
-    <div class=\\"uiButton_content\\">Option two</div>
+    <div class=\\"uiButton_content\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option two
+    </div>
     <!--v-if-->
   </button><button class=\\"uiButton uiButton_default uiButton_rounded\\" type=\\"button\\">
-    <div class=\\"uiButton_content\\">Option three</div>
+    <div class=\\"uiButton_content\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option three
+    </div>
     <!--v-if-->
   </button></div>"
 `;
