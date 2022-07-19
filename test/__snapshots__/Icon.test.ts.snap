@@ -1,3 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Icon loads 1`] = `"<span style=\\"\\" class=\\"uiIcon material-symbols-outlined\\"></span>"`;
