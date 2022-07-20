@@ -64,7 +64,6 @@ const css = computed(() => {
 <style>
 .uiContainer {
   display: grid;
-  align-content: start;
   gap: var(--spacing-m);
 }
 .uiContainer_scroll {
