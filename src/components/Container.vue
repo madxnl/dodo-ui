@@ -56,7 +56,7 @@ const css = computed(() => {
   if (props.justify) s += `justify-content:${props.justify};`
   if (props.align) s += `align-items:${props.align};`
   if (props.background) s += `background:${useThemeColor(props.background)};`
-  if (props.columnWidth) s += `grid-template-columns:repeat(auto-fit,minmax(${props.columnWidth},1fr));`
+  if (props.columnWidth) s += `grid-template-columns:repeat(auto-fill,minmax(${props.columnWidth},1fr));`
   return s
 })
 </script>
