@@ -1,6 +1,6 @@
 <template>
   <div class="NavLayout" :style="css">
-    <Container gap="m" pad="l" class="NavLayout_bar" scrollable>
+    <Container gap="m" pad="l" class="NavLayout_bar" overflow="auto" align="start">
       <Container v-for="(chapter, i) in chapters" :key="i" gap="xs">
         <span v-if="chapter.title" class="NavLayout_chapterTitle">
           {{ chapter.title }}
@@ -11,7 +11,7 @@
         </template>
       </Container>
     </Container>
-    <Container class="NavLayout_content" scrollable>
+    <Container class="NavLayout_content" overflow="auto">
       <slot />
     </Container>
   </div>

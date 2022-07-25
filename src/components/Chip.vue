@@ -3,28 +3,18 @@
     :is="$attrs.onClick ? 'button' : 'span'"
     class="uiChip"
     :style="css"
-    :class="classes"
   >
-    <span class="uiChip_text">
-      <slot />
-    </span>
-    <Icon v-if="closable" name="close" small />
+    <slot name="before" />
+    <span class="uiChip_text"><slot /></span>
+    <slot name="after" />
   </component>
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { ThemeColor, useThemeColorRGB } from '../theme'
-import Icon from './Icon.vue'
 
 const props = defineProps<{
   color?: ThemeColor
-  /* Show close icon */
-  closable?: boolean
-}>()
-
-defineEmits<{
-  /** Chip was clicked */
-  (e: 'close'): void
 }>()
 
 const css = computed(() => {
@@ -32,8 +22,6 @@ const css = computed(() => {
   if (props.color) s += `--chip-rgb:${useThemeColorRGB(props.color)};`
   return s
 })
-
-const classes = computed(() => [])
 
 </script>
 <style>

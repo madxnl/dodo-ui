@@ -25,7 +25,6 @@
 
     <Button color="info" small variant="text" @click="myAsyncSubmit">Async 1</Button>
     <Button variant="solid" color="info" @click="myAsyncSubmit">Async 2</Button>
-    <Button>Loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong</Button>
   </Row>
 </template>
 <script lang="ts" setup>
