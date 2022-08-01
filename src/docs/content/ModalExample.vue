@@ -1,9 +1,9 @@
 <template>
-  <Row>
+  <div>
     <Button variant="solid" color="info" @click="showModal=true">
       Click to open dialog
     </Button>
-  </Row>
+  </div>
 
   <Modal :active="showModal">
     <Text h3>My dialog</Text>
@@ -16,7 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Button, Modal, Row, Text } from '../..'
+import { Button, Modal, Text } from '../..'
 
 const showModal = ref(false)
 </script>

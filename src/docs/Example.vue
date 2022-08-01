@@ -1,6 +1,6 @@
 <template>
   <Container column-width="500px" gap="0">
-    <Container align="start" pad="m" class="App_Example">
+    <Container pad="m" class="App_Example">
       <component :is="component" />
     </Container>
 

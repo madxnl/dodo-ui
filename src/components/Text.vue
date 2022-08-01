@@ -65,10 +65,9 @@ useTheme()
 <style>
 .uiText {
   text-overflow: ellipsis;
-  cursor: default;
+  cursor: inherit;
   margin: 0;
   font: var(--ui-font);
-  color: var(--color-foreground);
 }
 .uiText .uiText {
   font: inherit;
@@ -77,20 +76,23 @@ useTheme()
   overflow: hidden;
   white-space: nowrap;
 }
-/* p.uiText, .uiText p {} */
+p.uiText, .uiText p {
+  color: var(--color-foreground);
+}
 h1.uiText,
 h2.uiText,
 h3.uiText {
-  font-weight: bold;
+  font-weight: 600;
+  color: var(--color-foreground);
 }
 h1.uiText {
-  font-size: calc(var(--ui-font-size) + 10px);
+  font-size: calc(var(--ui-font-size) + 30px);
 }
 h2.uiText {
-  font-size: calc(var(--ui-font-size) + 6px);
+  font-size: calc(var(--ui-font-size) + 12px);
 }
 h3.uiText {
-  font-size: calc(var(--ui-font-size) + 2px);
+  font-size: calc(var(--ui-font-size) + 6px);
 }
 code.uiText, .uiText code {
   font-family: monospace;

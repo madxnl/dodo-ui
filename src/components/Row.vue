@@ -35,10 +35,15 @@ const props = defineProps<{
    */
   justify?: 'center'|'end'|'start'|'stretch'|'space-between'|'space-around'|'space-evenly'
   /**
-   * Align contents
+   * Align items
    * @example align="end"
    */
   align?: 'center'|'end'|'start'|'stretch'
+  /**
+   * Align contents
+   * @example align="end"
+   */
+  alignContent?: 'center'|'end'|'start'|'stretch'|'space-between'|'space-around'|'space-evenly'
   /**
    * Wrap contents over multiple rows instead of shrinking
    * @example wrap
@@ -56,6 +61,7 @@ const css = computed(() => {
   if (props.wrap) s += 'flex-wrap:wrap;'
   if (props.justify) s += `justify-content:${props.justify};`
   if (props.align) s += `align-items:${props.align};`
+  if (props.alignContent) s += `align-content:${props.alignContent};`
   return s
 })
 </script>

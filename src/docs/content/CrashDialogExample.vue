@@ -1,9 +1,11 @@
 <template>
-  <CrashDialog>
-    <Button @click="throwError">
-      Show example
-    </Button>
-  </CrashDialog>
+  <div>
+    <CrashDialog>
+      <Button @click="throwError">
+        Show example
+      </Button>
+    </CrashDialog>
+  </div>
 </template>
 <script lang="ts" setup>
 import { onErrorCaptured } from 'vue'
