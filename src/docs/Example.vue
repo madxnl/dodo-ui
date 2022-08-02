@@ -1,7 +1,9 @@
 <template>
   <Container column-width="500px" gap="0">
     <Container pad="m" class="App_Example">
-      <component :is="component" />
+      <Container overflow="auto">
+        <component :is="component" />
+      </Container>
     </Container>
 
     <SyntaxHighlight class="App_ExampleText" :code="code" lang="html" />

@@ -1,46 +1,43 @@
 <template>
   <div ref="el" :class="{NavBar_collapsed: collapsed}" class="NavBar_root">
-    <div class="NavBar_pane">
-      <div class="NavBar">
-        <div v-if="$slots['navbar-header']" class="NavBar_header">
-          <slot name="navbar-header" />
-        </div>
+    <div class="NavBar">
+      <div v-if="$slots['navbar-header']" class="NavBar_header">
+        <slot name="navbar-header" />
+      </div>
 
-        <div class="NavBar_middle">
-          <slot />
-        </div>
+      <div class="NavBar_middle">
+        <slot />
+      </div>
 
-        <div v-if="$slots['navbar-footer']" class="NavBar_footer">
-          <slot name="navbar-footer" />
+      <div v-if="$slots['navbar-footer']" class="NavBar_footer">
+        <slot name="navbar-footer" />
 
-          <NavBarItem :text="collapsed ? 'Expand' : 'Collapse'" :icon="collapsed ? 'last_page' : 'first_page'" @click="toggleCollapse" />
-        </div>
+        <NavBarItem :text="collapsed ? 'Expand' : 'Collapse'" :icon="collapsed ? 'last_page' : 'first_page'" @click="toggleCollapse" />
       </div>
     </div>
 
-    <Container v-if="$slots.main" style="flex:1">
+    <Container v-if="$slots.main" class="NavBar_main">
       <slot name="main" />
     </Container>
   </div>
 </template>
 <script lang="ts" setup>
-import { onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
+import { computed, onBeforeUnmount, onMounted, provide, ref } from 'vue'
 import { Container } from '..'
 import { useTheme } from '../theme'
+import { navBarServiceKey } from './composables'
 import NavBarItem from './NavBarItem.vue'
 
 useTheme()
 
 const el = ref<HTMLElement>()
-const collapsed = ref(false)
+const manualCollapsed = ref<boolean>()
 const containerWidth = ref(9999)
 const collapseThreshold = 800
 
 const observer = new ResizeObserver(() => updateContainerSize())
 
-watchEffect(() => {
-  collapsed.value = containerWidth.value < collapseThreshold
-})
+const collapsed = computed(() => manualCollapsed.value ?? containerWidth.value < collapseThreshold)
 
 onMounted(() => {
   observer.observe(el.value!)
@@ -56,10 +53,13 @@ function updateContainerSize() {
 }
 
 function toggleCollapse() {
-  collapsed.value = !collapsed.value
+  manualCollapsed.value = !collapsed.value
 }
-</script>
 
+provide(navBarServiceKey, { collapsed })
+</script>
+<script lang="ts">
+</script>
 <style>
 .NavBar {
   background: var(--color-navbar);
@@ -71,9 +71,6 @@ function toggleCollapse() {
 .NavBar_root {
   display: flex;
 }
-.NavBar_pane {
-  position: relative;
-}
 .NavBar_header,
 .NavBar_middle,
 .NavBar_footer {
@@ -82,6 +79,9 @@ function toggleCollapse() {
   align-content: start;
 }
 .NavBar_middle {
+  flex: 1;
+}
+.NavBar_main {
   flex: 1;
 }
 </style>

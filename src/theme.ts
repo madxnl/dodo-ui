@@ -97,15 +97,15 @@ export function useThemeColorRGB(name: ThemeColor) {
   return hexToRGB(useThemeColor(name))
 }
 
-// export function mixHexColors(color1: ThemeColor, color2: ThemeColor, mixPct: number) {
-//   const rgb1 = useThemeColorRGB(color1)
-//   const rgb2 = useThemeColorRGB(color2)
-//   return [
-//     rgb1[0] * (1 - mixPct) + rgb2[0] + mixPct,
-//     rgb1[1] * (1 - mixPct) + rgb2[1] + mixPct,
-//     rgb1[2] * (1 - mixPct) + rgb2[2] + mixPct,
-//   ]
-// }
+export function mixHexColors(color1: ThemeColor, color2: ThemeColor, mixPct: number) {
+  const rgb1 = useThemeColorRGB(color1)
+  const rgb2 = useThemeColorRGB(color2)
+  return [
+    rgb1[0] * (1 - mixPct) + rgb2[0] * mixPct,
+    rgb1[1] * (1 - mixPct) + rgb2[1] * mixPct,
+    rgb1[2] * (1 - mixPct) + rgb2[2] * mixPct,
+  ]
+}
 
 export function hexToRGB(hex: string) {
   const [r, g, b] = hex.match(/(\w\w)/g)!

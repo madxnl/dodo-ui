@@ -1,22 +1,26 @@
 <template>
-  <div
-    class="NavBarItem" :class="{
-      NavBarItem_active: active,
-      NavBarItem_important: important,
-    }"
-  >
-    <div v-if="icon || $slots.icon" class="NavBarItem_icon">
-      <slot name="icon"><Icon :name="icon!" /></slot>
+  <Tooltip :text="text" :disabled="!showToolTip" side="right">
+    <div
+      class="NavBarItem" :class="{
+        NavBarItem_active: active,
+        NavBarItem_important: important,
+      }"
+    >
+      <div v-if="icon || $slots.icon" class="NavBarItem_icon">
+        <slot name="icon"><Icon :name="icon!" /></slot>
+      </div>
+      <div class="NavBarItem_textwrap">
+        <Text class="NavBarItem_text" nowrap>{{ text }}</Text>
+        <Text v-if="textSecondary" class="NavBarItem_secondary" nowrap>{{ textSecondary }}</Text>
+      </div>
     </div>
-    <div class="NavBarItem_textwrap">
-      <Text class="NavBarItem_text" nowrap>{{ text }}</Text>
-      <Text v-if="textSecondary" class="NavBarItem_secondary" nowrap>{{ textSecondary }}</Text>
-    </div>
-  </div>
+  </Tooltip>
 </template>
 <script lang="ts" setup>
-import { Icon, IconName, Text } from '..'
+import { computed, inject } from 'vue'
+import { Icon, IconName, Text, Tooltip } from '..'
 import { useTheme } from '../theme'
+import { navBarServiceKey } from './composables'
 
 defineProps<{
   text: string
@@ -32,10 +36,8 @@ defineProps<{
 
 useTheme()
 
-// const css = computed(() => {
-//   const s = ''
-//   return s
-// })
+const navBar = inject(navBarServiceKey)
+const showToolTip = computed(() => navBar?.collapsed.value)
 </script>
 
 <style>
