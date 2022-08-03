@@ -75,6 +75,7 @@ const showToolTip = computed(() => navBar?.collapsed.value)
 .NavBarItem_text {
   color: white;
   font-weight: 500;
+  user-select: none;
 }
 .NavBarItem_secondary {
   opacity: 0.5;

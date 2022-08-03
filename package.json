@@ -24,7 +24,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "check:test": "vitest run",
-    "check:lint": "eslint . --ext .js,.ts,.vue",
+    "check:lint": "eslint . --ext .js,.ts,.vue --max-warnings=0",
     "check": "npm run check:lint && npm run check:test",
     "build:docs": "vite build",
     "build:npm": "vite build --config vite.npm.ts && vue-tsc --emitDeclarationOnly -p tsconfig.npm.json",
