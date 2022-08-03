@@ -32,7 +32,7 @@ const bgcolor = computed(() => {
   for (const color1 of baseColors) {
     for (const color2 of baseColors) {
       if (color1 === color2) continue
-      for (const pct of [0, 0.25, 0.5, 0.75]) {
+      for (const pct of [0, 0.5]) {
         colors.push(mixHexColors(color1, color2, pct))
       }
     }
@@ -43,7 +43,7 @@ const bgcolor = computed(() => {
 
 function hashCode(s: string) {
   let h = 0
-  for (let i = 0; i < s.length; ++i) h = 881 * h + 193 * s.charCodeAt(i)
+  for (let i = 0; i < s.length; ++i) h = 23 * (h % 1e6) + 193 * s.charCodeAt(i)
   return h
 }
 
