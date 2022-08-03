@@ -1,11 +1,11 @@
 <template>
   <component
     :is="$attrs.onClick ? 'button' : 'span'"
-    class="uiChip"
+    :class="$style.Chip"
     :style="css"
   >
     <slot name="before" />
-    <span class="uiChip_text"><slot /></span>
+    <span :class="$style.text"><slot /></span>
     <slot name="after" />
   </component>
 </template>
@@ -24,8 +24,8 @@ const css = computed(() => {
 })
 
 </script>
-<style>
-.uiChip {
+<style module>
+.Chip {
   font: var(--ui-font);
   font-size: calc(var(--ui-font-size) - 1px);
   font-weight: 500;
@@ -47,18 +47,18 @@ const css = computed(() => {
   overflow: hidden;
   gap: 4px;
 }
-.uiChip_text {
+.text {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-button.uiChip {
+button.Chip {
   cursor: pointer;
   position: relative;
 }
-button.uiChip:hover {
+button.Chip:hover {
   cursor: pointer;
 }
-button.uiChip:after {
+button.Chip:after {
   content: '';
   border-radius: inherit;
   position: absolute;
@@ -68,10 +68,10 @@ button.uiChip:after {
   transition: all .1s;
   pointer-events: none;
 }
-button.uiChip:hover:after {
+button.Chip:hover:after {
   opacity: 0.1;
 }
-button.uiChip:active:after {
+button.Chip:active:after {
   opacity: 0.2;
 }
 </style>

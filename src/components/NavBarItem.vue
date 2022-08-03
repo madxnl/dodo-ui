@@ -1,17 +1,19 @@
 <template>
-  <Tooltip :text="text" :disabled="!showToolTip" side="right">
+  <Tooltip :text="text" :disabled="!collapsed" side="right">
     <div
-      class="NavBarItem" :class="{
-        NavBarItem_active: active,
-        NavBarItem_important: important,
-      }"
+      :class="[
+        $style.NavBarItem,
+        active && $style.active,
+        important && $style.important,
+        collapsed && $style.collapsed,
+      ]"
     >
-      <div v-if="icon || $slots.icon" class="NavBarItem_icon">
+      <div v-if="icon || $slots.icon" :class="$style.icon">
         <slot name="icon"><Icon :name="icon!" /></slot>
       </div>
-      <div class="NavBarItem_textwrap">
-        <Text class="NavBarItem_text" nowrap>{{ text }}</Text>
-        <Text v-if="textSecondary" class="NavBarItem_secondary" nowrap>{{ textSecondary }}</Text>
+      <div :class="$style.textwrap">
+        <Text :class="$style.text" nowrap>{{ text }}</Text>
+        <Text v-if="textSecondary" :class="$style.secondary" nowrap>{{ textSecondary }}</Text>
       </div>
     </div>
   </Tooltip>
@@ -37,10 +39,10 @@ defineProps<{
 useTheme()
 
 const navBar = inject(navBarServiceKey)
-const showToolTip = computed(() => navBar?.collapsed.value)
+const collapsed = computed(() => navBar?.collapsed.value)
 </script>
 
-<style>
+<style module>
 .NavBarItem {
   padding: var(--spacing-xs) var(--spacing-m);
   opacity: 0.7;
@@ -51,7 +53,7 @@ const showToolTip = computed(() => navBar?.collapsed.value)
   align-items: center;
   position: relative;
 }
-.NavBarItem_active::before {
+.active::before {
   content: '';
   position: absolute;
   top: 4px; left: -2px; bottom: 4px;
@@ -60,38 +62,38 @@ const showToolTip = computed(() => navBar?.collapsed.value)
   display: block;
   background: currentColor;
 }
-.NavBarItem_important {
+.important {
   opacity: 1;
 }
-.NavBarItem_textwrap {
+.textwrap {
   display: grid;
   max-width: 130px;
 }
-.NavBarItem_icon {
+.icon {
   display: grid;
   min-width: 32px;
   justify-content: center;
 }
-.NavBarItem_text {
+.text {
   color: white;
   font-weight: 500;
   user-select: none;
 }
-.NavBarItem_secondary {
+.secondary {
   opacity: 0.5;
   font-weight: 500;
 }
 
-.NavBarItem_active,
+.active,
 .NavBarItem:hover {
   opacity: 1;
 }
 
-.NavBar_collapsed .NavBarItem_textwrap {
+.collapsed .textwrap {
   max-width: 0;
   opacity: 0;
 }
-.NavBar_collapsed .NavBarItem {
+.collapsed {
   gap: 0;
 }
 </style>

@@ -1,5 +1,12 @@
 <template>
-  <component :is="tag ?? 'span'" class="uiText" :class="classes" :style="css">
+  <component
+    :is="tag ?? 'span'"
+    :class="[
+      $style.Text,
+      nowrap && $style.nowrap,
+    ]"
+    :style="css"
+  >
     <slot />
   </component>
 </template>
@@ -46,12 +53,6 @@ const tag = computed(() => {
   return tags.find(t => props[t]) ?? 'span'
 })
 
-const classes = computed(() => {
-  let s = ''
-  if (props.nowrap) s += ' uiText_nowrap'
-  return s
-})
-
 const css = computed(() => {
   let s = ''
   if (props.color) s += `color:${useThemeColor(props.color)};`
@@ -62,52 +63,52 @@ const css = computed(() => {
 useTheme()
 
 </script>
-<style>
-.uiText {
+<style module>
+.Text {
   text-overflow: ellipsis;
   cursor: inherit;
   margin: 0;
   font: var(--ui-font);
 }
-.uiText .uiText {
+.Text .Text {
   font: inherit;
 }
-.uiText_nowrap {
+.nowrap {
   overflow: hidden;
   white-space: nowrap;
 }
-p.uiText, .uiText p {
+p.Text, .Text p {
   color: var(--color-foreground);
 }
-h1.uiText,
-h2.uiText,
-h3.uiText {
+h1.Text,
+h2.Text,
+h3.Text {
   font-weight: 600;
   color: var(--color-foreground);
 }
-h1.uiText {
+h1.Text {
   font-size: calc(var(--ui-font-size) + 30px);
 }
-h2.uiText {
+h2.Text {
   font-size: calc(var(--ui-font-size) + 12px);
 }
-h3.uiText {
+h3.Text {
   font-size: calc(var(--ui-font-size) + 6px);
 }
-code.uiText, .uiText code {
+code.Text, .Text code {
   font-family: monospace;
 }
-a.uiText, .uiText a {
+a.Text, .Text a {
   color: var(--color-info);
 }
-blockquote.uiText, .uiText blockquote {
+blockquote.Text, .Text blockquote {
   padding-left: 16px;
   border-left: 2px solid rgba(var(--rgb-foreground), 0.25);
 }
-small.uiText, .uiText small {
+small.Text, .Text small {
   font-size: calc(var(--ui-font-size) - 2px);
 }
-strong.uiText, .uiText strong {
+strong.Text, .Text strong {
   font-weight: bold;
 }
 /* code {

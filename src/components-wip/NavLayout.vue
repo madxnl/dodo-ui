@@ -1,17 +1,17 @@
 <template>
-  <div class="NavLayout" :style="css">
-    <Container gap="m" pad="l" class="NavLayout_bar" overflow="auto" align="start">
+  <div :class="$style.NavLayout" :style="css">
+    <Container gap="m" pad="l" :class="$style.bar" overflow="auto" align="start">
       <Container v-for="(chapter, i) in chapters" :key="i" gap="xs">
-        <span v-if="chapter.title" class="NavLayout_chapterTitle">
+        <span v-if="chapter.title" :class="$style.chapterTitle">
           {{ chapter.title }}
         </span>
 
         <template v-for="page in chapter.pages" :key="page.href">
-          <a :href="page.href" class="NavLayout_pageLink">{{ page.title }}</a>
+          <a :href="page.href" :class="$style.pageLink">{{ page.title }}</a>
         </template>
       </Container>
     </Container>
-    <Container class="NavLayout_content" overflow="auto">
+    <Container :class="$style.content" overflow="auto">
       <slot />
     </Container>
   </div>
@@ -65,7 +65,7 @@ onBeforeUnmount(() => {
 
 //   }, null)
 // const chapters = Array.from(el.querySelectorAll('[data-chapter]'))
-// const activeClass = 'NavLayout_linkActive'
+// const activeClass = 'linkActive'
 // chapters.forEach(chapter => chapter.classList.remove(activeClass))
 // const activeChapter = chapters.find(c => c.
 //   chapter.
@@ -79,26 +79,26 @@ const css = computed(() => {
 })
 </script>
 
-<style>
+<style module>
 .NavLayout {
   display: flex;
   min-height: 0;
 }
-.NavLayout_chapterTitle,
-.NavLayout_pageLink {
+.chapterTitle,
+.pageLink {
   color: inherit;
   text-decoration: none;
   font: var(--ui-font);
   font-weight: 500;
   color: var(--color-foreground);
 }
-.NavLayout_pageLink {
+.pageLink {
   color: var(--color-muted);
 }
-.NavLayout_pageLink:hover {
+.pageLink:hover {
   color: var(--color-foreground);
 }
-/* .NavLayout_pageLink:nth-child(3) {
+/* .pageLink:nth-child(3) {
   color: var(--color-foreground);
   font-weight: bold;
 } */
@@ -107,7 +107,7 @@ hr {
   border-color: rgba(0,0,0,0.15);
   border-right: 0;
 }
-.NavLayout_content {
+.content {
   flex: 1;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <span class="Avatar" :style="`--color:rgb(${bgcolor});background-image:url(${image})`">
+  <span :class="$style.Avatar" :style="`--color:rgb(${bgcolor});background-image:url(${image})`">
     {{ initials }}
   </span>
 </template>
@@ -50,7 +50,7 @@ function hashCode(s: string) {
 useTheme()
 
 </script>
-<style>
+<style module>
 .Avatar {
   display: inline-grid;
   border-radius: 4px;

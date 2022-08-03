@@ -1,10 +1,10 @@
 <template>
-  <div ref="trigger" class="Tooltip_trigger" @mouseenter="activate" @mouseleave="deactivate">
+  <div ref="trigger" :class="$style.trigger" @mouseenter="activate" @mouseleave="deactivate">
     <slot />
     <teleport v-if="active" to="body">
-      <div ref="tooltip" class="Tooltip" :style="position">
-        <div class="Tooltip_content">
-          <Text class="Tooltip_text" small>
+      <div ref="tooltip" :class="$style.Tooltip" :style="position">
+        <div :class="$style.content">
+          <Text :class="$style.text" small>
             <slot name="tooltip-text">{{ text }}</slot>
           </Text>
         </div>
@@ -64,13 +64,13 @@ function deactivate() {
 useTheme()
 
 </script>
-<style>
+<style module>
 .Tooltip {
   padding: var(--spacing-xs);
   position: fixed;
   pointer-events: none;
 }
-.Tooltip_content {
+.content {
   padding: var(--spacing-xs) var(--spacing-s);
   border: 1px solid rgba(var(--rgb-foreground), 0.2);
   border-radius: 4px;
@@ -78,7 +78,7 @@ useTheme()
   max-width: 300px;
   background: black;
 }
-.Tooltip_text {
+.text {
   color: white;
   font-weight: 500;
   /* display: inline-grid;

@@ -1,13 +1,20 @@
 <template>
   <button
-    class="uiButton"
     :style="css"
     :type="type ?? 'button'"
-    :class="classes"
+    :class="[
+      $style.Button,
+      $style[props.variant ?? 'default'],
+      loading && $style.loading,
+      small && $style.small,
+      square && $style.square,
+      active && $style.active,
+      rounded && $style.rounded,
+    ]"
     v-bind="{ ...$attrs, onClick }"
   >
-    <div class="uiButton_content"><slot /></div>
-    <Spinner v-if="loading" :small="small" class="uiButton_spinner" color="inherit" />
+    <div :class="$style.content"><slot /></div>
+    <Spinner v-if="loading" :small="small" :class="$style.spinner" color="inherit" />
   </button>
 </template>
 <script lang="ts" setup>
@@ -55,15 +62,6 @@ const css = computed(() => {
   return s
 })
 
-const classes = computed(() => [
-  { uiButton_loading: loading.value },
-  `uiButton_${props.variant ?? 'default'}`,
-  props.small ? 'uiButton_small' : null,
-  props.square ? 'uiButton_square' : null,
-  props.active ? 'uiButton_active' : null,
-  props.rounded ? 'uiButton_rounded' : null,
-])
-
 const attrs = useAttrs()
 
 const loading = ref(false)
@@ -85,8 +83,8 @@ export default {
   inheritAttrs: false,
 }
 </script>
-<style lang="css">
-.uiButton {
+<style module>
+.Button {
   border: 0;
   cursor: pointer;
   font: var(--ui-font);
@@ -109,55 +107,55 @@ export default {
   white-space: nowrap;
   box-sizing: border-box;
 }
-.uiButton_content {
+.content {
   display: flex;
   align-items: center;
   gap: 4px;
   overflow: hidden;
 }
-.uiButton_solid {
+.solid {
   background: rgb(var(--bnt-rgb, var(--rgb-foreground)));
   color: white;
 }
-.uiButton_default {
+.default {
   border: 1px solid rgba(var(--bnt-rgb, var(--rgb-foreground)), 0.35);
 }
-.uiButton_rounded {
+.rounded {
   border-radius: 99px;
 }
-.uiButton_text {
+.text {
   background: transparent;
   color: rgb(var(--bnt-rgb, var(--rgb-foreground)));
   box-shadow: none;
 }
-.uiButton_loading {
+.loading {
   pointer-events: none;
 }
-.uiButton_loading .uiButton_content {
+.loading .content {
   visibility: hidden;
 }
-.uiButton_spinner {
+.spinner {
   position: absolute;
   top: auto; left: auto; right: auto; bottom: auto;
 }
-.uiButton:active,
-.uiButton_active,
-.uiButton.uiButton_loading {
+.Button:active,
+.active,
+.Button.loading {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
 }
-.uiButton:disabled {
+.Button:disabled {
   opacity: 0.5;
   pointer-events: none;
 }
-.uiButton_small {
+.small {
   padding: 0 10px;
   --height: 28px;
   font-size: calc(var(--ui-font-size) - 1px);
 }
-.uiButton_square {
+.square {
   padding: 0;
 }
-.uiButton:after {
+.Button:after {
   content: '';
   border-radius: inherit;
   position: absolute;
@@ -167,12 +165,12 @@ export default {
   transition: all .1s;
   pointer-events: none;
 }
-.uiButton:hover:after {
+.Button:hover:after {
   opacity: 0.1;
 }
-.uiButton:active:after,
-.uiButton_active:after,
-.uiButton.uiButton_loading:after {
+.Button:active:after,
+.Button_active:after,
+.Button.loading:after {
   opacity: 0.2;
 }
 </style>

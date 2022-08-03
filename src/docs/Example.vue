@@ -1,15 +1,15 @@
 <template>
-  <Container class="Example" gap="0">
+  <Container :class="$style.Example" gap="0">
     <Container pad="m">
       <component :is="component" />
     </Container>
 
-    <div class="Example_expand" @click="showCode=!showCode">
+    <div :class="$style.expand" @click="showCode=!showCode">
       <Icon :name="showCode ? 'expand_less' : 'expand_more'" />
     </div>
 
     <template v-if="showCode">
-      <SyntaxHighlight class="Example_code" :code="code" lang="html" />
+      <SyntaxHighlight :class="$style.code" :code="code" lang="html" />
     </template>
   </Container>
 </template>
@@ -27,11 +27,11 @@ defineProps<{
 const showCode = ref(false)
 
 </script>
-<style>
+<style module>
 .Example {
   border: 1px solid rgba(0,0,0,0.15);
 }
-.Example_code {
+.code {
   border-top: 1px solid rgba(0,0,0,0.15);
   border-left: 0;
   margin: 0 !important;
@@ -39,7 +39,7 @@ const showCode = ref(false)
   background: rgba(0,0,0,0.03) !important;
   padding: 8px 16px !important;
 }
-.Example_expand {
+.expand {
   border-top: 1px solid rgba(0,0,0,0.15);
   cursor: pointer;
   color: rgba(0,0,0,0.5);
@@ -48,7 +48,7 @@ const showCode = ref(false)
   justify-content: center;
   transition: all .1s;
 }
-.Example_expand:hover {
+.expand:hover {
   color: #000000;
   background: rgba(0,0,0,0.03);
 }
