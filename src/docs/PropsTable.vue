@@ -1,7 +1,7 @@
 <template>
   <template v-if="doc.props?.length">
     <div style="overflow:auto">
-      <table class="uiTable">
+      <table :class="$style.Table">
         <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
         <tr v-for="prop in doc.props ?? []" :key="prop.name">
           <td><code>{{ prop.name }}<template v-if="!prop.required">?</template></code></td>
@@ -13,7 +13,7 @@
   </template>
   <template v-if="doc.events?.length">
     <div style="overflow:auto">
-      <table class="uiTable">
+      <table :class="$style.Table">
         <tr><th>Event</th><th>Signature</th><th>Description</th></tr>
         <tr v-for="ev in doc.events ?? []" :key="ev.name">
           <td><code>{{ ev.name }}</code></td>
@@ -25,7 +25,7 @@
   </template>
   <template v-if="doc.slots?.length">
     <div style="overflow:auto">
-      <table class="uiTable">
+      <table :class="$style.Table">
         <tr><th>Slot</th><th>Scope</th><th>Description</th></tr>
         <tr v-for="slot in doc.slots ?? []" :key="slot.name">
           <td><code>{{ slot.name }}</code></td>
@@ -67,8 +67,8 @@ defineProps<{
 
 // const hasPropExamples = computed(() => (props.doc.props ?? []).some(p => p.tags?.example))
 </script>
-<style>
-.uiTable {
+<style module>
+.Table {
   font: var(--ui-font);
   font-size: calc(var(--ui-font-size) - 1px);
 }

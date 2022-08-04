@@ -1,5 +1,5 @@
 <template>
-  <div class="NavBarExample">
+  <div :class="$style.NavBarExample">
     <NavBar>
       <template #navbar-header>
         <NavBarItem text="Organisation Name Here" text-secondary="User Name" important>
@@ -29,7 +29,7 @@
 import { NavBar, NavBarItem } from '../..'
 import image from '../assets/placeholder32.png'
 </script>
-<style>
+<style module>
 .NavBarExample {
   min-height: 400px;
   min-width: 800px;

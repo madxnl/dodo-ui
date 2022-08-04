@@ -1,10 +1,17 @@
 <template>
-  <span :class="classes">
+  <span
+    :class="[
+      $style.SocialIcon,
+      small && $style.small,
+      large && $style.large,
+      white && $style.white,
+    ]"
+  >
     <svg v-if="name==='google'" viewBox="0 0 48 48">
       <clipPath id="g">
         <path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" />
       </clipPath>
-      <g class="colors" clip-path="url(#g)">
+      <g clip-path="url(#g)">
         <path fill="#FBBC05" d="M0 37V11l17 13z" />
         <path fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z" />
         <path fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z" />
@@ -43,11 +50,10 @@
   </span>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue'
 
 type SocialIconName = 'google'|'facebook'|'twitter'|'linkedin'|'slack'|'whatsapp'
 
-const props = defineProps<{
+defineProps<{
   /** Social icon name
    * @example icon="google"
    */
@@ -60,17 +66,9 @@ const props = defineProps<{
   small?: boolean
   large?: boolean
 }>()
-
-const classes = computed(() => {
-  let s = 'uiSocialIcon'
-  if (props.small) s += ' uiSocialIcon_small'
-  if (props.large) s += ' uiSocialIcon_large'
-  if (props.white) s += ' uiSocialIcon_white'
-  return s
-})
 </script>
-<style lang="css">
-.uiSocialIcon {
+<style module>
+.SocialIcon {
   height: 1em;
   width: 1em;
   font-size: 20px;
@@ -80,20 +78,18 @@ const classes = computed(() => {
   justify-content: center;
   align-items: center;
 }
-.uiSocialIcon svg {
+.SocialIcon svg {
   max-height: 1em;
   max-width: 1em;
-}
-.uiSocialIcon_white svg {
-  filter: brightness(999) invert(0.5) brightness(999);
-}
-.uiSocialIcon svg {
   height: 1em;
 }
-.uiSocialIcon.uiSocialIcon_small {
+.white svg {
+  filter: brightness(999) invert(0.5) brightness(999);
+}
+.small {
   font-size: 16px;
 }
-.uiSocialIcon.uiSocialIcon_large {
+.large {
   font-size: 28px;
 }
 </style>

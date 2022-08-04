@@ -1,4 +1,3 @@
-
 <template>
   <CrashDialog>
     <NavLayout v-if="componentsInfo" :chapters="chapters">
@@ -7,7 +6,7 @@
           <Container
             v-for="page in chapter.pages" :id="page.title"
             :key="page.href" pad="l"
-            gap="l" class="App_chapter"
+            gap="l"
           >
             <Text h1>{{ page.title }}</Text>
 

@@ -1,18 +1,16 @@
 <template>
   <Container align="start">
     <Row wrap>
-      <Avatar text="Sam" />
-      <Avatar text="Jane Doe" />
-      <Avatar text="Mary Sue" />
+      <Avatar text="Image" :image="imgUrl" />
       <Avatar text="A" />
       <Avatar text="B" />
       <Avatar text="C" />
-      <Avatar text="D" />
-      <Avatar text="H" />
-      <Avatar text="H H" />
-      <Avatar text="H I" />
-      <Avatar text="H J" />
-      <Avatar text="Foo" :image="imgUrl" />
+      <Avatar text="J K" />
+      <Avatar text="K L" />
+      <Avatar text="L M" />
+      <Avatar text="M N" />
+      <Avatar text="N O" />
+      <Avatar text="O P" />
     </Row>
   </Container>
 </template>

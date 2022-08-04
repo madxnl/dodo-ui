@@ -1,9 +1,9 @@
 import vue from '@vitejs/plugin-vue'
 import { readFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
-import { defineConfig, Plugin, ViteDevServer } from 'vite'
-import { parse, parseSource } from 'vue-docgen-api'
+import { defineConfig, Plugin, UserConfig, ViteDevServer } from 'vite'
 import Inspect from 'vite-plugin-inspect'
+import { parse, parseSource } from 'vue-docgen-api'
 
 function docgen(): Plugin {
   const postfix = ':docgen'
@@ -59,8 +59,13 @@ function docgen(): Plugin {
   }
 }
 
+export function generateScopedName(name: string, filename: string) {
+  const componentName = filename.split('.vue')[0].split('/').slice(-1)[0]
+  return name === componentName ? `dodo${name}` : `dodo${componentName}-${name}`
+}
+
 // https://vitejs.dev/config/
-export default defineConfig({
+export const baseConfig: UserConfig = {
   base: '/dodo-ui/', // match path for madxnl.github.io/dodo-ui/
   plugins: [
     docgen(),
@@ -70,4 +75,7 @@ export default defineConfig({
   build: {
     outDir: 'docs',
   },
-})
+  css: { modules: { generateScopedName } },
+}
+
+export default defineConfig(baseConfig)

@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <Row>
     <Tooltip text="Information tooltip">
       <Icon name="info" />
     </Tooltip>
-  </div>
+  </Row>
 </template>
 <script lang="ts" setup>
-import { Icon, Tooltip } from '../..'
+import { Icon, Row, Tooltip } from '../..'
 </script>

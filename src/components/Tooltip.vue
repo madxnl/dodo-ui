@@ -1,10 +1,10 @@
 <template>
-  <div ref="trigger" class="Tooltip_trigger" @mouseover="activate">
+  <div ref="trigger" :class="$style.trigger" @mouseenter="activate" @mouseleave="deactivate">
     <slot />
     <teleport v-if="active" to="body">
-      <div ref="tooltip" class="Tooltip" :style="position">
-        <div class="Tooltip_content">
-          <Text class="Tooltip_text" small>
+      <div ref="tooltip" :class="$style.Tooltip" :style="position">
+        <div :class="$style.content">
+          <Text :class="$style.text" small>
             <slot name="tooltip-text">{{ text }}</slot>
           </Text>
         </div>
@@ -13,17 +13,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, nextTick, onBeforeUnmount, ref, useSlots, watchEffect } from 'vue'
-// import { mixHexColors as mixThemeColors, ThemeColor, useTheme } from '../theme'
+import { computed, nextTick, onBeforeUnmount, ref, useSlots } from 'vue'
 import { useTheme } from '../theme'
 import Text from './Text.vue'
-
-// const baseColors: ThemeColor[] = [
-//   'info',
-//   'warn',
-//   'success',
-//   'danger',
-// ]
 
 const props = defineProps<{
   text?: string
@@ -35,30 +27,11 @@ const active = ref(false)
 const position = ref('')
 const trigger = ref<Element>()
 const tooltip = ref<Element>()
-const tooltipRect = ref<DOMRect>()
-
-function onScroll() {
-  deactivate()
-}
-
-onBeforeUnmount(() => {
-  deactivate()
-})
 
 const slots = useSlots()
 const isDisabled = computed(() => props.disabled || !(props.text || slots['tooltip-text']))
 
-watchEffect(() => {
-  if (isDisabled.value) deactivate()
-})
-
-function onMove(event: MouseEvent) {
-  const rect = tooltipRect.value!
-  if (event.clientX < rect.left || event.clientX > rect.right ||
-      event.clientY < rect.top || event.clientY > rect.bottom) {
-    deactivate()
-  }
-}
+onBeforeUnmount(deactivate)
 
 async function activate() {
   if (active.value || isDisabled.value) return
@@ -79,30 +52,25 @@ async function activate() {
     x = rect.left - size.width
     y = (rect.bottom + rect.top - size.height) / 2
   }
-  y = Math.max(Math.min(y, window.innerHeight - size.height), 0)
-  x = Math.max(Math.min(x, window.innerWidth - size.width), 0)
+  y = Math.round(Math.max(Math.min(y, window.innerHeight - size.height), 0))
+  x = Math.round(Math.max(Math.min(x, window.innerWidth - size.width), 0))
   position.value = `left:${x}px;top:${y}px`
-  tooltipRect.value = rect
-
-  window.addEventListener('scroll', onScroll, { capture: true, passive: true })
-  window.addEventListener('mousemove', onMove, {})
 }
 
 function deactivate() {
   active.value = false
-  window.removeEventListener('scroll', onScroll)
-  window.removeEventListener('mousemove', onMove)
 }
 
 useTheme()
 
 </script>
-<style>
+<style module>
 .Tooltip {
   padding: var(--spacing-xs);
   position: fixed;
+  pointer-events: none;
 }
-.Tooltip_content {
+.content {
   padding: var(--spacing-xs) var(--spacing-s);
   border: 1px solid rgba(var(--rgb-foreground), 0.2);
   border-radius: 4px;
@@ -110,7 +78,7 @@ useTheme()
   max-width: 300px;
   background: black;
 }
-.Tooltip_text {
+.text {
   color: white;
   font-weight: 500;
   /* display: inline-grid;

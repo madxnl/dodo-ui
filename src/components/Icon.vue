@@ -1,5 +1,13 @@
 <template>
-  <span ref="el" :style="css" :class="classes">
+  <span
+    ref="el" :style="style" :class="[
+      $style.Icon,
+      'material-symbols-' + theme.iconStyle.toLowerCase(),
+      props.small && $style.small,
+      props.large && $style.large,
+      props.fill && $style.fill,
+    ]"
+  >
     {{ name }}
   </span>
 </template>
@@ -44,36 +52,28 @@ watchEffect(() => {
   }
 })
 
-const classes = computed(() => {
-  let s = 'uiIcon material-symbols-' + theme.iconStyle.toLowerCase()
-  if (props.small) s += ' uiIcon_small'
-  if (props.large) s += ' uiIcon_large'
-  if (props.fill) s += ' uiIcon_fill'
-  return s
-})
-
-const css = computed(() => {
+const style = computed(() => {
   let s = ''
   if (props.color) s += `color: ${useThemeColor(props.color)};`
   return s
 })
 </script>
 
-<style lang="css">
-.uiIcon {
+<style module>
+.Icon {
   height: 1em;
   width: 1em;
   font-size: 24px;
   user-select: none;
   vertical-align: middle;
 }
-.uiIcon.uiIcon_small {
+.Icon.small {
   font-size: 18px;
 }
-.uiIcon.uiIcon_large {
+.Icon.large {
   font-size: 32px;
 }
-.uiIcon_fill {
+.Icon.fill {
   font-variation-settings: 'FILL' 1;
 }
 </style>

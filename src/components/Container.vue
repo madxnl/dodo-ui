@@ -1,6 +1,6 @@
 
 <template>
-  <div class="uiContainer" :style="css"><slot /></div>
+  <div :class="$style.Container" :style="css"><slot /></div>
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
@@ -61,8 +61,8 @@ const css = computed(() => {
 })
 </script>
 
-<style>
-.uiContainer {
+<style module>
+.Container {
   display: grid;
   gap: var(--spacing-m);
 }

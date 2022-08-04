@@ -1,6 +1,6 @@
 
 <template>
-  <div class="uiRow" :style="css"><slot /></div>
+  <div :class="$style.Row" :style="css"><slot /></div>
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
@@ -25,7 +25,7 @@ const props = defineProps<{
    */
   column?: boolean
   /**
-   * Grow to take up available space (when nested inside another uiRow)
+   * Grow to take up available space (when nested inside another Row)
    * @example grow
    */
   grow?: boolean
@@ -66,8 +66,8 @@ const css = computed(() => {
 })
 </script>
 
-<style>
-.uiRow {
+<style module>
+.Row {
   display: flex;
   align-items: center;
   gap: var(--spacing-s);

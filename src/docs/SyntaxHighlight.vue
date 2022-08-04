@@ -1,5 +1,5 @@
 <template>
-  <pre :class="`uiSyntaxHighlight language-${lang}`" v-html="html" />
+  <pre :class="[$style.SyntaxHighlight, `language-${lang}`]" v-html="html" />
 </template>
 <script setup lang="ts">
 import { highlight, languages } from 'prismjs'
@@ -16,8 +16,8 @@ const html = computed(() => {
   return highlight(props.code, languages[props.lang], props.lang)
 })
 </script>
-<style>
-pre.uiSyntaxHighlight {
+<style module>
+pre.SyntaxHighlight {
   padding: 0;
   margin: 0;
   background: transparent;

@@ -1,8 +1,8 @@
 <template>
   <teleport to="body">
     <Transition name="Modal">
-      <div v-if="active" ref="el" class="Modal">
-        <div class="Modal_window">
+      <div v-if="active" ref="el" :class="$style.Modal">
+        <div :class="$style.window">
           <Container pad="m">
             <slot />
           </Container>
@@ -32,7 +32,7 @@ watchEffect(() => {
   }
 })
 </script>
-<style>
+<style module>
 .Modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -43,7 +43,7 @@ watchEffect(() => {
   justify-content: center;
   padding: 32px;
 }
-.Modal_window {
+.window {
   background: white;
   border-radius: 4px;
   width: 500px;
@@ -59,14 +59,14 @@ watchEffect(() => {
 .Modal-leave-to {
   opacity: 0;
 }
-.Modal-enter-active .Modal_window,
-.Modal-leave-active .Modal_window {
+.Modal-enter-active .window,
+.Modal-leave-active .window {
   transition: top 0.1s ease;
   position: relative;
   top: 0;
 }
-.Modal-enter-from .Modal_window,
-.Modal-leave-to .Modal_window {
+.Modal-enter-from .window,
+.Modal-leave-to .window {
   top: -16px;
 }
 </style>

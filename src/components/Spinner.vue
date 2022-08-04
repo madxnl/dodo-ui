@@ -1,6 +1,10 @@
 <template>
   <svg
-    :class="classes"
+    :class="[
+      $style.Spinner,
+      small && $style.small,
+      large && $style.large,
+    ]"
     :style="css"
     viewBox="0 0 18 18"
   >
@@ -31,29 +35,23 @@ const css = computed(() => {
   return s
 })
 
-const classes = computed(() => {
-  let s = 'uiSpinner'
-  if (props.small) s += ' uiSpinner_small'
-  if (props.large) s += ' uiSpinner_large'
-  return s
-})
 </script>
-<style lang="css">
-.uiSpinner {
+<style module>
+.Spinner {
   width: 18px;
   height: 18px;
-  animation: uiSpinner 1s linear infinite;
+  animation: Spinner 1s linear infinite;
   color: var(--color-info);
 }
-.uiSpinner_small {
+.small {
   width: 14px;
   height: 14px;
 }
-.uiSpinner_large {
+.large {
   width: 24px;
   height: 24px;
 }
-@keyframes uiSpinner {
+@keyframes Spinner {
   from { transform:none }
   to { transform:rotate(360deg)}
 }

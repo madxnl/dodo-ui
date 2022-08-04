@@ -1,22 +1,27 @@
 <template>
-  <div ref="el" :class="{NavBar_collapsed: collapsed}" class="NavBar_root">
-    <div class="NavBar">
-      <div v-if="$slots['navbar-header']" class="NavBar_header">
+  <div
+    ref="el" :class="[
+      $style.root,
+      collapsed && $style.collapsed,
+    ]"
+  >
+    <div :class="$style.NavBar">
+      <div v-if="$slots['navbar-header']" :class="$style.header">
         <slot name="navbar-header" />
       </div>
 
-      <div class="NavBar_middle">
+      <div :class="$style.middle">
         <slot />
       </div>
 
-      <div v-if="$slots['navbar-footer']" class="NavBar_footer">
+      <div v-if="$slots['navbar-footer']" :class="$style.footer">
         <slot name="navbar-footer" />
 
         <NavBarItem :text="collapsed ? 'Expand' : 'Collapse'" :icon="collapsed ? 'last_page' : 'first_page'" @click="toggleCollapse" />
       </div>
     </div>
 
-    <Container v-if="$slots.main" class="NavBar_main">
+    <Container v-if="$slots.main" :class="$style.main">
       <slot name="main" />
     </Container>
   </div>
@@ -60,7 +65,7 @@ provide(navBarServiceKey, { collapsed })
 </script>
 <script lang="ts">
 </script>
-<style>
+<style module>
 .NavBar {
   background: var(--color-navbar);
   color: white;
@@ -68,20 +73,20 @@ provide(navBarServiceKey, { collapsed })
   flex-flow: column;
   overflow: auto;
 }
-.NavBar_root {
+.root {
   display: flex;
 }
-.NavBar_header,
-.NavBar_middle,
-.NavBar_footer {
+.header,
+.middle,
+.footer {
   display: grid;
   padding: var(--spacing-s) 0;
   align-content: start;
 }
-.NavBar_middle {
+.middle {
   flex: 1;
 }
-.NavBar_main {
+.main {
   flex: 1;
 }
 </style>
