@@ -169,7 +169,7 @@ export default {
   opacity: 0.1;
 }
 .Button:active:after,
-.Button_active:after,
+.Button.active:after,
 .Button.loading:after {
   opacity: 0.2;
 }

@@ -67,13 +67,13 @@ const style = computed(() => {
   user-select: none;
   vertical-align: middle;
 }
-.small {
+.Icon.small {
   font-size: 18px;
 }
-.large {
+.Icon.large {
   font-size: 32px;
 }
-.fill {
+.Icon.fill {
   font-variation-settings: 'FILL' 1;
 }
 </style>
