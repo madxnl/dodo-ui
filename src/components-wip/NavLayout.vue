@@ -93,7 +93,7 @@ const css = computed(() => {
   color: var(--color-foreground);
 }
 .pageLink {
-  color: var(--color-muted);
+  color: rgba(var(--rgb-foreground), 0.6);
 }
 .pageLink:hover {
   color: var(--color-foreground);

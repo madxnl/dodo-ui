@@ -23,7 +23,7 @@
         </DropdownItem>
         <DropdownItem @click="clickItem">Menu item #1</DropdownItem>
         <DropdownItem active>Menu item #2</DropdownItem>
-        <DropdownItem>
+        <DropdownItem separator>
           Menu item #3
           <template #after><Icon name="chevron_right" small /></template>
         </DropdownItem>

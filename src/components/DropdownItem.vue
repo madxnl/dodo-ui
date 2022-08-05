@@ -1,5 +1,7 @@
 <template>
+  <hr v-if="separator" :class="$style.separator">
   <div
+    v-bind="$attrs"
     :class="[
       $style.DropdownItem,
       active && $style.active,
@@ -12,7 +14,7 @@
       <Text nowrap :class="$style.text">
         <slot />
       </Text>
-      <Text v-if="$slots['text-secondary']" nowrap :class="$style.textSecondary">
+      <Text v-if="$slots['text-secondary']" nowrap muted>
         <slot name="text-secondary" />
       </Text>
     </Container>
@@ -27,8 +29,12 @@ import { dropdownServiceKey } from './composables'
 import Container from './Container.vue'
 
 defineProps<{
+  /** Active item styling */
   active?: boolean
+  /** Emphasize item styling */
   emphasize?: boolean
+  /** Show separator above item */
+  separator?: boolean
 }>()
 
 useTheme()
@@ -60,11 +66,12 @@ function click() {
   background: rgba(var(--rgb-info), 0.1);
   color: var(--color-info);
 }
-.textSecondary {
-  opacity: .6;
-}
 .emphasize .text {
   font-weight: bold;
 }
-
+.separator {
+  margin: var(--spacing-xs) 0;
+  border: 0;
+  border-top: 1px solid rgba(var(--rgb-foreground), 0.1);
+}
 </style>

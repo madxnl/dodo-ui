@@ -6,10 +6,11 @@ const createTheme = () => reactive({
     success: '#00b188',
     warn: '#dfb235',
     danger: '#e76f51',
+
     background: '#ffffff',
-    foreground: '#213547',
+    foreground: '#424242',
+
     container: '#f7f8f9',
-    muted: '#888888',
     navbar: '#213547',
   },
 

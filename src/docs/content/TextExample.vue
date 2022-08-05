@@ -3,7 +3,7 @@
   <Text h2>{{ text }}</Text>
   <Text h3>{{ text }}</Text>
   <Text nowrap>{{ paragraph }}</Text>
-  <Text p>{{ paragraph }}</Text>
+  <Text muted>{{ paragraph }}</Text>
   <Text small align="right">{{ text }}</Text>
   <Text h1>
     <Text color="danger">Rich</Text>
