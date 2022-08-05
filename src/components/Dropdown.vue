@@ -7,6 +7,7 @@
   >
     <slot :is-active="active" />
   </div>
+
   <teleport to="body">
     <div v-if="active" ref="content" :class="$style.Dropdown" :style="dropdownStyles">
       <Container :class="$style.content" :pad="padding ?? ['xs', '0']" :gap="gap ?? '0'">
@@ -109,6 +110,8 @@ provide(dropdownServiceKey, { toggle })
   cursor: pointer;
 }
 .content {
+  min-width: 120px;
+  min-height: 20px;
   background: white !important;
   border-radius: 4px;
   border: 1px solid rgba(var(--rgb-foreground), 0.1);

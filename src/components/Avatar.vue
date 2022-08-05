@@ -1,5 +1,14 @@
 <template>
-  <span :class="$style.Avatar" :style="`--color:rgb(${bgcolor});background-image:url(${image})`">
+  <span
+    :class="[
+      $style.Avatar,
+      round && $style.round
+    ]"
+    :style="[
+      `--color:rgb(${bgcolor})`,
+      image ? `background-image:url(${image})` : '',
+    ]"
+  >
     {{ initials }}
   </span>
 </template>
@@ -17,10 +26,11 @@ const baseColors: ThemeColor[] = [
 const props = defineProps<{
   text: string
   image?: string|null
+  round?: boolean
 }>()
 
 const initials = computed(() => {
-  let result = props.text.replace(/\W/g, '')
+  let result = props.text.trim()
   const initialsRegex = /(?<!\w)\w|(?<=[a-z])[A-Z]/g
   const match = props.text.match(initialsRegex)
   if (match?.length) result = match.join('')
@@ -53,6 +63,7 @@ useTheme()
 <style module>
 .Avatar {
   display: inline-grid;
+  vertical-align: middle;
   border-radius: 4px;
   width: 32px;
   height: 32px;
@@ -66,5 +77,8 @@ useTheme()
   font: var(--ui-font);
   font-size: calc(var(--ui-font-size) + 2px);
   font-weight: bold;
+}
+.round {
+  border-radius: 999px;
 }
 </style>

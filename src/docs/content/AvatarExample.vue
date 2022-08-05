@@ -5,12 +5,13 @@
       <Avatar text="A" />
       <Avatar text="B" />
       <Avatar text="C" />
+      <Avatar text="Social.com" />
       <Avatar text="J K" />
       <Avatar text="K L" />
       <Avatar text="L M" />
-      <Avatar text="M N" />
-      <Avatar text="N O" />
-      <Avatar text="O P" />
+      <Avatar text="M N" round />
+      <Avatar text="N O" round />
+      <Avatar text="?" round />
     </Row>
   </Container>
 </template>
