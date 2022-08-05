@@ -5,7 +5,7 @@
       collapsed && $style.collapsed,
     ]"
   >
-    <div :class="$style.NavBar">
+    <div v-if="el" :class="$style.NavBar">
       <div v-if="$slots['navbar-header']" :class="$style.header">
         <slot name="navbar-header" />
       </div>
@@ -17,7 +17,7 @@
       <div v-if="$slots['navbar-footer']" :class="$style.footer">
         <slot name="navbar-footer" />
 
-        <NavBarItem :text="collapsed ? 'Expand' : 'Collapse'" :icon="collapsed ? 'last_page' : 'first_page'" @click="toggleCollapse" />
+        <NavBarItem :text="collapsed ? 'Expand' : 'Collapse'" :icon="collapsed ? 'last_page' : 'first_page'" @click="toggled=!collapsed" />
       </div>
     </div>
 
@@ -27,54 +27,41 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, onMounted, provide, ref } from 'vue'
+import { computed, provide, ref, watch } from 'vue'
 import { Container } from '..'
 import { useTheme } from '../theme'
-import { navBarServiceKey } from './composables'
+import { navBarServiceKey, useElementSize, useSessionStoredRef } from './composables'
 import NavBarItem from './NavBarItem.vue'
 
 useTheme()
 
 const el = ref<HTMLElement>()
-const manualCollapsed = ref<boolean>()
-const containerWidth = ref(9999)
-const collapseThreshold = 800
+const { width } = useElementSize(el)
+const toggled = useSessionStoredRef<boolean|null>('NavBar-collapse', null)
+const threshold = computed(() => width.value < 1000)
+const collapsed = computed(() => toggled.value ?? threshold.value)
 
-const observer = new ResizeObserver(() => updateContainerSize())
-
-const collapsed = computed(() => manualCollapsed.value ?? containerWidth.value < collapseThreshold)
-
-onMounted(() => {
-  observer.observe(el.value!)
-  updateContainerSize()
-})
-
-onBeforeUnmount(() => {
-  observer.disconnect()
-})
-
-function updateContainerSize() {
-  containerWidth.value = el.value!?.clientWidth ?? 9999
-}
-
-function toggleCollapse() {
-  manualCollapsed.value = !collapsed.value
-}
+// Clear user-toggle when resized across threshold
+watch(threshold, () => { toggled.value = null })
 
 provide(navBarServiceKey, { collapsed })
 </script>
-<script lang="ts">
-</script>
 <style module>
-.NavBar {
+body .NavBar {
   background: var(--color-navbar);
   color: white;
   display: flex;
   flex-flow: column;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 220px;
+  transition: all .1s;
 }
 .root {
   display: flex;
+}
+.collapsed .NavBar {
+  max-width: 64px;
 }
 .header,
 .middle,

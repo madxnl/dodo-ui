@@ -67,7 +67,6 @@ const collapsed = computed(() => navBar?.collapsed.value)
 }
 .textwrap {
   display: grid;
-  max-width: 130px;
 }
 .icon {
   display: grid;
@@ -89,11 +88,4 @@ const collapsed = computed(() => navBar?.collapsed.value)
   opacity: 1;
 }
 
-.collapsed .textwrap {
-  max-width: 0;
-  opacity: 0;
-}
-.collapsed {
-  gap: 0;
-}
 </style>
