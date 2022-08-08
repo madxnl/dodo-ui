@@ -5,7 +5,7 @@
       round && $style.round
     ]"
     :style="[
-      `--color:rgb(${bgcolor})`,
+      `--color:${bgcolor}`,
       image ? `background-image:url(${image})` : '',
     ]"
   >
@@ -14,9 +14,9 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { mixHexColors, ThemeColor, useTheme } from '../theme'
+import { ColorProp, mixColors, useTheme } from '../theme'
 
-const baseColors: ThemeColor[] = [
+const baseColors: ColorProp[] = [
   'info',
   'warn',
   'success',
@@ -38,22 +38,21 @@ const initials = computed(() => {
 })
 
 const bgcolor = computed(() => {
-  const colors: number[][] = []
-  for (const color1 of baseColors) {
-    for (const color2 of baseColors) {
-      if (color1 === color2) continue
-      for (const pct of [0, 0.5]) {
-        colors.push(mixHexColors(color1, color2, pct))
-      }
-    }
-  }
+  const N = baseColors.length
   const hash = hashCode(props.text)
-  return colors[hash % colors.length]
+  const i = hash
+  let j = Math.floor(i / N)
+  if (i % N === j % N) j++
+  const k = (Math.floor(j / N) % 4) / 4
+  const c1 = baseColors[i % N]
+  const c2 = baseColors[j % N]
+  const color = mixColors(c1, c2, k)
+  return `rgb(${color})`
 })
 
 function hashCode(s: string) {
   let h = 0
-  for (let i = 0; i < s.length; ++i) h = 23 * (h % 1e6) + 193 * s.charCodeAt(i)
+  for (let i = 0; i < s.length; ++i) h = 997 * (h % 1e6) + 11 * s.charCodeAt(i)
   return h
 }
 
@@ -62,7 +61,7 @@ useTheme()
 </script>
 <style module>
 .Avatar {
-  display: inline-grid;
+    display: inline-grid;
   vertical-align: middle;
   border-radius: 4px;
   width: 32px;
@@ -74,8 +73,8 @@ useTheme()
   text-align: center;
   align-items: center;
   justify-content: center;
-  font: var(--ui-font);
-  font-size: calc(var(--ui-font-size) + 2px);
+  font: var(--dodo-font);
+  font-size: calc(var(--dodo-font-size) + 2px);
   font-weight: bold;
 }
 .round {

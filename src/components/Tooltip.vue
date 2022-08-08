@@ -66,13 +66,13 @@ useTheme()
 </script>
 <style module>
 .Tooltip {
-  padding: var(--spacing-xs);
+  padding: var(--dodo-gap-xs);
   position: fixed;
   pointer-events: none;
 }
 .content {
-  padding: var(--spacing-xs) var(--spacing-s);
-  border: 1px solid rgba(var(--rgb-foreground), 0.2);
+  padding: var(--dodo-gap-xs) var(--dodo-gap-s);
+  border: 1px solid rgba(var(--dodo-rgb-foreground), 0.2);
   border-radius: 4px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   max-width: 300px;
@@ -92,8 +92,8 @@ useTheme()
   text-align: center;
   align-items: center;
   justify-content: center;
-  font: var(--ui-font);
-  font-size: calc(var(--ui-font-size) + 2px);
+  font: var(--dodo-font);
+  font-size: calc(var(--dodo-font-size) + 2px);
   font-weight: bold; */
 }
 </style>

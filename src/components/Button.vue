@@ -20,13 +20,13 @@
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
 import { Spinner } from '../components'
-import { ThemeColor, useTheme, useThemeColorRGB } from '../theme'
+import { ColorProp, colorPropToRGB, useTheme } from '../theme'
 
 const props = defineProps<{
 /** Set button color
  * @example color="success"
  */
-  color?: ThemeColor
+  color?: ColorProp
 /** Set button variant
  * @example variant="border"
  * @example variant="text"
@@ -58,7 +58,7 @@ useTheme()
 
 const css = computed(() => {
   let s = ''
-  if (props.color) s += `--bnt-rgb:${useThemeColorRGB(props.color)};`
+  if (props.color) s += `--bnt-rgb:${colorPropToRGB(props.color)};`
   return s
 })
 
@@ -87,10 +87,10 @@ export default {
 .Button {
   border: 0;
   cursor: pointer;
-  font: var(--ui-font);
+  font: var(--dodo-font);
   font-weight: 500;
-  background: var(--color-background);
-  color: rgb(var(--bnt-rgb, var(--rgb-foreground)));
+  background: var(--dodo-color-background);
+  color: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));
   border-radius: 4px;
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -114,18 +114,18 @@ export default {
   overflow: hidden;
 }
 .solid {
-  background: rgb(var(--bnt-rgb, var(--rgb-foreground)));
+  background: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));
   color: white;
 }
 .default {
-  border: 1px solid rgba(var(--bnt-rgb, var(--rgb-foreground)), 0.35);
+  border: 1px solid rgba(var(--bnt-rgb, var(--dodo-rgb-foreground)), 0.35);
 }
 .rounded {
   border-radius: 99px;
 }
 .text {
   background: transparent;
-  color: rgb(var(--bnt-rgb, var(--rgb-foreground)));
+  color: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));
   box-shadow: none;
 }
 .loading {
@@ -150,7 +150,7 @@ export default {
 .small {
   padding: 0 10px;
   --height: 28px;
-  font-size: calc(var(--ui-font-size) - 1px);
+  font-size: calc(var(--dodo-font-size) - 1px);
 }
 .square {
   padding: 0;

@@ -1,5 +1,5 @@
 <template>
-  <Modal :active="showDialog">
+  <Dialog :active="showDialog">
     <Text h3>Something went wrong</Text>
     <Text p>
       An unexpected error occurred and the application may not function correctly until the page is reloaded.
@@ -10,7 +10,7 @@
       <Button variant="text" @click="ignore">Ignore</Button>
       <Button variant="solid" color="info" @click="reload">Reload page</Button>
     </template>
-  </Modal>
+  </Dialog>
 
   <slot />
 </template>
@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import { onErrorCaptured, ref } from 'vue'
 import Button from './Button.vue'
-import Modal from './Modal.vue'
+import Dialog from './Dialog.vue'
 import Text from './Text.vue'
 
 const showDialog = ref(false)

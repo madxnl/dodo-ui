@@ -88,18 +88,18 @@ const css = computed(() => {
 .pageLink {
   color: inherit;
   text-decoration: none;
-  font: var(--ui-font);
+  font: var(--dodo-font);
   font-weight: 500;
-  color: var(--color-foreground);
+  color: var(--dodo-color-foreground);
 }
 .pageLink {
-  color: rgba(var(--rgb-foreground), 0.6);
+  color: rgba(var(--dodo-rgb-foreground), 0.6);
 }
 .pageLink:hover {
-  color: var(--color-foreground);
+  color: var(--dodo-color-foreground);
 }
 /* .pageLink:nth-child(3) {
-  color: var(--color-foreground);
+  color: var(--dodo-color-foreground);
   font-weight: bold;
 } */
 hr {

@@ -69,8 +69,8 @@ defineProps<{
 </script>
 <style module>
 .Table {
-  font: var(--ui-font);
-  font-size: calc(var(--ui-font-size) - 1px);
+  font: var(--dodo-font);
+  font-size: calc(var(--dodo-font-size) - 1px);
 }
 table {
   border-collapse: collapse;

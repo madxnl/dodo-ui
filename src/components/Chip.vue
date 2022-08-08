@@ -11,31 +11,31 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ThemeColor, useThemeColorRGB } from '../theme'
+import { ColorProp, colorPropToRGB } from '../theme'
 
 const props = defineProps<{
-  color?: ThemeColor
+  color?: ColorProp
 }>()
 
 const css = computed(() => {
   let s = ''
-  if (props.color) s += `--chip-rgb:${useThemeColorRGB(props.color)};`
+  if (props.color) s += `--chip-rgb:${colorPropToRGB(props.color)};`
   return s
 })
 
 </script>
 <style module>
 .Chip {
-  font: var(--ui-font);
-  font-size: calc(var(--ui-font-size) - 1px);
+  font: var(--dodo-font);
+  font-size: calc(var(--dodo-font-size) - 1px);
   font-weight: 500;
   padding: 0 10px;
   --height: 28px;
   height: var(--height);
   line-height: var(--height);
   white-space: nowrap;
-  color: rgb(var(--chip-rgb, var(--rgb-foreground)));
-  background: rgba(var(--chip-rgb, var(--rgb-foreground)), 0.15);
+  color: rgb(var(--chip-rgb, var(--dodo-rgb-foreground)));
+  background: rgba(var(--chip-rgb, var(--dodo-rgb-foreground)), 0.15);
   display: inline-flex;
   align-items: center;
   vertical-align: middle;

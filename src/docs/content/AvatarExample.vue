@@ -5,7 +5,8 @@
       <Avatar text="A" />
       <Avatar text="B" />
       <Avatar text="C" />
-      <Avatar text="Social.com" />
+      <Avatar text="D" />
+      <Avatar text="H" />
       <Avatar text="J K" />
       <Avatar text="K L" />
       <Avatar text="L M" />

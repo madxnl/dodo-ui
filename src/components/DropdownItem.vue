@@ -22,7 +22,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { inject, useAttrs } from 'vue'
+import { inject } from 'vue'
 import { Text } from '..'
 import { useTheme } from '../theme'
 import { dropdownServiceKey } from './composables'
@@ -40,38 +40,35 @@ defineProps<{
 useTheme()
 
 const dropdown = inject(dropdownServiceKey)
-const attrs = useAttrs()
 
 function click() {
-  if (attrs.onClick) {
-    dropdown?.toggle(false)
-  }
+  dropdown?.toggle(false)
 }
 </script>
 
 <style module>
 .DropdownItem {
-  padding: var(--spacing-s) var(--spacing-m);
+  padding: var(--dodo-gap-s) var(--dodo-gap-m);
   transition: all .1s;
   cursor: pointer;
   display: flex;
-  gap: var(--spacing-s);
+  gap: var(--dodo-gap-s);
   align-items: center;
   position: relative;
 }
 .DropdownItem:hover {
-  background: rgba(var(--rgb-foreground), 0.025);
+  background: rgba(var(--dodo-rgb-foreground), 0.025);
 }
 .DropdownItem.active {
-  background: rgba(var(--rgb-info), 0.1);
-  color: var(--color-info);
+  background: rgba(var(--dodo-rgb-info), 0.1);
+  color: var(--dodo-color-info);
 }
 .emphasize .text {
   font-weight: bold;
 }
 .separator {
-  margin: var(--spacing-xs) 0;
+  margin: var(--dodo-gap-xs) 0;
   border: 0;
-  border-top: 1px solid rgba(var(--rgb-foreground), 0.1);
+  border-top: 1px solid rgba(var(--dodo-rgb-foreground), 0.1);
 }
 </style>

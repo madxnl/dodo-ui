@@ -114,7 +114,7 @@ provide(dropdownServiceKey, { toggle })
   min-height: 20px;
   background: white !important;
   border-radius: 4px;
-  border: 1px solid rgba(var(--rgb-foreground), 0.1);
+  border: 1px solid rgba(var(--dodo-rgb-foreground), 0.1);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   overflow-x: hidden;

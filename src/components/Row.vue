@@ -70,7 +70,7 @@ const css = computed(() => {
 .Row {
   display: flex;
   align-items: center;
-  gap: var(--spacing-s);
+  gap: var(--dodo-gap-s);
   min-width: 0;
 }
 </style>
