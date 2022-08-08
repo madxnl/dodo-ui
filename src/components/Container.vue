@@ -4,7 +4,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { Spacing, ThemeColor, useSpacing, useTheme, useThemeColor } from '../theme'
+import { ColorProp, Spacing, useColorProp, useSpacing, useTheme } from '../theme'
 
 const props = defineProps<{
   /**
@@ -33,7 +33,7 @@ const props = defineProps<{
    * Set a background color
    * @example background="info"
    */
-  background?: ThemeColor
+  background?: ColorProp
   /**
    * Render child elements as responsive grid columns
    * @example column-width="400px"
@@ -54,7 +54,7 @@ const css = computed(() => {
   if (props.pad) s += `padding:${useSpacing(props.pad)};`
   if (props.justify) s += `justify-content:${props.justify};`
   if (props.align) s += `align-content:${props.align};`
-  if (props.background) s += `background:${useThemeColor(props.background)};`
+  if (props.background) s += `background:${useColorProp(props.background)};`
   if (props.overflow) s += `overflow:${props.overflow};`
   if (props.columnWidth) s += `grid-template-columns:repeat(auto-fit,minmax(${props.columnWidth},1fr));`
   return s
@@ -64,6 +64,6 @@ const css = computed(() => {
 <style module>
 .Container {
   display: grid;
-  gap: var(--spacing-m);
+  gap: var(--dodo-gap-m);
 }
 </style>

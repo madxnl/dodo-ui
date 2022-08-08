@@ -1,4 +1,4 @@
-import { inject, InjectionKey, Plugin, reactive, ref, Ref, watchEffect } from 'vue'
+import { inject, InjectionKey, Plugin, reactive, watchEffect } from 'vue'
 
 const createTheme = () => reactive({
   colors: {
@@ -36,10 +36,9 @@ const createTheme = () => reactive({
 
 type Theme = ReturnType<typeof createTheme>
 
-export type CustomColor = { hex: Ref<string> }
-export const useCustomColor = (hex: string): CustomColor => ({ hex: ref(hex) })
-
-export type ThemeColor = CustomColor | keyof Theme['colors']
+export type Color = [number, number, number]
+export type ThemeColorName = keyof Theme['colors']
+export type ColorProp = Color | ThemeColorName
 export type SpacingName = '0'|'xs'|'s'|'m'|'l'|'xl'
 export type Spacing = SpacingName[]|SpacingName
 
@@ -60,11 +59,15 @@ export function useTheme() {
 
   watchEffect(() => {
     const vars = [
-      ...Object.entries(theme.colors).map(([k, v]) => `--color-${k}:${v};`),
-      ...Object.entries(theme.colors).map(([k, v]) => `--rgb-${k}:${hexToRGB(v)};`),
-      ...Object.entries(theme.spacings).map(([k, v]) => `--spacing-${k}:${v};`),
-      `--ui-font-size: ${theme.font.size}px;`,
-      `--ui-font: ${theme.font.size}px/calc(1em + 6px) ${theme.font.family};`,
+      ...Object.entries(theme.colors).map(([name, color]) => {
+        const rgb = parseColor(color)
+        return `
+          --dodo-color-${name}:rgb(${rgb});
+          --dodo-rgb-${name}:${rgb};`
+      }),
+      ...Object.entries(theme.spacings).map(([k, v]) => `--dodo-gap-${k}:${v};`),
+      `--dodo-font-size: ${theme.font.size}px;`,
+      `--dodo-font: ${theme.font.size}px/calc(1em + 6px) ${theme.font.family};`,
     ]
     const lines = [
       `@import url("${theme.font.externalCss}");`,
@@ -85,35 +88,53 @@ export function useTheme() {
   return theme
 }
 
-export function useThemeColor(color: ThemeColor) {
-  if (typeof color !== 'string') return color.hex.value
-  const theme = useTheme()
-  return theme.colors[color]
+export function useColorProp(c: ColorProp, alpha = 1) {
+  return `rgba(${colorPropToRGB(c)},${alpha})`
 }
 
-/**
- * Returns color as RGB array: [255, 255, 255], used when modifying colors
- */
-export function useThemeColorRGB(name: ThemeColor) {
-  return hexToRGB(useThemeColor(name))
+export function colorPropToRGB(color: ColorProp) {
+  return typeof color === 'string' ? parseColor(useTheme().colors[color]) : color
 }
 
-export function mixHexColors(color1: ThemeColor, color2: ThemeColor, mixPct: number) {
-  const rgb1 = useThemeColorRGB(color1)
-  const rgb2 = useThemeColorRGB(color2)
-  return [
-    rgb1[0] * (1 - mixPct) + rgb2[0] * mixPct,
-    rgb1[1] * (1 - mixPct) + rgb2[1] * mixPct,
-    rgb1[2] * (1 - mixPct) + rgb2[2] * mixPct,
-  ]
+export function parseColor(hex: string) {
+  if (!hex.match(/^#\w{6}$/)) throw new Error('Invalid hex color')
+  return hex.match(/(\w\w)/g)!.map(x => parseInt(x, 16)).slice(0, 3) as [number, number, number]
 }
 
-export function hexToRGB(hex: string) {
-  const [r, g, b] = hex.match(/(\w\w)/g)!
-  return [r, g, b].map(x => parseInt(x, 16))
+export function mixColors(color1: ColorProp, color2: ColorProp, mixPct: number) {
+  const c1 = colorPropToRGB(color1)
+  const c2 = colorPropToRGB(color2)
+  return [0, 1, 2].map(i => c1[i] + (c2[i] - c1[i]) * mixPct)
 }
 
 export function useSpacing(name: Spacing) {
   const theme = useTheme()
   return [name].flat().map(n => theme.spacings[n]).join(' ')
 }
+
+// function parseColor(hex: string) {
+//   const [r, g, b] = parseColor(hex)
+//   const max = Math.max(r, g, b); const min = Math.min(r, g, b)
+//   let h = 0; let s = 0; const l = (max + min) / 2
+//   if (max > min) {
+//     const d = max - min
+//     s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+//     switch (max) {
+//       case r: h = (g - b) / d + (g < b ? 6 : 0); break
+//       case g: h = (b - r) / d + 2; break
+//       case b: h = (r - g) / d + 4; break
+//     }
+//     h /= 6
+//   }
+//   return { h: Math.floor(h * 360), s: Math.floor(s * 100), l: Math.floor(l * 100) }
+// }
+
+// export function mixColors(color1: ColorProp, color2: ColorProp, mixPct: number) {
+//   const c1 = colorPropToRGB(color1)
+//   const c2 = colorPropToRGB(color2)
+//   const h = Math.floor(c1.h + (((c2.h - c1.h + 180) % 360) - 180) * mixPct + 360) % 360
+//   const s = Math.floor(c1.s + (c2.s - c1.s) * mixPct)
+//   const l = Math.floor(c1.l + (c2.l - c1.l) * mixPct)
+//   console.log(c1, c2, mixPct, { h, s, l })
+//   return { h, s, l }
+// }

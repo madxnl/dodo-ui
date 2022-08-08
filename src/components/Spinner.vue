@@ -14,14 +14,14 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ThemeColor, useTheme, useThemeColor } from '../theme'
+import { ColorProp, useColorProp, useTheme } from '../theme'
 
 useTheme()
 
 const props = withDefaults(defineProps<{
   /** Override default spinner color, or inherit text color
    */
-  color?: 'inherit'|ThemeColor
+  color?: 'inherit'|ColorProp
   small?: boolean
   large?: boolean
 }>(), {
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<{
 const css = computed(() => {
   let s = ''
   if (props.color === 'inherit') s += 'color:inherit;'
-  else if (props.color) s += `color:${useThemeColor(props.color)};`
+  else if (props.color) s += `color:${useColorProp(props.color)};`
   return s
 })
 
@@ -41,7 +41,7 @@ const css = computed(() => {
   width: 18px;
   height: 18px;
   animation: Spinner 1s linear infinite;
-  color: var(--color-info);
+  color: var(--dodo-color-info);
 }
 .small {
   width: 14px;

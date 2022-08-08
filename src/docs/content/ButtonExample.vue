@@ -32,9 +32,9 @@
   </Container>
 </template>
 <script lang="ts" setup>
-import { Button, Container, Icon, Row, useCustomColor } from '../..'
+import { Button, Container, Icon, parseColor, Row } from '../..'
 
-const customColor = useCustomColor('#ff8888')
+const customColor = parseColor('#ff8888')
 
 async function myAsyncSubmit() {
   await new Promise(resolve => setTimeout(resolve, 3000))

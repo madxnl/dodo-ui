@@ -1,6 +1,8 @@
 <template>
   <span
-    ref="el" :style="style" :class="[
+    ref="el"
+    :style="color ? `color: ${useColorProp(color)};` : ''"
+    :class="[
       $style.Icon,
       'material-symbols-' + theme.iconStyle.toLowerCase(),
       props.small && $style.small,
@@ -12,8 +14,8 @@
   </span>
 </template>
 <script lang="ts" setup>
-import { computed, ref, watchEffect } from 'vue'
-import { ThemeColor, useTheme, useThemeColor } from '../theme'
+import { ref, watchEffect } from 'vue'
+import { ColorProp, useColorProp, useTheme } from '../theme'
 import { IconName } from './iconNames'
 
 const props = defineProps<{
@@ -24,7 +26,7 @@ const props = defineProps<{
   /** Change icon color
    * @example color="success"
    */
-  color?: ThemeColor
+  color?: ColorProp
   /** Filled variant
    */
   fill?: boolean
@@ -52,11 +54,6 @@ watchEffect(() => {
   }
 })
 
-const style = computed(() => {
-  let s = ''
-  if (props.color) s += `color: ${useThemeColor(props.color)};`
-  return s
-})
 </script>
 
 <style module>

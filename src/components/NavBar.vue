@@ -48,7 +48,7 @@ provide(navBarServiceKey, { collapsed })
 </script>
 <style module>
 body .NavBar {
-  background: var(--color-navbar);
+  background: var(--dodo-color-navbar);
   color: white;
   display: flex;
   flex-flow: column;
@@ -67,7 +67,7 @@ body .NavBar {
 .middle,
 .footer {
   display: grid;
-  padding: var(--spacing-s) 0;
+  padding: var(--dodo-gap-s) 0;
   align-content: start;
 }
 .middle {

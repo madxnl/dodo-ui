@@ -44,12 +44,12 @@ const collapsed = computed(() => navBar?.collapsed.value)
 
 <style module>
 .NavBarItem {
-  padding: var(--spacing-xs) var(--spacing-m);
+  padding: var(--dodo-gap-xs) var(--dodo-gap-m);
   opacity: 0.7;
   transition: all .1s;
   cursor: pointer;
   display: flex;
-  gap: var(--spacing-s);
+  gap: var(--dodo-gap-s);
   align-items: center;
   position: relative;
 }
@@ -79,6 +79,7 @@ const collapsed = computed(() => navBar?.collapsed.value)
   user-select: none;
 }
 .secondary {
+  color: white;
   opacity: 0.5;
   font-weight: 500;
 }

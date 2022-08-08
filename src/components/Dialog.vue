@@ -1,7 +1,7 @@
 <template>
   <teleport to="body">
-    <Transition name="Modal">
-      <div v-if="active" ref="el" :class="$style.Modal">
+    <Transition name="Dialog">
+      <div v-if="active" ref="el" :class="$style.Dialog">
         <div :class="$style.window">
           <Container pad="m">
             <slot />
@@ -33,7 +33,7 @@ watchEffect(() => {
 })
 </script>
 <style module>
-.Modal {
+.Dialog {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.5);
@@ -51,22 +51,22 @@ watchEffect(() => {
   box-shadow: var(--shadow-5);
 }
 
-.Modal-enter-active,
-.Modal-leave-active {
+.Dialog-enter-active,
+.Dialog-leave-active {
   transition: opacity 0.1s ease;
 }
-.Modal-enter-from,
-.Modal-leave-to {
+.Dialog-enter-from,
+.Dialog-leave-to {
   opacity: 0;
 }
-.Modal-enter-active .window,
-.Modal-leave-active .window {
+.Dialog-enter-active .window,
+.Dialog-leave-active .window {
   transition: top 0.1s ease;
   position: relative;
   top: 0;
 }
-.Modal-enter-from .window,
-.Modal-leave-to .window {
+.Dialog-enter-from .window,
+.Dialog-leave-to .window {
   top: -16px;
 }
 </style>

@@ -7,7 +7,7 @@
       muted && $style.muted,
     ]"
     :style="[
-      color && `--Text-rgb:${useThemeColorRGB(color)};`,
+      color && `--Text-rgb:${colorPropToRGB(color)};`,
       align && `text-align:${align};`
     ]"
   >
@@ -16,11 +16,11 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ThemeColor, useTheme, useThemeColorRGB } from '../theme'
+import { ColorProp, colorPropToRGB, useTheme } from '../theme'
 
 const props = defineProps<{
   /** Change text color */
-  color?: ThemeColor
+  color?: ColorProp
   /** Show ellipsis instead of wrapping if text does not fit on one line */
   nowrap?: boolean
   /** De-emphasized text */
@@ -61,10 +61,10 @@ useTheme()
   text-overflow: ellipsis;
   cursor: inherit;
   margin: 0;
-  font: var(--Text-font, var(--ui-font));
-  font-size: var(--Text-size, var(--ui-font-size));
+  font: var(--Text-font, var(--dodo-font));
+  font-size: var(--Text-size, var(--dodo-font-size));
   font-weight: var(--Text-weight, normal);
-  color: rgba(var(--Text-rgb, var(--rgb-foreground)), var(--Text-alpha, 1));
+  color: rgba(var(--Text-rgb, var(--dodo-rgb-foreground)), var(--Text-alpha, 1));
 }
 .nowrap {
   overflow: hidden;
@@ -75,29 +75,29 @@ useTheme()
 }
 h1.Text, h2.Text, h3.Text, h4.Text, h5.Text, h6.Text {
   --Text-weight: 600;
-  --Text-size: calc(var(--ui-font-size));
+  --Text-size: calc(var(--dodo-font-size));
 }
 h1.Text {
-  --Text-size: calc(var(--ui-font-size) + 18px);
+  --Text-size: calc(var(--dodo-font-size) + 18px);
 }
 h2.Text {
-  --Text-size: calc(var(--ui-font-size) + 12px);
+  --Text-size: calc(var(--dodo-font-size) + 12px);
 }
 h3.Text {
-  --Text-size: calc(var(--ui-font-size) + 6px);
+  --Text-size: calc(var(--dodo-font-size) + 6px);
 }
 code.Text, .Text code {
   font-family: monospace;
 }
 a.Text, .Text a {
-  color: var(--color-info);
+  color: var(--dodo-color-info);
 }
 blockquote.Text, .Text blockquote {
   padding-left: 16px;
-  border-left: 2px solid rgba(var(--rgb-foreground), 0.25);
+  border-left: 2px solid rgba(var(--dodo-rgb-foreground), 0.25);
 }
 small.Text, .Text small {
-  --Text-size: calc(var(--ui-font-size) - 2px);
+  --Text-size: calc(var(--dodo-font-size) - 2px);
 }
 strong.Text, .Text strong {
   --Text-weight: bold;
