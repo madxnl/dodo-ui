@@ -27,22 +27,17 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, provide, ref, watch } from 'vue'
+import { computed, provide, ref } from 'vue'
 import { Container } from '..'
 import { useTheme } from '../theme'
-import { navBarServiceKey, useElementSize, useSessionStoredRef } from './composables'
+import { navBarServiceKey, useSessionStoredRef } from './composables'
 import NavBarItem from './NavBarItem.vue'
 
 useTheme()
 
 const el = ref<HTMLElement>()
-const { width } = useElementSize(el)
 const toggled = useSessionStoredRef<boolean|null>('NavBar-collapse', null)
-const threshold = computed(() => width.value < 1000)
-const collapsed = computed(() => toggled.value ?? threshold.value)
-
-// Clear user-toggle when resized across threshold
-watch(threshold, () => { toggled.value = null })
+const collapsed = computed(() => toggled.value)
 
 provide(navBarServiceKey, { collapsed })
 </script>
