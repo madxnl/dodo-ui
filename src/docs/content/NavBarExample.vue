@@ -14,18 +14,19 @@
         <NavBarItem text="Help" icon="help" />
       </template>
 
-      <!-- With RouterLink:
-      <RouterLink v-slot="link" :to="{ name: 'about' }">
+      <!-- with vue-router: -->
+      <RouterLink v-slot="link" :to="{ name: 'NavBar' }">
         <NavBarItem text="About" icon="info" :active="link.isActive" />
       </RouterLink>
-    -->
+
       <template #main>
-        ...
+        <!-- main page content here -->
       </template>
     </NavBar>
   </div>
 </template>
 <script lang="ts" setup>
+import { RouterLink } from 'vue-router'
 import { NavBar, NavBarItem } from '../..'
 import image from '../assets/placeholder32.png'
 </script>

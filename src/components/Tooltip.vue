@@ -92,7 +92,7 @@ useTheme()
   text-align: center;
   align-items: center;
   justify-content: center;
-  font: var(--dodo-font);
+  font: var(--dodo-font-family);
   font-size: calc(var(--dodo-font-size) + 2px);
   font-weight: bold; */
 }

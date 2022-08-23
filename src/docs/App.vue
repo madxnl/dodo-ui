@@ -5,7 +5,7 @@
         <template v-for="(chapter, i) in chapters" :key="i">
           <Container
             v-for="page in chapter.pages" :id="page.title"
-            :key="page.href" pad="l"
+            :key="page.title" pad="l"
             gap="l"
           >
             <Text h1>{{ page.title }}</Text>
@@ -27,14 +27,13 @@
   </CrashDialog>
 </template>
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
 import { ComponentDoc } from 'vue-inbrowser-compiler-utils'
 import { Container, CrashDialog, Text } from '..'
 import { NavLayout } from '../components-wip'
+import { chapters, components } from './chapters'
 import Example from './Example.vue'
 import PropsTable from './PropsTable.vue'
 
-const components = import.meta.globEager('../components/*.vue')
 const examples = import.meta.globEager('./content/*Example*.vue')
 const docs = import.meta.globEager('./content/*Docs.vue')
 
@@ -45,26 +44,16 @@ const componentsInfo = Object.values(components).map(({ docs, source }) => ({
     .filter(e => e.docs.displayName.startsWith(docs.displayName + 'Example')),
 }))
 
-const chapters = computed(() => [
-  {
-    pages: [
-      { title: 'Dodo UI', href: '#Dodo UI' },
-      { title: 'Installation', href: '#Installation' },
-    ],
-  },
-  {
-    pages: Object.values(components).map(({ docs }) => ({
-      title: docs.displayName,
-      href: '#' + docs.displayName,
-    })),
-  },
-])
+// onMounted(() => {
+//   document.addEventListener('scroll', onScroll, { capture: true, passive: true })
+// })
 
-onMounted(() => {
-  const hash = location.hash
-  location.hash = ''
-  location.hash = hash
-})
+// onUnmounted(() => {
+//   document.removeEventListener('scroll', onScroll, { capture: true })
+// })
+
+// function onScroll() {
+// }
 
 function tokenize(pageTitle: string) {
   return pageTitle.replace(/\W/g, '')

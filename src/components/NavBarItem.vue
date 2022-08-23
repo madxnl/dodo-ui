@@ -12,8 +12,8 @@
         <slot name="icon"><Icon :name="icon!" /></slot>
       </div>
       <div :class="$style.textwrap">
-        <Text :class="$style.text" nowrap>{{ text }}</Text>
-        <Text v-if="textSecondary" :class="$style.secondary" nowrap>{{ textSecondary }}</Text>
+        <Text :class="$style.text" nowrap color="background">{{ text }}</Text>
+        <Text v-if="textSecondary" :class="$style.secondary" nowrap color="background">{{ textSecondary }}</Text>
       </div>
     </div>
   </Tooltip>
@@ -52,6 +52,8 @@ const collapsed = computed(() => navBar?.collapsed.value)
   gap: var(--dodo-gap-s);
   align-items: center;
   position: relative;
+  color: white;
+  text-decoration: none;
 }
 .active::before {
   content: '';
@@ -74,12 +76,10 @@ const collapsed = computed(() => navBar?.collapsed.value)
   justify-content: center;
 }
 .text {
-  color: white;
   font-weight: 500;
   user-select: none;
 }
 .secondary {
-  color: white;
   opacity: 0.5;
   font-weight: 500;
 }

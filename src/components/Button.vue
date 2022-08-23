@@ -87,7 +87,7 @@ export default {
 .Button {
   border: 0;
   cursor: pointer;
-  font: var(--dodo-font);
+  font: var(--dodo-font-family);
   font-weight: 500;
   background: var(--dodo-color-background);
   color: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));

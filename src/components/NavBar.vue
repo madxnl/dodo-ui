@@ -7,14 +7,17 @@
   >
     <div v-if="el" :class="$style.NavBar">
       <div v-if="$slots['navbar-header']" :class="$style.header">
+        <!-- @slot Navbar header section -->
         <slot name="navbar-header" />
       </div>
 
       <div :class="$style.middle">
+        <!-- @slot Navbar middle section -->
         <slot />
       </div>
 
       <div v-if="$slots['navbar-footer']" :class="$style.footer">
+        <!-- @slot Navbar footer section -->
         <slot name="navbar-footer" />
 
         <NavBarItem :text="collapsed ? 'Expand' : 'Collapse'" :icon="collapsed ? 'last_page' : 'first_page'" @click="toggled=!collapsed" />
@@ -22,12 +25,13 @@
     </div>
 
     <Container v-if="$slots.main" :class="$style.main">
+      <!-- @slot Main page content -->
       <slot name="main" />
     </Container>
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, provide, ref, watch } from 'vue'
+import { computed, onMounted, provide, ref, watch } from 'vue'
 import { Container } from '..'
 import { useTheme } from '../theme'
 import { navBarServiceKey, useElementSize, useSessionStoredRef } from './composables'
@@ -41,8 +45,10 @@ const toggled = useSessionStoredRef<boolean|null>('NavBar-collapse', null)
 const threshold = computed(() => width.value < 1000)
 const collapsed = computed(() => toggled.value ?? threshold.value)
 
-// Clear user-toggle when resized across threshold
-watch(threshold, () => { toggled.value = null })
+onMounted(() => {
+  // Clear user-toggle when resized across threshold
+  watch(threshold, () => { toggled.value = null })
+})
 
 provide(navBarServiceKey, { collapsed })
 </script>
@@ -56,6 +62,9 @@ body .NavBar {
   overflow-x: hidden;
   max-width: 220px;
   transition: all .1s;
+}
+.NavBar a {
+  text-decoration: none;
 }
 .root {
   display: flex;

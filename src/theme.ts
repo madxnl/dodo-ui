@@ -17,7 +17,7 @@ const createTheme = () => reactive({
   font: {
     size: 14,
     family: 'Open Sans, sans-serif',
-    externalCss: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600',
+    import: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600',
   },
 
   spacings: {
@@ -30,8 +30,7 @@ const createTheme = () => reactive({
   },
 
   iconStyle: 'Outlined' as 'Outlined'|'Sharp'|'Rounded',
-  iconWeight: 300 as 100|200|300|400|500|600|700,
-  iconFill: false,
+  iconWeight: '300' as '100'|'200'|'300'|'400'|'500'|'600'|'700',
 })
 
 type Theme = ReturnType<typeof createTheme>
@@ -62,15 +61,15 @@ export function useTheme() {
       ...Object.entries(theme.colors).map(([name, color]) => {
         const rgb = parseColor(color)
         return `
-          --dodo-color-${name}:rgb(${rgb});
+          --dodo-color-${name}:${color};
           --dodo-rgb-${name}:${rgb};`
       }),
       ...Object.entries(theme.spacings).map(([k, v]) => `--dodo-gap-${k}:${v};`),
       `--dodo-font-size: ${theme.font.size}px;`,
-      `--dodo-font: ${theme.font.size}px/calc(1em + 6px) ${theme.font.family};`,
+      `--dodo-font-family: ${theme.font.size}px/calc(1em + 6px) ${theme.font.family};`,
     ]
     const lines = [
-      `@import url("${theme.font.externalCss}");`,
+      `@import url("${theme.font.import}");`,
       `:root{\n${vars.join('\n')}\n}`,
     ]
     const id = 'dodoui-theme-css'
@@ -104,7 +103,7 @@ export function parseColor(hex: string) {
 export function mixColors(color1: ColorProp, color2: ColorProp, mixPct: number) {
   const c1 = colorPropToRGB(color1)
   const c2 = colorPropToRGB(color2)
-  return [0, 1, 2].map(i => c1[i] + (c2[i] - c1[i]) * mixPct)
+  return c1.map((x, i) => Math.round(x + (c2[i] - x) * mixPct))
 }
 
 export function useSpacing(name: Spacing) {

@@ -61,7 +61,7 @@ useTheme()
   text-overflow: ellipsis;
   cursor: inherit;
   margin: 0;
-  font: var(--Text-font, var(--dodo-font));
+  font: var(--Text-font, var(--dodo-font-family));
   font-size: var(--Text-size, var(--dodo-font-size));
   font-weight: var(--Text-weight, normal);
   color: rgba(var(--Text-rgb, var(--dodo-rgb-foreground)), var(--Text-alpha, 1));

@@ -69,7 +69,7 @@ defineProps<{
 </script>
 <style module>
 .Table {
-  font: var(--dodo-font);
+  font: var(--dodo-font-family);
   font-size: calc(var(--dodo-font-size) - 1px);
 }
 table {
