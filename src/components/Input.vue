@@ -26,7 +26,7 @@
 import { ref } from 'vue'
 import { useTheme } from '../theme'
 
-const props = defineProps<{
+defineProps<{
   modelValue: string|null|undefined
   placeholder?: string
   disabled?: boolean
