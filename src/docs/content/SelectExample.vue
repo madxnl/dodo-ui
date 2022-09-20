@@ -9,6 +9,10 @@
     />
 
     <Select
+      v-model="currentValue" :options="[...Array(115)].map((_,i)=>({label:''+i,value:i}))"
+    />
+
+    <Select
       v-slot="{option}"
       v-model="currentValueArray"
       :options="[
@@ -28,6 +32,7 @@ import { Container, Select } from '../..'
 import Icon from '../../components/Icon.vue'
 
 const currentValue = ref<number|undefined>(undefined)
+currentValue.value = 111
 const currentValueArray = ref([1, 2])
 
 </script>

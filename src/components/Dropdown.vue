@@ -61,23 +61,24 @@ async function toggle(show: boolean) {
   if (show) {
     await nextTick()
     updatePositioning()
-    window.addEventListener('click', clickWindow, { passive: true, capture: true })
-    window.addEventListener('scroll', updatePositioning, { passive: true, capture: true })
-    window.addEventListener('resize', updatePositioning)
+    window.addEventListener('click', onWindowEvent, { passive: true, capture: true })
+    window.addEventListener('scroll', onWindowEvent, { passive: true, capture: true })
+    window.addEventListener('resize', onWindowEvent)
   } else {
-    window.removeEventListener('click', clickWindow, { capture: true })
-    window.removeEventListener('scroll', updatePositioning, { capture: true })
-    window.removeEventListener('resize', updatePositioning)
+    window.removeEventListener('click', onWindowEvent, { capture: true })
+    window.removeEventListener('scroll', onWindowEvent, { capture: true })
+    window.removeEventListener('resize', onWindowEvent)
   }
 }
 
-function clickWindow(e: Event) {
+function onWindowEvent(e: Event) {
   // Clicking anywhere outside the dropdown closes it
-  const clickOnTrigger = el.value!.contains(e.target as Node)
-  const clickOnDropdown = content.value!.contains(e.target as Node)
-  if (active.value && !clickOnTrigger && !clickOnDropdown) {
-    toggle(false)
+  if (e.target) {
+    const clickOnTrigger = el.value!.contains(e.target as Node)
+    const clickOnDropdown = content.value!.contains(e.target as Node)
+    if (clickOnTrigger || clickOnDropdown) return
   }
+  toggle(false)
 }
 
 function updatePositioning() {
@@ -85,16 +86,17 @@ function updatePositioning() {
   const { top, left, bottom, right, width } = el.value!.getBoundingClientRect()
   const dropdownAbove = Math.min(contentEl.clientHeight, top, 500) > document.documentElement.clientHeight - bottom
   const rightAligned = Math.min(contentEl.clientWidth, left) > document.documentElement.clientWidth - left
+  const margin = 16
   let styles = `min-width: ${width}px;`
   if (dropdownAbove) {
-    styles += `bottom: ${document.documentElement.clientHeight - top}px; max-height: ${top}px;`
+    styles += `bottom: ${document.documentElement.clientHeight - top}px; max-height: ${top - margin}px;`
   } else {
-    styles += `top: ${bottom}px; max-height: ${document.documentElement.clientHeight - bottom}px;`
+    styles += `top: ${bottom}px; max-height: ${document.documentElement.clientHeight - bottom - margin}px;`
   }
   if (rightAligned) {
-    styles += `right: ${document.documentElement.clientWidth - right}px; max-width: ${right}px;`
+    styles += `right: ${document.documentElement.clientWidth - right}px; max-width: ${right - margin}px;`
   } else {
-    styles += `left: ${left}px; max-width: ${document.documentElement.clientWidth - left}px;`
+    styles += `left: ${left}px; max-width: ${document.documentElement.clientWidth - left - margin}px;`
   }
   dropdownStyles.value = styles
 }
@@ -105,7 +107,8 @@ provide(dropdownServiceKey, { toggle })
 <style module>
 .Dropdown {
   position: fixed;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   z-index: 100;
 }
 .trigger:not(.disabled) {
@@ -114,13 +117,14 @@ provide(dropdownServiceKey, { toggle })
   min-width: 0;
 }
 .content {
-  min-width: 120px;
-  min-height: 20px;
   background: white !important;
   border-radius: 4px;
   border: 1px solid rgba(var(--dodo-rgb-foreground), 0.1);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   overflow-x: hidden;
+  min-width: 120px;
+  min-height: 20px;
+  width: 100%;
 }
 </style>

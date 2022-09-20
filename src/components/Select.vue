@@ -12,7 +12,7 @@
           <template v-else>{{ value }}</template>
         </template>
       </Text>
-      <Text v-else opacity="muted" nowrap>
+      <Text v-else emphasis="low" nowrap>
         {{ placeholderText }}
       </Text>
       <template #after>
@@ -33,6 +33,7 @@
         <DropdownItem
           v-for="(option, i) in filteredOptions"
           :key="`${option.value}`"
+          :data-selectactive="currentValues.includes(option.value) ? 'true' : undefined"
           :active="currentValues.includes(option.value)"
           @click="clickOption(option)"
         >
@@ -89,6 +90,17 @@ watchEffect(() => {
   if (dropdownActive.value && searchEl.value) {
     search.value = ''
     searchEl.value.focus()
+  }
+})
+
+// Scroll to first selected option
+watchEffect(async () => {
+  if (dropdownActive.value) {
+    setTimeout(() => {
+      const dropdownContent = dropdownEl.value?.$el as Element|undefined
+      const activeOptionElem = dropdownContent?.querySelector('[data-selectactive]')
+      activeOptionElem?.scrollIntoView({ block: 'center' })
+    }, 0)
   }
 })
 

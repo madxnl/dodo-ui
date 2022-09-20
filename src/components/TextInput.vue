@@ -8,14 +8,16 @@
   >
     <!-- @slot Shown before value -->
     <template #before><slot name="before" /></template>
-    <input
+    <component
+      :is="rows && rows > 1 ? 'textarea' : 'input'"
       ref="el"
       :value="modelValue"
       :class="$style.input"
       :placeholder="placeholder"
       :disabled="disabled"
+      :rows="rows"
       @input="onChange"
-    >
+    />
     <!-- @slot Shown after value -->
     <template #after><slot name="after" /></template>
   </Field>
@@ -29,6 +31,7 @@ defineProps<{
   modelValue: string|null|undefined
   placeholder?: string
   disabled?: boolean
+  rows?: number
 }>()
 
 const el = ref<HTMLInputElement>()
@@ -49,11 +52,13 @@ useTheme()
 
 </script>
 <style module>
-.TextInput input {
+.TextInput input,
+.TextInput textarea {
   background: transparent;
   font: inherit;
   border: none;
   outline: none;
+  flex-grow: 1;
 }
 .TextInput:focus-within {
   border-color: var(--dodo-color-info);

@@ -14,7 +14,7 @@
       <Text nowrap :class="$style.text">
         <slot />
       </Text>
-      <Text v-if="$slots['text-secondary']" nowrap opacity="secondary">
+      <Text v-if="$slots['text-secondary']" nowrap emphasis="medium">
         <slot name="text-secondary" />
       </Text>
     </Container>
@@ -60,8 +60,8 @@ function click() {
   background: rgba(var(--dodo-rgb-foreground), 0.025);
 }
 .DropdownItem.active {
-  background: rgba(var(--dodo-rgb-info), 0.1);
-  color: var(--dodo-color-info);
+  background: rgba(var(--dodo-rgb-info), 0.15);
+  --Text-rgb: var(--dodo-rgb-info);
 }
 .emphasize .text {
   font-weight: var(--dodo-font-weightBold);

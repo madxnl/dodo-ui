@@ -28,16 +28,15 @@ useTheme()
 .Field {
   display: flex;
   align-items: center;
-  padding: 2px 8px;
+  padding: 2px 6px;
   box-shadow: 0 2px 2px inset rgba(0,0,0,0.05);
   background: white;
   gap: 4px;
   cursor: text;
-  border: 1px solid rgba(0,0,0,.3);
+  border: 1px solid rgba(var(--dodo-rgb-foreground),.45);
   border-radius: 3px;
   --height: var(--dodo-buttonHeight);
   min-height: var(--height);
-  line-height: var(--height);
   font: var(--dodo-font-base);
   color: var(--dodo-color-foreground);
   min-width: 0;
@@ -57,7 +56,7 @@ useTheme()
   align-items: center;
   gap: 4px;
   flex-grow: 1;
-  padding: 0 4px;
+  padding: 0 2px;
   min-width: 0;
 }
 .disabled {
