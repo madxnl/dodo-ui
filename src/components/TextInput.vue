@@ -16,6 +16,7 @@
       :placeholder="placeholder"
       :disabled="disabled"
       :rows="rows"
+      :maxlength="maxlength"
       @input="onChange"
     />
     <!-- @slot Shown after value -->
@@ -32,6 +33,7 @@ defineProps<{
   placeholder?: string
   disabled?: boolean
   rows?: number
+  maxlength?: number
 }>()
 
 const el = ref<HTMLInputElement>()

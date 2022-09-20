@@ -14,7 +14,7 @@
       <Text nowrap :class="$style.text">
         <slot />
       </Text>
-      <Text v-if="$slots['text-secondary']" nowrap emphasis="medium">
+      <Text v-if="$slots['text-secondary']" nowrap emphasis="low">
         <slot name="text-secondary" />
       </Text>
     </Container>

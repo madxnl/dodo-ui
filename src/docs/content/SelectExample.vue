@@ -2,27 +2,28 @@
   <Container style="width:500px">
     <Select
       v-model="currentValue" :options="[
-        { value: 1, label: 'Value 1' },
-        { value: 2, label: 'Value 2' },
-        { value: 3, label: 'Value 3' },
+        { value: 1, text: 'Value 1' },
+        { value: 2, text: 'Value 2' },
+        { value: 3, text: 'Value 3' },
       ]"
     />
 
     <Select
-      v-model="currentValue" :options="[...Array(115)].map((_,i)=>({label:''+i,value:i}))"
+      v-model="currentValue" :options="[...Array(115)].map((_,i)=>({text:''+i,value:i}))"
     />
 
     <Select
       v-slot="{option}"
       v-model="currentValueArray"
+      multiple
       :options="[
-        { value: 1, label: 'Value 1' },
-        { value: 2, label: 'Value 2' + ' bla'.repeat(99) },
-        { value: 3, label: 'Value 3' },
+        { value: 1, text: 'Value 1' },
+        { value: 2, text: 'Value 2' + ' bla'.repeat(99) },
+        { value: 3, text: 'Value 3' },
       ]"
     >
       <Icon name="star" fill size="s" color="warn" />
-      {{ option.label }}
+      {{ option.text }}
     </Select>
   </Container>
 </template>

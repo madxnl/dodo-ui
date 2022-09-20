@@ -6,7 +6,7 @@
           <template v-if="i">, </template>
           <template v-if="optionForValue(value)">
             <slot :index="options.indexOf(optionForValue(value)!)" :option="optionForValue(value)!">
-              {{ optionForValue(value)!.label }}
+              {{ optionForValue(value)!.text }}
             </slot>
           </template>
           <template v-else>{{ value }}</template>
@@ -39,7 +39,7 @@
         >
           <!-- @slot Customize option html -->
           <slot :index="i" :option="option">
-            {{ option.label }}
+            {{ option.text }}
           </slot>
         </DropdownItem>
       </Container>
@@ -57,26 +57,27 @@ import Icon from './Icon.vue'
 import Row from './Row.vue'
 import Text from './Text.vue'
 
-type Value = boolean|string|number|undefined|null
-type Option = { value: Value; label?: string }
+type Option = { value: unknown; text?: string }
 
 const props = defineProps<{
   /** Array of available options */
   options: Option[]
-  /** v-model binding, bind an array to allow multiple selection */
-  modelValue?: Value[]|Value
+  /** v-model binding */
+  modelValue?: unknown
   // multiple?: boolean
   disabled?: boolean
   /** Set placeholder text */
   placeholder?: string
+  /** Allow multiple select */
+  multiple?: boolean
 }>()
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', v: Value[]|Value): void
+  (e: 'update:modelValue', v: unknown[]|unknown): void
 }>()
 
 const currentValues = computed(() => {
-  const values = Array.isArray(props.modelValue) ? props.modelValue : [props.modelValue]
+  const values = props.multiple ? [props.modelValue].flat() : [props.modelValue]
   return values.filter(optionForValue)
 })
 
@@ -106,22 +107,21 @@ watchEffect(async () => {
 
 const filteredOptions = computed(() => {
   const s = search.value.toLowerCase()
-  return props.options.filter(o => `${o.value}|${o.label}`.toLowerCase().includes(s))
+  return props.options.filter(o => `${o.value}|${o.text}`.toLowerCase().includes(s))
 })
 
 const placeholderText = computed(() => {
   if (props.placeholder) return props.placeholder
-  return Array.isArray(props.modelValue) ? 'Select one or more' : 'Select one'
+  return props.multiple ? 'Select one or more' : 'Select one'
 })
 
-function optionForValue(value: Value) {
+function optionForValue(value: unknown) {
   return props.options.find(o => o.value === value)
 }
 
 function clickOption(o: Option) {
-  Array.isArray(props.modelValue)
-  let newValue: Value[]|Value = o.value
-  if (Array.isArray(props.modelValue)) { // multiple
+  let newValue: unknown[]|unknown = o.value
+  if (props.multiple) {
     if (currentValues.value.includes(newValue)) { // remove from selection
       newValue = currentValues.value.filter(x => o.value !== x)
     } else { // append to selection

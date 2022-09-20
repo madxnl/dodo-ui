@@ -33,7 +33,7 @@ useTheme()
   background: white;
   gap: 4px;
   cursor: text;
-  border: 1px solid rgba(var(--dodo-rgb-foreground),.4);
+  border: 1px solid rgba(var(--dodo-rgb-foreground),.3);
   border-radius: 3px;
   --height: var(--dodo-buttonHeight);
   min-height: var(--height);
