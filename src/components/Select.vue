@@ -1,6 +1,6 @@
 <template>
-  <Dropdown v-model="dropdownActive">
-    <Field ref="fieldEl" button>
+  <Dropdown v-model="dropdownActive" :disabled="disabled">
+    <Field ref="fieldEl" button :disabled="disabled">
       <Text v-if="currentValues.length" color="foreground" nowrap>
         <template v-for="value,i in currentValues">
           <template v-if="i">, </template>
@@ -57,7 +57,7 @@ import Icon from './Icon.vue'
 import Row from './Row.vue'
 import Text from './Text.vue'
 
-type Option = { value: unknown; text?: string }
+type Option = { value: unknown; text: string }
 
 const props = defineProps<{
   /** Array of available options */

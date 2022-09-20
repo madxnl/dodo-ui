@@ -1,7 +1,8 @@
 <template>
   <Container style="width:500px">
     <Select
-      v-model="currentValue" :options="[
+      v-model="currentValue"
+      :options="[
         { value: 1, text: 'Value 1' },
         { value: 2, text: 'Value 2' },
         { value: 3, text: 'Value 3' },

@@ -5,6 +5,7 @@
       $style.trigger,
       disabled && $style.disabled,
     ]"
+    v-bind="$attrs"
     @click.prevent="toggle(!active)"
   >
     <slot :is-active="active" />
