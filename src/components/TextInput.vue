@@ -58,6 +58,7 @@ useTheme()
   font: inherit;
   border: none;
   outline: none;
+  padding: 0;
   flex-grow: 1;
 }
 .TextInput:focus-within {

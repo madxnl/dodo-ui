@@ -99,7 +99,7 @@ export default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 14px;
+  padding: 0 16px;
   --height: var(--dodo-buttonHeight);
   min-width: var(--height);
   height: var(--height);

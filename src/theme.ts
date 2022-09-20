@@ -39,7 +39,7 @@ const createTheme = () => reactive({
   iconWeight: '300' as '100'|'200'|'300'|'400'|'500'|'600'|'700',
 
   vars: {
-    buttonHeight: '34px',
+    buttonHeight: '36px',
   },
 })
 

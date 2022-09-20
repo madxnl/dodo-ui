@@ -33,13 +33,14 @@ useTheme()
   background: white;
   gap: 4px;
   cursor: text;
-  border: 1px solid rgba(var(--dodo-rgb-foreground),.45);
+  border: 1px solid rgba(var(--dodo-rgb-foreground),.4);
   border-radius: 3px;
   --height: var(--dodo-buttonHeight);
   min-height: var(--height);
   font: var(--dodo-font-base);
   color: var(--dodo-color-foreground);
   min-width: 0;
+  box-sizing: border-box;
 }
 .button {
   cursor: pointer;
