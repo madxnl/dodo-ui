@@ -26,9 +26,8 @@ const css = computed(() => {
 </script>
 <style module>
 .Chip {
-  font: var(--dodo-font-family);
-  font-size: calc(var(--dodo-font-size) - 1px);
-  font-weight: 500;
+  font: var(--dodo-font-base);
+  font-size: var(--dodo-font-sizeSmall);
   padding: 0 10px;
   --height: 28px;
   height: var(--height);

@@ -21,8 +21,8 @@
 <script lang="ts" setup>
 import { computed, inject } from 'vue'
 import { Icon, IconName, Text, Tooltip } from '..'
+import { navBarServiceKey } from '../composables/composables'
 import { useTheme } from '../theme'
-import { navBarServiceKey } from './composables'
 
 defineProps<{
   text: string
@@ -76,12 +76,12 @@ const collapsed = computed(() => navBar?.collapsed.value)
   justify-content: center;
 }
 .text {
-  font-weight: 500;
+  font-weight: var(--dodo-font-weightSemi);
   user-select: none;
 }
 .secondary {
   opacity: 0.5;
-  font-weight: 500;
+  font-weight: var(--dodo-font-weightSemi);
 }
 
 .active,

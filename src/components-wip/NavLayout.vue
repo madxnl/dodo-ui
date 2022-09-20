@@ -53,8 +53,8 @@ defineProps<{
 .pageLink {
   color: inherit;
   text-decoration: none;
-  font: var(--dodo-font-family);
-  font-weight: 500;
+  font: var(--dodo-font-base);
+  font-weight: var(--dodo-font-weightSemi);
   color: var(--dodo-color-foreground);
 }
 .pageLink {

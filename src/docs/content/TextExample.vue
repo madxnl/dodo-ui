@@ -2,9 +2,9 @@
   <Text h1>{{ text }}</Text>
   <Text h2>{{ text }}</Text>
   <Text h3>{{ text }}</Text>
-  <Text nowrap>{{ paragraph }}</Text>
-  <Text muted>{{ paragraph }}</Text>
-  <Text small align="right">{{ text }}</Text>
+  <Text p nowrap>{{ paragraph }}</Text>
+  <Text p emphasis="low">{{ paragraph }}</Text>
+  <Text label align="right">{{ text }}</Text>
   <Text h1>
     <Text color="danger">Rich</Text>
     <em> text </em>

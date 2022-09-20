@@ -87,8 +87,8 @@ export default {
 .Button {
   border: 0;
   cursor: pointer;
-  font: var(--dodo-font-family);
-  font-weight: 500;
+  font: var(--dodo-font-base);
+  /* font-weight: var(--dodo-font-weight); */
   background: var(--dodo-color-background);
   color: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));
   border-radius: 4px;
@@ -100,9 +100,9 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0 14px;
-  --height: 36px;
+  --height: var(--dodo-buttonHeight);
   min-width: var(--height);
-  min-height: var(--height);
+  height: var(--height);
   line-height: var(--height);
   white-space: nowrap;
   box-sizing: border-box;
@@ -150,7 +150,7 @@ export default {
 .small {
   padding: 0 10px;
   --height: 28px;
-  font-size: calc(var(--dodo-font-size) - 1px);
+  font-size: var(--dodo-font-sizeSmall);
 }
 .square {
   padding: 0;

@@ -8,6 +8,11 @@ export const dropdownServiceKey: InjectionKey<{
   toggle(active: boolean): void
 }> = Symbol('DropdownService')
 
+export const formServiceKey: InjectionKey<{
+  errors: Record<string, string|undefined>
+  validateField: (field: string) => Promise<void>
+}> = Symbol('FormService')
+
 export function useElementSize(el: Ref<Element|undefined>) {
   const width = ref(0)
   const height = ref(0)

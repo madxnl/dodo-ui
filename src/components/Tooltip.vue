@@ -80,7 +80,7 @@ useTheme()
 }
 .text {
   color: white;
-  font-weight: 500;
+  font-weight: var(--dodo-font-weightSemi);
   /* display: inline-grid;
   border-radius: 4px;
   width: 32px;
@@ -92,7 +92,7 @@ useTheme()
   text-align: center;
   align-items: center;
   justify-content: center;
-  font: var(--dodo-font-family);
+  font: var(--dodo-font-base);
   font-size: calc(var(--dodo-font-size) + 2px);
   font-weight: bold; */
 }

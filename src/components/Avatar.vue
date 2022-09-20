@@ -73,9 +73,10 @@ useTheme()
   text-align: center;
   align-items: center;
   justify-content: center;
-  font: var(--dodo-font-family);
-  font-size: calc(var(--dodo-font-size) + 2px);
-  font-weight: bold;
+  font: var(--dodo-font-base);
+  font-size: calc(var(--dodo-font-size) * 1.1);
+  font-weight: var(--dodo-font-weightSemi);
+  line-height: 32px;
 }
 .round {
   border-radius: 999px;

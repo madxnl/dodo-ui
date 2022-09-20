@@ -8,8 +8,7 @@
     :class="[
       $style.Icon,
       'material-symbols-' + theme.iconStyle.toLowerCase(),
-      props.small && $style.small,
-      props.large && $style.large,
+      props.size && $style[props.size],
       props.fill && $style.fill,
     ]"
   >
@@ -18,8 +17,8 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useWebFont } from '../composables/composables'
 import { ColorProp, useColorProp, useTheme } from '../theme'
-import { useWebFont } from './composables'
 import { IconName } from './iconNames'
 
 const props = defineProps<{
@@ -34,8 +33,9 @@ const props = defineProps<{
   /** Filled variant
    */
   fill?: boolean
-  small?: boolean
-  large?: boolean
+  small?: never
+  large?: never
+  size?: 'xs'|'s'|'m'|'l'|'xl'
 }>()
 
 const theme = useTheme()
@@ -51,21 +51,19 @@ const webfont = useWebFont({
 </script>
 
 <style module>
-.Icon {
+span.Icon {
   height: 1em;
   width: 1em;
   display: inline-block;
-  font-size: 24px;
+  font-size: 1.5em;
   user-select: none;
-  vertical-align: middle;
-}
-.Icon.small {
-  font-size: 18px;
-}
-.Icon.large {
-  font-size: 32px;
+  vertical-align: -25%;
 }
 .Icon.fill {
   font-variation-settings: 'FILL' 1;
 }
+.Icon.xs { font-size: 1em; }
+.Icon.s { font-size: 1.25em; }
+.Icon.l { font-size: 2em; }
+.Icon.xl { font-size: 2.5em; }
 </style>

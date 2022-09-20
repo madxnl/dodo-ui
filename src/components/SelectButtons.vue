@@ -1,12 +1,12 @@
 <template>
-  <Row wrap>
+  <div :wrap="multiple" :class="[$style.Select, multiple && $style.multiple]">
     <Button
       v-for="(option,i) in options"
       :key="option.label"
-      rounded
       v-bind="isSelected(option) ? { active: true, color: 'info' } : {}"
       :disabled="disabled"
       :small="small"
+      rounded
       @click="toggle(option)"
     >
       <!--
@@ -18,12 +18,11 @@
         {{ option.label || option.value }}
       </slot>
     </Button>
-  </Row>
+  </div>
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
 import Button from './Button.vue'
-import Row from './Row.vue'
 
 const props = defineProps<{
   /** Array of available options */
@@ -74,3 +73,23 @@ function toggle(option: Option) {
   emit('update:modelValue', newValue)
 }
 </script>
+
+<style module>
+.Select {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.multiple {
+  gap: 4px;
+}
+.Select:not(.multiple) button:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.Select:not(.multiple) button:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}
+</style>

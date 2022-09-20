@@ -1,9 +1,11 @@
 <template>
   <div
-    ref="el" :class="[
+    ref="el"
+    :class="[
       $style.trigger,
       disabled && $style.disabled,
-    ]" @click.prevent="toggle(!active)"
+    ]"
+    @click.prevent="toggle(!active)"
   >
     <slot :is-active="active" />
   </div>
@@ -19,8 +21,8 @@
 
 <script lang="ts" setup>
 import { nextTick, onBeforeUnmount, provide, ref, watch } from 'vue'
+import { dropdownServiceKey } from '../composables/composables'
 import { Spacing } from '../theme'
-import { dropdownServiceKey } from './composables'
 import Container from './Container.vue'
 
 const props = defineProps<{
@@ -108,6 +110,8 @@ provide(dropdownServiceKey, { toggle })
 }
 .trigger:not(.disabled) {
   cursor: pointer;
+  flex-grow: 1;
+  min-width: 0;
 }
 .content {
   min-width: 120px;

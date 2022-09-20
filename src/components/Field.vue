@@ -1,0 +1,67 @@
+<template>
+  <div
+    :class="[
+      $style.Field,
+      disabled && $style.disabled,
+      button && $style.button,
+    ]"
+  >
+    <slot name="before" />
+    <div :class="$style.inner">
+      <slot />
+    </div>
+    <slot name="after" />
+  </div>
+</template>
+<script lang="ts" setup>
+import { useTheme } from '../theme'
+
+defineProps<{
+  disabled?: boolean
+  button?: boolean
+}>()
+
+useTheme()
+
+</script>
+<style module>
+.Field {
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  box-shadow: 0 2px 2px inset rgba(0,0,0,0.05);
+  background: white;
+  gap: 4px;
+  cursor: text;
+  border: 1px solid rgba(0,0,0,.3);
+  border-radius: 3px;
+  --height: var(--dodo-buttonHeight);
+  min-height: var(--height);
+  line-height: var(--height);
+  font: var(--dodo-font-base);
+  color: var(--dodo-color-foreground);
+  min-width: 0;
+}
+.button {
+  cursor: pointer;
+}
+.Field:focus-within {
+  border-color: var(--dodo-color-info);
+}
+[class$=_hasError] .Field {
+  border-color: var(--dodo-color-danger);
+  color: var(--dodo-color-danger);
+}
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-grow: 1;
+  padding: 0 4px;
+  min-width: 0;
+}
+.disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+</style>

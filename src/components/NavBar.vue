@@ -33,8 +33,8 @@
 <script lang="ts" setup>
 import { computed, onMounted, provide, ref, watch } from 'vue'
 import { Container } from '..'
+import { navBarServiceKey, useElementSize, useSessionStoredRef } from '../composables/composables'
 import { useTheme } from '../theme'
-import { navBarServiceKey, useElementSize, useSessionStoredRef } from './composables'
 import NavBarItem from './NavBarItem.vue'
 
 useTheme()
@@ -54,7 +54,8 @@ provide(navBarServiceKey, { collapsed })
 </script>
 <style module>
 body .NavBar {
-  background: var(--dodo-color-navbar);
+  background: var(--dodo-color-foreground);
+  background: var(--dodo-color-foreground) linear-gradient(#ffffff11, #00000011);
   color: white;
   display: flex;
   flex-flow: column;

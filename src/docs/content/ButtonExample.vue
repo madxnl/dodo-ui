@@ -15,11 +15,11 @@
 
     <Row gap="s" wrap>
       <Button color="success">
+        <Icon name="new_releases" fill />
         Button 6
-        <Icon name="thumb_up" fill small />
       </Button>
       <Button variant="solid" square color="danger">
-        <Icon name="favorite" large fill />
+        <Icon name="favorite" fill />
       </Button>
 
       <Button variant="solid" color="info" disabled>

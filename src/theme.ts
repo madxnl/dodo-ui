@@ -8,16 +8,22 @@ const createTheme = () => reactive({
     danger: '#e76f51',
 
     background: '#ffffff',
-    foreground: '#424242',
 
-    container: '#f7f8f9',
-    navbar: '#213547',
+    foreground: '#16293a',
+    // heading: '#16293a',
+    // muted: '#888888',
+    // navbar: '#16293a',
   },
 
   font: {
-    size: 14,
-    family: 'Open Sans, sans-serif',
-    import: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600',
+    size: '15px',
+    sizeSmall: '13px',
+    weight: 400,
+    family: 'Roboto, sans-serif',
+    import: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500',
+    weightSemi: 500,
+    weightBold: 500,
+    lineHeight: '1.4',
   },
 
   spacings: {
@@ -31,6 +37,10 @@ const createTheme = () => reactive({
 
   iconStyle: 'Outlined' as 'Outlined'|'Sharp'|'Rounded',
   iconWeight: '300' as '100'|'200'|'300'|'400'|'500'|'600'|'700',
+
+  vars: {
+    buttonHeight: '34px',
+  },
 })
 
 type Theme = ReturnType<typeof createTheme>
@@ -65,12 +75,14 @@ export function useTheme() {
           --dodo-rgb-${name}:${rgb};`
       }),
       ...Object.entries(theme.spacings).map(([k, v]) => `--dodo-gap-${k}:${v};`),
-      `--dodo-font-size: ${theme.font.size}px;`,
-      `--dodo-font-family: ${theme.font.size}px/calc(1em + 6px) ${theme.font.family};`,
+      ...Object.entries(theme.vars).map(([k, v]) => `--dodo-${k}:${v};`),
+      ...Object.entries(theme.font).map(([k, v]) => `--dodo-font-${k}:${v};`),
+      `--dodo-font-base: ${theme.font.size}/${theme.font.lineHeight} ${theme.font.family};`,
     ]
     const lines = [
       `@import url("${theme.font.import}");`,
       `:root{\n${vars.join('\n')}\n}`,
+      '[class^="dodo"] ::selection{color:white;background:var(--dodo-color-info)}',
     ]
     const id = 'dodoui-theme-css'
     let style = document.querySelector('#' + id)

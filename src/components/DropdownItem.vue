@@ -14,7 +14,7 @@
       <Text nowrap :class="$style.text">
         <slot />
       </Text>
-      <Text v-if="$slots['text-secondary']" nowrap muted>
+      <Text v-if="$slots['text-secondary']" nowrap opacity="secondary">
         <slot name="text-secondary" />
       </Text>
     </Container>
@@ -24,8 +24,8 @@
 <script lang="ts" setup>
 import { inject } from 'vue'
 import { Text } from '..'
+import { dropdownServiceKey } from '../composables/composables'
 import { useTheme } from '../theme'
-import { dropdownServiceKey } from './composables'
 import Container from './Container.vue'
 
 defineProps<{
@@ -64,7 +64,7 @@ function click() {
   color: var(--dodo-color-info);
 }
 .emphasize .text {
-  font-weight: bold;
+  font-weight: var(--dodo-font-weightBold);
 }
 .separator {
   margin: var(--dodo-gap-xs) 0;
