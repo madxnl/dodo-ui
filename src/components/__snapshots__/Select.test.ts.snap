@@ -11,8 +11,8 @@ exports[`Search filters options 1`] = `
     <div class=\\"dodoContainer dodoDropdown-content\\" style=\\"gap: 0px; padding: 4px 0px;\\">
       <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">
         <div class=\\"dodoRow dodoSelect-searchbox\\" style=\\"padding: 8px;\\">
-          <div class=\\"dodoField dodoTextInput\\" type=\\"search\\" tabindex=\\"0\\">
-            <div class=\\"dodoField-inner\\"><input placeholder=\\"Search\\" type=\\"search\\" tabindex=\\"0\\"></div>
+          <div class=\\"dodoField dodoTextInput\\" tabindex=\\"0\\">
+            <div class=\\"dodoField-inner\\"><input class=\\"\\" placeholder=\\"Search\\" type=\\"search\\"></div>
           </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
         </div>
         <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">
@@ -40,8 +40,8 @@ exports[`Search input visible after character key press 1`] = `
     <div class=\\"dodoContainer dodoDropdown-content\\" style=\\"gap: 0px; padding: 4px 0px;\\">
       <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">
         <div class=\\"dodoRow dodoSelect-searchbox\\" style=\\"padding: 8px;\\">
-          <div class=\\"dodoField dodoTextInput\\" type=\\"search\\" tabindex=\\"0\\">
-            <div class=\\"dodoField-inner\\"><input placeholder=\\"Search\\" type=\\"search\\" tabindex=\\"0\\"></div>
+          <div class=\\"dodoField dodoTextInput\\" tabindex=\\"0\\">
+            <div class=\\"dodoField-inner\\"><input class=\\"\\" placeholder=\\"Search\\" type=\\"search\\"></div>
           </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
         </div>
         <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\"></div>
@@ -62,8 +62,8 @@ exports[`Search input visible if many options 1`] = `
     <div class=\\"dodoContainer dodoDropdown-content\\" style=\\"gap: 0px; padding: 4px 0px;\\">
       <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">
         <div class=\\"dodoRow dodoSelect-searchbox\\" style=\\"padding: 8px;\\">
-          <div class=\\"dodoField dodoTextInput\\" type=\\"search\\" tabindex=\\"0\\">
-            <div class=\\"dodoField-inner\\"><input placeholder=\\"Search\\" type=\\"search\\" tabindex=\\"0\\"></div>
+          <div class=\\"dodoField dodoTextInput\\" tabindex=\\"0\\">
+            <div class=\\"dodoField-inner\\"><input class=\\"\\" placeholder=\\"Search\\" type=\\"search\\"></div>
           </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
         </div>
         <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">

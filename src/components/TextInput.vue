@@ -17,7 +17,8 @@
       :disabled="disabled"
       :rows="rows"
       :maxlength="maxlength"
-      v-bind="$attrs"
+      :type="type"
+      :tab-index="tabIndex"
       @input="onChange"
     />
     <!-- @slot Shown after value -->
@@ -35,6 +36,8 @@ defineProps<{
   disabled?: boolean
   rows?: number
   maxlength?: number
+  type?: 'search'
+  tabIndex?: number
 }>()
 
 const el = ref<HTMLInputElement>()
