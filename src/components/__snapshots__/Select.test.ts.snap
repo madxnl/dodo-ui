@@ -1,0 +1,23 @@
+// Vitest Snapshot v1
+
+exports[`Search input visible after character key press 1`] = `
+"<div class=\\"dodoDropdown-trigger\\">
+  <div class=\\"dodoField dodoField-button\\">
+    <div class=\\"dodoField-inner\\"><span class=\\"dodoText dodoText-nowrap\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"dodoIcon material-symbols-outlined\\">arrow_drop_down</span>
+  </div>
+</div>
+<teleport-stub>
+  <div class=\\"dodoDropdown\\" style=\\"min-width: 0px; top: 0px; max-height: -16px; left: 0px; max-width: -16px;\\">
+    <div class=\\"dodoContainer dodoDropdown-content\\" style=\\"gap: 0px; padding: 4px 0px;\\">
+      <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">
+        <div class=\\"dodoRow\\" style=\\"padding: 8px;\\">
+          <div class=\\"dodoField dodoTextInput\\" type=\\"search\\">
+            <div class=\\"dodoField-inner\\"><input placeholder=\\"Search\\" type=\\"search\\"></div><span style=\\"cursor: pointer;\\" class=\\"dodoIcon material-symbols-outlined dodoIcon-s\\">close</span>
+          </div>
+        </div>
+        <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\"></div>
+      </div>
+    </div>
+  </div>
+</teleport-stub>"
+`;

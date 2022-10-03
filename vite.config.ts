@@ -1,7 +1,8 @@
+/// <reference types="vitest" />
 import vue from '@vitejs/plugin-vue'
 import { readFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
-import { defineConfig, Plugin, UserConfig, ViteDevServer } from 'vite'
+import { defineConfig, Plugin, ViteDevServer } from 'vite'
 import Inspect from 'vite-plugin-inspect'
 import { parse, parseSource } from 'vue-docgen-api'
 
@@ -64,8 +65,7 @@ export function generateScopedName(name: string, filename: string) {
   return name === componentName ? `dodo${name}` : `dodo${componentName}-${name}`
 }
 
-// https://vitejs.dev/config/
-export const baseConfig: UserConfig = {
+export default defineConfig({
   base: '/dodo-ui/', // match path for madxnl.github.io/dodo-ui/
   plugins: [
     docgen(),
@@ -75,7 +75,10 @@ export const baseConfig: UserConfig = {
   build: {
     outDir: 'docs',
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: 'test.setup.ts',
+  },
   css: { modules: { generateScopedName } },
-}
-
-export default defineConfig(baseConfig)
+})

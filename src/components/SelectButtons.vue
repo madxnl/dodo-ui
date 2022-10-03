@@ -1,5 +1,5 @@
 <template>
-  <div :wrap="multiple" :class="[$style.Select, multiple && $style.multiple]">
+  <div :class="[$style.Select, multiple && $style.multiple]">
     <Button
       v-for="(option,i) in options"
       :key="option.label"
@@ -77,6 +77,7 @@ function toggle(option: Option) {
 <style module>
 .Select {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   min-width: 0;
 }

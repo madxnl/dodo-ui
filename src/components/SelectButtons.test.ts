@@ -1,16 +1,12 @@
 import { mount } from '@vue/test-utils'
-import { SelectButtons } from '../src'
-import { test, expect } from 'vitest'
+import { expect, test } from 'vitest'
+import SelectButtons from './SelectButtons.vue'
 
 const _options = [
   { label: 'Option one', value: 1 },
   { label: 'Option two', value: 2 },
   { label: 'Option three', value: 3 },
 ]
-
-/**
-* @vitest-environment jsdom
-*/
 
 test('Select a value', async () => {
   const wrapper = mount(SelectButtons, {

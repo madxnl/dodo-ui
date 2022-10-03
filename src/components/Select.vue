@@ -18,37 +18,34 @@
       <template #after>
         <Icon name="arrow_drop_down" />
       </template>
-      <input
-        ref="searchEl"
-        v-model="search" style="position:fixed;pointer-events:none;opacity:0"
-      >
+      <input ref="hiddenInput" v-model="search" style="position:fixed;pointer-events:none;opacity:0">
     </Field>
     <template #dropdown>
-      <Container ref="dropdownEl" gap="0" @mousedown.stop.prevent="mousedown">
-        <Row v-if="search" pad="s">
-          <Chip tabindex="-1" @click.stop.prevent="clearSearch">
-            {{ search }}<Icon name="close" />
-          </Chip>
+      <Container ref="dropdownEl" gap="0" overflow="auto" @mousedown.stop.prevent="">
+        <Row v-show="showSearch" pad="s" :class="$style.searchbox">
+          <TextInput ref="searchEl" v-model="search" type="search" placeholder="Search" tabindex="0" />
+          <!-- <template #after><Icon name="close" size="s" style="cursor:pointer" @click="clearSearch" /></template> -->
         </Row>
-        <DropdownItem
-          v-for="(option, i) in filteredOptions"
-          :key="`${option.value}`"
-          :data-selectactive="currentValues.includes(option.value) ? 'true' : undefined"
-          :active="currentValues.includes(option.value)"
-          @click="clickOption(option)"
-        >
-          <!-- @slot Customize option html -->
-          <slot :index="i" :option="option">
-            {{ option.text }}
-          </slot>
-        </DropdownItem>
+        <Container gap="0" overflow="auto">
+          <DropdownItem
+            v-for="(option, i) in filteredOptions"
+            :key="`${option.value}`"
+            :data-selectactive="currentValues.includes(option.value) ? 'true' : undefined"
+            :active="currentValues.includes(option.value)"
+            @click="clickOption(option)"
+          >
+            <!-- @slot Customize option html -->
+            <slot :index="i" :option="option">
+              {{ option.text }}
+            </slot>
+          </DropdownItem>
+        </Container>
       </Container>
     </template>
   </Dropdown>
 </template>
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
-import Chip from './Chip.vue'
 import Container from './Container.vue'
 import Dropdown from './Dropdown.vue'
 import DropdownItem from './DropdownItem.vue'
@@ -56,6 +53,7 @@ import Field from './Field.vue'
 import Icon from './Icon.vue'
 import Row from './Row.vue'
 import Text from './Text.vue'
+import TextInput from './TextInput.vue'
 
 type Option = { value: unknown; text: string }
 
@@ -83,14 +81,21 @@ const currentValues = computed(() => {
 
 const dropdownActive = ref(false)
 const search = ref('')
-const searchEl = ref<HTMLInputElement>()
+const hiddenInput = ref<HTMLInputElement>()
+const searchEl = ref<InstanceType<typeof TextInput>>()
 const dropdownEl = ref<InstanceType<typeof Container>>()
 const fieldEl = ref<InstanceType<typeof Field>>()
 
 watchEffect(() => {
-  if (dropdownActive.value && searchEl.value) {
+  if (dropdownActive.value && hiddenInput.value) {
     search.value = ''
-    searchEl.value.focus()
+    hiddenInput.value.focus()
+  }
+})
+
+watchEffect(() => {
+  if (search.value && searchEl.value) {
+    searchEl.value.$el.querySelector('input').focus()
   }
 })
 
@@ -103,6 +108,10 @@ watchEffect(async () => {
       activeOptionElem?.scrollIntoView({ block: 'center' })
     }, 0)
   }
+})
+
+const showSearch = computed(() => {
+  return search.value || props.options.length >= 10
 })
 
 const filteredOptions = computed(() => {
@@ -137,12 +146,6 @@ function focusin(e: Event) {
   dropdownActive.value = focusInField || focusInDropdown
 }
 
-function clearSearch() {
-  search.value = ''
-}
-
-function mousedown() {}
-
 onMounted(() => {
   document.addEventListener('focusin', focusin)
 })
@@ -151,3 +154,9 @@ onBeforeUnmount(() => {
   document.removeEventListener('focusin', focusin)
 })
 </script>
+
+<style module>
+.searchbox {
+  border-bottom: 1px solid rgba(var(--dodo-rgb-foreground),0.2);
+}
+</style>

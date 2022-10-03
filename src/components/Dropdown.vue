@@ -83,22 +83,23 @@ function onWindowEvent(e: Event) {
 }
 
 function updatePositioning() {
+  const margin = 24
+  const sep = 1
   const contentEl = content.value!
-  const { top, left, bottom, right, width } = el.value!.getBoundingClientRect()
-  const dropdownAbove = Math.min(contentEl.clientHeight, top, 500) > document.documentElement.clientHeight - bottom
-  const rightAligned = Math.min(contentEl.clientWidth, left) > document.documentElement.clientWidth - left
-  const margin = 16
+  const { top, left, bottom, width } = el.value!.getBoundingClientRect()
+  const W = document.body.clientWidth
+  const H = document.body.clientHeight
+  const dropdownAbove = Math.min(contentEl.clientHeight, top, 500) > H - bottom
+  // const rightAligned = Math.min(contentEl.clientWidth, left) > W - left
+  const maxW = Math.min(W - left - margin, 500)
   let styles = `min-width: ${width}px;`
+  styles += `left: ${left}px; max-width: ${maxW}px;`
   if (dropdownAbove) {
-    styles += `bottom: ${document.documentElement.clientHeight - top}px; max-height: ${top - margin}px;`
+    styles += `bottom: ${H - top - sep}px; max-height: ${top - margin - sep}px;`
   } else {
-    styles += `top: ${bottom}px; max-height: ${document.documentElement.clientHeight - bottom - margin}px;`
+    styles += `top: ${bottom + sep}px; max-height: ${H - bottom - margin - sep}px;`
   }
-  if (rightAligned) {
-    styles += `right: ${document.documentElement.clientWidth - right}px; max-width: ${right - margin}px;`
-  } else {
-    styles += `left: ${left}px; max-width: ${document.documentElement.clientWidth - left - margin}px;`
-  }
+  // styles += `right: ${W - right}px; max-width: ${right - margin}px;`
   dropdownStyles.value = styles
 }
 

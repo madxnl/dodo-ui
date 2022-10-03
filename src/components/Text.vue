@@ -11,7 +11,7 @@
       align && `text-align:${align};`
     ]"
   >
-    <slot class="foo" />
+    <slot />
   </component>
 </template>
 <script lang="ts" setup>
@@ -81,7 +81,7 @@ h1.Text, h2.Text, h3.Text, h4.Text, h5.Text, h6.Text {
   --Text-weight: var(--dodo-font-weightBold);
   --Text-size: var(--dodo-font-size);
   --Text-opacity: var(--dodo-text-opacity-full);
-  color: var(--dodo-color-foreground);
+  --Text-rgb: var(--dodo-rgb-foreground);
 }
 h1.Text {
   --Text-size: calc(var(--dodo-font-size) * 2.5);

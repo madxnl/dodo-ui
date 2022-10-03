@@ -39,6 +39,7 @@ const props = defineProps<{
    * @example column-width="400px"
    */
   columnWidth?: string
+  // autoColumnWidth?: number
   /**
    * Use overflow="auto" make Container scrollable. Parent Containers may need overflow="hidden".
    * @example column-width="400px"

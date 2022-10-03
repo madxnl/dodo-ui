@@ -23,10 +23,10 @@
 </template>
 <script lang="ts" setup>
 import { inject } from 'vue'
-import { Text } from '..'
 import { dropdownServiceKey } from '../composables/composables'
 import { useTheme } from '../theme'
 import Container from './Container.vue'
+import Text from './Text.vue'
 
 defineProps<{
   /** Active item styling */

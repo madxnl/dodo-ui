@@ -17,6 +17,7 @@
       :disabled="disabled"
       :rows="rows"
       :maxlength="maxlength"
+      v-bind="$attrs"
       @input="onChange"
     />
     <!-- @slot Shown after value -->

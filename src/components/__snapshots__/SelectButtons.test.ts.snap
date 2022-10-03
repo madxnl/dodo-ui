@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Deselect 1`] = `
-"<div wrap=\\"true\\" class=\\"dodoSelectButtons-Select dodoSelectButtons-multiple\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"dodoButton dodoButton-default dodoButton-active dodoButton-rounded\\">
+"<div class=\\"dodoSelectButtons-Select dodoSelectButtons-multiple\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"dodoButton dodoButton-default dodoButton-active dodoButton-rounded\\">
     <div class=\\"dodoButton-content\\">
       <!--
         @slot Menu Item footer
@@ -32,7 +32,7 @@ exports[`Deselect 1`] = `
 `;
 
 exports[`Select a value 1`] = `
-"<div wrap=\\"false\\" class=\\"dodoSelectButtons-Select\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"dodoButton dodoButton-default dodoButton-active dodoButton-rounded\\">
+"<div class=\\"dodoSelectButtons-Select\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"dodoButton dodoButton-default dodoButton-active dodoButton-rounded\\">
     <div class=\\"dodoButton-content\\">
       <!--
         @slot Menu Item footer
@@ -63,7 +63,7 @@ exports[`Select a value 1`] = `
 `;
 
 exports[`Select multiple 1`] = `
-"<div wrap=\\"true\\" class=\\"dodoSelectButtons-Select dodoSelectButtons-multiple\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"dodoButton dodoButton-default dodoButton-active dodoButton-rounded\\">
+"<div class=\\"dodoSelectButtons-Select dodoSelectButtons-multiple\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"dodoButton dodoButton-default dodoButton-active dodoButton-rounded\\">
     <div class=\\"dodoButton-content\\">
       <!--
         @slot Menu Item footer

@@ -29,17 +29,17 @@ useTheme()
   display: flex;
   align-items: center;
   padding: 2px 6px;
-  box-shadow: 0 2px 2px inset rgba(0,0,0,0.05);
+  box-shadow: 0 1px 2px inset rgba(0,0,0,0.1);
   background: white;
   gap: 4px;
   cursor: text;
   border: 1px solid rgba(var(--dodo-rgb-foreground),.3);
-  border-radius: 3px;
+  border-radius: 4px;
   --height: var(--dodo-buttonHeight);
   min-height: var(--height);
   font: var(--dodo-font-base);
   color: var(--dodo-color-foreground);
-  min-width: 0;
+  flex: 1 1 500px;
   box-sizing: border-box;
 }
 .button {
@@ -47,6 +47,7 @@ useTheme()
 }
 .Field:focus-within {
   border-color: var(--dodo-color-info);
+  outline: 1px solid var(--dodo-color-info);
 }
 [class$=_hasError] .Field {
   border-color: var(--dodo-color-danger);

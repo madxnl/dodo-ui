@@ -6,13 +6,8 @@ const createTheme = () => reactive({
     success: '#00b188',
     warn: '#dfb235',
     danger: '#e76f51',
-
     background: '#ffffff',
-
     foreground: '#16293a',
-    // heading: '#16293a',
-    // muted: '#888888',
-    // navbar: '#16293a',
   },
 
   font: {
@@ -67,23 +62,17 @@ export function useTheme() {
   const theme = inject(key, undefined) ?? createTheme()
 
   watchEffect(() => {
-    const vars = [
-      ...Object.entries(theme.colors).map(([name, color]) => {
-        const rgb = parseColor(color)
-        return `
-          --dodo-color-${name}:${color};
-          --dodo-rgb-${name}:${rgb};`
-      }),
-      ...Object.entries(theme.spacings).map(([k, v]) => `--dodo-gap-${k}:${v};`),
-      ...Object.entries(theme.vars).map(([k, v]) => `--dodo-${k}:${v};`),
-      ...Object.entries(theme.font).map(([k, v]) => `--dodo-font-${k}:${v};`),
-      `--dodo-font-base: ${theme.font.size}/${theme.font.lineHeight} ${theme.font.family};`,
-    ]
-    const lines = [
-      `@import url("${theme.font.import}");`,
-      `:root{\n${vars.join('\n')}\n}`,
-      '[class^="dodo"] ::selection{color:white;background:var(--dodo-color-info)}',
-    ]
+    const css = `
+@import url("${theme.font.import}");
+:root{
+  ${Object.entries(theme.colors).map(([k, v]) => `--dodo-color-${k}:${v};`).join('')}
+  ${Object.entries(theme.colors).map(([k, v]) => `--dodo-rgb-${k}:${parseColor(v)};`).join('')}
+  ${Object.entries(theme.spacings).map(([k, v]) => `--dodo-gap-${k}:${v};`).join('')}
+  ${Object.entries(theme.vars).map(([k, v]) => `--dodo-${k}:${v};`).join('')}
+  ${Object.entries(theme.font).map(([k, v]) => `--dodo-font-${k}:${v};`).join('')}
+  --dodo-font-base: var(--dodo-font-size)/var(--dodo-font-lineHeight) var(--dodo-font-family);
+}
+[class^="dodo"] ::selection{color:white;background:var(--dodo-color-info)}`
     const id = 'dodoui-theme-css'
     let style = document.querySelector('#' + id)
     if (!style) {
@@ -91,7 +80,6 @@ export function useTheme() {
       style.id = id
       document.head.appendChild(style)
     }
-    const css = lines.join('\n')
     if (style.innerHTML !== css) {
       style.innerHTML = css
     }
