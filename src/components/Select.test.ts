@@ -53,14 +53,14 @@ test('Search input visible if many options', async () => {
   })
   await getByText(wrapper, _options[0].text).trigger('click')
   await nextTick()
-  expect(wrapper.find('[type=search]').exists()).toBeFalsy()
+  expect(wrapper.find('[type=search]').isVisible()).toBeFalsy()
   wrapper.setProps({ options: _options })
   await nextTick()
   expect(wrapper.get('[type=search]').isVisible()).toBeTruthy()
   expect(wrapper.html()).toMatchSnapshot()
 })
 
-test.only('Search input visible after character key press', async () => {
+test('Search input visible after character key press', async () => {
   const wrapper = mount(Select, {
     propsData: { options: _options.slice(0, 5), modelValue: _options[0].value },
     global: { stubs: { teleport: true } },
@@ -68,7 +68,7 @@ test.only('Search input visible after character key press', async () => {
   })
   await getByText(wrapper, _options[0].text).trigger('click')
   await nextTick()
-  expect(wrapper.find('[type=search]').exists()).toBeFalsy()
+  expect(wrapper.find('[type=search]').isVisible()).toBeFalsy()
   const input = document.activeElement as HTMLInputElement
   wrapper.get('input').setValue('foo')
   await nextTick()
