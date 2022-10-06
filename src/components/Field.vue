@@ -39,7 +39,6 @@ useTheme()
   min-height: var(--height);
   font: var(--dodo-font-base);
   color: var(--dodo-color-foreground);
-  flex: 1 1 500px;
   box-sizing: border-box;
 }
 .button {

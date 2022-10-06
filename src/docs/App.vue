@@ -37,6 +37,8 @@ import PropsTable from './PropsTable.vue'
 const examples = import.meta.globEager('./content/*Example*.vue')
 const docs = import.meta.globEager('./content/*Docs.vue')
 
+Object.assign(examples, import.meta.globEager('../components/**/*Example*.vue'))
+
 const componentsInfo = Object.values(components).map(({ docs, source }) => ({
   docs: docs as ComponentDoc,
   source: source as string,
