@@ -5,6 +5,7 @@
         { name: 'Title', value: item => item.title },
         { name: 'Year', value: item => item.year, width: '10%' },
         { name: 'Rating', value: item => item.rating },
+        null,
         { name: 'Actions', slot: 'actions', align: 'end' },
       ]"
       :rows="items"

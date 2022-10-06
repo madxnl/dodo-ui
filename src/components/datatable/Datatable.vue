@@ -2,7 +2,7 @@
   <table :class="$style.Datatable">
     <tr>
       <th
-        v-for="col in columns" :key="col.name"
+        v-for="col in enabledColumns" :key="col.name"
         :class="[
           $style.cell,
           col.value ? $style.sortable : '',
@@ -30,7 +30,7 @@
       @click="rowClick && rowClick(row)"
     >
       <td
-        v-for="col in columns" :key="col.name" :class="[
+        v-for="col in enabledColumns" :key="col.name" :class="[
           $style.cell,
           i + 1 === sortedItems.length && $style.lastRow,
         ]"
@@ -86,7 +86,7 @@ export type DatatableSlots<T> = Record<string, (context: { row: T; column: Colum
 
 export interface DatatableProps<T> {
   rows: T[]
-  columns: Column<T>[]
+  columns: (Column<T>|null)[]
   order?: string
   // selection?: unknown[]
   rowClick?: (row: T) => void
@@ -108,8 +108,10 @@ const orderReverse = ref(false)
 watchEffect(() => { order.value = props.order })
 watchEffect(() => { emit('update:order', order.value) })
 
+const enabledColumns = computed(() => props.columns.filter(Boolean).map(c => c!))
+
 const sortedItems = computed(() => {
-  const sortCol = props.columns.find(isSortCol)
+  const sortCol = enabledColumns.value.find(isSortCol)
   if (!sortCol?.value) return props.rows
   return props.rows.slice().sort((a, b) => {
     const x = sortCol.value!(a)
@@ -209,8 +211,10 @@ function toggleColumnSort(col: Column<unknown>) {
 .colName {
   display: flex;
   gap: 8px;
-  justify-content: space-between;
   align-items: center;
+}
+.colName > :first-child {
+  flex-grow: 1;
 }
 .sortable {
   cursor: pointer;
