@@ -1,39 +1,50 @@
 <template>
-  <div :class="$style.Datatable" :style="`--n-cols:${columns.length}`">
-    <div
-      v-for="col in columns" :key="col.name"
-      :class="[
-        $style.cell,
-        col.value ? $style.sortable : '',
-        isSortCol(col) && $style.sortActive,
+  <table :class="$style.Datatable">
+    <tr>
+      <th
+        v-for="col in columns" :key="col.name"
+        :class="[
+          $style.cell,
+          col.value ? $style.sortable : '',
+          isSortCol(col) && $style.sortActive,
+        ]"
+        :style="`text-align:${col.align};width:${col.width}`"
+        @click="toggleColumnSort(col)"
+      >
+        <!-- <FormCheckbox
+                v-if="selection && col==columns[0]"
+                :model-value="everythingSelected" :indeterminate="!everythingSelected && someSelected"
+                @update:model-value="toggleSelectAll" /> -->
+
+        <span style="flex-grow:1">
+          <Text strong>{{ col.name }}</Text>
+        </span>
+
+        <Icon v-if="col.value" :name="getColumnSortIcon(col)" :class="$style.sortIcon" />
+      </th>
+    </tr>
+
+    <tr
+      v-for="(row, i) in sortedItems" :key="i" :class="[
+        rowClick && $style.clickableRow,
       ]"
-      @click="toggleColumnSort(col)"
+      @click="rowClick && rowClick(i)"
     >
-      <!-- <FormCheckbox
-              v-if="selection && col==columns[0]"
-              :model-value="everythingSelected" :indeterminate="!everythingSelected && someSelected"
-              @update:model-value="toggleSelectAll" /> -->
-
-      <Text strong style="flex-grow:1">{{ col.name }}</Text>
-
-      <Icon v-if="col.value" :name="getColumnSortIcon(col)" :class="$style.sortIcon" />
-    </div>
-
-    <template v-for="(item, i) in sortedItems" :key="i">
-      <div
-        v-for="col,j in columns" :key="col.name" :class="[
+      <td
+        v-for="col in columns" :key="col.name" :class="[
           $style.cell,
           i + 1 === sortedItems.length && $style.lastRow,
-        ]" @click="rowClick(i)"
+        ]"
+        :style="`text-align:${col.align}`"
       >
         <!-- <FormCheckbox
               v-if="selection && col==columns[0]"
-              :model-value="itemSelected(item)" @update:model-value="toggleSelectItem(item)" /> -->
-        <slot :name="col.slot ?? 'cell'" :item="item" :index="i" :column="col" :column-index="j">
-          {{ col.value ? col.value(item) : '' }}
+              :model-value="itemSelected(row)" @update:model-value="toggleSelectItem(row)" /> -->
+        <slot :name="col.slot ?? 'cell'" :row="row" :index="i" :column="col">
+          {{ col.value ? col.value(row) : '' }}
         </slot>
-      </div>
-    </template>
+      </td>
+    </tr>
     <!-- <div v-if="$slots.tfoot">
       <span v-for="col,i in columns" :key="col.name" :class="colClass(i)">
          <FormCheckbox
@@ -49,10 +60,12 @@
       </BaseDetectVisible>
     </BaseDiv> -->
 
-    <div v-if="!items.length" :class="$style.noResults">
-      No results
-    </div>
-  </div>
+    <tr v-if="!rows.length" :class="$style.noResults">
+      <td :colspan="columns.length">
+        No results
+      </td>
+    </tr>
+  </table>
 </template>
 <script lang="ts" setup>
 import { computed, ref, VNode, watchEffect } from 'vue'
@@ -60,24 +73,24 @@ import { Icon, Text } from '..'
 
 export interface Column<T> {
   name: string
-  value?: (item: T) => string|number
+  value?: (row: T) => string|number
   slot?: string
-  // align?: string
-  // width?: number
+  align?: 'start'|'end'
+  width?: string
 }
 
 // export interface DatatableSlots<T> {
-//   cell?: (context: { item: T; column: Column<T> }) => Array<VNode> | undefined
+//   cell?: (context: { row: T; column: Column<T> }) => Array<VNode> | undefined
 // }
 
-export type DatatableSlots<T> = Record<string, (context: { item: T; column: Column<T> }) => Array<VNode> | undefined>
+export type DatatableSlots<T> = Record<string, (context: { row: T; column: Column<T> }) => Array<VNode> | undefined>
 
 export interface DatatableProps<T> {
-  items: T[]
+  rows: T[]
   columns: Column<T>[]
   order?: string
   // selection?: unknown[]
-  // rowClick?: (i: number) => void
+  rowClick?: (row: T) => void
   // selectionValue?: (x: unknown) => unknown
   // loadMore?: () => void
   // updating?: boolean
@@ -98,8 +111,8 @@ watchEffect(() => { emit('update:order', order.value) })
 
 const sortedItems = computed(() => {
   const sortCol = props.columns.find(isSortCol)
-  if (!sortCol?.value) return props.items
-  return props.items.slice().sort((a, b) => {
+  if (!sortCol?.value) return props.rows
+  return props.rows.slice().sort((a, b) => {
     const x = sortCol.value!(a)
     const y = sortCol.value!(b)
     const numbers = typeof x === 'number' && typeof y === 'number'
@@ -127,9 +140,6 @@ function toggleColumnSort(col: Column<unknown>) {
   }
 }
 
-function rowClick(row: number) {
-}
-
 // function colHeaderClass(col: number) {
 //   const { orderings } = props.columns[col]
 //   return {
@@ -145,16 +155,16 @@ function rowClick(row: number) {
 //   }
 // }
 
-// function itemSelectValue(item: unknown) {
-//   return props.selectionValue ? props.selectionValue(item) : item
+// function itemSelectValue(row: unknown) {
+//   return props.selectionValue ? props.selectionValue(row) : row
 // }
 
-// function itemSelected(item: unknown) {
-//   return !!props.selection?.includes(itemSelectValue(item))
+// function itemSelected(row: unknown) {
+//   return !!props.selection?.includes(itemSelectValue(row))
 // }
 
-// function toggleSelectItem(item: unknown) {
-//   const value = itemSelectValue(item)
+// function toggleSelectItem(row: unknown) {
+//   const value = itemSelectValue(row)
 //   if (props.selection?.includes(value)) {
 //     emit('update:selection', props.selection.filter(x => x !== value))
 //   } else {
@@ -189,8 +199,12 @@ function rowClick(row: number) {
 .Datatable {
   font: var(--dodo-font-base);
   /* color: black; */
-  display: grid;
-  grid-template-columns: repeat(var(--n-cols), auto);
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+.Datatable th {
+  text-align: start;
 }
 .sortable {
   cursor: pointer;
@@ -211,8 +225,8 @@ function rowClick(row: number) {
   opacity: 1;
 }
 .cell {
-  padding: 8px;
-  display: flex;
+  padding: 8px 12px;
+  /* display: flex; */
   align-items: center;
   gap: 8px;
 }
@@ -225,6 +239,10 @@ function rowClick(row: number) {
 }
 .lastRow {
   border: none;
+}
+.clickableRow:hover {
+  cursor: pointer;
+  background: rgba(0,0,0,0.03);
 }
 /*
   td, th {

@@ -71,23 +71,21 @@ defineProps<{
 .Table {
   font: var(--dodo-font-base);
   font-size: calc(var(--dodo-font-size) - 1px);
-}
-table {
   border-collapse: collapse;
 }
-th {
+.Table th {
   text-align: left;
   padding: 8px;
   font-weight: var(--dodo-font-weightSemi);
 }
-td {
+.Table td {
   border-width: 1px 0;
   padding: 8px;
   vertical-align: top;
   max-width: 350px;
   min-width: 150px;
 }
-tr:nth-child(even) {
+.Table tr:nth-child(even) {
   background: rgba(0,0,0,0.05);
 }
 </style>

@@ -3,23 +3,26 @@
     <Datatable
       :columns="[
         { name: 'Title', value: item => item.title },
-        { name: 'Year', value: item => item.year },
+        { name: 'Year', value: item => item.year, width: '10%' },
         { name: 'Rating', value: item => item.rating },
-        { name: 'Actions', slot: 'actions' },
+        { name: 'Actions', slot: 'actions', align: 'end' },
       ]"
-      :items="items"
+      :rows="items"
+      :row-click="clickRow"
     >
-      <template #cell="{ column, item }">
-        <template v-if="column.name === 'Column 1'">{{ item.title }}</template>
+      <template #cell="{ column, row }">
+        <template v-if="column.name === 'Column 1'">{{ row.title }}!</template>
       </template>
-      <template #actions="{ item }">
-        [ACTION{{ item.year }}]
+      <template #actions>
+        todo
       </template>
     </Datatable>
   </div>
 </template>
 <script lang="ts" setup>
 import Datatable from './DatatableTyped.vue'
+
+function clickRow() {}
 
 const items = [
   { title: 'Item 1', year: 2013, rating: '8/10' },
