@@ -16,11 +16,10 @@
                 :model-value="everythingSelected" :indeterminate="!everythingSelected && someSelected"
                 @update:model-value="toggleSelectAll" /> -->
 
-        <span style="flex-grow:1">
+        <span :class="$style.colName">
           <Text strong>{{ col.name }}</Text>
+          <Icon v-if="col.value" :name="getColumnSortIcon(col)" :class="$style.sortIcon" />
         </span>
-
-        <Icon v-if="col.value" :name="getColumnSortIcon(col)" :class="$style.sortIcon" />
       </th>
     </tr>
 
@@ -28,7 +27,7 @@
       v-for="(row, i) in sortedItems" :key="i" :class="[
         rowClick && $style.clickableRow,
       ]"
-      @click="rowClick && rowClick(i)"
+      @click="rowClick && rowClick(row)"
     >
       <td
         v-for="col in columns" :key="col.name" :class="[
@@ -198,6 +197,7 @@ function toggleColumnSort(col: Column<unknown>) {
 <style module>
 .Datatable {
   font: var(--dodo-font-base);
+  background: var(--dodo-color-background);
   /* color: black; */
   border-collapse: collapse;
   border-spacing: 0;
@@ -205,6 +205,12 @@ function toggleColumnSort(col: Column<unknown>) {
 }
 .Datatable th {
   text-align: start;
+}
+.colName {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
 }
 .sortable {
   cursor: pointer;
