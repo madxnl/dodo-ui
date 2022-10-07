@@ -31,7 +31,7 @@ const props = defineProps<{
 
 const initials = computed(() => {
   let result = props.text.trim()
-  const initialsRegex = /(?<!\w)\w|(?<=[a-z])[A-Z]/g
+  const initialsRegex = /\b\w|[A-Z]/g
   const match = props.text.match(initialsRegex)
   if (match?.length) result = match.join('')
   return result.slice(0, 2).toUpperCase()
