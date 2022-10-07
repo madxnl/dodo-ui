@@ -17,7 +17,11 @@
                 @update:model-value="toggleSelectAll" /> -->
 
         <span :class="$style.colName">
-          <Text strong>{{ col.name }}</Text>
+          <Text strong>
+            <slot :name="col.headerSlot ?? 'header'" :column="col">
+              {{ col.name }}
+            </slot>
+          </Text>
           <Icon v-if="col.value" :name="getColumnSortIcon(col)" :class="$style.sortIcon" />
         </span>
       </th>
@@ -76,6 +80,7 @@ export interface Column<T> {
   slot?: string
   align?: 'start'|'end'
   width?: string
+  headerSlot?: string
 }
 
 // export interface DatatableSlots<T> {

@@ -6,7 +6,7 @@
         { name: 'Year', value: item => item.year, width: '10%' },
         { name: 'Rating', value: item => item.rating },
         null,
-        { name: 'Actions', slot: 'actions', align: 'end' },
+        { name: 'Actions', slot: 'actions', align: 'end', headerSlot: 'actions-head' },
       ]"
       :rows="items"
       :row-click="clickRow"
@@ -16,6 +16,9 @@
       </template>
       <template #actions>
         todo
+      </template>
+      <template #actions-head="{ column }">
+        {{ column.name }}!
       </template>
     </Datatable>
   </div>
