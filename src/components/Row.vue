@@ -33,12 +33,12 @@ const props = defineProps<{
    * Justify contents
    * @example justify="space-between"
    */
-  justify?: 'center'|'end'|'start'|'stretch'|'space-between'|'space-around'|'space-evenly'
+  justifyContent?: 'center'|'end'|'start'|'stretch'|'space-between'|'space-around'|'space-evenly'
   /**
    * Align items
    * @example align="end"
    */
-  align?: 'center'|'end'|'start'|'stretch'
+  alignItems?: 'center'|'end'|'start'|'stretch'
   /**
    * Align contents
    * @example align="end"
@@ -49,6 +49,8 @@ const props = defineProps<{
    * @example wrap
    */
   wrap?: boolean
+  justify?: never
+  align?: never
 }>()
 
 useTheme()
@@ -59,8 +61,8 @@ const css = computed(() => {
   if (props.pad) s += `padding:${useSpacing(props.pad)};`
   if (props.grow) s += 'flex-grow:1;'
   if (props.wrap) s += 'flex-wrap:wrap;'
-  if (props.justify) s += `justify-content:${props.justify};`
-  if (props.align) s += `align-items:${props.align};`
+  if (props.justifyContent) s += `justify-content:${props.justifyContent};`
+  if (props.alignItems) s += `align-items:${props.alignItems};`
   if (props.alignContent) s += `align-content:${props.alignContent};`
   return s
 })

@@ -1,21 +1,23 @@
 <template>
   <table :class="$style.Datatable">
     <tr>
+      <th v-if="selectable" style="width:0">
+        <Checkbox
+          :indeterminate="visibleSelected.length > 0 && visibleSelected.length < rows.length"
+          :model-value="visibleSelected.length === rows.length"
+          @update:model-value="toggleSelectAll"
+        />
+      </th>
+
       <th
         v-for="col in enabledColumns" :key="col.name"
         :class="[
-          $style.cell,
           col.value ? $style.sortable : '',
           isSortCol(col) && $style.sortActive,
         ]"
         :style="`text-align:${col.align};width:${col.width}`"
         @click="toggleColumnSort(col)"
       >
-        <!-- <FormCheckbox
-                v-if="selection && col==columns[0]"
-                :model-value="everythingSelected" :indeterminate="!everythingSelected && someSelected"
-                @update:model-value="toggleSelectAll" /> -->
-
         <span :class="$style.colName">
           <Text strong>
             <slot :name="col.headerSlot ?? 'header'" :column="col">
@@ -30,13 +32,15 @@
     <tr
       v-for="(row, i) in sortedItems" :key="i" :class="[
         rowClick && $style.clickableRow,
+        isSelected(row) && $style.rowSelected,
       ]"
       @click="rowClick && rowClick(row)"
     >
+      <td v-if="selectable">
+        <Checkbox :model-value="isSelected(row)" @update:model-value="toggleSelect(row)" />
+      </td>
       <td
         v-for="col in enabledColumns" :key="col.name" :class="[
-          $style.cell,
-          i + 1 === sortedItems.length && $style.lastRow,
         ]"
         :style="`text-align:${col.align}`"
       >
@@ -68,11 +72,18 @@
         No results
       </td>
     </tr>
+
+    <tr v-if="rows.length && loadMore" :class="$style.loadMore">
+      <td :colspan="columns.length">
+        Load more
+      </td>
+    </tr>
   </table>
 </template>
 <script lang="ts" setup>
-import { computed, ref, VNode, watchEffect } from 'vue'
+import { computed, ref, VNode, watch, watchEffect } from 'vue'
 import { Icon, Text } from '..'
+import Checkbox from '../Checkbox.vue'
 
 export interface Column<T> {
   name: string
@@ -92,26 +103,29 @@ export type DatatableSlots<T> = Record<string, (context: { row: T; column: Colum
 export interface DatatableProps<T> {
   rows: T[]
   columns: (Column<T>|null)[]
-  order?: string
-  // selection?: unknown[]
+  sortBy?: string
+  selection?: unknown[]
   rowClick?: (row: T) => void
-  // selectionValue?: (x: unknown) => unknown
-  // loadMore?: () => void
+  selectable?: (row: T) => string|number
+  loadMore?: () => Promise<void>
   // updating?: boolean
 }
 
 const props = defineProps<DatatableProps<unknown>>()
 
 const emit = defineEmits<{
-  // (e: 'update:selection', selection: unknown[]): void
-  (e: 'update:order', order: string|undefined): void
+  (e: 'update:selection', selection: unknown[]): void
+  (e: 'update:sortBy', order: string|undefined): void
 }>()
 
-const order = ref<string>()
-const orderReverse = ref(false)
+const sortBy = ref<string>()
+const sortReverse = ref(false)
+const selection = ref<unknown[]>([])
 
-watchEffect(() => { order.value = props.order })
-watchEffect(() => { emit('update:order', order.value) })
+watchEffect(() => { sortBy.value = props.sortBy })
+watchEffect(() => { selection.value = props.selection ?? [] })
+watch(sortBy, v => { emit('update:sortBy', v) })
+watch(selection, v => { emit('update:selection', v) })
 
 const enabledColumns = computed(() => props.columns.filter(Boolean).map(c => c!))
 
@@ -123,27 +137,41 @@ const sortedItems = computed(() => {
     const y = sortCol.value!(b)
     const numbers = typeof x === 'number' && typeof y === 'number'
     const d = numbers ? x - y : `${y}`.localeCompare(`${x}`)
-    return orderReverse.value ? d : -d
+    return sortReverse.value ? d : -d
   })
 })
 
 function getColumnSortIcon(col: Column<unknown>) {
-  return (isSortCol(col) && orderReverse.value) ? 'arrow_drop_up' : 'arrow_drop_down'
+  return (isSortCol(col) && sortReverse.value) ? 'arrow_drop_up' : 'arrow_drop_down'
 }
 
 function isSortCol(col: Column<unknown>) {
-  return order.value === col.name
+  return sortBy.value === col.name
 }
 
 function toggleColumnSort(col: Column<unknown>) {
   if (!col.value) return
   if (isSortCol(col)) {
-    if (orderReverse.value) order.value = undefined
-    orderReverse.value = !orderReverse.value
+    if (sortReverse.value) sortBy.value = undefined
+    sortReverse.value = !sortReverse.value
   } else {
-    order.value = col.name
-    orderReverse.value = false
+    sortBy.value = col.name
+    sortReverse.value = false
   }
+}
+
+function toggleSelect(row: unknown) {
+  const id = props.selectable!(row)
+  if (selection.value.includes(id)) {
+    selection.value = selection.value.filter(x => x !== id)
+  } else {
+    selection.value.push(id)
+  }
+}
+
+function isSelected(row: unknown) {
+  const id = props.selectable!(row)
+  return selection.value.includes(id)
 }
 
 // function colHeaderClass(col: number) {
@@ -178,17 +206,19 @@ function toggleColumnSort(col: Column<unknown>) {
 //   }
 // }
 
-// const everythingSelected = computed(() => {
-//   return props.items.every(itemSelected) && props.items.some(itemSelected)
-// })
+const visibleSelected = computed(() => {
+  if (!props.selectable) return []
+  return props.rows.filter(r => selection.value.includes(props.selectable!(r)))
+})
 
 // const someSelected = computed(() => {
 //   return props.items.some(itemSelected)
 // })
 
-// function toggleSelectAll(toggle: boolean|undefined) {
-//   emit('update:selection', toggle ? props.items.map(itemSelectValue) : [])
-// }
+function toggleSelectAll() {
+  const allSelected = visibleSelected.value.length === props.rows.length
+  selection.value = allSelected ? [] : props.rows.map(props.selectable!)
+}
 
 // let loadMoreDelayTimer: ReturnType<typeof setTimeout>
 // watchEffect(() => {
@@ -239,25 +269,26 @@ function toggleColumnSort(col: Column<unknown>) {
 .sortable.sortActive .sortIcon {
   opacity: 1;
 }
-.cell {
+.Datatable th,
+.Datatable td {
   padding: 8px 12px;
-  /* display: flex; */
-  align-items: center;
-  gap: 8px;
-}
-.cell {
-  border-bottom: 1px solid rgba(0,0,0,0.15);
+  box-sizing: border-box;
 }
 .noResults {
-  grid-row: span var(--n-cols);
   padding: 8px;
 }
-.lastRow {
-  border: none;
+.loadMore {
+  padding: 8px;
+}
+.Datatable tr:not(:last-child) {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 .clickableRow:hover {
   cursor: pointer;
-  background: rgba(0,0,0,0.03);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.Datatable .rowSelected {
+  background: rgba(var(--dodo-rgb-info), 0.3);
 }
 /*
   td, th {

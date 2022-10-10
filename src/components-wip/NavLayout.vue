@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.NavLayout">
-    <Container gap="m" pad="l" :class="$style.bar" overflow="auto" align="start">
+    <Container gap="m" pad="l" :class="$style.bar" overflow="auto" align-content="start">
       <Container v-for="(chapter, i) in chapters" :key="i" gap="xs">
         <span v-if="chapter.title" :class="$style.chapterTitle">
           {{ chapter.title }}

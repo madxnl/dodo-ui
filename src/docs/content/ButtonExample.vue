@@ -1,5 +1,5 @@
 <template>
-  <Container align="start">
+  <Container align-content="start">
     <Row gap="s" wrap>
       <Button variant="solid" color="success">
         Button 1

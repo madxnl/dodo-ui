@@ -1,5 +1,5 @@
 <template>
-  <Container align="start">
+  <Container align-content="start">
     <Row wrap>
       <Avatar text="Image" :image="imgUrl" />
       <Avatar text="A" />

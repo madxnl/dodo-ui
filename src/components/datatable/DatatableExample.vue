@@ -2,14 +2,16 @@
   <div>
     <Datatable
       :columns="[
-        { name: 'Title', value: item => item.title },
-        { name: 'Year', value: item => item.year, width: '10%' },
-        { name: 'Rating', value: item => item.rating },
+        { name: 'Title', value: row => row.title },
+        { name: 'Year', value: row => row.year, width: '10%' },
+        { name: 'Rating', value: row => row.rating },
         null,
         { name: 'Actions', slot: 'actions', align: 'end', headerSlot: 'actions-head' },
       ]"
       :rows="items"
       :row-click="clickRow"
+      :selectable="row => row.title"
+      :load-more="loadMore"
     >
       <template #cell="{ column, row }">
         <template v-if="column.name === 'Column 1'">{{ row.title }}!</template>
@@ -27,6 +29,8 @@
 import Datatable from './DatatableTyped.vue'
 
 function clickRow() {}
+
+async function loadMore() {}
 
 const items = [
   { title: 'Item 1', year: 2013, rating: '8/10' },

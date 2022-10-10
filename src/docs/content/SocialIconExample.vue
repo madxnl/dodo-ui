@@ -1,5 +1,5 @@
 <template>
-  <Container gap="l" align="start">
+  <Container gap="l" align-content="start">
     <Row>
       <SocialIcon name="google" />
       <SocialIcon name="twitter" />

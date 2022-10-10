@@ -6,7 +6,7 @@
           <Container pad="m">
             <slot />
           </Container>
-          <Row pad="m" justify="end" gap="s">
+          <Row pad="m" justify-content="end" gap="s">
             <slot name="controls" />
           </Row>
         </div>
