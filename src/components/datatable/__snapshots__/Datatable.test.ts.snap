@@ -1,0 +1,98 @@
+// Vitest Snapshot v1
+
+exports[`Column sort 1`] = `
+"<div class=\\"dodoContainer dodoDatatable\\" style=\\"overflow: auto;\\">
+  <table>
+    <tr class=\\"\\">
+      <!--v-if-->
+      <th class=\\"dodoDatatable-sortable\\" style=\\"text-align: undefined;\\"><span class=\\"dodoDatatable-colName\\"><span>Name</span><span class=\\"dodoIcon material-symbols-outlined dodoDatatable-sortIcon\\">arrow_drop_down</span></span></th>
+      <th class=\\"dodoDatatable-sortable\\" style=\\"text-align: undefined;\\"><span class=\\"dodoDatatable-colName\\"><span>Modified</span><span class=\\"dodoIcon material-symbols-outlined dodoDatatable-sortIcon\\">arrow_drop_down</span></span></th>
+    </tr>
+    <tr class=\\"\\">
+      <!--v-if-->
+      <td class=\\"\\" style=\\"text-align: undefined;\\">Foo</td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">2022-01-01</td>
+    </tr>
+    <tr class=\\"\\">
+      <!--v-if-->
+      <td class=\\"\\" style=\\"text-align: undefined;\\">Bar</td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">2022-02-01</td>
+    </tr>
+    <tr class=\\"\\">
+      <!--v-if-->
+      <td class=\\"\\" style=\\"text-align: undefined;\\">Baz</td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">2022-01-04</td>
+    </tr>
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+  </table><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+</div>"
+`;
+
+exports[`Selecting rows 1`] = `
+"<div class=\\"dodoContainer dodoDatatable\\" style=\\"overflow: auto;\\">
+  <table>
+    <tr class=\\"\\">
+      <th style=\\"width: 0px;\\"><span class=\\"dodoCheckbox dodoCheckbox-checked\\"><span class=\\"dodoIcon material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></th>
+      <th class=\\"dodoDatatable-sortable\\" style=\\"text-align: undefined;\\"><span class=\\"dodoDatatable-colName\\"><span>Name</span><span class=\\"dodoIcon material-symbols-outlined dodoDatatable-sortIcon\\">arrow_drop_down</span></span></th>
+      <th class=\\"dodoDatatable-sortable\\" style=\\"text-align: undefined;\\"><span class=\\"dodoDatatable-colName\\"><span>Modified</span><span class=\\"dodoIcon material-symbols-outlined dodoDatatable-sortIcon\\">arrow_drop_down</span></span></th>
+    </tr>
+    <tr class=\\"dodoDatatable-rowSelected\\">
+      <td><span class=\\"dodoCheckbox dodoCheckbox-checked\\"><span class=\\"dodoIcon material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">Foo</td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">2022-01-01</td>
+    </tr>
+    <tr class=\\"dodoDatatable-rowSelected\\">
+      <td><span class=\\"dodoCheckbox dodoCheckbox-checked\\"><span class=\\"dodoIcon material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">Bar</td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">2022-02-01</td>
+    </tr>
+    <tr class=\\"dodoDatatable-rowSelected\\">
+      <td><span class=\\"dodoCheckbox dodoCheckbox-checked\\"><span class=\\"dodoIcon material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">Baz</td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">2022-01-04</td>
+    </tr>
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+  </table><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+</div>"
+`;
+
+exports[`Show more 1`] = `
+"<div class=\\"dodoContainer dodoDatatable\\" style=\\"overflow: auto;\\">
+  <table>
+    <tr class=\\"\\">
+      <!--v-if-->
+      <th class=\\"dodoDatatable-sortable\\" style=\\"text-align: undefined;\\"><span class=\\"dodoDatatable-colName\\"><span>Name</span><span class=\\"dodoIcon material-symbols-outlined dodoDatatable-sortIcon\\">arrow_drop_down</span></span></th>
+      <th class=\\"dodoDatatable-sortable\\" style=\\"text-align: undefined;\\"><span class=\\"dodoDatatable-colName\\"><span>Modified</span><span class=\\"dodoIcon material-symbols-outlined dodoDatatable-sortIcon\\">arrow_drop_down</span></span></th>
+    </tr>
+    <tr class=\\"\\">
+      <!--v-if-->
+      <td class=\\"\\" style=\\"text-align: undefined;\\">Foo</td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">2022-01-01</td>
+    </tr>
+    <tr class=\\"\\">
+      <!--v-if-->
+      <td class=\\"\\" style=\\"text-align: undefined;\\">Bar</td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">2022-02-01</td>
+    </tr>
+    <tr class=\\"\\">
+      <!--v-if-->
+      <td class=\\"\\" style=\\"text-align: undefined;\\">Baz</td>
+      <td class=\\"\\" style=\\"text-align: undefined;\\">2022-01-04</td>
+    </tr>
+    <!--v-if-->
+    <tr class=\\"dodoDatatable-showMore\\">
+      <td colspan=\\"2\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"dodoButton dodoButton-text dodoButton-loading\\">
+          <div class=\\"dodoButton-content\\">Show more</div><svg class=\\"dodoSpinner dodoButton-spinner\\" viewBox=\\"0 0 18 18\\">
+            <path stroke=\\"currentColor\\" fill=\\"none\\" d=\\"M 9 1 A 8 8 0 0 1 17 9\\" stroke-width=\\"2\\"></path>
+            <path stroke=\\"currentColor\\" opacity=\\"0.33\\" fill=\\"none\\" d=\\"M 17 9 A 8 8 0 1 1 9 1\\" stroke-width=\\"2\\"></path>
+          </svg>
+        </button></td>
+    </tr>
+    <!--v-if-->
+  </table><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+</div>"
+`;

@@ -19,11 +19,11 @@ exports[`Search filters options 1`] = `
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 2</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
-          </div>
-        </div>
-      </div>
+          </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+        </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+      </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
     </div>
   </div>
 </teleport-stub>"
@@ -44,8 +44,8 @@ exports[`Search input visible after character key press 1`] = `
             <div class=\\"dodoField-inner\\"><input class=\\"\\" placeholder=\\"Search\\" type=\\"search\\"></div>
           </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
         </div>
-        <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\"></div>
-      </div>
+        <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\"><span class=\\"dodoContainer-spinner\\"><!--v-if--></span></div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+      </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
     </div>
   </div>
 </teleport-stub>"
@@ -70,125 +70,125 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div data-selectactive=\\"true\\" class=\\"dodoDropdownItem dodoDropdownItem-active\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 0</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 1</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 2</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 3</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 4</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 5</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 6</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 7</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 8</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 9</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 10</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 11</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 12</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 13</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 14</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 15</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 16</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 17</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 18</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
           <div class=\\"dodoDropdownItem\\">
             <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 19</span>
-              <!--v-if-->
+              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
             </div>
-          </div>
-        </div>
-      </div>
+          </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+        </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+      </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
     </div>
   </div>
 </teleport-stub>"

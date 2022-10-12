@@ -2,9 +2,14 @@ import { computed } from 'vue'
 
 export const components = import.meta.globEager('../components/**/*.vue')
 
-for (const k in components) {
-  if (k.includes('Example') || k.includes('Typed')) delete components[k]
+const componentPages: { title: string }[] = []
+for (const name in components) {
+  if (name.includes('Example') || name.includes('Typed')) continue
+  const { docs } = components[name]
+  const title = docs.displayName
+  componentPages.push({ title })
 }
+componentPages.sort((a, b) => a.title.localeCompare(b.title))
 
 export const chapters = computed(() => [
   {
@@ -14,8 +19,6 @@ export const chapters = computed(() => [
     ],
   },
   {
-    pages: Object.values(components).map(({ docs }) => ({
-      title: docs.displayName,
-    })),
+    pages: componentPages,
   },
 ])

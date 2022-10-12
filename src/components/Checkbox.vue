@@ -46,7 +46,7 @@ useTheme()
   position: fixed;
 }
 .Checkbox:focus-within {
-  background: red;
+  outline: 2px solid var(--dodo-color-info);
   opacity: 1;
 }
 .Checkbox:hover {
