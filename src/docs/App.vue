@@ -59,23 +59,23 @@ function tokenize(pageTitle: string) {
   return pageTitle.replace(/\W/g, '')
 }
 
-function getExamples(pageTitle: string) {
-  const key = tokenize(pageTitle)
-  return Object.keys(examples)
-    .filter(s => s.includes(`/${key}Example`))
-    .map(x => examples[x]) as any[]
-}
+// function getExamples(pageTitle: string) {
+//   const key = tokenize(pageTitle)
+//   return Object.keys(examples)
+//     .filter(s => s.includes(`/${key}Example`))
+//     .map(x => examples[x]) as any[]
+// }
 
 function getPropsData(pageTitle: string) {
   const key = tokenize(pageTitle)
   return Object.values(components).find((m: any) => m.docs.displayName === key) as any
 }
 
-function sourceWithinTemplate(code: string) {
-  const txt = /<template>\s*\n(.*)\s*<\/template>/gms.exec(code)![1]
-  const spaces = Math.min(...txt.trimEnd().split('\n').map(s => s.length - s.trimStart().length))
-  return txt.split('\n').map(l => l.slice(spaces)).join('\n')
-}
+// function sourceWithinTemplate(code: string) {
+//   const txt = /<template>\s*\n(.*)\s*<\/template>/gms.exec(code)![1]
+//   const spaces = Math.min(...txt.trimEnd().split('\n').map(s => s.length - s.trimStart().length))
+//   return txt.split('\n').map(l => l.slice(spaces)).join('\n')
+// }
 
 function getPageText(pageTitle: string) {
   const key = tokenize(pageTitle)
