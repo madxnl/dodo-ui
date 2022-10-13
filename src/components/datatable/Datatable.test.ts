@@ -31,7 +31,7 @@ test('Column sort', async () => {
 test('Selecting rows', async () => {
   const selectable = (x: Row) => x.id
   const wrapper = mount(Datatable, { propsData: { columns, rows, selectable } })
-  const checkboxes = wrapper.findAll('.dodoCheckbox')
+  const checkboxes = wrapper.findAllComponents({ name: 'Checkbox' })
   await checkboxes[0].trigger('click')
   expect(wrapper.emitted('update:selection')![0]).toEqual([[1, 2, 3]])
   await checkboxes[1].trigger('click')

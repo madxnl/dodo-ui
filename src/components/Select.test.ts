@@ -69,7 +69,6 @@ test('Search input visible after character key press', async () => {
   await getByText(wrapper, _options[0].text).trigger('click')
   await nextTick()
   expect(wrapper.find('[type=search]').isVisible()).toBeFalsy()
-  const input = document.activeElement as HTMLInputElement
   wrapper.get('input').setValue('foo')
   await nextTick()
   expect(wrapper.get('[type=search]').isVisible()).toBeTruthy()

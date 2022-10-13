@@ -2,13 +2,13 @@
 import vue from '@vitejs/plugin-vue'
 import { readFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
-import { defineConfig, Plugin, ViteDevServer } from 'vite'
+import { defineConfig, Plugin } from 'vite'
 import Inspect from 'vite-plugin-inspect'
 import { parse, parseSource } from 'vue-docgen-api'
 
 function docgen(): Plugin {
   const postfix = ':docgen'
-  let server: ViteDevServer
+  // let server: ViteDevServer
 
   return {
     name: 'vue-docgen-plugin', // required, will show up in warnings and errors
@@ -79,6 +79,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: 'test.setup.ts',
+    css: { modules: { classNameStrategy: 'scoped' } },
   },
   css: { modules: { generateScopedName } },
 })

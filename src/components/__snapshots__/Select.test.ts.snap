@@ -1,217 +1,217 @@
 // Vitest Snapshot v1
 
 exports[`Search filters options 1`] = `
-"<div class=\\"dodoDropdown-trigger\\">
-  <div class=\\"dodoField dodoField-button\\">
-    <div class=\\"dodoField-inner\\"><span class=\\"dodoText dodoText-nowrap\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"dodoIcon material-symbols-outlined\\">arrow_drop_down</span>
+"<div class=\\"_trigger_0c7521\\">
+  <div class=\\"_Field_342682 _button_342682\\">
+    <div class=\\"_inner_342682\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
-<teleport-stub>
-  <div class=\\"dodoDropdown\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
-    <div class=\\"dodoContainer dodoDropdown-content\\" style=\\"gap: 0px; padding: 4px 0px;\\">
-      <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">
-        <div class=\\"dodoRow dodoSelect-searchbox\\" style=\\"padding: 8px;\\">
-          <div class=\\"dodoField dodoTextInput\\" tabindex=\\"0\\">
-            <div class=\\"dodoField-inner\\"><input class=\\"\\" placeholder=\\"Search\\" type=\\"search\\"></div>
+<teleport-stub to=\\"body\\">
+  <div class=\\"_Dropdown_0c7521\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
+    <div class=\\"_Container_1df3db _content_0c7521\\" style=\\"gap: 0px; padding: 4px 0px;\\">
+      <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; overflow: auto;\\">
+        <div class=\\"_Row_109a5d _searchbox_53a782\\" style=\\"padding: 8px;\\">
+          <div class=\\"_Field_342682 _TextInput_6615c1\\" tabindex=\\"0\\">
+            <div class=\\"_inner_342682\\"><input class=\\"_input_6615c1\\" placeholder=\\"Search\\" type=\\"search\\"></div>
           </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
         </div>
-        <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">
+        <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; overflow: auto;\\">
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 2</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 2</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
-          </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
-        </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
-      </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+        </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+      </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
     </div>
   </div>
 </teleport-stub>"
 `;
 
 exports[`Search input visible after character key press 1`] = `
-"<div class=\\"dodoDropdown-trigger\\">
-  <div class=\\"dodoField dodoField-button\\">
-    <div class=\\"dodoField-inner\\"><span class=\\"dodoText dodoText-nowrap\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"dodoIcon material-symbols-outlined\\">arrow_drop_down</span>
+"<div class=\\"_trigger_0c7521\\">
+  <div class=\\"_Field_342682 _button_342682\\">
+    <div class=\\"_inner_342682\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
-<teleport-stub>
-  <div class=\\"dodoDropdown\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
-    <div class=\\"dodoContainer dodoDropdown-content\\" style=\\"gap: 0px; padding: 4px 0px;\\">
-      <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">
-        <div class=\\"dodoRow dodoSelect-searchbox\\" style=\\"padding: 8px;\\">
-          <div class=\\"dodoField dodoTextInput\\" tabindex=\\"0\\">
-            <div class=\\"dodoField-inner\\"><input class=\\"\\" placeholder=\\"Search\\" type=\\"search\\"></div>
+<teleport-stub to=\\"body\\">
+  <div class=\\"_Dropdown_0c7521\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
+    <div class=\\"_Container_1df3db _content_0c7521\\" style=\\"gap: 0px; padding: 4px 0px;\\">
+      <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; overflow: auto;\\">
+        <div class=\\"_Row_109a5d _searchbox_53a782\\" style=\\"padding: 8px;\\">
+          <div class=\\"_Field_342682 _TextInput_6615c1\\" tabindex=\\"0\\">
+            <div class=\\"_inner_342682\\"><input class=\\"_input_6615c1\\" placeholder=\\"Search\\" type=\\"search\\"></div>
           </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
         </div>
-        <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\"><span class=\\"dodoContainer-spinner\\"><!--v-if--></span></div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
-      </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+        <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; overflow: auto;\\"><span class=\\"_spinner_1df3db\\"><!--v-if--></span></div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+      </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
     </div>
   </div>
 </teleport-stub>"
 `;
 
 exports[`Search input visible if many options 1`] = `
-"<div class=\\"dodoDropdown-trigger\\">
-  <div class=\\"dodoField dodoField-button\\">
-    <div class=\\"dodoField-inner\\"><span class=\\"dodoText dodoText-nowrap\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"dodoIcon material-symbols-outlined\\">arrow_drop_down</span>
+"<div class=\\"_trigger_0c7521\\">
+  <div class=\\"_Field_342682 _button_342682\\">
+    <div class=\\"_inner_342682\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
-<teleport-stub>
-  <div class=\\"dodoDropdown\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
-    <div class=\\"dodoContainer dodoDropdown-content\\" style=\\"gap: 0px; padding: 4px 0px;\\">
-      <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">
-        <div class=\\"dodoRow dodoSelect-searchbox\\" style=\\"padding: 8px;\\">
-          <div class=\\"dodoField dodoTextInput\\" tabindex=\\"0\\">
-            <div class=\\"dodoField-inner\\"><input class=\\"\\" placeholder=\\"Search\\" type=\\"search\\"></div>
+<teleport-stub to=\\"body\\">
+  <div class=\\"_Dropdown_0c7521\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
+    <div class=\\"_Container_1df3db _content_0c7521\\" style=\\"gap: 0px; padding: 4px 0px;\\">
+      <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; overflow: auto;\\">
+        <div class=\\"_Row_109a5d _searchbox_53a782\\" style=\\"padding: 8px;\\">
+          <div class=\\"_Field_342682 _TextInput_6615c1\\" tabindex=\\"0\\">
+            <div class=\\"_inner_342682\\"><input class=\\"_input_6615c1\\" placeholder=\\"Search\\" type=\\"search\\"></div>
           </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
         </div>
-        <div class=\\"dodoContainer\\" style=\\"gap: 0px; overflow: auto;\\">
+        <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; overflow: auto;\\">
           <!--v-if-->
-          <div data-selectactive=\\"true\\" class=\\"dodoDropdownItem dodoDropdownItem-active\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 0</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div data-selectactive=\\"true\\" class=\\"_DropdownItem_8d9fa1 _active_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 0</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 1</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 1</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 2</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 2</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 3</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 3</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 4</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 4</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 5</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 5</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 6</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 6</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 7</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 7</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 8</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 8</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 9</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 9</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 10</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 10</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 11</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 11</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 12</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 12</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 13</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 13</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 14</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 14</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 15</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 15</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 16</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 16</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 17</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 17</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 18</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 18</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
           </div>
           <!--v-if-->
-          <div class=\\"dodoDropdownItem\\">
-            <div class=\\"dodoContainer\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"dodoText dodoText-nowrap dodoDropdownItem-text\\"><!-- @slot Customize option html -->Option 19</span>
-              <!--v-if--><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          <div class=\\"_DropdownItem_8d9fa1\\">
+            <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 19</span>
+              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
             </div>
-          </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
-        </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
-      </div><span class=\\"dodoContainer-spinner\\"><!--v-if--></span>
+          </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+        </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+      </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
     </div>
   </div>
 </teleport-stub>"
 `;
 
 exports[`Select a value 1`] = `
-"<div class=\\"dodoDropdown-trigger\\">
-  <div class=\\"dodoField dodoField-button\\">
-    <div class=\\"dodoField-inner\\"><span class=\\"dodoText dodoText-nowrap\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"dodoIcon material-symbols-outlined\\">arrow_drop_down</span>
+"<div class=\\"_trigger_0c7521\\">
+  <div class=\\"_Field_342682 _button_342682\\">
+    <div class=\\"_inner_342682\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
-<teleport-stub>
+<teleport-stub to=\\"body\\">
   <!--v-if-->
 </teleport-stub>"
 `;
 
 exports[`Select can be disabled 1`] = `
-"<div class=\\"dodoDropdown-trigger dodoDropdown-disabled\\">
-  <div class=\\"dodoField dodoField-disabled dodoField-button\\">
-    <div class=\\"dodoField-inner\\"><span class=\\"dodoText dodoText-nowrap\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"dodoIcon material-symbols-outlined\\">arrow_drop_down</span>
+"<div class=\\"_trigger_0c7521 _disabled_0c7521\\">
+  <div class=\\"_Field_342682 _disabled_342682 _button_342682\\">
+    <div class=\\"_inner_342682\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
-<teleport-stub>
+<teleport-stub to=\\"body\\">
   <!--v-if-->
 </teleport-stub>"
 `;

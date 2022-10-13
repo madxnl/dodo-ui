@@ -5,7 +5,7 @@ export const components = import.meta.globEager('../components/**/*.vue')
 const componentPages: { title: string }[] = []
 for (const name in components) {
   if (name.includes('Example') || name.includes('Typed')) continue
-  const { docs } = components[name]
+  const { docs } = components[name] as any
   const title = docs.displayName
   componentPages.push({ title })
 }
