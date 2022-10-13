@@ -1,6 +1,6 @@
 import { computed } from 'vue'
 
-export const components = import.meta.globEager('../components/**/*.vue')
+export const components = import.meta.glob('../components/**/*.vue', { eager: true })
 
 const componentPages: { title: string }[] = []
 for (const name in components) {

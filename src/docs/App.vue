@@ -14,10 +14,10 @@
               <component :is="getPageText(page.title)" v-if="getPageText(page.title)" />
             </Container>
 
-            <Example
+            <!-- <Example
               v-for="(e, j) in getExamples(page.title)" :key="j"
               :component="e.default" :code="sourceWithinTemplate(e.source)"
-            />
+            /> -->
 
             <PropsTable v-if="getPropsData(page.title)" :doc="getPropsData(page.title)!.docs" />
           </Container>
@@ -27,23 +27,21 @@
   </CrashDialog>
 </template>
 <script setup lang="ts">
-import { ComponentDoc } from 'vue-inbrowser-compiler-utils'
 import { Container, CrashDialog, Text } from '..'
 import { NavLayout } from '../components-wip'
 import { chapters, components } from './chapters'
-import Example from './Example.vue'
 import PropsTable from './PropsTable.vue'
 
-const examples = import.meta.globEager('./content/*Example*.vue')
-const docs = import.meta.globEager('./content/*Docs.vue')
+const examples = import.meta.glob('./content/*Example*.vue', { eager: true })
+const docs = import.meta.glob('./content/*Docs.vue', { eager: true })
 
-Object.assign(examples, import.meta.globEager('../components/**/*Example*.vue'))
+Object.assign(examples, import.meta.glob('../components/**/*Example*.vue'), { eager: true })
 
-const componentsInfo = Object.values(components).map(({ docs, source }) => ({
-  docs: docs as ComponentDoc,
-  source: source as string,
-  examples: Object.values(examples)
-    .filter(e => e.docs.displayName.startsWith(docs.displayName + 'Example')),
+const componentsInfo = Object.values(components).map((x: any) => ({
+  docs: x.docs,
+  source: x.source as string,
+  examples: Object.values(examples),
+  // .filter((e: any) => e.docs.displayName.startsWith(docs.displayName + 'Example')),
 }))
 
 // onMounted(() => {
@@ -65,12 +63,12 @@ function getExamples(pageTitle: string) {
   const key = tokenize(pageTitle)
   return Object.keys(examples)
     .filter(s => s.includes(`/${key}Example`))
-    .map(x => examples[x])
+    .map(x => examples[x]) as any[]
 }
 
 function getPropsData(pageTitle: string) {
   const key = tokenize(pageTitle)
-  return Object.values(components).find(m => m.docs.displayName === key)
+  return Object.values(components).find((m: any) => m.docs.displayName === key) as any
 }
 
 function sourceWithinTemplate(code: string) {
@@ -82,7 +80,7 @@ function sourceWithinTemplate(code: string) {
 function getPageText(pageTitle: string) {
   const key = tokenize(pageTitle)
   const file = Object.keys(docs).find(s => s.includes(`/${key}Docs`))
-  return file ? docs[file].default : null
+  return file ? (docs as any)[file].default : null
 }
 
 </script>

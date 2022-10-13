@@ -34,6 +34,7 @@ module.exports = {
     indent: 'off',
     '@typescript-eslint/func-call-spacing': ['warn'],
     '@typescript-eslint/indent': ['warn', 2],
+    '@typescript-eslint/no-unused-vars': ['warn', { args: 'none' }],
     '@typescript-eslint/member-delimiter-style': ['warn', { multiline: { delimiter: 'none' } }],
 
   },
