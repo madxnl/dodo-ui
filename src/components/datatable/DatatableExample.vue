@@ -10,9 +10,9 @@
         null,
         { name: 'Actions', slot: 'actions', align: 'end', headerSlot: 'actions-head' },
       ]"
-      :rows="items.slice(0, 0)"
+      :rows="items"
       :row-click="clickRow"
-      :selectable="row => row.title"
+      select-by="title"
       :show-more="loadMore"
       :sort-async="loadMore"
     >

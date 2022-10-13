@@ -2,7 +2,7 @@
   <Container :class="$style.Datatable" overflow="auto" :content-loading="contentLoading || sortingAsync">
     <table>
       <tr :class="stickyHeader && $style.stickyHeader">
-        <th v-if="selectable" style="width:0">
+        <th v-if="selectBy" style="width:0">
           <Checkbox
             :indeterminate="visibleSelected.length > 0 && visibleSelected.length < rows.length"
             :model-value="visibleSelected.length > 0 && visibleSelected.length === rows.length"
@@ -16,7 +16,10 @@
             canSortCol(col) ? $style.sortable : '',
             isSortCol(col) && $style.sortActive,
           ]"
-          :style="`text-align:${col.align};width:${col.width}`"
+          :style="[
+            col.align ? `text-align:${col.align}` : '',
+            col.width ? `width:${col.width}` : '',
+          ]"
           @click="toggleColumnSort(col)"
         >
           <span :class="$style.colName">
@@ -35,10 +38,10 @@
         ]"
         @click="rowClick && rowClick(row)"
       >
-        <td v-if="selectable">
+        <td v-if="selectBy">
           <Checkbox :model-value="isSelected(row)" @update:model-value="toggleSelect(row)" />
         </td>
-        <td v-for="col in enabledColumns" :key="col.name" :class="[]" :style="`text-align:${col.align}`">
+        <td v-for="col in enabledColumns" :key="col.name" :class="[]" :style="col.align && `text-align:${col.align}`">
           <slot :name="col.slot ?? 'cell'" :row="row" :index="i" :column="col">
             {{ getDisplayValue(col, row) }}
           </slot>
@@ -58,8 +61,8 @@
       </tr>
 
       <tr v-if="enabledColumns.some(c => c.footer)" :class="[$style.footer, stickyHeader && $style.stickyFooter]">
-        <th v-if="selectable" />
-        <th v-for="col in enabledColumns" :key="col.name" :style="`text-align:${col.align}`">
+        <th v-if="selectBy" />
+        <th v-for="col in enabledColumns" :key="col.name" :style="col.align && `text-align:${col.align}`">
           <slot :name="col.footerSlot ?? 'footer'" :column="col">
             {{ col.footer }}
           </slot>
@@ -84,6 +87,7 @@ export interface Column<T> {
   headerSlot?: string
   footerSlot?: string
   footer?: string|number
+  sortBy?: string
 }
 
 export type DatatableSlots<T> = Record<string, (context: { row: T; column: Column<T> }) => Array<VNode> | undefined>
@@ -93,9 +97,9 @@ export interface DatatableProps<T> {
   columns: (Column<T>|null)[]
   selection?: unknown[]
   rowClick?: (row: T) => void
-  selectable?: (row: T) => unknown
+  selectBy?: keyof T
   stickyHeader?: boolean
-  sortBy?: string
+  ordering?: string
   contentLoading?: boolean
   showMore?: () => Promise<unknown>
   sortAsync?: () => Promise<unknown>
@@ -105,19 +109,19 @@ const props = defineProps<DatatableProps<unknown>>()
 
 const emit = defineEmits<{
   (e: 'update:selection', selection: unknown[]): void
-  (e: 'update:sortBy', order: string|undefined): void
+  (e: 'update:ordering', order: string|undefined): void
 }>()
 
-const sortBy = ref<string>()
+const ordering = ref<string>()
 const selection = ref<unknown[]>([])
 const sortingAsync = ref(false)
 
-watchEffect(() => { sortBy.value = props.sortBy })
+watchEffect(() => { ordering.value = props.ordering })
 watchEffect(() => { selection.value = props.selection ?? [] })
-watch(sortBy, v => { emit('update:sortBy', v) })
+watch(ordering, v => { emit('update:ordering', v) })
 watch(selection, v => { emit('update:selection', v) })
 
-const sortReverse = computed(() => sortBy.value?.startsWith('-'))
+const sortReverse = computed(() => ordering.value?.startsWith('-'))
 const enabledColumns = computed(() => props.columns.filter(Boolean).map(c => c!))
 
 const sortedItems = computed(() => {
@@ -137,24 +141,28 @@ function getColumnSortIcon(col: Column<unknown>) {
 }
 
 function isSortCol(col: Column<unknown>) {
-  return sortBy.value?.replace('-', '') === col.field
+  return ordering.value?.replace('-', '') === col.field
 }
 
 function canSortCol(col: Column<unknown>) {
-  return !!col.field
+  return !!col.sortBy
 }
 
 async function toggleColumnSort(col: Column<unknown>) {
   if (!col.field) return
-  sortBy.value = isSortCol(col) ? sortReverse.value ? undefined : '-' + col.field : col.field
+  ordering.value = isSortCol(col) ? sortReverse.value ? undefined : '-' + col.sortBy : col.sortBy
   if (props.sortAsync) {
     sortingAsync.value = true
     await props.sortAsync().finally(() => { sortingAsync.value = false })
   }
 }
 
+function getRowSelectId(row: any) {
+  return row[props.selectBy!]
+}
+
 function toggleSelect(row: unknown) {
-  const id = props.selectable!(row)
+  const id = getRowSelectId(row)
   if (selection.value.includes(id)) {
     selection.value = selection.value.filter(x => x !== id)
   } else {
@@ -167,19 +175,19 @@ function getDisplayValue(col: Column<unknown>, row: any) {
 }
 
 function isSelected(row: unknown) {
-  if (!props.selectable) return false
-  const id = props.selectable(row)
+  if (!props.selectBy) return false
+  const id = getRowSelectId(row)
   return selection.value.includes(id)
 }
 
 const visibleSelected = computed(() => {
-  if (!props.selectable) return []
-  return props.rows.filter(r => selection.value.includes(props.selectable!(r)))
+  if (!props.selectBy) return []
+  return props.rows.filter(r => selection.value.includes(getRowSelectId(r)))
 })
 
 function toggleSelectAll() {
   const allSelected = visibleSelected.value.length === props.rows.length
-  selection.value = allSelected ? [] : props.rows.map(props.selectable!)
+  selection.value = allSelected ? [] : props.rows.map(getRowSelectId)
 }
 
 </script>

@@ -20,6 +20,9 @@
       "vite/client"
     ]
   },
+  "vueCompilerOptions": {
+    "jsxTemplates": true
+  },
   "include": [
     "src/env.d.ts",
     "src/**/*.ts",

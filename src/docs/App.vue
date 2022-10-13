@@ -14,10 +14,12 @@
               <component :is="getPageText(page.title)" v-if="getPageText(page.title)" />
             </Container>
 
-            <!-- <Example
+            <Example
               v-for="(e, j) in getExamples(page.title)" :key="j"
-              :component="e.default" :code="sourceWithinTemplate(e.source)"
-            /> -->
+              :component="e.default" :code="''"
+            />
+
+            <DatatableExample />
 
             <PropsTable v-if="getPropsData(page.title)" :doc="getPropsData(page.title)!.docs" />
           </Container>
@@ -29,7 +31,9 @@
 <script setup lang="ts">
 import { Container, CrashDialog, Text } from '..'
 import { NavLayout } from '../components-wip'
+import DatatableExample from '../components/datatable/DatatableExample.vue'
 import { chapters, components } from './chapters'
+import Example from './Example.vue'
 import PropsTable from './PropsTable.vue'
 
 const examples = import.meta.glob('./content/*Example*.vue', { eager: true })
@@ -59,12 +63,12 @@ function tokenize(pageTitle: string) {
   return pageTitle.replace(/\W/g, '')
 }
 
-// function getExamples(pageTitle: string) {
-//   const key = tokenize(pageTitle)
-//   return Object.keys(examples)
-//     .filter(s => s.includes(`/${key}Example`))
-//     .map(x => examples[x]) as any[]
-// }
+function getExamples(pageTitle: string) {
+  const key = tokenize(pageTitle)
+  return Object.keys(examples)
+    .filter(s => s.includes(`/${key}Example`))
+    .map(x => examples[x]) as any[]
+}
 
 function getPropsData(pageTitle: string) {
   const key = tokenize(pageTitle)
