@@ -18,16 +18,16 @@ const findByText = (w: VueWrapper, s: string) => w.findAll('*').find(w => w.text
 test('Column sort', async () => {
   const wrapper = mount(Datatable, { propsData: { columns, rows } })
   await findByText(wrapper, columns[0].name).trigger('click')
-  expect(wrapper.emitted('update:sort')![0]).toEqual(['name'])
+  expect(wrapper.emitted('update:sortValue')![0]).toEqual(['name'])
   await findByText(wrapper, columns[0].name).trigger('click')
-  expect(wrapper.emitted('update:sort')![1]).toEqual(['-name'])
+  expect(wrapper.emitted('update:sortValue')![1]).toEqual(['-name'])
   await findByText(wrapper, columns[0].name).trigger('click')
-  expect(wrapper.emitted('update:sort')![2]).toEqual([undefined])
+  expect(wrapper.emitted('update:sortValue')![2]).toEqual([undefined])
   expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('Selecting rows', async () => {
-  const wrapper = mount(Datatable, { propsData: { columns, rows, selectBy: 'id' } })
+  const wrapper = mount(Datatable, { propsData: { columns, rows, selection: [], selectBy: 'id' } })
   const checkboxes = wrapper.findAllComponents({ name: 'Checkbox' })
   await checkboxes[0].trigger('click')
   expect(wrapper.emitted('update:selection')![0]).toEqual([[1, 2, 3]])

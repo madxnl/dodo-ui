@@ -45,7 +45,6 @@ type Item = typeof items[number]
 const selection = ref(items.slice(0, 0))
 
 function clickRow(r: Item) {
-  console.log('foo')
 }
 
 function totalRevenue() {

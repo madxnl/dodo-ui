@@ -6,7 +6,7 @@ exports[`Column sort 1`] = `
     <tr class=\\"\\">
       <!--v-if-->
       <th class=\\"_sortable_c7bb0b\\"><span class=\\"_colName_c7bb0b\\"><span>Name</span><span class=\\"_Icon_db495d material-symbols-outlined _sortIcon_c7bb0b\\">arrow_drop_down</span></span></th>
-      <th class=\\"\\"><span class=\\"_colName_c7bb0b\\"><span>Modified</span>
+      <th class=\\"_sortActive_c7bb0b\\"><span class=\\"_colName_c7bb0b\\"><span>Modified</span>
         <!--v-if--></span>
       </th>
     </tr>
@@ -17,13 +17,13 @@ exports[`Column sort 1`] = `
     </tr>
     <tr class=\\"\\">
       <!--v-if-->
-      <td class=\\"\\">Bar</td>
-      <td class=\\"\\">2022-02-01</td>
+      <td class=\\"\\">Baz</td>
+      <td class=\\"\\">2022-01-04</td>
     </tr>
     <tr class=\\"\\">
       <!--v-if-->
-      <td class=\\"\\">Baz</td>
-      <td class=\\"\\">2022-01-04</td>
+      <td class=\\"\\">Bar</td>
+      <td class=\\"\\">2022-02-01</td>
     </tr>
     <!--v-if-->
     <!--v-if-->
@@ -38,7 +38,7 @@ exports[`Selecting rows 1`] = `
     <tr class=\\"\\">
       <th style=\\"width: 0px;\\"><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_Icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></th>
       <th class=\\"_sortable_c7bb0b\\"><span class=\\"_colName_c7bb0b\\"><span>Name</span><span class=\\"_Icon_db495d material-symbols-outlined _sortIcon_c7bb0b\\">arrow_drop_down</span></span></th>
-      <th class=\\"\\"><span class=\\"_colName_c7bb0b\\"><span>Modified</span>
+      <th class=\\"_sortActive_c7bb0b\\"><span class=\\"_colName_c7bb0b\\"><span>Modified</span>
         <!--v-if--></span>
       </th>
     </tr>
@@ -49,13 +49,13 @@ exports[`Selecting rows 1`] = `
     </tr>
     <tr class=\\"_rowSelected_c7bb0b\\">
       <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_Icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
-      <td class=\\"\\">Bar</td>
-      <td class=\\"\\">2022-02-01</td>
+      <td class=\\"\\">Baz</td>
+      <td class=\\"\\">2022-01-04</td>
     </tr>
     <tr class=\\"_rowSelected_c7bb0b\\">
       <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_Icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
-      <td class=\\"\\">Baz</td>
-      <td class=\\"\\">2022-01-04</td>
+      <td class=\\"\\">Bar</td>
+      <td class=\\"\\">2022-02-01</td>
     </tr>
     <!--v-if-->
     <!--v-if-->
@@ -70,7 +70,7 @@ exports[`Show more 1`] = `
     <tr class=\\"\\">
       <!--v-if-->
       <th class=\\"_sortable_c7bb0b\\"><span class=\\"_colName_c7bb0b\\"><span>Name</span><span class=\\"_Icon_db495d material-symbols-outlined _sortIcon_c7bb0b\\">arrow_drop_down</span></span></th>
-      <th class=\\"\\"><span class=\\"_colName_c7bb0b\\"><span>Modified</span>
+      <th class=\\"_sortActive_c7bb0b\\"><span class=\\"_colName_c7bb0b\\"><span>Modified</span>
         <!--v-if--></span>
       </th>
     </tr>
@@ -81,13 +81,13 @@ exports[`Show more 1`] = `
     </tr>
     <tr class=\\"\\">
       <!--v-if-->
-      <td class=\\"\\">Bar</td>
-      <td class=\\"\\">2022-02-01</td>
+      <td class=\\"\\">Baz</td>
+      <td class=\\"\\">2022-01-04</td>
     </tr>
     <tr class=\\"\\">
       <!--v-if-->
-      <td class=\\"\\">Baz</td>
-      <td class=\\"\\">2022-01-04</td>
+      <td class=\\"\\">Bar</td>
+      <td class=\\"\\">2022-02-01</td>
     </tr>
     <!--v-if-->
     <tr class=\\"_showMore_c7bb0b\\">
