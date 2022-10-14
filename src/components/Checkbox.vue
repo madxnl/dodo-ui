@@ -1,5 +1,5 @@
 <template>
-  <span :class="[$style.Checkbox, modelValue && $style.checked]" @click="onClick">
+  <span :class="[$style.Checkbox, modelValue && $style.checked]" @click.stop="onClick">
     <Icon :name="indeterminate ? 'indeterminate_check_box' : modelValue ? 'check_box' : 'check_box_outline_blank'" />
     <slot />
     <input type="checkbox" :checked="modelValue" @change="onChange">

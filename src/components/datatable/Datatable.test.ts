@@ -9,7 +9,7 @@ const rows = [
 ]
 
 const columns = [
-  { name: 'Name', field: 'name', sortBy: 'name' },
+  { name: 'Name', field: 'name', sort: 'name' },
   { name: 'Modified', field: 'modified' },
 ]
 
@@ -18,11 +18,11 @@ const findByText = (w: VueWrapper, s: string) => w.findAll('*').find(w => w.text
 test('Column sort', async () => {
   const wrapper = mount(Datatable, { propsData: { columns, rows } })
   await findByText(wrapper, columns[0].name).trigger('click')
-  expect(wrapper.emitted('update:ordering')![0]).toEqual(['name'])
+  expect(wrapper.emitted('update:sort')![0]).toEqual(['name'])
   await findByText(wrapper, columns[0].name).trigger('click')
-  expect(wrapper.emitted('update:ordering')![1]).toEqual(['-name'])
+  expect(wrapper.emitted('update:sort')![1]).toEqual(['-name'])
   await findByText(wrapper, columns[0].name).trigger('click')
-  expect(wrapper.emitted('update:ordering')![2]).toEqual([undefined])
+  expect(wrapper.emitted('update:sort')![2]).toEqual([undefined])
   expect(wrapper.html()).toMatchSnapshot()
 })
 

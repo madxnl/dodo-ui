@@ -2,7 +2,7 @@
   <Container :class="$style.Datatable" overflow="auto" :content-loading="contentLoading || sortingAsync">
     <table>
       <tr :class="stickyHeader && $style.stickyHeader">
-        <th v-if="selectBy" style="width:0">
+        <th v-if="showSelect" style="width:0">
           <Checkbox
             :indeterminate="visibleSelected.length > 0 && visibleSelected.length < rows.length"
             :model-value="visibleSelected.length > 0 && visibleSelected.length === rows.length"
@@ -38,7 +38,7 @@
         ]"
         @click="rowClick && rowClick(row)"
       >
-        <td v-if="selectBy">
+        <td v-if="showSelect">
           <Checkbox :model-value="isSelected(row)" @update:model-value="toggleSelect(row)" />
         </td>
         <td v-for="col in enabledColumns" :key="col.name" :class="[]" :style="col.align && `text-align:${col.align}`">
@@ -61,7 +61,7 @@
       </tr>
 
       <tr v-if="enabledColumns.some(c => c.footer)" :class="[$style.footer, stickyHeader && $style.stickyFooter]">
-        <th v-if="selectBy" />
+        <th v-if="showSelect" />
         <th v-for="col in enabledColumns" :key="col.name" :style="col.align && `text-align:${col.align}`">
           <slot :name="col.footerSlot ?? 'footer'" :column="col">
             {{ col.footer }}
@@ -87,7 +87,7 @@ export interface Column<T> {
   headerSlot?: string
   footerSlot?: string
   footer?: string|number
-  sortBy?: string
+  sort?: string
 }
 
 export type DatatableSlots<T> = Record<string, (context: { row: T; column: Column<T> }) => Array<VNode> | undefined>
@@ -99,30 +99,31 @@ export interface DatatableProps<T> {
   rowClick?: (row: T) => void
   selectBy?: keyof T
   stickyHeader?: boolean
-  ordering?: string
   contentLoading?: boolean
   showMore?: () => Promise<unknown>
-  sortAsync?: () => Promise<unknown>
+  sortValue?: string
+  sortAsync?: (sortBy: string|undefined) => Promise<unknown>
 }
 
 const props = defineProps<DatatableProps<unknown>>()
 
 const emit = defineEmits<{
   (e: 'update:selection', selection: unknown[]): void
-  (e: 'update:ordering', order: string|undefined): void
+  (e: 'update:sortValue', order: string|undefined): void
 }>()
 
-const ordering = ref<string>()
+const sort = ref<string>()
 const selection = ref<unknown[]>([])
 const sortingAsync = ref(false)
 
-watchEffect(() => { ordering.value = props.ordering })
+watchEffect(() => { sort.value = props.sortValue })
 watchEffect(() => { selection.value = props.selection ?? [] })
-watch(ordering, v => { emit('update:ordering', v) })
+watch(sort, v => { emit('update:sortValue', v) })
 watch(selection, v => { emit('update:selection', v) })
 
-const sortReverse = computed(() => ordering.value?.startsWith('-'))
+const sortReverse = computed(() => sort.value?.startsWith('-'))
 const enabledColumns = computed(() => props.columns.filter(Boolean).map(c => c!))
+const showSelect = computed(() => !!props.selection)
 
 const sortedItems = computed(() => {
   const sortCol = enabledColumns.value.find(isSortCol)
@@ -141,28 +142,28 @@ function getColumnSortIcon(col: Column<unknown>) {
 }
 
 function isSortCol(col: Column<unknown>) {
-  return ordering.value?.replace('-', '') === col.field
+  return sort.value?.replace('-', '') === col.sort
 }
 
 function canSortCol(col: Column<unknown>) {
-  return !!col.sortBy
+  return !!col.sort
 }
 
 async function toggleColumnSort(col: Column<unknown>) {
-  if (!col.field) return
-  ordering.value = isSortCol(col) ? sortReverse.value ? undefined : '-' + col.sortBy : col.sortBy
+  if (!canSortCol(col)) return
+  sort.value = isSortCol(col) ? sortReverse.value ? undefined : '-' + col.sort : col.sort
   if (props.sortAsync) {
     sortingAsync.value = true
-    await props.sortAsync().finally(() => { sortingAsync.value = false })
+    await props.sortAsync(sort.value).finally(() => { sortingAsync.value = false })
   }
 }
 
-function getRowSelectId(row: any) {
-  return row[props.selectBy!]
+function getRowSelectValue(row: any) {
+  return props.selectBy ? row[props.selectBy] : row
 }
 
 function toggleSelect(row: unknown) {
-  const id = getRowSelectId(row)
+  const id = getRowSelectValue(row)
   if (selection.value.includes(id)) {
     selection.value = selection.value.filter(x => x !== id)
   } else {
@@ -175,19 +176,19 @@ function getDisplayValue(col: Column<unknown>, row: any) {
 }
 
 function isSelected(row: unknown) {
-  if (!props.selectBy) return false
-  const id = getRowSelectId(row)
+  if (!showSelect.value) return false
+  const id = getRowSelectValue(row)
   return selection.value.includes(id)
 }
 
 const visibleSelected = computed(() => {
-  if (!props.selectBy) return []
-  return props.rows.filter(r => selection.value.includes(getRowSelectId(r)))
+  if (!showSelect.value) return []
+  return props.rows.filter(r => selection.value.includes(getRowSelectValue(r)))
 })
 
 function toggleSelectAll() {
   const allSelected = visibleSelected.value.length === props.rows.length
-  selection.value = allSelected ? [] : props.rows.map(getRowSelectId)
+  selection.value = allSelected ? [] : props.rows.map(getRowSelectValue)
 }
 
 </script>
