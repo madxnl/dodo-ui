@@ -4,10 +4,10 @@
       v-model:selection="selection"
       sticky-header
       :columns="[
-        { name: 'Title', sort: 'name' },
-        { name: 'Year', width: '10%' },
-        { name: 'Revenue' },
-        { name: 'Rating' },
+        { name: 'Title', sort: 'name', value: 'title' },
+        { name: 'Year', width: '10%', value: 'year' },
+        { name: 'Revenue', value: row => row.revenue, sort: 'revenue' },
+        { name: 'Rating', value: 'rating' },
         { name: 'Actions', align: 'end' },
       ]"
       :rows="items"
@@ -17,7 +17,6 @@
       show-footer
     >
       <template #title-footer>Totals</template>
-      <template #revenue="{row}">${{ row.revenue }}</template>
       <template #revenue-footer>${{ totalRevenue() }}</template>
       <template #actions>todo</template>
       <template #actions-header="{ column }">{{ column.name }}!</template>

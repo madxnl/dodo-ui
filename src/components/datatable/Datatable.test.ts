@@ -9,8 +9,8 @@ const rows = [
 ]
 
 const columns = [
-  { name: 'Name', sort: 'name' },
-  { name: 'Modified' },
+  { name: 'Name', value: 'name', sort: 'name' },
+  { name: 'Modified', value: 'modified' },
 ]
 
 const findByText = (w: VueWrapper, s: string) => w.findAll('*').find(w => w.text() === s)!

@@ -21,9 +21,9 @@
         >
           <span :class="$style.colName">
             <span>
-              <slot :name="`${columnSlug(col)}-header`" :column="col">{{ col.name }}</slot>
+              <slot :name="`${slotName(col)}-header`" :column="col">{{ col.name }}</slot>
             </span>
-            <Icon v-if="getColumnSortIcon(col)" :name="getColumnSortIcon(col)!" :class="$style.sortIcon" />
+            <Icon v-if="canSortCol(col)" :name="getColumnSortIcon(col)!" :class="$style.sortIcon" />
           </span>
         </th>
       </tr>
@@ -39,8 +39,8 @@
           <Checkbox :model-value="isSelected(row)" @update:model-value="toggleSelect(row)" />
         </td>
         <td v-for="col in enabledColumns" :key="col.name" :class="[]" :style="alignStyle(col)">
-          <slot :name="columnSlug(col)" :row="row" :column="col">
-            {{ getDisplayValue(col, row) }}
+          <slot :name="slotName(col)" :row="row" :column="col">
+            {{ getValue(col, row) }}
           </slot>
         </td>
       </tr>
@@ -60,7 +60,7 @@
       <tr v-if="showFooter" :class="[$style.footer, stickyHeader && $style.stickyFooter]">
         <th v-if="showSelect" />
         <th v-for="col in enabledColumns" :key="col.name" :style="alignStyle(col)">
-          <slot :name="`${columnSlug(col)}-footer`" :column="col" />
+          <slot :name="`${slotName(col)}-footer`" :column="col" />
         </th>
       </tr>
     </table>
@@ -73,19 +73,21 @@ import Button from '../Button.vue'
 import Checkbox from '../Checkbox.vue'
 import Container from '../Container.vue'
 
-export interface Column {
+export interface Column<T=object> {
   name: string
+  value?: keyof T|((row: T) => unknown)
   align?: 'start'|'end'
   width?: string
   sort?: string
   disabled?: boolean
+  slot?: string
 }
 
-export type DatatableSlots<T> = Record<string, (context: { row: T; column: Column }) => Array<VNode> | undefined>
+export type DatatableSlots<T> = Record<string, (context: { row: T; column: Column<T> }) => Array<VNode> | undefined>
 
 export interface DatatableProps<T> {
   rows: T[]
-  columns: Column[]
+  columns: Column<T>[]
   selection?: unknown[]
   rowClick?: (row: T) => void
   selectBy?: keyof T
@@ -121,8 +123,8 @@ const sortedItems = computed(() => {
   const sortCol = enabledColumns.value.find(isSortCol)
   if (props.sortAsync || !sortCol) return props.rows
   return props.rows.slice().sort((a: any, b: any) => {
-    const x = a[sortCol.sort!]
-    const y = b[sortCol.sort!]
+    const x = getValue(sortCol, a)
+    const y = getValue(sortCol, b)
     const numbers = typeof x === 'number' && typeof y === 'number'
     const d = numbers ? y - x : `${y}`.localeCompare(`${x}`)
     return sortReverse.value ? d : -d
@@ -130,16 +132,16 @@ const sortedItems = computed(() => {
 })
 
 function getColumnSortIcon(col: Column) {
-  if (!canSortCol(col)) return undefined
-  return (isSortCol(col) && sortReverse.value) ? 'arrow_drop_up' : 'arrow_drop_down'
+  // if (!isSortCol(col)) return undefined
+  return sortReverse.value ? 'arrow_drop_up' : 'arrow_drop_down'
 }
 
 function isSortCol(col: Column) {
   return sort.value?.replace('-', '') === col.sort
 }
 
-function columnSlug(col: Column) {
-  return col.name.toLowerCase().trim().replace(/\W/g, '')
+function slotName(col: Column) {
+  return col.slot || col.name.toLowerCase().trim().replace(/\W/g, '')
 }
 
 function canSortCol(col: Column) {
@@ -176,8 +178,10 @@ function toggleSelect(row: unknown) {
   }
 }
 
-function getDisplayValue(col: Column, row: any) {
-  return col.name in row ? row[col.name] : ''
+function getValue(col: Column, row: any) {
+  if (typeof col.value === 'function') return col.value(row)
+  if (typeof col.value === 'string') return row[col.value]
+  return ''
 }
 
 function isSelected(row: unknown) {
