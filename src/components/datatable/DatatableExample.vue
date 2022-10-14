@@ -4,27 +4,23 @@
       v-model:selection="selection"
       sticky-header
       :columns="[
-        { name: 'Title', field: 'title', footer: 'Totals', sort: 'name' },
-        { name: 'Year', field: 'year', width: '10%' },
-        { name: 'Revenue', field: 'revenue', footer: totalRevenue() },
-        { name: 'Rating', field: 'rating' },
-        null,
-        { name: 'Actions', slot: 'actions', align: 'end', headerSlot: 'actions-head' },
+        { name: 'Title', sort: 'name' },
+        { name: 'Year', width: '10%' },
+        { name: 'Revenue' },
+        { name: 'Rating' },
+        { name: 'Actions', align: 'end' },
       ]"
       :rows="items"
       :row-click="clickRow"
       :show-more="loadMore"
       :sort-async="loadMore"
+      show-footer
     >
-      <template #cell="{ column, row }">
-        <template v-if="column.name === 'Column 1'">{{ row.title }}!</template>
-      </template>
-      <template #actions>
-        todo
-      </template>
-      <template #actions-head="{ column }">
-        {{ column.name }}!
-      </template>
+      <template #title-footer>Totals</template>
+      <template #revenue="{row}">${{ row.revenue }}</template>
+      <template #revenue-footer>${{ totalRevenue() }}</template>
+      <template #actions>todo</template>
+      <template #actions-header="{ column }">{{ column.name }}!</template>
     </Datatable>
   </div>
 </template>

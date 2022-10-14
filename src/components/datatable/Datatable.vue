@@ -1,5 +1,5 @@
 <template>
-  <Container :class="$style.Datatable" overflow="auto" :content-loading="contentLoading || sortingAsync">
+  <Container :class="$style.Datatable" :content-loading="contentLoading || sortingAsync">
     <table>
       <tr :class="stickyHeader && $style.stickyHeader">
         <th v-if="showSelect" style="width:0">
@@ -16,17 +16,14 @@
             canSortCol(col) ? $style.sortable : '',
             isSortCol(col) && $style.sortActive,
           ]"
-          :style="[
-            col.align ? `text-align:${col.align}` : '',
-            col.width ? `width:${col.width}` : '',
-          ]"
+          :style="[alignStyle(col), widthStyle(col)]"
           @click="toggleColumnSort(col)"
         >
           <span :class="$style.colName">
             <span>
-              <slot :name="col.headerSlot ?? 'header'" :column="col">{{ col.name }}</slot>
+              <slot :name="`${columnSlug(col)}-header`" :column="col">{{ col.name }}</slot>
             </span>
-            <Icon v-if="canSortCol(col)" :name="getColumnSortIcon(col)" :class="$style.sortIcon" />
+            <Icon v-if="getColumnSortIcon(col)" :name="getColumnSortIcon(col)!" :class="$style.sortIcon" />
           </span>
         </th>
       </tr>
@@ -41,8 +38,8 @@
         <td v-if="showSelect">
           <Checkbox :model-value="isSelected(row)" @update:model-value="toggleSelect(row)" />
         </td>
-        <td v-for="col in enabledColumns" :key="col.name" :class="[]" :style="col.align && `text-align:${col.align}`">
-          <slot :name="col.slot ?? 'cell'" :row="row" :index="i" :column="col">
+        <td v-for="col in enabledColumns" :key="col.name" :class="[]" :style="alignStyle(col)">
+          <slot :name="columnSlug(col)" :row="row" :column="col">
             {{ getDisplayValue(col, row) }}
           </slot>
         </td>
@@ -56,16 +53,14 @@
 
       <tr v-if="rows.length && showMore" :class="$style.showMore">
         <td :colspan="columns.length">
-          <Button variant="text" color="info" @click="showMore">Show more</Button>
+          <Button variant="text" color="info" @click="showMore">Show more results</Button>
         </td>
       </tr>
 
-      <tr v-if="enabledColumns.some(c => c.footer)" :class="[$style.footer, stickyHeader && $style.stickyFooter]">
+      <tr v-if="showFooter" :class="[$style.footer, stickyHeader && $style.stickyFooter]">
         <th v-if="showSelect" />
-        <th v-for="col in enabledColumns" :key="col.name" :style="col.align && `text-align:${col.align}`">
-          <slot :name="col.footerSlot ?? 'footer'" :column="col">
-            {{ col.footer }}
-          </slot>
+        <th v-for="col in enabledColumns" :key="col.name" :style="alignStyle(col)">
+          <slot :name="`${columnSlug(col)}-footer`" :column="col" />
         </th>
       </tr>
     </table>
@@ -78,28 +73,25 @@ import Button from '../Button.vue'
 import Checkbox from '../Checkbox.vue'
 import Container from '../Container.vue'
 
-export interface Column<T> {
+export interface Column {
   name: string
-  field?: keyof T
-  slot?: string
   align?: 'start'|'end'
   width?: string
-  headerSlot?: string
-  footerSlot?: string
-  footer?: string|number
   sort?: string
+  disabled?: boolean
 }
 
-export type DatatableSlots<T> = Record<string, (context: { row: T; column: Column<T> }) => Array<VNode> | undefined>
+export type DatatableSlots<T> = Record<string, (context: { row: T; column: Column }) => Array<VNode> | undefined>
 
 export interface DatatableProps<T> {
   rows: T[]
-  columns: (Column<T>|null)[]
+  columns: Column[]
   selection?: unknown[]
   rowClick?: (row: T) => void
   selectBy?: keyof T
   stickyHeader?: boolean
   contentLoading?: boolean
+  showFooter?: boolean
   showMore?: () => Promise<unknown>
   sortValue?: string
   sortAsync?: (sortBy: string|undefined) => Promise<unknown>
@@ -122,34 +114,47 @@ watch(sort, v => { emit('update:sortValue', v) })
 watch(selection, v => { emit('update:selection', v) })
 
 const sortReverse = computed(() => sort.value?.startsWith('-'))
-const enabledColumns = computed(() => props.columns.filter(Boolean).map(c => c!))
+const enabledColumns = computed(() => props.columns.filter(c => !c.disabled))
 const showSelect = computed(() => !!props.selection)
 
 const sortedItems = computed(() => {
   const sortCol = enabledColumns.value.find(isSortCol)
-  if (props.sortAsync || !sortCol?.field) return props.rows
+  if (props.sortAsync || !sortCol) return props.rows
   return props.rows.slice().sort((a: any, b: any) => {
-    const x = a[sortCol.field!]
-    const y = b[sortCol.field!]
+    const x = a[sortCol.sort!]
+    const y = b[sortCol.sort!]
     const numbers = typeof x === 'number' && typeof y === 'number'
     const d = numbers ? y - x : `${y}`.localeCompare(`${x}`)
     return sortReverse.value ? d : -d
   })
 })
 
-function getColumnSortIcon(col: Column<unknown>) {
+function getColumnSortIcon(col: Column) {
+  if (!canSortCol(col)) return undefined
   return (isSortCol(col) && sortReverse.value) ? 'arrow_drop_up' : 'arrow_drop_down'
 }
 
-function isSortCol(col: Column<unknown>) {
+function isSortCol(col: Column) {
   return sort.value?.replace('-', '') === col.sort
 }
 
-function canSortCol(col: Column<unknown>) {
+function columnSlug(col: Column) {
+  return col.name.toLowerCase().trim().replace(/\W/g, '')
+}
+
+function canSortCol(col: Column) {
   return !!col.sort
 }
 
-async function toggleColumnSort(col: Column<unknown>) {
+function alignStyle(col: Column) {
+  return col.align ? `text-align:${col.align}` : ''
+}
+
+function widthStyle(col: Column) {
+  return col.width ? `width:${col.width}` : ''
+}
+
+async function toggleColumnSort(col: Column) {
   if (!canSortCol(col)) return
   sort.value = isSortCol(col) ? sortReverse.value ? undefined : '-' + col.sort : col.sort
   if (props.sortAsync) {
@@ -171,8 +176,8 @@ function toggleSelect(row: unknown) {
   }
 }
 
-function getDisplayValue(col: Column<unknown>, row: any) {
-  return col.field ? row[col.field] : ''
+function getDisplayValue(col: Column, row: any) {
+  return col.name in row ? row[col.name] : ''
 }
 
 function isSelected(row: unknown) {
@@ -210,7 +215,7 @@ function toggleSelectAll() {
 }
 .colName {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   align-items: center;
 }
 .colName > :first-child {
@@ -236,12 +241,10 @@ function toggleSelectAll() {
   padding: 8px 12px;
   box-sizing: border-box;
 }
-.noResults {
-  height: 100px;
-}
 .noResults,
 .showMore {
   text-align: center;
+  height: 100px;
 }
 .showMore button {
   width: 100%;

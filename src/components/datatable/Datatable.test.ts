@@ -9,19 +9,19 @@ const rows = [
 ]
 
 const columns = [
-  { name: 'Name', field: 'name', sort: 'name' },
-  { name: 'Modified', field: 'modified' },
+  { name: 'Name', sort: 'name' },
+  { name: 'Modified' },
 ]
 
 const findByText = (w: VueWrapper, s: string) => w.findAll('*').find(w => w.text() === s)!
 
 test('Column sort', async () => {
   const wrapper = mount(Datatable, { propsData: { columns, rows } })
-  await findByText(wrapper, columns[0].name).trigger('click')
+  await findByText(wrapper, 'Name').trigger('click')
   expect(wrapper.emitted('update:sortValue')![0]).toEqual(['name'])
-  await findByText(wrapper, columns[0].name).trigger('click')
+  await findByText(wrapper, 'Name').trigger('click')
   expect(wrapper.emitted('update:sortValue')![1]).toEqual(['-name'])
-  await findByText(wrapper, columns[0].name).trigger('click')
+  await findByText(wrapper, 'Name').trigger('click')
   expect(wrapper.emitted('update:sortValue')![2]).toEqual([undefined])
   expect(wrapper.html()).toMatchSnapshot()
 })
@@ -41,7 +41,7 @@ test('Selecting rows', async () => {
 test('Show more', async () => {
   const showMore = vi.fn(async () => {})
   const wrapper = mount(Datatable, { propsData: { columns, rows, showMore } })
-  await findByText(wrapper, 'Show more').find('button').trigger('click')
+  await findByText(wrapper, 'Show more results').find('button').trigger('click')
   expect(showMore).toBeCalled()
   expect(wrapper.html()).toMatchSnapshot()
 })
