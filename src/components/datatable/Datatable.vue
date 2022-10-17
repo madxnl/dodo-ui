@@ -23,7 +23,7 @@
             <span>
               <slot :name="`${slotName(col)}-header`" :column="col">{{ col.name }}</slot>
             </span>
-            <Icon v-if="canSortCol(col)" :name="getColumnSortIcon(col)!" :class="$style.sortIcon" />
+            <Icon v-if="getColumnSortIcon(col)" :name="getColumnSortIcon(col)!" :class="$style.sortIcon" />
           </span>
         </th>
       </tr>
@@ -46,13 +46,13 @@
       </tr>
 
       <tr v-if="!rows.length" :class="$style.noResults">
-        <td :colspan="columns.length">
+        <td colspan="999">
           No results
         </td>
       </tr>
 
       <tr v-if="rows.length && showMore" :class="$style.showMore">
-        <td :colspan="columns.length">
+        <td colspan="999">
           <Button variant="text" color="info" @click="showMore">Show more results</Button>
         </td>
       </tr>
@@ -132,7 +132,7 @@ const sortedItems = computed(() => {
 })
 
 function getColumnSortIcon(col: Column) {
-  // if (!isSortCol(col)) return undefined
+  if (!isSortCol(col)) return undefined
   return sortReverse.value ? 'arrow_drop_up' : 'arrow_drop_down'
 }
 
