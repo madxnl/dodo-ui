@@ -19,11 +19,15 @@ exports[`Search filters options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 2</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
-          </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
-        </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
-      </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
     </div>
   </div>
 </teleport-stub>"
@@ -44,8 +48,12 @@ exports[`Search input visible after character key press 1`] = `
             <div class=\\"_inner_342682\\"><input class=\\"_input_6615c1\\" placeholder=\\"Search\\" type=\\"search\\"></div>
           </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
         </div>
-        <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; overflow: auto;\\"><span class=\\"_spinner_1df3db\\"><!--v-if--></span></div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
-      </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+        <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; overflow: auto;\\">
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
     </div>
   </div>
 </teleport-stub>"
@@ -70,125 +78,148 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div data-selectactive=\\"true\\" class=\\"_DropdownItem_8d9fa1 _active_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 0</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 1</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 2</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 3</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 4</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 5</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 6</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 7</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 8</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 9</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 10</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 11</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 12</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 13</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 14</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 15</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 16</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 17</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 18</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
           </div>
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_Container_1df3db\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f _text_8d9fa1\\"><!-- @slot Customize option html -->Option 19</span>
-              <!--v-if--><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+              <!--v-if-->
+              <!--v-if-->
             </div>
-          </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
-        </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
-      </div><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
     </div>
   </div>
 </teleport-stub>"
@@ -208,7 +239,7 @@ exports[`Select a value 1`] = `
 exports[`Select can be disabled 1`] = `
 "<div class=\\"_trigger_0c7521 _disabled_0c7521\\">
   <div class=\\"_Field_342682 _disabled_342682 _button_342682\\">
-    <div class=\\"_inner_342682\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
+    <div class=\\"_inner_342682\\"><span class=\\"_Text_3c5a9f _nowrap_3c5a9f\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\" disabled=\\"\\"></div><span class=\\"_Icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
 <teleport-stub to=\\"body\\">

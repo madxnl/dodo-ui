@@ -28,7 +28,8 @@ exports[`Column sort 1`] = `
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
-  </table><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+  </table>
+  <!--v-if-->
 </div>"
 `;
 
@@ -60,7 +61,8 @@ exports[`Selecting rows 1`] = `
     <!--v-if-->
     <!--v-if-->
     <!--v-if-->
-  </table><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+  </table>
+  <!--v-if-->
 </div>"
 `;
 
@@ -99,6 +101,7 @@ exports[`Show more 1`] = `
         </button></td>
     </tr>
     <!--v-if-->
-  </table><span class=\\"_spinner_1df3db\\"><!--v-if--></span>
+  </table>
+  <!--v-if-->
 </div>"
 `;
