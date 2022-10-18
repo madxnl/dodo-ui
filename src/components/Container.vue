@@ -2,7 +2,7 @@
 <template>
   <div :class="[$style.Container, contentLoading && $style.loading]" :style="css">
     <slot />
-    <span :class="$style.spinner"><Spinner v-if="contentLoading" /></span>
+    <span v-if="contentLoading" :class="$style.spinner"><Spinner /></span>
   </div>
 </template>
 <script lang="ts" setup>

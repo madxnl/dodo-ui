@@ -18,7 +18,7 @@
       <template #after>
         <Icon name="arrow_drop_down" />
       </template>
-      <input ref="hiddenInput" v-model="search" style="position:fixed;pointer-events:none;opacity:0">
+      <input ref="hiddenInput" v-model="search" style="position:fixed;pointer-events:none;opacity:0" :disabled="disabled">
     </Field>
     <template #dropdown>
       <Container ref="dropdownEl" gap="0" overflow="auto" @mousedown.stop.prevent="">
