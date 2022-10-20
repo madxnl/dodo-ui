@@ -26,6 +26,7 @@ useTheme()
 </script>
 <style module>
 .Field {
+  min-width: 0;
   display: flex;
   align-items: center;
   padding: 2px 6px;
