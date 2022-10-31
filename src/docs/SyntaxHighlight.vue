@@ -1,5 +1,8 @@
 <template>
-  <pre :class="[$style.SyntaxHighlight, `language-${lang}`]" v-html="html" />
+  <pre
+    :class="[$style.SyntaxHighlight, `language-${lang}`]"
+    v-html="html"
+  />
 </template>
 <script setup lang="ts">
 import { highlight, languages } from 'prismjs'
@@ -10,11 +13,21 @@ import { computed } from 'vue'
 const props = defineProps<{
   code: string
   lang: 'html'|'ts'
+  // editable: boolean
 }>()
+
+// const emit = defineEmits<{
+// (e: 'update:code', code: string): void
+// }>()
 
 const html = computed(() => {
   return highlight(props.code, languages[props.lang], props.lang)
 })
+
+// function onInput(e: Event) {
+//   const code = (e.target as HTMLElement).innerText
+//   emit('update:code', code)
+// }
 </script>
 <style module>
 pre.SyntaxHighlight {

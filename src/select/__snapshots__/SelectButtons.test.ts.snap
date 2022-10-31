@@ -1,0 +1,94 @@
+// Vitest Snapshot v1
+
+exports[`Deselect 1`] = `
+"<div class=\\"_Select_32b29a _multiple_32b29a\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"_Button_962483 _default_962483 _active_962483 _rounded_962483\\">
+    <div class=\\"_content_962483\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option one
+    </div>
+    <!--v-if-->
+  </button><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"_Button_962483 _default_962483 _active_962483 _rounded_962483\\">
+    <div class=\\"_content_962483\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option two
+    </div>
+    <!--v-if-->
+  </button><button type=\\"button\\" class=\\"_Button_962483 _default_962483 _rounded_962483\\">
+    <div class=\\"_content_962483\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option three
+    </div>
+    <!--v-if-->
+  </button></div>"
+`;
+
+exports[`Select a value 1`] = `
+"<div class=\\"_Select_32b29a\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"_Button_962483 _default_962483 _active_962483 _rounded_962483\\">
+    <div class=\\"_content_962483\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option one
+    </div>
+    <!--v-if-->
+  </button><button type=\\"button\\" class=\\"_Button_962483 _default_962483 _rounded_962483\\">
+    <div class=\\"_content_962483\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option two
+    </div>
+    <!--v-if-->
+  </button><button type=\\"button\\" class=\\"_Button_962483 _default_962483 _rounded_962483\\">
+    <div class=\\"_content_962483\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option three
+    </div>
+    <!--v-if-->
+  </button></div>"
+`;
+
+exports[`Select multiple 1`] = `
+"<div class=\\"_Select_32b29a _multiple_32b29a\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"_Button_962483 _default_962483 _active_962483 _rounded_962483\\">
+    <div class=\\"_content_962483\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option one
+    </div>
+    <!--v-if-->
+  </button><button type=\\"button\\" class=\\"_Button_962483 _default_962483 _rounded_962483\\">
+    <div class=\\"_content_962483\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option two
+    </div>
+    <!--v-if-->
+  </button><button type=\\"button\\" class=\\"_Button_962483 _default_962483 _rounded_962483\\">
+    <div class=\\"_content_962483\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option three
+    </div>
+    <!--v-if-->
+  </button></div>"
+`;

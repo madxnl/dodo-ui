@@ -1,0 +1,248 @@
+// Vitest Snapshot v1
+
+exports[`Search filters options 1`] = `
+"<div class=\\"_trigger_92c5f7\\">
+  <div class=\\"_Field_ff3730 _button_ff3730\\">
+    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
+  </div>
+</div>
+<teleport-stub to=\\"body\\">
+  <div class=\\"_Dropdown_92c5f7\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
+    <div class=\\"_Container_6ea1b0 _content_92c5f7\\" style=\\"gap: 0px; padding: 4px 0px;\\">
+      <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; overflow: auto;\\">
+        <div class=\\"_Row_faae1b _searchbox_8109c2\\" style=\\"padding: 8px;\\">
+          <div class=\\"_Field_ff3730 _TextInput_0d707b\\" tabindex=\\"0\\">
+            <div class=\\"_inner_ff3730\\"><input class=\\"_input_0d707b\\" placeholder=\\"Search\\" type=\\"search\\"></div>
+          </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
+        </div>
+        <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; overflow: auto;\\">
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 2</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+</teleport-stub>"
+`;
+
+exports[`Search input visible after character key press 1`] = `
+"<div class=\\"_trigger_92c5f7\\">
+  <div class=\\"_Field_ff3730 _button_ff3730\\">
+    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
+  </div>
+</div>
+<teleport-stub to=\\"body\\">
+  <div class=\\"_Dropdown_92c5f7\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
+    <div class=\\"_Container_6ea1b0 _content_92c5f7\\" style=\\"gap: 0px; padding: 4px 0px;\\">
+      <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; overflow: auto;\\">
+        <div class=\\"_Row_faae1b _searchbox_8109c2\\" style=\\"padding: 8px;\\">
+          <div class=\\"_Field_ff3730 _TextInput_0d707b\\" tabindex=\\"0\\">
+            <div class=\\"_inner_ff3730\\"><input class=\\"_input_0d707b\\" placeholder=\\"Search\\" type=\\"search\\"></div>
+          </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
+        </div>
+        <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; overflow: auto;\\">
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+</teleport-stub>"
+`;
+
+exports[`Search input visible if many options 1`] = `
+"<div class=\\"_trigger_92c5f7\\">
+  <div class=\\"_Field_ff3730 _button_ff3730\\">
+    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
+  </div>
+</div>
+<teleport-stub to=\\"body\\">
+  <div class=\\"_Dropdown_92c5f7\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
+    <div class=\\"_Container_6ea1b0 _content_92c5f7\\" style=\\"gap: 0px; padding: 4px 0px;\\">
+      <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; overflow: auto;\\">
+        <div class=\\"_Row_faae1b _searchbox_8109c2\\" style=\\"padding: 8px;\\">
+          <div class=\\"_Field_ff3730 _TextInput_0d707b\\" tabindex=\\"0\\">
+            <div class=\\"_inner_ff3730\\"><input class=\\"_input_0d707b\\" placeholder=\\"Search\\" type=\\"search\\"></div>
+          </div><!-- <template #after><Icon name=\\"close\\" size=\\"s\\" style=\\"cursor:pointer\\" @click=\\"clearSearch\\" /></template> -->
+        </div>
+        <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; overflow: auto;\\">
+          <!--v-if-->
+          <div data-selectactive=\\"true\\" class=\\"_DropdownItem_735685 _active_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 0</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 1</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 2</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 3</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 4</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 5</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 6</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 7</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 8</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 9</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 10</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 11</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 12</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 13</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 14</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 15</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 16</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 17</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 18</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+          <div class=\\"_DropdownItem_735685\\">
+            <div class=\\"_Container_6ea1b0\\" style=\\"gap: 0px; flex: 1;\\"><span class=\\"_Text_49b275 _nowrap_49b275 _text_735685\\"><!-- @slot Customize option html -->Option 19</span>
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+</teleport-stub>"
+`;
+
+exports[`Select a value 1`] = `
+"<div class=\\"_trigger_92c5f7\\">
+  <div class=\\"_Field_ff3730 _button_ff3730\\">
+    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
+  </div>
+</div>
+<teleport-stub to=\\"body\\">
+  <!--v-if-->
+</teleport-stub>"
+`;
+
+exports[`Select can be disabled 1`] = `
+"<div class=\\"_trigger_92c5f7 _disabled_92c5f7\\">
+  <div class=\\"_Field_ff3730 _disabled_ff3730 _button_ff3730\\">
+    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\" disabled=\\"\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
+  </div>
+</div>
+<teleport-stub to=\\"body\\">
+  <!--v-if-->
+</teleport-stub>"
+`;

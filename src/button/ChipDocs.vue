@@ -1,0 +1,21 @@
+<template>
+  <Text p>
+    Chip components are useful for displaying a list of labels or tags.
+  </Text>
+  <DocsExample :options="{ setup, template }" />
+</template>
+<script setup lang="ts">
+import { DocsExample, Text } from '..'
+
+function onClose() {}
+
+const setup = () => ({ onClose })
+
+const template = `
+<Row gap="xs" wrap>
+  <Chip>Chip 1</Chip>
+  <Chip color="success">Chip 2</Chip>
+  <Chip color="info" @click="onClose">Chip 3<template #after><Icon name="close" size="s" /></template></Chip>
+</Row>
+`
+</script>

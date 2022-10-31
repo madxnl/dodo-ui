@@ -1,28 +1,12 @@
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
-import App from './docs/App.vue'
-import { chapters } from './docs/chapters'
+import DodoDocsApp from './docs/DodoDocsApp.vue'
 import { provideCustomTheme } from './theme'
 
-const app = createApp(App)
+// This is the main file for the public Dodo UI docs
+
+const app = createApp(DodoDocsApp)
 
 app.use(provideCustomTheme(theme => {
 }))
-
-const router = createRouter({
-  history: createWebHistory('dodo-ui'),
-  routes: [
-    ...chapters.value.flatMap(p => p.pages).map(p => {
-      return { name: p.title, path: '', hash: '#' + p.title, component: App }
-    }),
-  ],
-
-  scrollBehavior(to, from, savedPosition) {
-    const el = document.getElementById(to.hash.slice(1))!
-    el?.scrollIntoView()
-  },
-})
-
-app.use(router)
 
 app.mount('#app')
