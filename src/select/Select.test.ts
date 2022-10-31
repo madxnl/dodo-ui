@@ -1,11 +1,11 @@
-import { mount, VueWrapper } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { expect, test } from 'vitest'
 import { nextTick } from 'vue'
 import { Select } from '..'
 
 const _options = [...Array(20)].map((_, i) => ({ text: 'Option ' + i, value: i }))
 
-const getByText = (wrapper: VueWrapper, text: string) => wrapper.findAll('*').find(e => e.text().trim() === text)!
+const getByText = (wrapper: any, text: string) => wrapper.findAll('*').find((e: any) => e.text().trim() === text)!
 
 test('Select a value', async () => {
   const wrapper = mount(Select, {

@@ -51,7 +51,9 @@ function isActive(title: string) {
 const activeLink = ref('')
 
 onMounted(() => {
-  location.href = '' + location.href // scroll to anchor
+  // location.href = '' + location.href // scroll to anchor
+  const header = document.getElementById(location.href.split('#').slice(1)[0])
+  header?.scrollIntoView()
 
   addEventListener('scroll', onScroll, { passive: true, capture: true })
   addEventListener('popstate', onPopState)
@@ -71,16 +73,15 @@ function onScroll() {
       const header = document.getElementById(id)
       if (!header) continue
       const { top, bottom } = header.getBoundingClientRect()
-      const visiblePct = (Math.min(window.innerHeight, bottom) - Math.max(0, top)) / (bottom - top)
+      let visiblePct = (Math.min(window.innerHeight, bottom) - Math.max(0, top)) / (bottom - top)
+      visiblePct = Math.round(visiblePct * 100)
       if (visiblePct > visibleMax) {
         visibleMax = visiblePct
         activeLink.value = id
       }
     }
   }
-  // if (!location.href.endsWith('#' + activeLink.value)) {
   history.replaceState({}, '', '#' + activeLink.value)
-  // }
 }
 
 function onPopState(e: Event) {
