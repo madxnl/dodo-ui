@@ -24,15 +24,15 @@
       </div>
     </div>
 
-    <Container v-if="$slots.main" :class="$style.main">
+    <Column v-if="$slots.main" :class="$style.main">
       <!-- @slot Main page content -->
       <slot name="main" />
-    </Container>
+    </Column>
   </div>
 </template>
 <script lang="ts" setup>
 import { computed, onMounted, provide, ref, watch } from 'vue'
-import { Container } from '..'
+import { Column } from '..'
 import { navBarServiceKey, useElementSize, useSessionStoredRef } from '../composables/composables'
 import { useTheme } from '../theme'
 import NavBarItem from './NavBarItem.vue'

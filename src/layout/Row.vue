@@ -9,48 +9,44 @@ import { Spacing, useSpacing, useTheme } from '../theme'
 const props = defineProps<{
   /**
    * Add spacing between child elements
-   * @example
-    * gap="s"
+   * @example gap="s"
    */
   gap?: Spacing
   /**
    * Amount of padding around the contents. Use array to set padding for each side separately.
-   * @example pad="m"
-   * @example pad="s 0 s s"
+   * @example padding="m"
+   * @example padding="s 0 s s"
    */
-  pad?: Spacing
-  /**
-   * Toggle column orientation instead of row
-   * @example column
-   */
-  column?: boolean
+  padding?: Spacing
   /**
    * Grow to take up available space (when nested inside another Row)
    * @example grow
    */
   grow?: boolean
   /**
-   * Justify contents
+   * Align content along main direction (horizontal for Row, vertical for Column)
    * @example justify="space-between"
    */
-  justifyContent?: 'center'|'end'|'start'|'stretch'|'space-between'|'space-around'|'space-evenly'
+  justify?: 'center'|'end'|'start'|'stretch'|'space-between'|'space-around'|'space-evenly'
   /**
-   * Align items
+   * Aligns children along cross-axis direction
    * @example align="end"
    */
-  alignItems?: 'center'|'end'|'start'|'stretch'
+  align?: 'center'|'end'|'start'|'stretch'
   /**
-   * Align contents
-   * @example align="end"
-   */
-  alignContent?: 'center'|'end'|'start'|'stretch'|'space-between'|'space-around'|'space-evenly'
-  /**
-   * Wrap contents over multiple rows instead of shrinking
+   * Wrap contents over instead of shrinking
    * @example wrap
    */
   wrap?: boolean
-  justify?: never
-  align?: never
+
+  /** Deprecated */
+  pad?: never
+  /** Deprecated */
+  justifyContent?: never
+  /** Deprecated */
+  alignItems?: never
+  /** Deprecated */
+  alignContent?: never
 }>()
 
 useTheme()
@@ -58,11 +54,11 @@ useTheme()
 const css = computed(() => {
   let s = ''
   if (props.gap) s += `gap:${useSpacing(props.gap)};`
-  if (props.pad) s += `padding:${useSpacing(props.pad)};`
+  if (props.padding) s += `padding:${useSpacing(props.padding)};`
   if (props.grow) s += 'flex-grow:1;'
   if (props.wrap) s += 'flex-wrap:wrap;'
-  if (props.justifyContent) s += `justify-content:${props.justifyContent};`
-  if (props.alignItems) s += `align-items:${props.alignItems};`
+  if (props.justify) s += `justify-content:${props.justify};`
+  if (props.align) s += `align-items:${props.align};`
   if (props.alignContent) s += `align-content:${props.alignContent};`
   return s
 })

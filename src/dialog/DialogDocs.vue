@@ -2,11 +2,12 @@
   <Text p>
     Create a custom dialog modal that requires user interaction to continue.
   </Text>
-  <DocsExample :options="{ template, setup }" />
+  <Docs.DocsExample :options="{ template, setup }" />
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { DocsExample, Text } from '..'
+import { Text } from '..'
+import * as Docs from '../docs'
 
 const showDialog = ref(false)
 

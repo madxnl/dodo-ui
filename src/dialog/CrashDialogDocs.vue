@@ -5,10 +5,11 @@
   <Text p>
     To detect exceptions for your entire project, import this at the App.vue level and put your template code inside the &lt;CrashDialog&gt; tag
   </Text>
-  <DocsExample :options="{ template, setup, errorCaptured }" />
+  <Docs.DocsExample :options="{ template, setup, errorCaptured }" />
 </template>
 <script setup lang="ts">
-import { DocsExample, Text } from '..'
+import { Text } from '..'
+import * as Docs from '../docs'
 
 const message = 'Test error'
 

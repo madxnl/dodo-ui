@@ -29,7 +29,7 @@
       <div v-if="!item || item.active" :class="$style.stepContent">
         <slot :step="item ? item.step : undefined" :step-index="i" />
 
-        <Row justify-content="end">
+        <Row justify="end">
           <!-- <Row>
             <Button
               v-if="props.steps && stepIndex > 0" variant="text"

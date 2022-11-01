@@ -2,10 +2,11 @@
   <Text p>
     Chip components are useful for displaying a list of labels or tags.
   </Text>
-  <DocsExample :options="{ setup, template }" />
+  <Docs.DocsExample :options="{ setup, template }" />
 </template>
 <script setup lang="ts">
-import { DocsExample, Text } from '..'
+import { Text } from '..'
+import * as Docs from '../docs'
 
 function onClose() {}
 

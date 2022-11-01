@@ -10,20 +10,20 @@
     @click="click"
   >
     <slot name="before" />
-    <Container gap="0" style="flex:1">
+    <Column gap="0" style="flex:1">
       <Text nowrap :class="$style.text">
         <slot />
       </Text>
       <Text v-if="$slots['text-secondary']" nowrap emphasis="low">
         <slot name="text-secondary" />
       </Text>
-    </Container>
+    </Column>
     <slot name="after" />
   </div>
 </template>
 <script lang="ts" setup>
 import { inject } from 'vue'
-import { Container, Text } from '..'
+import { Column, Text } from '..'
 import { dropdownServiceKey } from '../composables/composables'
 import { useTheme } from '../theme'
 

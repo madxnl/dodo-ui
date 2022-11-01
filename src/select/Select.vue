@@ -21,32 +21,34 @@
       <input ref="hiddenInput" v-model="search" style="position:fixed;pointer-events:none;opacity:0" :disabled="disabled">
     </Field>
     <template #dropdown>
-      <Container ref="dropdownEl" gap="0" overflow="auto" @mousedown.stop.prevent="">
-        <Row v-show="showSearch" pad="s" :class="$style.searchbox">
-          <TextInput ref="searchEl" v-model="search" type="search" placeholder="Search" tabindex="0" />
-          <!-- <template #after><Icon name="close" size="s" style="cursor:pointer" @click="clearSearch" /></template> -->
-        </Row>
-        <Container gap="0" overflow="auto">
-          <DropdownItem
-            v-for="(option, i) in filteredOptions"
-            :key="`${option.value}`"
-            :data-selectactive="currentValues.includes(option.value) ? 'true' : undefined"
-            :active="currentValues.includes(option.value)"
-            @click="clickOption(option)"
-          >
-            <!-- @slot Customize option html -->
-            <slot :index="i" :option="option">
-              {{ option.text }}
-            </slot>
-          </DropdownItem>
-        </Container>
-      </Container>
+      <ScrollContainer ref="dropdownEl" @mousedown.stop.prevent="">
+        <Column>
+          <Row v-show="showSearch" padding="s" :class="$style.searchbox">
+            <TextInput ref="searchEl" v-model="search" type="search" placeholder="Search" tabindex="0" />
+            <!-- <template #after><Icon name="close" size="s" style="cursor:pointer" @click="clearSearch" /></template> -->
+          </Row>
+          <Column gap="0" overflow="auto">
+            <DropdownItem
+              v-for="(option, i) in filteredOptions"
+              :key="`${option.value}`"
+              :data-selectactive="currentValues.includes(option.value) ? 'true' : undefined"
+              :active="currentValues.includes(option.value)"
+              @click="clickOption(option)"
+            >
+              <!-- @slot Customize option html -->
+              <slot :index="i" :option="option">
+                {{ option.text }}
+              </slot>
+            </DropdownItem>
+          </Column>
+        </Column>
+      </ScrollContainer>
     </template>
   </Dropdown>
 </template>
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
-import { Container, Dropdown, DropdownItem, Field, Icon, Row, Text, TextInput } from '..'
+import { Column, Dropdown, DropdownItem, Field, Icon, Row, ScrollContainer, Text, TextInput } from '..'
 
 type Option = { value: unknown; text: string }
 
@@ -76,7 +78,7 @@ const dropdownActive = ref(false)
 const search = ref('')
 const hiddenInput = ref<HTMLInputElement>()
 const searchEl = ref<InstanceType<typeof TextInput>>()
-const dropdownEl = ref<InstanceType<typeof Container>>()
+const dropdownEl = ref<InstanceType<typeof Column>>()
 const fieldEl = ref<InstanceType<typeof Field>>()
 
 watchEffect(() => {

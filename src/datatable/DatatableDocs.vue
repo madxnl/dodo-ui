@@ -2,11 +2,12 @@
   <Text p>
     Main button component, with multiple variants and support for async click handlers.
   </Text>
-  <DocsExample :options="{ setup, template }" />
+  <Docs.DocsExample :options="{ setup, template }" />
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { DocsExample, Text } from '..'
+import { Text } from '..'
+import * as Docs from '../docs'
 
 type Item = { title: string; year: number; rating: string; revenue: number }
 

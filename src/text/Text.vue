@@ -7,7 +7,7 @@
       emphasis && $style[emphasis],
     ]"
     :style="[
-      color && `--Text-rgb:${colorPropToRGB(color)};`,
+      colorCss && `--Text-rgb:${colorCss};`,
       align && `text-align:${align};`
     ]"
   >
@@ -20,7 +20,7 @@ import { ColorProp, colorPropToRGB, useTheme } from '../theme'
 
 const props = defineProps<{
   /** Change text color */
-  color?: ColorProp
+  color?: ColorProp|'inherit'
   /** Show ellipsis instead of wrapping if text does not fit on one line */
   nowrap?: boolean
   /** Override opacity to emphasize/de-emphasize text */
@@ -54,6 +54,12 @@ const tagNames = [
 ] as const
 
 const tag = computed(() => tagNames.find(t => props[t]) ?? 'span')
+
+const colorCss = computed(() => {
+  if (props.color === 'inherit') return 'currentColor'
+  if (props.color) return colorPropToRGB(props.color)
+  return undefined
+})
 
 watchEffect(() => {
   const tagProps = tagNames.filter(s => props[s])

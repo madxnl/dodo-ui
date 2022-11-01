@@ -1,8 +1,8 @@
 <template>
   <CrashDialog>
     <div :class="$style.NavLayout">
-      <Container gap="m" pad="l" :class="$style.bar" overflow="auto" align-content="start">
-        <Container v-for="(chapter, i) in chapters" :key="i" gap="xs">
+      <Column gap="m" padding="m" :class="$style.bar" overflow="auto" align="start">
+        <Column v-for="(chapter, i) in chapters" :key="i" gap="0">
           <span v-if="chapter.title" :class="$style.chapterTitle">
             {{ chapter.title }}
           </span>
@@ -12,24 +12,25 @@
               {{ page.title }}
             </a>
           </template>
-        </Container>
-      </Container>
-      <Container :class="$style.content" overflow="auto">
-        <template v-for="chapter in chapters">
-          <Container v-for="page in chapter.pages" :id="page.title" :key="page.title" pad="l">
-            <Text h1>{{ page.title }}</Text>
-            <br>
-            <component :is="page.component" />
-            <br>
-          </Container>
-        </template>
-      </Container>
+        </Column>
+      </Column>
+      <ScrollContainer :class="$style.contentwrap">
+        <Column :class="$style.content">
+          <template v-for="chapter in chapters">
+            <Column v-for="page in chapter.pages" :id="page.title" :key="page.title" padding="l">
+              <Text h2>{{ page.title }}</Text>
+              <component :is="page.component" />
+              <br>
+            </Column>
+          </template>
+        </Column>
+      </ScrollContainer>
     </div>
   </CrashDialog>
 </template>
 <script lang="ts" setup>
-import { ComponentPublicInstance, onBeforeUnmount, onMounted, ref } from 'vue'
-import { Container, CrashDialog, Text } from '..'
+import { DefineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
+import { Column, CrashDialog, ScrollContainer, Text } from '..'
 import { useTheme } from '../theme'
 
 useTheme()
@@ -39,7 +40,7 @@ const props = defineProps<{
     title?: string
     pages: {
       title: string
-      component: ComponentPublicInstance
+      component: DefineComponent
     }[]
   }[]
 }>()
@@ -51,8 +52,8 @@ function isActive(title: string) {
 const activeLink = ref('')
 
 onMounted(() => {
-  // location.href = '' + location.href // scroll to anchor
-  const header = document.getElementById(location.href.split('#').slice(1)[0])
+  const id = decodeURIComponent(location.href.split('#').slice(1)[0])
+  const header = document.getElementById(id)
   header?.scrollIntoView()
 
   addEventListener('scroll', onScroll, { passive: true, capture: true })
@@ -105,22 +106,38 @@ function onPopState(e: Event) {
   font: var(--dodo-font-base);
   font-weight: var(--dodo-font-weightSemi);
   color: var(--dodo-color-foreground);
+  padding: 2px 4px;
+  transition: .1s all;
+}
+.chapterTitle {
+  opacity: 0.5;
+  font-weight: normal;
+  font-size: calc(var(--dodo-font-base) + 2px);
 }
 .pageLink {
-  color: rgba(var(--dodo-rgb-foreground), 0.6);
+  opacity: 0.75;
 }
 .pageLink:hover {
-  color: var(--dodo-color-foreground);
+  opacity: 1;
 }
 .linkActive {
-  color: black;
+  opacity: 1;
+  background: rgba(0,0,0,0.1);
 }
 hr {
   margin: 0;
   border-color: rgba(0,0,0,0.15);
   border-right: 0;
 }
-.content {
+.bar {
+  width: auto;
+}
+.contentwrap {
   flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+}
+.content {
+  max-width: 1000px;
 }
 </style>

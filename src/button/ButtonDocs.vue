@@ -2,10 +2,11 @@
   <Text p>
     Main button component, with multiple variants and support for async click handlers.
   </Text>
-  <DocsExample :options="{ setup, template }" />
+  <Docs.DocsExample :options="{ setup, template }" />
 </template>
 <script setup lang="ts">
-import { DocsExample, parseColor, Text } from '..'
+import { parseColor, Text } from '..'
+import * as Docs from '../docs'
 
 const customColor = parseColor('#ff8888')
 

@@ -2,11 +2,12 @@
   <Text p>
     Todo
   </Text>
-  <DocsExample :options="{ template, setup }" />
+  <Docs.DocsExample :options="{ template, setup }" />
 </template>
 <script setup lang="ts">
-import { DocsExample, Text } from '..'
+import { Text } from '..'
 import image from '../assets/placeholder32.png'
+import * as Docs from '../docs'
 
 const setup = () => ({ image })
 

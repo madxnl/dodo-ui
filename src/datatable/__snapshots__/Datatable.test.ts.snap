@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Column sort 1`] = `
-"<div class=\\"_Container_6ea1b0 _Datatable_9c1ce1\\">
+"<div class=\\"_Datatable_9c1ce1\\">
   <table>
     <tr class=\\"\\">
       <!--v-if-->
@@ -29,12 +29,11 @@ exports[`Column sort 1`] = `
     <!--v-if-->
     <!--v-if-->
   </table>
-  <!--v-if-->
 </div>"
 `;
 
 exports[`Selecting rows 1`] = `
-"<div class=\\"_Container_6ea1b0 _Datatable_9c1ce1\\">
+"<div class=\\"_Datatable_9c1ce1\\">
   <table>
     <tr class=\\"\\">
       <th style=\\"width: 0px;\\"><span class=\\"_Checkbox_01f563 _checked_01f563\\"><span class=\\"_Icon_665cc9 material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></th>
@@ -62,12 +61,11 @@ exports[`Selecting rows 1`] = `
     <!--v-if-->
     <!--v-if-->
   </table>
-  <!--v-if-->
 </div>"
 `;
 
 exports[`Show more 1`] = `
-"<div class=\\"_Container_6ea1b0 _Datatable_9c1ce1\\">
+"<div class=\\"_Datatable_9c1ce1\\">
   <table>
     <tr class=\\"\\">
       <!--v-if-->
@@ -103,6 +101,5 @@ exports[`Show more 1`] = `
     </tr>
     <!--v-if-->
   </table>
-  <!--v-if-->
 </div>"
 `;

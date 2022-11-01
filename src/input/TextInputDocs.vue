@@ -2,11 +2,12 @@
   <Text p>
     Input field for single or multiline text.
   </Text>
-  <DocsExample :options="{ template, setup }" />
+  <Docs.DocsExample :options="{ template, setup }" />
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { DocsExample, Text } from '..'
+import { Text } from '..'
+import * as Docs from '../docs'
 
 const value = ref('')
 

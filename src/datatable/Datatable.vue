@@ -1,5 +1,5 @@
 <template>
-  <Container :class="$style.Datatable" :content-loading="contentLoading || sortingAsync">
+  <div :class="[$style.Datatable, contentLoading && $style.loading]">
     <table>
       <tr :class="stickyHeader && $style.stickyHeader">
         <th v-if="showSelect" style="width:0">
@@ -64,13 +64,13 @@
         </th>
       </tr>
     </table>
-  </Container>
+  </div>
 </template>
 <script lang="ts" setup>
 import { computed, ref, VNode, watch, watchEffect } from 'vue'
-import { Button, Checkbox, Container, Icon } from '..'
+import { Button, Checkbox, Icon } from '..'
 
-export interface Column<T=object> {
+export interface DatatableColumn<T=object> {
   name: string
   value?: keyof T|((row: T) => unknown)
   align?: 'start'|'end'
@@ -80,11 +80,11 @@ export interface Column<T=object> {
   slot?: string
 }
 
-export type DatatableSlots<T> = Record<string, (context: { row: T; column: Column<T> }) => Array<VNode> | undefined>
+export type DatatableSlots<T> = Record<string, (context: { row: T; column: DatatableColumn<T> }) => Array<VNode> | undefined>
 
 export interface DatatableProps<T> {
   rows: T[]
-  columns: Column<T>[]
+  columns: DatatableColumn<T>[]
   selection?: unknown[]
   rowClick?: (row: T) => void
   selectBy?: keyof T
@@ -128,32 +128,32 @@ const sortedItems = computed(() => {
   })
 })
 
-function getColumnSortIcon(col: Column) {
+function getColumnSortIcon(col: DatatableColumn) {
   if (!isSortCol(col)) return undefined
   return sortReverse.value ? 'arrow_drop_up' : 'arrow_drop_down'
 }
 
-function isSortCol(col: Column) {
+function isSortCol(col: DatatableColumn) {
   return sort.value?.replace('-', '') === col.sort
 }
 
-function slotName(col: Column) {
+function slotName(col: DatatableColumn) {
   return col.slot || col.name.toLowerCase().trim().replace(/\W/g, '')
 }
 
-function canSortCol(col: Column) {
+function canSortCol(col: DatatableColumn) {
   return !!col.sort
 }
 
-function alignStyle(col: Column) {
+function alignStyle(col: DatatableColumn) {
   return col.align ? `text-align:${col.align}` : ''
 }
 
-function widthStyle(col: Column) {
+function widthStyle(col: DatatableColumn) {
   return col.width ? `width:${col.width}` : ''
 }
 
-async function toggleColumnSort(col: Column) {
+async function toggleColumnSort(col: DatatableColumn) {
   if (!canSortCol(col)) return
   sort.value = isSortCol(col) ? sortReverse.value ? undefined : '-' + col.sort : col.sort
   if (props.sortAsync) {
@@ -175,7 +175,7 @@ function toggleSelect(row: unknown) {
   }
 }
 
-function getValue(col: Column, row: any) {
+function getValue(col: DatatableColumn, row: any) {
   if (typeof col.value === 'function') return col.value(row)
   if (typeof col.value === 'string') return row[col.value]
   return ''
@@ -204,6 +204,9 @@ function toggleSelectAll() {
   font: var(--dodo-font-base);
   color: var(--dodo-color-foreground);
   background: var(--dodo-color-background);
+  display: flex;
+  flex-flow: column;
+  gap: var(--dodo-gap-m);
 }
 .Datatable table {
   border-collapse: collapse;
@@ -272,5 +275,9 @@ function toggleSelectAll() {
 }
 .stickyFooter {
   bottom: 0;
+}
+.loading {
+  pointer-events: none;
+  opacity: 0.5;
 }
 </style>

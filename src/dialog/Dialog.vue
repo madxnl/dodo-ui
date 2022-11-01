@@ -3,10 +3,10 @@
     <Transition name="Dialog">
       <div v-if="active" ref="el" :class="$style.Dialog">
         <div :class="$style.window">
-          <Container pad="m">
+          <Column padding="m">
             <slot />
-          </Container>
-          <Row pad="m" justify-content="end" gap="s">
+          </Column>
+          <Row padding="m" justify="end" gap="s">
             <slot name="controls" />
           </Row>
         </div>
@@ -16,7 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue'
-import { Container, Row } from '..'
+import { Column, Row } from '..'
 
 const props = defineProps<{
   active: boolean

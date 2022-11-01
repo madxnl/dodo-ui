@@ -2,10 +2,11 @@
   <Text p>
     Todo
   </Text>
-  <DocsExample :options="{ template, setup }" />
+  <Docs.DocsExample :options="{ template, setup }" />
 </template>
 <script setup lang="ts">
-import { DocsExample, Text } from '..'
+import { Text } from '..'
+import * as Docs from '../docs'
 
 function clickItem() {}
 

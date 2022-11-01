@@ -1,21 +1,25 @@
 <template>
-  <template v-if="doc.props?.length">
+  <template v-if="docgen.props?.length">
+    <!-- <Text h4>&lt;{{ docgen.displayName }}&gt; Props</Text> -->
     <div style="overflow:auto">
       <table :class="$style.Table">
         <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
-        <tr v-for="prop in doc.props ?? []" :key="prop.name">
+        <tr v-for="prop in docgen.props ?? []" :key="prop.name">
           <td><code>{{ prop.name }}<template v-if="!prop.required">?</template></code></td>
           <td><SyntaxHighlight :code="getPropType(prop)" lang="ts" /></td>
-          <td>{{ prop.description }}</td>
+          <td>
+            {{ prop.description }}
+          </td>
         </tr>
       </table>
     </div>
   </template>
-  <template v-if="doc.events?.length">
+  <template v-if="docgen.events?.length">
+    <!-- <Text h4>&lt;{{ docgen.displayName }}&gt; Events</Text> -->
     <div style="overflow:auto">
       <table :class="$style.Table">
         <tr><th>Event</th><th>Signature</th><th>Description</th></tr>
-        <tr v-for="ev in doc.events ?? []" :key="ev.name">
+        <tr v-for="ev in docgen.events ?? []" :key="ev.name">
           <td><code>{{ ev.name }}</code></td>
           <td><SyntaxHighlight :code="getEventType(ev)" lang="ts" /></td>
           <td>{{ ev.description }}</td>
@@ -23,11 +27,12 @@
       </table>
     </div>
   </template>
-  <template v-if="doc.slots?.length">
+  <template v-if="docgen.slots?.length">
+    <!-- <Text h4>&lt;{{ docgen.displayName }}&gt; Slots</Text> -->
     <div style="overflow:auto">
       <table :class="$style.Table">
         <tr><th>Slot</th><th>Scope</th><th>Description</th></tr>
-        <tr v-for="slot in doc.slots ?? []" :key="slot.name">
+        <tr v-for="slot in docgen.slots ?? []" :key="slot.name">
           <td><code>{{ slot.name }}</code></td>
           <td><SyntaxHighlight :code="getSlotType(slot)" lang="ts" /></td>
           <td>{{ slot.description }}</td>
@@ -39,6 +44,11 @@
 <script setup lang="ts">
 import { ComponentDoc, EventDescriptor, PropDescriptor, SlotDescriptor } from 'vue-docgen-api'
 import SyntaxHighlight from './SyntaxHighlight.vue'
+
+// const props = defineProps<{
+defineProps<{
+  docgen: ComponentDoc
+}>()
 
 function getPropType(prop: PropDescriptor) {
   let s = ''
@@ -60,11 +70,6 @@ function getSlotType(slot: SlotDescriptor) {
   return bindings.length ? `{\n  ${bindings.join(';\n  ')};\n}` : '{}'
 }
 
-// const props = defineProps<{
-defineProps<{
-  doc: ComponentDoc
-}>()
-
 // const hasPropExamples = computed(() => (props.doc.props ?? []).some(p => p.tags?.example))
 </script>
 <style module>
@@ -85,7 +90,7 @@ defineProps<{
   max-width: 350px;
   min-width: 150px;
 }
-.Table tr:nth-child(even) {
-  background: rgba(0,0,0,0.05);
+.Table tr:not(:last-child) > * {
+  border-bottom: 1px solid rgba(0,0,0,0.15);
 }
 </style>

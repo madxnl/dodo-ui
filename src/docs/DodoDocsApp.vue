@@ -2,20 +2,23 @@
   <DocumentationPage :chapters="chapters" />
 </template>
 <script setup lang="ts">
+import { DefineComponent } from 'vue'
 import DocumentationPage from './DocumentationPage.vue'
+import Installation from './Installation.vue'
 
 const componentDocs = import.meta.glob('../**/*Docs.vue', { eager: true })
 
 const componentPages = Object.entries(componentDocs).map(([path, module]) => {
-  const component = (module as any).default
-  // const docs = (module as any)._docgen
-  // const src = (module as any)._src
+  const component = (module as any).default as DefineComponent
   const name = path.split('/').slice(-1)[0].split('Docs')[0]
-  const title = name
+  const title = name.replaceAll('_', ' ')
   return { title, component }
 })
 
 const chapters = [{
+  title: 'Guide',
+  pages: [{ title: 'Installation', component: Installation as DefineComponent }],
+}, {
   title: 'Components',
   pages: componentPages,
 }]

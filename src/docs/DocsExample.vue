@@ -1,8 +1,8 @@
 <template>
-  <Container :class="$style.Example" gap="0">
-    <Container pad="m">
+  <Column :class="$style.Example" gap="0">
+    <Column padding="m">
       <div ref="el" :class="$style.exampleDiv" />
-    </Container>
+    </Column>
 
     <div :class="$style.expand" @click="showCode=!showCode">
       <Icon :name="showCode ? 'expand_less' : 'expand_more'" />
@@ -12,15 +12,15 @@
       <SyntaxHighlight :code="templateSrc" :class="$style.code" lang="html" />
       <!-- <SyntaxHighlight v-if="setup" :code="setup.toString()" :class="$style.code" lang="ts" /> -->
     </template>
-  </Container>
+  </Column>
 </template>
 <script setup lang="ts">
 import { App, ComponentOptions, computed, ref, watchEffect } from 'vue'
-import { Container, Icon } from '..'
+import * as components from '..'
+import { Column, Icon } from '..'
 import SyntaxHighlight from './SyntaxHighlight.vue'
 // @ts-ignore
 import { createApp } from 'vue/dist/vue.esm-bundler'
-import * as components from '..'
 
 const props = defineProps<{
   options: ComponentOptions
@@ -30,7 +30,7 @@ const props = defineProps<{
 
 const templateSrc = computed(() => (props.options.template as string).trim())
 
-const showCode = ref(!!props.options.template)
+const showCode = ref(false)
 // const templateCode = ref(props.template)
 // const setupCode = ref(props.setup)
 const el = ref<HTMLElement>()
@@ -60,7 +60,6 @@ watchEffect(() => {
   display: flex;
   flex-flow: column;
   gap: var(--dodo-gap-m);
-  overflow: auto;
 }
 .code {
   border-top: 1px solid rgba(0,0,0,0.15);

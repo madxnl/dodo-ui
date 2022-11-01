@@ -1,8 +1,9 @@
 <template>
-  <DocsExample :options="{ template }" />
+  <Docs.DocsExample :options="{ template }" />
 </template>
 <script setup lang="ts">
-import { DocsExample } from '..'
+import { } from '..'
+import * as Docs from '../docs'
 
 const template = `
 <Tooltip text="Information tooltip">

@@ -3,15 +3,16 @@
     Use any icon from the Google Material Symbols library with support for line thickness and filled/unfilled icons.<br>
     An overview of all available symbols can be found on <a href="https://fonts.google.com/icons">Google Material Symbols and Icons</a>.
   </Text>
-  <DocsExample :options="{ template }" />
+  <Docs.DocsExample :options="{ template }" />
   <br>
   <Text p>
     Some brand icons are also available using &lt;SocialIcon>.
   </Text>
-  <DocsExample :options="{ template: template2 }" />
+  <Docs.DocsExample :options="{ template: template2 }" />
 </template>
 <script setup lang="ts">
-import { DocsExample, Text } from '..'
+import { Text } from '..'
+import * as Docs from '../docs'
 
 const template = `
 <div>

@@ -24,7 +24,6 @@
     "jsxTemplates": true
   },
   "include": [
-    "src/env.d.ts",
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.test.ts",

@@ -13,16 +13,16 @@
 
   <teleport to="body">
     <div v-if="active" ref="content" :class="$style.Dropdown" :style="dropdownStyles">
-      <Container :class="$style.content" :pad="padding ?? ['xs', '0']" :gap="gap ?? '0'">
+      <Column :class="$style.content" :padding="padding ?? ['xs', '0']" :gap="gap ?? '0'">
         <slot name="dropdown" :toggle="toggle" />
-      </Container>
+      </Column>
     </div>
   </teleport>
 </template>
 
 <script lang="ts" setup>
 import { nextTick, onBeforeUnmount, provide, ref, watch } from 'vue'
-import { Container } from '..'
+import { Column } from '..'
 import { dropdownServiceKey } from '../composables/composables'
 import { Spacing } from '../theme'
 

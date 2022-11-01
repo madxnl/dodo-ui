@@ -2,11 +2,12 @@
   <Text p>
     When there are only few options to choose from, you can display them as buttons instead:
   </Text>
-  <DocsExample :options="{ template, setup }" />
+  <Docs.DocsExample :options="{ template, setup }" />
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { DocsExample, Text } from '..'
+import { Text } from '..'
+import * as Docs from '../docs'
 
 const currentValue = ref(1)
 const currentMultipleValue = ref([1, 2, 4])

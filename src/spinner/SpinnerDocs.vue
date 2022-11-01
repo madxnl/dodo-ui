@@ -2,10 +2,11 @@
   <Text p>
     Simple loading indicator.
   </Text>
-  <DocsExample :options="{ template }" />
+  <Docs.DocsExample :options="{ template }" />
 </template>
 <script setup lang="ts">
-import { DocsExample, Text } from '..'
+import { Text } from '..'
+import * as Docs from '../docs'
 
 const template = `
 <Spinner small />
