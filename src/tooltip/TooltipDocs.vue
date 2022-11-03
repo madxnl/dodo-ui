@@ -1,9 +1,14 @@
 <template>
-  <Docs.DocsExample :options="{ template }" />
+  <DocsComponentSection :example="{ template }" :doc="doc">
+    <template #description>
+      Tooltip component
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
-import { } from '..'
-import * as Docs from '../docs'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './Tooltip.vue'
 
 const template = `
 <Tooltip text="Information tooltip">

@@ -1,18 +1,15 @@
 <template>
-  <Text p>
-    Allows contents to scroll if needed.
-  </Text>
-  <Tabs :tabs="[{ name: 'Example' }, { name: 'API' }]">
-    <template #Example><DocsExample :options="{ setup, template }" /></template>
-    <template #API><PropsTable :docgen="docgen" /></template>
-  </Tabs>
+  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+    <template #description>
+      Allows contents to scroll if needed.
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
-import { Tabs, Text } from '..'
 import imgUrl from '../assets/placeholder32.png'
-import { DocsExample, PropsTable } from '../docs'
-// @ts-ignore no exported member:
-import { _docgen as docgen } from './ScrollContainer.vue'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './ScrollContainer.vue'
 
 const setup = () => ({ imgUrl })
 

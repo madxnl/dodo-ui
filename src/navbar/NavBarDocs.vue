@@ -1,18 +1,20 @@
 <template>
-  <Text p>
-    Todo
-  </Text>
-  <Docs.DocsExample :options="{ template, setup }" />
+  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+    <template #description>
+      Todo.
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
-import { Text } from '..'
 import image from '../assets/placeholder32.png'
-import * as Docs from '../docs'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './NavBar.vue'
 
 const setup = () => ({ image })
 
 const template = `
-<div style="min-height:400px;min-width:800px;display:grid;">
+<div style="min-height:400px;display:grid;">
   <NavBar>
     <template #navbar-header>
       <NavBarItem text="Organisation Name Here" text-secondary="User Name" important>

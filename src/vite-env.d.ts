@@ -1,4 +1,4 @@
-/// <reference types="vite/client" />
+/// <reference types="vite/client.d.ts" />
 
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
@@ -7,5 +7,7 @@ declare module '*.vue' {
 
   // Added: (see vite config)
   import type { ComponentDoc } from 'vue-docgen-api'
-  export const _docgen: ComponentDoc
+  // export const DOCGEN: ComponentDoc
+  declare const DOCGEN: ComponentDoc
+  export const DOCGEN
 }

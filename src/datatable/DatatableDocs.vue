@@ -1,13 +1,15 @@
 <template>
-  <Text p>
-    Main button component, with multiple variants and support for async click handlers.
-  </Text>
-  <Docs.DocsExample :options="{ setup, template }" />
+  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+    <template #description>
+      Todo.
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Text } from '..'
-import * as Docs from '../docs'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './Datatable.vue'
 
 type Item = { title: string; year: number; rating: string; revenue: number }
 

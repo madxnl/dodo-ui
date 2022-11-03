@@ -1,18 +1,15 @@
 <template>
-  <Text p>
-    Arrange items in a responsive grid. The number of columns automatically changes with available space and desired column width.
-  </Text>
-  <Tabs :tabs="[{ name: 'Example' }, { name: 'API' }]">
-    <template #Example><DocsExample :options="{ setup, template }" /></template>
-    <template #API><PropsTable :docgen="docgen" /></template>
-  </Tabs>
+  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+    <template #description>
+      Arrange items in a responsive grid. The number of columns automatically changes with available space and desired column width.
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
-import { Tabs, Text } from '..'
 import imgUrl from '../assets/placeholder32.png'
-import { DocsExample, PropsTable } from '../docs'
-// @ts-ignore no exported member:
-import { _docgen as docgen } from './FluidGrid.vue'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './FluidGrid.vue'
 
 const setup = () => ({ imgUrl })
 

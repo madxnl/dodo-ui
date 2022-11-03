@@ -1,12 +1,14 @@
 <template>
-  <Text p>
-    Chip components are useful for displaying a list of labels or tags.
-  </Text>
-  <Docs.DocsExample :options="{ setup, template }" />
+  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+    <template #description>
+      Chip components are useful for displaying a list of labels or tags.
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
-import { Text } from '..'
-import * as Docs from '../docs'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './Chip.vue'
 
 function onClose() {}
 

@@ -1,13 +1,15 @@
 <template>
-  <Text p>
-    Todo
-  </Text>
-  <Docs.DocsExample :options="{ template, setup }" />
+  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+    <template #description>
+      Todo.
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { Text } from '..'
-import * as Docs from '../docs'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './Form.vue'
 
 const form1 = reactive({
   email: '',

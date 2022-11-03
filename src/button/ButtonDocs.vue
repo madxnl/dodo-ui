@@ -1,12 +1,15 @@
 <template>
-  <Text p>
-    Main button component, with multiple variants and support for async click handlers.
-  </Text>
-  <Docs.DocsExample :options="{ setup, template }" />
+  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+    <template #description>
+      Main button component, with multiple variants and support for async click handlers.
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
-import { parseColor, Text } from '..'
-import * as Docs from '../docs'
+import { parseColor } from '..'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './Button.vue'
 
 const customColor = parseColor('#ff8888')
 

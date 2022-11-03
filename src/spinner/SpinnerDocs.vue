@@ -1,12 +1,14 @@
 <template>
-  <Text p>
-    Simple loading indicator.
-  </Text>
-  <Docs.DocsExample :options="{ template }" />
+  <DocsComponentSection :example="{ template }" :doc="doc">
+    <template #description>
+      Simple loading indicator.
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
-import { Text } from '..'
-import * as Docs from '../docs'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './Spinner.vue'
 
 const template = `
 <Spinner small />

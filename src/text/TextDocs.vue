@@ -1,12 +1,14 @@
 <template>
-  <Text p>
-    Todo
-  </Text>
-  <Docs.DocsExample :options="{ template, setup }" />
+  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+    <template #description>
+      Basic text component
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
-import { Text } from '..'
-import * as Docs from '../docs'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './Text.vue'
 
 const text = 'A quick brown fox jumps over the lazy dog'
 const longText = 'A quick brown fox jumps over the lazy dog. '.repeat(5)

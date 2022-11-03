@@ -14,7 +14,7 @@
           </template>
         </Column>
       </Column>
-      <ScrollContainer :class="$style.contentwrap">
+      <ScrollContainer :class="$style.scroll">
         <Column :class="$style.content">
           <template v-for="chapter in chapters">
             <Column v-for="page in chapter.pages" :id="page.title" :key="page.title" padding="l">
@@ -132,12 +132,11 @@ hr {
 .bar {
   width: auto;
 }
-.contentwrap {
-  flex: 1 1 0;
-  display: flex;
-  justify-content: center;
+.scroll {
+  flex-grow: 1;
 }
 .content {
   max-width: 1000px;
+  margin: 0 auto;
 }
 </style>

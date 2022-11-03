@@ -12,14 +12,28 @@ function docgen(): Plugin {
         if (!code.includes(tag)) code += tag + '\n</script>'
         const docs = await parseSource(code, id)
         const src = code.split('<script')[0]
-        code = code.replace(tag, tag + `\nexport const _src = ${JSON.stringify(src)}`)
-        code = code.replace(tag, tag + `\nexport const _docgen = ${JSON.stringify(docs)}`)
+        code = code.replace(tag, tag + `\nexport const SRC = ${JSON.stringify(src)}`)
+        code = code.replace(tag, tag + `\nexport const DOCGEN = ${JSON.stringify(docs)}`)
         return { code, map: null }
       }
     },
-    handleHotUpdate(update) {
-      update.server.ws.send({ type: 'full-reload', path: '*' })
-    },
+    // handleHotUpdate(update) {
+    //   update.server.ws.send({ type: 'full-reload', path: '*' })
+    // },
+
+    // async transform(code, id) {
+    //   if (/\.vue$/.test(id)) {
+    //     try {
+    //       const doc = await parseSource(code, id)
+    //     } catch (e) {
+    //       console.log('ERROR:', e, { code })
+    //     }
+    //     // const json = JSON.stringify(doc)
+    //     // const esm = dataToEsm(doc)
+    //     const esm = 'export default {}'
+    //     return { code: esm, map: null }
+    //   }
+    // },
   }
 }
 

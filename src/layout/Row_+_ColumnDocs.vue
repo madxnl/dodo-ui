@@ -1,19 +1,16 @@
 <template>
-  <Text p>
-    Most layouts can be broken down into simple horizontal and vertical groupings of items.
-    These components help you quickly build layouts with props for simplified spacing, padding and alignment.
-  </Text>
-  <Tabs :tabs="[{ name: 'Example' }, { name: 'API' }]">
-    <template #Example><DocsExample :options="{ setup, template }" /></template>
-    <template #API><PropsTable :docgen="docgen" /></template>
-  </Tabs>
+  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+    <template #description>
+      Most layouts can be broken down into simple horizontal and vertical groupings of items.
+      These components help you quickly build layouts with props for simplified spacing, padding and alignment.
+    </template>
+  </DocsComponentSection>
 </template>
 <script setup lang="ts">
-import { Tabs, Text } from '..'
 import imgUrl from '../assets/placeholder32.png'
-import { DocsExample, PropsTable } from '../docs'
-// @ts-ignore no exported member:
-import { _docgen as docgen } from './Row.vue'
+import { DocsComponentSection } from '../docs'
+// @ts-ignore
+import { DOCGEN as doc } from './Row.vue'
 
 const setup = () => ({ imgUrl })
 

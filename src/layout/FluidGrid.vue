@@ -11,7 +11,7 @@ const props = defineProps<{
    * Desired maximum size for columns (eg "300px")
    * @example grow
    */
-  columnSize: boolean
+  columnSize: string
   /**
    * Add spacing between child elements
    * @example gap="s"
