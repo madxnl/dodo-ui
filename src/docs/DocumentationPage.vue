@@ -1,7 +1,7 @@
 <template>
   <CrashDialog>
     <div :class="$style.NavLayout">
-      <Column gap="m" padding="m" :class="$style.bar" overflow="auto" align="start">
+      <Column gap="m" padding="m" :class="$style.bar" align="start">
         <Column v-for="(chapter, i) in chapters" :key="i" gap="0">
           <span v-if="chapter.title" :class="$style.chapterTitle">
             {{ chapter.title }}

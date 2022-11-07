@@ -57,8 +57,7 @@ watchEffect(() => {
   border: 1px solid rgba(0,0,0,0.15);
 }
 .exampleDiv {
-  display: flex;
-  flex-flow: column;
+  display: grid;
   gap: var(--dodo-gap-m);
 }
 .code {

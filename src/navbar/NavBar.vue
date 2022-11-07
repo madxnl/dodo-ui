@@ -85,5 +85,6 @@ body .NavBar {
 }
 .main {
   flex: 1;
+  align-content: stretch;
 }
 </style>

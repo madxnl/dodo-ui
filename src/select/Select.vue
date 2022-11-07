@@ -21,28 +21,25 @@
       <input ref="hiddenInput" v-model="search" style="position:fixed;pointer-events:none;opacity:0" :disabled="disabled">
     </Field>
     <template #dropdown>
-      <ScrollContainer ref="dropdownEl" @mousedown.stop.prevent="">
-        <Column>
-          <Row v-show="showSearch" padding="s" :class="$style.searchbox">
-            <TextInput ref="searchEl" v-model="search" type="search" placeholder="Search" tabindex="0" />
-            <!-- <template #after><Icon name="close" size="s" style="cursor:pointer" @click="clearSearch" /></template> -->
-          </Row>
-          <Column gap="0" overflow="auto">
-            <DropdownItem
-              v-for="(option, i) in filteredOptions"
-              :key="`${option.value}`"
-              :data-selectactive="currentValues.includes(option.value) ? 'true' : undefined"
-              :active="currentValues.includes(option.value)"
-              @click="clickOption(option)"
-            >
-              <!-- @slot Customize option html -->
-              <slot :index="i" :option="option">
-                {{ option.text }}
-              </slot>
-            </DropdownItem>
-          </Column>
-        </Column>
-      </ScrollContainer>
+      <Column ref="dropdownEl" style="min-height:0" gap="0" @mousedown.stop.prevent="">
+        <Row v-show="showSearch" padding="s" :class="$style.searchbox">
+          <TextInput ref="searchEl" v-model="search" type="search" placeholder="Search" tabindex="0" style="flex-grow:1" />
+        </Row>
+        <ScrollContainer>
+          <DropdownItem
+            v-for="(option, i) in filteredOptions"
+            :key="`${option.value}`"
+            :data-selectactive="currentValues.includes(option.value) ? 'true' : undefined"
+            :active="currentValues.includes(option.value)"
+            @click="clickOption(option)"
+          >
+            <!-- @slot Customize option html -->
+            <slot :index="i" :option="option">
+              {{ option.text }}
+            </slot>
+          </DropdownItem>
+        </ScrollContainer>
+      </Column>
     </template>
   </Dropdown>
 </template>
@@ -78,7 +75,7 @@ const dropdownActive = ref(false)
 const search = ref('')
 const hiddenInput = ref<HTMLInputElement>()
 const searchEl = ref<InstanceType<typeof TextInput>>()
-const dropdownEl = ref<InstanceType<typeof Column>>()
+const dropdownEl = ref<InstanceType<typeof ScrollContainer>>()
 const fieldEl = ref<InstanceType<typeof Field>>()
 
 watchEffect(() => {

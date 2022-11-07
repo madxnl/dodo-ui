@@ -23,12 +23,18 @@ const props = defineProps<{
    * @example padding="s 0 s s"
    */
   padding?: Spacing
+  /**
+   * Prefer empty columns instead of stretching
+   */
+  autoFill?: boolean
+  stretch?: never
 }>()
 
 useTheme()
 
 const css = computed(() => {
-  let s = `grid-template-columns:repeat(auto-fill,minmax(${props.columnSize},1fr));`
+  const mode = props.autoFill ? 'auto-fill' : 'auto-fit'
+  let s = `grid-template-columns:repeat(${mode},minmax(${props.columnSize},1fr));`
   if (props.gap) s += `gap:${useSpacing(props.gap)};`
   if (props.padding) s += `padding:${useSpacing(props.padding)};`
   return s

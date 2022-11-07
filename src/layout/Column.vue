@@ -47,6 +47,8 @@ const props = defineProps<{
   alignItems?: never
   /** Deprecated */
   alignContent?: never
+  /** Deprecated */
+  overflow?: never
 }>()
 
 useTheme()
@@ -59,15 +61,15 @@ const css = computed(() => {
   if (props.wrap) s += 'flex-wrap:wrap;'
   if (props.justify) s += `justify-content:${props.justify};`
   if (props.align) s += `align-items:${props.align};`
-  if (props.alignContent) s += `align-content:${props.alignContent};`
+  // if (props.alignContent) s += `align-content:${props.alignContent};`
   return s
 })
 </script>
 
 <style module>
 .Column {
-  display: flex;
-  flex-flow: column;
+  display: grid;
   gap: var(--dodo-gap-m);
+  align-content: start;
 }
 </style>
