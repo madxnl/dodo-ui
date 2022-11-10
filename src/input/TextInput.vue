@@ -19,6 +19,7 @@
       :maxlength="maxlength"
       :type="type"
       :tab-index="tabIndex"
+      :autofocus="autofocus"
       @input="onChange"
     />
     <!-- @slot Shown after value -->
@@ -26,11 +27,11 @@
   </Field>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { Field } from '..'
 import { useTheme } from '../theme'
 
-defineProps<{
+const props = defineProps<{
   modelValue: string|null|undefined
   placeholder?: string
   disabled?: boolean
@@ -38,6 +39,7 @@ defineProps<{
   maxlength?: number
   type?: 'search'
   tabIndex?: number
+  autofocus?: boolean
 }>()
 
 const el = ref<HTMLInputElement>()
@@ -53,6 +55,12 @@ function onClick() {
 function onChange() {
   emit('update:modelValue', el.value!.value)
 }
+
+watchEffect(() => {
+  if (props.autofocus && el.value) {
+    el.value.focus()
+  }
+})
 
 useTheme()
 
