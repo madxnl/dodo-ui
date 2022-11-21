@@ -23,11 +23,16 @@ const createTheme = () => reactive({
 
   spacings: {
     0: '0px',
-    xs: '4px',
-    s: '8px',
-    m: '16px',
-    l: '32px',
-    xl: '64px',
+    1: '4px',
+    2: '8px',
+    3: '12px',
+    4: '16px',
+    5: '20px',
+    6: '24px',
+    8: '32px',
+    10: '40px',
+    12: '48px',
+    16: '64px',
   },
 
   iconStyle: 'Outlined' as 'Outlined'|'Sharp'|'Rounded',
@@ -43,8 +48,8 @@ type Theme = ReturnType<typeof createTheme>
 export type Color = [number, number, number]
 export type ThemeColorName = keyof Theme['colors']
 export type ColorProp = Color | ThemeColorName
-export type SpacingName = '0'|'xs'|'s'|'m'|'l'|'xl'
-export type Spacing = SpacingName[]|SpacingName
+export type SpacingValue = '0'|'1'|'2'|'3'|'4'|'5'|'6'|'8'|'10'|'12'|'16'
+export type Spacing = SpacingValue[]|SpacingValue
 
 const key: InjectionKey<Theme> = Symbol('themeKey')
 

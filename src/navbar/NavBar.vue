@@ -77,7 +77,7 @@ body .NavBar {
 .middle,
 .footer {
   display: grid;
-  padding: var(--dodo-gap-s) 0;
+  padding: var(--dodo-gap-2) 0;
   align-content: start;
 }
 .middle {

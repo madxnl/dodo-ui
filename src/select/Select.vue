@@ -22,7 +22,7 @@
     </Field>
     <template #dropdown>
       <Column ref="dropdownEl" style="min-height:0" gap="0" @mousedown.stop.prevent="">
-        <Row v-show="showSearch" padding="s" :class="$style.searchbox">
+        <Row v-show="showSearch" padding="2" :class="$style.searchbox">
           <TextInput ref="searchEl" v-model="search" type="search" placeholder="Search" tabindex="0" style="flex-grow:1" />
         </Row>
         <ScrollContainer>

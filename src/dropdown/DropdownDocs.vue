@@ -15,7 +15,7 @@ function clickItem() {}
 const setup = () => ({ clickItem })
 
 const template = `
-<Dropdown padding="l">
+<Dropdown padding="6">
   <Button>Basic dropdown</Button>
 
   <template #dropdown>

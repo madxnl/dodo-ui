@@ -206,7 +206,7 @@ function toggleSelectAll() {
   background: var(--dodo-color-background);
   display: flex;
   flex-flow: column;
-  gap: var(--dodo-gap-m);
+  gap: var(--dodo-gap-4);
 }
 .Datatable table {
   border-collapse: collapse;

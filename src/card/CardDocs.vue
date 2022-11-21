@@ -16,13 +16,13 @@ const isActive = ref(true)
 const setup = () => ({ isActive })
 
 const template = `
-<Card padding="m">
+<Card>
   <Text>Card</Text>
 </Card>
-<Card padding="m" hoverable>
+<Card hoverable>
   <Text>Card hoverable</Text>
 </Card>
-<Card padding="m" hoverable :active="isActive" @click="isActive=!isActive">
+<Card hoverable :active="isActive" @click="isActive=!isActive">
   <Text>Card active</Text>
 </Card>
 `

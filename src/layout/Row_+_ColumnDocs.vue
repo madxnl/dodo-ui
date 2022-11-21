@@ -15,8 +15,8 @@ import { DOCGEN as doc } from './Row.vue'
 const setup = () => ({ imgUrl })
 
 const template = `
-<Column padding="m" style="background:tomato">
-  <Row padding="s" style="background:orange">
+<Column padding="4" style="background:tomato">
+  <Row padding="2" style="background:orange">
     <img :src="imgUrl" style="height:100%">
     <Column gap="0" style="background:gold">
       <Text h4>Aaaa</Text>
@@ -30,10 +30,10 @@ const template = `
     <Text style="background:gold">Aaaa</Text>
     <Text style="background:gold">Bbbb</Text>
   </Row>
-  <Row gap="m" align="start">
-    <Column gap="0" padding="s" style="background:orange"><Text h4>Aaaa</Text></Column>
-    <Column gap="0" padding="m" style="background:orange"><Text h4>Aaaa</Text></Column>
-    <Column gap="0" padding="l" style="background:orange"><Text h4>Aaaa</Text></Column>
+  <Row gap="4" align="start">
+    <Column gap="0" padding="2" style="background:orange"><Text h4>Aaaa</Text></Column>
+    <Column gap="0" padding="4" style="background:orange"><Text h4>Aaaa</Text></Column>
+    <Column gap="0" padding="6" style="background:orange"><Text h4>Aaaa</Text></Column>
   </Row>
 </Column>
 `

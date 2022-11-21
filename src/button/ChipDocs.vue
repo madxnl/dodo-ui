@@ -15,7 +15,7 @@ function onClose() {}
 const setup = () => ({ onClose })
 
 const template = `
-<Row gap="xs" wrap>
+<Row gap="1" wrap>
   <Chip>Chip 1</Chip>
   <Chip color="success">Chip 2</Chip>
   <Chip color="info" @click="onClose">Chip 3<template #after><Icon name="close" size="s" /></template></Chip>

@@ -47,11 +47,11 @@ function click() {
 
 <style module>
 .DropdownItem {
-  padding: var(--dodo-gap-s) var(--dodo-gap-m);
+  padding: var(--dodo-gap-2) var(--dodo-gap-4);
   transition: all .1s;
   cursor: pointer;
   display: flex;
-  gap: var(--dodo-gap-s);
+  gap: var(--dodo-gap-2);
   align-items: center;
   position: relative;
 }
@@ -66,7 +66,7 @@ function click() {
   font-weight: var(--dodo-font-weightBold);
 }
 .separator {
-  margin: var(--dodo-gap-xs) 0;
+  margin: var(--dodo-gap-1) 0;
   border: 0;
   border-top: 1px solid rgba(var(--dodo-rgb-foreground), 0.1);
 }

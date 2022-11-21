@@ -1,6 +1,6 @@
 <template>
   <Column :class="$style.Example" gap="0">
-    <Column padding="m">
+    <Column padding="4">
       <div ref="el" :class="$style.exampleDiv" />
     </Column>
 
@@ -58,7 +58,7 @@ watchEffect(() => {
 }
 .exampleDiv {
   display: grid;
-  gap: var(--dodo-gap-m);
+  gap: var(--dodo-gap-4);
 }
 .code {
   border-top: 1px solid rgba(0,0,0,0.15);

@@ -9,13 +9,13 @@ import { Spacing, useSpacing, useTheme } from '../theme'
 const props = defineProps<{
   /**
    * Add spacing between child elements
-   * @example gap="s"
+   * @example gap="2"
    */
   gap?: Spacing
   /**
    * Amount of padding around the contents. Use array to set padding for each side separately.
-   * @example padding="m"
-   * @example padding="s 0 s s"
+   * @example padding="4"
+   * @example padding="2 0 2 2"
    */
   padding?: Spacing
   /**
@@ -69,7 +69,7 @@ const css = computed(() => {
 <style module>
 .Column {
   display: grid;
-  gap: var(--dodo-gap-m);
+  gap: var(--dodo-gap-4);
   align-content: start;
 }
 </style>

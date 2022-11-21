@@ -9,12 +9,12 @@ import { Spacing, useSpacing, useTheme } from '../theme'
 const props = defineProps<{
   /**
    * Add spacing between child elements
-   * @example gap="s"
+   * @example gap="2"
    */
   gap?: Spacing
   /**
    * Amount of padding around the contents. Use array to set padding for each side separately.
-   * @example padding="m"
+   * @example padding="4"
    * @example padding="s 0 s s"
    */
   padding?: Spacing
@@ -68,7 +68,7 @@ const css = computed(() => {
 .Row {
   display: flex;
   align-items: center;
-  gap: var(--dodo-gap-s);
+  gap: var(--dodo-gap-2);
   min-width: 0;
 }
 </style>

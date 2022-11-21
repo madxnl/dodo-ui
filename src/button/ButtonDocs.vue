@@ -20,7 +20,7 @@ async function myAsyncSubmit() {
 const setup = () => ({ customColor, myAsyncSubmit })
 
 const template = `
-<Row gap="s" wrap>
+<Row gap="2" wrap>
   <Button variant="solid" color="success">Button 1</Button>
   <Button variant="text">Button 2</Button>
   <Button rounded>Button 3</Button>

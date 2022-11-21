@@ -66,12 +66,12 @@ useTheme()
 </script>
 <style module>
 .Tooltip {
-  padding: var(--dodo-gap-xs);
+  padding: var(--dodo-gap-1);
   position: fixed;
   pointer-events: none;
 }
 .content {
-  padding: var(--dodo-gap-xs) var(--dodo-gap-s);
+  padding: var(--dodo-gap-1) var(--dodo-gap-2);
   border: 1px solid rgba(var(--dodo-rgb-foreground), 0.2);
   border-radius: 4px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);

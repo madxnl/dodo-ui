@@ -16,13 +16,13 @@ const setup = () => ({ imgUrl })
 const template = `
 <FluidGrid column-size="150px">
   <template v-for="i in 7" :key="i">
-    <Row style="background:gold" padding="m" />
+    <Row style="background:gold" padding="4" />
   </template>
 </FluidGrid>
 <br>
 <FluidGrid column-size="250px">
   <template v-for="i in 7" :key="i">
-    <Row style="background:gold" padding="m" />
+    <Row style="background:gold" padding="4" />
   </template>
 </FluidGrid>
 `

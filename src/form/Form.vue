@@ -172,20 +172,20 @@ function clickStep(index: number) {
 <style module>
 .Form {
   display: grid;
-  gap: var(--dodo-gap-s);
+  gap: var(--dodo-gap-2);
 }
 .showSteps .step {
   grid-template-columns: auto 1fr;
 }
 .step {
   display: grid;
-  gap: var(--dodo-gap-s) var(--dodo-gap-m);
+  gap: var(--dodo-gap-2) var(--dodo-gap-4);
   --stepNumColor: var(--dodo-color-muted);
 }
 .stepContent {
   display: grid;
-  gap: var(--dodo-gap-m);
-  padding: var(--dodo-gap-s) 0;
+  gap: var(--dodo-gap-4);
+  padding: var(--dodo-gap-2) 0;
 }
 .stepNumber {
   border-radius: 999px;

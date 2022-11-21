@@ -42,7 +42,8 @@ const css = computed(() => {
   overflow: hidden;
   transition: all var(--transition-duration);
   display: grid;
-  gap: var(--dodo-gap-m);
+  gap: var(--dodo-gap-4);
+  padding: var(--dodo-gap-6);
 }
 .hoverable {
   cursor: pointer;

@@ -14,12 +14,12 @@ const props = defineProps<{
   columnSize: string
   /**
    * Add spacing between child elements
-   * @example gap="s"
+   * @example gap="2"
    */
   gap?: Spacing
   /**
    * Amount of padding around the contents. Use array to set padding for each side separately.
-   * @example padding="m"
+   * @example padding="4"
    * @example padding="s 0 s s"
    */
   padding?: Spacing
@@ -43,6 +43,6 @@ const css = computed(() => {
 <style module>
 .FluidGrid {
   display: grid;
-  gap: var(--dodo-gap-m);
+  gap: var(--dodo-gap-4);
 }
 </style>

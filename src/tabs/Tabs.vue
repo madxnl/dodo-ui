@@ -1,6 +1,6 @@
 <template>
   <Column :class="$style.Tabs">
-    <Row gap="m">
+    <Row gap="4">
       <div
         v-for="tab in tabs" :key="keyFor(tab)"
         :class="[
