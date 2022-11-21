@@ -2,6 +2,7 @@
 export { default as Avatar } from './avatar/Avatar.vue'
 export { default as Button } from './button/Button.vue'
 export { default as Chip } from './button/Chip.vue'
+export { default as Card } from './card/Card.vue'
 export { default as Datatable } from './datatable/DatatableTyped.vue'
 export { default as CrashDialog } from './dialog/CrashDialog.vue'
 export { default as Dialog } from './dialog/Dialog.vue'
