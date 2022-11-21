@@ -13,7 +13,7 @@
 
   <teleport to="body">
     <div v-if="active" ref="content" :class="$style.Dropdown" :style="dropdownStyles">
-      <Column :class="$style.content" :padding="padding ?? ['xs', '0']" :gap="gap ?? '0'">
+      <Column :class="$style.content" :padding="padding ?? ['1', '0']" :gap="gap ?? '0'">
         <slot name="dropdown" :toggle="toggle" />
       </Column>
     </div>
