@@ -39,7 +39,7 @@ function docgen(): Plugin {
 
 export function generateScopedName(name: string, filename: string) {
   const componentName = filename.split('.vue')[0].split('/').slice(-1)[0]
-  return name === componentName ? `dodo${name}` : `dodo${componentName}-${name}`
+  return `dodo-${componentName}-${name}`.toLowerCase()
 }
 
 export default defineConfig({

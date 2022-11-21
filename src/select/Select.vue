@@ -108,7 +108,11 @@ const showSearch = computed(() => {
 
 const filteredOptions = computed(() => {
   const s = search.value.toLowerCase()
-  return props.options.filter(o => `${o.value}|${o.text}`.toLowerCase().includes(s))
+  const all = props.options.filter(o => `${o.value}|${o.text}`.toLowerCase().includes(s))
+  if (!props.multiple) return all
+  const selected = all.filter(x => currentValues.value.includes(x.value))
+  const unselected = all.filter(x => !selected.includes(x))
+  return selected.concat(unselected)
 })
 
 const placeholderText = computed(() => {
