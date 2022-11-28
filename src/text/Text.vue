@@ -6,10 +6,7 @@
       nowrap && $style.nowrap,
       emphasis && $style[emphasis],
     ]"
-    :style="[
-      colorCss && `--Text-rgb:${colorCss};`,
-      align && `text-align:${align};`
-    ]"
+    :style="css"
   >
     <slot />
   </component>
@@ -55,10 +52,12 @@ const tagNames = [
 
 const tag = computed(() => tagNames.find(t => props[t]) ?? 'span')
 
-const colorCss = computed(() => {
-  if (props.color === 'inherit') return 'currentColor'
-  if (props.color) return colorPropToRGB(props.color)
-  return undefined
+const css = computed(() => {
+  let css = ''
+  if (props.color === 'inherit') css += '--text-rgb:currentColor;'
+  else if (props.color) css += `--text-rgb:${colorPropToRGB(props.color)};`
+  if (props.align) css += `text-align:${props.align};`
+  return css
 })
 
 watchEffect(() => {
@@ -71,38 +70,39 @@ useTheme()
 </script>
 <style module>
 .Text {
-  --dodo-text-opacity-high: 1;
-  --dodo-text-opacity-medium: .85;
-  --dodo-text-opacity-low: .65;
+  --text-opacity-medium: .85;
+  --text-opacity-low: .65;
+  --text-rgb: var(--dodo-rgb-foreground);
+  --text-opacity: 1;
 
   text-overflow: ellipsis;
   cursor: inherit;
   margin: 0;
-  font: var(--Text-font, var(--dodo-font-base));
-  font-size: var(--Text-size, var(--dodo-font-size));
-  font-weight: var(--Text-weight, var(--dodo-font-weight));
-  color: rgba(var(--Text-rgb, var(--dodo-rgb-foreground)), var(--Text-opacity, var(--dodo-text-opacity-high)));
+  font: var(--text-font, var(--dodo-font-base));
+  font-size: var(--text-size, var(--dodo-font-size));
+  font-weight: var(--text-weight, var(--dodo-font-weight));
+  color: rgba(var(--text-rgb), var(--text-opacity));
 }
 h1.Text, h2.Text, h3.Text, h4.Text, h5.Text, h6.Text {
-  --Text-weight: var(--dodo-font-weightBold);
-  --Text-size: var(--dodo-font-size);
-  --Text-opacity: var(--dodo-text-opacity-full);
-  --Text-rgb: var(--dodo-rgb-foreground);
+  --text-weight: var(--dodo-font-weightBold);
+  --text-size: var(--dodo-font-size);
+  --text-opacity: var(--text-opacity-full);
+  --text-rgb: var(--dodo-rgb-foreground);
 }
 h1.Text {
-  --Text-size: calc(var(--dodo-font-size) * 2.5);
+  --text-size: calc(var(--dodo-font-size) * 2.5);
 }
 h2.Text {
-  --Text-size: calc(var(--dodo-font-size) * 2);
+  --text-size: calc(var(--dodo-font-size) * 2);
 }
 h3.Text {
-  --Text-size: calc(var(--dodo-font-size) * 1.5);
+  --text-size: calc(var(--dodo-font-size) * 1.5);
 }
 h4.Text {
-  --Text-size: calc(var(--dodo-font-size) * 1.25);
+  --text-size: calc(var(--dodo-font-size) * 1.25);
 }
 h5.Text {
-  --Text-size: calc(var(--dodo-font-size) * 1.15);
+  --text-size: calc(var(--dodo-font-size) * 1.15);
 }
 code.Text, .Text code {
   font-family: monospace;
@@ -115,24 +115,24 @@ blockquote.Text, .Text blockquote {
   border-left: 2px solid rgba(var(--dodo-rgb-foreground), 0.25);
 }
 small.Text, .Text small {
-  --Text-size: var(--dodo-font-sizeSmall);
+  --text-size: var(--dodo-font-sizeSmall);
 }
 strong.Text, .Text strong {
-  --Text-weight: var(--dodo-font-weightBold);
+  --text-weight: var(--dodo-font-weightBold);
 }
 label.Text, .Text label {
-  --Text-weight: var(--dodo-font-weightSemi);
-  --Text-size: var(--dodo-font-sizeSmall);
+  --text-weight: var(--dodo-font-weightSemi);
+  --text-size: var(--dodo-font-sizeSmall);
 }
 p.Text {
-  --Text-opacity: var(--dodo-text-opacity-medium);
+  --text-opacity: var(--text-opacity-medium);
 }
 
 .nowrap {
   overflow: hidden;
   white-space: nowrap;
 }
-.Text.high { --Text-opacity: var(--dodo-text-opacity-high) }
-.Text.medium { --Text-opacity: var(--dodo-text-opacity-medium) }
-.Text.low { --Text-opacity: var(--dodo-text-opacity-low) }
+.Text.high { --text-opacity: var(--text-opacity-high) }
+.Text.medium { --text-opacity: var(--text-opacity-medium) }
+.Text.low { --text-opacity: var(--text-opacity-low) }
 </style>

@@ -43,6 +43,8 @@ const css = computed(() => {
 .Spinner {
   overflow: hidden;
   font-size: 18px;
+  display: grid;
+  justify-content: center;
 }
 .Spinner svg {
   width: 1em;

@@ -2,7 +2,7 @@
   <div :class="[$style.Datatable, contentLoading && $style.loading]">
     <table>
       <tr :class="stickyHeader && $style.stickyHeader">
-        <th v-if="showSelect" style="width:0">
+        <th v-if="showSelect" style="width:0" scope="col">
           <Checkbox
             :indeterminate="visibleSelected.length > 0 && visibleSelected.length < rows.length"
             :model-value="visibleSelected.length > 0 && visibleSelected.length === rows.length"
@@ -12,7 +12,7 @@
 
         <th
           v-for="col in enabledColumns" :key="col.name"
-          :class="[
+          scope="col" :class="[
             canSortCol(col) ? $style.sortable : '',
             isSortCol(col) && $style.sortActive,
           ]"
@@ -58,8 +58,8 @@
       </tr>
 
       <tr v-if="showFooter" :class="[$style.footer, stickyHeader && $style.stickyFooter]">
-        <th v-if="showSelect" />
-        <th v-for="col in enabledColumns" :key="col.name" :style="alignStyle(col)">
+        <td v-if="showSelect" />
+        <th v-for="col in enabledColumns" :key="col.name" :style="alignStyle(col)" scope="col">
           <slot :name="`${slotName(col)}-footer`" :column="col" />
         </th>
       </tr>
@@ -155,7 +155,11 @@ function widthStyle(col: DatatableColumn) {
 
 async function toggleColumnSort(col: DatatableColumn) {
   if (!canSortCol(col)) return
-  sort.value = isSortCol(col) ? sortReverse.value ? undefined : '-' + col.sort : col.sort
+  if (isSortCol(col)) {
+    sort.value = sortReverse.value ? undefined : '-' + col.sort
+  } else {
+    sort.value = col.sort
+  }
   if (props.sortAsync) {
     sortingAsync.value = true
     await props.sortAsync(sort.value).finally(() => { sortingAsync.value = false })

@@ -5,10 +5,10 @@ exports[`Column sort 1`] = `
   <table>
     <tr class=\\"\\">
       <!--v-if-->
-      <th class=\\"_sortable_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Name</span>
+      <th scope=\\"col\\" class=\\"_sortable_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Name</span>
         <!--v-if--></span>
       </th>
-      <th class=\\"_sortActive_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Modified</span><span class=\\"_Icon_665cc9 material-symbols-outlined _sortIcon_9c1ce1\\">arrow_drop_down</span></span></th>
+      <th scope=\\"col\\" class=\\"_sortActive_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Modified</span><span class=\\"_Icon_665cc9 material-symbols-outlined _sortIcon_9c1ce1\\">arrow_drop_down</span></span></th>
     </tr>
     <tr class=\\"\\">
       <!--v-if-->
@@ -36,11 +36,11 @@ exports[`Selecting rows 1`] = `
 "<div class=\\"_Datatable_9c1ce1\\">
   <table>
     <tr class=\\"\\">
-      <th style=\\"width: 0px;\\"><span class=\\"_Checkbox_01f563 _checked_01f563\\"><span class=\\"_Icon_665cc9 material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></th>
-      <th class=\\"_sortable_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Name</span>
+      <th style=\\"width: 0px;\\" scope=\\"col\\"><span class=\\"_Checkbox_01f563 _checked_01f563\\"><span class=\\"_Icon_665cc9 material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></th>
+      <th scope=\\"col\\" class=\\"_sortable_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Name</span>
         <!--v-if--></span>
       </th>
-      <th class=\\"_sortActive_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Modified</span><span class=\\"_Icon_665cc9 material-symbols-outlined _sortIcon_9c1ce1\\">arrow_drop_down</span></span></th>
+      <th scope=\\"col\\" class=\\"_sortActive_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Modified</span><span class=\\"_Icon_665cc9 material-symbols-outlined _sortIcon_9c1ce1\\">arrow_drop_down</span></span></th>
     </tr>
     <tr class=\\"_rowSelected_9c1ce1\\">
       <td><span class=\\"_Checkbox_01f563 _checked_01f563\\"><span class=\\"_Icon_665cc9 material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
@@ -69,10 +69,10 @@ exports[`Show more 1`] = `
   <table>
     <tr class=\\"\\">
       <!--v-if-->
-      <th class=\\"_sortable_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Name</span>
+      <th scope=\\"col\\" class=\\"_sortable_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Name</span>
         <!--v-if--></span>
       </th>
-      <th class=\\"_sortActive_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Modified</span><span class=\\"_Icon_665cc9 material-symbols-outlined _sortIcon_9c1ce1\\">arrow_drop_down</span></span></th>
+      <th scope=\\"col\\" class=\\"_sortActive_9c1ce1\\"><span class=\\"_colName_9c1ce1\\"><span>Modified</span><span class=\\"_Icon_665cc9 material-symbols-outlined _sortIcon_9c1ce1\\">arrow_drop_down</span></span></th>
     </tr>
     <tr class=\\"\\">
       <!--v-if-->

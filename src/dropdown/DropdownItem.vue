@@ -60,7 +60,7 @@ function click() {
 }
 .DropdownItem.active {
   background: rgba(var(--dodo-rgb-info), 0.15);
-  --Text-rgb: var(--dodo-rgb-info);
+  --text-rgb: var(--dodo-rgb-info);
 }
 .emphasize .text {
   font-weight: var(--dodo-font-weightBold);

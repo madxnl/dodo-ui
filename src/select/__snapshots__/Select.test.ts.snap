@@ -3,7 +3,7 @@
 exports[`Search filters options 1`] = `
 "<div class=\\"_trigger_92c5f7\\">
   <div class=\\"_Field_ff3730 _button_ff3730\\">
-    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
+    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
 <teleport-stub to=\\"body\\">
@@ -32,7 +32,7 @@ exports[`Search filters options 1`] = `
 exports[`Search input visible after character key press 1`] = `
 "<div class=\\"_trigger_92c5f7\\">
   <div class=\\"_Field_ff3730 _button_ff3730\\">
-    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
+    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
 <teleport-stub to=\\"body\\">
@@ -54,7 +54,7 @@ exports[`Search input visible after character key press 1`] = `
 exports[`Search input visible if many options 1`] = `
 "<div class=\\"_trigger_92c5f7\\">
   <div class=\\"_Field_ff3730 _button_ff3730\\">
-    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
+    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
 <teleport-stub to=\\"body\\">
@@ -197,7 +197,7 @@ exports[`Search input visible if many options 1`] = `
 exports[`Select a value 1`] = `
 "<div class=\\"_trigger_92c5f7\\">
   <div class=\\"_Field_ff3730 _button_ff3730\\">
-    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
+    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
 <teleport-stub to=\\"body\\">
@@ -208,7 +208,7 @@ exports[`Select a value 1`] = `
 exports[`Select can be disabled 1`] = `
 "<div class=\\"_trigger_92c5f7 _disabled_92c5f7\\">
   <div class=\\"_Field_ff3730 _disabled_ff3730 _button_ff3730\\">
-    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--Text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\" disabled=\\"\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
+    <div class=\\"_inner_ff3730\\"><span class=\\"_Text_49b275 _nowrap_49b275\\" style=\\"--text-rgb: 22,41,58;\\"><!--v-if-->Option 0</span><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\" disabled=\\"\\"></div><span class=\\"_Icon_665cc9 material-symbols-outlined\\">arrow_drop_down</span>
   </div>
 </div>
 <teleport-stub to=\\"body\\">

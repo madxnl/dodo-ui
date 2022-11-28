@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, watchEffect } from 'vue'
+import { computed, ref, watch, watchEffect } from 'vue'
 import { Column, Row, Text } from '..'
 
 export interface Tab {
@@ -31,6 +31,11 @@ export interface Tab {
 
 const props = defineProps<{
   tabs: Tab[]
+  tabIndex: number
+}>()
+
+const emit = defineEmits<{
+  (e: 'update:tabIndex', i: number): void
 }>()
 
 const current = ref('')
@@ -43,6 +48,16 @@ watchEffect(() => {
     current.value = keyFor(props.tabs[0])
   }
 })
+
+watch(() => props.tabIndex, () => {
+  if (props.tabIndex in props.tabs) {
+    current.value = keyFor(props.tabs[props.tabIndex])
+  }
+}, { immediate: true })
+
+watch(() => currentTab.value, () => {
+  if (currentTab.value) emit('update:tabIndex', props.tabs.indexOf(currentTab.value))
+}, { immediate: true })
 
 // defineEmits<{
 // }>()
