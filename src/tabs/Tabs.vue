@@ -31,7 +31,7 @@ export interface Tab {
 
 const props = defineProps<{
   tabs: Tab[]
-  tabIndex: number
+  tabIndex?: number
 }>()
 
 const emit = defineEmits<{
@@ -50,7 +50,7 @@ watchEffect(() => {
 })
 
 watch(() => props.tabIndex, () => {
-  if (props.tabIndex in props.tabs) {
+  if (props.tabIndex != null && props.tabs[props.tabIndex]) {
     current.value = keyFor(props.tabs[props.tabIndex])
   }
 }, { immediate: true })
