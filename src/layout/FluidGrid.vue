@@ -27,6 +27,11 @@ const props = defineProps<{
    * Prefer empty columns instead of stretching
    */
   autoFill?: boolean
+  /**
+   * Aligns children along cross-axis direction (default 'start')
+   * @example align="end"
+   */
+  alignItems?: 'center'|'end'|'start'|'stretch'
   stretch?: never
 }>()
 
@@ -44,5 +49,6 @@ const css = computed(() => {
 .FluidGrid {
   display: grid;
   gap: var(--dodo-gap-4);
+  align-items: start;
 }
 </style>
