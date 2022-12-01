@@ -82,7 +82,7 @@ function getSlotType(slot: SlotDescriptor) {
 .Table th {
   text-align: left;
   padding: 8px;
-  font-weight: var(--dodo-font-weightSemi);
+  font-weight: var(--dodo-weight-bold);
 }
 .Table td {
   border-width: 1px 0;

@@ -81,7 +81,7 @@ watch(() => currentTab.value, () => {
   text-transform: uppercase;
 }
 .tab.active {
-  color: var(--dodo-color-info);
+  color: rgb(var(--dodo-rgb-info));
   border-color: currentColor;
   overflow: visible;
 }

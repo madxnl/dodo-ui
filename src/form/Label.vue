@@ -53,6 +53,6 @@ async function onchange() {
   text-transform: uppercase;
 }
 .FormLabel_hasError {
-  color: var(--dodo-color-danger);
+  color: rgb(var(--dodo-rgb-danger));
 }
 </style>

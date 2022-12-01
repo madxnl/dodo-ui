@@ -20,7 +20,8 @@ const template = `
 <Text h2>{{ text }}</Text>
 <Text h3>{{ text }}</Text>
 <Text p nowrap>{{ longText }}</Text>
-<Text p emphasis="low">{{ longText }}</Text>
+<Text p variant="muted">{{ longText }}</Text>
 <Text label align="right">{{ text }}</Text>
-<Text h4><Text color="danger">Rich</Text> <em>text</em> <a href="#">example</a></Text>`
+<Text h4><Text color="danger">Rich</Text> <em>text</em> <a href="#">example</a></Text>
+<Text color="info"><strong>Color</strong> Some <Text strong>Color</Text> text</Text>`
 </script>

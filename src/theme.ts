@@ -1,52 +1,46 @@
 import { inject, InjectionKey, Plugin, reactive, watchEffect } from 'vue'
 
 const createTheme = () => reactive({
-  colors: {
-    info: '#3a86ff',
-    success: '#00b188',
-    warn: '#dfb235',
-    danger: '#e76f51',
-    background: '#ffffff',
-    foreground: '#16293a',
-  },
-
-  font: {
-    size: '15px',
-    sizeSmall: '13px',
-    weight: 400,
-    family: 'Roboto, sans-serif',
-    import: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500',
-    weightSemi: 500,
-    weightBold: 500,
-    lineHeight: '1.4',
-  },
-
-  spacings: {
-    0: '0px',
-    1: '4px',
-    2: '8px',
-    3: '12px',
-    4: '16px',
-    5: '20px',
-    6: '24px',
-    8: '32px',
-    10: '40px',
-    12: '48px',
-    16: '64px',
-  },
-
   iconStyle: 'Outlined' as 'Outlined'|'Sharp'|'Rounded',
   iconWeight: '300' as '100'|'200'|'300'|'400'|'500'|'600'|'700',
 
   vars: {
+    'gap-0': '0px',
+    'gap-1': '4px',
+    'gap-2': '8px',
+    'gap-3': '12px',
+    'gap-4': '16px',
+    'gap-5': '20px',
+    'gap-6': '24px',
+    'gap-8': '32px',
+    'gap-10': '40px',
+    'gap-12': '48px',
+    'gap-16': '64px',
+
+    'rgb-info': '58,134,255',
+    'rgb-success': '0,177,136',
+    'rgb-warn': '223,178,53',
+    'rgb-danger': '231,111,81',
+    'rgb-background': '255,255,255',
+    'rgb-foreground': '22,41,58',
+
+    'rgb-primary': 'var(--dodo-rgb-info)',
+    'rgb-secondary': 'var(--dodo-rgb-success)',
+
     buttonHeight: '36px',
+    'font-size': '14px',
+    'font-small': '12px',
+    'font-import': 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap', // &family=Syne:wght@500
+    'font-base': 'var(--dodo-font-size)/1.4 Inter,sans-serif',
+    'weight-body': 400,
+    'weight-bold': 500,
   },
 })
 
 type Theme = ReturnType<typeof createTheme>
 
 export type Color = [number, number, number]
-export type ThemeColorName = keyof Theme['colors']
+export type ThemeColorName = 'info'|'success'|'warn'|'danger'|'background'|'foreground'|'primary'|'secondary'
 export type ColorProp = Color | ThemeColorName
 export type SpacingValue = '0'|'1'|'2'|'3'|'4'|'5'|'6'|'8'|'10'|'12'|'16'
 export type Spacing = SpacingValue[]|SpacingValue
@@ -68,16 +62,14 @@ export function useTheme() {
 
   watchEffect(() => {
     const css = `
-@import url("${theme.font.import}");
+@import url("${theme.vars['font-import']}");
 :root{
-  ${Object.entries(theme.colors).map(([k, v]) => `--dodo-color-${k}:${v};`).join('')}
-  ${Object.entries(theme.colors).map(([k, v]) => `--dodo-rgb-${k}:${parseColor(v)};`).join('')}
-  ${Object.entries(theme.spacings).map(([k, v]) => `--dodo-gap-${k}:${v};`).join('')}
   ${Object.entries(theme.vars).map(([k, v]) => `--dodo-${k}:${v};`).join('')}
-  ${Object.entries(theme.font).map(([k, v]) => `--dodo-font-${k}:${v};`).join('')}
-  --dodo-font-base: var(--dodo-font-size)/var(--dodo-font-lineHeight) var(--dodo-font-family);
 }
-[class^="dodo"] ::selection{color:white;background:var(--dodo-color-info)}`
+[class^=dodo-] ::selection {
+  color:white;
+  background:rgb(var(--dodo-rgb-info));
+}`
     const id = 'dodoui-theme-css'
     let style = document.querySelector('#' + id)
     if (!style) {
@@ -97,7 +89,7 @@ export function useColorProp(c: ColorProp, alpha = 1) {
 }
 
 export function colorPropToRGB(color: ColorProp) {
-  return typeof color === 'string' ? parseColor(useTheme().colors[color]) : color
+  return typeof color === 'string' ? `var(--dodo-rgb-${color})` : color.join(',')
 }
 
 export function parseColor(hex: string) {
@@ -105,40 +97,6 @@ export function parseColor(hex: string) {
   return hex.match(/(\w\w)/g)!.map(x => parseInt(x, 16)).slice(0, 3) as [number, number, number]
 }
 
-export function mixColors(color1: ColorProp, color2: ColorProp, mixPct: number) {
-  const c1 = colorPropToRGB(color1)
-  const c2 = colorPropToRGB(color2)
-  return c1.map((x, i) => Math.round(x + (c2[i] - x) * mixPct))
-}
-
 export function useSpacing(name: Spacing) {
-  const theme = useTheme()
-  return [name].flat().map(n => theme.spacings[n]).join(' ')
+  return `var(--dodo-gap-${name})`
 }
-
-// function parseColor(hex: string) {
-//   const [r, g, b] = parseColor(hex)
-//   const max = Math.max(r, g, b); const min = Math.min(r, g, b)
-//   let h = 0; let s = 0; const l = (max + min) / 2
-//   if (max > min) {
-//     const d = max - min
-//     s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
-//     switch (max) {
-//       case r: h = (g - b) / d + (g < b ? 6 : 0); break
-//       case g: h = (b - r) / d + 2; break
-//       case b: h = (r - g) / d + 4; break
-//     }
-//     h /= 6
-//   }
-//   return { h: Math.floor(h * 360), s: Math.floor(s * 100), l: Math.floor(l * 100) }
-// }
-
-// export function mixColors(color1: ColorProp, color2: ColorProp, mixPct: number) {
-//   const c1 = colorPropToRGB(color1)
-//   const c2 = colorPropToRGB(color2)
-//   const h = Math.floor(c1.h + (((c2.h - c1.h + 180) % 360) - 180) * mixPct + 360) % 360
-//   const s = Math.floor(c1.s + (c2.s - c1.s) * mixPct)
-//   const l = Math.floor(c1.l + (c2.l - c1.l) * mixPct)
-//   console.log(c1, c2, mixPct, { h, s, l })
-//   return { h, s, l }
-// }

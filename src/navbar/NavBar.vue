@@ -54,8 +54,8 @@ provide(navBarServiceKey, { collapsed })
 </script>
 <style module>
 body .NavBar {
-  background: var(--dodo-color-foreground);
-  background: var(--dodo-color-foreground) linear-gradient(#ffffff11, #00000011);
+  background: rgb(var(--dodo-rgb-foreground));
+  background: rgb(var(--dodo-rgb-foreground)) linear-gradient(#ffffff11, #00000011);
   color: white;
   display: flex;
   flex-flow: column;

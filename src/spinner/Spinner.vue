@@ -50,7 +50,7 @@ const css = computed(() => {
   width: 1em;
   height: 1em;
   animation: Spinner 1s linear infinite;
-  color: var(--dodo-color-info);
+  color: rgb(var(--dodo-rgb-info));
   display: block;
 }
 .small {

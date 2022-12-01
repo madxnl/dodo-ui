@@ -37,7 +37,7 @@ useTheme()
   cursor: pointer;
   transition: opacity .1s;
   opacity: .7;
-  color: var(--dodo-color-foreground);
+  color: rgb(var(--dodo-rgb-foreground));
 }
 .Checkbox input[type=checkbox] {
   pointer-events: none;
@@ -46,7 +46,7 @@ useTheme()
   position: fixed;
 }
 .Checkbox:focus-within {
-  outline: 2px solid var(--dodo-color-info);
+  outline: 2px solid rgb(var(--dodo-rgb-info));
   opacity: 1;
 }
 .Checkbox:hover {

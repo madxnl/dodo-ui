@@ -80,7 +80,7 @@ useTheme()
 }
 .text {
   color: white;
-  font-weight: var(--dodo-font-weightSemi);
+  font-weight: var(--dodo-weight-bold);
   /* display: inline-grid;
   border-radius: 4px;
   width: 32px;

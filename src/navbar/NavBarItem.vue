@@ -76,12 +76,12 @@ const collapsed = computed(() => navBar?.collapsed.value)
   justify-content: center;
 }
 .text {
-  font-weight: var(--dodo-font-weightSemi);
+  font-weight: var(--dodo-weight-bold);
   user-select: none;
 }
 .secondary {
   opacity: 0.5;
-  font-weight: var(--dodo-font-weightSemi);
+  font-weight: var(--dodo-weight-bold);
 }
 
 .active,

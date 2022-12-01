@@ -36,7 +36,7 @@ const css = computed(() => {
   background: white;
   border-radius: 4px;
   --card-border-rgb: 215,215,215;
-  --card-active-color: var(--dodo-color-info);
+  --card-active-color: rgb(var(--dodo-rgb-info));
   border: 1px solid rgb(var(--card-border-rgb));
   box-shadow: 0 2px 2px 0 rgba(var(--card-border-rgb), 0.35);
   overflow: hidden;

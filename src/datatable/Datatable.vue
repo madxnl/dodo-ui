@@ -206,8 +206,8 @@ function toggleSelectAll() {
 <style module>
 .Datatable {
   font: var(--dodo-font-base);
-  color: var(--dodo-color-foreground);
-  background: var(--dodo-color-background);
+  color: rgb(var(--dodo-rgb-foreground));
+  background: rgb(var(--dodo-rgb-background));
   display: flex;
   flex-flow: column;
   gap: var(--dodo-gap-4);
@@ -219,7 +219,7 @@ function toggleSelectAll() {
 }
 .Datatable th {
   text-align: start;
-  font-weight: var(--dodo-font-weightSemi);
+  font-weight: var(--dodo-weight-bold);
 }
 .colName {
   display: flex;
@@ -271,7 +271,7 @@ function toggleSelectAll() {
 .stickyFooter {
   position: sticky;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  background: var(--dodo-color-background);
+  background: rgb(var(--dodo-rgb-background));
   z-index: 1;
 }
 .stickyHeader {

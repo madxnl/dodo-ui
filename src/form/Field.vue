@@ -39,19 +39,19 @@ useTheme()
   --height: var(--dodo-buttonHeight);
   min-height: var(--height);
   font: var(--dodo-font-base);
-  color: var(--dodo-color-foreground);
+  color: rgb(var(--dodo-rgb-foreground));
   box-sizing: border-box;
 }
 .button {
   cursor: pointer;
 }
 .Field:focus-within {
-  border-color: var(--dodo-color-info);
-  outline: 1px solid var(--dodo-color-info);
+  border-color: rgb(var(--dodo-rgb-info));
+  outline: 1px solid rgb(var(--dodo-rgb-info));
 }
 [class$=_hasError] .Field {
-  border-color: var(--dodo-color-danger);
-  color: var(--dodo-color-danger);
+  border-color: rgb(var(--dodo-rgb-danger));
+  color: rgb(var(--dodo-rgb-danger));
 }
 .inner {
   display: flex;

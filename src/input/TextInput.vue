@@ -76,6 +76,6 @@ useTheme()
   flex-grow: 1;
 }
 .TextInput:focus-within {
-  border-color: var(--dodo-color-info);
+  border-color: rgb(var(--dodo-rgb-info));
 }
 </style>

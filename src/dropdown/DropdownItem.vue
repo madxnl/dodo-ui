@@ -14,7 +14,7 @@
       <Text nowrap :class="$style.text">
         <slot />
       </Text>
-      <Text v-if="$slots['text-secondary']" nowrap emphasis="low">
+      <Text v-if="$slots['text-secondary']" nowrap variant="muted">
         <slot name="text-secondary" />
       </Text>
     </Column>
@@ -63,7 +63,7 @@ function click() {
   --text-rgb: var(--dodo-rgb-info);
 }
 .emphasize .text {
-  font-weight: var(--dodo-font-weightBold);
+  font-weight: var(--dodo-weight-bold);
 }
 .separator {
   margin: var(--dodo-gap-1) 0;

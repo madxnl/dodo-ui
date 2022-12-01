@@ -1,10 +1,11 @@
 <template>
   <component
-    :is="tag ?? 'span'"
+    :is="tag"
     :class="[
-      $style.Text,
+      $style.text,
+      $style[tag],
       nowrap && $style.nowrap,
-      emphasis && $style[emphasis],
+      variant && $style[variant],
     ]"
     :style="css"
   >
@@ -20,8 +21,8 @@ const props = defineProps<{
   color?: ColorProp|'inherit'
   /** Show ellipsis instead of wrapping if text does not fit on one line */
   nowrap?: boolean
-  /** Override opacity to emphasize/de-emphasize text */
-  emphasis?: 'high'|'medium'|'low'
+  /** Choose optional variant (opacity) */
+  variant?: 'muted'
   /** Set text-align */
   align?: 'left'|'center'|'right'
 
@@ -41,6 +42,7 @@ const props = defineProps<{
   mark?: boolean
   label?: boolean
 
+  emphasis?: never
   muted?: never
 }>()
 
@@ -69,70 +71,64 @@ useTheme()
 
 </script>
 <style module>
-.Text {
-  --text-opacity-medium: .85;
-  --text-opacity-low: .65;
-  --text-rgb: var(--dodo-rgb-foreground);
-  --text-opacity: 1;
-
+.text {
   text-overflow: ellipsis;
   cursor: inherit;
   margin: 0;
   font: var(--text-font, var(--dodo-font-base));
   font-size: var(--text-size, var(--dodo-font-size));
-  font-weight: var(--text-weight, var(--dodo-font-weight));
-  color: rgba(var(--text-rgb), var(--text-opacity));
+  font-weight: var(--text-weight, var(--dodo-weight-body));
+  color: rgba(var(--text-rgb, var(--dodo-rgb-foreground)), var(--text-opacity, 1));
 }
-h1.Text, h2.Text, h3.Text, h4.Text, h5.Text, h6.Text {
-  --text-weight: var(--dodo-font-weightBold);
-  --text-size: var(--dodo-font-size);
-  --text-opacity: var(--text-opacity-full);
+.p {
+}
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  --text-weight: var(--dodo-weight-bold);
   --text-rgb: var(--dodo-rgb-foreground);
+  line-height: 1;
 }
-h1.Text {
+.h1 {
   --text-size: calc(var(--dodo-font-size) * 2.5);
 }
-h2.Text {
+.h2 {
   --text-size: calc(var(--dodo-font-size) * 2);
 }
-h3.Text {
+.h3 {
   --text-size: calc(var(--dodo-font-size) * 1.5);
 }
-h4.Text {
+.h4 {
   --text-size: calc(var(--dodo-font-size) * 1.25);
 }
-h5.Text {
+.h5 {
   --text-size: calc(var(--dodo-font-size) * 1.15);
 }
-code.Text, .Text code {
+.code, .text code {
   font-family: monospace;
 }
-a.Text, .Text a {
-  color: var(--dodo-color-info);
+.a, .text a {
+  color: rgb(var(--dodo-rgb-info));
 }
-blockquote.Text, .Text blockquote {
+.blockquote, .text blockquote {
   padding-left: 16px;
   border-left: 2px solid rgba(var(--dodo-rgb-foreground), 0.25);
 }
-small.Text, .Text small {
-  --text-size: var(--dodo-font-sizeSmall);
+.small, .text small {
+  --text-size: var(--dodo-font-small);
+  font-size: var(--text-size);
 }
-strong.Text, .Text strong {
-  --text-weight: var(--dodo-font-weightBold);
+.strong, .text strong {
+  --text-weight: var(--dodo-weight-bold);
+  font-weight: var(--text-weight);
 }
-label.Text, .Text label {
-  --text-weight: var(--dodo-font-weightSemi);
-  --text-size: var(--dodo-font-sizeSmall);
+.label {
+  --text-weight: var(--dodo-weight-bold);
+  --text-size: var(--dodo-font-small);
 }
-p.Text {
-  --text-opacity: var(--text-opacity-medium);
-}
-
 .nowrap {
   overflow: hidden;
   white-space: nowrap;
 }
-.Text.high { --text-opacity: var(--text-opacity-high) }
-.Text.medium { --text-opacity: var(--text-opacity-medium) }
-.Text.low { --text-opacity: var(--text-opacity-low) }
+.muted {
+  --text-opacity: 0.65;
+}
 </style>

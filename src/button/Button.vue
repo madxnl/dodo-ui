@@ -89,7 +89,7 @@ export default {
   cursor: pointer;
   font: var(--dodo-font-base);
   /* font-weight: var(--dodo-font-weight); */
-  background: var(--dodo-color-background);
+  background: rgb(var(--dodo-rgb-background));
   color: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));
   border-radius: 4px;
   position: relative;
@@ -150,7 +150,7 @@ export default {
 .small {
   padding: 0 10px;
   --height: 28px;
-  font-size: var(--dodo-font-sizeSmall);
+  font-size: var(--dodo-font-small);
 }
 .square {
   padding: 0;

@@ -14,7 +14,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ColorProp, mixColors, useTheme } from '../theme'
+import { ColorProp, useColorProp, useTheme } from '../theme'
 
 const baseColors: ColorProp[] = [
   'info',
@@ -40,14 +40,8 @@ const initials = computed(() => {
 const bgcolor = computed(() => {
   const N = baseColors.length
   const hash = hashCode(props.text)
-  const i = hash
-  let j = Math.floor(i / N)
-  if (i % N === j % N) j++
-  const k = (Math.floor(j / N) % 4) / 4
-  const c1 = baseColors[i % N]
-  const c2 = baseColors[j % N]
-  const color = mixColors(c1, c2, k)
-  return `rgb(${color})`
+  const color = baseColors[hash % N]
+  return useColorProp(color)
 })
 
 function hashCode(s: string) {
@@ -75,7 +69,7 @@ useTheme()
   justify-content: center;
   font: var(--dodo-font-base);
   font-size: calc(var(--dodo-font-size) * 1.1);
-  font-weight: var(--dodo-font-weightSemi);
+  font-weight: var(--dodo-weight-bold);
   line-height: 32px;
 }
 .round {

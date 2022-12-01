@@ -17,7 +17,7 @@
       <ScrollContainer :class="$style.scroll">
         <Column :class="$style.content">
           <template v-for="chapter in chapters">
-            <Column v-for="page in chapter.pages" :id="page.title" :key="page.title" padding="6">
+            <Column v-for="page in chapter.pages" :id="page.title" :key="page.title" padding="6" gap="8">
               <Text h2>{{ page.title }}</Text>
               <component :is="page.component" />
               <br>
@@ -104,8 +104,8 @@ function onPopState(e: Event) {
   color: inherit;
   text-decoration: none;
   font: var(--dodo-font-base);
-  font-weight: var(--dodo-font-weightSemi);
-  color: var(--dodo-color-foreground);
+  font-weight: var(--dodo-weight-bold);
+  color: rgb(var(--dodo-rgb-foreground));
   padding: 2px 4px;
   transition: .1s all;
 }

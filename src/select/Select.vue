@@ -12,7 +12,7 @@
           <template v-else>{{ value }}</template>
         </template>
       </Text>
-      <Text v-else emphasis="low" nowrap>
+      <Text v-else variant="muted" nowrap>
         {{ placeholderText }}
       </Text>
       <template #after>

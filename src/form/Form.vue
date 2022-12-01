@@ -180,7 +180,7 @@ function clickStep(index: number) {
 .step {
   display: grid;
   gap: var(--dodo-gap-2) var(--dodo-gap-4);
-  --stepNumColor: var(--dodo-color-muted);
+  --stepNumColor: rgb(var(--dodo-rgb-muted));
 }
 .stepContent {
   display: grid;
@@ -201,13 +201,13 @@ function clickStep(index: number) {
   align-self: center;
 }
 .stepCompleted {
-  --stepNumColor: var(--dodo-color-success);
+  --stepNumColor: rgb(var(--dodo-rgb-success));
 }
 .stepActive {
-  --stepNumColor: var(--dodo-color-info);
+  --stepNumColor: rgb(var(--dodo-rgb-info));
 }
 .stepInvalid {
-  --stepNumColor: var(--dodo-color-danger);
+  --stepNumColor: rgb(var(--dodo-rgb-danger));
 }
 .progressBar {
   width: 0;
