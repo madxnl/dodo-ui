@@ -98,5 +98,5 @@ export function parseColor(hex: string) {
 }
 
 export function useSpacing(name: Spacing) {
-  return `var(--dodo-gap-${name})`
+  return [name].flat().map(n => `var(--dodo-gap-${n})`).join(' ')
 }
