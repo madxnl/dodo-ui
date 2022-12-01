@@ -91,7 +91,7 @@ exports[`Show more 1`] = `
     </tr>
     <!--v-if-->
     <tr class=\\"_showMore_9c1ce1\\">
-      <td colspan=\\"999\\"><button style=\\"--bnt-rgb: 58,134,255;\\" type=\\"button\\" class=\\"_Button_962483 _text_962483 _loading_962483\\">
+      <td colspan=\\"999\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_962483 _text_962483 _loading_962483\\">
           <div class=\\"_content_962483\\">Show more results</div>
           <div class=\\"_Spinner_b556f8 _spinner_962483\\"><svg style=\\"\\" viewBox=\\"0 0 18 18\\">
               <path stroke=\\"currentColor\\" fill=\\"none\\" d=\\"M 9 1 A 8 8 0 0 1 17 9\\" stroke-width=\\"2\\"></path>
