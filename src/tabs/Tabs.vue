@@ -2,7 +2,7 @@
   <Column :class="$style.Tabs">
     <Row gap="4">
       <div
-        v-for="tab in tabs" :key="keyFor(tab)"
+        v-for="tab,i in tabs" :key="keyFor(tab)"
         :class="[
           $style.tab,
           current === keyFor(tab) && $style.active,
@@ -10,7 +10,11 @@
         ]"
         @click="current=keyFor(tab)"
       >
-        <Text h6 color="inherit">{{ tab.name }}</Text>
+        <Text h6 color="inherit">
+          <slot :name="'tab-title'" :i="i" :tab="tab">
+            {{ tab.name }}
+          </slot>
+        </Text>
       </div>
     </Row>
     <template v-if="currentTab">
