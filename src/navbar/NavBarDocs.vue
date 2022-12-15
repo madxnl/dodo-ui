@@ -13,7 +13,7 @@ import { DOCGEN as doc } from './NavBar.vue'
 
 /* eslint-disable no-console */
 const navigate = () => { console.log('navigate') }
-const link = { navigate, isActive: false }
+const link = { navigate, isActive: { value: true } }
 
 const setup = () => ({ image, link })
 

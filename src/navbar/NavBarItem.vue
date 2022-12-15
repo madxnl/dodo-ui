@@ -5,7 +5,7 @@
         ref="el"
         :class="[
           $style.NavBarItem,
-          (active || link?.isActive) && $style.active,
+          (active || link?.isActive.value) && $style.active,
           important && $style.important,
           collapsed && $style.collapsed,
         ]"
@@ -27,7 +27,7 @@
   </Tooltip>
 </template>
 <script lang="ts" setup>
-import { computed, inject, onMounted, ref, useSlots } from 'vue'
+import { computed, ComputedRef, inject, onMounted, ref, useSlots } from 'vue'
 import { Dropdown, Icon, IconName, Text, Tooltip } from '..'
 import { navBarServiceKey } from '../composables/composables'
 import { useTheme } from '../theme'
@@ -36,7 +36,7 @@ const props = defineProps<{
   text: string
   /** Secondary line of text */
   link?: {
-    isActive: boolean
+    isActive: ComputedRef<boolean>
     navigate: () => Promise<void>
   }
   /** Secondary line of text */
