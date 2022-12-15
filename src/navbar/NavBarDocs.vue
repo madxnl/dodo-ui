@@ -14,8 +14,47 @@ import { DOCGEN as doc } from './NavBar.vue'
 const setup = () => ({ image })
 
 const template = `
-<div style="min-height:400px;display:grid;">
-  <NavBar>
+<div style="min-height:500px;display:grid;">
+  <NavBar :items="[
+    {
+      text: 'Organisation Name',
+      textSecondary: 'User Name',
+      position: 'header',
+      key: 'organisation',
+      menu: [
+        {
+          text: 'Organisation Name',
+          secondaryText: 'User Name',
+          key: 'menu-organisation',
+        },
+        { separator: true },
+        {
+          text: 'Sign out'
+        },
+      ]
+    },
+    {
+      text: 'Search',
+      icon: 'search',
+      active: true,
+    },
+    {
+      text: 'Profile',
+      icon: 'person',
+    },
+    {
+      text: 'Help',
+      icon: 'help',
+      position: 'bottom',
+    },
+  ]">
+    <template #organisation-icon>
+      <img :src="image">
+    </template>
+    <template #menu-organisation-icon>
+      <img :src="image">
+    </template>
+
     <template #navbar-header>
       <NavBarItem text="Organisation Name Here" text-secondary="User Name" important>
         <template #icon><img :src="image"></template>

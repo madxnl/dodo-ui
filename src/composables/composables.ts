@@ -1,4 +1,5 @@
 import { computed, ComputedRef, InjectionKey, onBeforeUnmount, onMounted, Ref, ref, watch, watchEffect } from 'vue'
+import { useTheme } from '../theme'
 
 export const navBarServiceKey: InjectionKey<{
   collapsed: ComputedRef<boolean>
@@ -31,6 +32,36 @@ export function useElementSize(el: Ref<Element|undefined>) {
     observer.disconnect()
   })
   return { width, height, observer }
+}
+
+export function useScreenSize() {
+  const theme = useTheme()
+  const small = theme.vars['breakpoint-small']
+  const large = theme.vars['breakpoint-large']
+  const width = ref(window.innerWidth)
+  const height = ref(window.innerHeight)
+  const screenSmall = computed(() => width.value < small)
+  const screenMedium = computed(() => width.value >= small && width.value < large)
+  const screenLarge = computed(() => width.value >= large)
+
+  function onResize() {
+    width.value = window.innerWidth
+    height.value = window.innerHeight
+  }
+
+  onMounted(() => {
+    window.addEventListener('resize', onResize, { passive: true })
+  })
+
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', onResize)
+  })
+
+  return {
+    screenSmall,
+    screenMedium,
+    screenLarge,
+  }
 }
 
 export function useSessionStoredRef<T>(key: string, initialValue: T) {

@@ -1,11 +1,15 @@
 <template>
-  <Tooltip :text="text" :disabled="!collapsed" side="right">
+  <Tooltip
+    :text="text" :disabled="disableTooltip || !collapsed" side="right"
+  >
     <div
+      ref="el"
       :class="[
         $style.NavBarItem,
         active && $style.active,
         important && $style.important,
         collapsed && $style.collapsed,
+        mobileHidden && $style.mobileHidden,
       ]"
     >
       <div v-if="icon || $slots.icon" :class="$style.icon">
@@ -19,7 +23,7 @@
   </Tooltip>
 </template>
 <script lang="ts" setup>
-import { computed, inject } from 'vue'
+import { computed, inject, onMounted, ref } from 'vue'
 import { Icon, IconName, Text, Tooltip } from '..'
 import { navBarServiceKey } from '../composables/composables'
 import { useTheme } from '../theme'
@@ -34,7 +38,15 @@ defineProps<{
   active?: boolean
   /** Important items are always fully opaque */
   important?: boolean
+  mobileHidden?: boolean
 }>()
+
+const el = ref<HTMLElement>()
+const disableTooltip = ref(false)
+
+onMounted(() => {
+  disableTooltip.value = !!el.value!.closest('[data-mobile-nav]')
+})
 
 useTheme()
 
@@ -76,12 +88,12 @@ const collapsed = computed(() => navBar?.collapsed.value)
   justify-content: center;
 }
 .text {
-  font-weight: var(--dodo-weight-bold);
+  font-weight: var(--dodo-weight-bold) !important;
   user-select: none;
 }
 .secondary {
   opacity: 0.5;
-  font-weight: var(--dodo-weight-bold);
+  font-weight: var(--dodo-weight-bold) !important;
 }
 
 .active,
@@ -89,4 +101,17 @@ const collapsed = computed(() => navBar?.collapsed.value)
   opacity: 1;
 }
 
+[data-mobile-nav] .NavBarItem {
+  flex-flow: column;
+  gap: 0;
+}
+[data-mobile-nav] .active::before {
+  display: none;
+}
+[data-mobile-nav] .mobileHidden {
+  display: none;
+}
+[data-mobile-nav] .textwrap {
+  display: none;
+}
 </style>

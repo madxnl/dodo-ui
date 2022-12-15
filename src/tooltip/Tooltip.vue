@@ -1,5 +1,5 @@
 <template>
-  <div ref="trigger" :class="$style.trigger" @mouseenter="activate" @mouseleave="deactivate">
+  <div ref="trigger" :class="$style.trigger" @mouseover="activate" @mouseleave="deactivate">
     <slot />
     <teleport v-if="active" to="body">
       <div ref="tooltip" :class="$style.Tooltip" :style="position">

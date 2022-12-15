@@ -88,7 +88,7 @@ export default {
   border: 0;
   cursor: pointer;
   font: var(--dodo-font-base);
-  /* font-weight: var(--dodo-font-weight); */
+  font-weight: var(--dodo-weight-bold);
   background: rgb(var(--dodo-rgb-background));
   color: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));
   border-radius: 4px;

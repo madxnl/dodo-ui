@@ -5,6 +5,9 @@ const createTheme = () => reactive({
   iconWeight: '300' as '100'|'200'|'300'|'400'|'500'|'600'|'700',
 
   vars: {
+    'breakpoint-small': 600,
+    'breakpoint-large': 1200,
+
     'gap-0': '0px',
     'gap-1': '4px',
     'gap-2': '8px',
