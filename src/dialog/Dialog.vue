@@ -40,14 +40,15 @@ watchEffect(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 32px;
+  justify-content: stretch;
+  overflow: auto;
 }
 .window {
   background: white;
   border-radius: 4px;
   width: 500px;
-  /* min-height: 160px; */
+  max-width: 100%;
   box-shadow: var(--shadow-5);
 }
 

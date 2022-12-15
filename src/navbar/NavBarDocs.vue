@@ -11,7 +11,11 @@ import { DocsComponentSection } from '../docs'
 // @ts-ignore
 import { DOCGEN as doc } from './NavBar.vue'
 
-const setup = () => ({ image })
+/* eslint-disable no-console */
+const navigate = () => { console.log('navigate') }
+const link = { navigate, isActive: false }
+
+const setup = () => ({ image, link })
 
 const template = `
 <div style="min-height:500px;display:grid;">
@@ -26,20 +30,21 @@ const template = `
     <template #navbar-header>
       <NavBarItem text="Organisation Name Here" text-secondary="User Name" important>
         <template #icon><img :src="image"></template>
+
+        <template #submenu>
+          <DropdownItem>
+            Account settings
+          </DropdownItem>
+        </template>
       </NavBarItem>
     </template>
 
-    <NavBarItem text="Search" icon="search" active />
+    <NavBarItem text="Search" icon="search" :link="link" />
     <NavBarItem text="Profile" icon="person" />
 
     <template #navbar-footer="{ inMobileBar }">
       <NavBarItem text="Help" icon="help" v-if="!inMobileBar" />
     </template>
-
-    <!-- with vue-router: -->
-    <!-- <RouterLink v-slot="link" :to="{ name: 'NavBar' }">
-      <NavBarItem text="About" icon="info" :active="link.isActive" />
-    </RouterLink> -->
 
     <template #main>
       <!-- main page content here -->

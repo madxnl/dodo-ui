@@ -90,7 +90,6 @@ function updatePositioning() {
   const W = document.body.clientWidth
   const H = document.body.clientHeight
   const dropdownAbove = Math.min(contentEl.clientHeight, top, 500) > H - bottom
-  // const rightAligned = Math.min(contentEl.clientWidth, left) > W - left
   const maxW = Math.min(W - left - margin, 500)
   let styles = `min-width: ${width}px;`
   styles += `left: ${left}px; max-width: ${maxW}px;`

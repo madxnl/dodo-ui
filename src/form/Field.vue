@@ -60,6 +60,7 @@ useTheme()
   flex-grow: 1;
   padding: 0 2px;
   min-width: 0;
+  width: 100%;
 }
 .disabled {
   opacity: .5;

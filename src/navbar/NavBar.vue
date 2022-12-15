@@ -3,9 +3,13 @@
     :class="[
       $style.root,
       collapsed && $style.collapsed,
+      mobileToggle && $style.mobileToggle,
       renderMobile && $style.mobileMenu,
     ]"
+    @click.self="clickRoot"
   >
+    <div v-if="mobileToggle" :class="$style.backdrop" @click="mobileToggle=false" />
+
     <div :class="$style.NavBar">
       <div v-if="$slots['navbar-header']" :class="$style.header">
         <div>
@@ -13,13 +17,14 @@
           <slot name="navbar-header" />
         </div>
 
-        <Button
-          v-if="renderMobile" variant="text" square color="background"
-          style="margin-right:8px"
-          @click="collapsed=true"
-        >
-          <Icon name="close" />
-        </Button>
+        <div style="margin-right:8px">
+          <Button
+            v-if="renderMobile" variant="text" square color="background"
+            @click="mobileToggle=false"
+          >
+            <Icon name="close" />
+          </Button>
+        </div>
       </div>
 
       <div :class="$style.middle">
@@ -50,31 +55,17 @@
         <slot :in-mobile-bar="true" />
         <slot :in-mobile-bar="true" name="navbar-footer" />
 
-        <NavBarItem text="Menu" icon="menu" @click="collapsed=!collapsed" />
+        <NavBarItem text="Menu" icon="menu" @click="mobileToggle=!mobileToggle" />
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, provide } from 'vue'
+import { computed, provide, ref } from 'vue'
 import { Button, Column, Icon } from '..'
 import { navBarServiceKey, useScreenSize, useSessionStoredRef } from '../composables/composables'
 import { useTheme } from '../theme'
 import NavBarItem from './NavBarItem.vue'
-
-// import type { useLink } from 'vue-router'
-// export interface NavItem {
-//   text: string
-//   textSecondary?: string
-//   link?: ReturnType<typeof useLink>
-//   icon?: IconName
-//   key?: string
-//   active?: boolean
-//   href?: string
-//   onClick?: () => void
-//   position?: 'header'|'bottom'
-//   shown?: boolean
-// }
 
 const props = defineProps<{
   // items: NavItem[]
@@ -86,9 +77,16 @@ useTheme()
 
 const { screenLarge } = useScreenSize()
 const collapsed = useSessionStoredRef<boolean|null>('NavBar-collapse', null)
+const mobileToggle = ref(false)
 const renderMobile = computed(() => props.mobile || !screenLarge.value)
 
-provide(navBarServiceKey, { collapsed })
+provide(navBarServiceKey, { collapsed, renderMobile, mobileToggle })
+
+function clickRoot() {
+  if (renderMobile.value) {
+    mobileToggle.value = false
+  }
+}
 
 </script>
 <style module>
@@ -143,15 +141,21 @@ provide(navBarServiceKey, { collapsed })
   align-content: stretch;
 }
 
+.backdrop {
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  z-index: 40;
+}
 .mobileMenu .NavBar {
   position: absolute;
   left: 0; top: 0; bottom: 0;
   z-index: 50;
   width: 100%;
-  max-width: 300px;
-}
-.mobileMenu.collapsed .NavBar {
   max-width: 0;
+}
+.mobileMenu.mobileToggle .NavBar {
+  max-width: 300px;
 }
 .mobileNav {
   display: flex;

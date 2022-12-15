@@ -1,8 +1,10 @@
-import { computed, ComputedRef, InjectionKey, onBeforeUnmount, onMounted, Ref, ref, watch, watchEffect } from 'vue'
+import { computed, InjectionKey, onBeforeUnmount, onMounted, Ref, ref, watch, watchEffect } from 'vue'
 import { useTheme } from '../theme'
 
 export const navBarServiceKey: InjectionKey<{
-  collapsed: ComputedRef<boolean>
+  collapsed: Ref<boolean|null>
+  renderMobile: Ref<boolean>
+  mobileToggle: Ref<boolean>
 }> = Symbol('NavBarService')
 
 export const dropdownServiceKey: InjectionKey<{

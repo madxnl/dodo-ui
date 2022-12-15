@@ -1,34 +1,44 @@
 <template>
-  <Tooltip
-    :text="text" :disabled="disableTooltip || !collapsed" side="right"
-  >
-    <div
-      ref="el"
-      :class="[
-        $style.NavBarItem,
-        active && $style.active,
-        important && $style.important,
-        collapsed && $style.collapsed,
-      ]"
-    >
-      <div v-if="icon || $slots.icon" :class="$style.icon">
-        <slot name="icon"><Icon :name="icon!" /></slot>
+  <Tooltip :text="text" :disabled="disableTooltip" side="right">
+    <component :is="$slots.submenu ? Dropdown : 'div'">
+      <div
+        ref="el"
+        :class="[
+          $style.NavBarItem,
+          (active || link?.isActive) && $style.active,
+          important && $style.important,
+          collapsed && $style.collapsed,
+        ]"
+        @click="onClick"
+      >
+        <div v-if="icon || $slots.icon" :class="$style.icon">
+          <slot name="icon"><Icon :name="icon!" /></slot>
+        </div>
+        <div :class="$style.textwrap">
+          <Text :class="$style.text" nowrap color="background">{{ text }}</Text>
+          <Text v-if="textSecondary" :class="$style.secondary" nowrap color="background">{{ textSecondary }}</Text>
+        </div>
       </div>
-      <div :class="$style.textwrap">
-        <Text :class="$style.text" nowrap color="background">{{ text }}</Text>
-        <Text v-if="textSecondary" :class="$style.secondary" nowrap color="background">{{ textSecondary }}</Text>
-      </div>
-    </div>
+
+      <template #dropdown>
+        <slot name="submenu" />
+      </template>
+    </component>
   </Tooltip>
 </template>
 <script lang="ts" setup>
-import { computed, inject, onMounted, ref } from 'vue'
-import { Icon, IconName, Text, Tooltip } from '..'
+import { computed, inject, onMounted, ref, useSlots } from 'vue'
+import { Dropdown, Icon, IconName, Text, Tooltip } from '..'
 import { navBarServiceKey } from '../composables/composables'
 import { useTheme } from '../theme'
 
-defineProps<{
+const props = defineProps<{
   text: string
+  /** Secondary line of text */
+  link?: {
+    isActive: boolean
+    navigate: () => Promise<void>
+  }
   /** Secondary line of text */
   textSecondary?: string
   /** Icon name (or use 'icon' slot) */
@@ -39,17 +49,32 @@ defineProps<{
   important?: boolean
 }>()
 
+useTheme()
+
+const slots = useSlots()
 const el = ref<HTMLElement>()
-const disableTooltip = ref(false)
+const isMobileNav = ref(false)
 
 onMounted(() => {
-  disableTooltip.value = !!el.value!.closest('[data-mobile-nav]')
+  isMobileNav.value = !!el.value!.closest('[data-mobile-nav]')
 })
-
-useTheme()
 
 const navBar = inject(navBarServiceKey)
 const collapsed = computed(() => navBar?.collapsed.value)
+const renderMobile = computed(() => navBar?.renderMobile.value)
+
+const disableTooltip = computed(() => {
+  return renderMobile.value || !collapsed.value
+})
+
+async function onClick(e: Event) {
+  if (navBar && !slots.submenu) {
+    navBar.mobileToggle.value = false
+  }
+  if (props.link) {
+    await props.link.navigate()
+  }
+}
 </script>
 
 <style module>
