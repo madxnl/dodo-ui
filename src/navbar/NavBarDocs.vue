@@ -15,39 +15,7 @@ const setup = () => ({ image })
 
 const template = `
 <div style="min-height:500px;display:grid;">
-  <NavBar :items="[
-    {
-      text: 'Organisation Name',
-      textSecondary: 'User Name',
-      position: 'header',
-      key: 'organisation',
-      menu: [
-        {
-          text: 'Organisation Name',
-          secondaryText: 'User Name',
-          key: 'menu-organisation',
-        },
-        { separator: true },
-        {
-          text: 'Sign out'
-        },
-      ]
-    },
-    {
-      text: 'Search',
-      icon: 'search',
-      active: true,
-    },
-    {
-      text: 'Profile',
-      icon: 'person',
-    },
-    {
-      text: 'Help',
-      icon: 'help',
-      position: 'bottom',
-    },
-  ]">
+  <NavBar>
     <template #organisation-icon>
       <img :src="image">
     </template>
@@ -64,8 +32,8 @@ const template = `
     <NavBarItem text="Search" icon="search" active />
     <NavBarItem text="Profile" icon="person" />
 
-    <template #navbar-footer>
-      <NavBarItem text="Help" icon="help" />
+    <template #navbar-footer="{ inMobileBar }">
+      <NavBarItem text="Help" icon="help" v-if="!inMobileBar" />
     </template>
 
     <!-- with vue-router: -->

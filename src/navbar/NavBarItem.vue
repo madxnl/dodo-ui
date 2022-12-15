@@ -9,7 +9,6 @@
         active && $style.active,
         important && $style.important,
         collapsed && $style.collapsed,
-        mobileHidden && $style.mobileHidden,
       ]"
     >
       <div v-if="icon || $slots.icon" :class="$style.icon">
@@ -38,7 +37,6 @@ defineProps<{
   active?: boolean
   /** Important items are always fully opaque */
   important?: boolean
-  mobileHidden?: boolean
 }>()
 
 const el = ref<HTMLElement>()
@@ -106,9 +104,6 @@ const collapsed = computed(() => navBar?.collapsed.value)
   gap: 0;
 }
 [data-mobile-nav] .active::before {
-  display: none;
-}
-[data-mobile-nav] .mobileHidden {
   display: none;
 }
 [data-mobile-nav] .textwrap {

@@ -47,8 +47,8 @@
       </Column>
 
       <div v-if="renderMobile" :class="$style.mobileNav" data-mobile-nav>
-        <slot />
-        <slot name="navbar-footer" />
+        <slot :in-mobile-bar="true" />
+        <slot :in-mobile-bar="true" name="navbar-footer" />
 
         <NavBarItem text="Menu" icon="menu" @click="collapsed=!collapsed" />
       </div>
