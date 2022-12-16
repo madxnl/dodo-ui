@@ -1,17 +1,26 @@
 
 <template>
-  <div :class="$style.FluidGrid" :style="css"><slot /></div>
+  <div
+    ref="el"
+    :class="[
+      $style.FluidGrid,
+      oneColumn && $style.oneColumn,
+    ]"
+    :style="css"
+  >
+    <slot />
+  </div>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { Spacing, useSpacing, useTheme } from '../theme'
 
 const props = defineProps<{
   /**
-   * Desired maximum size for columns (eg "300px")
+   * Desired maximum size in pixels for columns (eg 300)
    * @example grow
    */
-  columnSize: string
+  columnSize: number
   /**
    * Add spacing between child elements
    * @example gap="2"
@@ -37,9 +46,29 @@ const props = defineProps<{
 
 useTheme()
 
+const el = ref<HTMLElement>()
+const size = ref(99999)
+
+const observe = new ResizeObserver(() => {
+  size.value = el.value!.clientWidth
+})
+
+onMounted(() => {
+  observe.observe(el.value!)
+})
+
+onUnmounted(() => {
+  observe.disconnect()
+})
+
+const oneColumn = computed(() => {
+  const q = props.columnSize
+  return q >= size.value
+})
+
 const css = computed(() => {
-  const mode = props.autoFill ? 'auto-fill' : 'auto-fit'
-  let s = `grid-template-columns:repeat(${mode},minmax(${props.columnSize},1fr));`
+  let s = `--fluidgrid-size:${props.columnSize}px;`
+  if (props.autoFill) s += '--fluidgrid-mode:auto-fill;'
   if (props.gap) s += `gap:${useSpacing(props.gap)};`
   if (props.padding) s += `padding:${useSpacing(props.padding)};`
   return s
@@ -50,5 +79,11 @@ const css = computed(() => {
   display: grid;
   gap: var(--dodo-gap-4);
   align-items: start;
+  grid-template-columns:repeat(
+    var(--fluidgrid-mode,auto-fit),
+    minmax(var(--fluidgrid-size),1fr));
+}
+.oneColumn {
+  grid-template-columns:1fr;
 }
 </style>

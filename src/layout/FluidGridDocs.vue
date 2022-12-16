@@ -14,13 +14,13 @@ import { DOCGEN as doc } from './FluidGrid.vue'
 const setup = () => ({ imgUrl })
 
 const template = `
-<FluidGrid column-size="150px">
+<FluidGrid :column-size="650">
   <template v-for="i in 7" :key="i">
     <Row style="background:gold" padding="4" :style="\`height:\${i*10}px\`"/>
   </template>
 </FluidGrid>
 <br>
-<FluidGrid column-size="250px">
+<FluidGrid :column-size="250">
   <template v-for="i in 7" :key="i">
     <Row style="background:gold" padding="4" :style="\`height:\${i*10}px\`"/>
   </template>
