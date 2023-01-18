@@ -59,6 +59,7 @@ span.Icon {
   user-select: none;
   vertical-align: -25%;
   overflow: hidden;
+  flex-grow: 0;
 }
 .Icon.fill {
   font-variation-settings: 'FILL' 1;

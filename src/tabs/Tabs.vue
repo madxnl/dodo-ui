@@ -1,31 +1,29 @@
 <template>
-  <Column :class="$style.Tabs">
-    <Row gap="4">
+  <div :class="$style.Tabs" class="d-column">
+    <div class="d-row d-gap-4">
       <div
         v-for="tab,i in tabs" :key="keyFor(tab)"
         :class="[
+          'd-h6',
           $style.tab,
           current === keyFor(tab) && $style.active,
           tab.disabled && $style.disabled
         ]"
         @click="current=keyFor(tab)"
       >
-        <Text h6 color="inherit">
-          <slot :name="'tab-title'" :i="i" :tab="tab">
-            {{ tab.name }}
-          </slot>
-        </Text>
+        <slot :name="'tab-title'" :i="i" :tab="tab">
+          {{ tab.name }}
+        </slot>
       </div>
-    </Row>
+    </div>
     <template v-if="currentTab">
       <slot :name="keyFor(currentTab)" />
     </template>
-  </Column>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { computed, ref, watch, watchEffect } from 'vue'
-import { Column, Row, Text } from '..'
 
 export interface Tab {
   name: string

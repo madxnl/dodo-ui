@@ -12,5 +12,5 @@
   </Text>
 </template>
 <script lang="ts" setup>
-import { Text } from '..'
+import { Text } from '../..'
 </script>

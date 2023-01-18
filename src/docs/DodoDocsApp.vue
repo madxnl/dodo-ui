@@ -4,7 +4,10 @@
 <script setup lang="ts">
 import { DefineComponent } from 'vue'
 import DocumentationPage from './DocumentationPage.vue'
-import Installation from './Installation.vue'
+import Color from './guide/ColorGuide.vue'
+import Installation from './guide/Installation.vue'
+import Layout from './guide/LayoutGuide.vue'
+import Text from './guide/TextGuide.vue'
 
 const componentDocs = import.meta.glob('../**/*Docs.vue', { eager: true })
 
@@ -17,7 +20,12 @@ const componentPages = Object.entries(componentDocs).map(([path, module]) => {
 
 const chapters = [{
   title: 'Guide',
-  pages: [{ title: 'Installation', component: Installation as DefineComponent }],
+  pages: [
+    { title: 'Installation', component: Installation as DefineComponent },
+    { title: 'Layout', component: Layout as DefineComponent },
+    { title: 'Text', component: Text as DefineComponent },
+    { title: 'Color', component: Color as DefineComponent },
+  ],
 }, {
   title: 'Components',
   pages: componentPages,
