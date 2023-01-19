@@ -120,7 +120,7 @@ function getLayoutCSS(theme: Theme) {
   addClass('grow', 'flex-grow:1')
   addClass('wrap', 'flex-wrap:wrap')
   const addClasses = (prop: string, prefix: string, values: string) => values.split(',').forEach(value => {
-    const key = value.replaceAll(' ', '-')
+    const key = value.replace(/ /g, '-')
     addClass(`${prefix}-${key}`, `${prop}:${value}`)
   })
   addClasses('justify-content', 'justify', 'start,end,center,space-between,space-around,space-evenly')
