@@ -10,12 +10,12 @@
 
     <tr><td class="d-code">d-grow</td><td>Allow a child to expand inside flex-box containers</td></tr>
     <tr><td class="d-code">d-wrap</td><td>Set flex container children to wrap if needed</td></tr>
-    <tr><td class="d-code">d-justify-start|end|center|space-between|space-around|space-evenly</td><td>Set justify-content property value of flex container</td></tr>
-    <tr><td class="d-code">d-justify-items-start|end|center|auto|stretch|left|right</td><td>Set justify-items</td></tr>
-    <tr><td class="d-code">d-justify-self-start|end|center|auto|normal|stretch|left|right|baseline|safe-center</td><td>Set justify-self on child of flex container</td></tr>
-    <tr><td class="d-code">d-align-content-start|end|center|space-between|space-around|stretch</td><td>Set align-content of flex children</td></tr>
-    <tr><td class="d-code">d-align-items-start|end|center|stretch|baseline|safe-center</td><td>Set align-items</td></tr>
-    <tr><td class="d-code">d-align-self-start|end|center|baseline|stretch</td><td>Set align-self of flex child</td></tr>
+    <tr><td class="d-code">d-justify-&lt;value&gt;</td><td>Set justify-content property value of flex container</td></tr>
+    <tr><td class="d-code">d-align-&lt;value&gt;</td><td>Set align-items</td></tr>
+    <!-- <tr><td class="d-code">d-align-self-&lt;value&gt;</td><td>Set align-self of flex child</td></tr> -->
+    <!-- <tr><td class="d-code">d-justify-items-&lt;value&gt;</td><td>Set justify-items (eg d-justify-items-end)</td></tr> -->
+    <!-- <tr><td class="d-code">d-justify-self-&lt;value&gt;</td><td>Set justify-self on child of flex container</td></tr> -->
+    <!-- <tr><td class="d-code">d-align-content-&lt;value&gt;</td><td>Set align-content of flex children</td></tr> -->
   </BaseTable>
   <p class="d-text">
     Gap classes control spacing between child elements, and padding classes control spacing around the element itself:
