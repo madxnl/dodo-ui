@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { App, ComponentOptions, computed, ref, watchEffect } from 'vue'
 import * as components from '..'
-import { Column, Icon } from '..'
+import { Column, crashPlugin, Icon } from '..'
 import SyntaxHighlight from './SyntaxHighlight.vue'
 // @ts-ignore
 import { createApp } from 'vue/dist/vue.esm-bundler'
@@ -48,6 +48,7 @@ watchEffect(() => {
     template: props.template,
     ...props.options,
   })
+  app.use(crashPlugin({ router: null }))
   app.mount(el.value)
 })
 

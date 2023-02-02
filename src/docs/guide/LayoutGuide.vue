@@ -6,8 +6,6 @@
     <tr><th>Class</th><th>Description</th></tr>
     <tr><td class="d-code">d-row</td><td>Flexible row container element</td></tr>
     <tr><td class="d-code">d-column</td><td>Vertical (column) container element</td></tr>
-    <tr><td class="d-code">d-column</td><td>Vertical (column) container element</td></tr>
-
     <tr><td class="d-code">d-grow</td><td>Allow a child to expand inside flex-box containers</td></tr>
     <tr><td class="d-code">d-wrap</td><td>Set flex container children to wrap if needed</td></tr>
     <tr><td class="d-code">d-justify-&lt;value&gt;</td><td>Set justify-content property value of flex container</td></tr>

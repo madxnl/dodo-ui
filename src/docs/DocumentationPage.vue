@@ -1,36 +1,34 @@
 <template>
-  <CrashDialog>
-    <div :class="$style.NavLayout">
-      <Column gap="4" padding="4" :class="$style.bar" align="start">
-        <Column v-for="(chapter, i) in chapters" :key="i" gap="0">
-          <span v-if="chapter.title" :class="$style.chapterTitle">
-            {{ chapter.title }}
-          </span>
+  <div :class="$style.NavLayout">
+    <Column gap="4" padding="4" :class="$style.bar" align="start">
+      <Column v-for="(chapter, i) in chapters" :key="i" gap="0">
+        <span v-if="chapter.title" :class="$style.chapterTitle">
+          {{ chapter.title }}
+        </span>
 
-          <template v-for="page in chapter.pages" :key="page.title">
-            <a :href="`#${page.title}`" :class="[$style.pageLink, isActive(page.title) && $style.linkActive]">
-              {{ page.title }}
-            </a>
-          </template>
-        </Column>
+        <template v-for="page in chapter.pages" :key="page.title">
+          <a :href="`#${page.title}`" :class="[$style.pageLink, isActive(page.title) && $style.linkActive]">
+            {{ page.title }}
+          </a>
+        </template>
       </Column>
-      <ScrollContainer :class="$style.scroll">
-        <Column :class="$style.content">
-          <template v-for="chapter in chapters">
-            <Column v-for="page in chapter.pages" :id="page.title" :key="page.title" padding="6" gap="8">
-              <Text h2>{{ page.title }}</Text>
-              <component :is="page.component" />
-              <br>
-            </Column>
-          </template>
-        </Column>
-      </ScrollContainer>
-    </div>
-  </CrashDialog>
+    </Column>
+    <ScrollContainer :class="$style.scroll">
+      <Column :class="$style.content">
+        <template v-for="chapter in chapters">
+          <Column v-for="page in chapter.pages" :id="page.title" :key="page.title" padding="6" gap="8">
+            <Text h2>{{ page.title }}</Text>
+            <component :is="page.component" />
+            <br>
+          </Column>
+        </template>
+      </Column>
+    </ScrollContainer>
+  </div>
 </template>
 <script lang="ts" setup>
 import { DefineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
-import { Column, CrashDialog, ScrollContainer, Text } from '..'
+import { Column, ScrollContainer, Text } from '..'
 import { useTheme } from '../theme'
 
 useTheme()

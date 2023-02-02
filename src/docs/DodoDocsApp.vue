@@ -1,8 +1,10 @@
 <template>
   <DocumentationPage :chapters="chapters" />
+  <CrashDialog />
 </template>
 <script setup lang="ts">
 import { DefineComponent } from 'vue'
+import { CrashDialog } from '..'
 import DocumentationPage from './DocumentationPage.vue'
 import Color from './guide/ColorGuide.vue'
 import Installation from './guide/Installation.vue'
