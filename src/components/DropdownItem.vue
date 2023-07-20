@@ -2,28 +2,24 @@
   <hr v-if="separator" :class="$style.separator">
   <div
     v-bind="$attrs"
-    :class="[
-      $style.DropdownItem,
-      active && $style.active,
-      emphasize && $style.emphasize,
-    ]"
+    :class="[$style.DropdownItem, active && $style.active, emphasize && $style.emphasize]"
     @click="click"
   >
     <slot name="before" />
-    <Column gap="0" style="flex:1">
-      <Text nowrap :class="$style.text">
+    <Column gap="0" style="flex: 1">
+      <p data-nowrap :class="$style.text">
         <slot />
-      </Text>
-      <Text v-if="$slots['text-secondary']" nowrap variant="muted">
+      </p>
+      <p v-if="$slots['text-secondary']" data-nowrap data-opacity="secondary">
         <slot name="text-secondary" />
-      </Text>
+      </p>
     </Column>
     <slot name="after" />
   </div>
 </template>
 <script lang="ts" setup>
 import { inject } from 'vue'
-import { Column, Text, useThemeOld } from '..'
+import { Column, useTheme } from '..'
 import { dropdownServiceKey } from '../composables'
 
 defineProps<{
@@ -35,19 +31,19 @@ defineProps<{
   separator?: boolean
 }>()
 
-useThemeOld()
+useTheme()
 
 const dropdown = inject(dropdownServiceKey)
 
-function click() {
-  dropdown?.toggle(false)
+async function click() {
+  await dropdown?.toggle(false)
 }
 </script>
 
 <style module>
 .DropdownItem {
   padding: var(--dodo-gap-2) var(--dodo-gap-4);
-  transition: all .1s;
+  transition: all 0.1s;
   cursor: pointer;
   display: flex;
   gap: var(--dodo-gap-2);

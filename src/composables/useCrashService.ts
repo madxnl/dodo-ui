@@ -10,13 +10,13 @@ import { Router } from 'vue-router'
 export type CrashService = ReturnType<typeof createCrashService>
 
 export type CrashServiceOptions = {
-  router: Router|null
+  router: Router | null
 }
 
 export const crashServiceKey: InjectionKey<CrashService> = Symbol(createCrashService.name)
 
 function createCrashService(_: CrashServiceOptions) {
-  const currentError = ref(null as unknown|null)
+  const currentError = ref(null as unknown | null)
   const ignoredUntil = ref(0)
   const ignoreDuration = 600 * 1000
 
@@ -29,7 +29,7 @@ function createCrashService(_: CrashServiceOptions) {
     location.reload()
   }
 
-  function handleCrash(err: Error|unknown) {
+  function handleCrash(err: Error | unknown) {
     if (!currentError.value && ignoredUntil.value < Date.now()) {
       /* eslint-disable-next-line no-console */
       console.info(err)
@@ -51,15 +51,15 @@ export function crashPlugin(opts: CrashServiceOptions): Plugin {
       if (errorHandler) return errorHandler(err, instance, info)
     }
 
-    opts.router?.onError(err => {
+    opts.router?.onError((err) => {
       service.handleCrash(err)
     })
 
-    window.addEventListener('unhandledrejection', event => {
+    window.addEventListener('unhandledrejection', (event) => {
       service.handleCrash(event.reason)
     })
 
-    window.addEventListener('error', event => {
+    window.addEventListener('error', (event) => {
       service.handleCrash(event.error)
     })
   }

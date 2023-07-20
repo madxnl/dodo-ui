@@ -35,7 +35,10 @@ watchEffect(() => {
 .Dialog {
   position: fixed;
   z-index: 900;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
@@ -49,7 +52,7 @@ watchEffect(() => {
   border-radius: 4px;
   width: 500px;
   max-width: 100%;
-  box-shadow: var(--shadow-5);
+  box-shadow: var(--dodo-shadow-5);
 }
 
 .Dialog-enter-active,

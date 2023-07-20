@@ -49,6 +49,7 @@ const Colors = ['info', 'success', 'warn', 'danger', 'background', 'foreground',
 export type ColorProp = Color | ThemeColorName
 const spacingValues = [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16] as const
 export type SpacingValue = `${typeof spacingValues[number]}`
+export type GapSize = SpacingValue
 export type Spacing = SpacingValue[]|SpacingValue
 
 const key: InjectionKey<Theme> = Symbol('themeKey')

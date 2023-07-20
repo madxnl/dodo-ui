@@ -1,19 +1,11 @@
 <template>
-  <div
-    ref="el"
-    :class="[
-      $style.trigger,
-      disabled && $style.disabled,
-    ]"
-    v-bind="$attrs"
-    @click.prevent="toggle(!active)"
-  >
+  <div ref="el" :class="[$style.trigger, disabled && $style.disabled]" v-bind="$attrs" @click.prevent="toggle(!active)">
     <slot :is-active="active" />
   </div>
 
   <teleport to="body">
     <div v-if="active" ref="content" :class="$style.Dropdown" :style="dropdownStyles">
-      <Column :class="$style.content" :padding="padding ?? '1'" :gap="gap ?? '0'">
+      <Column :class="$style.content" padding="1" :gap="gap ?? '0'">
         <slot name="dropdown" :toggle="toggle" />
       </Column>
     </div>
@@ -22,16 +14,16 @@
 
 <script lang="ts" setup>
 import { nextTick, onBeforeUnmount, provide, ref, watch } from 'vue'
-import { Column, SpacingValue } from '..'
+import { Column, GapSize } from '..'
 import { dropdownServiceKey } from '../composables'
 
 const props = defineProps<{
   /** Use v-model to modify dropdown state from outside */
   modelValue?: boolean
   /** Change padding around dropdown content */
-  padding?: SpacingValue
+  padding?: GapSize
   /** Change gap between dropdown content */
-  gap?: SpacingValue
+  gap?: GapSize
   /** (temporaily) disable dropdown functionality */
   disabled?: boolean
 }>()
@@ -45,25 +37,31 @@ const dropdownStyles = ref('')
 const content = ref<HTMLElement>()
 const el = ref<HTMLElement>()
 
-watch(() => props.modelValue, modelValue => {
-  toggle(!!modelValue)
-})
+watch(
+  () => props.modelValue,
+  (modelValue) => {
+    toggle(!!modelValue)
+  },
+)
 
 onBeforeUnmount(() => {
   toggle(false)
 })
 
-async function toggle(show: boolean) {
+function toggle(show: boolean) {
   if (active.value === show) return
   if (props.disabled && show) return
   active.value = show
   emit('update:modelValue', show)
   if (show) {
-    await nextTick()
-    updatePositioning()
-    window.addEventListener('click', onWindowEvent, { passive: true, capture: true })
-    window.addEventListener('scroll', onWindowEvent, { passive: true, capture: true })
-    window.addEventListener('resize', onWindowEvent)
+    nextTick()
+      .then(() => {
+        updatePositioning()
+        window.addEventListener('click', onWindowEvent, { passive: true, capture: true })
+        window.addEventListener('scroll', onWindowEvent, { passive: true, capture: true })
+        window.addEventListener('resize', onWindowEvent)
+      })
+      .catch((e) => {})
   } else {
     window.removeEventListener('click', onWindowEvent, { capture: true })
     window.removeEventListener('scroll', onWindowEvent, { capture: true })
@@ -75,7 +73,7 @@ function onWindowEvent(e: Event) {
   // Clicking anywhere outside the dropdown closes it
   if (e.target) {
     const clickOnTrigger = el.value!.contains(e.target as Node)
-    const clickOnDropdown = content.value?.contains(e.target as Node)
+    const clickOnDropdown = content.value!.contains(e.target as Node)
     if (clickOnTrigger || clickOnDropdown) return
   }
   toggle(false)
@@ -84,20 +82,18 @@ function onWindowEvent(e: Event) {
 function updatePositioning() {
   const margin = 24
   const sep = 1
+  const contentEl = content.value!
   const { top, left, bottom, width } = el.value!.getBoundingClientRect()
   const W = document.body.clientWidth
   const H = document.body.clientHeight
-  const contentEl = content.value
+  const dropdownAbove = Math.min(contentEl.clientHeight, top, 500) > H - bottom
+  const maxW = Math.min(W - left - margin, 500)
   let styles = `min-width: ${width}px;`
-  if (contentEl) {
-    const dropdownAbove = Math.min(contentEl.clientHeight, top, 500) > H - bottom
-    const maxW = Math.min(W - left - margin, 500)
-    styles += `left: ${left}px; max-width: ${maxW}px;`
-    if (dropdownAbove) {
-      styles += `bottom: ${H - top - sep}px; max-height: ${top - margin - sep}px;`
-    } else {
-      styles += `top: ${bottom + sep}px; max-height: ${H - bottom - margin - sep}px;`
-    }
+  styles += `left: ${left}px; max-width: ${maxW}px;`
+  if (dropdownAbove) {
+    styles += `bottom: ${H - top - sep}px; max-height: ${top - margin - sep}px;`
+  } else {
+    styles += `top: ${bottom + sep}px; max-height: ${H - bottom - margin - sep}px;`
   }
   // styles += `right: ${W - right}px; max-width: ${right - margin}px;`
   dropdownStyles.value = styles
@@ -115,7 +111,7 @@ provide(dropdownServiceKey, { toggle })
 }
 .trigger:not(.disabled) {
   cursor: pointer;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   min-width: 0;
 }
 .content {

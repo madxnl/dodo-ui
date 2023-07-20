@@ -6,7 +6,7 @@
   </span>
 </template>
 <script lang="ts" setup>
-import { Icon, useThemeOld } from '..'
+import { Icon, useTheme } from '..'
 
 const props = defineProps<{
   modelValue: boolean
@@ -28,24 +28,23 @@ function onChange(e: Event) {
   }
 }
 
-useThemeOld()
-
+useTheme()
 </script>
 <style module>
 .Checkbox {
   cursor: pointer;
-  transition: opacity .1s;
-  opacity: .7;
-  color: rgb(var(--dodo-rgb-foreground));
+  transition: opacity 0.1s;
+  opacity: 0.7;
+  color: var(--dodo-color-foreground);
 }
-.Checkbox input[type=checkbox] {
+.Checkbox input[type='checkbox'] {
   pointer-events: none;
   width: 0;
   height: 0;
   position: fixed;
 }
 .Checkbox:focus-within {
-  outline: 2px solid rgb(var(--dodo-rgb-info));
+  outline: 2px solid var(--dodo-color-info);
   opacity: 1;
 }
 .Checkbox:hover {

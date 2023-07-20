@@ -76,37 +76,22 @@ export function useSessionStoredRef<T>(key: string, initialValue: T) {
   return data
 }
 
-export function useWebFont(opts: { id: string; font: () => string; href: () => string }) {
+export function useWebFont(opts: { weight: string; name: string; href: string }) {
   const isReady = ref(false)
-  const font = computed(opts.font)
-  const href = computed(opts.href)
-  const css = computed(() => `@import url('${href.value}');\n`)
 
-  let style = document.getElementById(opts.id)
-  if (!style) {
-    style = document.createElement('style')
-    style.setAttribute('id', opts.id)
-    document.head.appendChild(style)
-    document.fonts.addEventListener('loadingdone', onFontsLoaded)
-  }
-
-  watchEffect(() => {
-    if (!style!.innerHTML.includes(css.value)) {
-      isReady.value = false
-      style!.innerHTML = css.value + style!.innerHTML
+  onMounted(async () => {
+    const id = `font-${opts.name}-${opts.weight}`
+    let link = document.getElementById(id) as HTMLStyleElement | null
+    if (!link) {
+      link = document.createElement('link')
+      link.setAttribute('href', opts.href)
+      link.setAttribute('rel', 'stylesheet')
+      link.setAttribute('id', id)
+      document.head.appendChild(link)
     }
+    await document.fonts.ready
+    isReady.value = document.fonts.check(`${opts.weight} 1em ${opts.name}`)
   })
 
-  async function onFontsLoaded() {
-    if (style!.innerHTML !== css.value) {
-      style!.innerHTML = css.value
-    }
-    isReady.value = document.fonts.check(font.value)
-  }
-
-  onBeforeUnmount(() => {
-    document.fonts.removeEventListener('loadingdone', onFontsLoaded)
-  })
-
-  return { href, font, isReady }
+  return { isReady }
 }

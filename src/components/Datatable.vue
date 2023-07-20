@@ -2,7 +2,7 @@
   <div :class="[$style.Datatable, contentLoading && $style.loading]">
     <table>
       <tr :class="stickyHeader && $style.stickyHeader">
-        <th v-if="showSelect" style="width:0" scope="col">
+        <th v-if="showSelect" style="width: 0" scope="col">
           <Checkbox
             :indeterminate="visibleSelected.length > 0 && visibleSelected.length < rows.length"
             :model-value="visibleSelected.length > 0 && visibleSelected.length === rows.length"
@@ -11,11 +11,10 @@
         </th>
 
         <th
-          v-for="col in enabledColumns" :key="col.name"
-          scope="col" :class="[
-            canSortCol(col) ? $style.sortable : '',
-            isSortCol(col) && $style.sortActive,
-          ]"
+          v-for="col in enabledColumns"
+          :key="col.name"
+          scope="col"
+          :class="[canSortCol(col) ? $style.sortable : '', isSortCol(col) && $style.sortActive]"
           :style="[alignStyle(col), widthStyle(col)]"
           @click="toggleColumnSort(col)"
         >
@@ -29,10 +28,9 @@
       </tr>
 
       <tr
-        v-for="(row, i) in sortedItems" :key="i" :class="[
-          rowClick && $style.clickableRow,
-          isSelected(row) && $style.rowSelected,
-        ]"
+        v-for="(row, i) in sortedItems"
+        :key="i"
+        :class="[rowClick && $style.clickableRow, isSelected(row) && $style.rowSelected]"
         @click="rowClick && rowClick(row)"
       >
         <td v-if="showSelect">
@@ -46,9 +44,7 @@
       </tr>
 
       <tr v-if="!rows.length" :class="$style.noResults">
-        <td colspan="999">
-          No results
-        </td>
+        <td colspan="999">No results</td>
       </tr>
 
       <tr v-if="rows.length && showMore" :class="$style.showMore">
@@ -70,17 +66,20 @@
 import { computed, ref, VNode, watch, watchEffect } from 'vue'
 import { Button, Checkbox, Icon } from '..'
 
-export interface DatatableColumn<T=object> {
+export interface DatatableColumn<T = object> {
   name: string
-  value?: keyof T|((row: T) => unknown)
-  align?: 'start'|'end'
+  value?: keyof T | ((row: T) => unknown)
+  align?: 'start' | 'end'
   width?: string
   sort?: string
   disabled?: boolean
   slot?: string
 }
 
-export type DatatableSlots<T> = Record<string, (context: { row: T; column: DatatableColumn<T> }) => Array<VNode> | undefined>
+export type DatatableSlots<T> = Record<
+string,
+(context: { row: T; column: DatatableColumn<T> }) => Array<VNode> | undefined
+>
 
 export interface DatatableProps<T> {
   rows: T[]
@@ -93,27 +92,35 @@ export interface DatatableProps<T> {
   showFooter?: boolean
   showMore?: () => Promise<unknown>
   sortValue?: string
-  sortAsync?: (sortBy: string|undefined) => Promise<unknown>
+  sortAsync?: (sortBy: string | undefined) => Promise<unknown>
 }
 
 const props = defineProps<DatatableProps<unknown>>() as DatatableProps<unknown>
 
 const emit = defineEmits<{
   (e: 'update:selection', selection: unknown[]): void
-  (e: 'update:sortValue', order: string|undefined): void
+  (e: 'update:sortValue', order: string | undefined): void
 }>()
 
 const sort = ref<string>()
 const selection = ref<unknown[]>([])
 const sortingAsync = ref(false)
 
-watchEffect(() => { sort.value = props.sortValue })
-watchEffect(() => { selection.value = props.selection ?? [] })
-watch(sort, v => { emit('update:sortValue', v) })
-watch(selection, v => { emit('update:selection', v) })
+watchEffect(() => {
+  sort.value = props.sortValue
+})
+watchEffect(() => {
+  selection.value = props.selection ?? []
+})
+watch(sort, (v) => {
+  emit('update:sortValue', v)
+})
+watch(selection, (v) => {
+  emit('update:selection', v)
+})
 
 const sortReverse = computed(() => sort.value?.startsWith('-'))
-const enabledColumns = computed(() => props.columns.filter(c => !c.disabled))
+const enabledColumns = computed(() => props.columns.filter((c) => !c.disabled))
 const showSelect = computed(() => !!props.selection)
 
 const sortedItems = computed(() => {
@@ -162,7 +169,9 @@ async function toggleColumnSort(col: DatatableColumn) {
   }
   if (props.sortAsync) {
     sortingAsync.value = true
-    await props.sortAsync(sort.value).finally(() => { sortingAsync.value = false })
+    await props.sortAsync(sort.value).finally(() => {
+      sortingAsync.value = false
+    })
   }
 }
 
@@ -173,7 +182,7 @@ function getRowSelectValue(row: any) {
 function toggleSelect(row: unknown) {
   const id = getRowSelectValue(row)
   if (selection.value.includes(id)) {
-    selection.value = selection.value.filter(x => x !== id)
+    selection.value = selection.value.filter((x) => x !== id)
   } else {
     selection.value = selection.value.concat(id)
   }
@@ -193,21 +202,20 @@ function isSelected(row: unknown) {
 
 const visibleSelected = computed(() => {
   if (!showSelect.value) return []
-  return props.rows.filter(r => selection.value.includes(getRowSelectValue(r)))
+  return props.rows.filter((r) => selection.value.includes(getRowSelectValue(r)))
 })
 
 function toggleSelectAll() {
   const allSelected = visibleSelected.value.length === props.rows.length
   selection.value = allSelected ? [] : props.rows.map(getRowSelectValue)
 }
-
 </script>
 
 <style module>
 .Datatable {
   font: var(--dodo-font-base);
-  color: rgb(var(--dodo-rgb-foreground));
-  background: rgb(var(--dodo-rgb-background));
+  color: var(--dodo-color-foreground);
+  background: var(--dodo-color-background);
   display: flex;
   flex-flow: column;
   gap: var(--dodo-gap-4);
@@ -232,14 +240,14 @@ function toggleSelectAll() {
 .sortable {
   cursor: pointer;
   user-select: none;
-  transition: all .1s;
+  transition: all 0.1s;
 }
 .sortIcon {
-  transition: all .1s;
+  transition: all 0.1s;
   opacity: 0;
 }
 .sortable:hover {
-  background: rgba(0,0,0,0.03);
+  background: rgba(0, 0, 0, 0.03);
 }
 .sortable.sortActive .sortIcon {
   opacity: 1;
@@ -258,11 +266,11 @@ function toggleSelectAll() {
   width: 100%;
 }
 .Datatable tr:not(:last-child) {
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .clickableRow:hover {
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .Datatable .rowSelected {
   background: rgba(var(--dodo-rgb-info), 0.3);
@@ -270,8 +278,8 @@ function toggleSelectAll() {
 .stickyHeader,
 .stickyFooter {
   position: sticky;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  background: rgb(var(--dodo-rgb-background));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  background: var(--dodo-color-background);
   z-index: 1;
 }
 .stickyHeader {

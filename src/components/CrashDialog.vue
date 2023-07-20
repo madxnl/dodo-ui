@@ -1,8 +1,8 @@
 <template>
   <Dialog :active="showDialog">
-    <h3 class="d-h3">Something went wrong</h3>
+    <h3>Something went wrong</h3>
     <slot name="body" :error="lastError" :default-text="defaultText">
-      <p class="d-text">
+      <p>
         {{ defaultText }}
       </p>
     </slot>
@@ -15,8 +15,7 @@
 
 <script lang="ts" setup>
 import { computed, ref, watchEffect } from 'vue'
-import { Button, Dialog } from '..'
-import { useCrashService } from './service'
+import { Button, Dialog, useCrashService } from '..'
 
 const service = useCrashService()
 const lastError = computed(() => service.currentError.value)
@@ -29,5 +28,4 @@ const defaultText = `
 watchEffect(() => {
   showDialog.value = !!lastError.value
 })
-
 </script>

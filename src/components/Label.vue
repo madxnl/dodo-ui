@@ -1,21 +1,14 @@
 <template>
-  <label
-    :class="[
-      $style.FormLabel,
-      error && $style.FormLabel_hasError
-    ]"
-    :for="props.for"
-    @change="onchange"
-  >
-    <Text label>{{ text }} {{ error }}</Text>
+  <label :class="[$style.FormLabel, error && $style.FormLabel_hasError]" :for="props.for" @change="onchange">
+    <label>{{ text }} {{ error }}</label>
     <slot />
-    <Text v-if="hint" small>{{ hint }}</Text>
+    <small v-if="hint">{{ hint }}</small>
   </label>
 </template>
 
 <script lang="ts" setup>
 import { computed, inject } from 'vue'
-import { Text, useThemeOld } from '..'
+import { useTheme } from '..'
 import { formServiceKey } from '../composables'
 
 const props = defineProps<{
@@ -31,7 +24,7 @@ const error = computed(() => {
   return form?.errors[props.for!]
 })
 
-useThemeOld()
+useTheme()
 
 async function onchange() {
   if (error.value) {
@@ -52,6 +45,6 @@ async function onchange() {
   text-transform: uppercase;
 }
 .FormLabel_hasError {
-  color: rgb(var(--dodo-rgb-danger));
+  color: var(--dodo-color-danger);
 }
 </style>

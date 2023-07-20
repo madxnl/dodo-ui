@@ -14,7 +14,7 @@ const columns = [
   { name: 'Modified', value: 'modified' },
 ]
 
-const findByText = (w: VueWrapper, s: string) => w.findAll('*').find(w => w.text() === s)!
+const findByText = (w: VueWrapper, s: string) => w.findAll('*').find((w) => w.text() === s)!
 
 test('Column sort', async () => {
   const wrapper = mount(Datatable as any, { props: { columns, rows } })

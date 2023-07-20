@@ -4,9 +4,9 @@
     <teleport v-if="active" to="body">
       <div ref="tooltip" :class="$style.Tooltip" :style="position">
         <div :class="$style.content">
-          <Text :class="$style.text" small>
+          <small :class="$style.text">
             <slot name="tooltip-text">{{ text }}</slot>
-          </Text>
+          </small>
         </div>
       </div>
     </teleport>
@@ -14,12 +14,12 @@
 </template>
 <script lang="ts" setup>
 import { computed, nextTick, onBeforeUnmount, ref, useSlots } from 'vue'
-import { Text, useThemeOld } from '..'
+import { useTheme } from '..'
 
 const props = defineProps<{
   text?: string
   disabled?: boolean
-  side?: 'left'|'right'|'top'|'bottom'
+  side?: 'left' | 'right' | 'top' | 'bottom'
 }>()
 
 const active = ref(false)
@@ -60,8 +60,7 @@ function deactivate() {
   active.value = false
 }
 
-useThemeOld()
-
+useTheme()
 </script>
 <style module>
 .Tooltip {

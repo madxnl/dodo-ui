@@ -1,11 +1,5 @@
 <template>
-  <div
-    :class="[
-      $style.Field,
-      disabled && $style.disabled,
-      button && $style.button,
-    ]"
-  >
+  <div :class="[$style.Field, disabled && $style.disabled, button && $style.button]">
     <slot name="before" />
     <div :class="$style.inner">
       <slot />
@@ -14,15 +8,14 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useThemeOld } from '..'
+import { useTheme } from '..'
 
 defineProps<{
   disabled?: boolean
   button?: boolean
 }>()
 
-useThemeOld()
-
+useTheme()
 </script>
 <style module>
 .Field {
@@ -30,28 +23,28 @@ useThemeOld()
   display: flex;
   align-items: center;
   padding: 2px 6px;
-  box-shadow: 0 1px 2px inset rgba(0,0,0,0.1);
+  box-shadow: 0 1px 2px inset rgba(0, 0, 0, 0.1);
   background: white;
   gap: 4px;
   cursor: text;
-  border: 1px solid rgba(var(--dodo-rgb-foreground),.3);
+  border: 1px solid rgba(var(--dodo-rgb-foreground), 0.3);
   border-radius: 4px;
-  --height: var(--dodo-buttonHeight);
+  --height: var(--dodo-button-height);
   min-height: var(--height);
   font: var(--dodo-font-base);
-  color: rgb(var(--dodo-rgb-foreground));
+  color: var(--dodo-color-foreground);
   box-sizing: border-box;
 }
 .button {
   cursor: pointer;
 }
 .Field:focus-within {
-  border-color: rgb(var(--dodo-rgb-info));
-  outline: 1px solid rgb(var(--dodo-rgb-info));
+  border-color: var(--dodo-color-info);
+  outline: 1px solid var(--dodo-color-info);
 }
-[class$=_hasError] .Field {
-  border-color: rgb(var(--dodo-rgb-danger));
-  color: rgb(var(--dodo-rgb-danger));
+[class$='_hasError'] .Field {
+  border-color: var(--dodo-color-danger);
+  color: var(--dodo-color-danger);
 }
 .inner {
   display: flex;
@@ -63,7 +56,7 @@ useThemeOld()
   width: 100%;
 }
 .disabled {
-  opacity: .5;
+  opacity: 0.5;
   pointer-events: none;
 }
 </style>

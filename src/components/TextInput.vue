@@ -1,11 +1,5 @@
 <template>
-  <Field
-    :class="[
-      $style.TextInput,
-    ]"
-    :disabled="disabled"
-    @click="onClick"
-  >
+  <Field :class="[$style.TextInput]" :disabled="disabled" @click="onClick">
     <!-- @slot Shown before value -->
     <template #before><slot name="before" /></template>
     <component
@@ -18,6 +12,7 @@
       :rows="rows"
       :maxlength="maxlength"
       :type="type"
+      :name="name"
       :tab-index="tabIndex"
       :autofocus="autofocus"
       @input="onChange"
@@ -28,16 +23,17 @@
 </template>
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue'
-import { Field, useThemeOld } from '..'
+import { Field, useTheme } from '..'
 
 const props = defineProps<{
-  modelValue: string|null|undefined
+  modelValue?: string | null
   placeholder?: string
   disabled?: boolean
   rows?: number
   maxlength?: number
   type?: 'search'
   tabIndex?: number
+  name?: string
   autofocus?: boolean
 }>()
 
@@ -61,8 +57,7 @@ watchEffect(() => {
   }
 })
 
-useThemeOld()
-
+useTheme()
 </script>
 <style module>
 .TextInput input,
@@ -73,8 +68,9 @@ useThemeOld()
   outline: none;
   padding: 0;
   flex-grow: 1;
+  min-width: 0;
 }
 .TextInput:focus-within {
-  border-color: rgb(var(--dodo-rgb-info));
+  border-color: var(--dodo-color-info);
 }
 </style>

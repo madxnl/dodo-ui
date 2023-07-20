@@ -9,6 +9,10 @@ export function useTheme() {
     return typeof color === 'string' ? `var(--dodo-rgb-${color})` : color.join(',')
   }
 
+  function colorCss(color: ColorProp) {
+    return typeof color === 'string' ? `var(--dodo-color-${color})` : `rgb(${color.join(',')})`
+  }
+
   function gap(size?: SpacingValue) {
     return size ? `dodo-gap-${size}` : ''
   }
@@ -37,5 +41,5 @@ export function useTheme() {
     return grow ? 'dodo-grow' : ''
   }
 
-  return { colorPropRgb, gap, padding, justify, align, wrap, flex, grow }
+  return { colorCss, colorPropRgb, gap, padding, justify, align, wrap, flex, grow }
 }

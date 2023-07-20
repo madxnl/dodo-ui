@@ -1,12 +1,8 @@
 <template>
-  <form
-    ref="formElem" :class="[
-      $style.Form,
-      steps ? $style.showSteps : '',
-    ]" @submit.prevent="onSubmit"
-  >
+  <form ref="formElem" :class="[$style.Form, steps ? $style.showSteps : '']" @submit.prevent="onSubmit">
     <div
-      v-for="item,i in renderSteps" :key="item ? item.step.name : i"
+      v-for="(item, i) in renderSteps"
+      :key="item ? item.step.name : i"
       :class="[
         $style.step,
         item?.invalid ? $style.stepInvalid : '',
@@ -20,9 +16,9 @@
         <div :class="$style.stepNumber">
           <Icon v-if="item.invalid" name="close" />
           <Icon v-else-if="item.completed" name="check" />
-          <Text v-else h4 style="color:inherit">{{ i + 1 }}</Text>
+          <h4 v-else style="color: inherit">{{ i + 1 }}</h4>
         </div>
-        <Text h4 :class="$style.stepName">{{ item.step.name }}</Text>
+        <h4 :class="$style.stepName">{{ item.step.name }}</h4>
         <div :class="$style.progressBar" />
       </template>
 
@@ -30,19 +26,8 @@
         <slot :step="item ? item.step : undefined" :step-index="i" />
 
         <Row justify="end">
-          <!-- <Row>
-            <Button
-              v-if="props.steps && stepIndex > 0" variant="text"
-              color="info"
-              style="justify-self:start" @click="stepIndex--"
-            >
-              Back
-            </Button>
-          </Row> -->
           <Button type="submit" variant="solid" color="info" :disabled="!item?.filled">
-            <template v-if="props.steps && stepIndex < props.steps.length - 1">
-              Next
-            </template>
+            <template v-if="props.steps && stepIndex < props.steps.length - 1"> Next </template>
             <template v-else>
               <slot name="submit-text">Submit</slot>
             </template>
@@ -55,17 +40,20 @@
 
 <script lang="ts" setup>
 import { computed, nextTick, provide, reactive, ref, watchEffect } from 'vue'
-import { Button, Icon, Row, Text, useThemeOld } from '..'
+import { Button, Icon, Row, useTheme } from '..'
 import { formServiceKey } from '../composables'
 
-type Validator = (value: any) => Promise<string|undefined>|string|undefined
+type Validator = (value: any) => Promise<string | undefined> | string | undefined
 
 const props = defineProps<{
-  validate?: Record<string, {
+  validate?: Record<
+  string,
+  {
     value: unknown
     optional?: boolean
     validator?: Validator
-  }>
+  }
+  >
   steps?: {
     name: string
     fields: string[]
@@ -78,18 +66,20 @@ const emit = defineEmits<{
 
 const stepIndex = ref(0)
 const formElem = ref<HTMLFormElement>()
-const errors = reactive<Record<string, string|undefined>>({})
+const errors = reactive<Record<string, string | undefined>>({})
 
 const renderSteps = computed(() => {
   if (!props.steps) return [null]
   return props.steps.map((step, index) => {
     const active = stepIndex.value === index
-    const invalid = step.fields.some(f => errors[f])
+    const invalid = step.fields.some((f) => errors[f])
     const completed = stepIndex.value > index
-    const filled = !props.validate || step.fields.every(f => {
-      const { value, optional } = props.validate![f]
-      return optional || !isEmptyValue(value)
-    })
+    const filled =
+      !props.validate ||
+      step.fields.every((f) => {
+        const { value, optional } = props.validate![f]
+        return optional || !isEmptyValue(value)
+      })
     const unavailable = !completed && !active
     return { step, active, index, invalid, completed, unavailable, filled }
   })
@@ -106,7 +96,7 @@ provide(formServiceKey, {
   validateField,
 })
 
-useThemeOld()
+useTheme()
 
 watchEffect(() => {
   const nSteps = props.steps?.length ?? 1
@@ -116,7 +106,7 @@ watchEffect(() => {
 })
 
 async function onSubmit() {
-  if (!await validateCurrentStep()) return
+  if (!(await validateCurrentStep())) return
   if (props.steps && stepIndex.value < props.steps.length - 1) {
     stepIndex.value += 1
   } else {
@@ -131,10 +121,10 @@ async function validateCurrentStep() {
   const isNonFinalStep = props.steps && stepIndex.value < props.steps.length - 1
   const fieldsToValidate = isNonFinalStep ? props.steps[stepIndex.value].fields : allFields
   await Promise.all(fieldsToValidate.map(validateField))
-  const firstInvalidField = fieldsToValidate.find(field => errors[field])
+  const firstInvalidField = fieldsToValidate.find((field) => errors[field])
   if (!firstInvalidField) return true
   // Activate the step that has errors and scroll to the field
-  const stepToActivate = props.steps?.findIndex(step => step.fields.includes(firstInvalidField)) ?? -1
+  const stepToActivate = props.steps?.findIndex((step) => step.fields.includes(firstInvalidField)) ?? -1
   if (stepToActivate >= 0) {
     stepIndex.value = stepToActivate
     await nextTick()
@@ -179,7 +169,7 @@ function clickStep(index: number) {
 .step {
   display: grid;
   gap: var(--dodo-gap-2) var(--dodo-gap-4);
-  --stepNumColor: rgb(var(--dodo-rgb-muted));
+  --stepNumColor: var(--dodo-color-muted);
 }
 .stepContent {
   display: grid;
@@ -200,19 +190,19 @@ function clickStep(index: number) {
   align-self: center;
 }
 .stepCompleted {
-  --stepNumColor: rgb(var(--dodo-rgb-success));
+  --stepNumColor: var(--dodo-color-success);
 }
 .stepActive {
-  --stepNumColor: rgb(var(--dodo-rgb-info));
+  --stepNumColor: var(--dodo-color-info);
 }
 .stepInvalid {
-  --stepNumColor: rgb(var(--dodo-rgb-danger));
+  --stepNumColor: var(--dodo-color-danger);
 }
 .progressBar {
   width: 0;
   min-height: 16px;
   justify-self: center;
-  border: solid rgba(0,0,0,0.2);
+  border: solid rgba(0, 0, 0, 0.2);
   border-width: 0 2px 0 0;
 }
 .step:last-child .progressBar {

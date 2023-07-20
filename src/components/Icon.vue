@@ -1,13 +1,10 @@
 <template>
   <span
     ref="el"
-    :style="[
-      color ? `color: ${useColorProp(color)};` : '',
-      webfont.isReady ? '' : 'visibility:hidden',
-    ]"
+    :style="[color ? `color: ${useColorProp(color)};` : '', webfont.isReady ? '' : 'visibility:hidden']"
     :class="[
-      $style.Icon,
-      'material-symbols-' + theme.iconStyle.toLowerCase(),
+      $style.icon,
+      'material-symbols-' + iconStyle.toLowerCase(),
       props.size && $style[props.size],
       props.fill && $style.fill,
     ]"
@@ -17,9 +14,8 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { ColorProp, useColorProp, useThemeOld } from '..'
+import { ColorProp, IconName, useColorProp } from '..'
 import { useWebFont } from '../composables'
-import { IconName } from './iconNames'
 
 const props = defineProps<{
   /** The icon name
@@ -33,23 +29,25 @@ const props = defineProps<{
   /** Filled variant
    */
   fill?: boolean
-  size?: 'xs'|'s'|'m'|'l'|'xl'
+  small?: -1
+  large?: -1
+  size?: 'xs' | 's' | 'm' | 'l' | 'xl'
 }>()
 
-const theme = useThemeOld()
+const iconStyle = 'Outlined' as 'Outlined' | 'Sharp' | 'Rounded'
+const iconWeight = '300' as '100' | '200' | '300' | '400' | '500' | '600' | '700'
 
 const el = ref<HTMLElement>()
 
 const webfont = useWebFont({
-  id: 'DodoMaterialIcon',
-  href: () => `https://fonts.googleapis.com/css2?family=Material+Symbols+${theme.iconStyle}:wght,FILL@${theme.iconWeight},0..1`,
-  font: () => `${theme.iconWeight} 1em 'Material Symbols ${theme.iconStyle}'`,
+  weight: iconWeight,
+  name: `Material Symbols ${iconStyle}`,
+  href: `https://fonts.googleapis.com/css2?family=Material+Symbols+${iconStyle}:wght,FILL@${iconWeight},0..1`,
 })
-
 </script>
 
 <style module>
-span.Icon {
+span.icon {
   height: 1em;
   width: 1em;
   display: inline-block;
@@ -59,11 +57,19 @@ span.Icon {
   overflow: hidden;
   flex-grow: 0;
 }
-.Icon.fill {
+.icon.fill {
   font-variation-settings: 'FILL' 1;
 }
-.Icon.xs { font-size: 1em; }
-.Icon.s { font-size: 1.25em; }
-.Icon.l { font-size: 2em; }
-.Icon.xl { font-size: 2.5em; }
+.icon.xs {
+  font-size: 1em;
+}
+.icon.s {
+  font-size: 1.25em;
+}
+.icon.l {
+  font-size: 2em;
+}
+.icon.xl {
+  font-size: 2.5em;
+}
 </style>

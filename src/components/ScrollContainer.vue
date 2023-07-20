@@ -5,9 +5,9 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useThemeOld } from '..'
+import { useTheme } from '..'
 
-useThemeOld()
+useTheme()
 
 const css = computed(() => {
   const s = ''
@@ -19,9 +19,11 @@ const css = computed(() => {
 .ScrollContainer {
   overflow: auto;
   scrollbar-width: thin;
-  display: grid;
+  /* display: grid; */
+  flex-flow: column;
+  display: flex;
 }
 /* .ScrollContainer > div { */
-  /* display: inline-block; */
+/* display: inline-block; */
 /* } */
 </style>
