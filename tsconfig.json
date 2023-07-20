@@ -1,24 +1,29 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ES2020",
     "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "sourceMap": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
     "allowJs": true,
     "outDir": "dist/types",
-    "declaration": true,
-    "skipLibCheck": true,
-    "types": [
-      "node",
-      "vite/client"
-    ]
+    "declaration": true
+    // "types": ["node", "vite/client"]
   },
   "vueCompilerOptions": {
     "jsxTemplates": true
@@ -30,7 +35,5 @@
     "src/**/*.vue",
     "src/**/*.json",
   ],
-  "references": [
-    { "path": "./tsconfig.node.json" }
-  ]
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

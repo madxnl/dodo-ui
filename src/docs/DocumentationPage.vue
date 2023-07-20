@@ -83,7 +83,7 @@ function onScroll() {
   history.replaceState({}, '', '#' + activeLink.value)
 }
 
-function onPopState(e: Event) {
+function onPopState(_: Event) {
   const id = location.href.split('#').slice(1)[0]
   const el = document.getElementById(id)
   el?.scrollIntoView()

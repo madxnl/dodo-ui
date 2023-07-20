@@ -58,7 +58,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: 'test.setup.ts',
-    css: { modules: { classNameStrategy: 'scoped' } },
+    css: { modules: { classNameStrategy: 'stable' } },
   },
   css: { modules: { generateScopedName } },
 })

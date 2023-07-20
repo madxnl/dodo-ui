@@ -49,7 +49,6 @@ import SyntaxHighlight from './SyntaxHighlight.vue'
 // const props = defineProps<{
 defineProps<{
   doc: ComponentDoc
-  code?: never
 }>()
 
 function getPropType(prop: PropDescriptor) {

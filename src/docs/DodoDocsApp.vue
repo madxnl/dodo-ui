@@ -11,12 +11,12 @@ import Installation from './guide/Installation.vue'
 import Layout from './guide/LayoutGuide.vue'
 import Text from './guide/TextGuide.vue'
 
-const componentDocs = import.meta.glob('../**/*Docs.vue', { eager: true })
+const componentDocs = import.meta.glob('./content/*Docs.vue', { eager: true })
 
 const componentPages = Object.entries(componentDocs).map(([path, module]) => {
   const component = (module as any).default as DefineComponent
   const name = path.split('/').slice(-1)[0].split('Docs')[0]
-  const title = name.replaceAll('_', ' ')
+  const title = name.replace(/_/g, ' ')
   return { title, component }
 })
 

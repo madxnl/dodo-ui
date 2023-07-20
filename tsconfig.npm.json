@@ -1,30 +1,40 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ES2020",
     "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": false,
+    "jsx": "preserve",
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+
+    "sourceMap": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
     "allowJs": true,
     "outDir": "dist/types",
-    "declaration": true,
-    "skipLibCheck": true,
-    "types": [
-      "node",
-      "vite/client"
-    ]
+    "declaration": true
+  },
+  "vueCompilerOptions": {
+    "jsxTemplates": true
   },
   "include": [
     "src/env.d.ts",
     "src/index.ts",
+    "src/components/**/*.vue",
   ],
   "exclude": [
-    "**/docs",
+    "src/main.ts",
+    "src/docs/index.ts",
+    "src/docs/**/*.*",
   ],
 }

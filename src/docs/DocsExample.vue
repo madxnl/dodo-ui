@@ -17,15 +17,13 @@
 <script setup lang="ts">
 import { App, ComponentOptions, computed, ref, watchEffect } from 'vue'
 import * as components from '..'
-import { Column, crashPlugin, Icon } from '..'
+import { Column, Icon, crashPlugin } from '..'
 import SyntaxHighlight from './SyntaxHighlight.vue'
 // @ts-ignore
 import { createApp } from 'vue/dist/vue.esm-bundler'
 
 const props = defineProps<{
   options: ComponentOptions
-  template?: never
-  setup?: never
 }>()
 
 const templateSrc = computed(() => (props.options.template as string).trim())
@@ -44,8 +42,8 @@ watchEffect(() => {
 
   app = createApp({
     components,
-    setup: props.setup,
-    template: props.template,
+    // setup: props.setup,
+    // template: props.template,
     ...props.options,
   })
   app.use(crashPlugin({ router: null }))

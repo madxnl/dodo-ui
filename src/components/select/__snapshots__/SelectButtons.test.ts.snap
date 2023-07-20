@@ -1,0 +1,94 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Deselect 1`] = `
+"<div class=\\"_Select_b8f5ed _multiple_b8f5ed\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_f25513 _default_f25513 _active_f25513 _rounded_f25513\\">
+    <div class=\\"_content_f25513\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option one
+    </div>
+    <!--v-if-->
+  </button><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_f25513 _default_f25513 _active_f25513 _rounded_f25513\\">
+    <div class=\\"_content_f25513\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option two
+    </div>
+    <!--v-if-->
+  </button><button type=\\"button\\" class=\\"_Button_f25513 _default_f25513 _rounded_f25513\\">
+    <div class=\\"_content_f25513\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option three
+    </div>
+    <!--v-if-->
+  </button></div>"
+`;
+
+exports[`Select a value 1`] = `
+"<div class=\\"_Select_b8f5ed\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_f25513 _default_f25513 _active_f25513 _rounded_f25513\\">
+    <div class=\\"_content_f25513\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option one
+    </div>
+    <!--v-if-->
+  </button><button type=\\"button\\" class=\\"_Button_f25513 _default_f25513 _rounded_f25513\\">
+    <div class=\\"_content_f25513\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option two
+    </div>
+    <!--v-if-->
+  </button><button type=\\"button\\" class=\\"_Button_f25513 _default_f25513 _rounded_f25513\\">
+    <div class=\\"_content_f25513\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option three
+    </div>
+    <!--v-if-->
+  </button></div>"
+`;
+
+exports[`Select multiple 1`] = `
+"<div class=\\"_Select_b8f5ed _multiple_b8f5ed\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_f25513 _default_f25513 _active_f25513 _rounded_f25513\\">
+    <div class=\\"_content_f25513\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option one
+    </div>
+    <!--v-if-->
+  </button><button type=\\"button\\" class=\\"_Button_f25513 _default_f25513 _rounded_f25513\\">
+    <div class=\\"_content_f25513\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option two
+    </div>
+    <!--v-if-->
+  </button><button type=\\"button\\" class=\\"_Button_f25513 _default_f25513 _rounded_f25513\\">
+    <div class=\\"_content_f25513\\">
+      <!--
+        @slot Menu Item footer
+        @binding {object} option icon of the menu item
+        @binding {string} index text of the menu item
+      -->Option three
+    </div>
+    <!--v-if-->
+  </button></div>"
+`;

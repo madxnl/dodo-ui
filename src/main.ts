@@ -7,7 +7,7 @@ import { provideCustomTheme } from './theme'
 
 const app = createApp(DodoDocsApp)
 
-app.use(provideCustomTheme(theme => {
+app.use(provideCustomTheme(_ => {
 }))
 
 app.use(crashPlugin({ router: null }))
