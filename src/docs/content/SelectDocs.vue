@@ -9,7 +9,7 @@
 import { ref } from 'vue'
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/select/Select.vue'
+import { DOCGEN as doc } from '../../components/Select.vue'
 
 const currentValue = ref<number|undefined>(undefined)
 currentValue.value = 111

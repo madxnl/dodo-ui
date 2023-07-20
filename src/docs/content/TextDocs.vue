@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/text/Text.vue'
+import { DOCGEN as doc } from '../../components/Text.vue'
 
 const text = 'A quick brown fox jumps over the lazy dog'
 const longText = 'A quick brown fox jumps over the lazy dog. '.repeat(5)

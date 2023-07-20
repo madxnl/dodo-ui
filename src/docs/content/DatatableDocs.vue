@@ -9,7 +9,7 @@
 import { ref } from 'vue'
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/datatable/Datatable.vue'
+import { DOCGEN as doc } from '../../components/Datatable.vue'
 
 type Item = { title: string; year: number; rating: string; revenue: number }
 

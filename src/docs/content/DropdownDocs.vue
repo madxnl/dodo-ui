@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/dropdown/Dropdown.vue'
+import { DOCGEN as doc } from '../../components/Dropdown.vue'
 
 function clickItem() {}
 

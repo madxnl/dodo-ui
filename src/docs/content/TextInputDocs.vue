@@ -9,7 +9,7 @@
 import { ref } from 'vue'
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/input/TextInput.vue'
+import { DOCGEN as doc } from '../../components/TextInput.vue'
 
 const value = ref('')
 

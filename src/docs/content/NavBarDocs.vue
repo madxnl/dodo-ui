@@ -9,7 +9,7 @@
 import { DocsComponentSection } from '..'
 import image from '../assets/placeholder32.png'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/navbar/NavBar.vue'
+import { DOCGEN as doc } from '../../components/NavBar.vue'
 
 /* eslint-disable no-console */
 const navigate = () => { console.log('navigate') }

@@ -9,7 +9,7 @@
 import { parseColor } from '../..'
 import DocsComponentSection from '../DocsComponentSection.vue'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/button/Button.vue'
+import { DOCGEN as doc } from '../../components/Button.vue'
 
 const customColor = parseColor('#ff8888')
 

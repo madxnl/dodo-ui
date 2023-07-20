@@ -9,7 +9,7 @@
 import { reactive } from 'vue'
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/form/Form.vue'
+import { DOCGEN as doc } from '../../components/Form.vue'
 
 const form1 = reactive({
   email: '',

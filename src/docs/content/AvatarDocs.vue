@@ -9,7 +9,7 @@
 import { DocsComponentSection } from '..'
 import imgUrl from '../assets/placeholder32.png'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/avatar/Avatar.vue'
+import { DOCGEN as doc } from '../../components/Avatar.vue'
 
 const setup = () => ({ imgUrl })
 

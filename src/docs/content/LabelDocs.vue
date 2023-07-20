@@ -9,7 +9,7 @@
 import { ref } from 'vue'
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/form/Label.vue'
+import { DOCGEN as doc } from '../../components/Label.vue'
 
 const value = ref('Foo bar')
 

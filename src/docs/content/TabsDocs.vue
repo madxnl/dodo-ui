@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/tabs/Tabs.vue'
+import { DOCGEN as doc } from '../../components/Tabs.vue'
 
 const setup = () => ({})
 

@@ -9,7 +9,7 @@
 import { ref } from 'vue'
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/card/Card.vue'
+import { DOCGEN as doc } from '../../components/Card.vue'
 
 const isActive = ref(true)
 

@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/tooltip/Tooltip.vue'
+import { DOCGEN as doc } from '../../components/Tooltip.vue'
 
 const template = `
 <Tooltip text="Information tooltip">

@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/button/Chip.vue'
+import { DOCGEN as doc } from '../../components/Chip.vue'
 
 function onClose() {}
 

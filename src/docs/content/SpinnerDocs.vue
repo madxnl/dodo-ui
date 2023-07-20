@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/spinner/Spinner.vue'
+import { DOCGEN as doc } from '../../components/Spinner.vue'
 
 const template = `
 <Spinner small />

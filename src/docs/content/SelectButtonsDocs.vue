@@ -9,7 +9,7 @@
 import { ref } from 'vue'
 import { DocsComponentSection } from '..'
 // @ts-ignore
-import { DOCGEN as doc } from '../../components/select/SelectButtons.vue'
+import { DOCGEN as doc } from '../../components/SelectButtons.vue'
 
 const currentValue = ref(1)
 const currentMultipleValue = ref([1, 2, 4])
