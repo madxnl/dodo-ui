@@ -14,7 +14,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, watchEffect } from 'vue'
-import { ColorProp, colorPropToRGB, useTheme } from '..'
+import { ColorProp, colorPropToRGB, useThemeOld } from '..'
 
 const props = defineProps<{
   /** Change text color */
@@ -64,7 +64,7 @@ watchEffect(() => {
   if (tagProps.length > 1) throw new Error('<Text> should not have more than one tag prop')
 })
 
-useTheme()
+useThemeOld()
 
 </script>
 <style module>

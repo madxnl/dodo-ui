@@ -4,7 +4,7 @@ import '../dodo.css'
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 
-export function useStyle() {
+export function useTheme() {
   function colorPropRgb(color: ColorProp) {
     return typeof color === 'string' ? `var(--dodo-rgb-${color})` : color.join(',')
   }

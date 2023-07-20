@@ -8,7 +8,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ColorProp, useColorProp, useStyle } from '..'
+import { ColorProp, useColorProp, useTheme } from '..'
 
 const baseColors: ColorProp[] = ['info', 'warn', 'success', 'danger']
 
@@ -39,7 +39,7 @@ function hashCode(s: string) {
   return h
 }
 
-useStyle()
+useTheme()
 </script>
 <style module>
 .Avatar {

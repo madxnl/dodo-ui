@@ -5,9 +5,9 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useTheme } from '..'
+import { useThemeOld } from '..'
 
-useTheme()
+useThemeOld()
 
 const css = computed(() => {
   const s = ''

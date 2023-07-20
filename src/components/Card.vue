@@ -13,7 +13,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { Spacing, useSpacing, useTheme } from '..'
+import { Spacing, useSpacing, useThemeOld } from '..'
 
 const props = defineProps<{
   hoverable?: boolean
@@ -21,7 +21,7 @@ const props = defineProps<{
   padding?: Spacing
 }>()
 
-useTheme()
+useThemeOld()
 
 const css = computed(() => {
   let s = ''

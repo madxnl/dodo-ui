@@ -14,14 +14,14 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useTheme } from '..'
+import { useThemeOld } from '..'
 
 defineProps<{
   disabled?: boolean
   button?: boolean
 }>()
 
-useTheme()
+useThemeOld()
 
 </script>
 <style module>

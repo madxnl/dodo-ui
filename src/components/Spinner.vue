@@ -17,9 +17,9 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ColorProp, useColorProp, useTheme } from '..'
+import { ColorProp, useColorProp, useThemeOld } from '..'
 
-useTheme()
+useThemeOld()
 
 const props = withDefaults(defineProps<{
   /** Override default spinner color, or inherit text color

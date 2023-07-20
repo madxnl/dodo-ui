@@ -63,7 +63,7 @@ export function provideCustomTheme(customize?: (theme: Theme) => void): Plugin {
   }
 }
 
-export function useTheme() {
+export function useThemeOld() {
   const theme = inject(key, undefined) ?? createTheme()
 
   watchEffect(() => {

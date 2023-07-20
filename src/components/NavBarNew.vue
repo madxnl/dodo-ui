@@ -38,7 +38,7 @@
 <script lang="ts">
 import type { ComponentInternalInstance, ComputedRef } from 'vue'
 import { computed, getCurrentInstance, onBeforeUnmount, ref, watch, watchEffect } from 'vue'
-import { Column, Icon, Tooltip, useServiceFactory, useTheme } from '..'
+import { Column, Icon, Tooltip, useServiceFactory, useThemeOld } from '..'
 import { useScreenSize } from '../composables'
 
 const navbarService = useServiceFactory(() => {
@@ -100,7 +100,7 @@ export const useNavbar = (opts: { active: ComputedRef<boolean>; text: ComputedRe
 }
 </script>
 <script lang="ts" setup>
-useTheme()
+useThemeOld()
 const { headerText, mobileToggle } = navbarService.createAndProvide()
 
 const { screenLarge } = useScreenSize()

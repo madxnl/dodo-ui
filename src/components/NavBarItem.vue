@@ -28,7 +28,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, ComputedRef, inject, onMounted, ref, useSlots } from 'vue'
-import { Dropdown, Icon, IconName, Text, Tooltip, useTheme } from '..'
+import { Dropdown, Icon, IconName, Text, Tooltip, useThemeOld } from '..'
 import { navBarServiceKey } from '../composables'
 
 const props = defineProps<{
@@ -48,7 +48,7 @@ const props = defineProps<{
   important?: boolean
 }>()
 
-useTheme()
+useThemeOld()
 
 const slots = useSlots()
 const el = ref<HTMLElement>()

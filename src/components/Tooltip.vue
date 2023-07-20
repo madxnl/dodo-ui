@@ -14,7 +14,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, nextTick, onBeforeUnmount, ref, useSlots } from 'vue'
-import { Text, useTheme } from '..'
+import { Text, useThemeOld } from '..'
 
 const props = defineProps<{
   text?: string
@@ -60,7 +60,7 @@ function deactivate() {
   active.value = false
 }
 
-useTheme()
+useThemeOld()
 
 </script>
 <style module>

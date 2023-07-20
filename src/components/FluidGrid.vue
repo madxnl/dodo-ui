@@ -12,7 +12,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { Spacing, useSpacing, useTheme } from '..'
+import { Spacing, useSpacing, useThemeOld } from '..'
 
 const props = defineProps<{
   /**
@@ -42,7 +42,7 @@ const props = defineProps<{
   alignItems?: 'center'|'end'|'start'|'stretch'
 }>()
 
-useTheme()
+useThemeOld()
 
 const el = ref<HTMLElement>()
 const size = ref(99999)

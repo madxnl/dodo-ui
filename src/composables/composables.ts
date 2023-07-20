@@ -1,5 +1,5 @@
 import { computed, InjectionKey, onBeforeUnmount, onMounted, Ref, ref, watch, watchEffect } from 'vue'
-import { useTheme } from '..'
+import { useThemeOld } from '..'
 
 export const navBarServiceKey: InjectionKey<{
   collapsed: Ref<boolean|null>
@@ -37,7 +37,7 @@ export function useElementSize(el: Ref<Element|undefined>) {
 }
 
 export function useScreenSize() {
-  const theme = useTheme()
+  const theme = useThemeOld()
   const small = theme.vars['breakpoint-small']
   const large = theme.vars['breakpoint-large']
   const width = ref(window.innerWidth)

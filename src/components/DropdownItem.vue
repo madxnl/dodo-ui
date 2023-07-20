@@ -23,7 +23,7 @@
 </template>
 <script lang="ts" setup>
 import { inject } from 'vue'
-import { Column, Text, useTheme } from '..'
+import { Column, Text, useThemeOld } from '..'
 import { dropdownServiceKey } from '../composables'
 
 defineProps<{
@@ -35,7 +35,7 @@ defineProps<{
   separator?: boolean
 }>()
 
-useTheme()
+useThemeOld()
 
 const dropdown = inject(dropdownServiceKey)
 

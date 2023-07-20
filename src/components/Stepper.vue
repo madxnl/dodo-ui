@@ -47,7 +47,7 @@
 
 <script lang="ts" setup>
 import { computed, ref, watch, watchEffect } from 'vue'
-import { Button, Column, Icon, Row, useStyle } from '..'
+import { Button, Column, Icon, Row, useTheme } from '..'
 
 const props = defineProps<{
   stepIndex?: number
@@ -92,7 +92,7 @@ async function goNext() {
   currentIndex.value++
 }
 
-useStyle()
+useTheme()
 
 watchEffect(() => {
   if (props.stepIndex != null) {

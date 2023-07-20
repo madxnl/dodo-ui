@@ -34,7 +34,7 @@
 <script lang="ts" setup>
 import { ComputedRef, computed, unref, useSlots } from 'vue'
 import type { NavigationFailure } from 'vue-router'
-import { Icon, IconName, Tooltip, useTheme } from '..'
+import { Icon, IconName, Tooltip, useThemeOld } from '..'
 import { useNavbar } from './NavBarNew.vue'
 
 const props = defineProps<{
@@ -63,7 +63,7 @@ const text = computed(() => props.text)
 
 const { isExpanded, showAsActive, toggleExpand } = useNavbar({ text, active })
 
-useTheme()
+useThemeOld()
 
 const slots = useSlots()
 

@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useStyle } from '..'
+import { useTheme } from '..'
 
 // Skip animations in test mode
 const skipAnimations = false // import.meta.env.MODE === 'test'
@@ -20,7 +20,7 @@ defineProps<{
   // slide?: 'left' | 'right' | 'top' | 'bottom'
 }>()
 
-useStyle()
+useTheme()
 </script>
 <style>
 .dodo-enter-active,

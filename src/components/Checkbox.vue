@@ -6,7 +6,7 @@
   </span>
 </template>
 <script lang="ts" setup>
-import { Icon, useTheme } from '..'
+import { Icon, useThemeOld } from '..'
 
 const props = defineProps<{
   modelValue: boolean
@@ -28,7 +28,7 @@ function onChange(e: Event) {
   }
 }
 
-useTheme()
+useThemeOld()
 
 </script>
 <style module>

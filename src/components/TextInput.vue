@@ -28,7 +28,7 @@
 </template>
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue'
-import { Field, useTheme } from '..'
+import { Field, useThemeOld } from '..'
 
 const props = defineProps<{
   modelValue: string|null|undefined
@@ -61,7 +61,7 @@ watchEffect(() => {
   }
 })
 
-useTheme()
+useThemeOld()
 
 </script>
 <style module>

@@ -12,7 +12,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { SpacingValue, useStyle } from '..'
+import { SpacingValue, useTheme } from '..'
 
 type ColumnSize = 'xs' | 's' | 'm' | 'l'
 
@@ -45,7 +45,7 @@ defineProps<{
   stretch?: never
 }>()
 
-const theme = useStyle()
+const theme = useTheme()
 </script>
 <style module>
 .component {

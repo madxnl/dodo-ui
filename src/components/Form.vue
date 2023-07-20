@@ -55,7 +55,7 @@
 
 <script lang="ts" setup>
 import { computed, nextTick, provide, reactive, ref, watchEffect } from 'vue'
-import { Button, Icon, Row, Text, useTheme } from '..'
+import { Button, Icon, Row, Text, useThemeOld } from '..'
 import { formServiceKey } from '../composables'
 
 type Validator = (value: any) => Promise<string|undefined>|string|undefined
@@ -106,7 +106,7 @@ provide(formServiceKey, {
   validateField,
 })
 
-useTheme()
+useThemeOld()
 
 watchEffect(() => {
   const nSteps = props.steps?.length ?? 1

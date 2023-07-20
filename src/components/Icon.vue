@@ -17,7 +17,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { ColorProp, useColorProp, useTheme } from '..'
+import { ColorProp, useColorProp, useThemeOld } from '..'
 import { useWebFont } from '../composables'
 import { IconName } from './iconNames'
 
@@ -36,7 +36,7 @@ const props = defineProps<{
   size?: 'xs'|'s'|'m'|'l'|'xl'
 }>()
 
-const theme = useTheme()
+const theme = useThemeOld()
 
 const el = ref<HTMLElement>()
 

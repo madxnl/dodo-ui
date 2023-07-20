@@ -14,7 +14,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { AlignType, JustifyType, SpacingValue, useStyle } from '..'
+import { AlignType, JustifyType, SpacingValue, useTheme } from '..'
 
 defineProps<{
   /**
@@ -59,7 +59,7 @@ defineProps<{
   alignContent?: never
 }>()
 
-const theme = useStyle()
+const theme = useTheme()
 </script>
 
 <style module>

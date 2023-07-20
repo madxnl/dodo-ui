@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import { computed, inject } from 'vue'
-import { Text, useTheme } from '..'
+import { Text, useThemeOld } from '..'
 import { formServiceKey } from '../composables'
 
 const props = defineProps<{
@@ -31,7 +31,7 @@ const error = computed(() => {
   return form?.errors[props.for!]
 })
 
-useTheme()
+useThemeOld()
 
 async function onchange() {
   if (error.value) {

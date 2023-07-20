@@ -20,7 +20,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
-import { ColorProp, Spinner, useStyle } from '..'
+import { ColorProp, Spinner, useTheme } from '..'
 
 const props = defineProps<{
   /** Set button color
@@ -55,7 +55,7 @@ const props = defineProps<{
   disabled?: boolean
 }>()
 
-const { colorPropRgb } = useStyle()
+const { colorPropRgb } = useTheme()
 
 const css = computed(() => {
   let s = ''
