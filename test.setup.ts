@@ -10,4 +10,13 @@ beforeAll(() => {
   })
 
   window.HTMLElement.prototype.scrollIntoView = vi.fn()
+
+  // window.document.body = document.createElement('body')
+
+  // {
+  //   appendChild: vi.fn(),
+  //   removeChild: vi.fn(),
+  // } as any
+  Object.defineProperty(window.HTMLElement.prototype, 'clientWidth', { value: 100 })
+  Object.defineProperty(window.HTMLElement.prototype, 'clientHeight', { value: 100 })
 })

@@ -76,7 +76,7 @@ function onWindowEvent(e: Event) {
   // Clicking anywhere outside the dropdown closes it
   if (e.target) {
     const clickOnTrigger = el.value!.contains(e.target as Node)
-    const clickOnDropdown = content.value!.contains(e.target as Node)
+    const clickOnDropdown = content.value?.contains(e.target as Node)
     if (clickOnTrigger || clickOnDropdown) return
   }
   toggle(false)
@@ -85,18 +85,20 @@ function onWindowEvent(e: Event) {
 function updatePositioning() {
   const margin = 24
   const sep = 1
-  const contentEl = content.value!
   const { top, left, bottom, width } = el.value!.getBoundingClientRect()
   const W = document.body.clientWidth
   const H = document.body.clientHeight
-  const dropdownAbove = Math.min(contentEl.clientHeight, top, 500) > H - bottom
-  const maxW = Math.min(W - left - margin, 500)
+  const contentEl = content.value
   let styles = `min-width: ${width}px;`
-  styles += `left: ${left}px; max-width: ${maxW}px;`
-  if (dropdownAbove) {
-    styles += `bottom: ${H - top - sep}px; max-height: ${top - margin - sep}px;`
-  } else {
-    styles += `top: ${bottom + sep}px; max-height: ${H - bottom - margin - sep}px;`
+  if (contentEl) {
+    const dropdownAbove = Math.min(contentEl.clientHeight, top, 500) > H - bottom
+    const maxW = Math.min(W - left - margin, 500)
+    styles += `left: ${left}px; max-width: ${maxW}px;`
+    if (dropdownAbove) {
+      styles += `bottom: ${H - top - sep}px; max-height: ${top - margin - sep}px;`
+    } else {
+      styles += `top: ${bottom + sep}px; max-height: ${H - bottom - margin - sep}px;`
+    }
   }
   // styles += `right: ${W - right}px; max-width: ${right - margin}px;`
   dropdownStyles.value = styles

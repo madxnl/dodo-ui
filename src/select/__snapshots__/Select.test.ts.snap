@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Search filters options 1`] = `
 "<div class=\\"_trigger_92c5f7\\">
@@ -7,7 +7,7 @@ exports[`Search filters options 1`] = `
   </div>
 </div>
 <teleport-stub to=\\"body\\">
-  <div class=\\"_Dropdown_92c5f7\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
+  <div class=\\"_Dropdown_92c5f7\\" style=\\"min-width: 0px; left: 0px; max-width: 76px; top: 1px; max-height: 75px;\\">
     <div class=\\"_Column_79b588 _content_92c5f7\\" style=\\"gap: var(--dodo-gap-0);\\">
       <div class=\\"_Column_79b588\\" style=\\"gap: var(--dodo-gap-0); min-height: 0;\\">
         <div class=\\"_Row_faae1b _searchbox_8109c2\\">
@@ -36,7 +36,7 @@ exports[`Search input visible after character key press 1`] = `
   </div>
 </div>
 <teleport-stub to=\\"body\\">
-  <div class=\\"_Dropdown_92c5f7\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
+  <div class=\\"_Dropdown_92c5f7\\" style=\\"min-width: 0px; left: 0px; max-width: 76px; top: 1px; max-height: 75px;\\">
     <div class=\\"_Column_79b588 _content_92c5f7\\" style=\\"gap: var(--dodo-gap-0);\\">
       <div class=\\"_Column_79b588\\" style=\\"gap: var(--dodo-gap-0); min-height: 0;\\">
         <div class=\\"_Row_faae1b _searchbox_8109c2\\" style=\\"\\">
@@ -58,7 +58,7 @@ exports[`Search input visible if many options 1`] = `
   </div>
 </div>
 <teleport-stub to=\\"body\\">
-  <div class=\\"_Dropdown_92c5f7\\" style=\\"min-width: 0px; left: 0px; max-width: -24px; top: 1px; max-height: -25px;\\">
+  <div class=\\"_Dropdown_92c5f7\\" style=\\"min-width: 0px; left: 0px; max-width: 76px; top: 1px; max-height: 75px;\\">
     <div class=\\"_Column_79b588 _content_92c5f7\\" style=\\"gap: var(--dodo-gap-0);\\">
       <div class=\\"_Column_79b588\\" style=\\"gap: var(--dodo-gap-0); min-height: 0;\\">
         <div class=\\"_Row_faae1b _searchbox_8109c2\\">
