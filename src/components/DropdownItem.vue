@@ -24,7 +24,7 @@
 <script lang="ts" setup>
 import { inject } from 'vue'
 import { Column, Text, useTheme } from '..'
-import { dropdownServiceKey } from '../composables/composables'
+import { dropdownServiceKey } from '../composables'
 
 defineProps<{
   /** Active item styling */

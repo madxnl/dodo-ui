@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+:root {
+  --dodo-spacing: 4px;
+
+  --dodo-rgb-info: 58, 134, 255;
+  --dodo-rgb-success: 0, 177, 136;
+  --dodo-rgb-warn: 223, 178, 53;
+  --dodo-rgb-danger: 255, 0, 83;
+  --dodo-rgb-background: 255, 255, 255;
+  --dodo-rgb-foreground: 9, 30, 40;
+  --dodo-rgb-primary: var(--dodo-rgb-info);
+  --dodo-rgb-secondary: var(--dodo-rgb-success);
+
+  --dodo-color-info: rgb(var(--dodo-rgb-info));
+  --dodo-color-success: rgb(var(--dodo-rgb-success));
+  --dodo-color-warn: rgb(var(--dodo-rgb-warn));
+  --dodo-color-danger: rgb(var(--dodo-rgb-danger));
+  --dodo-color-background: rgb(var(--dodo-rgb-background));
+  --dodo-color-foreground: rgb(var(--dodo-rgb-foreground));
+  --dodo-color-primary: rgb(var(--dodo-rgb-primary));
+  --dodo-color-secondary: rgb(var(--dodo-rgb-secondary));
+
+  --dodo-font-size: 14px;
+  --dodo-font-small: 13px;
+  --dodo-weight-body: 400;
+  --dodo-weight-bold: 500;
+  --dodo-font-base: var(--dodo-font-size) Inter, sans-serif;
+
+  --dodo-button-height: 36px;
+  --dodo-transition-duration: 0.15s;
+
+  --dodo-breakpoint-small: 600;
+  --dodo-breakpoint-large: 1200;
+  --dodo-gap-0: 0px;
+  --dodo-gap-1: calc(var(--dodo-spacing) * 1);
+  --dodo-gap-2: calc(var(--dodo-spacing) * 2);
+  --dodo-gap-3: calc(var(--dodo-spacing) * 3);
+  --dodo-gap-4: calc(var(--dodo-spacing) * 4);
+  --dodo-gap-5: calc(var(--dodo-spacing) * 5);
+  --dodo-gap-6: calc(var(--dodo-spacing) * 6);
+  --dodo-gap-8: calc(var(--dodo-spacing) * 8);
+  --dodo-gap-10: calc(var(--dodo-spacing) * 10);
+  --dodo-gap-12: calc(var(--dodo-spacing) * 12);
+  --dodo-gap-16: calc(var(--dodo-spacing) * 16);
+
+  --dodo-shadow-1: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  --dodo-shadow-2: 0px 3px 3px rgba(0, 0, 0, 0.1);
+  --dodo-shadow-3: 0px 6px 6px rgba(0, 0, 0, 0.1);
+  --dodo-shadow-4: 0px 16px 16px rgba(0, 0, 0, 0.1);
+  --dodo-shadow-5: 0px 32px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Layout */
+.dodo-gap-0 {
+  gap: 0 !important;
+}
+.dodo-gap-1 {
+  gap: var(--dodo-spacing) !important;
+}
+.dodo-gap-2 {
+  gap: calc(var(--dodo-spacing) * 2) !important;
+}
+.dodo-gap-4 {
+  gap: calc(var(--dodo-spacing) * 4) !important;
+}
+.dodo-gap-8 {
+  gap: calc(var(--dodo-spacing) * 8) !important;
+}
+.dodo-gap-16 {
+  gap: calc(var(--dodo-spacing) * 16) !important;
+}
+.dodo-gap-32 {
+  gap: calc(var(--dodo-spacing) * 32) !important;
+}
+
+.dodo-pad-0 {
+  padding: 0 !important;
+}
+.dodo-pad-1 {
+  padding: var(--dodo-spacing) !important;
+}
+.dodo-pad-2 {
+  padding: calc(var(--dodo-spacing) * 2) !important;
+}
+.dodo-pad-4 {
+  padding: calc(var(--dodo-spacing) * 4) !important;
+}
+.dodo-pad-8 {
+  padding: calc(var(--dodo-spacing) * 8) !important;
+}
+.dodo-pad-16 {
+  padding: calc(var(--dodo-spacing) * 16) !important;
+}
+.dodo-pad-32 {
+  padding: calc(var(--dodo-spacing) * 32) !important;
+}
+
+.dodo-justify-start {
+  justify-content: start !important;
+}
+.dodo-justify-end {
+  justify-content: end !important;
+}
+.dodo-justify-center {
+  justify-content: safe center !important;
+}
+.dodo-justify-between {
+  justify-content: space-between !important;
+}
+.dodo-justify-around {
+  justify-content: space-around !important;
+}
+.dodo-justify-evenly {
+  justify-content: space-evenly !important;
+}
+
+.dodo-align-start {
+  align-items: start !important;
+}
+.dodo-align-end {
+  align-items: end !important;
+}
+.dodo-align-center {
+  align-items: safe center !important;
+}
+.dodo-align-baseline {
+  align-items: baseline !important;
+}
+.dodo-align-stretch {
+  align-items: stretch !important;
+}
+
+.dodo-grow {
+  flex-grow: 1 !important;
+}
+
+.dodo-wrap {
+  flex-wrap: wrap !important;
+}
+
+/* Text */
+
+.dodo-fonts {
+  font: var(--dodo-font-base);
+  color: var(--dodo-color-foreground);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.dodo-fonts p {
+  margin: 0;
+  line-height: 1.4;
+}
+.dodo-fonts h1,
+.dodo-fonts h2,
+.dodo-fonts h3,
+.dodo-fonts h4,
+.dodo-fonts h5,
+.dodo-fonts h6 {
+  font-weight: var(--dodo-weight-bold);
+  color: var(--dodo-rgb-foreground);
+  font-size: var(--dodo-font-size);
+  margin: 0;
+}
+.dodo-fonts h1 {
+  font-size: calc(var(--dodo-font-size) * 2.5);
+}
+.dodo-fonts h2 {
+  font-size: calc(var(--dodo-font-size) * 2);
+}
+.dodo-fonts h3 {
+  font-size: calc(var(--dodo-font-size) * 1.5);
+}
+.dodo-fonts h4 {
+  font-size: calc(var(--dodo-font-size) * 1.25);
+}
+.dodo-fonts h5 {
+  font-size: calc(var(--dodo-font-size) * 1.15);
+}
+.dodo-fonts code {
+  font-family: monospace;
+}
+.dodo-fonts a {
+  color: var(--dodo-color-info);
+  cursor: pointer;
+  text-decoration: none;
+}
+.dodo-fonts blockquote {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 2px solid rgba(var(--dodo-rgb-foreground), 0.25);
+}
+.dodo-fonts small {
+  font-size: var(--dodo-font-small) !important;
+}
+.dodo-fonts strong {
+  font-weight: var(--dodo-weight-bold) !important;
+}
+.dodo-fonts label {
+  margin: 0;
+  font-weight: var(--dodo-weight-bold);
+  font-size: var(--dodo-font-small);
+}
+.dodo-fonts [data-nowrap] {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.dodo-fonts [data-opacity='secondary'] {
+  opacity: 0.6;
+}
+.dodo-fonts [data-opacity='disabled'] {
+  opacity: 0.38;
+}
+.dodo-fonts [data-textalign='center'] {
+  text-align: center;
+}
+.dodo-fonts [data-textalign='end'] {
+  text-align: end;
+}
+.dodo-fonts [data-textcolor='info'] {
+  color: var(--dodo-color-info);
+}
+.dodo-fonts [data-textcolor='success'] {
+  color: var(--dodo-color-success);
+}
+.dodo-fonts [data-textcolor='warn'] {
+  color: var(--dodo-color-warn);
+}
+.dodo-fonts [data-textcolor='danger'] {
+  color: var(--dodo-color-danger);
+}
+.dodo-fonts [data-textcolor='background'] {
+  color: var(--dodo-color-background);
+}
+.dodo-fonts [data-textcolor='foreground'] {
+  color: var(--dodo-color-foreground);
+}
+.dodo-fonts [data-textcolor='primary'] {
+  color: var(--dodo-color-primary);
+}
+.dodo-fonts [data-textcolor='secondary'] {
+  color: var(--dodo-color-secondary);
+}
+.dodo-fonts ::selection {
+  color: white;
+  background: var(--dodo-color-info);
+}
+.dodo-fonts th {
+  font-weight: var(--dodo-weight-bold);
+  font-size: var(--dodo-font-small);
+  text-align: start;
+}
+.dodo-fonts table {
+  border-collapse: collapse;
+}
+.dodo-fonts hr {
+  margin: 0;
+  border: 0;
+  min-width: 1px;
+  min-height: 1px;
+  background: currentColor;
+  opacity: 0.1;
+}

@@ -1,22 +1,32 @@
 <template>
-  <div :class="$style.Column" :style="css"><slot /></div>
+  <div
+    :class="[
+      $style.el,
+      theme.gap(gap),
+      theme.padding(padding),
+      theme.align(align),
+      theme.padding(padding),
+      theme.wrap(wrap),
+      theme.grow(grow),
+    ]"
+  >
+    <slot />
+  </div>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue'
-import { Spacing, useSpacing, useTheme } from '..'
+import { AlignType, JustifyType, SpacingValue, useStyle } from '..'
 
-const props = defineProps<{
+defineProps<{
   /**
    * Add spacing between child elements
    * @example gap="2"
    */
-  gap?: Spacing
+  gap?: SpacingValue
   /**
-   * Amount of padding around the contents. Use array to set padding for each side separately.
+   * Amount of padding around the content
    * @example padding="4"
-   * @example padding="2 0 2 2"
    */
-  padding?: Spacing
+  padding?: SpacingValue
   /**
    * Grow to take up available space (when nested inside another Row)
    * @example grow
@@ -26,39 +36,37 @@ const props = defineProps<{
    * Align content along main direction (horizontal for Row, vertical for Column)
    * @example justify="space-between"
    */
-  justify?: 'center'|'end'|'start'|'stretch'|'space-between'|'space-around'|'space-evenly'
+  justify?: JustifyType
   /**
    * Aligns children along cross-axis direction
    * @example align="end"
    */
-  align?: 'center'|'end'|'start'|'stretch'
+  align?: AlignType
   /**
    * Wrap contents over instead of shrinking
    * @example wrap
    */
   wrap?: boolean
 
+  /** Deprecated */
+  pad?: never
+  /** Deprecated */
+  justifyContent?: never
+  /** Deprecated */
+  alignItems?: never
+  /** Deprecated */
+  alignContent?: never
+  /** Deprecated */
+  overflow?: never
 }>()
 
-useTheme()
-
-const css = computed(() => {
-  let s = ''
-  if (props.gap) s += `gap:${useSpacing(props.gap)};`
-  if (props.padding) s += `padding:${useSpacing(props.padding)};`
-  if (props.grow) s += 'flex-grow:1;'
-  if (props.wrap) s += 'flex-wrap:wrap;'
-  if (props.justify) s += `justify-content:${props.justify};`
-  if (props.align) s += `align-items:${props.align};`
-  // if (props.alignContent) s += `align-content:${props.alignContent};`
-  return s
-})
+const theme = useStyle()
 </script>
 
 <style module>
-.Column {
-  display: grid;
+.el {
+  display: flex;
+  flex-direction: column;
   gap: var(--dodo-gap-4);
-  align-content: start;
 }
 </style>

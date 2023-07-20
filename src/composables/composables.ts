@@ -1,5 +1,5 @@
 import { computed, InjectionKey, onBeforeUnmount, onMounted, Ref, ref, watch, watchEffect } from 'vue'
-import { useTheme } from '../theme'
+import { useTheme } from '..'
 
 export const navBarServiceKey: InjectionKey<{
   collapsed: Ref<boolean|null>

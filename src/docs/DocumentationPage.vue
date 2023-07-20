@@ -28,8 +28,7 @@
 </template>
 <script lang="ts" setup>
 import { DefineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
-import { Column, ScrollContainer, Text } from '..'
-import { useTheme } from '../theme'
+import { Column, ScrollContainer, Text, useTheme } from '..'
 
 useTheme()
 

@@ -1,31 +1,20 @@
 <template>
   <span
-    :class="[
-      $style.Avatar,
-      round && $style.round
-    ]"
-    :style="[
-      `--color:${bgcolor}`,
-      image ? `background-image:url(${image})` : '',
-    ]"
+    :class="[$style.Avatar, round && $style.round]"
+    :style="[`--color:${bgcolor}`, image ? `background-image:url(${image})` : '']"
   >
     <template v-if="!image">{{ initials }}</template>
   </span>
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ColorProp, useColorProp, useTheme } from '..'
+import { ColorProp, useColorProp, useStyle } from '..'
 
-const baseColors: ColorProp[] = [
-  'info',
-  'warn',
-  'success',
-  'danger',
-]
+const baseColors: ColorProp[] = ['info', 'warn', 'success', 'danger']
 
 const props = defineProps<{
   text: string
-  image?: string|null
+  image?: string | null
   round?: boolean
 }>()
 
@@ -50,27 +39,23 @@ function hashCode(s: string) {
   return h
 }
 
-useTheme()
-
+useStyle()
 </script>
 <style module>
 .Avatar {
-  display: inline-grid;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 4px;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   background: var(--color);
   background-position: center;
   background-size: cover;
   color: white;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
   font: var(--dodo-font-base);
-  font-size: calc(var(--dodo-font-size) * 1.1);
+  /* font-size: calc(var(--dodo-font-size) * 1.1); */
   font-weight: var(--dodo-weight-bold);
-  line-height: 32px;
 }
 .round {
   border-radius: 999px;

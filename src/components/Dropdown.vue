@@ -13,7 +13,7 @@
 
   <teleport to="body">
     <div v-if="active" ref="content" :class="$style.Dropdown" :style="dropdownStyles">
-      <Column :class="$style.content" :padding="padding ?? ['1', '0']" :gap="gap ?? '0'">
+      <Column :class="$style.content" :padding="padding ?? '1'" :gap="gap ?? '0'">
         <slot name="dropdown" :toggle="toggle" />
       </Column>
     </div>
@@ -22,16 +22,16 @@
 
 <script lang="ts" setup>
 import { nextTick, onBeforeUnmount, provide, ref, watch } from 'vue'
-import { Column, Spacing } from '..'
-import { dropdownServiceKey } from '../composables/composables'
+import { Column, SpacingValue } from '..'
+import { dropdownServiceKey } from '../composables'
 
 const props = defineProps<{
   /** Use v-model to modify dropdown state from outside */
   modelValue?: boolean
   /** Change padding around dropdown content */
-  padding?: Spacing
+  padding?: SpacingValue
   /** Change gap between dropdown content */
-  gap?: Spacing
+  gap?: SpacingValue
   /** (temporaily) disable dropdown functionality */
   disabled?: boolean
 }>()

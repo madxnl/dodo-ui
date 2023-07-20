@@ -63,7 +63,7 @@
 <script lang="ts" setup>
 import { computed, provide, ref } from 'vue'
 import { Button, Column, Icon, useTheme } from '..'
-import { navBarServiceKey, useScreenSize, useSessionStoredRef } from '../composables/composables'
+import { navBarServiceKey, useScreenSize, useSessionStoredRef } from '../composables'
 import NavBarItem from './NavBarItem.vue'
 
 const props = defineProps<{

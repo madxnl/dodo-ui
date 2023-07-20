@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
-import { crashPlugin } from '.'
+import { crashPlugin, provideCustomTheme } from '.'
 import DodoDocsApp from './docs/DodoDocsApp.vue'
-import { provideCustomTheme } from './theme'
 
 // This is the main file for the public Dodo UI docs
 

@@ -1,6 +1,7 @@
 <template>
   <button
     :style="css"
+    :disabled="disabled"
     :type="type ?? 'button'"
     :class="[
       $style.Button,
@@ -19,45 +20,46 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
-import { ColorProp, Spinner, colorPropToRGB, useTheme } from '..'
+import { ColorProp, Spinner, useStyle } from '..'
 
 const props = defineProps<{
-/** Set button color
- * @example color="success"
- */
+  /** Set button color
+   * @example color="success"
+   */
   color?: ColorProp
-/** Set button variant
- * @example variant="border"
- * @example variant="text"
- */
-  variant?: 'text'|'solid'
-/** Set button type to 'submit' to trigger form submit
- * @example type="submit"
- */
-  type?: 'button'|'submit'
-/** Square button for icons
- * @example square
- */
+  /** Set button variant
+   * @example variant="border"
+   * @example variant="text"
+   */
+  variant?: 'text' | 'solid'
+  /** Set button type to 'submit' to trigger form submit
+   * @example type="submit"
+   */
+  type?: 'button' | 'submit'
+  /** Square button for icons
+   * @example square
+   */
   square?: boolean
-/** Square button for icons
- * @example square
- */
+  /** Square button for icons
+   * @example square
+   */
   rounded?: boolean
-/** Change button size
- * @example small
- */
+  /** Change button size
+   * @example small
+   */
   small?: boolean
-/** Style button as active
- * @example active
- */
+  /** Style button as active
+   * @example active
+   */
   active?: boolean
+  disabled?: boolean
 }>()
 
-useTheme()
+const { colorPropRgb } = useStyle()
 
 const css = computed(() => {
   let s = ''
-  if (props.color) s += `--bnt-rgb:${colorPropToRGB(props.color)};`
+  if (props.color) s += `--bnt-rgb:${colorPropRgb(props.color)};`
   return s
 })
 
@@ -77,7 +79,8 @@ async function onClick(event: Event) {
   }
 }
 </script>
-<script lang="ts"> // use normal <script> to declare options
+<script lang="ts">
+// use normal <script> to declare options
 export default {
   inheritAttrs: false,
 }
@@ -88,7 +91,7 @@ export default {
   cursor: pointer;
   font: var(--dodo-font-base);
   font-weight: var(--dodo-weight-bold);
-  background: rgb(var(--dodo-rgb-background));
+  background: var(--dodo-color-background);
   color: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));
   border-radius: 4px;
   position: relative;
@@ -99,12 +102,12 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0 16px;
-  --height: var(--dodo-buttonHeight);
+  --height: var(--dodo-button-height);
   min-width: var(--height);
   height: var(--height);
-  line-height: var(--height);
   white-space: nowrap;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 .content {
   display: flex;
@@ -135,7 +138,10 @@ export default {
 }
 .spinner {
   position: absolute;
-  top: auto; left: auto; right: auto; bottom: auto;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
 }
 .Button:active,
 .active,
@@ -158,10 +164,13 @@ export default {
   content: '';
   border-radius: inherit;
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: currentColor;
   opacity: 0;
-  transition: all .1s;
+  transition: all 0.1s;
   pointer-events: none;
 }
 .Button:hover:after {

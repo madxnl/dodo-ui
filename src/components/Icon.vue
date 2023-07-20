@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { ColorProp, useColorProp, useTheme } from '..'
-import { useWebFont } from '../composables/composables'
+import { useWebFont } from '../composables'
 import { IconName } from './iconNames'
 
 const props = defineProps<{

@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import { computed, inject } from 'vue'
 import { Text, useTheme } from '..'
-import { formServiceKey } from '../composables/composables'
+import { formServiceKey } from '../composables'
 
 const props = defineProps<{
   text: string
