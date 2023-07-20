@@ -1,8 +1,16 @@
-import { ColorProp, SpacingValue } from '..'
 import '../dodo.css'
 
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+
+const spacingValues = [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16] as const
+
+export type Color = [number, number, number]
+export type ThemeColorName = 'info'|'success'|'warn'|'danger'|'background'|'foreground'|'primary'|'secondary'
+export type ColorProp = Color | ThemeColorName
+export type SpacingValue = `${typeof spacingValues[number]}`
+export type GapSize = SpacingValue
+export type Spacing = SpacingValue[]|SpacingValue
 
 export function useTheme() {
   function colorPropRgb(color: ColorProp) {
@@ -11,6 +19,10 @@ export function useTheme() {
 
   function colorCss(color: ColorProp) {
     return typeof color === 'string' ? `var(--dodo-color-${color})` : `rgb(${color.join(',')})`
+  }
+
+  function gapValue(size: SpacingValue) {
+    return `var(--dodo-gap-${size})`
   }
 
   function gap(size?: SpacingValue) {
@@ -41,5 +53,5 @@ export function useTheme() {
     return grow ? 'dodo-grow' : ''
   }
 
-  return { colorCss, colorPropRgb, gap, padding, justify, align, wrap, flex, grow }
+  return { colorCss, colorPropRgb, gapValue, gap, padding, justify, align, wrap, flex, grow }
 }

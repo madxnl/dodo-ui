@@ -8,9 +8,9 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ColorProp, useColorProp, useTheme } from '..'
+import { ColorProp, useTheme } from '..'
 
-useTheme()
+const theme = useTheme()
 
 const props = withDefaults(
   defineProps<{
@@ -28,7 +28,7 @@ const props = withDefaults(
 const css = computed(() => {
   let s = ''
   if (props.color === 'inherit') s += 'color:inherit;'
-  else if (props.color) s += `color:${useColorProp(props.color)};`
+  else if (props.color) s += `color:${theme.colorCss(props.color)};`
   return s
 })
 </script>

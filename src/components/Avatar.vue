@@ -8,7 +8,7 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ColorProp, useColorProp, useTheme } from '..'
+import { ColorProp, useTheme } from '..'
 
 const baseColors: ColorProp[] = ['info', 'warn', 'success', 'danger']
 
@@ -17,6 +17,8 @@ const props = defineProps<{
   image?: string | null
   round?: boolean
 }>()
+
+const theme = useTheme()
 
 const initials = computed(() => {
   let result = props.text.trim()
@@ -30,7 +32,7 @@ const bgcolor = computed(() => {
   const N = baseColors.length
   const hash = hashCode(props.text)
   const color = baseColors[hash % N]
-  return useColorProp(color)
+  return theme.colorCss(color)
 })
 
 function hashCode(s: string) {
@@ -39,7 +41,6 @@ function hashCode(s: string) {
   return h
 }
 
-useTheme()
 </script>
 <style module>
 .Avatar {

@@ -1,7 +1,7 @@
 <template>
   <span
     ref="el"
-    :style="[color ? `color: ${useColorProp(color)};` : '', webfont.isReady ? '' : 'visibility:hidden']"
+    :style="[color ? `color: ${theme.colorCss(color)};` : '', webfont.isReady ? '' : 'visibility:hidden']"
     :class="[
       $style.icon,
       'material-symbols-' + iconStyle.toLowerCase(),
@@ -14,7 +14,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { ColorProp, IconName, useColorProp } from '..'
+import { ColorProp, IconName, useTheme } from '..'
 import { useWebFont } from '../composables'
 
 const props = defineProps<{
@@ -33,6 +33,8 @@ const props = defineProps<{
   large?: -1
   size?: 'xs' | 's' | 'm' | 'l' | 'xl'
 }>()
+
+const theme = useTheme()
 
 const iconStyle = 'Outlined' as 'Outlined' | 'Sharp' | 'Rounded'
 const iconWeight = '300' as '100' | '200' | '300' | '400' | '500' | '600' | '700'

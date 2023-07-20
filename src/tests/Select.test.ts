@@ -3,7 +3,7 @@ import { expect, test } from 'vitest'
 import { nextTick } from 'vue'
 import { Select } from '..'
 
-const _options = [...Array(20)].map((_, i) => ({ text: 'Option ' + i, value: i }))
+const _options = [...Array(20)].map((_, i) => ({ label: 'Option ' + i, value: i }))
 
 const getByText = (wrapper: any, text: string) => wrapper.findAll('*').find((e: any) => e.text().trim() === text)!
 
@@ -12,8 +12,8 @@ test('Select a value', async () => {
     props: { options: _options, modelValue: _options[0].value },
     global: { stubs: { teleport: true } },
   })
-  await getByText(wrapper, _options[0].text).trigger('click')
-  await getByText(wrapper, _options[1].text).trigger('click')
+  await getByText(wrapper, _options[0].label).trigger('click')
+  await getByText(wrapper, _options[1].label).trigger('click')
   expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [[_options[1].value]] })
   expect(wrapper.html()).toMatchSnapshot()
 })
@@ -23,9 +23,9 @@ test('Select can be disabled', async () => {
     props: { options: _options, modelValue: _options[0].value, disabled: true },
     global: { stubs: { teleport: true } },
   })
-  await getByText(wrapper, _options[0].text).trigger('click')
+  await getByText(wrapper, _options[0].label).trigger('click')
   await nextTick()
-  expect(getByText(wrapper, _options[1].text)).toBeFalsy()
+  expect(getByText(wrapper, _options[1].label)).toBeFalsy()
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -35,14 +35,14 @@ test('Search filters options', async () => {
     global: { stubs: { teleport: true } },
     attachTo: document.body,
   })
-  await getByText(wrapper, _options[0].text).trigger('click')
+  await getByText(wrapper, _options[0].label).trigger('click')
   await nextTick()
   const search = wrapper.get('input')
   expect(search.element).toBe(document.activeElement)
-  search.setValue(_options[2].text)
+  search.setValue(_options[2].label)
   await nextTick()
-  expect(getByText(wrapper, _options[1].text)).toBeFalsy()
-  expect(getByText(wrapper, _options[2].text)).toBeTruthy()
+  expect(getByText(wrapper, _options[1].label)).toBeFalsy()
+  expect(getByText(wrapper, _options[2].label)).toBeTruthy()
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -51,7 +51,7 @@ test('Search input visible if many options', async () => {
     props: { options: _options.slice(0, 5), modelValue: _options[0].value },
     global: { stubs: { teleport: true } },
   })
-  await getByText(wrapper, _options[0].text).trigger('click')
+  await getByText(wrapper, _options[0].label).trigger('click')
   await nextTick()
   expect(wrapper.find('[type=search]').isVisible()).toBeFalsy()
   wrapper.setProps({ options: _options })
@@ -66,7 +66,7 @@ test('Search input visible after character key press', async () => {
     global: { stubs: { teleport: true } },
     attachTo: document.body,
   })
-  await getByText(wrapper, _options[0].text).trigger('click')
+  await getByText(wrapper, _options[0].label).trigger('click')
   await nextTick()
   expect(wrapper.find('[type=search]').isVisible()).toBeFalsy()
   wrapper.get('input').setValue('foo')
@@ -79,7 +79,7 @@ test('Search input visible after character key press', async () => {
 //   const wrapper = mount(Select, {
 //     props: { options: _options, modelValue: _options[0].value },
 //   })
-//   const select = await getByText(wrapper, _options[0].text)
+//   const select = await getByText(wrapper, _options[0].label)
 //   await fireEvent.keyDown(select, { key: 'ArrowDown' })
 //   await fireEvent.keyDown(select, { key: 'ArrowDown' })
 //   await fireEvent.keyDown(select, { key: 'Enter' })
@@ -92,8 +92,8 @@ test('Search input visible after character key press', async () => {
 //     props: { options: _options, modelValue: _options[0].value },
 //   })
 //   const input = await findByRole('textbox')
-//   await getByText(wrapper, _options[0].text)
-//   await fireEvent.update(input, _options[1].text)
+//   await getByText(wrapper, _options[0].label)
+//   await fireEvent.update(input, _options[1].label)
 //   await fireEvent.keyDown(input, { key: 'Enter' })
 //   expect(emitted()).toMatchObject({ 'update:modelValue': [[_options[1].value]] })
 //   expect(wrapper.html()).toMatchSnapshot()
@@ -114,7 +114,7 @@ test('Search input visible after character key press', async () => {
 //   const wrapper = mount(Select, {
 //     props: { options: _options, modelValue: [_options[0].value], multiple: true },
 //   })
-//   await getByText(wrapper, _options[0].text)
+//   await getByText(wrapper, _options[0].label)
 //   await getByText(wrapper, 'Clear selection')
 //   expect(emitted()).toMatchObject({ 'update:modelValue': [[[]]] })
 //   expect(wrapper.html()).toMatchSnapshot()

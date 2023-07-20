@@ -7,15 +7,17 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ColorProp, colorPropToRGB } from '..'
+import { ColorProp, useTheme } from '..'
 
 const props = defineProps<{
   color?: ColorProp
 }>()
 
+const theme = useTheme()
+
 const css = computed(() => {
   let s = ''
-  if (props.color) s += `--chip-rgb:${colorPropToRGB(props.color)};`
+  if (props.color) s += `--chip-rgb:${theme.colorCss(props.color)};`
   return s
 })
 </script>

@@ -62,7 +62,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, provide, ref } from 'vue'
-import { Button, Column, Icon, useThemeOld } from '..'
+import { Button, Column, Icon, useTheme } from '..'
 import { navBarServiceKey, useScreenSize, useSessionStoredRef } from '../composables'
 import NavBarItem from './NavBarItem.vue'
 
@@ -72,7 +72,7 @@ const props = defineProps<{
   mobile?: boolean
 }>()
 
-useThemeOld()
+useTheme()
 
 const { screenLarge } = useScreenSize()
 const collapsed = useSessionStoredRef<boolean|null>('NavBar-collapse', null)

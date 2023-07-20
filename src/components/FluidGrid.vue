@@ -12,7 +12,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { Spacing, useSpacing, useThemeOld } from '..'
+import { SpacingValue, useTheme } from '..'
 
 const props = defineProps<{
   /**
@@ -24,13 +24,13 @@ const props = defineProps<{
    * Add spacing between child elements
    * @example gap="2"
    */
-  gap?: Spacing
+  gap?: SpacingValue
   /**
    * Amount of padding around the contents. Use array to set padding for each side separately.
    * @example padding="4"
    * @example padding="s 0 s s"
    */
-  padding?: Spacing
+  padding?: SpacingValue
   /**
    * Prefer empty columns instead of stretching
    */
@@ -42,7 +42,7 @@ const props = defineProps<{
   alignItems?: 'center'|'end'|'start'|'stretch'
 }>()
 
-useThemeOld()
+const theme = useTheme()
 
 const el = ref<HTMLElement>()
 const size = ref(99999)
@@ -67,8 +67,8 @@ const oneColumn = computed(() => {
 const css = computed(() => {
   let s = `--fluidgrid-size:${props.columnSize}px;`
   if (props.autoFill) s += '--fluidgrid-mode:auto-fill;'
-  if (props.gap) s += `gap:${useSpacing(props.gap)};`
-  if (props.padding) s += `padding:${useSpacing(props.padding)};`
+  if (props.gap) s += `gap:${theme.gapValue(props.gap)};`
+  if (props.padding) s += `padding:${theme.gapValue(props.padding)};`
   return s
 })
 </script>

@@ -8,7 +8,7 @@ exports[`Column sort 1`] = `
       <th scope=\\"col\\" class=\\"_sortable_22de65\\"><span class=\\"_colName_22de65\\"><span>Name</span>
         <!--v-if--></span>
       </th>
-      <th scope=\\"col\\" class=\\"_sortActive_22de65\\"><span class=\\"_colName_22de65\\"><span>Modified</span><span class=\\"_Icon_db495d material-symbols-outlined _sortIcon_22de65\\">arrow_drop_down</span></span></th>
+      <th scope=\\"col\\" class=\\"_sortActive_22de65\\"><span class=\\"_colName_22de65\\"><span>Modified</span><span class=\\"_icon_db495d material-symbols-outlined _sortIcon_22de65\\">arrow_drop_down</span></span></th>
     </tr>
     <tr class=\\"\\">
       <!--v-if-->
@@ -36,24 +36,24 @@ exports[`Selecting rows 1`] = `
 "<div class=\\"_Datatable_22de65\\">
   <table>
     <tr class=\\"\\">
-      <th style=\\"width: 0px;\\" scope=\\"col\\"><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_Icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></th>
+      <th style=\\"width: 0px;\\" scope=\\"col\\"><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></th>
       <th scope=\\"col\\" class=\\"_sortable_22de65\\"><span class=\\"_colName_22de65\\"><span>Name</span>
         <!--v-if--></span>
       </th>
-      <th scope=\\"col\\" class=\\"_sortActive_22de65\\"><span class=\\"_colName_22de65\\"><span>Modified</span><span class=\\"_Icon_db495d material-symbols-outlined _sortIcon_22de65\\">arrow_drop_down</span></span></th>
+      <th scope=\\"col\\" class=\\"_sortActive_22de65\\"><span class=\\"_colName_22de65\\"><span>Modified</span><span class=\\"_icon_db495d material-symbols-outlined _sortIcon_22de65\\">arrow_drop_down</span></span></th>
     </tr>
     <tr class=\\"_rowSelected_22de65\\">
-      <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_Icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
+      <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
       <td class=\\"\\" style=\\"\\">Foo</td>
       <td class=\\"\\" style=\\"\\">2022-01-01</td>
     </tr>
     <tr class=\\"_rowSelected_22de65\\">
-      <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_Icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
+      <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
       <td class=\\"\\" style=\\"\\">Baz</td>
       <td class=\\"\\" style=\\"\\">2022-01-04</td>
     </tr>
     <tr class=\\"_rowSelected_22de65\\">
-      <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_Icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
+      <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
       <td class=\\"\\" style=\\"\\">Bar</td>
       <td class=\\"\\" style=\\"\\">2022-02-01</td>
     </tr>
@@ -72,7 +72,7 @@ exports[`Show more 1`] = `
       <th scope=\\"col\\" class=\\"_sortable_22de65\\"><span class=\\"_colName_22de65\\"><span>Name</span>
         <!--v-if--></span>
       </th>
-      <th scope=\\"col\\" class=\\"_sortActive_22de65\\"><span class=\\"_colName_22de65\\"><span>Modified</span><span class=\\"_Icon_db495d material-symbols-outlined _sortIcon_22de65\\">arrow_drop_down</span></span></th>
+      <th scope=\\"col\\" class=\\"_sortActive_22de65\\"><span class=\\"_colName_22de65\\"><span>Modified</span><span class=\\"_icon_db495d material-symbols-outlined _sortIcon_22de65\\">arrow_drop_down</span></span></th>
     </tr>
     <tr class=\\"\\">
       <!--v-if-->

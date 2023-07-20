@@ -14,7 +14,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, watchEffect } from 'vue'
-import { ColorProp, colorPropToRGB, useThemeOld } from '..'
+import { ColorProp, useTheme } from '..'
 
 const props = defineProps<{
   /** Change text color */
@@ -43,6 +43,8 @@ const props = defineProps<{
   label?: boolean
 }>()
 
+const theme = useTheme()
+
 const tagNames = [
   'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
   'a', 'p', 'em', 'strong', 'small',
@@ -54,7 +56,7 @@ const tag = computed(() => tagNames.find(t => props[t]) ?? 'span')
 const css = computed(() => {
   let css = ''
   if (props.color === 'inherit') css += '--text-rgb:currentColor;'
-  else if (props.color) css += `--text-rgb:${colorPropToRGB(props.color)};`
+  else if (props.color) css += `--text-rgb:${theme.colorCss(props.color)};`
   if (props.align) css += `text-align:${props.align};`
   return css
 })
@@ -63,8 +65,6 @@ watchEffect(() => {
   const tagProps = tagNames.filter(s => props[s])
   if (tagProps.length > 1) throw new Error('<Text> should not have more than one tag prop')
 })
-
-useThemeOld()
 
 </script>
 <style module>
