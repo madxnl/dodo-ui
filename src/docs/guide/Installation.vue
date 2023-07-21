@@ -11,5 +11,6 @@
     <code>import { Button } from '@madxnl/dodo-ui'<br><br>&lt;Button&gt;...&lt;/Button&gt;</code>
   </blockquote>
 </template>
-<script lang="ts" setup>
+<script lang="ts">
+export default {}
 </script>
