@@ -93,3 +93,11 @@ export function useWebFont(opts: { weight: string; name: string; href: string })
 
   return { isReady }
 }
+
+export function parseColor(hex: string) {
+  if (!hex.match(/^#\w{6}$/)) throw new Error('Invalid hex color')
+  return hex
+    .match(/(\w\w)/g)!
+    .map((x) => parseInt(x, 16))
+    .slice(0, 3) as [number, number, number]
+}

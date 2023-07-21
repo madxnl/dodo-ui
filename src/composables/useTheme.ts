@@ -56,7 +56,7 @@ export function useTheme() {
   return { colorCss, colorPropRgb, gapValue, gap, padding, justify, align, wrap, flex, grow }
 }
 
-export function useDodoFont() {
+export function useBaseFont() {
   const fontClass = 'dodo-fonts'
 
   return { fontClass }

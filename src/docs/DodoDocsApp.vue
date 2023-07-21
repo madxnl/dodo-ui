@@ -1,12 +1,10 @@
 <template>
-  <Column :class="useDodoFont().fontClass" style="min-height:0">
-    <DocumentationPage :chapters="chapters" />
-    <CrashDialog />
-  </Column>
+  <DocumentationPage :chapters="chapters" />
+  <CrashDialog />
 </template>
 <script setup lang="ts">
 import { DefineComponent } from 'vue'
-import { Column, CrashDialog, useDodoFont } from '..'
+import { CrashDialog, useBaseFont } from '..'
 import DocumentationPage from './DocumentationPage.vue'
 import Color from './guide/ColorGuide.vue'
 import Installation from './guide/Installation.vue'
@@ -34,6 +32,10 @@ const chapters = [{
   title: 'Components',
   pages: componentPages,
 }]
+
+const font = useBaseFont()
+
+document.body.classList.add(font.fontClass)
 
 // function tokenize(pageTitle: string) {
 //   return pageTitle.replace(/\W/g, '')

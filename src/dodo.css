@@ -64,6 +64,12 @@
 .dodo-gap-4 {
   gap: calc(var(--dodo-spacing) * 4) !important;
 }
+.dodo-gap-5 {
+  gap: calc(var(--dodo-spacing) * 5) !important;
+}
+.dodo-gap-6 {
+  gap: calc(var(--dodo-spacing) * 6) !important;
+}
 .dodo-gap-8 {
   gap: calc(var(--dodo-spacing) * 8) !important;
 }
@@ -85,6 +91,12 @@
 }
 .dodo-pad-4 {
   padding: calc(var(--dodo-spacing) * 4) !important;
+}
+.dodo-pad-5 {
+  padding: calc(var(--dodo-spacing) * 5) !important;
+}
+.dodo-pad-6 {
+  padding: calc(var(--dodo-spacing) * 6) !important;
 }
 .dodo-pad-8 {
   padding: calc(var(--dodo-spacing) * 8) !important;

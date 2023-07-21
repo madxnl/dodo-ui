@@ -47,17 +47,6 @@ defineProps<{
    * @example wrap
    */
   wrap?: boolean
-
-  /** Deprecated */
-  pad?: never
-  /** Deprecated */
-  justifyContent?: never
-  /** Deprecated */
-  alignItems?: never
-  /** Deprecated */
-  alignContent?: never
-  /** Deprecated */
-  overflow?: never
 }>()
 
 const theme = useTheme()

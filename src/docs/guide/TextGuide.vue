@@ -1,7 +1,7 @@
 <template>
   <p>
     Use basic html tags like <code>&lt;h1&gt;</code> or <code>&lt;p&gt;</code> for text.
-    To add font styles for your app or page, apply the class <mark><code>useDodoFont().fontClass</code></mark>.
+    To add the default font styles for your app or page, apply the class <mark><code>useBaseFont().fontClass</code></mark>.
     For additional text styling you can use the following CSS classes:
   </p>
   <BaseTable>
@@ -16,13 +16,13 @@
 </template>
 <script setup lang="ts">
 import { DocsExample } from '..'
-import { useDodoFont } from '../..'
+import { useBaseFont } from '../..'
 import BaseTable from '../BaseTable.vue'
 
-const setup = () => ({ useDodoFont })
+const setup = () => ({ useBaseFont })
 
 const template = `
-<Column gap="1" :class="useDodoFont().fontClass">
+<Column gap="1" :class="useBaseFont().fontClass">
   <h1>Header 1</h1>
   <h2>Header 2</h2>
   <h3>Header 3</h3>

@@ -28,9 +28,7 @@
 </template>
 <script lang="ts" setup>
 import { DefineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
-import { Column, ScrollContainer, useTheme } from '..'
-
-const theme = useTheme()
+import { Column, ScrollContainer } from '..'
 
 const props = defineProps<{
   chapters: {

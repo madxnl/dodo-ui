@@ -28,21 +28,14 @@ defineProps<{
    */
   gap?: SpacingValue
   /**
-   * Amount of padding around the contents. Use array to set padding for each side separately.
+   * Amount of padding around the contents
    * @example padding="4"
-   * @example padding="s 0 s s"
    */
   padding?: SpacingValue
   /**
    * Prefer empty columns instead of stretching
    */
   autoFill?: boolean
-  /**
-   * Aligns children along cross-axis direction (default 'start')
-   * @example align="end"
-   */
-  alignItems?: never
-  stretch?: never
 }>()
 
 const theme = useTheme()

@@ -23,9 +23,8 @@ defineProps<{
    */
   gap?: SpacingValue
   /**
-   * Amount of padding around the contents. Use array to set padding for each side separately.
+   * Amount of padding around the contents
    * @example padding="4"
-   * @example padding="s 0 s s"
    */
   padding?: SpacingValue
   /**
@@ -48,15 +47,6 @@ defineProps<{
    * @example grow
    */
   grow?: boolean
-
-  /** Deprecated */
-  pad?: never
-  /** Deprecated */
-  justifyContent?: never
-  /** Deprecated */
-  alignItems?: never
-  /** Deprecated */
-  alignContent?: never
 }>()
 
 const theme = useTheme()
