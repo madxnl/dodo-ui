@@ -1,7 +1,7 @@
 <template>
-  <p class="d-text">
+  <Text p>
     The following CSS classes for layout are available based on flex-box CSS properties:
-  </p>
+  </Text>
   <BaseTable>
     <tr><th>Class</th><th>Description</th></tr>
     <tr><td class="d-code">d-row</td><td>Flexible row container element</td></tr>
@@ -15,9 +15,9 @@
     <!-- <tr><td class="d-code">d-justify-self-&lt;value&gt;</td><td>Set justify-self on child of flex container</td></tr> -->
     <!-- <tr><td class="d-code">d-align-content-&lt;value&gt;</td><td>Set align-content of flex children</td></tr> -->
   </BaseTable>
-  <p class="d-text">
+  <Text p>
     Gap classes control spacing between child elements, and padding classes control spacing around the element itself:
-  </p>
+  </Text>
   <BaseTable>
     <tr><th>Class</th><th>Description</th></tr>
     <tr><td class="d-code">d-gap-N</td><td>Set spacing between child elements, where N is one of 0|1|2|3|4|5|6|8|10|12|16</td></tr>
@@ -27,6 +27,7 @@
   </BaseTable>
 </template>
 <script setup lang="ts">
+import { Text } from '../..'
 import BaseTable from '../BaseTable.vue'
 
 </script>

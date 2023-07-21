@@ -2,9 +2,9 @@
   <Text v-if="$slots.description" p>
     <slot name="description" />
   </Text>
-  <Tabs :tabs="[{ name: 'Example' }, { name: 'API' }]">
-    <template #Example><DocsExample :options="example" /></template>
-    <template #API><PropsTable :doc="doc" /></template>
+  <Tabs v-slot="{ tab }" :tabs="[{ name: 'Example' }, { name: 'API' }]">
+    <DocsExample v-if="tab.name === 'Example'" :options="example" />
+    <PropsTable v-if="tab.name === 'API'" :doc="doc" />
   </Tabs>
 </template>
 <script lang="ts" setup>

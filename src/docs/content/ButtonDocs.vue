@@ -6,18 +6,15 @@
   </DocsComponentSection>
 </template>
 <script setup lang="ts">
-import { parseColor } from '../..'
 import DocsComponentSection from '../DocsComponentSection.vue'
 // @ts-ignore
 import { DOCGEN as doc } from '../../components/Button.vue'
-
-const customColor = parseColor('#ff8888')
 
 async function myAsyncSubmit() {
   await new Promise(resolve => setTimeout(resolve, 3000))
 }
 
-const setup = () => ({ customColor, myAsyncSubmit })
+const setup = () => ({ myAsyncSubmit })
 
 const template = `
 <Row gap="2" wrap>
@@ -25,7 +22,7 @@ const template = `
   <Button variant="text">Button 2</Button>
   <Button rounded>Button 3</Button>
   <Button color="info">Button 4</Button>
-  <Button variant="solid" :color="customColor" small>Button 5</Button>
+  <Button variant="solid" :color="[255, 0, 127]" small>Button 5</Button>
   <Button color="success"><Icon name="new_releases" fill />Button 6</Button>
   <Button variant="solid" square color="danger"><Icon name="favorite" fill /></Button>
   <Button variant="solid" color="info" disabled>Disabled</Button>

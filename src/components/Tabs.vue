@@ -1,38 +1,39 @@
 <template>
-  <Column gap="0">
-    <div :class="$style.bar">
-      <button v-if="showArrows" :class="[$style.arrow, !spaceLeft && $style.arrowOff]" @click="clickArrow(-1)">
-        <Icon name="navigate_before" size="l" />
-      </button>
-      <div ref="tabsDiv" :class="[$style.tabs, dragging && $style.dragging]">
-        <div
-          v-for="(tab, i) in tabs"
-          :key="keyFor(tab)"
-          :class="[$style.tab, current === keyFor(tab) && $style.active, tab.disabled && $style.disabled]"
-          @click="current = keyFor(tab)"
-        >
-          <h5 :class="$style.tabName">
-            <slot name="tab-title" :i="i" :tab="tab">
-              {{ tab.name }}
-            </slot>
-          </h5>
+  <Column gap="4">
+    <Column gap="0">
+      <div :class="$style.bar">
+        <button v-if="showArrows" :class="[$style.arrow, !spaceLeft && $style.arrowOff]" @click="clickArrow(-1)">
+          <Icon name="navigate_before" size="l" />
+        </button>
+        <div ref="tabsDiv" :class="[$style.tabs, dragging && $style.dragging]">
+          <div
+            v-for="(tab, i) in tabs"
+            :key="keyFor(tab)"
+            :class="[$style.tab, current === keyFor(tab) && $style.active, tab.disabled && $style.disabled]"
+            @click="current = keyFor(tab)"
+          >
+            <Text h5 :class="$style.tabName">
+              <slot name="tab-title" :i="i" :tab="tab">
+                {{ tab.name }}
+              </slot>
+            </Text>
+          </div>
         </div>
+        <button v-if="showArrows" :class="[$style.arrow, !spaceRight && $style.arrowOff]" @click="clickArrow(1)">
+          <Icon name="navigate_next" size="l" />
+        </button>
       </div>
-      <button v-if="showArrows" :class="[$style.arrow, !spaceRight && $style.arrowOff]" @click="clickArrow(1)">
-        <Icon name="navigate_next" size="l" />
-      </button>
-    </div>
-    <hr>
+      <Text><hr></Text>
+    </Column>
+    <template v-if="currentTab">
+      <slot :name="currentTab.slot ?? 'default'" :tab="currentTab" />
+    </template>
   </Column>
-
-  <template v-if="currentTab">
-    <slot :name="currentTab.slot ?? 'default'" :tab="currentTab" />
-  </template>
 </template>
 
 <script lang="ts" setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useCssModule, watch, watchEffect } from 'vue'
-import { Column, Icon, useResizeObserver } from '..'
+import { Column, Icon, Text, useResizeObserver } from '..'
 
 export interface Tab {
   name: string
@@ -123,12 +124,14 @@ function mouseMoveHandler(e: MouseEvent | TouchEvent) {
   // How far the mouse has been moved
   const pos = e instanceof TouchEvent ? e.touches[0] : e
   const dx = pos.clientX - dragging.value!.startX
-  const el = tabsDiv.value!
+  const el = tabsDiv.value
+  if (!el) return
   el.scrollLeft = dragging.value!.startScroll - dx
 }
 
 function onResizeScroll() {
-  const el = tabsDiv.value!
+  const el = tabsDiv.value
+  if (!el) return
   const containerWidth = el.parentElement?.clientWidth ?? 0
   const contentWidth = el.scrollWidth ?? 0
   spaceLeft.value = el.scrollLeft > 0

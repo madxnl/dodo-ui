@@ -61,7 +61,7 @@ function toggle(show: boolean) {
         window.addEventListener('scroll', onWindowEvent, { passive: true, capture: true })
         window.addEventListener('resize', onWindowEvent)
       })
-      .catch((e) => {})
+      .catch(_ => {})
   } else {
     window.removeEventListener('click', onWindowEvent, { capture: true })
     window.removeEventListener('scroll', onWindowEvent, { capture: true })
