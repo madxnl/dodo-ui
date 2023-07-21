@@ -28,6 +28,8 @@ const template = `
   <Icon name="new_releases" />
   <Icon name="account_circle" />
   <Icon name="menu" />
+  <Icon name="check_indeterminate_small" />
+  <Icon name="tab_move" />
 </div>`
 
 const template2 = `

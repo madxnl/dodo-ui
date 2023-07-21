@@ -49,6 +49,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "^9.15.1",
     "jsdom": "^22.1.0",
+    "material-symbols": "^0.10.1",
     "prismjs": "^1.29.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.4",
