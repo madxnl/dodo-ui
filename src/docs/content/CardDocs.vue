@@ -17,13 +17,13 @@ const setup = () => ({ isActive })
 
 const template = `
 <Card>
-  <Text>Card</Text>
+  <p>Card</p>
 </Card>
 <Card hoverable>
-  <Text>Card hoverable</Text>
+  <p>Card hoverable</p>
 </Card>
 <Card hoverable :active="isActive" @click="isActive=!isActive">
-  <Text>Card active</Text>
+  <p>Card active</p>
 </Card>
 `
 </script>

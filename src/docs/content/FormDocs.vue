@@ -30,14 +30,14 @@ function onValidSubmit() {
 const setup = () => ({ form1, form2, validateEmail, onValidSubmit })
 
 const template = `
-<Text>Single step form with validation:</Text>
+<p>Single step form with validation:</p>
 <Form :validate="{ email: { value: form1.email } }" @submit="onValidSubmit">
   <Label text="Email" for="email">
     <TextInput v-model="form1.email" placeholder="example@email.com" />
   </Label>
 </Form>
 
-<Text>Multi-step step form:</Text>
+<p>Multi-step step form:</p>
 <Form
   v-slot="{ stepIndex }"
   :validate="{
@@ -62,8 +62,8 @@ const template = `
     </Label>
   </template>
   <template v-if="stepIndex === 2">
-    <Text p>Email: {{ form2.message }}</Text>
-    <Text p>Name: {{ form2.email }}</Text>
+    <p>Email: {{ form2.message }}</p>
+    <p>Name: {{ form2.email }}</p>
   </template>
 </Form>
 `

@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.NavLayout">
+  <div :class="[$style.NavLayout]">
     <Column gap="4" padding="4" :class="$style.bar" align="start">
       <Column v-for="(chapter, i) in chapters" :key="i" gap="0">
         <span v-if="chapter.title" :class="$style.chapterTitle">
@@ -14,10 +14,10 @@
       </Column>
     </Column>
     <ScrollContainer :class="$style.scroll">
-      <Column :class="$style.content">
+      <Column :class="$style.content" padding="4">
         <template v-for="chapter in chapters">
           <Column v-for="page in chapter.pages" :id="page.title" :key="page.title" padding="6" gap="8">
-            <Text h2>{{ page.title }}</Text>
+            <h2>{{ page.title }}</h2>
             <component :is="page.component" />
             <br>
           </Column>
@@ -28,9 +28,9 @@
 </template>
 <script lang="ts" setup>
 import { DefineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
-import { Column, ScrollContainer, Text, useTheme } from '..'
+import { Column, ScrollContainer, useTheme } from '..'
 
-useTheme()
+const theme = useTheme()
 
 const props = defineProps<{
   chapters: {

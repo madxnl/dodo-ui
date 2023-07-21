@@ -19,21 +19,21 @@ const template = `
   <Row padding="2" style="background:orange">
     <img :src="imgUrl" style="height:100%">
     <Column gap="0" style="background:gold">
-      <Text h4>Aaaa</Text>
-      <Text>Bbbb</Text>
+      <h4>Aaaa</h4>
+      <p>Bbbb</p>
     </Column>
     <Row grow justify="end">
-      <Text>Cccc</Text>
+      <p>Cccc</p>
     </Row>
   </Row>
   <Row justify="center" style="background:orange">
-    <Text style="background:gold">Aaaa</Text>
-    <Text style="background:gold">Bbbb</Text>
+    <p style="background:gold">Aaaa</p>
+    <p style="background:gold">Bbbb</p>
   </Row>
   <Row gap="4" align="start">
-    <Column gap="0" padding="2" style="background:orange"><Text h4>Aaaa</Text></Column>
-    <Column gap="0" padding="4" style="background:orange"><Text h4>Aaaa</Text></Column>
-    <Column gap="0" padding="6" style="background:orange"><Text h4>Aaaa</Text></Column>
+    <Column gap="0" padding="2" style="background:orange"><h4>Aaaa</h4></Column>
+    <Column gap="0" padding="4" style="background:orange"><h4>Aaaa</h4></Column>
+    <Column gap="0" padding="6" style="background:orange"><h4>Aaaa</h4></Column>
   </Row>
 </Column>
 `

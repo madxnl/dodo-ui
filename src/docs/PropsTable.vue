@@ -1,6 +1,6 @@
 <template>
   <template v-if="doc.props?.length">
-    <!-- <Text h4>&lt;{{ doc.displayName }}&gt; Props</Text> -->
+    <!-- <h4>&lt;{{ doc.displayName }}&gt; Props</h4> -->
     <div style="overflow:auto">
       <BaseTable>
         <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
@@ -15,7 +15,7 @@
     </div>
   </template>
   <template v-if="doc.events?.length">
-    <!-- <Text h4>&lt;{{ doc.displayName }}&gt; Events</Text> -->
+    <!-- <h4>&lt;{{ doc.displayName }}&gt; Events</h4> -->
     <div style="overflow:auto">
       <BaseTable>
         <tr><th>Event</th><th>Signature</th><th>Description</th></tr>
@@ -28,7 +28,7 @@
     </div>
   </template>
   <template v-if="doc.slots?.length">
-    <!-- <Text h4>&lt;{{ doc.displayName }}&gt; Slots</Text> -->
+    <!-- <h4>&lt;{{ doc.displayName }}&gt; Slots</h4> -->
     <div style="overflow:auto">
       <BaseTable>
         <tr><th>Slot</th><th>Scope</th><th>Description</th></tr>

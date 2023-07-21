@@ -12,18 +12,18 @@
             :class="[$style.tab, current === keyFor(tab) && $style.active, tab.disabled && $style.disabled]"
             @click="current = keyFor(tab)"
           >
-            <Text h5 :class="$style.tabName">
+            <h5 :class="$style.tabName">
               <slot name="tab-title" :i="i" :tab="tab">
                 {{ tab.name }}
               </slot>
-            </Text>
+            </h5>
           </div>
         </div>
         <button v-if="showArrows" :class="[$style.arrow, !spaceRight && $style.arrowOff]" @click="clickArrow(1)">
           <Icon name="navigate_next" size="l" />
         </button>
       </div>
-      <Text><hr></Text>
+      <hr>
     </Column>
     <template v-if="currentTab">
       <slot :name="currentTab.slot ?? 'default'" :tab="currentTab" />
@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useCssModule, watch, watchEffect } from 'vue'
-import { Column, Icon, Text, useResizeObserver } from '..'
+import { Column, Icon, useResizeObserver } from '..'
 
 export interface Tab {
   name: string

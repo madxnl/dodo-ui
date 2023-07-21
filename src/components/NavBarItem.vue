@@ -15,8 +15,8 @@
           <slot name="icon"><Icon :name="icon!" /></slot>
         </div>
         <div :class="$style.textwrap">
-          <Text :class="$style.text" nowrap color="background">{{ text }}</Text>
-          <Text v-if="textSecondary" :class="$style.secondary" nowrap color="background">{{ textSecondary }}</Text>
+          <p :class="$style.text" data-nowrap color="background">{{ text }}</p>
+          <p v-if="textSecondary" :class="$style.secondary" data-nowrap color="background">{{ textSecondary }}</p>
         </div>
       </div>
 
@@ -28,7 +28,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, ComputedRef, inject, onMounted, ref, useSlots } from 'vue'
-import { Dropdown, Icon, IconName, Text, Tooltip, useTheme } from '..'
+import { Dropdown, Icon, IconName, Tooltip, useTheme } from '..'
 import { navBarServiceKey } from '../composables'
 
 const props = defineProps<{

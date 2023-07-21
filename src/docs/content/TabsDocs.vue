@@ -17,10 +17,10 @@ const template = `
   { name: 'Tab 3 (disabled) ', disabled: true },
 ]">
   <template #tab1>
-    <Text>Tab 1 content</Text>
+    <p>Tab 1 content</p>
   </template>
   <template #tab2>
-    <Text>Tab 2 content</Text>
+    <p>Tab 2 content</p>
   </template>
 </Tabs>`
 </script>

@@ -1,15 +1,15 @@
 <template>
-  <Text p>
-    These base colors can be customized using the theme service or by the RGB CSS vars (eg <code>--dodo-rgb-danger: 255,0,0;</code>).
-  </Text>
-  <Text>
+  <p>
+    These base colors can be overridden using RGB CSS vars (eg <code>--dodo-rgb-danger: 255,0,0;</code>).
+  </p>
+  <p>
     <code v-for="c in colors" :key="c" :class="[$style.swatch]" :style="`color:${theme.colorCss(c)}`">
       <span :class="invertClass(c) && $style.invert">{{ c }}</span>
     </code>
-  </Text>
+  </p>
 </template>
 <script setup lang="ts">
-import { Text, useTheme } from '../..'
+import { useTheme } from '../..'
 
 const colors = [
   'info',

@@ -16,7 +16,7 @@ const setup = () => ({ imgUrl })
 const template = `
 <Column style="height:300px">
   <ScrollContainer style="background:khaki">
-    <Text h2 v-for="i in 15">{{ i }}</Text>
+    <h2 v-for="i in 15">{{ i }}</h2>
   </ScrollContainer>
 </Column>
 `

@@ -141,6 +141,50 @@
 
 /* Text */
 
+.dodo-nowrap, [data-nowrap] {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.dodo-opacity-secondary, [data-opacity='secondary'] {
+  opacity: 0.6;
+}
+.dodo-opacity-disabled, [data-opacity='disabled'] {
+  opacity: 0.38;
+}
+.dodo-textalign-center, [data-textalign='center'] {
+  text-align: center;
+}
+.dodo-textalign-end, [data-textalign='end'] {
+  text-align: end;
+}
+.dodo-color-info, [data-textcolor='info'] {
+  color: var(--dodo-color-info);
+}
+.dodo-color-success, [data-textcolor='success'] {
+  color: var(--dodo-color-success);
+}
+.dodo-color-warn, [data-textcolor='warn'] {
+  color: var(--dodo-color-warn);
+}
+.dodo-color-danger, [data-textcolor='danger'] {
+  color: var(--dodo-color-danger);
+}
+.dodo-color-background, [data-textcolor='background'] {
+  color: var(--dodo-color-background);
+}
+.dodo-color-foreground, [data-textcolor='foreground'] {
+  color: var(--dodo-color-foreground);
+}
+.dodo-color-primary, [data-textcolor='primary'] {
+  color: var(--dodo-color-primary);
+}
+.dodo-color-secondary, [data-textcolor='secondary'] {
+  color: var(--dodo-color-secondary);
+}
+
+/* Font */
+
 .dodo-fonts {
   font: var(--dodo-font-base);
   color: var(--dodo-color-foreground);
@@ -201,47 +245,6 @@
   font-weight: var(--dodo-weight-bold);
   font-size: var(--dodo-font-small);
 }
-.dodo-fonts [data-nowrap] {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.dodo-fonts [data-opacity='secondary'] {
-  opacity: 0.6;
-}
-.dodo-fonts [data-opacity='disabled'] {
-  opacity: 0.38;
-}
-.dodo-fonts [data-textalign='center'] {
-  text-align: center;
-}
-.dodo-fonts [data-textalign='end'] {
-  text-align: end;
-}
-.dodo-fonts [data-textcolor='info'] {
-  color: var(--dodo-color-info);
-}
-.dodo-fonts [data-textcolor='success'] {
-  color: var(--dodo-color-success);
-}
-.dodo-fonts [data-textcolor='warn'] {
-  color: var(--dodo-color-warn);
-}
-.dodo-fonts [data-textcolor='danger'] {
-  color: var(--dodo-color-danger);
-}
-.dodo-fonts [data-textcolor='background'] {
-  color: var(--dodo-color-background);
-}
-.dodo-fonts [data-textcolor='foreground'] {
-  color: var(--dodo-color-foreground);
-}
-.dodo-fonts [data-textcolor='primary'] {
-  color: var(--dodo-color-primary);
-}
-.dodo-fonts [data-textcolor='secondary'] {
-  color: var(--dodo-color-secondary);
-}
 .dodo-fonts ::selection {
   color: white;
   background: var(--dodo-color-info);
@@ -261,4 +264,9 @@
   min-height: 1px;
   background: currentColor;
   opacity: 0.1;
+}
+.dodo-fonts mark {
+  background: rgba(var(--dodo-rgb-info), 0.2);
+  padding: 0 2px;
+  border-radius: 4px;
 }

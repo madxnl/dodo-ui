@@ -19,7 +19,7 @@ const template = `
   <Button>Basic dropdown</Button>
 
   <template #dropdown>
-    <Text>Dropdown content</Text>
+    <p>Dropdown content</p>
   </template>
 </Dropdown>
 
