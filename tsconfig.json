@@ -28,6 +28,13 @@
     "strictTemplates": true,
     "dataAttributes": [
       "data-selectactive",
+      "data-mobile-nav",
+      "clip-path",
+      "stop-color",
+      "fill-rule",
+      "stroke-width",
+      "color-interpolation-filters",
+      "id",
       "tabindex"
     ]
   },

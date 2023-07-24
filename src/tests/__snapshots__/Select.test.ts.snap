@@ -4,7 +4,7 @@ exports[`Search filters options 1`] = `
 "<div class=\\"_trigger_0c7521\\">
   <div class=\\"_Field_342682 _button_342682\\">
     <div class=\\"_inner_342682\\">
-      <p data-nowrap=\\"\\">
+      <p class=\\"dodo-nowrap\\">
         <!--v-if-->Option 0
       </p><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\">
     </div><span class=\\"_icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
@@ -23,7 +23,7 @@ exports[`Search filters options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 2
               </p>
               <!--v-if-->
@@ -40,7 +40,7 @@ exports[`Search input visible after character key press 1`] = `
 "<div class=\\"_trigger_0c7521\\">
   <div class=\\"_Field_342682 _button_342682\\">
     <div class=\\"_inner_342682\\">
-      <p data-nowrap=\\"\\">
+      <p class=\\"dodo-nowrap\\">
         <!--v-if-->Option 0
       </p><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\">
     </div><span class=\\"_icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
@@ -66,7 +66,7 @@ exports[`Search input visible if many options 1`] = `
 "<div class=\\"_trigger_0c7521\\">
   <div class=\\"_Field_342682 _button_342682\\">
     <div class=\\"_inner_342682\\">
-      <p data-nowrap=\\"\\">
+      <p class=\\"dodo-nowrap\\">
         <!--v-if-->Option 0
       </p><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\">
     </div><span class=\\"_icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
@@ -85,7 +85,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div data-selectactive=\\"true\\" class=\\"_DropdownItem_8d9fa1 _active_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 0
               </p>
               <!--v-if-->
@@ -94,7 +94,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 1
               </p>
               <!--v-if-->
@@ -103,7 +103,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 2
               </p>
               <!--v-if-->
@@ -112,7 +112,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 3
               </p>
               <!--v-if-->
@@ -121,7 +121,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 4
               </p>
               <!--v-if-->
@@ -130,7 +130,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 5
               </p>
               <!--v-if-->
@@ -139,7 +139,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 6
               </p>
               <!--v-if-->
@@ -148,7 +148,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 7
               </p>
               <!--v-if-->
@@ -157,7 +157,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 8
               </p>
               <!--v-if-->
@@ -166,7 +166,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 9
               </p>
               <!--v-if-->
@@ -175,7 +175,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 10
               </p>
               <!--v-if-->
@@ -184,7 +184,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 11
               </p>
               <!--v-if-->
@@ -193,7 +193,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 12
               </p>
               <!--v-if-->
@@ -202,7 +202,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 13
               </p>
               <!--v-if-->
@@ -211,7 +211,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 14
               </p>
               <!--v-if-->
@@ -220,7 +220,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 15
               </p>
               <!--v-if-->
@@ -229,7 +229,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 16
               </p>
               <!--v-if-->
@@ -238,7 +238,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 17
               </p>
               <!--v-if-->
@@ -247,7 +247,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 18
               </p>
               <!--v-if-->
@@ -256,7 +256,7 @@ exports[`Search input visible if many options 1`] = `
           <!--v-if-->
           <div class=\\"_DropdownItem_8d9fa1\\">
             <div class=\\"_el_665c14 dodo-gap-0\\" style=\\"flex: 1;\\">
-              <p data-nowrap=\\"\\" class=\\"_text_8d9fa1\\">
+              <p class=\\"_text_8d9fa1 dodo-nowrap\\">
                 <!-- @slot Customize option html -->Option 19
               </p>
               <!--v-if-->
@@ -273,7 +273,7 @@ exports[`Select a value 1`] = `
 "<div class=\\"_trigger_0c7521\\">
   <div class=\\"_Field_342682 _button_342682\\">
     <div class=\\"_inner_342682\\">
-      <p data-nowrap=\\"\\">
+      <p class=\\"dodo-nowrap\\">
         <!--v-if-->Option 0
       </p><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\">
     </div><span class=\\"_icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
@@ -288,7 +288,7 @@ exports[`Select can be disabled 1`] = `
 "<div class=\\"_trigger_0c7521 _disabled_0c7521\\">
   <div class=\\"_Field_342682 _disabled_342682 _button_342682\\">
     <div class=\\"_inner_342682\\">
-      <p data-nowrap=\\"\\">
+      <p class=\\"dodo-nowrap\\">
         <!--v-if-->Option 0
       </p><input style=\\"position: fixed; pointer-events: none; opacity: 0;\\" disabled=\\"\\">
     </div><span class=\\"_icon_db495d material-symbols-outlined\\">arrow_drop_down</span>
