@@ -7,10 +7,10 @@
   >
     <slot name="before" />
     <Column gap="0" style="flex: 1">
-      <p data-nowrap :class="$style.text">
+      <p :class="[$style.text, 'dodo-nowrap']">
         <slot />
       </p>
-      <p v-if="$slots['text-secondary']" data-nowrap data-opacity="secondary">
+      <p v-if="$slots['text-secondary']" class="dodo-nowrap dodo-fade-secondary">
         <slot name="text-secondary" />
       </p>
     </Column>

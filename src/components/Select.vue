@@ -27,7 +27,7 @@
   </Row>
   <Dropdown v-else v-model="dropdownActive" :disabled="disabled">
     <Field ref="fieldEl" button :disabled="disabled">
-      <p v-if="currentValues.length" data-nowrap>
+      <p v-if="currentValues.length" class="dodo-nowrap">
         <template v-for="(value, i) in currentValues">
           <template v-if="i">, </template>
           <template v-if="optionForValue(value)">
@@ -38,7 +38,7 @@
           <template v-else>{{ value }}</template>
         </template>
       </p>
-      <p v-else data-opacity="secondary" data-nowrap>
+      <p v-else class="dodo-nowrap dodo-fade-secondary">
         {{ placeholderText }}
       </p>
       <template #after>

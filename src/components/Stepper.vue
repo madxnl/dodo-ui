@@ -14,9 +14,9 @@
           <Column gap="1">
             <h3>
               <span v-if="step === currentStep">{{ step.name }}</span>
-              <span v-else data-opacity="secondary">{{ step.name }}</span>
+              <span v-else class="dodo-fade-secondary">{{ step.name }}</span>
             </h3>
-            <p v-if="step.hint" data-opacity="secondary">{{ step.hint }}</p>
+            <p v-if="step.hint" class="dodo-fade-secondary">{{ step.hint }}</p>
           </Column>
 
           <Column v-if="step === currentStep">

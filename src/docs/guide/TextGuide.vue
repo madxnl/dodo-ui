@@ -6,10 +6,10 @@
   </p>
   <BaseTable>
     <tr><th>Class</th><th>Description</th></tr>
-    <tr><td><code>dodo-textcolor-primary</code></td><td>Set text color</td></tr>
-    <tr><td><code>dodo-textalign-center|end</code></td><td>Align text</td></tr>
-    <tr><td><code>dodo-opacity-secondary</code></td><td>Fades texts that have lower importance</td></tr>
-    <tr><td><code>dodo-opacity-disabled</code></td><td>Fades texts even more to appear disabled</td></tr>
+    <tr><td><code>dodo-color-primary</code></td><td>Set text color</td></tr>
+    <tr><td><code>dodo-align-center|end</code></td><td>Align text</td></tr>
+    <tr><td><code>dodo-fade-secondary</code></td><td>Fades texts that have lower importance</td></tr>
+    <tr><td><code>dodo-fade-disabled</code></td><td>Fades texts even more to appear disabled</td></tr>
     <tr><td><code>dodo-nowrap</code></td><td>Prevent text from wrapping and show ellipsis instead</td></tr>
   </BaseTable>
   <DocsExample :options="{ setup, template }" />
@@ -30,11 +30,11 @@ const template = `
   <h5>Header 5</h5>
   <h6>Header 6</h6>
   <p>Paragraph</p>
-  <p class="dodo-opacity-secondary">Paragraph with secondary opacity</p>
-  <p class="dodo-opacity-disabled">Paragraph with disabled opacity</p>
+  <p class="dodo-fade-secondary">Paragraph with secondary opacity</p>
+  <p class="dodo-fade-disabled">Paragraph with disabled opacity</p>
   <p class="dodo-nowrap">Paragraph with nowrap</p>
-  <p class="dodo-textalign-center">Paragraph with center alignment</p>
-  <p class="dodo-textalign-end">Paragraph with end alignment</p>
+  <p class="dodo-align-center">Paragraph with center alignment</p>
+  <p class="dodo-align-end">Paragraph with end alignment</p>
   <p class="dodo-color-primary">Paragraph with primary color</p>
   <p class="dodo-color-secondary">Paragraph with secondary color</p>
   <p class="dodo-color-danger">Paragraph with danger color</p>

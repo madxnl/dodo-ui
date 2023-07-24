@@ -23,17 +23,20 @@
     "allowJs": true,
     "outDir": "dist/types",
     "declaration": true
-    // "types": ["node", "vite/client"]
   },
   "vueCompilerOptions": {
-    "jsxTemplates": true
+    "strictTemplates": true,
+    "dataAttributes": [
+      "data-selectactive",
+      "tabindex"
+    ]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.test.ts",
     "src/**/*.vue",
-    "src/**/*.json",
+    "src/**/*.json"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

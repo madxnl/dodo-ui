@@ -15,8 +15,8 @@
           <slot name="icon"><Icon :name="icon!" /></slot>
         </div>
         <div :class="$style.textwrap">
-          <p :class="$style.text" data-nowrap color="background">{{ text }}</p>
-          <p v-if="textSecondary" :class="$style.secondary" data-nowrap color="background">{{ textSecondary }}</p>
+          <p :class="[$style.text, 'dodo-nowrap']" color="background">{{ text }}</p>
+          <p v-if="textSecondary" :class="[$style.secondary, 'dodo-nowrap']" color="background">{{ textSecondary }}</p>
         </div>
       </div>
 

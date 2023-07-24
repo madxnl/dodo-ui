@@ -12,10 +12,10 @@
           </slot>
         </div>
         <div :class="$style.textwrap">
-          <p :class="$style.text" data-nowrap>
+          <p :class="[$style.text, 'dodo-nowrap']">
             {{ text }}
           </p>
-          <p v-if="textSecondary" :class="$style.secondary" data-nowrap>
+          <p v-if="textSecondary" :class="[$style.secondary, 'dodo-nowrap']">
             {{ textSecondary }}
           </p>
         </div>
