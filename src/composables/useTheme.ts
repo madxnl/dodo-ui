@@ -21,6 +21,18 @@ export function useTheme() {
     return typeof color === 'string' ? `var(--dodo-color-${color})` : `rgb(${color.join(',')})`
   }
 
+  function colorRgbValues(color: ColorProp) {
+    if (color instanceof Array) return color
+    const rgbStr = getComputedStyle(document.body).getPropertyValue(`--dodo-rgb-${color}`)
+    if (!rgbStr) return [0, 0, 0]
+    return rgbStr.split(',').map(Number)
+  }
+
+  function colorHexStr(color: ColorProp) {
+    const rgb = colorRgbValues(color)
+    return '#' + rgb.map(c => c.toString(16).padStart(2, '0')).join('')
+  }
+
   function gapValue(size: SpacingValue) {
     return `var(--dodo-gap-${size})`
   }
@@ -53,7 +65,7 @@ export function useTheme() {
     return grow ? 'dodo-grow' : ''
   }
 
-  return { colorCss, colorPropRgb, gapValue, gap, padding, justify, align, wrap, flex, grow }
+  return { colorCss, colorPropRgb, gapValue, colorHexStr, colorRgbValues, gap, padding, justify, align, wrap, flex, grow }
 }
 
 export function useBaseFont() {
