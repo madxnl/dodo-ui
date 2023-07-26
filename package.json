@@ -18,6 +18,9 @@
   "main": "./dist/dodo-ui.umd.js",
   "module": "./dist/dodo-ui.es.js",
   "types": "./dist/types/index.d.ts",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",

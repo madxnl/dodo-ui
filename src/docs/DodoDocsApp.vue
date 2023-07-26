@@ -8,7 +8,6 @@ import { CrashDialog, useBaseFont } from '..'
 import DocumentationPage from './DocumentationPage.vue'
 import Color from './guide/ColorGuide.vue'
 import Installation from './guide/Installation.vue'
-import Layout from './guide/LayoutGuide.vue'
 import Text from './guide/TextGuide.vue'
 
 const componentDocs = import.meta.glob('./content/*Docs.vue', { eager: true })
@@ -24,7 +23,6 @@ const chapters = [{
   title: 'Guide',
   pages: [
     { title: 'Installation', component: Installation as DefineComponent },
-    { title: 'Layout', component: Layout as DefineComponent },
     { title: 'Text', component: Text as DefineComponent },
     { title: 'Color', component: Color as DefineComponent },
   ],
