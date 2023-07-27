@@ -14,16 +14,18 @@
       </Column>
     </Column>
     <ScrollContainer :class="$style.scroll">
-      <Column :class="$style.content" padding="4">
+      <Column :class="$style.content" padding="4" gap="16">
         <template v-for="chapter in chapters">
-          <Column v-for="page in chapter.pages" :id="page.title" :key="page.title" padding="6" gap="8">
-            <h2>{{ page.title }}</h2>
-            <component :is="page.example" v-if="page.example" />
+          <Card v-for="page in chapter.pages" :id="page.title" :key="page.title">
+            <Column gap="8">
+              <h2>{{ page.title }}</h2>
+              <component :is="page.example" v-if="page.example" />
 
-            <PropsTable v-if="page.api" :doc="page.api" />
+              <PropsTable v-if="page.api" :doc="page.api" />
 
-            <br>
-          </Column>
+              <br />
+            </Column>
+          </Card>
         </template>
       </Column>
     </ScrollContainer>
@@ -32,7 +34,7 @@
 <script lang="ts" setup>
 import { DefineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
 import type { ComponentDoc } from 'vue-docgen-api'
-import { Column, ScrollContainer } from '..'
+import { Card, Column, ScrollContainer } from '..'
 import PropsTable from './PropsTable.vue'
 
 const props = defineProps<{
@@ -91,7 +93,6 @@ function onPopState(_: Event) {
   const el = document.getElementById(id)
   el?.scrollIntoView()
 }
-
 </script>
 
 <style module>
@@ -99,6 +100,7 @@ function onPopState(_: Event) {
   display: flex;
   min-width: 0;
   min-height: 0;
+  background: rgba(var(--dodo-rgb-foreground), 0.04);
 }
 .chapterTitle,
 .pageLink {
@@ -108,7 +110,7 @@ function onPopState(_: Event) {
   font-weight: var(--dodo-weight-bold);
   color: rgb(var(--dodo-rgb-foreground));
   padding: 2px 4px;
-  transition: .1s all;
+  transition: 0.1s all;
 }
 .chapterTitle {
   opacity: 0.5;
@@ -123,11 +125,11 @@ function onPopState(_: Event) {
 }
 .linkActive {
   opacity: 1;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 hr {
   margin: 0;
-  border-color: rgba(0,0,0,0.15);
+  border-color: rgba(0, 0, 0, 0.15);
   border-right: 0;
 }
 .bar {

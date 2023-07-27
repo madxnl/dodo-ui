@@ -45,9 +45,13 @@ const theme = useTheme()
 
 const el = ref<HTMLElement>()
 const size = ref(99999)
+let timeout = null as ReturnType<typeof setTimeout>|null
 
 const observe = new ResizeObserver(() => {
-  size.value = el.value!.clientWidth
+  if (timeout) clearTimeout(timeout)
+  timeout = setTimeout(() => {
+    size.value = el.value!.clientWidth
+  }, 50)
 })
 
 onMounted(() => {

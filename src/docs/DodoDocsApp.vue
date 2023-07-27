@@ -13,28 +13,36 @@ import Text from './guide/TextGuide.vue'
 
 const examples = import.meta.glob('./content/*Docs.vue', { eager: true })
 const componentDocgens = import.meta.glob('../docgen/*.json', { eager: true })
-console.log(componentDocgens)
+
+const excludeRe = /NavBarNew|NavItem/
 
 const basename = (path: string) => path.split('/').slice(-1)[0].split('.')[0]
-const componentPages = Object.entries(componentDocgens).map(([_, module]) => {
-  const api = module as ComponentDoc
-  const title = api.displayName
-  const entry = Object.entries(examples).find(p => basename(p[0]) === title + 'Docs')
-  const example = entry ? (entry[1] as any).default as DefineComponent : undefined
-  return { title, example, api }
-})
+const componentPages = Object.entries(componentDocgens)
+  .map(([_, module]) => {
+    const api = module as ComponentDoc
+    const title = api.displayName
+    if (excludeRe.test(title)) return null
+    const entry = Object.entries(examples).find((p) => basename(p[0]) === title + 'Docs')
+    const example = entry ? ((entry[1] as any).default as DefineComponent) : undefined
+    return { title, example, api }
+  })
+  .filter((x) => x)
+  .map((x) => x!)
 
-const chapters = [{
-  title: 'Guide',
-  pages: [
-    { title: 'Installation', component: Installation as DefineComponent },
-    { title: 'Text', component: Text as DefineComponent },
-    { title: 'Color', component: Color as DefineComponent },
-  ],
-}, {
-  title: 'Components',
-  pages: componentPages,
-}]
+const chapters = [
+  {
+    title: 'Guide',
+    pages: [
+      { title: 'Installation', example: Installation as DefineComponent },
+      { title: 'Text', example: Text as DefineComponent },
+      { title: 'Color', example: Color as DefineComponent },
+    ],
+  },
+  {
+    title: 'Components',
+    pages: componentPages,
+  },
+]
 
 const font = useBaseFont()
 
@@ -67,11 +75,11 @@ document.body.classList.add(font.fontClass)
 //   const file = Object.keys(docs).find(s => s.includes(`/${key}Docs`))
 //   return file ? (docs as any)[file].default : null
 // }
-
 </script>
 
 <style>
-html, body {
+html,
+body {
   margin: 0;
   height: 100%;
 }

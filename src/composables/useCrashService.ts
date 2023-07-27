@@ -32,7 +32,7 @@ function createCrashService(_: CrashServiceOptions) {
   function handleCrash(err: Error | unknown) {
     if (!currentError.value && ignoredUntil.value < Date.now()) {
       /* eslint-disable-next-line no-console */
-      console.info(err)
+      console.info('handleCrash', err)
       currentError.value = err
     }
   }
@@ -60,7 +60,7 @@ export function crashPlugin(opts: CrashServiceOptions): Plugin {
     })
 
     window.addEventListener('error', (event) => {
-      service.handleCrash(event.error)
+      service.handleCrash(event.error ?? event.message)
     })
   }
 }

@@ -20,6 +20,11 @@
         >
           <span :class="$style.colName">
             <span>
+              <!--
+                @slot Column header
+                @binding {name} string
+                @binding {object} column
+              -->
               <slot :name="`${slotName(col)}-header`" :column="col">{{ col.name }}</slot>
             </span>
             <Icon v-if="getColumnSortIcon(col)" :name="getColumnSortIcon(col)!" :class="$style.sortIcon" />
@@ -62,8 +67,8 @@
     </table>
   </div>
 </template>
-<script lang="ts" setup>
-import { computed, ref, VNode, watch, watchEffect } from 'vue'
+<script lang="ts" setup generic="T">
+import { computed, ref, watch, watchEffect } from 'vue'
 import { Button, Checkbox, Icon } from '..'
 
 export interface DatatableColumn<T = object> {
@@ -76,15 +81,16 @@ export interface DatatableColumn<T = object> {
   slot?: string
 }
 
-export type DatatableSlots<T> = Record<
-string,
-(context: { row: T; column: DatatableColumn<T> }) => Array<VNode> | undefined
->
+defineSlots<{
+  [key: string]: (scope: { row: T; column: DatatableColumn<T> }) => any
+  [key: `${string}-header`]: (scope: { column: DatatableColumn<T> }) => any
+  [key: `${string}-footer`]: (scope: { column: DatatableColumn<T> }) => any
+}>()
 
-export interface DatatableProps<T> {
+const props = defineProps<{
   rows: T[]
   columns: DatatableColumn<T>[]
-  selection?: unknown[]
+  selection?: T[]
   rowClick?: (row: T) => void
   selectBy?: keyof T
   stickyHeader?: boolean
@@ -93,9 +99,7 @@ export interface DatatableProps<T> {
   showMore?: () => Promise<unknown>
   sortValue?: string
   sortAsync?: (sortBy: string | undefined) => Promise<unknown>
-}
-
-const props = defineProps<DatatableProps<unknown>>() as DatatableProps<unknown>
+}>()
 
 const emit = defineEmits<{
   (e: 'update:selection', selection: unknown[]): void
@@ -116,7 +120,7 @@ watch(sort, (v) => {
   emit('update:sortValue', v)
 })
 watch(selection, (v) => {
-  emit('update:selection', v)
+  emit('update:selection', v as T[])
 })
 
 const sortReverse = computed(() => sort.value?.startsWith('-'))
@@ -135,32 +139,32 @@ const sortedItems = computed(() => {
   })
 })
 
-function getColumnSortIcon(col: DatatableColumn) {
+function getColumnSortIcon(col: DatatableColumn<T>) {
   if (!isSortCol(col)) return undefined
   return sortReverse.value ? 'arrow_drop_up' : 'arrow_drop_down'
 }
 
-function isSortCol(col: DatatableColumn) {
+function isSortCol(col: DatatableColumn<T>) {
   return sort.value?.replace('-', '') === col.sort
 }
 
-function slotName(col: DatatableColumn) {
+function slotName(col: DatatableColumn<T>) {
   return col.slot || col.name.toLowerCase().trim().replace(/\W/g, '')
 }
 
-function canSortCol(col: DatatableColumn) {
+function canSortCol(col: DatatableColumn<T>) {
   return !!col.sort
 }
 
-function alignStyle(col: DatatableColumn) {
+function alignStyle(col: DatatableColumn<T>) {
   return col.align ? `text-align:${col.align}` : ''
 }
 
-function widthStyle(col: DatatableColumn) {
+function widthStyle(col: DatatableColumn<T>) {
   return col.width ? `width:${col.width}` : ''
 }
 
-async function toggleColumnSort(col: DatatableColumn) {
+async function toggleColumnSort(col: DatatableColumn<T>) {
   if (!canSortCol(col)) return
   if (isSortCol(col)) {
     sort.value = sortReverse.value ? undefined : '-' + col.sort
@@ -188,7 +192,7 @@ function toggleSelect(row: unknown) {
   }
 }
 
-function getValue(col: DatatableColumn, row: any) {
+function getValue(col: DatatableColumn<T>, row: any) {
   if (typeof col.value === 'function') return col.value(row)
   if (typeof col.value === 'string') return row[col.value]
   return ''

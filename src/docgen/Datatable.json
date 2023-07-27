@@ -40,7 +40,7 @@
         "name": "Array",
         "elements": [
           {
-            "name": "unknown"
+            "name": "T"
           }
         ]
       }
@@ -137,14 +137,18 @@
     {
       "name": "`${slotName(col)}-header`",
       "scoped": true,
+      "description": "Column header",
       "bindings": [
         {
           "name": "name",
           "title": "binding"
         },
         {
-          "name": "column",
-          "title": "binding"
+          "title": "binding",
+          "type": {
+            "name": "object"
+          },
+          "name": "column"
         }
       ]
     },
