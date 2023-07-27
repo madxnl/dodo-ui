@@ -149,7 +149,7 @@ function isSortCol(col: DatatableColumn<T>) {
 }
 
 function slotName(col: DatatableColumn<T>) {
-  return col.slot || col.name.toLowerCase().trim().replace(/\W/g, '')
+  return col.slot || col.name.trim().replace(/\W/g, '')
 }
 
 function canSortCol(col: DatatableColumn<T>) {

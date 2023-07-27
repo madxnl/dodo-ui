@@ -1,27 +1,23 @@
 <template>
   <DocsExample :options="{ setup, template }">
-    <template #description>
-      Todo.
-    </template>
+    <template #description> Todo. </template>
   </DocsExample>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
 import { DocsExample } from '..'
 
-
 type Item = { title: string; year: number; rating: string; revenue: number }
 
 const selection = ref([])
 
-function clickRow(_: Item) {
-}
+function clickRow(_: Item) {}
 
 function totalRevenue() {
   return 15000
 }
 
-const loadMore = () => new Promise(resolve => setTimeout(resolve, 1500))
+const loadMore = () => new Promise((resolve) => setTimeout(resolve, 1500))
 
 const setup = () => ({ loadMore, totalRevenue, clickRow, selection })
 

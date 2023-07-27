@@ -1,49 +1,28 @@
 <template>
-  <template v-if="doc.props?.length">
-    <!-- <h4>&lt;{{ doc.displayName }}&gt; Props</h4> -->
-    <div style="overflow:auto">
-      <BaseTable>
-        <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
-        <tr v-for="prop in doc.props ?? []" :key="prop.name">
-          <td><code>{{ prop.name }}<template v-if="!prop.required">?</template></code></td>
-          <td><SyntaxHighlight :code="getPropType(prop)" lang="ts" /></td>
-          <td>
-            {{ prop.description }}
-          </td>
-        </tr>
-      </BaseTable>
-    </div>
-  </template>
-  <template v-if="doc.events?.length">
-    <!-- <h4>&lt;{{ doc.displayName }}&gt; Events</h4> -->
-    <div style="overflow:auto">
-      <BaseTable>
-        <tr><th>Event</th><th>Signature</th><th>Description</th></tr>
-        <tr v-for="ev in doc.events ?? []" :key="ev.name">
-          <td><code>{{ ev.name }}</code></td>
-          <td><SyntaxHighlight :code="getEventType(ev)" lang="ts" /></td>
-          <td>{{ ev.description }}</td>
-        </tr>
-      </BaseTable>
-    </div>
-  </template>
-  <template v-if="doc.slots?.length">
-    <!-- <h4>&lt;{{ doc.displayName }}&gt; Slots</h4> -->
-    <div style="overflow:auto">
-      <BaseTable>
-        <tr><th>Slot</th><th>Scope</th><th>Description</th></tr>
-        <tr v-for="slot in doc.slots ?? []" :key="slot.name">
-          <td><code>{{ slot.name }}</code></td>
-          <td><SyntaxHighlight :code="getSlotType(slot)" lang="ts" /></td>
-          <td>{{ slot.description }}</td>
-        </tr>
-      </BaseTable>
-    </div>
-  </template>
+  <Column v-if="doc.props?.length">
+    <h4>Props</h4>
+    <code>
+      <SyntaxHighlight :code="(doc.props ?? []).map((prop) => getPropType(prop)).join('\n')" lang="ts" />
+    </code>
+  </Column>
+
+  <Column v-if="doc.events?.length">
+    <h4>Events</h4>
+    <code>
+      <SyntaxHighlight :code="(doc.events ?? []).map((ev) => getEventType(ev)).join('\n')" lang="ts" />
+    </code>
+  </Column>
+
+  <Column v-if="doc.slots?.length">
+    <h4>Slots</h4>
+    <code>
+      <SyntaxHighlight :code="(doc.slots ?? []).map((s) => getSlotType(s)).join('\n')" lang="ts" />
+    </code>
+  </Column>
 </template>
 <script setup lang="ts">
 import { ComponentDoc, EventDescriptor, PropDescriptor, SlotDescriptor } from 'vue-docgen-api'
-import BaseTable from './BaseTable.vue'
+import { Column } from '..'
 import SyntaxHighlight from './SyntaxHighlight.vue'
 
 // const props = defineProps<{
@@ -57,18 +36,32 @@ function getPropType(prop: PropDescriptor) {
   if (elements) s += elements.map((e: any) => e.name).join(' | ')
   else if (prop.type) s += prop.type.name
   if (prop.type!.name === 'Array') s += '[]'
-  return s
+  const q = prop.required ? '' : '?'
+  const desc = prop.description ? ` // ${prop.description}` : ''
+  return `${desc}${prop.name}${q}: ${s}`
 }
 
 function getEventType(ev: EventDescriptor) {
-  const params = (ev.properties ?? []).map(p => `${p.name}: ${p.type.names.join('|')}`)
-  return `(${params.join(', ')}): void`
-  // return `${params.join(', ')}`
+  let t = ''
+  if (ev.type?.elements) {
+    if (ev.type?.names.includes('Array')) {
+      t = `${ev.type.elements[0].name}[]`
+    } else if (ev.type?.names.includes('union')) {
+      t = `${ev.type.elements.map((e) => e.name).join(' | ')}`
+    }
+  } else {
+    const params = (ev.properties ?? []).map((p) => `${p.type.names.join('|')}`)
+    t = `(${params.join(', ')}): void`
+  }
+  const desc = ev.description ? ` // ${ev.description}` : ''
+  return `${desc}${ev.name}: ${t}`
 }
 
 function getSlotType(slot: SlotDescriptor) {
-  const bindings = (slot.bindings ?? []).map(b => `${b.name}: ${b.type?.name}`)
-  return bindings.length ? `{\n  ${bindings.join(';\n  ')};\n}` : '{}'
+  const bindings = (slot.bindings ?? []).map((b) => `${b.name}: ${b.type?.name}`)
+  const t = bindings.length ? `{\n  ${bindings.join(';\n  ')};\n}` : '{}'
+  const desc = slot.description ? ` // ${slot.description}` : ''
+  return `${desc}${slot.name}: ${t}`
 }
 
 // const hasPropExamples = computed(() => (props.doc.props ?? []).some(p => p.tags?.example))

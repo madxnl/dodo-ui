@@ -158,16 +158,20 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.dodo-fade-secondary, .dodo-opacity-secondary {
+.dodo-fade-secondary,
+.dodo-opacity-secondary {
   opacity: 0.6;
 }
-.dodo-fade-disabled, .dodo-opacity-disabled {
+.dodo-fade-disabled,
+.dodo-opacity-disabled {
   opacity: 0.38;
 }
-.dodo-text-center, .dodo-textalign-center {
+.dodo-text-center,
+.dodo-textalign-center {
   text-align: center;
 }
-.dodo-text-end, .dodo-textalign-end {
+.dodo-text-end,
+.dodo-textalign-end {
   text-align: end;
 }
 .dodo-color-info {
@@ -235,6 +239,7 @@
 }
 .dodo-fonts code {
   font-family: monospace;
+  font-size: calc(var(--dodo-font-size) * 1.05);
 }
 .dodo-fonts a {
   color: var(--dodo-color-info);

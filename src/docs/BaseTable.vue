@@ -11,6 +11,7 @@ export default {}
   font: var(--dodo-font-base);
   font-size: calc(var(--dodo-font-size) - 1px);
   border-collapse: collapse;
+  width: 100%;
 }
 .Table th {
   text-align: left;
@@ -25,6 +26,6 @@ export default {}
   min-width: 150px;
 }
 .Table tr:not(:last-child) > * {
-  border-bottom: 1px solid rgba(0,0,0,0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 </style>
