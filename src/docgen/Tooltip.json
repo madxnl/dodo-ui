@@ -1,0 +1,54 @@
+{
+  "exportName": "default",
+  "displayName": "Tooltip",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "text",
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    {
+      "name": "disabled",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "side",
+      "required": false,
+      "type": {
+        "name": "union",
+        "elements": [
+          {
+            "name": "\"left\""
+          },
+          {
+            "name": "\"right\""
+          },
+          {
+            "name": "\"top\""
+          },
+          {
+            "name": "\"bottom\""
+          }
+        ]
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "tooltip-text"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Tooltip.vue"
+  ]
+}

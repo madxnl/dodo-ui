@@ -1,14 +1,13 @@
 <template>
-  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+  <DocsExample :options="{ setup, template }">
     <template #description>
       Todo.
     </template>
-  </DocsComponentSection>
+  </DocsExample>
 </template>
 <script setup lang="ts">
-import { DocsComponentSection } from '..'
-// @ts-ignore
-import { DOCGEN as doc } from '../../components/Dropdown.vue'
+import { DocsExample } from '..'
+
 
 function clickItem() {}
 

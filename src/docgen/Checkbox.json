@@ -1,0 +1,40 @@
+{
+  "exportName": "default",
+  "displayName": "Checkbox",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "modelValue",
+      "required": true,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "indeterminate",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "update:modelValue",
+      "type": {
+        "names": [
+          "boolean"
+        ]
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Checkbox.vue"
+  ]
+}

@@ -1,15 +1,14 @@
 <template>
-  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+  <DocsExample :options="{ setup, template }">
     <template #description>
       Todo.
     </template>
-  </DocsComponentSection>
+  </DocsExample>
 </template>
 <script setup lang="ts">
-import { DocsComponentSection } from '..'
+import { DocsExample } from '..'
 import image from '../assets/placeholder32.png'
-// @ts-ignore
-import { DOCGEN as doc } from '../../components/NavBar.vue'
+
 
 /* eslint-disable no-console */
 const navigate = () => { console.log('navigate') }

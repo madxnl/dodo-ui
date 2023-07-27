@@ -18,7 +18,10 @@
         <template v-for="chapter in chapters">
           <Column v-for="page in chapter.pages" :id="page.title" :key="page.title" padding="6" gap="8">
             <h2>{{ page.title }}</h2>
-            <component :is="page.component" />
+            <component :is="page.example" v-if="page.example" />
+
+            <PropsTable v-if="page.api" :doc="page.api" />
+
             <br>
           </Column>
         </template>
@@ -28,14 +31,17 @@
 </template>
 <script lang="ts" setup>
 import { DefineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
+import type { ComponentDoc } from 'vue-docgen-api'
 import { Column, ScrollContainer } from '..'
+import PropsTable from './PropsTable.vue'
 
 const props = defineProps<{
   chapters: {
     title?: string
     pages: {
       title: string
-      component: DefineComponent
+      example?: DefineComponent
+      api?: ComponentDoc
     }[]
   }[]
 }>()

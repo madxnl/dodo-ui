@@ -1,0 +1,62 @@
+{
+  "exportName": "default",
+  "displayName": "Form",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "validate",
+      "required": false,
+      "type": {
+        "name": "Record",
+        "elements": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "{\n  value: unknown\n  optional?: boolean\n  validator?: Validator\n}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "steps",
+      "required": false,
+      "type": {
+        "name": "Array",
+        "elements": [
+          {
+            "name": "{\n  name: string\n  fields: string[]\n}"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "submit"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "step",
+          "title": "binding"
+        },
+        {
+          "name": "step-index",
+          "title": "binding"
+        }
+      ]
+    },
+    {
+      "name": "submit-text"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Form.vue"
+  ]
+}

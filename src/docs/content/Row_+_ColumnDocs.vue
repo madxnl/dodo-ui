@@ -1,16 +1,15 @@
 <template>
-  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+  <DocsExample :options="{ setup, template }">
     <template #description>
       Most layouts can be broken down into simple horizontal and vertical groupings of items.
       These components help you quickly build layouts with props for simplified spacing, padding and alignment.
     </template>
-  </DocsComponentSection>
+  </DocsExample>
 </template>
 <script setup lang="ts">
-import { DocsComponentSection } from '..'
+import { DocsExample } from '..'
 import imgUrl from '../assets/placeholder32.png'
-// @ts-ignore
-import { DOCGEN as doc } from '../../components/Row.vue'
+
 
 const setup = () => ({ imgUrl })
 

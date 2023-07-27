@@ -1,0 +1,112 @@
+{
+  "exportName": "default",
+  "displayName": "Row",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "gap",
+      "description": "Add spacing between child elements",
+      "tags": {
+        "example": [
+          {
+            "description": "gap=\"2\"",
+            "title": "example"
+          }
+        ]
+      },
+      "required": false,
+      "type": {
+        "name": "SpacingValue"
+      }
+    },
+    {
+      "name": "padding",
+      "description": "Amount of padding around the contents",
+      "tags": {
+        "example": [
+          {
+            "description": "padding=\"4\"",
+            "title": "example"
+          }
+        ]
+      },
+      "required": false,
+      "type": {
+        "name": "SpacingValue"
+      }
+    },
+    {
+      "name": "justify",
+      "description": "Align content along main direction (horizontal for Row, vertical for Column)",
+      "tags": {
+        "example": [
+          {
+            "description": "justify=\"space-between\"",
+            "title": "example"
+          }
+        ]
+      },
+      "required": false,
+      "type": {
+        "name": "JustifyType"
+      }
+    },
+    {
+      "name": "align",
+      "description": "Aligns children along cross-axis direction",
+      "tags": {
+        "example": [
+          {
+            "description": "align=\"end\"",
+            "title": "example"
+          }
+        ]
+      },
+      "required": false,
+      "type": {
+        "name": "AlignType"
+      }
+    },
+    {
+      "name": "wrap",
+      "description": "Wrap contents over instead of shrinking",
+      "tags": {
+        "example": [
+          {
+            "description": "wrap",
+            "title": "example"
+          }
+        ]
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "grow",
+      "description": "Grow to take up available space (when nested inside another Row)",
+      "tags": {
+        "example": [
+          {
+            "description": "grow",
+            "title": "example"
+          }
+        ]
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Row.vue"
+  ]
+}

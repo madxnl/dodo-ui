@@ -1,14 +1,13 @@
 <template>
-  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+  <DocsExample :options="{ setup, template }">
     <template #description>
       Chip components are useful for displaying a list of labels or tags.
     </template>
-  </DocsComponentSection>
+  </DocsExample>
 </template>
 <script setup lang="ts">
-import { DocsComponentSection } from '..'
-// @ts-ignore
-import { DOCGEN as doc } from '../../components/Chip.vue'
+import { DocsExample } from '..'
+
 
 function onClose() {}
 

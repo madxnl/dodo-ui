@@ -1,0 +1,109 @@
+{
+  "exportName": "default",
+  "displayName": "Select",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "options",
+      "description": "Array of available options",
+      "required": true,
+      "type": {
+        "name": "Array",
+        "elements": [
+          {
+            "name": "Option"
+          }
+        ]
+      }
+    },
+    {
+      "name": "modelValue",
+      "description": "v-model binding",
+      "required": false,
+      "type": {
+        "name": "unknown"
+      }
+    },
+    {
+      "name": "disabled",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "placeholder",
+      "description": "Set placeholder text",
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    {
+      "name": "multiple",
+      "description": "Allow multiple select",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "variant",
+      "required": false,
+      "type": {
+        "name": "\"buttons\""
+      }
+    },
+    {
+      "name": "size",
+      "required": false,
+      "type": {
+        "name": "\"s\""
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "update:modelValue",
+      "type": {
+        "names": [
+          "union"
+        ],
+        "elements": [
+          {
+            "name": "Array",
+            "elements": [
+              {
+                "name": "unknown"
+              }
+            ]
+          },
+          {
+            "name": "unknown"
+          }
+        ]
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "index",
+          "title": "binding"
+        },
+        {
+          "name": "option",
+          "title": "binding"
+        }
+      ],
+      "description": "Customize option html"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Select.vue"
+  ]
+}

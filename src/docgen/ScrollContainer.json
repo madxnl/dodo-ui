@@ -1,0 +1,14 @@
+{
+  "exportName": "default",
+  "displayName": "ScrollContainer",
+  "description": "",
+  "tags": {},
+  "slots": [
+    {
+      "name": "default"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/ScrollContainer.vue"
+  ]
+}

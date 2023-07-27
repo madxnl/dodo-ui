@@ -1,15 +1,14 @@
 <template>
-  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+  <DocsExample :options="{ setup, template }">
     <template #description>
       Input field for single or multiline text.
     </template>
-  </DocsComponentSection>
+  </DocsExample>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { DocsComponentSection } from '..'
-// @ts-ignore
-import { DOCGEN as doc } from '../../components/TextInput.vue'
+import { DocsExample } from '..'
+
 
 const value = ref('')
 

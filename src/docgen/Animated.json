@@ -1,0 +1,30 @@
+{
+  "exportName": "default",
+  "displayName": "Animated",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "list",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "appear",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Animated.vue"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "exportName": "default",
+  "displayName": "Dialog",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "active",
+      "required": true,
+      "type": {
+        "name": "boolean"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "controls"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Dialog.vue"
+  ]
+}

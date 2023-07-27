@@ -1,0 +1,45 @@
+{
+  "exportName": "default",
+  "displayName": "Spinner",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "color",
+      "description": "Override default spinner color, or inherit text color",
+      "required": false,
+      "type": {
+        "name": "union",
+        "elements": [
+          {
+            "name": "\"inherit\""
+          },
+          {
+            "name": "ColorProp"
+          }
+        ]
+      },
+      "defaultValue": {
+        "func": false,
+        "value": "undefined"
+      }
+    },
+    {
+      "name": "small",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "large",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Spinner.vue"
+  ]
+}

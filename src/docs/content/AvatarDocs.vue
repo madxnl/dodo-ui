@@ -1,15 +1,13 @@
 <template>
-  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+  <DocsExample :options="{ setup, template }">
     <template #description>
       Displays a picture for a user or team, or fallback to showing initials on a colored backdrop. The color is randomized based on text.
     </template>
-  </DocsComponentSection>
+  </DocsExample>
 </template>
 <script setup lang="ts">
-import { DocsComponentSection } from '..'
+import { DocsExample } from '..'
 import imgUrl from '../assets/placeholder32.png'
-// @ts-ignore
-import { DOCGEN as doc } from '../../components/Avatar.vue'
 
 const setup = () => ({ imgUrl })
 

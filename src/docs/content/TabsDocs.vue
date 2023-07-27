@@ -1,12 +1,11 @@
 <template>
-  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+  <DocsExample :options="{ setup, template }">
     <template #description />
-  </DocsComponentSection>
+  </DocsExample>
 </template>
 <script setup lang="ts">
-import { DocsComponentSection } from '..'
-// @ts-ignore
-import { DOCGEN as doc } from '../../components/Tabs.vue'
+import { DocsExample } from '..'
+
 
 const setup = () => ({})
 

@@ -1,0 +1,70 @@
+{
+  "exportName": "default",
+  "displayName": "Tabs",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "tabs",
+      "required": true,
+      "type": {
+        "name": "Array",
+        "elements": [
+          {
+            "name": "Tab"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tabIndex",
+      "required": false,
+      "type": {
+        "name": "number"
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "update:tabIndex",
+      "type": {
+        "names": [
+          "number"
+        ]
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "tab-title",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "i",
+          "title": "binding"
+        },
+        {
+          "name": "tab",
+          "title": "binding"
+        }
+      ]
+    },
+    {
+      "name": "currentTab.slot ?? 'default'",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "name",
+          "title": "binding"
+        },
+        {
+          "name": "tab",
+          "title": "binding"
+        }
+      ]
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Tabs.vue"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "exportName": "default",
+  "displayName": "NavBarItem",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "text",
+      "required": true,
+      "type": {
+        "name": "string"
+      }
+    },
+    {
+      "name": "link",
+      "description": "Secondary line of text",
+      "required": false,
+      "type": {
+        "name": "{\n  isActive: ComputedRef<boolean>\n  navigate: () => Promise<void>\n}"
+      }
+    },
+    {
+      "name": "textSecondary",
+      "description": "Secondary line of text",
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    {
+      "name": "icon",
+      "description": "Icon name (or use 'icon' slot)",
+      "required": false,
+      "type": {
+        "name": "IconName"
+      }
+    },
+    {
+      "name": "active",
+      "description": "Style as active nav item",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "important",
+      "description": "Important items are always fully opaque",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "submenu"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/NavBarItem.vue"
+  ]
+}

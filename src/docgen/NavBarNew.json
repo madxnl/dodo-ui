@@ -1,0 +1,23 @@
+{
+  "exportName": "default",
+  "displayName": "NavBarNew",
+  "description": "",
+  "tags": {},
+  "slots": [
+    {
+      "name": "default",
+      "description": "Navbar middle section"
+    },
+    {
+      "name": "navbar-footer",
+      "description": "Navbar footer section"
+    },
+    {
+      "name": "main",
+      "description": "Main page content"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/NavBarNew.vue"
+  ]
+}

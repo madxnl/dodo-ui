@@ -1,0 +1,75 @@
+{
+  "exportName": "default",
+  "displayName": "Dropdown",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "modelValue",
+      "description": "Use v-model to modify dropdown state from outside",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "padding",
+      "description": "Change padding around dropdown content",
+      "required": false,
+      "type": {
+        "name": "GapSize"
+      }
+    },
+    {
+      "name": "gap",
+      "description": "Change gap between dropdown content",
+      "required": false,
+      "type": {
+        "name": "GapSize"
+      }
+    },
+    {
+      "name": "disabled",
+      "description": "(temporaily) disable dropdown functionality",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "update:modelValue",
+      "type": {
+        "names": [
+          "boolean"
+        ]
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "is-active",
+          "title": "binding"
+        }
+      ]
+    },
+    {
+      "name": "dropdown",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "toggle",
+          "title": "binding"
+        }
+      ]
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Dropdown.vue"
+  ]
+}

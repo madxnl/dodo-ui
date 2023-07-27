@@ -1,14 +1,13 @@
 <template>
-  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+  <DocsExample :options="{ setup, template }">
     <template #description>
       Main button component, with multiple variants and support for async click handlers.
     </template>
-  </DocsComponentSection>
+  </DocsExample>
 </template>
 <script setup lang="ts">
-import DocsComponentSection from '../DocsComponentSection.vue'
-// @ts-ignore
-import { DOCGEN as doc } from '../../components/Button.vue'
+import DocsExample from '../DocsExample.vue'
+
 
 async function myAsyncSubmit() {
   await new Promise(resolve => setTimeout(resolve, 3000))

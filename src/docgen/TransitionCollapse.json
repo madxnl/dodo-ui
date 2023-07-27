@@ -1,0 +1,14 @@
+{
+  "exportName": "default",
+  "displayName": "TransitionCollapse",
+  "description": "",
+  "tags": {},
+  "slots": [
+    {
+      "name": "default"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/TransitionCollapse.vue"
+  ]
+}

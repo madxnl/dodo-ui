@@ -1,15 +1,14 @@
 <template>
-  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+  <DocsExample :options="{ setup, template }">
     <template #description>
       Arrange items in a responsive grid. The number of columns automatically changes with available space and desired column width.
     </template>
-  </DocsComponentSection>
+  </DocsExample>
 </template>
 <script setup lang="ts">
-import { DocsComponentSection } from '..'
+import { DocsExample } from '..'
 import imgUrl from '../assets/placeholder32.png'
-// @ts-ignore
-import { DOCGEN as doc } from '../../components/FluidGrid.vue'
+
 
 const setup = () => ({ imgUrl })
 

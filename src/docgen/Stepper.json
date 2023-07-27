@@ -1,0 +1,59 @@
+{
+  "exportName": "default",
+  "displayName": "Stepper",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "stepIndex",
+      "required": false,
+      "type": {
+        "name": "number"
+      }
+    },
+    {
+      "name": "steps",
+      "required": true,
+      "type": {
+        "name": "Array",
+        "elements": [
+          {
+            "name": "{\n  name: string\n  key?: string\n  hint?: string\n  submitText?: string\n  incomplete?: boolean\n  submitStep?: () => Promise<boolean> | boolean\n}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "completed",
+      "required": true,
+      "type": {
+        "name": "TSFunctionType"
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "update:stepIndex",
+      "type": {
+        "names": [
+          "number"
+        ]
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "step.key",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "name",
+          "title": "binding"
+        }
+      ]
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Stepper.vue"
+  ]
+}

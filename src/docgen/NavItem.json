@@ -1,0 +1,65 @@
+{
+  "exportName": "default",
+  "displayName": "NavItem",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "link",
+      "description": "Secondary line of text",
+      "required": false,
+      "type": {
+        "name": "{\n  href: string | ComputedRef<string>\n  isActive: boolean | ComputedRef<boolean>\n  navigate: (e?: MouseEvent) => Promise<void | NavigationFailure>\n}"
+      }
+    },
+    {
+      "name": "text",
+      "required": true,
+      "type": {
+        "name": "string"
+      }
+    },
+    {
+      "name": "textSecondary",
+      "description": "Secondary line of text",
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    {
+      "name": "tooltipText",
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    {
+      "name": "icon",
+      "description": "Icon name (or use 'icon' slot)",
+      "required": false,
+      "type": {
+        "name": "IconName"
+      }
+    },
+    {
+      "name": "important",
+      "description": "Important items are always fully opaque",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "submenu"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/NavItem.vue"
+  ]
+}

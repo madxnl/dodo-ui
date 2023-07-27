@@ -1,0 +1,51 @@
+{
+  "exportName": "default",
+  "displayName": "NavBar",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "mobile",
+      "description": "Override mobile/desktop version, default is based on screen size",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "navbar-header",
+      "description": "Navbar header section"
+    },
+    {
+      "name": "default",
+      "description": "Navbar middle section",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "in-mobile-bar",
+          "title": "binding"
+        }
+      ]
+    },
+    {
+      "name": "navbar-footer",
+      "description": "Navbar footer section",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "in-mobile-bar",
+          "title": "binding"
+        }
+      ]
+    },
+    {
+      "name": "main",
+      "description": "Main page content"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/NavBar.vue"
+  ]
+}

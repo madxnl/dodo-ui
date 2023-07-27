@@ -1,0 +1,187 @@
+{
+  "exportName": "DatatableComponent",
+  "displayName": "Datatable",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "rows",
+      "required": true,
+      "type": {
+        "name": "Array",
+        "elements": [
+          {
+            "name": "T"
+          }
+        ]
+      }
+    },
+    {
+      "name": "columns",
+      "required": true,
+      "type": {
+        "name": "Array",
+        "elements": [
+          {
+            "name": "DatatableColumn",
+            "elements": [
+              {
+                "name": "T"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "selection",
+      "required": false,
+      "type": {
+        "name": "Array",
+        "elements": [
+          {
+            "name": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "name": "rowClick",
+      "required": false,
+      "type": {
+        "name": "TSFunctionType"
+      }
+    },
+    {
+      "name": "selectBy",
+      "required": false,
+      "type": {
+        "name": "TSTypeOperator"
+      }
+    },
+    {
+      "name": "stickyHeader",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "contentLoading",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "showFooter",
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    {
+      "name": "showMore",
+      "required": false,
+      "type": {
+        "name": "TSFunctionType"
+      }
+    },
+    {
+      "name": "sortValue",
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    {
+      "name": "sortAsync",
+      "required": false,
+      "type": {
+        "name": "TSFunctionType"
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "update:selection",
+      "type": {
+        "names": [
+          "Array"
+        ],
+        "elements": [
+          {
+            "name": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "name": "update:sortValue",
+      "type": {
+        "names": [
+          "union"
+        ],
+        "elements": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "undefined"
+          }
+        ]
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "`${slotName(col)}-header`",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "name",
+          "title": "binding"
+        },
+        {
+          "name": "column",
+          "title": "binding"
+        }
+      ]
+    },
+    {
+      "name": "slotName(col)",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "name",
+          "title": "binding"
+        },
+        {
+          "name": "row",
+          "title": "binding"
+        },
+        {
+          "name": "column",
+          "title": "binding"
+        }
+      ]
+    },
+    {
+      "name": "`${slotName(col)}-footer`",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "name",
+          "title": "binding"
+        },
+        {
+          "name": "column",
+          "title": "binding"
+        }
+      ]
+    }
+  ],
+  "sourceFiles": [
+    "src/components/DatatableTyped.vue"
+  ]
+}

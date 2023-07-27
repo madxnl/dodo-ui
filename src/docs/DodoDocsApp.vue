@@ -4,19 +4,24 @@
 </template>
 <script setup lang="ts">
 import { DefineComponent } from 'vue'
+import type { ComponentDoc } from 'vue-docgen-api'
 import { CrashDialog, useBaseFont } from '..'
 import DocumentationPage from './DocumentationPage.vue'
 import Color from './guide/ColorGuide.vue'
 import Installation from './guide/Installation.vue'
 import Text from './guide/TextGuide.vue'
 
-const componentDocs = import.meta.glob('./content/*Docs.vue', { eager: true })
+const examples = import.meta.glob('./content/*Docs.vue', { eager: true })
+const componentDocgens = import.meta.glob('../docgen/*.json', { eager: true })
+console.log(componentDocgens)
 
-const componentPages = Object.entries(componentDocs).map(([path, module]) => {
-  const component = (module as any).default as DefineComponent
-  const name = path.split('/').slice(-1)[0].split('Docs')[0]
-  const title = name.replace(/_/g, ' ')
-  return { title, component }
+const basename = (path: string) => path.split('/').slice(-1)[0].split('.')[0]
+const componentPages = Object.entries(componentDocgens).map(([_, module]) => {
+  const api = module as ComponentDoc
+  const title = api.displayName
+  const entry = Object.entries(examples).find(p => basename(p[0]) === title + 'Docs')
+  const example = entry ? (entry[1] as any).default as DefineComponent : undefined
+  return { title, example, api }
 })
 
 const chapters = [{

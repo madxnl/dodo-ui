@@ -1,15 +1,14 @@
 <template>
-  <DocsComponentSection :example="{ setup, template }" :doc="doc">
+  <DocsExample :options="{ setup, template }">
     <template #description>
       When there are only few options to choose from, you can display them as buttons instead:
     </template>
-  </DocsComponentSection>
+  </DocsExample>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { DocsComponentSection } from '..'
-// @ts-ignore
-import { DOCGEN as doc } from '../../components/SelectButtons.vue'
+import { DocsExample } from '..'
+
 
 const currentValue = ref(1)
 const currentMultipleValue = ref([1, 2, 4])

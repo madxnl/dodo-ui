@@ -1,0 +1,29 @@
+{
+  "exportName": "default",
+  "displayName": "Chip",
+  "description": "",
+  "tags": {},
+  "props": [
+    {
+      "name": "color",
+      "required": false,
+      "type": {
+        "name": "ColorProp"
+      }
+    }
+  ],
+  "slots": [
+    {
+      "name": "before"
+    },
+    {
+      "name": "default"
+    },
+    {
+      "name": "after"
+    }
+  ],
+  "sourceFiles": [
+    "src/components/Chip.vue"
+  ]
+}

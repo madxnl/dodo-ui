@@ -1,0 +1,25 @@
+{
+  "exportName": "default",
+  "displayName": "CrashDialog",
+  "description": "",
+  "tags": {},
+  "slots": [
+    {
+      "name": "body",
+      "scoped": true,
+      "bindings": [
+        {
+          "name": "error",
+          "title": "binding"
+        },
+        {
+          "name": "default-text",
+          "title": "binding"
+        }
+      ]
+    }
+  ],
+  "sourceFiles": [
+    "src/components/CrashDialog.vue"
+  ]
+}
