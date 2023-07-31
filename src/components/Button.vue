@@ -12,7 +12,7 @@
       active && $style.active,
       rounded && $style.rounded,
     ]"
-    v-bind="{ ...$attrs, onClick }"
+    @click="onClick"
   >
     <div :class="$style.content"><slot /></div>
     <Spinner v-if="loading" :small="small" :class="$style.spinner" color="inherit" />
@@ -78,12 +78,10 @@ async function onClick(event: Event) {
     }
   }
 }
-</script>
-<script lang="ts">
-// use normal <script> to declare options
-export default {
+
+defineOptions({
   inheritAttrs: false,
-}
+})
 </script>
 <style module>
 .Button {

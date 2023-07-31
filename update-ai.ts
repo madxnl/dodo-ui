@@ -21,20 +21,28 @@
 // }
 
 import 'dotenv/config.js'
-import { access, readFile, writeFile } from 'fs/promises'
+import { writeFileSync } from 'fs'
+import { access, readFile } from 'fs/promises'
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
 
 // const outDir = './src/docs/components'
 const examples = [
   // ['./src/components/Avatar.vue', './src/docs/components/Avatar.vue'],
-  // ['./src/components/Card.vue', './src/docs/components/Card.vue'],
+  ['./src/components/Card.vue', './src/docs/components/Card.vue'],
   // ['./src/components/Chip.vue', './src/docs/components/Chip.vue'],
-  // ['./src/components/Label.vue', './src/docs/components/Label.vue'],
+  ['./src/components/Label.vue', './src/docs/components/Label.vue'],
   ['./src/components/Row.vue', './src/docs/components/Row.vue'],
 ]
 const updatePaths = [
-  ['./src/components/Avatar.vue', './src/docs/components/Avatar.vue'],
-  ['./src/components/Card.vue', './src/docs/components/Card.vue'],
+  // ['./src/components/Avatar.vue', './src/docs/components/Avatar.vue'],
+  // ['./src/components/Card.vue', './src/docs/components/Card.vue'],
+  // ['./src/components/Chip.vue', './src/docs/components/Chip.vue'],
+  // ['./src/components/Label.vue', './src/docs/components/Label.vue'],
+  // ['./src/components/Button.vue', './src/docs/components/Button.vue'],
+  // ['./src/components/Column.vue', './src/docs/components/Column.vue'],
+  // ['./src/components/Icon.vue', './src/docs/components/Icon.vue'],
+  // ['./src/components/Tabs.vue', './src/docs/components/Tabs.vue'],
+  ['./src/components/Select.vue', './src/docs/components/Select.vue'],
 ]
 
 ;(async () => {
@@ -66,7 +74,7 @@ const updatePaths = [
       console.log(answer.slice(0, 200))
 
       const content = answer //.split('```')[1]
-      await writeFile(outFile, content)
+      writeFileSync(outFile, content)
       console.log(`Written ${outFile}`)
 
       // indexLines.push(`export { default as ${componentName} } from './${outFilename}'\n`)
@@ -91,9 +99,15 @@ async function getAnswer(question: string) {
     messages.push({ role: 'assistant' as const, content: await read(outFile) })
   }
   messages.push({ role: 'user', content: question })
-  const chatCompletion = await openai.createChatCompletion({ model: 'gpt-3.5-turbo', messages })
-  const message = chatCompletion.data.choices[0].message!.content!
-  return message
+  try {
+    const chatCompletion = await openai.createChatCompletion({ model: 'gpt-3.5-turbo-16k', messages, temperature: 0 })
+    const message = chatCompletion.data.choices[0].message!.content!
+    console.log(chatCompletion.data.choices)
+    return message
+  } catch (e) {
+    console.log('Err', (e as any).response.data)
+    throw new Error('Failed to get answer')
+  }
 }
 
 async function read(path: string) {

@@ -10,48 +10,24 @@
       <Icon :name="showCode ? 'expand_less' : 'expand_more'" />
     </div>
 
-    <template v-if="showCode">
-      <SyntaxHighlight :code="templateSrc" :class="$style.code" lang="html" />
+    <template v-if="exampleSrc && showCode">
+      <SyntaxHighlight :code="exampleSrc.trim()" :class="$style.code" lang="html" />
       <!-- <SyntaxHighlight v-if="setup" :code="setup.toString()" :class="$style.code" lang="ts" /> -->
     </template>
   </Column>
 </template>
 <script setup lang="ts">
-import { App, ComponentOptions, computed, ref, watchEffect } from 'vue'
-import * as components from '..'
-import { Column, Icon, crashPlugin } from '..'
-import SyntaxHighlight from './SyntaxHighlight.vue'
-// @ts-ignore
-import { createApp } from 'vue/dist/vue.esm-bundler'
+import { ComponentOptions, ref } from 'vue'
+import { SyntaxHighlight } from '.'
+import { Column, Icon } from '..'
 
-const props = defineProps<{
+defineProps<{
   options?: ComponentOptions
   exampleSrc?: string
 }>()
 
-const templateSrc = computed(() => ((props.options?.template as string) ?? props.exampleSrc!).trim())
-
 const showCode = ref(false)
-// const templateCode = ref(props.template)
-// const setupCode = ref(props.setup)
 const el = ref<HTMLElement>()
-
-let app: App
-
-watchEffect(() => {
-  if (!el.value) return
-
-  if (app) app.unmount()
-
-  app = createApp({
-    components,
-    // setup: props.setup,
-    // template: props.template,
-    ...props.options,
-  })
-  app.use(crashPlugin({ router: null }))
-  app.mount(el.value)
-})
 </script>
 <style module>
 .Example {

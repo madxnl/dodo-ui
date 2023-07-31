@@ -1,33 +1,45 @@
 <template>
-  <p>A label for form inputs, providing text, hint, and error state.</p>
-
-  <DocsExample :exampleSrc="exampleSrc">
-    <Label for="name" text="Name" required />
-    <TextInput id="name" />
-    <Label for="email" text="Email" />
-    <TextInput id="email" />
-    <Button>Submit</Button>
-  </DocsExample>
-
-  <Column>
-    <h4>Properties</h4>
-    <SyntaxHighlight lang="ts" :code="properties" />
-  </Column>
+  <ComponentDocsSection :exampleSrc="exampleSrc" :props="props">
+    <template #description>
+      <p>A label component for form inputs.</p>
+    </template>
+    <template #example>
+      <Label text="Name" for="name">
+        <TextInput id="name" />
+      </Label>
+      <Label text="Email" for="email" hint="Please enter a valid email address" :required="true">
+        <TextInput id="email" />
+      </Label>
+    </template>
+  </ComponentDocsSection>
 </template>
 <script setup lang="ts">
-import { DocsExample, SyntaxHighlight } from '..'
-import { Button, Column, Label, TextInput } from '../..'
+import { ComponentDocsSection } from '..'
+import { Label, TextInput } from '../..'
 
-const properties = `text: string
-for?: string
-hint?: string
-required?: boolean`
-
-const exampleSrc = `<Form>
-  <Label for="name" text="Name" required />
+const exampleSrc = `<Label text="Name" for="name">
   <TextInput id="name" />
-  <Label for="email" text="Email" />
+</Label>
+<Label text="Email" for="email" hint="Please enter a valid email address" :required="true">
   <TextInput id="email" />
-  <Button>Submit</Button>
-</Form>`
+</Label>`
+
+const props = [
+  {
+    code: 'text: string',
+    description: 'The label text',
+  },
+  {
+    code: 'for?: string',
+    description: 'The ID of the associated input field',
+  },
+  {
+    code: 'hint?: string',
+    description: 'A hint to provide additional information',
+  },
+  {
+    code: 'required?: boolean',
+    description: 'Indicates if the input is required',
+  },
+]
 </script>

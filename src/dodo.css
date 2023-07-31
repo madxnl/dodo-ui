@@ -6,6 +6,7 @@
   --dodo-rgb-info: 58, 134, 255;
   --dodo-rgb-success: 0, 177, 136;
   --dodo-rgb-warn: 223, 178, 53;
+  --dodo-rgb-warning: var(--dodo-rgb-warn);
   --dodo-rgb-danger: 255, 0, 83;
   --dodo-rgb-background: 255, 255, 255;
   --dodo-rgb-foreground: 9, 30, 40;
@@ -259,8 +260,6 @@
 }
 .dodo-fonts label {
   margin: 0;
-  font-weight: var(--dodo-weight-bold);
-  font-size: var(--dodo-font-small);
 }
 .dodo-fonts ::selection {
   color: white;

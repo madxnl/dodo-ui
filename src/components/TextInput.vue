@@ -5,6 +5,7 @@
     <component
       :is="rows && rows > 1 ? 'textarea' : 'input'"
       ref="el"
+      :id="id"
       :value="modelValue"
       :class="$style.input"
       :placeholder="placeholder"
@@ -26,6 +27,7 @@ import { ref, watchEffect } from 'vue'
 import { Field, useTheme } from '..'
 
 const props = defineProps<{
+  id?: string | null
   modelValue?: string | null
   placeholder?: string
   disabled?: boolean

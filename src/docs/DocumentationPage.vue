@@ -17,13 +17,11 @@
       <Column :class="$style.content" padding="4" gap="16">
         <template v-for="chapter in chapters">
           <Card v-for="page in chapter.pages" :id="page.title" :key="page.title">
-            <Column>
-              <h2>{{ page.title }}</h2>
-              <component :is="page.example" v-if="page.example" />
+            <h2>{{ page.title }}</h2>
+            <component :is="page.example" v-if="page.example" />
 
-              <!-- <PropsTable v-if="page.api" :doc="page.api" /> -->
-              <!-- <br /> -->
-            </Column>
+            <!-- <PropsTable v-if="page.api" :doc="page.api" /> -->
+            <!-- <br /> -->
           </Card>
         </template>
 

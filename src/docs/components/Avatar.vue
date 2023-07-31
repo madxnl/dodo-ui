@@ -1,44 +1,37 @@
 <template>
-  <p>
-    Displays a picture for a user or team, or fallback to showing initials on a colored backdrop. The color is chosen
-    based on the input text.
-  </p>
-
-  <DocsExample :exampleSrc="exampleSrc">
-    <Row wrap>
-      <Avatar text="Image" :image="imgUrl" />
-      <Avatar text="A" />
-      <Avatar text="B" />
-      <Avatar text="C" />
-      <Avatar text="J K" />
-      <Avatar text="M N" round />
-      <Avatar text="N O" round />
-      <Avatar text="?" round />
-    </Row>
-  </DocsExample>
-
-  <Column>
-    <h4>Properties</h4>
-    <SyntaxHighlight lang="ts" :code="properties" />
-  </Column>
+  <ComponentDocsSection :exampleSrc="exampleSrc" :props="props">
+    <template #description>
+      <p>An avatar component that displays an image or initials.</p>
+    </template>
+    <template #example>
+      <Avatar text="John Doe" round />
+      <Avatar text="A A" />
+      <Avatar text="Jane Smith" :image="image" />
+    </template>
+  </ComponentDocsSection>
 </template>
 <script setup lang="ts">
-import { DocsExample, SyntaxHighlight } from '..'
-import { Avatar, Column, Row } from '../..'
-import imgUrl from '../assets/placeholder32.png'
+import { ComponentDocsSection } from '..'
+import { Avatar } from '../..'
 
-const properties = `text: string
-image?: string | null
-round?: boolean`
+const exampleSrc = `<Avatar text="John Doe" round />
+<Avatar text="A A" />
+<Avatar text="Jane Smith" :image="image" />`
 
-const exampleSrc = `<Row wrap>
-  <Avatar text="Image" :image="imgUrl" />
-  <Avatar text="A" />
-  <Avatar text="B" />
-  <Avatar text="C" />
-  <Avatar text="J K" />
-  <Avatar text="M N" round />
-  <Avatar text="N O" round />
-  <Avatar text="?" round />
-</Row>`
+const image = 'https://placekitten.com/64'
+
+const props = [
+  {
+    code: 'text: string',
+    description: 'The text used to generate the initials',
+  },
+  {
+    code: 'image?: string | null',
+    description: 'The URL of the image to display',
+  },
+  {
+    code: 'round?: boolean',
+    description: 'Whether the avatar should have rounded corners',
+  },
+]
 </script>

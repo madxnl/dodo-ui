@@ -1,8 +1,11 @@
 <template>
   <label :class="['dodo-label', error && 'dodo-label--error']" :for="props.for" @change="onchange">
-    <label>{{ text }} {{ error }}</label>
+    <span class="dodo-label-text">
+      {{ text }}
+      <span v-if="error" class="dodo-color-danger">{{ error }}</span>
+    </span>
     <slot />
-    <small v-if="hint">{{ hint }}</small>
+    <small v-if="hint" class="dodo-fade-secondary">{{ hint }}</small>
   </label>
 </template>
 
@@ -35,14 +38,12 @@ async function onchange() {
 
 <style>
 .dodo-label {
-  display: grid;
+  display: flex;
+  flex-flow: column;
   gap: 4px;
 }
-.dodo-label > label {
-  color: inherit;
-}
-.dodo-label > label::first-letter {
-  text-transform: uppercase;
+.dodo-label-text {
+  margin-bottom: 4px;
 }
 .dodo-label--error {
   color: var(--dodo-color-danger);

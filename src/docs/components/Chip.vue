@@ -1,32 +1,31 @@
 <template>
-  <p>A small, rounded container for displaying short snippets of information.</p>
-
-  <DocsExample :exampleSrc="exampleSrc">
-    <Row>
-      <Chip>Default</Chip>
-      <Chip color="info">Info</Chip>
-      <Chip color="success">Success</Chip>
-      <Chip color="warn">Warning</Chip>
-      <Chip color="danger">Danger</Chip>
-    </Row>
-  </DocsExample>
-
-  <Column>
-    <h4>Properties</h4>
-    <SyntaxHighlight lang="ts" :code="properties" />
-  </Column>
+  <ComponentDocsSection :exampleSrc="exampleSrc" :props="props">
+    <template #description>
+      <p>A chip component that can be styled with different colors.</p>
+    </template>
+    <template #example>
+      <Row>
+        <Chip>Default Chip</Chip>
+        <Chip color="info">Info Chip</Chip>
+        <Chip color="warn">Warn Chip</Chip>
+      </Row>
+    </template>
+  </ComponentDocsSection>
 </template>
 <script setup lang="ts">
-import { DocsExample, SyntaxHighlight } from '..'
-import { Chip, Column, Row } from '../..'
-
-const properties = `color?: ColorProp`
+import { ComponentDocsSection } from '..'
+import { Chip, Row } from '../..'
 
 const exampleSrc = `<Row>
-  <Chip>Default</Chip>
-  <Chip color="info">Info</Chip>
-  <Chip color="success">Success</Chip>
-  <Chip color="warn">Warning</Chip>
-  <Chip color="danger">Danger</Chip>
+  <Chip>Default Chip</Chip>
+  <Chip color="info">Info Chip</Chip>
+  <Chip color="warn">Warn Chip</Chip>
 </Row>`
+
+const props = [
+  {
+    code: 'color?: "info" | "warn" | "success" | "danger" | "background" | "foreground" | "primary" | "secondary"',
+    description: 'The color of the chip',
+  },
+]
 </script>
