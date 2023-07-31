@@ -1,5 +1,5 @@
 <template>
-  <label :class="[$style.FormLabel, error && $style.FormLabel_hasError]" :for="props.for" @change="onchange">
+  <label :class="['dodo-label', error && 'dodo-label--error']" :for="props.for" @change="onchange">
     <label>{{ text }} {{ error }}</label>
     <slot />
     <small v-if="hint">{{ hint }}</small>
@@ -33,18 +33,18 @@ async function onchange() {
 }
 </script>
 
-<style module>
-.FormLabel {
+<style>
+.dodo-label {
   display: grid;
   gap: 4px;
 }
-.FormLabel > label {
+.dodo-label > label {
   color: inherit;
 }
-.FormLabel > label::first-letter {
+.dodo-label > label::first-letter {
   text-transform: uppercase;
 }
-.FormLabel_hasError {
+.dodo-label--error {
   color: var(--dodo-color-danger);
 }
 </style>

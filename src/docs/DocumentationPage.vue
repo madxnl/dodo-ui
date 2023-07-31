@@ -17,33 +17,36 @@
       <Column :class="$style.content" padding="4" gap="16">
         <template v-for="chapter in chapters">
           <Card v-for="page in chapter.pages" :id="page.title" :key="page.title">
-            <Column gap="8">
+            <Column>
               <h2>{{ page.title }}</h2>
               <component :is="page.example" v-if="page.example" />
 
-              <PropsTable v-if="page.api" :doc="page.api" />
-
-              <br />
+              <!-- <PropsTable v-if="page.api" :doc="page.api" /> -->
+              <!-- <br /> -->
             </Column>
           </Card>
         </template>
+
+        <!-- <Card v-for="page in aichapters" :id="page.title" :key="page.title">
+          <Column gap="8">
+            <h2>{{ page.title }}</h2>
+            <component :is="page.example" v-if="page.example" />
+          </Column>
+        </Card> -->
       </Column>
     </ScrollContainer>
   </div>
 </template>
 <script lang="ts" setup>
 import { DefineComponent, onBeforeUnmount, onMounted, ref } from 'vue'
-import type { ComponentDoc } from 'vue-docgen-api'
 import { Card, Column, ScrollContainer } from '..'
-import PropsTable from './PropsTable.vue'
 
 const props = defineProps<{
   chapters: {
     title?: string
     pages: {
       title: string
-      example?: DefineComponent
-      api?: ComponentDoc
+      example: DefineComponent
     }[]
   }[]
 }>()

@@ -21,7 +21,7 @@ defineProps<{
    * Add spacing between child elements
    * @example gap="2"
    */
-  gap?: SpacingValue
+  gap?: '0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12' | '16'
   /**
    * Amount of padding around the contents
    * @example padding="4"
@@ -38,12 +38,12 @@ defineProps<{
    */
   align?: AlignType
   /**
-   * Wrap contents over instead of shrinking
+   * Child elements will wrap instead of shrinking
    * @example wrap
    */
   wrap?: boolean
   /**
-   * Grow to take up available space (when nested inside another Row)
+   * Grow to take up available space
    * @example grow
    */
   grow?: boolean
