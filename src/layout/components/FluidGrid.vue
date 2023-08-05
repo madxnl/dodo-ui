@@ -1,18 +1,11 @@
 <template>
-  <div
-    ref="el"
-    :class="[
-      $style.FluidGrid,
-      oneColumn && $style.oneColumn,
-    ]"
-    :style="css"
-  >
+  <div ref="el" :class="[$style.FluidGrid, oneColumn && $style.oneColumn]" :style="css">
     <slot />
   </div>
 </template>
 <script lang="ts" setup>
+import { SpacingValue, useTheme } from '@/ui'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { SpacingValue, useTheme } from '..'
 
 const props = defineProps<{
   /**
@@ -38,14 +31,14 @@ const props = defineProps<{
    * Aligns children along cross-axis direction (default 'start')
    * @example align="end"
    */
-  alignItems?: 'center'|'end'|'start'|'stretch'
+  alignItems?: 'center' | 'end' | 'start' | 'stretch'
 }>()
 
 const theme = useTheme()
 
 const el = ref<HTMLElement>()
 const size = ref(99999)
-let timeout = null as ReturnType<typeof setTimeout>|null
+let timeout = null as ReturnType<typeof setTimeout> | null
 
 const observe = new ResizeObserver(() => {
   if (timeout) clearTimeout(timeout)
@@ -80,11 +73,9 @@ const css = computed(() => {
   display: grid;
   gap: var(--dodo-gap-4);
   align-items: start;
-  grid-template-columns:repeat(
-    var(--fluidgrid-mode,auto-fit),
-    minmax(var(--fluidgrid-size),1fr));
+  grid-template-columns: repeat(var(--fluidgrid-mode, auto-fit), minmax(var(--fluidgrid-size), 1fr));
 }
 .oneColumn {
-  grid-template-columns:1fr;
+  grid-template-columns: 1fr;
 }
 </style>

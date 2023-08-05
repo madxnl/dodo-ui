@@ -14,7 +14,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { AlignType, JustifyType, SpacingValue, useTheme } from '..'
+import { AlignType, JustifyType, SpacingValue, useTheme } from '@/ui'
 
 defineProps<{
   /**

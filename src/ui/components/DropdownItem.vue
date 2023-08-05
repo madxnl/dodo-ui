@@ -1,5 +1,5 @@
 <template>
-  <hr v-if="separator" :class="$style.separator">
+  <hr v-if="separator" :class="$style.separator" />
   <div
     v-bind="$attrs"
     :class="[$style.DropdownItem, active && $style.active, emphasize && $style.emphasize]"
@@ -18,8 +18,9 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { Column } from '@/layout'
 import { inject } from 'vue'
-import { Column, useTheme } from '..'
+import { useTheme } from '..'
 import { dropdownServiceKey } from '../composables'
 
 defineProps<{

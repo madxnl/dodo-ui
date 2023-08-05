@@ -23,7 +23,7 @@
           <Icon name="navigate_next" size="l" />
         </button>
       </div>
-      <hr>
+      <hr />
     </Column>
     <template v-if="currentTab">
       <slot :name="currentTab.slot ?? 'default'" :tab="currentTab" />
@@ -32,8 +32,9 @@
 </template>
 
 <script lang="ts" setup>
+import { Icon, useResizeObserver } from '@/ui'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useCssModule, watch, watchEffect } from 'vue'
-import { Column, Icon, useResizeObserver } from '..'
+import { Column } from '.'
 
 export interface Tab {
   name: string
@@ -91,7 +92,7 @@ watch(
       current.value = keyFor(props.tabs[props.tabIndex])
     }
   },
-  { immediate: true },
+  { immediate: true }
 )
 
 watch(
@@ -99,7 +100,7 @@ watch(
   () => {
     if (currentTab.value) emit('update:tabIndex', props.tabs.indexOf(currentTab.value))
   },
-  { immediate: true },
+  { immediate: true }
 )
 
 function mouseDownHandler(e: MouseEvent | TouchEvent) {

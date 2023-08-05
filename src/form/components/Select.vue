@@ -82,7 +82,7 @@
   </Dropdown>
 </template>
 <script lang="ts" setup>
-import { Button, Column, Dropdown, DropdownItem, Icon, Row, ScrollContainer } from '@/ui'
+import { Button, Column, Dropdown, DropdownItem, Icon, Row, ScrollContainer } from '@/index'
 import { computed, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
 import { Field, TextInput } from '.'
 

@@ -36,9 +36,9 @@
   </div>
 </template>
 <script lang="ts">
+import { Column, Icon, Tooltip } from '@/index'
 import type { ComponentInternalInstance, ComputedRef } from 'vue'
 import { computed, getCurrentInstance, onBeforeUnmount, ref, watch, watchEffect } from 'vue'
-import { Column, Icon, Tooltip } from '..'
 import { useScreenSize, useServiceFactory, useTheme } from '../composables'
 
 const navbarService = useServiceFactory(() => {

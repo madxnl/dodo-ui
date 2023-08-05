@@ -12,7 +12,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { SpacingValue, useTheme } from '..'
+import { SpacingValue, useTheme } from '@/ui'
 
 type ColumnSize = 'xs' | 's' | 'm' | 'l'
 

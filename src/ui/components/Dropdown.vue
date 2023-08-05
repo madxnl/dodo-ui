@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts" setup>
+import { Column, GapSize } from '@/index'
 import { nextTick, onBeforeUnmount, provide, ref, watch } from 'vue'
-import { Column, GapSize } from '..'
 import { dropdownServiceKey } from '../composables'
 
 const props = defineProps<{
@@ -41,7 +41,7 @@ watch(
   () => props.modelValue,
   (modelValue) => {
     toggle(!!modelValue)
-  },
+  }
 )
 
 onBeforeUnmount(() => {
@@ -61,7 +61,7 @@ function toggle(show: boolean) {
         window.addEventListener('scroll', onWindowEvent, { passive: true, capture: true })
         window.addEventListener('resize', onWindowEvent)
       })
-      .catch(_ => {})
+      .catch((_) => {})
   } else {
     window.removeEventListener('click', onWindowEvent, { capture: true })
     window.removeEventListener('scroll', onWindowEvent, { capture: true })

@@ -8,7 +8,7 @@
     ]"
     @click.self="clickRoot"
   >
-    <div v-if="mobileToggle" :class="$style.backdrop" @click="mobileToggle=false" />
+    <div v-if="mobileToggle" :class="$style.backdrop" @click="mobileToggle = false" />
 
     <div :class="$style.NavBar">
       <div v-if="$slots['navbar-header']" :class="$style.header">
@@ -17,11 +17,8 @@
           <slot name="navbar-header" />
         </div>
 
-        <div style="margin-right:8px">
-          <Button
-            v-if="renderMobile" variant="text" square color="background"
-            @click="mobileToggle=false"
-          >
+        <div style="margin-right: 8px">
+          <Button v-if="renderMobile" variant="text" square color="background" @click="mobileToggle = false">
             <Icon name="close" />
           </Button>
         </div>
@@ -40,7 +37,7 @@
           v-if="!renderMobile"
           :text="collapsed ? 'Expand' : 'Collapse'"
           :icon="collapsed ? 'last_page' : 'first_page'"
-          @click="collapsed=!collapsed"
+          @click="collapsed = !collapsed"
         />
       </div>
     </div>
@@ -55,14 +52,15 @@
         <slot :in-mobile-bar="true" />
         <slot :in-mobile-bar="true" name="navbar-footer" />
 
-        <NavBarItem text="Menu" icon="menu" @click="mobileToggle=!mobileToggle" />
+        <NavBarItem text="Menu" icon="menu" @click="mobileToggle = !mobileToggle" />
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
+import { Column } from '@/index'
 import { computed, provide, ref } from 'vue'
-import { Button, Column, Icon, useTheme } from '..'
+import { Button, Icon, useTheme } from '..'
 import { navBarServiceKey, useScreenSize, useSessionStoredRef } from '../composables'
 import NavBarItem from './NavBarItem.vue'
 
@@ -75,7 +73,7 @@ const props = defineProps<{
 useTheme()
 
 const { screenLarge } = useScreenSize()
-const collapsed = useSessionStoredRef<boolean|null>('NavBar-collapse', null)
+const collapsed = useSessionStoredRef<boolean | null>('NavBar-collapse', null)
 const mobileToggle = ref(false)
 const renderMobile = computed(() => props.mobile || !screenLarge.value)
 
@@ -86,7 +84,6 @@ function clickRoot() {
     mobileToggle.value = false
   }
 }
-
 </script>
 <style module>
 .root {
@@ -102,7 +99,7 @@ function clickRoot() {
   overflow-y: auto;
   overflow-x: hidden;
   max-width: 220px;
-  transition: all .1s;
+  transition: all 0.1s;
 }
 .NavBar a {
   text-decoration: none;
@@ -141,14 +138,19 @@ function clickRoot() {
 }
 
 .backdrop {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   position: absolute;
-  top: 0; bottom: 0; left: 0; right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 40;
 }
 .mobileMenu .NavBar {
   position: absolute;
-  left: 0; top: 0; bottom: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
   z-index: 50;
   width: 100%;
   max-width: 0;
