@@ -4,7 +4,6 @@
       <p>A customizable button component.</p>
     </template>
     <template #example>
-      <p>A customizable button component.</p>
       <Row wrap>
         <Button color="primary">Primary Button</Button>
         <Button color="success" variant="solid">Solid Button</Button>
