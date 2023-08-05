@@ -22,7 +22,7 @@
   </ComponentDocsSection>
 </template>
 <script setup lang="ts">
-import { ComponentDocsSection } from '..'
+import { ComponentDocsSection } from '@/docs'
 import { Button, Column, Row } from '../..'
 
 const exampleSrc = `<Row justify="between" gap="2" padding="2" style="background: pink">

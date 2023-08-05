@@ -14,7 +14,7 @@
   </ComponentDocsSection>
 </template>
 <script setup lang="ts">
-import { ComponentDocsSection } from '..'
+import { ComponentDocsSection } from '@/docs'
 import { Label, TextInput } from '../..'
 
 const exampleSrc = `<Label text="Name" for="name">

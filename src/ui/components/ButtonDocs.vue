@@ -18,7 +18,7 @@
   </ComponentDocsSection>
 </template>
 <script setup lang="ts">
-import { ComponentDocsSection } from '..'
+import { ComponentDocsSection } from '@/docs'
 import { Button, Icon, Row } from '../..'
 
 const exampleSrc = `<Row wrap>

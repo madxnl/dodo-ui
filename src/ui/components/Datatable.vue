@@ -68,8 +68,9 @@
   </div>
 </template>
 <script lang="ts" setup generic="T">
+import { Checkbox } from '@/form'
 import { computed, ref, watch, watchEffect } from 'vue'
-import { Button, Checkbox, Icon } from '..'
+import { Button, Icon } from '.'
 
 export interface DatatableColumn<T = object> {
   name: string

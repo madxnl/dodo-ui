@@ -11,7 +11,7 @@
   </ComponentDocsSection>
 </template>
 <script setup lang="ts">
-import { ComponentDocsSection } from '..'
+import { ComponentDocsSection } from '@/docs'
 import { Avatar } from '../..'
 
 const exampleSrc = `<Avatar text="John Doe" round />

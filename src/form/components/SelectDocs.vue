@@ -16,8 +16,8 @@
   </ComponentDocsSection>
 </template>
 <script setup lang="ts">
+import { ComponentDocsSection } from '@/docs'
 import { ref } from 'vue'
-import { ComponentDocsSection } from '..'
 import { Select } from '../..'
 
 const exampleSrc = `<Select

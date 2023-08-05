@@ -10,12 +10,12 @@ import Color from './guide/ColorGuide.vue'
 import Installation from './guide/Installation.vue'
 import Text from './guide/TextGuide.vue'
 
-const componentDocs = import.meta.glob('./components/*.vue', { eager: true })
+const componentDocs = import.meta.glob('@/*/components/*Docs.vue', { eager: true })
 
 const basename = (path: string) => path.split('/').slice(-1)[0].split('.')[0]
 const componentPages = Object.entries(componentDocs)
   .map(([path, module]) => {
-    const title = basename(path)
+    const title = basename(path).replace('Docs', '')
     // if (excludeRe.test(title)) return null
     const example = (module as any).default as DefineComponent
     return { title, example }

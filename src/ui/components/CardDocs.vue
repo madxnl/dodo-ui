@@ -17,7 +17,7 @@
   </ComponentDocsSection>
 </template>
 <script setup lang="ts">
-import { ComponentDocsSection } from '..'
+import { ComponentDocsSection } from '@/docs'
 import { Card } from '../..'
 
 const exampleSrc = `<Card padding="4" gap="2">
