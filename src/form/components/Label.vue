@@ -10,9 +10,8 @@
 </template>
 
 <script lang="ts" setup>
+import { formServiceKey, useTheme } from '@/ui'
 import { computed, inject } from 'vue'
-import { useTheme } from '..'
-import { formServiceKey } from '../composables'
 
 const props = defineProps<{
   text: string

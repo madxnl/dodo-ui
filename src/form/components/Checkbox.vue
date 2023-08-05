@@ -2,11 +2,11 @@
   <span :class="[$style.Checkbox, modelValue && $style.checked]" @click.stop="onClick">
     <Icon :name="indeterminate ? 'indeterminate_check_box' : modelValue ? 'check_box' : 'check_box_outline_blank'" />
     <slot />
-    <input type="checkbox" :checked="modelValue" @change="onChange">
+    <input type="checkbox" :checked="modelValue" @change="onChange" />
   </span>
 </template>
 <script lang="ts" setup>
-import { Icon, useTheme } from '..'
+import { Icon, useTheme } from '@/ui'
 
 const props = defineProps<{
   modelValue: boolean

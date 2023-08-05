@@ -1,7 +1,7 @@
 <template>
   <div :class="[$style.Select, multiple && $style.multiple]">
     <Button
-      v-for="(option,i) in options"
+      v-for="(option, i) in options"
       :key="option.label"
       v-bind="isSelected(option) ? { active: true, color: 'info' } : {}"
       :disabled="disabled"
@@ -21,8 +21,8 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { Button } from '@/ui'
 import { computed } from 'vue'
-import { Button } from '..'
 
 const props = defineProps<{
   /** Array of available options */
@@ -40,7 +40,7 @@ const props = defineProps<{
   small?: boolean
 }>()
 
-type Option = typeof props.options[0]
+type Option = (typeof props.options)[0]
 
 const emit = defineEmits<{
   /**
@@ -59,15 +59,17 @@ function compareValue(option: Option, value: unknown) {
 }
 
 function isSelected(option: Option) {
-  return modelValueArray.value.some(x => compareValue(option, x))
+  return modelValueArray.value.some((x) => compareValue(option, x))
 }
 
 function toggle(option: Option) {
   let newValue = option.value
   const alreadySelected = isSelected(option)
-  if (alreadySelected && props.multiple) { // remove from selection
-    newValue = modelValueArray.value.filter(x => !compareValue(option, x))
-  } else if (props.multiple) { // append to selection
+  if (alreadySelected && props.multiple) {
+    // remove from selection
+    newValue = modelValueArray.value.filter((x) => !compareValue(option, x))
+  } else if (props.multiple) {
+    // append to selection
     newValue = [...modelValueArray.value, option.value]
   }
   emit('update:modelValue', newValue)

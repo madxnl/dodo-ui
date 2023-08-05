@@ -1,3 +1,2 @@
-// This is the index for the NPM package
-export * from './components'
-export * from './composables'
+export * from './form'
+export * from './ui'

@@ -22,19 +22,16 @@
     "esModuleInterop": true,
     "allowJs": true,
     "outDir": "dist/types",
-    "declaration": true
+    "declaration": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "vueCompilerOptions": {
     "jsxTemplates": true
   },
-  "include": [
-    "src/env.d.ts",
-    "src/index.ts",
-    "src/components/**/*.vue",
-  ],
-  "exclude": [
-    "src/main.ts",
-    "src/docs/index.ts",
-    "src/docs/**/*.*",
-  ],
+  "include": ["src/env.d.ts", "src/index.ts", "src/components/**/*.vue"],
+  "exclude": ["src/main.ts", "src/docs/index.ts", "src/docs/**/*.*"]
 }

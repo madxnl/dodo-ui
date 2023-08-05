@@ -39,20 +39,19 @@
 </template>
 
 <script lang="ts" setup>
+import { Button, Icon, Row, formServiceKey, useTheme } from '@/ui'
 import { computed, nextTick, provide, reactive, ref, watchEffect } from 'vue'
-import { Button, Icon, Row, useTheme } from '..'
-import { formServiceKey } from '../composables'
 
 type Validator = (value: any) => Promise<string | undefined> | string | undefined
 
 const props = defineProps<{
   validate?: Record<
-  string,
-  {
-    value: unknown
-    optional?: boolean
-    validator?: Validator
-  }
+    string,
+    {
+      value: unknown
+      optional?: boolean
+      validator?: Validator
+    }
   >
   steps?: {
     name: string

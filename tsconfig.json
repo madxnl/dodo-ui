@@ -22,7 +22,12 @@
     "esModuleInterop": true,
     "allowJs": true,
     "outDir": "dist/types",
-    "declaration": true
+    "declaration": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "vueCompilerOptions": {
     "strictTemplates": true,
@@ -42,12 +47,6 @@
     "esm": true,
     "experimentalSpecifierResolution": "node"
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.test.ts",
-    "src/**/*.vue",
-    "src/**/*.json"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.test.ts", "src/**/*.vue", "src/**/*.json"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

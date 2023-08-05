@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Deselect 1`] = `
-"<div class=\\"_Select_1b074e _multiple_1b074e\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_a73d48 _default_a73d48 _active_a73d48 _rounded_a73d48\\">
-    <div class=\\"_content_a73d48\\">
+"<div class=\\"_Select_1f868f _multiple_1f868f\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_374879 _default_374879 _active_374879 _rounded_374879\\">
+    <div class=\\"_content_374879\\">
       <!--
         @slot Menu Item footer
         @binding {object} option icon of the menu item
@@ -10,8 +10,8 @@ exports[`Deselect 1`] = `
       -->Option one
     </div>
     <!--v-if-->
-  </button><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_a73d48 _default_a73d48 _active_a73d48 _rounded_a73d48\\">
-    <div class=\\"_content_a73d48\\">
+  </button><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_374879 _default_374879 _active_374879 _rounded_374879\\">
+    <div class=\\"_content_374879\\">
       <!--
         @slot Menu Item footer
         @binding {object} option icon of the menu item
@@ -19,8 +19,8 @@ exports[`Deselect 1`] = `
       -->Option two
     </div>
     <!--v-if-->
-  </button><button type=\\"button\\" class=\\"_Button_a73d48 _default_a73d48 _rounded_a73d48\\">
-    <div class=\\"_content_a73d48\\">
+  </button><button style=\\"\\" type=\\"button\\" class=\\"_Button_374879 _default_374879 _rounded_374879\\">
+    <div class=\\"_content_374879\\">
       <!--
         @slot Menu Item footer
         @binding {object} option icon of the menu item
@@ -32,8 +32,8 @@ exports[`Deselect 1`] = `
 `;
 
 exports[`Select a value 1`] = `
-"<div class=\\"_Select_1b074e\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_a73d48 _default_a73d48 _active_a73d48 _rounded_a73d48\\">
-    <div class=\\"_content_a73d48\\">
+"<div class=\\"_Select_1f868f\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_374879 _default_374879 _active_374879 _rounded_374879\\">
+    <div class=\\"_content_374879\\">
       <!--
         @slot Menu Item footer
         @binding {object} option icon of the menu item
@@ -41,8 +41,8 @@ exports[`Select a value 1`] = `
       -->Option one
     </div>
     <!--v-if-->
-  </button><button type=\\"button\\" class=\\"_Button_a73d48 _default_a73d48 _rounded_a73d48\\">
-    <div class=\\"_content_a73d48\\">
+  </button><button style=\\"\\" type=\\"button\\" class=\\"_Button_374879 _default_374879 _rounded_374879\\">
+    <div class=\\"_content_374879\\">
       <!--
         @slot Menu Item footer
         @binding {object} option icon of the menu item
@@ -50,8 +50,8 @@ exports[`Select a value 1`] = `
       -->Option two
     </div>
     <!--v-if-->
-  </button><button type=\\"button\\" class=\\"_Button_a73d48 _default_a73d48 _rounded_a73d48\\">
-    <div class=\\"_content_a73d48\\">
+  </button><button style=\\"\\" type=\\"button\\" class=\\"_Button_374879 _default_374879 _rounded_374879\\">
+    <div class=\\"_content_374879\\">
       <!--
         @slot Menu Item footer
         @binding {object} option icon of the menu item
@@ -63,8 +63,8 @@ exports[`Select a value 1`] = `
 `;
 
 exports[`Select multiple 1`] = `
-"<div class=\\"_Select_1b074e _multiple_1b074e\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_a73d48 _default_a73d48 _active_a73d48 _rounded_a73d48\\">
-    <div class=\\"_content_a73d48\\">
+"<div class=\\"_Select_1f868f _multiple_1f868f\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_374879 _default_374879 _active_374879 _rounded_374879\\">
+    <div class=\\"_content_374879\\">
       <!--
         @slot Menu Item footer
         @binding {object} option icon of the menu item
@@ -72,8 +72,8 @@ exports[`Select multiple 1`] = `
       -->Option one
     </div>
     <!--v-if-->
-  </button><button type=\\"button\\" class=\\"_Button_a73d48 _default_a73d48 _rounded_a73d48\\">
-    <div class=\\"_content_a73d48\\">
+  </button><button style=\\"\\" type=\\"button\\" class=\\"_Button_374879 _default_374879 _rounded_374879\\">
+    <div class=\\"_content_374879\\">
       <!--
         @slot Menu Item footer
         @binding {object} option icon of the menu item
@@ -81,8 +81,8 @@ exports[`Select multiple 1`] = `
       -->Option two
     </div>
     <!--v-if-->
-  </button><button type=\\"button\\" class=\\"_Button_a73d48 _default_a73d48 _rounded_a73d48\\">
-    <div class=\\"_content_a73d48\\">
+  </button><button style=\\"\\" type=\\"button\\" class=\\"_Button_374879 _default_374879 _rounded_374879\\">
+    <div class=\\"_content_374879\\">
       <!--
         @slot Menu Item footer
         @binding {object} option icon of the menu item

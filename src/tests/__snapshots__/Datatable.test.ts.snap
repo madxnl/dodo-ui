@@ -1,14 +1,22 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Column sort 1`] = `
-"<div class=\\"_Datatable_22de65\\">
+"<div class=\\"_Datatable_1dd6f7\\">
   <table>
     <tr class=\\"\\">
       <!--v-if-->
-      <th scope=\\"col\\" class=\\"_sortable_22de65\\"><span class=\\"_colName_22de65\\"><span>Name</span>
+      <th scope=\\"col\\" class=\\"_sortable_1dd6f7\\"><span class=\\"_colName_1dd6f7\\"><span><!--
+                @slot Column header
+                @binding {name} string
+                @binding {object} column
+              -->Name</span>
         <!--v-if--></span>
       </th>
-      <th scope=\\"col\\" class=\\"_sortActive_22de65\\"><span class=\\"_colName_22de65\\"><span>Modified</span><span class=\\"_icon_db495d material-symbols-outlined _sortIcon_22de65\\">arrow_drop_down</span></span></th>
+      <th scope=\\"col\\" class=\\"_sortActive_1dd6f7\\"><span class=\\"_colName_1dd6f7\\"><span><!--
+                @slot Column header
+                @binding {name} string
+                @binding {object} column
+              -->Modified</span><span class=\\"_icon_be22a0 material-symbols-outlined _sortIcon_1dd6f7\\">arrow_drop_down</span></span></th>
     </tr>
     <tr class=\\"\\">
       <!--v-if-->
@@ -22,38 +30,6 @@ exports[`Column sort 1`] = `
     </tr>
     <tr class=\\"\\">
       <!--v-if-->
-      <td class=\\"\\" style=\\"\\">Bar</td>
-      <td class=\\"\\" style=\\"\\">2022-02-01</td>
-    </tr>
-    <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
-  </table>
-</div>"
-`;
-
-exports[`Selecting rows 1`] = `
-"<div class=\\"_Datatable_22de65\\">
-  <table>
-    <tr class=\\"\\">
-      <th style=\\"width: 0px;\\" scope=\\"col\\"><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></th>
-      <th scope=\\"col\\" class=\\"_sortable_22de65\\"><span class=\\"_colName_22de65\\"><span>Name</span>
-        <!--v-if--></span>
-      </th>
-      <th scope=\\"col\\" class=\\"_sortActive_22de65\\"><span class=\\"_colName_22de65\\"><span>Modified</span><span class=\\"_icon_db495d material-symbols-outlined _sortIcon_22de65\\">arrow_drop_down</span></span></th>
-    </tr>
-    <tr class=\\"_rowSelected_22de65\\">
-      <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
-      <td class=\\"\\" style=\\"\\">Foo</td>
-      <td class=\\"\\" style=\\"\\">2022-01-01</td>
-    </tr>
-    <tr class=\\"_rowSelected_22de65\\">
-      <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
-      <td class=\\"\\" style=\\"\\">Baz</td>
-      <td class=\\"\\" style=\\"\\">2022-01-04</td>
-    </tr>
-    <tr class=\\"_rowSelected_22de65\\">
-      <td><span class=\\"_Checkbox_d37172 _checked_d37172\\"><span class=\\"_icon_db495d material-symbols-outlined\\">check_box</span><input type=\\"checkbox\\"></span></td>
       <td class=\\"\\" style=\\"\\">Bar</td>
       <td class=\\"\\" style=\\"\\">2022-02-01</td>
     </tr>
@@ -65,14 +41,22 @@ exports[`Selecting rows 1`] = `
 `;
 
 exports[`Show more 1`] = `
-"<div class=\\"_Datatable_22de65\\">
+"<div class=\\"_Datatable_1dd6f7\\">
   <table>
     <tr class=\\"\\">
       <!--v-if-->
-      <th scope=\\"col\\" class=\\"_sortable_22de65\\"><span class=\\"_colName_22de65\\"><span>Name</span>
+      <th scope=\\"col\\" class=\\"_sortable_1dd6f7\\"><span class=\\"_colName_1dd6f7\\"><span><!--
+                @slot Column header
+                @binding {name} string
+                @binding {object} column
+              -->Name</span>
         <!--v-if--></span>
       </th>
-      <th scope=\\"col\\" class=\\"_sortActive_22de65\\"><span class=\\"_colName_22de65\\"><span>Modified</span><span class=\\"_icon_db495d material-symbols-outlined _sortIcon_22de65\\">arrow_drop_down</span></span></th>
+      <th scope=\\"col\\" class=\\"_sortActive_1dd6f7\\"><span class=\\"_colName_1dd6f7\\"><span><!--
+                @slot Column header
+                @binding {name} string
+                @binding {object} column
+              -->Modified</span><span class=\\"_icon_be22a0 material-symbols-outlined _sortIcon_1dd6f7\\">arrow_drop_down</span></span></th>
     </tr>
     <tr class=\\"\\">
       <!--v-if-->
@@ -90,10 +74,10 @@ exports[`Show more 1`] = `
       <td class=\\"\\" style=\\"\\">2022-02-01</td>
     </tr>
     <!--v-if-->
-    <tr class=\\"_showMore_22de65\\">
-      <td colspan=\\"999\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_a73d48 _text_a73d48 _loading_a73d48\\">
-          <div class=\\"_content_a73d48\\">Show more results</div>
-          <div class=\\"_Spinner_fafe23 _spinner_a73d48\\"><svg style=\\"\\" viewBox=\\"0 0 18 18\\">
+    <tr class=\\"_showMore_1dd6f7\\">
+      <td colspan=\\"999\\"><button style=\\"--bnt-rgb: var(--dodo-rgb-info);\\" type=\\"button\\" class=\\"_Button_374879 _text_374879 _loading_374879\\">
+          <div class=\\"_content_374879\\">Show more results</div>
+          <div class=\\"_Spinner_90cffb _spinner_374879\\"><svg style=\\"\\" viewBox=\\"0 0 18 18\\">
               <path stroke=\\"currentColor\\" fill=\\"none\\" d=\\"M 9 1 A 8 8 0 0 1 17 9\\" stroke-width=\\"2\\"></path>
               <path stroke=\\"currentColor\\" opacity=\\"0.33\\" fill=\\"none\\" d=\\"M 17 9 A 8 8 0 1 1 9 1\\" stroke-width=\\"2\\"></path>
             </svg></div>

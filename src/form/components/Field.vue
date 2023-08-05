@@ -8,7 +8,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useTheme } from '..'
+import { useTheme } from '@/ui'
 
 defineProps<{
   disabled?: boolean

@@ -49,7 +49,7 @@
         v-model="search"
         style="position: fixed; pointer-events: none; opacity: 0"
         :disabled="disabled"
-      >
+      />
     </Field>
     <template #dropdown>
       <Column ref="dropdownEl" style="min-height: 0" gap="0" @mousedown.stop.prevent="">
@@ -82,8 +82,9 @@
   </Dropdown>
 </template>
 <script lang="ts" setup>
+import { Button, Column, Dropdown, DropdownItem, Icon, Row, ScrollContainer } from '@/ui'
 import { computed, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
-import { Button, Column, Dropdown, DropdownItem, Field, Icon, Row, ScrollContainer, TextInput } from '..'
+import { Field, TextInput } from '.'
 
 type Option = { value: unknown; label: string }
 

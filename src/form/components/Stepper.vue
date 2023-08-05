@@ -38,7 +38,7 @@
               <Button v-if="currentIndex > 0" variant="text" @click="goPrev"> Back </Button>
             </Row>
           </Column>
-          <br>
+          <br />
         </Column>
       </Row>
     </template>
@@ -46,8 +46,8 @@
 </template>
 
 <script lang="ts" setup>
+import { Button, Column, Icon, Row, useTheme } from '@/ui'
 import { computed, ref, watch, watchEffect } from 'vue'
-import { Button, Column, Icon, Row, useTheme } from '..'
 
 const props = defineProps<{
   stepIndex?: number

@@ -1,5 +1,6 @@
 /// <reference types="vitest" />
 import vue from '@vitejs/plugin-vue'
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
 export function generateScopedName(name: string, filename: string) {
@@ -17,6 +18,11 @@ export default defineConfig({
   ],
   build: {
     outDir: 'docs',
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+    },
   },
   test: {
     globals: true,

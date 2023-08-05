@@ -23,8 +23,9 @@
   </Field>
 </template>
 <script lang="ts" setup>
+import { useTheme } from '@/ui'
 import { ref, watchEffect } from 'vue'
-import { Field, useTheme } from '..'
+import { Field } from '.'
 
 const props = defineProps<{
   id?: string | null
