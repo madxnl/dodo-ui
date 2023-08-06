@@ -46,7 +46,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Button, Column, Icon, Row, useTheme } from '@/index'
+import { Column, Row } from '@/layout'
+import { Button, Icon, useTheme } from '@/ui'
 import { computed, ref, watch, watchEffect } from 'vue'
 
 const props = defineProps<{

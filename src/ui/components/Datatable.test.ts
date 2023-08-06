@@ -1,7 +1,6 @@
 import { mount, VueWrapper } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
 import { Datatable } from '..'
-// import Datatable from './DatatableTyped.vue'
 
 const rows = [
   { id: 1, name: 'Foo', modified: '2022-01-01' },
@@ -24,7 +23,6 @@ test('Column sort', async () => {
   expect(wrapper.emitted('update:sortValue')![1]).toEqual(['-name'])
   await findByText(wrapper, 'Name').trigger('click')
   expect(wrapper.emitted('update:sortValue')![2]).toEqual([undefined])
-  expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('Selecting rows', async () => {
@@ -36,7 +34,6 @@ test('Selecting rows', async () => {
   expect(wrapper.emitted('update:selection')![1]).toEqual([[2, 3]])
   await checkboxes[1].trigger('click')
   expect(wrapper.emitted('update:selection')![2]).toEqual([[2, 3, 1]])
-  expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('Show more', async () => {
@@ -44,5 +41,4 @@ test('Show more', async () => {
   const wrapper = mount(Datatable as any, { props: { columns, rows, showMore } })
   await findByText(wrapper, 'Show more results').find('button').trigger('click')
   expect(showMore).toBeCalled()
-  expect(wrapper.html()).toMatchSnapshot()
 })

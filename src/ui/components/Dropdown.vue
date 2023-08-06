@@ -13,7 +13,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Column, GapSize } from '@/index'
+import { Column } from '@/layout'
+import { GapSize } from '@/ui'
 import { nextTick, onBeforeUnmount, provide, ref, watch } from 'vue'
 import { dropdownServiceKey } from '../composables'
 

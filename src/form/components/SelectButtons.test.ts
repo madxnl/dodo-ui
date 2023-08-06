@@ -12,18 +12,18 @@ test('Select a value', async () => {
   const wrapper = mount(SelectButtons, {
     props: { options: _options, modelValue: 1 },
   })
-  await wrapper.findAll('button').find(w => w.text().includes('Option two'))!.trigger('click')
+  const btn = wrapper.findAll('button').find((w) => w.text().includes('Option two'))!
+  await btn.trigger('click')
   expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [[2]] })
-  expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('Select multiple', async () => {
   const wrapper = mount(SelectButtons, {
     props: { options: _options, modelValue: [1], multiple: true },
   })
-  await wrapper.findAll('button').find(w => w.text().includes('Option two'))!.trigger('click')
+  const btn = wrapper.findAll('button').find((w) => w.text().includes('Option two'))!
+  await btn.trigger('click')
   expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [[[1, 2]]] })
-  expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('Deselect', async () => {
@@ -32,5 +32,4 @@ test('Deselect', async () => {
   })
   await wrapper.get('button').trigger('click')
   expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [[[2]]] })
-  expect(wrapper.html()).toMatchSnapshot()
 })

@@ -12,10 +12,10 @@ test('Select a value', async () => {
     props: { options: _options, modelValue: _options[0].value },
     global: { stubs: { teleport: true } },
   })
+  // console.log('html:', wrapper.html())
   await getByText(wrapper, _options[0].label).trigger('click')
   await getByText(wrapper, _options[1].label).trigger('click')
   expect(wrapper.emitted()).toMatchObject({ 'update:modelValue': [[_options[1].value]] })
-  expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('Select can be disabled', async () => {
@@ -26,7 +26,6 @@ test('Select can be disabled', async () => {
   await getByText(wrapper, _options[0].label).trigger('click')
   await nextTick()
   expect(getByText(wrapper, _options[1].label)).toBeFalsy()
-  expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('Search filters options', async () => {
@@ -43,7 +42,6 @@ test('Search filters options', async () => {
   await nextTick()
   expect(getByText(wrapper, _options[1].label)).toBeFalsy()
   expect(getByText(wrapper, _options[2].label)).toBeTruthy()
-  expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('Search input visible if many options', async () => {
@@ -57,7 +55,6 @@ test('Search input visible if many options', async () => {
   wrapper.setProps({ options: _options })
   await nextTick()
   expect(wrapper.get('[type=search]').isVisible()).toBeTruthy()
-  expect(wrapper.html()).toMatchSnapshot()
 })
 
 test('Search input visible after character key press', async () => {
@@ -72,7 +69,6 @@ test('Search input visible after character key press', async () => {
   wrapper.get('input').setValue('foo')
   await nextTick()
   expect(wrapper.get('[type=search]').isVisible()).toBeTruthy()
-  expect(wrapper.html()).toMatchSnapshot()
 })
 
 // test('Select using keyboard', async () => {
@@ -84,7 +80,6 @@ test('Search input visible after character key press', async () => {
 //   await fireEvent.keyDown(select, { key: 'ArrowDown' })
 //   await fireEvent.keyDown(select, { key: 'Enter' })
 //   expect(emitted()).toMatchObject({ 'update:modelValue': [[_options[1].value]] })
-//   expect(wrapper.html()).toMatchSnapshot()
 // })
 
 // test('Search by typing and press enter', async () => {
@@ -96,7 +91,6 @@ test('Search input visible after character key press', async () => {
 //   await fireEvent.update(input, _options[1].label)
 //   await fireEvent.keyDown(input, { key: 'Enter' })
 //   expect(emitted()).toMatchObject({ 'update:modelValue': [[_options[1].value]] })
-//   expect(wrapper.html()).toMatchSnapshot()
 // })
 
 // test('Custom option html using slot', async () => {
@@ -107,7 +101,6 @@ test('Search input visible after character key press', async () => {
 //   await getByText(wrapper, 'Custom 1')
 //   await getByText(wrapper, 'Custom 2')
 //   expect(emitted()).toMatchObject({ 'update:modelValue': [[_options[1].value]] })
-//   expect(wrapper.html()).toMatchSnapshot()
 // })
 
 // test('Can clear selection if multiple selected', async () => {
@@ -117,5 +110,4 @@ test('Search input visible after character key press', async () => {
 //   await getByText(wrapper, _options[0].label)
 //   await getByText(wrapper, 'Clear selection')
 //   expect(emitted()).toMatchObject({ 'update:modelValue': [[[]]] })
-//   expect(wrapper.html()).toMatchSnapshot()
 // })

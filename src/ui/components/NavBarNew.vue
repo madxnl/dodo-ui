@@ -36,7 +36,8 @@
   </div>
 </template>
 <script lang="ts">
-import { Column, Icon, Tooltip } from '@/index'
+import { Column } from '@/layout'
+import { Icon, Tooltip } from '@/ui'
 import type { ComponentInternalInstance, ComputedRef } from 'vue'
 import { computed, getCurrentInstance, onBeforeUnmount, ref, watch, watchEffect } from 'vue'
 import { useScreenSize, useServiceFactory, useTheme } from '../composables'

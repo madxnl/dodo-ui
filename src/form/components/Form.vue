@@ -39,7 +39,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Button, Icon, Row, formServiceKey, useTheme } from '@/index'
+import { Row } from '@/layout'
+import { Button, Icon, formServiceKey, useTheme } from '@/ui'
 import { computed, nextTick, provide, reactive, ref, watchEffect } from 'vue'
 
 type Validator = (value: any) => Promise<string | undefined> | string | undefined

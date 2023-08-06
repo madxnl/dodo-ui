@@ -15,7 +15,7 @@
   </teleport>
 </template>
 <script lang="ts" setup>
-import { Column, Row } from '@/index'
+import { Column, Row } from '@/layout'
 import { ref, watchEffect } from 'vue'
 
 const props = defineProps<{

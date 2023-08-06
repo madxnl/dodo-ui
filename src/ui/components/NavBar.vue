@@ -58,7 +58,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { Column } from '@/index'
+import { Column } from '@/layout'
 import { computed, provide, ref } from 'vue'
 import { Button, Icon, useTheme } from '..'
 import { navBarServiceKey, useScreenSize, useSessionStoredRef } from '../composables'
