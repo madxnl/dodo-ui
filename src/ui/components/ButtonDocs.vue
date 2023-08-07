@@ -12,7 +12,7 @@
         <Button square><Icon name="favorite" /></Button>
         <Button rounded><Icon name="star" /></Button>
         <Button small>Small Button</Button>
-        <Button @click="asyncClick">Loading Button</Button>
+        <Button color="success" @click="asyncClick">Loading Button</Button>
       </Row>
     </template>
   </ComponentDocsSection>
