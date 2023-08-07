@@ -28,21 +28,15 @@ import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
 // const outDir = './src/docs/components'
 const examples = [
   // ['./src/components/Avatar.vue', './src/docs/components/Avatar.vue'],
-  ['./src/components/Card.vue', './src/docs/components/Card.vue'],
-  // ['./src/components/Chip.vue', './src/docs/components/Chip.vue'],
-  ['./src/components/Label.vue', './src/docs/components/Label.vue'],
-  ['./src/components/Row.vue', './src/docs/components/Row.vue'],
-]
-const updatePaths = [
-  // ['./src/components/Avatar.vue', './src/docs/components/Avatar.vue'],
   // ['./src/components/Card.vue', './src/docs/components/Card.vue'],
   // ['./src/components/Chip.vue', './src/docs/components/Chip.vue'],
   // ['./src/components/Label.vue', './src/docs/components/Label.vue'],
-  // ['./src/components/Button.vue', './src/docs/components/Button.vue'],
-  // ['./src/components/Column.vue', './src/docs/components/Column.vue'],
+  ['./src/form/composables/useNonEmpty.ts', './src/form/composables/useNonEmptyDocs.vue'],
+]
+const updatePaths = [
   // ['./src/components/Icon.vue', './src/docs/components/Icon.vue'],
   // ['./src/components/Tabs.vue', './src/docs/components/Tabs.vue'],
-  ['./src/components/Select.vue', './src/docs/components/Select.vue'],
+  ['./src/form/composables/useValidation.ts', './src/form/composables/useValidationDocs.vue'],
 ]
 
 ;(async () => {

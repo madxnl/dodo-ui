@@ -10,18 +10,21 @@ import Color from './guide/ColorGuide.vue'
 import Installation from './guide/Installation.vue'
 import Text from './guide/TextGuide.vue'
 
-const componentDocs = import.meta.glob('@/*/components/*Docs.vue', { eager: true })
-
 const basename = (path: string) => path.split('/').slice(-1)[0].split('.')[0]
-const componentPages = Object.entries(componentDocs)
-  .map(([path, module]) => {
-    const title = basename(path).replace('Docs', '')
-    // if (excludeRe.test(title)) return null
-    const example = (module as any).default as DefineComponent
-    return { title, example }
-  })
-  .filter((x) => x)
-  .map((x) => x!)
+
+const componentDocs = import.meta.glob('@/*/components/*Docs.vue', { eager: true })
+const componentPages = Object.entries(componentDocs).map(([path, module]) => {
+  const title = basename(path).replace('Docs', '')
+  const example = (module as any).default as DefineComponent
+  return { title, example }
+})
+
+const composableDocs = import.meta.glob('@/*/composables/*Docs.vue', { eager: true })
+const composablePages = Object.entries(composableDocs).map(([path, module]) => {
+  const title = basename(path).replace('Docs', '')
+  const example = (module as any).default as DefineComponent
+  return { title, example }
+})
 
 const chapters = [
   {
@@ -35,6 +38,10 @@ const chapters = [
   {
     title: 'Components',
     pages: componentPages,
+  },
+  {
+    title: 'Composables',
+    pages: composablePages,
   },
 ]
 

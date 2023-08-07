@@ -4,6 +4,8 @@
 
 # Changelog
 
+## [0.33.0] - 2023-08-07
+- added useValidation and useNonEmpty
 ## [0.32.1] - 2023-07-24
 - removed data-nowrap, data-textcolor, etc in favour of classes
 ## [0.32.0] - 2023-07-21
