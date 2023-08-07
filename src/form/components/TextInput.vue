@@ -4,8 +4,8 @@
     <template #before><slot name="before" /></template>
     <component
       :is="rows && rows > 1 ? 'textarea' : 'input'"
-      ref="el"
       :id="id"
+      ref="el"
       :value="modelValue"
       :class="$style.input"
       :placeholder="placeholder"

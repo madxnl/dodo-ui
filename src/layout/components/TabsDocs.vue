@@ -1,10 +1,10 @@
 <template>
-  <ComponentDocsSection :exampleSrc="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc" :props="props">
     <template #description>
       <p>A tab navigation component with support for scrolling and custom slot-based content.</p>
     </template>
     <template #example>
-      <Tabs :tabs="[{ name: 'Tab 1' }, { name: 'Tab 2' }, { name: 'Tab 3', disabled: true }]" v-slot="{ tab }">
+      <Tabs v-slot="{ tab }" :tabs="[{ name: 'Tab 1' }, { name: 'Tab 2' }, { name: 'Tab 3', disabled: true }]">
         <template v-if="tab.name === 'Tab 1'">
           <p>Content for Tab 1</p>
         </template>

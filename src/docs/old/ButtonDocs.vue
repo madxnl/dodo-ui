@@ -8,9 +8,8 @@
 <script setup lang="ts">
 import DocsExample from '../DocsExample.vue'
 
-
 async function myAsyncSubmit() {
-  await new Promise(resolve => setTimeout(resolve, 3000))
+  await new Promise((resolve) => setTimeout(resolve, 3000))
 }
 
 const setup = () => ({ myAsyncSubmit })

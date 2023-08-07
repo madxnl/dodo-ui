@@ -42,7 +42,7 @@ watch(
   () => props.modelValue,
   (modelValue) => {
     toggle(!!modelValue)
-  }
+  },
 )
 
 onBeforeUnmount(() => {

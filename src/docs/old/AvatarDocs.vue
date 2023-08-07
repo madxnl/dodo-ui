@@ -6,7 +6,7 @@
   </p>
 
   <Column>
-    <DocsExample :exampleSrc="exampleSrc">
+    <DocsExample :example-src="exampleSrc">
       <Row wrap>
         <Avatar text="Image" :image="imgUrl" />
         <Avatar text="A" />

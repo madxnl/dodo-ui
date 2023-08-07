@@ -8,7 +8,6 @@
 <script setup lang="ts">
 import { DocsExample } from '..'
 
-
 const template = `
 <Spinner small />
 <Spinner color="danger" />

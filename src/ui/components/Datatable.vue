@@ -108,19 +108,19 @@ const emit = defineEmits<{
 }>()
 
 const sort = ref<string>()
-const selection = ref<unknown[]>([])
+const selected = ref<unknown[]>([])
 const sortingAsync = ref(false)
 
 watchEffect(() => {
   sort.value = props.sortValue
 })
 watchEffect(() => {
-  selection.value = props.selection ?? []
+  selected.value = props.selection ?? []
 })
 watch(sort, (v) => {
   emit('update:sortValue', v)
 })
-watch(selection, (v) => {
+watch(selected, (v) => {
   emit('update:selection', v as T[])
 })
 
@@ -186,10 +186,10 @@ function getRowSelectValue(row: any) {
 
 function toggleSelect(row: unknown) {
   const id = getRowSelectValue(row)
-  if (selection.value.includes(id)) {
-    selection.value = selection.value.filter((x) => x !== id)
+  if (selected.value.includes(id)) {
+    selected.value = selected.value.filter((x) => x !== id)
   } else {
-    selection.value = selection.value.concat(id)
+    selected.value = selected.value.concat(id)
   }
 }
 
@@ -202,17 +202,17 @@ function getValue(col: DatatableColumn<T>, row: any) {
 function isSelected(row: unknown) {
   if (!showSelect.value) return false
   const id = getRowSelectValue(row)
-  return selection.value.includes(id)
+  return selected.value.includes(id)
 }
 
 const visibleSelected = computed(() => {
   if (!showSelect.value) return []
-  return props.rows.filter((r) => selection.value.includes(getRowSelectValue(r)))
+  return props.rows.filter((r) => selected.value.includes(getRowSelectValue(r)))
 })
 
 function toggleSelectAll() {
   const allSelected = visibleSelected.value.length === props.rows.length
-  selection.value = allSelected ? [] : props.rows.map(getRowSelectValue)
+  selected.value = allSelected ? [] : props.rows.map(getRowSelectValue)
 }
 </script>
 

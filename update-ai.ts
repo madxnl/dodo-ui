@@ -1,25 +1,4 @@
-// import { readFileSync, readdirSync, writeFileSync } from 'fs'
-// import { join } from 'path'
-// import { parseSource } from 'vue-docgen-api'
-
-// async function main() {
-//   const outDir = './src/docgen'
-//   const folder = './src/components'
-//   const filenames = readdirSync(folder)
-//   for (const filename of filenames) {
-//     if (filename.endsWith('.vue')) {
-//       const path = join(folder, filename)
-//       const source = readFileSync(path, 'utf-8')
-//       const docApi = await parseSource(source, path)
-//       console.log('Parsed', path, docApi) // eslint-disable-line no-console
-//       const outPath = join(outDir, filename.replace('.vue', '.json'))
-//       writeFileSync(outPath, JSON.stringify(docApi, null, 2))
-//       console.log('Wrote', outPath) // eslint-disable-line no-console
-//     }
-//   }
-//   console.log('Done') // eslint-disable-line no-console
-// }
-
+/* eslint-disable no-console */
 import 'dotenv/config.js'
 import { writeFileSync } from 'fs'
 import { access, readFile } from 'fs/promises'
@@ -67,12 +46,12 @@ const updatePaths = [
       const answer = await getAnswer(entryPrompt)
       console.log(answer.slice(0, 200))
 
-      const content = answer //.split('```')[1]
+      const content = answer // .split('```')[1]
       writeFileSync(outFile, content)
       console.log(`Written ${outFile}`)
 
       // indexLines.push(`export { default as ${componentName} } from './${outFilename}'\n`)
-    })
+    }),
   )
 
   // const indexText = indexLines.sort().join('')

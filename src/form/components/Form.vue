@@ -47,12 +47,12 @@ type Validator = (value: any) => Promise<string | undefined> | string | undefine
 
 const props = defineProps<{
   validate?: Record<
-    string,
-    {
-      value: unknown
-      optional?: boolean
-      validator?: Validator
-    }
+  string,
+  {
+    value: unknown
+    optional?: boolean
+    validator?: Validator
+  }
   >
   steps?: {
     name: string

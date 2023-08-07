@@ -9,7 +9,6 @@
 import { ref } from 'vue'
 import { DocsExample } from '..'
 
-
 const currentValue = ref(1)
 const currentMultipleValue = ref([1, 2, 4])
 

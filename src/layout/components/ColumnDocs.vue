@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :exampleSrc="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc" :props="props">
     <template #description>
       <p>A container for arranging and aligning multiple child elements in a column.</p>
     </template>

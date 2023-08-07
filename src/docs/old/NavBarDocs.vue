@@ -9,7 +9,6 @@
 import { DocsExample } from '..'
 import image from '../assets/placeholder32.png'
 
-
 /* eslint-disable no-console */
 const navigate = () => { console.log('navigate') }
 const link = { navigate, isActive: { value: true } }

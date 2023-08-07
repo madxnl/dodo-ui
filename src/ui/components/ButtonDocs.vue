@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :exampleSrc="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc" :props="props">
     <template #description>
       <p>A customizable button component.</p>
     </template>
@@ -68,7 +68,6 @@ const props = [
 ]
 
 async function asyncClick() {
-  console.log('asyncClick')
   await new Promise((resolve) => setTimeout(resolve, 1000))
 }
 </script>

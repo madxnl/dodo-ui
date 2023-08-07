@@ -40,7 +40,7 @@ export function useValidation<T extends FormData>(initialRules: ValidateRules<T>
       if (message) {
         errors[field] = String(message)
         if (throws) throw new ValidationError(String(field), errors[field])
-        return //errors[field]
+        return // errors[field]
       }
     }
     delete errors[field]

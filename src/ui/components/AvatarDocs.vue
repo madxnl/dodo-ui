@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :exampleSrc="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc" :props="props">
     <template #description>
       <p>An avatar component that displays an image or initials.</p>
     </template>

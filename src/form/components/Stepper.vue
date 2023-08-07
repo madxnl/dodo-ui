@@ -38,7 +38,7 @@
               <Button v-if="currentIndex > 0" variant="text" @click="goPrev"> Back </Button>
             </Row>
           </Column>
-          <br />
+          <br>
         </Column>
       </Row>
     </template>

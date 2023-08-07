@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :exampleSrc="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc" :props="props">
     <template #description>
       <p>An icon component that uses the Material Symbols font.</p>
     </template>

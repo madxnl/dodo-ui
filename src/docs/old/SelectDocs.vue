@@ -9,7 +9,6 @@
 import { ref } from 'vue'
 import { DocsExample } from '..'
 
-
 const currentValue = ref<number|undefined>(undefined)
 currentValue.value = 111
 const currentValueArray = ref([1, 2])

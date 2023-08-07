@@ -48,6 +48,7 @@
     "c8": "^8.0.0",
     "dotenv": "^16.3.1",
     "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^16.0.1",

@@ -9,7 +9,6 @@
 import { ref } from 'vue'
 import { DocsExample } from '..'
 
-
 const value = ref('Foo bar')
 
 const setup = () => ({ value })

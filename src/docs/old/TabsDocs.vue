@@ -6,7 +6,6 @@
 <script setup lang="ts">
 import { DocsExample } from '..'
 
-
 const setup = () => ({})
 
 const template = `

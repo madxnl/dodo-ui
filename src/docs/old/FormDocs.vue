@@ -9,7 +9,6 @@
 import { reactive } from 'vue'
 import { DocsExample } from '..'
 
-
 const form1 = reactive({
   email: '',
 })

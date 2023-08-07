@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :exampleSrc="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc" :props="props">
     <template #description>
       <p>A chip component that can be styled with different colors.</p>
     </template>

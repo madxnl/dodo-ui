@@ -23,7 +23,7 @@
           <Icon name="navigate_next" size="l" />
         </button>
       </div>
-      <hr />
+      <hr>
     </Column>
     <template v-if="currentTab">
       <slot :name="currentTab.slot ?? 'default'" :tab="currentTab" />
@@ -92,7 +92,7 @@ watch(
       current.value = keyFor(props.tabs[props.tabIndex])
     }
   },
-  { immediate: true }
+  { immediate: true },
 )
 
 watch(
@@ -100,7 +100,7 @@ watch(
   () => {
     if (currentTab.value) emit('update:tabIndex', props.tabs.indexOf(currentTab.value))
   },
-  { immediate: true }
+  { immediate: true },
 )
 
 function mouseDownHandler(e: MouseEvent | TouchEvent) {

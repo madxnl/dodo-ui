@@ -49,7 +49,7 @@
         v-model="search"
         style="position: fixed; pointer-events: none; opacity: 0"
         :disabled="disabled"
-      />
+      >
     </Field>
     <template #dropdown>
       <Column ref="dropdownEl" style="min-height: 0" gap="0" @mousedown.stop.prevent="">

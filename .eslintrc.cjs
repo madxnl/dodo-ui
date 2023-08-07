@@ -15,6 +15,7 @@ module.exports = {
     'standard',
     '@vue/typescript',
     'plugin:vue/vue3-recommended',
+    'prettier',
   ],
   plugins: [
     '@typescript-eslint',

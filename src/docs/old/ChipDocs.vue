@@ -8,7 +8,6 @@
 <script setup lang="ts">
 import { DocsExample } from '..'
 
-
 function onClose() {}
 
 const setup = () => ({ onClose })

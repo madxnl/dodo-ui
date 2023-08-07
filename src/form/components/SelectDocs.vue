@@ -1,16 +1,16 @@
 <template>
-  <ComponentDocsSection :exampleSrc="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc" :props="props">
     <template #description>
       <p>A select component that allows users to choose options from a dropdown or a set of buttons.</p>
     </template>
     <template #example>
       <Select
+        v-model="selectedOption"
         :options="[
           { value: 'option1', label: 'Option 1' },
           { value: 'option2', label: 'Option 2' },
           { value: 'option3', label: 'Option 3' },
         ]"
-        v-model="selectedOption"
       />
     </template>
   </ComponentDocsSection>

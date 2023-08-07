@@ -1,5 +1,5 @@
 <template>
-  <hr v-if="separator" :class="$style.separator" />
+  <hr v-if="separator" :class="$style.separator">
   <div
     v-bind="$attrs"
     :class="[$style.DropdownItem, active && $style.active, emphasize && $style.emphasize]"

@@ -8,7 +8,6 @@
 <script setup lang="ts">
 import { DocsExample } from '..'
 
-
 function clickItem() {}
 
 const setup = () => ({ clickItem })

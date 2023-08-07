@@ -9,7 +9,6 @@
 import { DocsExample } from '..'
 import imgUrl from '../assets/placeholder32.png'
 
-
 const setup = () => ({ imgUrl })
 
 const template = `
