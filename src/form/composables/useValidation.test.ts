@@ -20,46 +20,46 @@ test('validateField', async () => {
 
   expect(errors).toEqual({})
 
-  await expect(validateField('name')).rejects.toThrow()
+  expect(await validateField('name')).toBe(false)
   expect(errors).toEqual({ name: 'Name must be at least 3 characters long' })
-  await expect(validateField('email')).rejects.toThrow()
+  expect(await validateField('email')).toBe(false)
   expect(errors).toContain({ email: 'Email is required' })
-  await expect(validateField('count')).rejects.toThrow()
+  expect(await validateField('count')).toBe(false)
   expect(errors).toContain({ count: 'Count must be at least 2' })
 
   Object.assign(data, { name: 'John', email: 'john', count: 2 })
   await validateField('name')
-  await expect(validateField('email')).rejects.toThrow()
+  expect(await validateField('email')).toBe(false)
   await validateField('count')
   expect(errors).toEqual({ email: 'Email is not valid' })
 })
 
-test('validateAll', async () => {
+test('validate', async () => {
   Object.assign(data, { name: null as string | null, email: '' })
 
-  const { errors, validateAll } = useValidation({
+  const { errors, validate } = useValidation({
     name: { value: name, minLen: 3, maxLen: 10 },
     email: { value: email, required: true, isEmail: true },
   })
 
-  await expect(validateAll()).rejects.toThrow()
+  expect(await validate()).toBe(false)
   expect(errors).toEqual({ email: 'Email is required' })
 
   data.name = 'John'
   data.email = 'email@test.com'
-  await validateAll()
+  expect(await validate()).toBe(true)
   expect(errors).toEqual({})
 })
 
 test('Watches value changes', async () => {
   Object.assign(data, { name: '', email: '' })
 
-  const { errors, validateAll } = useValidation({
+  const { errors, validate } = useValidation({
     name: { value: name, minLen: 3, maxLen: 10 },
     email: { value: email, required: true, isEmail: true },
   })
 
-  await expect(validateAll()).rejects.toThrow()
+  expect(await validate()).toBe(false)
   expect(errors).toEqual({ name: 'Name must be at least 3 characters long', email: 'Email is required' })
 
   data.name = 'John'
@@ -71,16 +71,16 @@ test('Watches value changes', async () => {
 test('Watches config changes', async () => {
   Object.assign(data, { name: '', email: '' })
 
-  const { errors, validateAll, rules } = useValidation({
+  const { errors, validate, rules } = useValidation({
     name: { value: name, minLen: 3, maxLen: 10 },
     email: { value: email, required: true, isEmail: true },
   })
 
-  await expect(validateAll()).rejects.toThrow()
+  expect(await validate()).toBe(false)
   expect(errors).toEqual({ name: 'Name must be at least 3 characters long', email: 'Email is required' })
 
   rules.email.required = false
 
-  await expect(validateAll()).rejects.toThrow()
+  expect(await validate()).toBe(false)
   expect(errors).toEqual({ name: 'Name must be at least 3 characters long', email: 'Email is not valid' })
 })

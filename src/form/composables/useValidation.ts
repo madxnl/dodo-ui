@@ -28,32 +28,34 @@ export function useValidation<T extends FormData>(initialRules: ValidateRules<T>
   const rules = reactive(initialRules)
   const errors: Partial<Record<keyof T, string>> = reactive({})
 
-  // Validate previously invalid fields on change, without throwing
-  watch(rules, () => validateInvalidFields(false))
+  // Validate previously invalid fields on change
+  watch(rules, () => validateInvalidFields())
 
-  async function validateField(field: keyof T, throws = true) {
-    /** Update field error message and throws on validation error */
+  async function validateField(field: keyof T) {
+    /** Update field error message and return true if valid */
     const rule = rules[field]
     if (rule) {
       const value = rule.value
       const message = await getFieldMessage(field, value)
       if (message) {
         errors[field] = String(message)
-        if (throws) throw new ValidationError(String(field), errors[field])
-        return // errors[field]
+        return false
       }
     }
     delete errors[field]
+    return true
   }
 
-  async function validateAll(throws = true) {
-    /** Update all field error messages and throws on validation error */
-    await Promise.all(Object.keys(rules).map((k) => validateField(k, throws)))
+  async function validate() {
+    /** Update all field error messages and return true if valid */
+    const results = await Promise.all(Object.keys(rules).map((k) => validateField(k)))
+    return results.every((r) => r)
   }
 
-  async function validateInvalidFields(throws = true) {
-    /** Update errors for fields that were invalid and throws on validation error */
-    await Promise.all(Object.keys(errors).map((k) => validateField(k, throws)))
+  async function validateInvalidFields() {
+    /** Update errors for fields that were invalid and return true if valid */
+    const results = await Promise.all(Object.keys(errors).map((k) => validateField(k)))
+    return results.every((r) => r)
   }
 
   function clearErrors() {
@@ -75,10 +77,10 @@ export function useValidation<T extends FormData>(initialRules: ValidateRules<T>
     }
     if (typeof value === 'string') {
       if (rule.minLen != null && value.length < rule.minLen) {
-        return `${name} must be at least ${rule.minLen} characters long`
+        return `${name} must be at least ${rule.minLen} characters`
       }
       if (rule.maxLen != null && value.length > rule.maxLen) {
-        return `${name} is too long`
+        return `${name} must be less than ${rule.maxLen} characters`
       }
     }
     if (rule.validators) {
@@ -97,5 +99,5 @@ export function useValidation<T extends FormData>(initialRules: ValidateRules<T>
       .replace(/[a-z][A-Z]/g, (match) => `${match[0]} ${match[1]}`)
   }
 
-  return { errors, rules, validateAll, validateField, clearErrors }
+  return { errors, rules, validate, validateField, clearErrors }
 }
