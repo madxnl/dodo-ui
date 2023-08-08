@@ -21,7 +21,7 @@ test('validateField', async () => {
   expect(errors).toEqual({})
 
   expect(await validateField('name')).toBe(false)
-  expect(errors).toEqual({ name: 'Name must be at least 3 characters long' })
+  expect(errors).toEqual({ name: 'Name must be at least 3 characters' })
   expect(await validateField('email')).toBe(false)
   expect(errors).toContain({ email: 'Email is required' })
   expect(await validateField('count')).toBe(false)
@@ -60,7 +60,7 @@ test('Watches value changes', async () => {
   })
 
   expect(await validate()).toBe(false)
-  expect(errors).toEqual({ name: 'Name must be at least 3 characters long', email: 'Email is required' })
+  expect(errors).toEqual({ name: 'Name must be at least 3 characters', email: 'Email is required' })
 
   data.name = 'John'
   data.email = 'email@test.com'
@@ -77,10 +77,10 @@ test('Watches config changes', async () => {
   })
 
   expect(await validate()).toBe(false)
-  expect(errors).toEqual({ name: 'Name must be at least 3 characters long', email: 'Email is required' })
+  expect(errors).toEqual({ name: 'Name must be at least 3 characters', email: 'Email is required' })
 
   rules.email.required = false
 
   expect(await validate()).toBe(false)
-  expect(errors).toEqual({ name: 'Name must be at least 3 characters long', email: 'Email is not valid' })
+  expect(errors).toEqual({ name: 'Name must be at least 3 characters', email: 'Email is not valid' })
 })
