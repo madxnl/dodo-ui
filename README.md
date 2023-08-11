@@ -4,6 +4,8 @@
 
 # Changelog
 
+- added simpler Input
+- removed Form component
 ## [0.33.0] - 2023-08-07
 - added useValidation and useNonEmpty
 ## [0.32.1] - 2023-07-24

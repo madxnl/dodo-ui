@@ -7,15 +7,15 @@ import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
 // const outDir = './src/docs/components'
 const examples = [
   // ['./src/components/Avatar.vue', './src/docs/components/Avatar.vue'],
-  // ['./src/components/Card.vue', './src/docs/components/Card.vue'],
-  // ['./src/components/Chip.vue', './src/docs/components/Chip.vue'],
-  // ['./src/components/Label.vue', './src/docs/components/Label.vue'],
-  ['./src/form/composables/useNonEmpty.ts', './src/form/composables/useNonEmptyDocs.vue'],
+  ['./src/ui/components/Card.vue', './src/ui/components/CardDocs.vue'],
+  ['./src/ui/components/Chip.vue', './src/ui/components/ChipDocs.vue'],
+  ['./src/form/components/Label.vue', './src/form/components/LabelDocs.vue'],
+  // ['./src/form/composables/useNonEmpty.ts', './src/form/composables/useNonEmptyDocs.vue'],
 ]
 const updatePaths = [
-  // ['./src/components/Icon.vue', './src/docs/components/Icon.vue'],
+  ['./src/form/components/Input.vue', './src/form/components/InputDocs.vue'],
   // ['./src/components/Tabs.vue', './src/docs/components/Tabs.vue'],
-  ['./src/form/composables/useValidation.ts', './src/form/composables/useValidationDocs.vue'],
+  // ['./src/form/composables/useValidation.ts', './src/form/composables/useValidationDocs.vue'],
 ]
 
 ;(async () => {
@@ -51,7 +51,7 @@ const updatePaths = [
       console.log(`Written ${outFile}`)
 
       // indexLines.push(`export { default as ${componentName} } from './${outFilename}'\n`)
-    }),
+    })
   )
 
   // const indexText = indexLines.sort().join('')

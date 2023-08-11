@@ -1,7 +1,7 @@
 import { computed, InjectionKey, onBeforeUnmount, onMounted, Ref, ref, watch, watchEffect } from 'vue'
 
 export const navBarServiceKey: InjectionKey<{
-  collapsed: Ref<boolean|null>
+  collapsed: Ref<boolean | null>
   renderMobile: Ref<boolean>
   mobileToggle: Ref<boolean>
 }> = Symbol('NavBarService')
@@ -10,12 +10,7 @@ export const dropdownServiceKey: InjectionKey<{
   toggle(active: boolean): void
 }> = Symbol('DropdownService')
 
-export const formServiceKey: InjectionKey<{
-  errors: Record<string, string|undefined>
-  validateField: (field: string) => Promise<void>
-}> = Symbol('FormService')
-
-export function useElementSize(el: Ref<Element|undefined>) {
+export function useElementSize(el: Ref<Element | undefined>) {
   const width = ref(0)
   const height = ref(0)
   const observer = new ResizeObserver(update)
@@ -68,7 +63,7 @@ export function useSessionStoredRef<T>(key: string, initialValue: T) {
   const data = ref(initialValue)
   const prev = sessionStorage.getItem(key)
   if (prev) data.value = JSON.parse(prev)
-  watch(data, value => {
+  watch(data, (value) => {
     sessionStorage.setItem(key, JSON.stringify(value))
   })
   return data

@@ -286,3 +286,27 @@
   padding: 0 2px;
   border-radius: 4px;
 }
+
+/* Fields */
+
+.dodo-formfield {
+  min-width: 0;
+  padding: 2px 8px;
+  box-shadow: 0 1px 2px inset rgba(0, 0, 0, 0.1);
+  background: white;
+  border: 1px solid rgba(var(--dodo-rgb-foreground), 0.3);
+  border-radius: 4px;
+  --height: var(--dodo-button-height);
+  min-height: var(--height);
+  font: var(--dodo-font-base);
+  color: var(--dodo-color-foreground);
+  box-sizing: border-box;
+}
+.dodo-formfield:focus {
+  border-color: var(--dodo-color-info);
+  outline: 1px solid var(--dodo-color-info);
+}
+.dodo-formfield:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}

@@ -1,38 +1,26 @@
 <template>
-  <label :class="['dodo-label', error && 'dodo-label--error']" :for="props.for" @change="onchange">
+  <label :class="['dodo-label', error && 'dodo-label--error']" :for="props.for">
     <span class="dodo-label-text">
       {{ text }}
-      <span v-if="error" class="dodo-color-danger">{{ error }}</span>
     </span>
     <slot />
-    <small v-if="hint" class="dodo-fade-secondary">{{ hint }}</small>
+    <small v-if="error" class="dodo-color-danger">{{ error }}</small>
+    <small v-else-if="hint" class="dodo-fade-secondary">{{ hint }}</small>
   </label>
 </template>
 
 <script lang="ts" setup>
-import { formServiceKey, useTheme } from '@/ui'
-import { computed, inject } from 'vue'
+import { useTheme } from '@/ui'
 
 const props = defineProps<{
   text: string
   for?: string
+  error?: string
   hint?: string
   required?: boolean
 }>()
 
-const form = inject(formServiceKey, undefined)
-
-const error = computed(() => {
-  return form?.errors[props.for!]
-})
-
 useTheme()
-
-async function onchange() {
-  if (error.value) {
-    await form?.validateField(props.for!)
-  }
-}
 </script>
 
 <style>
