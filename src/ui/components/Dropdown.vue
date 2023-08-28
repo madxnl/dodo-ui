@@ -52,7 +52,7 @@ const el = ref<HTMLElement>()
 watch(
   () => props.modelValue,
   () => toggle(!!props.modelValue),
-  { immediate: true }
+  { immediate: true },
 )
 
 onBeforeUnmount(() => {

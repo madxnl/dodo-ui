@@ -51,7 +51,7 @@ const updatePaths = [
       console.log(`Written ${outFile}`)
 
       // indexLines.push(`export { default as ${componentName} } from './${outFilename}'\n`)
-    })
+    }),
   )
 
   // const indexText = indexLines.sort().join('')
