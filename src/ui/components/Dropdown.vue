@@ -1,13 +1,22 @@
 <template>
-  <div ref="el" :class="[$style.trigger, disabled && $style.disabled]" v-bind="$attrs" @click.prevent="toggle(!active)">
+  <div
+    ref="el"
+    :class="[$style.trigger, disabled && $style.disabled]"
+    v-bind="$attrs"
+    @click="onClick"
+    @mouseover="onMouseOver"
+    @mouseleave="onMouseLeave"
+  >
     <slot :is-active="active" />
   </div>
 
   <teleport to="body">
-    <div v-if="active" ref="content" :class="$style.Dropdown" :style="dropdownStyles">
-      <Column :class="$style.content" padding="1" :gap="gap ?? '0'">
-        <slot name="dropdown" :toggle="toggle" />
-      </Column>
+    <div v-if="active" :class="[$style.container, 'dodo-fonts']" :style="dropdownStyles">
+      <div ref="content" :class="$style.content" @mouseleave="onMouseLeave">
+        <Column :padding="padding ?? '2'" :gap="gap ?? '2'">
+          <slot name="dropdown" :toggle="toggle" />
+        </Column>
+      </div>
     </div>
   </teleport>
 </template>
@@ -27,6 +36,8 @@ const props = defineProps<{
   gap?: GapSize
   /** (temporaily) disable dropdown functionality */
   disabled?: boolean
+  /** Change trigger event */
+  trigger?: 'hover'
 }>()
 
 const emit = defineEmits<{
@@ -40,9 +51,8 @@ const el = ref<HTMLElement>()
 
 watch(
   () => props.modelValue,
-  (modelValue) => {
-    toggle(!!modelValue)
-  },
+  () => toggle(!!props.modelValue),
+  { immediate: true }
 )
 
 onBeforeUnmount(() => {
@@ -55,48 +65,71 @@ function toggle(show: boolean) {
   active.value = show
   emit('update:modelValue', show)
   if (show) {
-    nextTick()
-      .then(() => {
-        updatePositioning()
-        window.addEventListener('click', onWindowEvent, { passive: true, capture: true })
-        window.addEventListener('scroll', onWindowEvent, { passive: true, capture: true })
-        window.addEventListener('resize', onWindowEvent)
-      })
-      .catch((_) => {})
+    nextTick().then(() => {
+      updatePositioning()
+      window.addEventListener('click', onWindowClick, { passive: true, capture: true })
+      window.addEventListener('scroll', onWindowScroll, { passive: true, capture: true })
+      window.addEventListener('resize', onWindowScroll)
+    })
   } else {
-    window.removeEventListener('click', onWindowEvent, { capture: true })
-    window.removeEventListener('scroll', onWindowEvent, { capture: true })
-    window.removeEventListener('resize', onWindowEvent)
+    window.removeEventListener('click', onWindowClick, { capture: true })
+    window.removeEventListener('scroll', onWindowScroll, { capture: true })
+    window.removeEventListener('resize', onWindowScroll)
   }
 }
 
-function onWindowEvent(e: Event) {
+function onClick() {
+  if (props.trigger !== 'hover') {
+    toggle(!active.value)
+  }
+}
+
+function onMouseOver() {
+  if (props.trigger === 'hover') {
+    toggle(true)
+  }
+}
+
+function onMouseLeave(e: MouseEvent) {
+  if (!active.value || props.trigger !== 'hover') return
+  const cur = e.relatedTarget as HTMLElement
+  const clickOnTrigger = el.value?.contains(cur)
+  const clickOnDropdown = content.value?.contains(cur)
+  if (clickOnTrigger || clickOnDropdown) return
+  toggle(false)
+}
+
+function onWindowClick(e: Event) {
   // Clicking anywhere outside the dropdown closes it
   if (e.target) {
-    const clickOnTrigger = el.value!.contains(e.target as Node)
-    const clickOnDropdown = content.value!.contains(e.target as Node)
+    const clickOnTrigger = el.value?.contains(e.target as Node)
+    const clickOnDropdown = content.value?.contains(e.target as Node)
     if (clickOnTrigger || clickOnDropdown) return
   }
   toggle(false)
 }
 
+function onWindowScroll() {
+  toggle(false)
+}
+
 function updatePositioning() {
-  const margin = 24
-  const sep = 1
-  const contentEl = content.value!
-  const { top, left, bottom, width } = el.value!.getBoundingClientRect()
-  const W = document.body.clientWidth
-  const H = document.body.clientHeight
-  const dropdownAbove = Math.min(contentEl.clientHeight, top, 500) > H - bottom
-  const maxW = Math.min(W - left - margin, 500)
-  let styles = `min-width: ${width}px;`
-  styles += `left: ${left}px; max-width: ${maxW}px;`
+  const margin = 16
+  const contentEl = content.value
+  if (!contentEl) return
+  const contentWidth = contentEl.scrollWidth
+  const buttonRect = el.value!.getBoundingClientRect()
+  const windowWidth = window.innerWidth
+  const windowHeight = window.innerHeight
+  const dropdownAbove = buttonRect.bottom + 300 + margin > windowHeight
+  const left = Math.max(margin, Math.min(buttonRect.left, windowWidth - contentWidth - margin))
+  const maxWidth = Math.min(600, windowWidth - margin * 2)
+  let styles = `left: ${left}px; max-width:${maxWidth}px;`
   if (dropdownAbove) {
-    styles += `bottom: ${H - top - sep}px; max-height: ${top - margin - sep}px;`
+    styles += `bottom: ${windowHeight - buttonRect.top}px; max-height: ${buttonRect.top - margin}px;`
   } else {
-    styles += `top: ${bottom + sep}px; max-height: ${H - bottom - margin - sep}px;`
+    styles += `top: ${buttonRect.bottom}px; max-height: ${windowHeight - buttonRect.bottom - margin}px;`
   }
-  // styles += `right: ${W - right}px; max-width: ${right - margin}px;`
   dropdownStyles.value = styles
 }
 
@@ -104,26 +137,20 @@ provide(dropdownServiceKey, { toggle })
 </script>
 
 <style module>
-.Dropdown {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  z-index: 100;
-}
 .trigger:not(.disabled) {
   cursor: pointer;
-  /* flex-grow: 1; */
   min-width: 0;
+}
+.container {
+  position: fixed;
+  display: flex;
+  z-index: 100;
 }
 .content {
   background: white !important;
   border-radius: 4px;
   border: 1px solid rgba(var(--dodo-rgb-foreground), 0.1);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  overflow-x: hidden;
-  min-width: 120px;
-  min-height: 20px;
-  width: 100%;
+  overflow: auto;
 }
 </style>

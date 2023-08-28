@@ -18,7 +18,7 @@ export const crashServiceKey: InjectionKey<CrashService> = Symbol(createCrashSer
 function createCrashService(_: CrashServiceOptions) {
   const currentError = ref(null as unknown | null)
   const ignoredUntil = ref(0)
-  const ignoreDuration = 600 * 1000
+  const ignoreDuration = 1000
 
   function ignoreError() {
     currentError.value = null
@@ -31,8 +31,7 @@ function createCrashService(_: CrashServiceOptions) {
 
   function handleCrash(err: Error | unknown) {
     if (!currentError.value && ignoredUntil.value < Date.now()) {
-      /* eslint-disable-next-line no-console */
-      console.info('handleCrash', err)
+      console.error(err) // eslint-disable-line no-console
       currentError.value = err
     }
   }
