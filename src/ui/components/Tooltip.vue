@@ -39,6 +39,13 @@ async function activate() {
 
   const rect = trigger.value!.getBoundingClientRect()
   const size = tooltip.value!.getBoundingClientRect()
+
+  // Determine side
+  let side = props.side ?? 'bottom'
+  const spaceBelow = rect.bottom + size.height < window.innerHeight
+  if (!spaceBelow && side === 'bottom') side = 'top'
+
+  // Position
   let x = (rect.right + rect.left - size.width) / 2
   let y = rect.bottom
   if (props.side === 'right') {
@@ -51,6 +58,7 @@ async function activate() {
     x = rect.left - size.width
     y = (rect.bottom + rect.top - size.height) / 2
   }
+  // Constrain to viewport
   y = Math.round(Math.max(Math.min(y, window.innerHeight - size.height), 0))
   x = Math.round(Math.max(Math.min(x, window.innerWidth - size.width), 0))
   position.value = `left:${x}px;top:${y}px`
@@ -67,6 +75,7 @@ useTheme()
   padding: var(--dodo-gap-1);
   position: fixed;
   pointer-events: none;
+  z-index: 1000;
 }
 .content {
   padding: var(--dodo-gap-1) var(--dodo-gap-2);
@@ -79,19 +88,8 @@ useTheme()
 .text {
   color: white;
   font-weight: var(--dodo-weight-bold);
-  /* display: inline-grid;
-  border-radius: 4px;
-  width: 32px;
-  height: 32px;
-  background: var(--color);
-  background-position: center;
-  background-size: cover;
-  color: white;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  font: var(--dodo-font-base);
-  font-size: calc(var(--dodo-font-size) + 2px);
-  font-weight: bold; */
+}
+.trigger {
+  display: inline-block;
 }
 </style>

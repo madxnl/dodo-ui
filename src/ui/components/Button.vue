@@ -12,7 +12,7 @@
       active && $style.active,
       rounded && $style.rounded,
     ]"
-    @click="onClick"
+    v-bind="{ ...attrs, onClick }"
   >
     <div :class="$style.content"><slot /></div>
     <Spinner v-if="loading" :small="small" :class="$style.spinner" color="inherit" />

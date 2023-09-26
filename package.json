@@ -15,7 +15,6 @@
   "files": [
     "dist"
   ],
-  "type": "module",
   "main": "./dist/dodo-ui.umd.js",
   "module": "./dist/dodo-ui.es.js",
   "types": "./dist/types/index.d.ts",
