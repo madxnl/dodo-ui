@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "typedoc": "typedoc"
+    "gendocs": "typedoc && node vue-docgen"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",

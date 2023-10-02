@@ -1,5 +1,5 @@
 {
   "entryPoints": ["../src/composables"],
   "tsconfig": "tsconfig.typedoc.json",
-  "json": "generated/composables.tsdocs.json"
+  "json": "generated/composables.json"
 }

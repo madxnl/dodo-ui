@@ -2,22 +2,27 @@ import { readFileSync, readdirSync, writeFileSync } from 'fs'
 import { join } from 'path'
 import { parseSource } from 'vue-docgen-api'
 
+/* eslint-disable no-console */
+
 async function main() {
-  const outDir = './src/docgen'
-  const folder = './src/components'
+  // Use vue-docgen-api to generate documentation json for vue components
+  const outPath = './generated/components.json'
+  const folder = '../src/components'
   const filenames = readdirSync(folder)
+  const results = []
   for (const filename of filenames) {
     if (filename.endsWith('.vue')) {
       const path = join(folder, filename)
       const source = readFileSync(path, 'utf-8')
       const docApi = await parseSource(source, path)
-      console.log('Parsed', path, docApi) // eslint-disable-line no-console
-      const outPath = join(outDir, filename.replace('.vue', '.json'))
-      writeFileSync(outPath, JSON.stringify(docApi, null, 2))
-      console.log('Wrote', outPath) // eslint-disable-line no-console
+      console.log('Parsed', path)
+      results.push(docApi)
     }
   }
-  console.log('Done') // eslint-disable-line no-console
+  const content = JSON.stringify(results, null, 2)
+  writeFileSync(outPath, content)
+  console.log('Wrote', outPath)
+  console.log('Done')
 }
 
 main()
