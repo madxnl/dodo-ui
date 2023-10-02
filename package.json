@@ -38,7 +38,6 @@
   "devDependencies": {
     "@material-design-icons/font": "^0.14.9",
     "@types/node": "20.4.2",
-    "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
     "@vitejs/plugin-vue": "^4.2.3",
@@ -55,15 +54,11 @@
     "eslint-plugin-vue": "^9.15.1",
     "jsdom": "^22.1.0",
     "material-symbols": "^0.10.1",
-    "openai": "^3.3.0",
-    "prismjs": "^1.29.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "vite": "^4.4.4",
-    "vite-plugin-inspect": "^0.7.33",
     "vitest": "^0.33.0",
     "vue": "^3.3.4",
-    "vue-docgen-api": "^4.73.0",
     "vue-router": "^4.2.4",
     "vue-tsc": "^1.8.5"
   },
