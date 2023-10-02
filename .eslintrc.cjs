@@ -22,7 +22,6 @@ module.exports = {
     'import',
   ],
   rules: {
-    'comma-dangle': ['warn', 'always-multiline'],
     'no-console': 'warn',
     'import/no-unresolved': 'off',
     'space-before-function-paren': ['warn', { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
