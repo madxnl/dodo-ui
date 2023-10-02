@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   ignorePatterns: [
-    '/docs/',
+    '/docs/dist/',
     '/dist/',
   ],
   env: {

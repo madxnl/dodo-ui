@@ -33,7 +33,7 @@
     "build:docs": "vite build",
     "build:npm": "vite build --config vite.npm.ts && vue-tsc --emitDeclarationOnly -p tsconfig.npm.json",
     "build": "npm run build:npm && npm run build:docs",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm i && npm run check && npm run build"
   },
   "devDependencies": {
     "@material-design-icons/font": "^0.14.9",

@@ -17,7 +17,7 @@ export default defineConfig({
     // Inspect(), // only applies in dev mode
   ],
   build: {
-    outDir: 'docs',
+    outDir: 'docs/dist',
   },
   resolve: {
     alias: {
