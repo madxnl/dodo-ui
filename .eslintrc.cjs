@@ -16,6 +16,7 @@ module.exports = {
     '@vue/typescript',
     'plugin:vue/vue3-recommended',
     'prettier',
+    '@nuxt/eslint-config',
   ],
   plugins: [
     '@typescript-eslint',

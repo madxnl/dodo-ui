@@ -48,5 +48,5 @@
     "experimentalSpecifierResolution": "node"
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.test.ts", "src/**/*.vue", "src/**/*.json"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./docs/tsconfig.json" }]
 }
