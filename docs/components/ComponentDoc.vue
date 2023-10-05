@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ComponentDocData } from '~/generated'
+import { ComponentData } from '~/generated'
 
 defineProps<{
-  component: ComponentDocData
+  component: ComponentData
 }>()
 </script>
 <template>

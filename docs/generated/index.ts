@@ -1,8 +1,8 @@
 import componentsJson from './components.json'
-import composablesJson from './composables.json'
+import typedocsJson from './typedocs.json'
 
-export const componentsList = componentsJson
-export const composablesList = composablesJson.children
+export const componentList = componentsJson
+export const typedocList = typedocsJson.children
 
-export type ComponentDocData = (typeof componentsList)[number]
-export type ComposableDocData = (typeof composablesList)[number]
+export type ComponentData = (typeof componentList)[number]
+export type TypedocData = (typeof typedocList)[number]
