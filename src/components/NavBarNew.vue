@@ -136,7 +136,7 @@ function clickRoot() {
 .footer {
   display: flex;
   flex-flow: column;
-  align-content: start;
+  align-content: flex-start;
 }
 
 .middle {

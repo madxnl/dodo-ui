@@ -116,7 +116,7 @@ function clickRoot() {
   display: flex;
   flex-flow: column;
   padding: var(--dodo-gap-2) 0;
-  align-content: start;
+  align-content: flex-start;
 }
 .header {
   flex-flow: row;
