@@ -2,10 +2,11 @@
   <pre :class="[$style.SyntaxHighlight, `language-${lang}`]" v-html="html" />
 </template>
 <script setup lang="ts">
-import { highlight, languages } from 'prismjs'
+import prism from 'prismjs'
 import 'prismjs/components/prism-typescript'
 import 'prismjs/themes/prism-solarizedlight.min.css'
 import { computed } from 'vue'
+const { highlight, languages } = prism
 
 const props = defineProps<{
   code: string

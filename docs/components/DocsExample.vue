@@ -18,6 +18,8 @@
 </template>
 <script setup lang="ts">
 import { ComponentOptions, ref } from 'vue'
+import { Column, Icon } from '../..'
+import SyntaxHighlight from './SyntaxHighlight.vue'
 
 defineProps<{
   options?: ComponentOptions

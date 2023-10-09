@@ -42,6 +42,10 @@
   </Column>
 </template>
 <script setup lang="ts">
+import { Column } from '../..'
+import DocsExample from './DocsExample.vue'
+import SyntaxHighlight from './SyntaxHighlight.vue'
+
 defineProps<{
   exampleSrc: string
   props?: { code: string; description: string }[]

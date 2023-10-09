@@ -1,6 +1,7 @@
 <template>
   <div :class="[$style.Datatable, contentLoading && $style.loading]">
     <table>
+      <tbody>
       <tr :class="stickyHeader && $style.stickyHeader">
         <th v-if="showSelect" style="width: 0" scope="col">
           <Checkbox
@@ -64,6 +65,7 @@
           <slot :name="`${slotName(col)}-footer`" :column="col" />
         </th>
       </tr>
+      </tbody>
     </table>
   </div>
 </template>
