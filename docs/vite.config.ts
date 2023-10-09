@@ -9,6 +9,7 @@ const config: UserConfig = {
       prerender: true,
     }),
   ],
+  base: '/dodo-ui/', // needed for GH pages
 }
 
 export default config
