@@ -1,6 +1,6 @@
 import { renderToString as renderToString_ } from '@vue/server-renderer'
+import { dangerouslySkipEscape, escapeInject } from 'vike/server'
 import type { App } from 'vue'
-import { escapeInject, dangerouslySkipEscape } from 'vike/server'
 import { createApp } from './app'
 import logoUrl from './logo.svg'
 import type { PageContextServer } from './types'
@@ -19,8 +19,8 @@ async function render(pageContext: PageContextServer) {
 
   // See https://vike.dev/head
   const { documentProps } = pageContext.exports
-  const title = (documentProps && documentProps.title) || 'Vite SSR app'
-  const desc = (documentProps && documentProps.description) || 'App using Vite + Vike'
+  const title = (documentProps && documentProps.title) || 'Dodo UI Docs'
+  const desc = (documentProps && documentProps.description) || 'A Vue.js UI library.'
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
@@ -40,7 +40,7 @@ async function render(pageContext: PageContextServer) {
     documentHtml,
     pageContext: {
       // We can add some `pageContext` here, which is useful if we want to do page redirection https://vike.dev/page-redirection
-    }
+    },
   }
 }
 
