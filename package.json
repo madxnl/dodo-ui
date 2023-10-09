@@ -30,7 +30,7 @@
     "test": "cd src && vitest run",
     "coverage": "cd src && vitest run --coverage",
     "check:test": "cd src && vitest run",
-    "check:lint": "cd src && eslint . --ext .js,.ts,.vue --max-warnings=0",
+    "check:lint": "eslint . --ext .js,.ts,.vue --max-warnings=0",
     "check:ts": "cd src && vue-tsc --noEmit",
     "check": "npm run check:lint && npm run check:test && npm run check:ts",
     "build:npm": "vite build --config src/vite.npm.ts && vue-tsc --emitDeclarationOnly -p src/tsconfig.npm.json",

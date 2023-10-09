@@ -1,15 +1,15 @@
 <template>
   <slot name="description" />
-  <br />
+  <br>
   <DocsExample :example-src="exampleSrc">
     <slot name="example" />
   </DocsExample>
 
   <Column v-if="props">
-    <br />
+    <br>
     <h4>Props</h4>
     <template v-for="(prop, i) in props" :key="i">
-      <hr v-if="i" />
+      <hr v-if="i">
       <Column gap="1">
         <SyntaxHighlight lang="ts" :code="`${prop.code}`" />
         <p>{{ prop.description }}</p>
@@ -18,10 +18,10 @@
   </Column>
 
   <Column v-if="events">
-    <br />
+    <br>
     <h4>Events</h4>
     <template v-for="(prop, i) in props" :key="i">
-      <hr v-if="i" />
+      <hr v-if="i">
       <Column gap="1">
         <SyntaxHighlight lang="ts" :code="`${prop.code}`" />
         <p>{{ prop.description }}</p>
@@ -30,10 +30,10 @@
   </Column>
 
   <Column v-if="slots">
-    <br />
+    <br>
     <h4>Slots</h4>
     <template v-for="(prop, i) in props" :key="i">
-      <hr v-if="i" />
+      <hr v-if="i">
       <Column gap="1">
         <SyntaxHighlight lang="ts" :code="`${prop.code}`" />
         <p>{{ prop.description }}</p>

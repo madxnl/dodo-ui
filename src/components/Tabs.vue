@@ -23,7 +23,7 @@
           <Icon name="navigate_next" size="l" />
         </button>
       </div>
-      <hr />
+      <hr>
     </Column>
     <template v-if="currentTab">
       <slot :name="currentTab.slot ?? 'default'" :tab="currentTab" />

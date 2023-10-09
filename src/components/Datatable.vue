@@ -2,69 +2,69 @@
   <div :class="[$style.Datatable, contentLoading && $style.loading]">
     <table>
       <tbody>
-      <tr :class="stickyHeader && $style.stickyHeader">
-        <th v-if="showSelect" style="width: 0" scope="col">
-          <Checkbox
-            :indeterminate="visibleSelected.length > 0 && visibleSelected.length < rows.length"
-            :model-value="visibleSelected.length > 0 && visibleSelected.length === rows.length"
-            @update:model-value="toggleSelectAll"
-          />
-        </th>
+        <tr :class="stickyHeader && $style.stickyHeader">
+          <th v-if="showSelect" style="width: 0" scope="col">
+            <Checkbox
+              :indeterminate="visibleSelected.length > 0 && visibleSelected.length < rows.length"
+              :model-value="visibleSelected.length > 0 && visibleSelected.length === rows.length"
+              @update:model-value="toggleSelectAll"
+            />
+          </th>
 
-        <th
-          v-for="col in enabledColumns"
-          :key="col.name"
-          scope="col"
-          :class="[canSortCol(col) ? $style.sortable : '', isSortCol(col) && $style.sortActive]"
-          :style="[alignStyle(col), widthStyle(col)]"
-          @click="toggleColumnSort(col)"
-        >
-          <span :class="$style.colName">
-            <span>
-              <!--
+          <th
+            v-for="col in enabledColumns"
+            :key="col.name"
+            scope="col"
+            :class="[canSortCol(col) ? $style.sortable : '', isSortCol(col) && $style.sortActive]"
+            :style="[alignStyle(col), widthStyle(col)]"
+            @click="toggleColumnSort(col)"
+          >
+            <span :class="$style.colName">
+              <span>
+                <!--
                 @slot Column header
                 @binding {name} string
                 @binding {object} column
               -->
-              <slot :name="`${slotName(col)}-header`" :column="col">{{ col.name }}</slot>
+                <slot :name="`${slotName(col)}-header`" :column="col">{{ col.name }}</slot>
+              </span>
+              <Icon v-if="getColumnSortIcon(col)" :name="getColumnSortIcon(col)!" :class="$style.sortIcon" />
             </span>
-            <Icon v-if="getColumnSortIcon(col)" :name="getColumnSortIcon(col)!" :class="$style.sortIcon" />
-          </span>
-        </th>
-      </tr>
+          </th>
+        </tr>
 
-      <tr
-        v-for="(row, i) in sortedItems"
-        :key="i"
-        :class="[rowClick && $style.clickableRow, isSelected(row) && $style.rowSelected]"
-        @click="rowClick && rowClick(row)"
-      >
-        <td v-if="showSelect">
-          <Checkbox :model-value="isSelected(row)" @update:model-value="toggleSelect(row)" />
-        </td>
-        <td v-for="col in enabledColumns" :key="col.name" :class="[]" :style="alignStyle(col)">
-          <slot :name="slotName(col)" :row="row" :column="col">
-            {{ getValue(col, row) }}
-          </slot>
-        </td>
-      </tr>
+        <tr
+          v-for="(row, i) in sortedItems"
+          :key="i"
+          :class="[rowClick && $style.clickableRow, isSelected(row) && $style.rowSelected]"
+          @click="rowClick && rowClick(row)"
+        >
+          <td v-if="showSelect">
+            <Checkbox :model-value="isSelected(row)" @update:model-value="toggleSelect(row)" />
+          </td>
+          <td v-for="col in enabledColumns" :key="col.name" :class="[]" :style="alignStyle(col)">
+            <slot :name="slotName(col)" :row="row" :column="col">
+              {{ getValue(col, row) }}
+            </slot>
+          </td>
+        </tr>
 
-      <tr v-if="!rows.length" :class="$style.noResults">
-        <td colspan="999">No results</td>
-      </tr>
+        <tr v-if="!rows.length" :class="$style.noResults">
+          <td colspan="999">No results</td>
+        </tr>
 
-      <tr v-if="rows.length && showMore" :class="$style.showMore">
-        <td colspan="999">
-          <Button variant="text" color="info" @click="showMore">Show more results</Button>
-        </td>
-      </tr>
+        <tr v-if="rows.length && showMore" :class="$style.showMore">
+          <td colspan="999">
+            <Button variant="text" color="info" @click="showMore">Show more results</Button>
+          </td>
+        </tr>
 
-      <tr v-if="showFooter" :class="[$style.footer, stickyHeader && $style.stickyFooter]">
-        <td v-if="showSelect" />
-        <th v-for="col in enabledColumns" :key="col.name" :style="alignStyle(col)" scope="col">
-          <slot :name="`${slotName(col)}-footer`" :column="col" />
-        </th>
-      </tr>
+        <tr v-if="showFooter" :class="[$style.footer, stickyHeader && $style.stickyFooter]">
+          <td v-if="showSelect" />
+          <th v-for="col in enabledColumns" :key="col.name" :style="alignStyle(col)" scope="col">
+            <slot :name="`${slotName(col)}-footer`" :column="col" />
+          </th>
+        </tr>
       </tbody>
     </table>
   </div>

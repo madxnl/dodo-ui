@@ -11,7 +11,7 @@
     :name="name"
     :autofocus="autofocus"
     @input="handleInput"
-  />
+  >
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'

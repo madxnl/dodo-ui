@@ -2,18 +2,18 @@
   <Column class="dodo-fonts">
     <Row align="start">
       <Column>
-        <template v-for="c of sections">
-          <a :href="`#${c.__name}`">{{ c.__name.replace('Docs', '') }} </a>
+        <template v-for="c of sections" :key="c.__name">
+          <a :href="`#${c.__name}`">{{ c.__name?.replace('Docs', '') }} </a>
         </template>
       </Column>
       <Column>
         <h1>Dodo UI docs (wip)</h1>
-        <template v-for="c of sections">
+        <template v-for="c of sections" :key="c.__name">
           <a :href="`#${c.__name}`">
-            <h2 :id="c.__name">{{ c.__name.replace('Docs', '') }}</h2>
+            <h2 :id="c.__name">{{ c.__name?.replace('Docs', '') }}</h2>
           </a>
           <component :is="c" />
-          <br />
+          <br>
         </template>
       </Column>
     </Row>

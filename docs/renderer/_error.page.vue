@@ -10,5 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-defineProps(['is404'])
+defineProps<{
+  is404: boolean
+}>()
 </script>

@@ -11,8 +11,8 @@
 //  - HatTip (https://github.com/hattipjs/hattip)
 //    - You can use Bati (https://batijs.github.io/) to scaffold a vike + HatTip app. Note that Bati generates apps that use the V1 design (https://vike.dev/migration/v1-design) and Vike packages (https://vike.dev/vike-packages)
 
-import express from 'express'
 import compression from 'compression'
+import express from 'express'
 import { renderPage } from 'vike/server'
 import { root } from './root.js'
 const isProduction = process.env.NODE_ENV === 'production'
@@ -38,7 +38,7 @@ async function startServer() {
     const viteDevMiddleware = (
       await vite.createServer({
         root,
-        server: { middlewareMode: true }
+        server: { middlewareMode: true },
       })
     ).middlewares
     app.use(viteDevMiddleware)
@@ -52,7 +52,7 @@ async function startServer() {
   // catch-all middleware superseding any middleware placed after it).
   app.get('*', async (req, res, next) => {
     const pageContextInit = {
-      urlOriginal: req.originalUrl
+      urlOriginal: req.originalUrl,
     }
     const pageContext = await renderPage(pageContextInit)
     const { httpResponse } = pageContext
@@ -70,5 +70,5 @@ async function startServer() {
 
   const port = process.env.PORT || 3000
   app.listen(port)
-  console.log(`Server running at http://localhost:${port}`)
+  console.log(`Server running at http://localhost:${port}`) // eslint-disable-line no-console
 }

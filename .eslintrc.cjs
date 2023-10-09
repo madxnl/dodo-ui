@@ -3,6 +3,7 @@ module.exports = {
   ignorePatterns: [
     '/docs/dist/',
     '/dist/',
+    '/old/',
   ],
   env: {
     node: true,

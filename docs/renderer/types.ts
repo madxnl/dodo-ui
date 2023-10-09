@@ -1,18 +1,12 @@
-export type { PageContextServer }
-export type { PageContextClient }
-export type { PageContext }
-export type { PageProps }
-export type { Component }
-
 import type {
-  PageContextBuiltInServer,
   /*
-  // When using Client Routing https://vike.dev/clientRouting
-  PageContextBuiltInClientWithClientRouting as PageContextBuiltInClient
-  /*/
+// When using Client Routing https://vike.dev/clientRouting
+PageContextBuiltInClientWithClientRouting as PageContextBuiltInClient
+/ */
   // When using Server Routing
-  PageContextBuiltInClientWithServerRouting as PageContextBuiltInClient
-  //*/
+  PageContextBuiltInClientWithServerRouting as PageContextBuiltInClient,
+  //* /
+  PageContextBuiltInServer,
 } from 'vike/types'
 import type { ComponentPublicInstance } from 'vue'
 
@@ -36,3 +30,5 @@ type PageContextServer = PageContextBuiltInServer<Page> & PageContextCustom
 type PageContextClient = PageContextBuiltInClient<Page> & PageContextCustom
 
 type PageContext = PageContextClient | PageContextServer
+
+export type { Component, PageContext, PageContextClient, PageContextServer, PageProps }

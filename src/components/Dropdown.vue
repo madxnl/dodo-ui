@@ -9,7 +9,7 @@
   >
     <slot :is-active="active" />
 
-    <teleport to="body" v-if="active">
+    <teleport v-if="active" to="body">
       <div :class="[$style.container, 'dodo-fonts']" :style="dropdownStyles">
         <div ref="content" :class="$style.content" @mouseleave="onMouseLeave">
           <Column :padding="padding ?? '2'" :gap="gap ?? '2'">
