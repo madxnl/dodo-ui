@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(__dirname, 'index.ts'),
       name: 'Dodo-UI',
       fileName: (format) => `dodo-ui.${format}.js`,
     },
@@ -25,8 +25,10 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
+        dir: '../dist',
       },
     },
+    emptyOutDir: true,
   },
   resolve: {
     alias: {

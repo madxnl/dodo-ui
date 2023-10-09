@@ -15,9 +15,9 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/dodo-ui.umd.js",
-  "module": "./dist/dodo-ui.es.js",
-  "types": "./dist/types/index.d.ts",
+  "main": "dist/dodo-ui.umd.js",
+  "module": "dist/dodo-ui.es.js",
+  "types": "dist/types/index.d.ts",
   "engines": {
     "node": ">=16.0.0"
   },
@@ -27,13 +27,13 @@
     "build:docs": "cd docs && nuxt generate",
     "postinstall": "cd docs && nuxt prepare",
     "gendocs": "cd docs && typedoc && node vue-docgen",
-    "test": "vitest run",
-    "coverage": "vitest run --coverage",
-    "check:test": "vitest run",
-    "check:lint": "eslint . --ext .js,.ts,.vue --max-warnings=0",
-    "check:ts": "vue-tsc --noEmit",
+    "test": "cd src && vitest run",
+    "coverage": "cd src && vitest run --coverage",
+    "check:test": "cd src && vitest run",
+    "check:lint": "cd src && eslint . --ext .js,.ts,.vue --max-warnings=0",
+    "check:ts": "cd src && vue-tsc --noEmit",
     "check": "npm run check:lint && npm run check:test && npm run check:ts",
-    "build:npm": "vite build --config vite.npm.ts && vue-tsc --emitDeclarationOnly -p tsconfig.npm.json",
+    "build:npm": "vite build --config src/vite.npm.ts && vue-tsc --emitDeclarationOnly -p src/tsconfig.npm.json",
     "build": "npm run build:npm && npm run build:docs",
     "prepublishOnly": "npm i && npm run check && npm run build"
   },

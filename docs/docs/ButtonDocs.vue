@@ -18,8 +18,6 @@
   </ComponentDocsSection>
 </template>
 <script setup lang="ts">
-import { Button, Icon, Row } from '../..'
-
 const exampleSrc = `<Row wrap>
   <Button color="primary">Primary Button</Button>
   <Button color="success" variant="solid">Solid Button</Button>

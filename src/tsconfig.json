@@ -10,12 +10,12 @@
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false,
+    "noEmit": true,
     "jsx": "preserve",
 
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": false,
+    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
     "sourceMap": true,
@@ -30,8 +30,23 @@
     }
   },
   "vueCompilerOptions": {
-    "jsxTemplates": true
+    "strictTemplates": true,
+    "dataAttributes": [
+      "data-selectactive",
+      "data-mobile-nav",
+      "clip-path",
+      "stop-color",
+      "fill-rule",
+      "stroke-width",
+      "color-interpolation-filters",
+      "id",
+      "tabindex"
+    ]
   },
-  "include": ["src/env.d.ts", "src/index.ts", "src/**/*.vue"],
-  "exclude": ["src/main.ts", "src/docs/index.ts", "src/docs/**/*.*", "src/**/*Docs.*"]
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.test.ts", "src/**/*.vue", "src/**/*.json"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

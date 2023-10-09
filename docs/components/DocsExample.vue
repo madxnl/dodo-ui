@@ -18,7 +18,6 @@
 </template>
 <script setup lang="ts">
 import { ComponentOptions, ref } from 'vue'
-import { Column, Icon } from '../../src'
 
 defineProps<{
   options?: ComponentOptions
