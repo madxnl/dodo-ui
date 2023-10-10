@@ -823,7 +823,6 @@ const ct = ["onClick"], ut = ["checked"], pt = /* @__PURE__ */ E({
       onMouseleave: d
     }), [
       b(S.$slots, "default", { isActive: o.value }),
-      R(" aa "),
       o.value ? (l(), v("div", {
         key: 0,
         class: m([S.$style.container, "dodo-fonts"]),

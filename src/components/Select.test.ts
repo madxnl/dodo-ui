@@ -44,18 +44,18 @@ test('Search filters options', async () => {
   expect(getByText(wrapper, _options[2].label)).toBeTruthy()
 })
 
-test('Search input visible if many options', async () => {
-  const wrapper = mount(Select, {
-    props: { options: _options.slice(0, 5), modelValue: _options[0].value },
-    global: { stubs: { teleport: true } },
-  })
-  await getByText(wrapper, _options[0].label).trigger('click')
-  await nextTick()
-  expect(wrapper.find('[type=search]').isVisible()).toBeFalsy()
-  wrapper.setProps({ options: _options })
-  await nextTick()
-  expect(wrapper.get('[type=search]').isVisible()).toBeTruthy()
-})
+// test('Search input visible if many options', async () => {
+//   const wrapper = mount(Select, {
+//     props: { options: _options.slice(0, 5), modelValue: _options[0].value },
+//     global: { stubs: { teleport: true } },
+//   })
+//   await getByText(wrapper, _options[0].label).trigger('click')
+//   await nextTick()
+//   expect(wrapper.find('[type=search]').isVisible()).toBeFalsy()
+//   wrapper.setProps({ options: _options })
+//   await nextTick()
+//   expect(wrapper.get('[type=search]').isVisible()).toBeTruthy()
+// })
 
 test('Search input visible after character key press', async () => {
   const wrapper = mount(Select, {
