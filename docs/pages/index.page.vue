@@ -1,21 +1,25 @@
 <template>
   <Column class="dodo-fonts">
-    <Row align="start">
+    <Row align="stretch" justify="center" style="min-height: 0">
       <Column>
         <template v-for="c of sections" :key="c.__name">
           <a :href="`#${c.__name}`">{{ c.__name?.replace('Docs', '') }} </a>
         </template>
       </Column>
-      <Column>
-        <h1>Dodo UI docs (wip)</h1>
-        <template v-for="c of sections" :key="c.__name">
-          <a :href="`#${c.__name}`">
-            <h2 :id="c.__name">{{ c.__name?.replace('Docs', '') }}</h2>
-          </a>
-          <component :is="c" />
-          <br>
-        </template>
-      </Column>
+      <!-- <div style="height: 100vh"> -->
+      <ScrollContainer>
+        <Column>
+          <h1>Dodo UI docs</h1>
+          <template v-for="c of sections" :key="c.__name">
+            <a :href="`#${c.__name}`">
+              <h2 :id="c.__name">{{ c.__name?.replace('Docs', '') }}</h2>
+            </a>
+            <component :is="c" />
+            <br />
+          </template>
+        </Column>
+      </ScrollContainer>
+      <!-- </div> -->
     </Row>
   </Column>
 </template>
@@ -35,7 +39,7 @@ import RowDocs from '../content/RowDocs.vue'
 import SelectDocs from '../content/SelectDocs.vue'
 import TabsDocs from '../content/TabsDocs.vue'
 import TooltipDocs from '../content/TooltipDocs.vue'
-import { Column, Row, useTheme } from '../dodo'
+import { Column, Row, ScrollContainer, useTheme } from '../dodo'
 
 useTheme()
 
@@ -56,3 +60,14 @@ const sections = [
   TooltipDocs,
 ]
 </script>
+<style>
+body,
+html {
+  margin: 0;
+  height: 100%;
+  display: flex;
+}
+#app {
+  display: flex;
+}
+</style>

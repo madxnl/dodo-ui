@@ -25,14 +25,14 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
-        dir: '../dist',
+        dir: resolve(__dirname, '../dist'),
       },
     },
     emptyOutDir: true,
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
+      '@': resolve(__dirname, '.'),
     },
   },
   css: { modules: { generateScopedName } },

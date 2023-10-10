@@ -9,15 +9,13 @@
   >
     <slot :is-active="active" />
 
-    <teleport v-if="active" to="body">
-      <div :class="[$style.container, 'dodo-fonts']" :style="dropdownStyles">
-        <div ref="content" :class="$style.content" @mouseleave="onMouseLeave">
-          <Column :padding="padding ?? '2'" :gap="gap ?? '2'">
-            <slot name="dropdown" :toggle="toggle" />
-          </Column>
-        </div>
+    <div v-if="active" :class="[$style.container, 'dodo-fonts']" :style="dropdownStyles">
+      <div ref="content" :class="$style.content" @mouseleave="onMouseLeave">
+        <Column :padding="padding ?? '2'" :gap="gap ?? '2'">
+          <slot name="dropdown" :toggle="toggle" />
+        </Column>
       </div>
-    </teleport>
+    </div>
   </div>
 </template>
 
