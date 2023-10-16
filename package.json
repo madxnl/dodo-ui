@@ -32,11 +32,10 @@
     "build": "npm run build:npm && npm run build:docs",
     "prepublishOnly": "npm i && npm run check && npm run build",
     "gendocs": "cd docs && typedoc && node vue-docgen",
-    "dev": "cd docs && npm run server:dev",
+    "dev": "cd docs && npm run server",
     "prod": "cd docs && npm run build && npm run server:prod",
     "build:docs": "cd docs && vite build",
     "server": "cd docs && node --loader ts-node/esm ./server/index.ts",
-    "server:dev": "cd docs && npm run server",
     "server:prod": "cd docs && cross-env NODE_ENV=production npm run server"
   },
   "devDependencies": {

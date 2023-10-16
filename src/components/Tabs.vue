@@ -1,13 +1,10 @@
 <template>
-  <Column gap="4">
+  <Column gap="4" style="min-width:0">
     <Column gap="0">
       <div :class="$style.bar">
-        <button v-if="showArrows" :class="[$style.arrow, !spaceLeft && $style.arrowOff]" @click="clickArrow(-1)">
-          <Icon name="navigate_before" size="l" />
-        </button>
-        <div ref="tabsDiv" :class="[$style.tabs, dragging && $style.dragging]">
+        <div ref="tabsDiv" :class="[$style.tabs]">
           <div
-            v-for="(tab, i) in tabs"
+            v-for="(tab, i) in visibleTabs"
             :key="keyFor(tab)"
             :class="[$style.tab, current === keyFor(tab) && $style.active, tab.disabled && $style.disabled]"
             @click="current = keyFor(tab)"
@@ -19,11 +16,24 @@
             </h5>
           </div>
         </div>
-        <button v-if="showArrows" :class="[$style.arrow, !spaceRight && $style.arrowOff]" @click="clickArrow(1)">
-          <Icon name="navigate_next" size="l" />
-        </button>
+        <Dropdown>
+          <template #default>
+            <Button v-if="overflowTabs.length > 0" :class="[$style.arrow]" variant="text" small>
+              <Icon name="more_horiz" size="l" />
+            </Button>
+          </template>
+          <template #dropdown>
+            <template v-for="(tab, i) in overflowTabs" :key="keyFor(tab)">
+              <p @click="current = keyFor(tab)">
+                <slot name="tab-title" :i="i" :tab="tab">
+                  {{ tab.name }}
+                </slot>
+              </p>
+            </template>
+          </template>
+        </Dropdown>
       </div>
-      <hr>
+      <hr />
     </Column>
     <template v-if="currentTab">
       <slot :name="currentTab.slot ?? 'default'" :tab="currentTab" />
@@ -32,9 +42,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, useCssModule, watch, watchEffect } from 'vue'
-import { Column, Icon } from '.'
-import { useResizeObserver } from '../composables'
+import { computed, ref, watch, watchEffect, onMounted, onBeforeUnmount } from 'vue'
+import { Column, Icon, Dropdown, Button } from '.'
 
 export interface Tab {
   name: string
@@ -51,27 +60,13 @@ const emit = defineEmits<{
   (e: 'update:tabIndex', i: number): void
 }>()
 
-const style = useCssModule()
 const tabsDiv = ref<HTMLElement>()
 const current = ref('')
 const currentTab = computed(() => props.tabs.find((t) => keyFor(t) === current.value))
-const spaceLeft = ref(false)
-const spaceRight = ref(false)
-const showArrows = computed(() => spaceLeft.value || spaceRight.value)
-const dragging = ref<{ startX: number; startScroll: number }>()
-
-useResizeObserver(tabsDiv, onResizeScroll)
-
-onMounted(() => {
-  const el = tabsDiv.value!
-  el.addEventListener('scroll', onResizeScroll, { passive: true })
-  el.addEventListener('mousedown', mouseDownHandler)
-  el.addEventListener('touchstart', mouseDownHandler)
-})
-
-onBeforeUnmount(() => {
-  tabsDiv.value?.removeEventListener('scroll', onResizeScroll)
-})
+const overflowStartIndex = ref(0)
+const visibleTabs = computed(() => props.tabs.slice(0, overflowStartIndex.value))
+const overflowTabs = computed(() => props.tabs.slice(overflowStartIndex.value))
+const interval = ref<ReturnType<typeof setTimeout>>()
 
 watchEffect(() => {
   if (!currentTab.value && props.tabs.length) {
@@ -79,11 +74,20 @@ watchEffect(() => {
   }
 })
 
-watch(currentTab, async () => {
-  await nextTick()
-  const activeEl = tabsDiv.value?.querySelector('.' + style.active) as HTMLElement
-  activeEl?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' })
+onMounted(() => {
+  interval.value = setInterval(updateOverflow, 100)
 })
+
+onBeforeUnmount(() => {
+  clearInterval(interval.value)
+})
+
+function updateOverflow() {
+  const widthPerTab = 60
+  const availableWidth = tabsDiv.value?.clientWidth ?? 1000
+  const shownTabsNum = Math.max(1, Math.floor(availableWidth / widthPerTab))
+  overflowStartIndex.value = shownTabsNum
+}
 
 watch(
   () => props.tabIndex,
@@ -103,68 +107,24 @@ watch(
   { immediate: true }
 )
 
-function mouseDownHandler(e: MouseEvent | TouchEvent) {
-  const el = tabsDiv.value!
-  const pos = e instanceof TouchEvent ? e.touches[0] : e
-  dragging.value = { startScroll: el.scrollLeft, startX: pos.clientX }
-  document.addEventListener('mousemove', mouseMoveHandler)
-  document.addEventListener('touchmove', mouseMoveHandler)
-  document.addEventListener('mouseup', mouseUpHandler)
-  document.addEventListener('touchup', mouseUpHandler)
-}
-
-function mouseUpHandler() {
-  dragging.value = undefined
-  document.removeEventListener('mousemove', mouseMoveHandler)
-  document.removeEventListener('touchmove', mouseMoveHandler)
-  document.removeEventListener('mouseup', mouseUpHandler)
-  document.removeEventListener('touchend', mouseUpHandler)
-}
-
-function mouseMoveHandler(e: MouseEvent | TouchEvent) {
-  // How far the mouse has been moved
-  const pos = e instanceof TouchEvent ? e.touches[0] : e
-  const dx = pos.clientX - dragging.value!.startX
-  const el = tabsDiv.value
-  if (!el) return
-  el.scrollLeft = dragging.value!.startScroll - dx
-}
-
-function onResizeScroll() {
-  const el = tabsDiv.value
-  if (!el) return
-  const containerWidth = el.parentElement?.clientWidth ?? 0
-  const contentWidth = el.scrollWidth ?? 0
-  spaceLeft.value = el.scrollLeft > 0
-  spaceRight.value = el.scrollLeft + containerWidth < contentWidth
-}
-
 function keyFor(tab: Tab) {
   return tab.slot ?? tab.name
-}
-
-function clickArrow(direction: number) {
-  if (!tabsDiv.value) return
-  const amount = tabsDiv.value.clientWidth * 0.75
-  tabsDiv.value.scrollBy({ left: direction * amount, behavior: 'smooth' })
 }
 </script>
 
 <style module>
 .bar {
   display: flex;
-  overflow: hidden;
   user-select: none;
 }
 .tabs {
-  overflow: hidden;
   display: flex;
   flex-grow: 1;
-}
-.dragging * {
-  cursor: grabbing;
+  min-width: 0;
 }
 .tab {
+  overflow: hidden;
+  min-width: 0;
   cursor: pointer;
   transition: all var(--dodo-transition-duration, 0.15s);
   white-space: nowrap;
@@ -177,6 +137,8 @@ function clickArrow(direction: number) {
 .tabName {
   border-bottom: 2px solid transparent;
   transition: all var(--dodo-transition-duration, 0.15s);
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .tab.active .tabName {
   color: var(--dodo-color-info);
@@ -185,16 +147,5 @@ function clickArrow(direction: number) {
 .tab.disabled {
   pointer-events: none;
   opacity: 0.5;
-}
-.arrow {
-  background: none;
-  cursor: pointer;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
-  padding: 0 var(--dodo-gap-1);
-}
-.arrowOff {
-  pointer-events: none;
-  opacity: 0.35;
-  box-shadow: none;
 }
 </style>

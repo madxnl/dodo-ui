@@ -7,18 +7,18 @@
         </template>
       </Column>
       <!-- <div style="height: 100vh"> -->
-      <ScrollContainer>
-        <Column>
-          <h1>Dodo UI docs</h1>
-          <template v-for="c of sections" :key="c.__name">
-            <a :href="`#${c.__name}`">
-              <h2 :id="c.__name">{{ c.__name?.replace('Docs', '') }}</h2>
-            </a>
-            <component :is="c" />
-            <br />
-          </template>
-        </Column>
-      </ScrollContainer>
+      <!-- <ScrollContainer> -->
+      <Column>
+        <h1>Dodo UI docs</h1>
+        <template v-for="c of sections" :key="c.__name">
+          <a :href="`#${c.__name}`">
+            <h2 :id="c.__name">{{ c.__name?.replace('Docs', '') }}</h2>
+          </a>
+          <component :is="c" />
+          <br />
+        </template>
+      </Column>
+      <!-- </ScrollContainer> -->
       <!-- </div> -->
     </Row>
   </Column>
@@ -39,7 +39,7 @@ import RowDocs from '../content/RowDocs.vue'
 import SelectDocs from '../content/SelectDocs.vue'
 import TabsDocs from '../content/TabsDocs.vue'
 import TooltipDocs from '../content/TooltipDocs.vue'
-import { Column, Row, ScrollContainer, useTheme } from '../dodo'
+import { Column, Row, useTheme } from '../dodo'
 
 useTheme()
 

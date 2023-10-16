@@ -1,5 +1,5 @@
 <template>
-  <TransitionGroup v-if="list" name="dodo" :css="!skipAnimations">
+  <TransitionGroup v-if="list" name="dodo" :appear="appear" :css="!skipAnimations">
     <slot />
   </TransitionGroup>
   <Transition v-else :appear="appear" name="dodo" :css="!skipAnimations" mode="out-in">

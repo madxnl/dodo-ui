@@ -7,9 +7,12 @@ const config: UserConfig = {
     vue(),
     ssr({
       prerender: true,
+      disableUrlNormalization: true,
+      // baseServer: '/dodo-ui/',
+      trailingSlash: true,
     }),
   ],
-  base: '/dodo-ui/', // needed for GH pages
+  base: '/dodo-ui', // needed for GH pages
 }
 
 export default config
