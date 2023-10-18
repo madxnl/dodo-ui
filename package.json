@@ -15,8 +15,13 @@
   "files": [
     "dist"
   ],
-  "main": "dist/dodo-ui.umd.js",
-  "module": "dist/dodo-ui.es.js",
+  "type": "module",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.umd.cjs"
+  },
   "types": "dist/types/index.d.ts",
   "engines": {
     "node": ">=16.0.0"
@@ -36,6 +41,7 @@
     "prod": "cd docs && npm run build && npm run server:prod",
     "build:docs": "cd docs && vite build",
     "server": "cd docs && node --loader ts-node/esm ./server/index.ts",
+    "server:dev": "npm run server",
     "server:prod": "cd docs && cross-env NODE_ENV=production npm run server"
   },
   "devDependencies": {

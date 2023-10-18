@@ -13,7 +13,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'index.ts'),
       name: 'Dodo-UI',
-      fileName: (format) => `dodo-ui.${format}.js`,
+      // fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
