@@ -6,4 +6,5 @@ export default defineConfig({
   title: 'Docs',
   titleTemplate: 'Dodo UI',
   description: 'Components and composables for Vue 3',
+  base: '/dodo-ui/',
 })
