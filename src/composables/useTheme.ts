@@ -3,14 +3,22 @@ import '../dodo.css'
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 
-const spacingValues = [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16] as const
+const spacingValues = [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 24, 32] as const
 
 export type Color = [number, number, number]
-export type ThemeColorName = 'info'|'success'|'warn'|'danger'|'background'|'foreground'|'primary'|'secondary'
+export type ThemeColorName =
+  | 'info'
+  | 'success'
+  | 'warn'
+  | 'danger'
+  | 'background'
+  | 'foreground'
+  | 'primary'
+  | 'secondary'
 export type ColorProp = Color | ThemeColorName
-export type SpacingValue = `${typeof spacingValues[number]}`
+export type SpacingValue = `${(typeof spacingValues)[number]}`
 export type GapSize = SpacingValue
-export type Spacing = SpacingValue[]|SpacingValue
+export type Spacing = SpacingValue[] | SpacingValue
 
 export function useTheme() {
   function colorPropRgb(color: ColorProp) {
@@ -30,7 +38,7 @@ export function useTheme() {
 
   function colorHexStr(color: ColorProp) {
     const rgb = colorRgbValues(color)
-    return '#' + rgb.map(c => c.toString(16).padStart(2, '0')).join('')
+    return '#' + rgb.map((c) => c.toString(16).padStart(2, '0')).join('')
   }
 
   function gapValue(size: SpacingValue) {
@@ -65,7 +73,20 @@ export function useTheme() {
     return grow ? 'dodo-grow' : ''
   }
 
-  return { colorCss, colorPropRgb, gapValue, colorHexStr, colorRgbValues, gap, padding, justify, align, wrap, flex, grow }
+  return {
+    colorCss,
+    colorPropRgb,
+    gapValue,
+    colorHexStr,
+    colorRgbValues,
+    gap,
+    padding,
+    justify,
+    align,
+    wrap,
+    flex,
+    grow,
+  }
 }
 
 export function useBaseFont() {

@@ -1,7 +1,7 @@
 var Te = Object.defineProperty;
 var Ee = (d, t, e) => t in d ? Te(d, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[t] = e;
 var ve = (d, t, e) => (Ee(d, typeof t != "symbol" ? t + "" : t, e), e);
-import { defineComponent as z, openBlock as l, createBlock as V, TransitionGroup as Ne, withCtx as b, renderSlot as g, Transition as we, computed as S, createElementBlock as v, normalizeClass as f, normalizeStyle as J, Fragment as R, createTextVNode as F, toDisplayString as T, createCommentVNode as M, useAttrs as Ae, ref as _, mergeProps as oe, unref as u, createElementVNode as $, onMounted as ee, watchEffect as G, onBeforeUnmount as x, watch as Q, inject as se, provide as ae, reactive as me, withModifiers as ne, createVNode as I, resolveDynamicComponent as re, renderList as K, Teleport as ke, nextTick as _e, onUnmounted as Fe, useSlots as ie, getCurrentInstance as De, withDirectives as fe, vShow as Le, vModelText as Re, createStaticVNode as de } from "vue";
+import { defineComponent as z, openBlock as l, createBlock as V, TransitionGroup as Ne, withCtx as b, renderSlot as g, Transition as we, computed as S, createElementBlock as v, normalizeClass as f, normalizeStyle as J, Fragment as R, createTextVNode as F, toDisplayString as T, createCommentVNode as M, useAttrs as Ae, ref as _, mergeProps as oe, unref as u, createElementVNode as $, onMounted as ee, watchEffect as G, onBeforeUnmount as x, watch as Q, inject as se, provide as re, reactive as me, withModifiers as ne, createVNode as I, resolveDynamicComponent as le, renderList as K, Teleport as ke, nextTick as _e, onUnmounted as Fe, useSlots as ie, getCurrentInstance as De, withDirectives as fe, vShow as Le, vModelText as Re, createStaticVNode as de } from "vue";
 const ye = !1, Ql = /* @__PURE__ */ z({
   __name: "Animated",
   props: {
@@ -260,7 +260,7 @@ function rt(d) {
   const t = Symbol("ServiceKey");
   return { createAndProvide: () => {
     const n = d();
-    return ae(t, n), n;
+    return re(t, n), n;
   }, injectOptional: () => se(t, void 0) };
 }
 function X() {
@@ -303,7 +303,20 @@ function X() {
   function w(m) {
     return m ? "dodo-grow" : "";
   }
-  return { colorCss: t, colorPropRgb: d, gapValue: n, colorHexStr: o, colorRgbValues: e, gap: r, padding: p, justify: s, align: y, wrap: i, flex: c, grow: w };
+  return {
+    colorCss: t,
+    colorPropRgb: d,
+    gapValue: n,
+    colorHexStr: o,
+    colorRgbValues: e,
+    gap: r,
+    padding: p,
+    justify: s,
+    align: y,
+    wrap: i,
+    flex: c,
+    grow: w
+  };
 }
 function sa() {
   return { fontClass: "dodo-fonts" };
@@ -406,7 +419,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
       let n = "";
       return t.color && (n += `--chip-rgb:${e.colorPropRgb(t.color)};`), n;
     });
-    return (n, r) => (l(), V(re(n.$attrs.onClick ? "button" : "div"), {
+    return (n, r) => (l(), V(le(n.$attrs.onClick ? "button" : "div"), {
       class: f(n.$style.Chip),
       style: J(o.value)
     }, {
@@ -435,11 +448,12 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
     grow: { type: Boolean },
     justify: {},
     align: {},
-    wrap: { type: Boolean }
+    wrap: { type: Boolean },
+    tag: {}
   },
   setup(d) {
     const t = X();
-    return (e, o) => (l(), v("div", {
+    return (e, o) => (l(), V(le(e.tag ?? "div"), {
       class: f([
         e.$style.el,
         u(t).gap(e.gap),
@@ -449,9 +463,12 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
         u(t).wrap(e.wrap),
         u(t).grow(e.grow)
       ])
-    }, [
-      g(e.$slots, "default")
-    ], 2));
+    }, {
+      default: b(() => [
+        g(e.$slots, "default")
+      ]),
+      _: 3
+    }, 8, ["class"]));
   }
 }), wt = "dodo-column-el", kt = {
   el: wt
@@ -814,7 +831,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
       let a = `left: ${Z}px; max-width:${C}px;`;
       Y ? a += `bottom: ${O - D.top}px; max-height: ${D.top - 16}px;` : a += `top: ${D.bottom}px; max-height: ${O - D.bottom - 16}px;`, n.value = a;
     }
-    return ae(Me, { toggle: s }), (k, A) => (l(), v("div", oe({
+    return re(Me, { toggle: s }), (k, A) => (l(), v("div", oe({
       ref_key: "el",
       ref: p,
       class: [k.$style.trigger, k.disabled && k.$style.disabled]
@@ -1005,7 +1022,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   "col-l": "dodo-grid-col-l"
 }, Ao = {
   $style: No
-}, ca = /* @__PURE__ */ E(zo, [["__cssModules", Ao]]), le = "Outlined", ge = "300", Fo = /* @__PURE__ */ z({
+}, ca = /* @__PURE__ */ E(zo, [["__cssModules", Ao]]), ae = "Outlined", ge = "300", Fo = /* @__PURE__ */ z({
   __name: "Icon",
   props: {
     name: {},
@@ -1018,8 +1035,8 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   setup(d) {
     const t = d, e = X(), o = _(), n = lt({
       weight: ge,
-      name: `Material Symbols ${le}`,
-      href: `https://fonts.googleapis.com/css2?family=Material+Symbols+${le}:wght,FILL@${ge},0..1`
+      name: `Material Symbols ${ae}`,
+      href: `https://fonts.googleapis.com/css2?family=Material+Symbols+${ae}:wght,FILL@${ge},0..1`
     });
     return (r, p) => (l(), v("span", {
       ref_key: "el",
@@ -1027,7 +1044,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
       style: J([r.color ? `color: ${u(e).colorCss(r.color)};` : "", u(n).isReady ? "" : "visibility:hidden"]),
       class: f([
         r.$style.icon,
-        "material-symbols-" + le.toLowerCase(),
+        "material-symbols-" + ae.toLowerCase(),
         t.size && r.$style[t.size],
         t.fill && r.$style.fill
       ])
@@ -1129,7 +1146,7 @@ const Zo = /* @__PURE__ */ z({
       side: "right"
     }, {
       default: b(() => [
-        (l(), V(re(c.$slots.submenu ? u(ce) : "div"), null, {
+        (l(), V(le(c.$slots.submenu ? u(ce) : "div"), null, {
           dropdown: b(() => [
             g(c.$slots, "submenu")
           ]),
@@ -1196,7 +1213,7 @@ const Zo = /* @__PURE__ */ z({
   },
   setup(d) {
     const t = d, { screenLarge: e } = Se(), o = nt("NavBar-collapse", null), n = _(!1), r = S(() => t.mobile || !e.value);
-    ae(Ce, { collapsed: o, renderMobile: r, mobileToggle: n });
+    re(Ce, { collapsed: o, renderMobile: r, mobileToggle: n });
     function p() {
       r.value && (n.value = !1);
     }
@@ -2229,7 +2246,7 @@ const Zo = /* @__PURE__ */ z({
         g(p.$slots, "after")
       ]),
       default: b(() => [
-        (l(), V(re(p.rows && p.rows > 1 ? "textarea" : "input"), {
+        (l(), V(le(p.rows && p.rows > 1 ? "textarea" : "input"), {
           id: p.id,
           ref_key: "el",
           ref: o,

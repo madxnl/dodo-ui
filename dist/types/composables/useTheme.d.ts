@@ -1,11 +1,11 @@
 import '../dodo.css';
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch';
-declare const spacingValues: readonly [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16];
+declare const spacingValues: readonly [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 24, 32];
 export type Color = [number, number, number];
 export type ThemeColorName = 'info' | 'success' | 'warn' | 'danger' | 'background' | 'foreground' | 'primary' | 'secondary';
 export type ColorProp = Color | ThemeColorName;
-export type SpacingValue = `${typeof spacingValues[number]}`;
+export type SpacingValue = `${(typeof spacingValues)[number]}`;
 export type GapSize = SpacingValue;
 export type Spacing = SpacingValue[] | SpacingValue;
 export declare function useTheme(): {

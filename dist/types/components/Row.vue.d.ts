@@ -4,7 +4,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16">;
     };
     padding: {
-        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16">;
+        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32">;
     };
     justify: {
         type: import("vue").PropType<JustifyType>;
@@ -23,7 +23,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
         type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16">;
     };
     padding: {
-        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16">;
+        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32">;
     };
     justify: {
         type: import("vue").PropType<JustifyType>;

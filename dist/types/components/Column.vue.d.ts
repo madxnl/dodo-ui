@@ -1,10 +1,10 @@
 import { AlignType, JustifyType } from '../composables';
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     gap: {
-        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16">;
+        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32">;
     };
     padding: {
-        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16">;
+        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32">;
     };
     grow: {
         type: import("vue").PropType<boolean>;
@@ -17,13 +17,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     wrap: {
         type: import("vue").PropType<boolean>;
+    };
+    tag: {
+        type: import("vue").PropType<string>;
     };
 }, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     gap: {
-        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16">;
+        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32">;
     };
     padding: {
-        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16">;
+        type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32">;
     };
     grow: {
         type: import("vue").PropType<boolean>;
@@ -36,6 +39,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     };
     wrap: {
         type: import("vue").PropType<boolean>;
+    };
+    tag: {
+        type: import("vue").PropType<string>;
     };
 }>>, {}, {}>, {
     default?(_: {}): any;

@@ -16,11 +16,11 @@
     "dist"
   ],
   "type": "module",
-  "main": "./dist/index.umd.cjs",
-  "module": "./dist/index.js",
+  "module": "./dist/dodo-ui.js",
+  "main": "./dist/dodo-ui.umd.cjs",
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.umd.cjs"
+    "import": "./dist/dodo-ui.js",
+    "require": "./dist/dodo-ui.umd.cjs"
   },
   "types": "dist/types/index.d.ts",
   "engines": {
@@ -33,21 +33,15 @@
     "check:lint": "eslint . --ext .js,.ts,.vue --max-warnings=0",
     "check:ts": "cd src && vue-tsc --noEmit",
     "check": "npm run check:lint && npm run check:test && npm run check:ts",
-    "build:npm": "vite build --config src/vite.npm.ts && vue-tsc --emitDeclarationOnly -p src/tsconfig.npm.json",
-    "build": "npm run build:npm && npm run build:docs",
+    "build": "vite build --config src/vite.npm.ts && vue-tsc --emitDeclarationOnly -p src/tsconfig.npm.json",
     "prepublishOnly": "npm i && npm run check && npm run build",
     "gendocs": "cd docs && typedoc && node vue-docgen",
-    "dev": "cd docs && npm run server",
-    "prod": "cd docs && npm run build && npm run server:prod",
-    "build:docs": "cd docs && vite build",
-    "server": "cd docs && node --loader ts-node/esm ./server/index.ts",
-    "server:dev": "npm run server",
-    "server:prod": "cd docs && cross-env NODE_ENV=production npm run server"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {
     "@material-design-icons/font": "^0.14.9",
-    "@types/compression": "^1.7.2",
-    "@types/express": "^4.17.17",
     "@types/node": "^20.4.10",
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
@@ -58,17 +52,15 @@
     "@vue/server-renderer": "^3.3.4",
     "@vue/test-utils": "^2.4.0",
     "c8": "^8.0.0",
-    "compression": "^1.7.4",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
+    "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^16.0.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "^9.15.1",
-    "eslint": "^8.50.0",
-    "express": "^4.18.2",
     "jsdom": "^22.1.0",
     "material-symbols": "^0.10.1",
     "prismjs": "^1.29.0",
@@ -76,13 +68,13 @@
     "ts-node": "^10.9.1",
     "typedoc": "^0.25.1",
     "typescript": "^5.1.6",
-    "vike": "^0.4.143",
     "vite": "^4.4.9",
+    "vitepress": "^1.0.0-rc.22",
     "vitest": "^0.33.0",
+    "vue": "^3.3.4",
     "vue-docgen-api": "^4.73.0",
     "vue-router": "^4.2.5",
-    "vue-tsc": "^1.8.5",
-    "vue": "^3.3.4"
+    "vue-tsc": "^1.8.5"
   },
   "peerDependencies": {
     "vue": "^3.0.0",

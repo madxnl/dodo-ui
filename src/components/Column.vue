@@ -1,5 +1,6 @@
 <template>
-  <div
+  <component
+    :is="tag ?? 'div'"
     :class="[
       $style.el,
       theme.gap(gap),
@@ -11,7 +12,7 @@
     ]"
   >
     <slot />
-  </div>
+  </component>
 </template>
 <script lang="ts" setup>
 import { AlignType, JustifyType, SpacingValue, useTheme } from '../composables'
@@ -47,6 +48,11 @@ defineProps<{
    * @example wrap
    */
   wrap?: boolean
+  /**
+   * HTML tag to use for the container
+   * @example tag="section"
+   */
+  tag?: string
 }>()
 
 const theme = useTheme()
