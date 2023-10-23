@@ -12,7 +12,7 @@ const data = reactive({ email, name, count })
 test('validateField', async () => {
   Object.assign(data, { name: '', email: '', count: 1 })
 
-  const { errors, validateField } = useValidation({
+  const { errors, validate } = useValidation({
     name: { value: name, minLen: 3, maxLen: 10 },
     email: { value: email, required: true, isEmail: true },
     count: { value: count, required: true, validators: [customMinCount(2)] },
@@ -20,17 +20,17 @@ test('validateField', async () => {
 
   expect(errors).toEqual({})
 
-  expect(await validateField('name')).toBe(false)
+  expect(await validate('name')).toBe(false)
   expect(errors).toEqual({ name: 'Name must be at least 3 characters' })
-  expect(await validateField('email')).toBe(false)
+  expect(await validate('email')).toBe(false)
   expect(errors).toContain({ email: 'Email is required' })
-  expect(await validateField('count')).toBe(false)
+  expect(await validate('count')).toBe(false)
   expect(errors).toContain({ count: 'Count must be at least 2' })
 
   Object.assign(data, { name: 'John', email: 'john', count: 2 })
-  await validateField('name')
-  expect(await validateField('email')).toBe(false)
-  await validateField('count')
+  await validate('name')
+  expect(await validate('email')).toBe(false)
+  await validate('count')
   expect(errors).toEqual({ email: 'Email is not valid' })
 })
 
