@@ -21,8 +21,7 @@ export type ValidateRules<T extends FormData> = {
 export declare function useValidation<T extends FormData>(initialRules: ValidateRules<T>): {
     errors: Partial<Record<keyof T, string>>;
     rules: import("vue").UnwrapNestedRefs<ValidateRules<T>>;
-    validate: () => Promise<boolean>;
-    validateField: (field: keyof T) => Promise<boolean>;
+    validate: (...fields: (keyof T)[]) => Promise<boolean>;
     clearErrors: () => void;
 };
 export {};

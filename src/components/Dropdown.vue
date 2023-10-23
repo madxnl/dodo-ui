@@ -8,13 +8,13 @@
     @mouseleave="onMouseLeave"
   >
     <slot :is-active="active" />
+  </div>
 
-    <div v-if="active" :class="[$style.container, 'dodo-fonts']" :style="dropdownStyles">
-      <div ref="content" :class="$style.content" @mouseleave="onMouseLeave">
-        <Column :padding="padding ?? '2'" :gap="gap ?? '2'">
-          <slot name="dropdown" :toggle="toggle" />
-        </Column>
-      </div>
+  <div v-if="active" :class="[$style.container, 'dodo-fonts']" :style="dropdownStyles">
+    <div ref="content" :class="$style.content" @mouseleave="onMouseLeave">
+      <Column :padding="padding ?? '2'" :gap="gap ?? '2'">
+        <slot name="dropdown" :toggle="toggle" />
+      </Column>
     </div>
   </div>
 </template>
@@ -63,7 +63,7 @@ function toggle(show: boolean) {
   emit('update:modelValue', show)
   if (show) {
     nextTick().then(() => {
-      updatePositioning()
+      updateUntilInactive()
       window.addEventListener('click', onWindowClick, { passive: true, capture: true })
       window.addEventListener('scroll', onWindowScroll, { passive: true, capture: true })
       window.addEventListener('resize', onWindowScroll)
@@ -110,7 +110,7 @@ function onWindowScroll() {
   toggle(false)
 }
 
-function updatePositioning() {
+function updateUntilInactive() {
   const margin = 16
   const contentEl = content.value
   if (!contentEl) return
@@ -128,6 +128,8 @@ function updatePositioning() {
     styles += `top: ${buttonRect.bottom}px; max-height: ${windowHeight - buttonRect.bottom - margin}px;`
   }
   dropdownStyles.value = styles
+
+  if (active.value) requestAnimationFrame(updateUntilInactive)
 }
 
 provide(dropdownServiceKey, { toggle })

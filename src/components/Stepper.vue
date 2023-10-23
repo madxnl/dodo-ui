@@ -1,6 +1,6 @@
 <template>
   <Column :class="$style.stepper">
-    <template v-for="(step, i) in steps" :key="step.name">
+    <template v-for="(step, i) in steps" :key="step.key">
       <Row align="stretch" gap="4" :class="i > currentIndex && $style.inactiveStep">
         <Column align="center">
           <div :class="[$style.circle]">
@@ -20,25 +20,25 @@
           </Column>
 
           <Column v-if="step === currentStep">
-            <slot :name="step.key" />
+            <slot :name="step.slot" />
 
             <Row>
               <Button
                 v-if="currentIndex < steps.length - 1"
-                :disabled="step.incomplete"
+                :disabled="step.filled === false"
                 color="primary"
                 variant="solid"
                 @click="goNext"
               >
-                {{ step.submitText || 'Continue' }}
+                <slot name="continue-button-text">Continue</slot>
               </Button>
               <Button v-else color="primary" variant="solid" @click="goNext">
-                {{ step.submitText || 'Complete' }}
+                <slot name="submit-button-text">Submit</slot>
               </Button>
               <Button v-if="currentIndex > 0" variant="text" @click="goPrev"> Back </Button>
             </Row>
           </Column>
-          <br>
+          <br />
         </Column>
       </Row>
     </template>
@@ -54,17 +54,21 @@ const props = defineProps<{
   stepIndex?: number
   steps: {
     name: string
-    key?: string
+    slot?: string
     hint?: string
     submitText?: string
-    incomplete?: boolean
-    submitStep?: () => Promise<boolean> | boolean
+    incomplete?: never
+    filled?: boolean
+    validate?: () => Promise<boolean> | boolean
+    submitStep?: never
   }[]
-  completed: () => Promise<void> | void
+  submit: () => Promise<void> | void
+  completed?: -1
 }>()
 
 const emit = defineEmits<{
-  (e: 'update:stepIndex', index: number): void
+  'update:stepIndex': [index: number]
+  submit: []
 }>()
 
 const currentIndex = ref(0)
@@ -81,13 +85,13 @@ function goPrev() {
 
 async function goNext() {
   const step = currentStep.value!
-  if (step.incomplete) return
-  if (step.submitStep) {
-    const res = await step.submitStep()
+  if (step.filled === false) return
+  if (step.validate) {
+    const res = await step.validate()
     if (!res) return
   }
   if (currentIndex.value === props.steps.length - 1) {
-    await props.completed()
+    await props.submit()
     return
   }
   currentIndex.value++

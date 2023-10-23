@@ -1,5 +1,5 @@
 <template>
-  <Column gap="4" style="min-width:0">
+  <Column gap="4" style="min-width: 0">
     <Column gap="0">
       <div :class="$style.bar">
         <div ref="tabsDiv" :class="[$style.tabs]">
@@ -42,8 +42,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, watch, watchEffect, onMounted, onBeforeUnmount } from 'vue'
-import { Column, Icon, Dropdown, Button } from '.'
+import { computed, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
+import { Button, Column, Dropdown, Icon } from '.'
 
 export interface Tab {
   name: string
@@ -63,7 +63,7 @@ const emit = defineEmits<{
 const tabsDiv = ref<HTMLElement>()
 const current = ref('')
 const currentTab = computed(() => props.tabs.find((t) => keyFor(t) === current.value))
-const overflowStartIndex = ref(0)
+const overflowStartIndex = ref(99)
 const visibleTabs = computed(() => props.tabs.slice(0, overflowStartIndex.value))
 const overflowTabs = computed(() => props.tabs.slice(overflowStartIndex.value))
 const interval = ref<ReturnType<typeof setTimeout>>()
@@ -75,6 +75,7 @@ watchEffect(() => {
 })
 
 onMounted(() => {
+  updateOverflow()
   interval.value = setInterval(updateOverflow, 100)
 })
 
@@ -84,7 +85,7 @@ onBeforeUnmount(() => {
 
 function updateOverflow() {
   const widthPerTab = 60
-  const availableWidth = tabsDiv.value?.clientWidth ?? 1000
+  const availableWidth = tabsDiv.value?.clientWidth || 1000
   const shownTabsNum = Math.max(1, Math.floor(availableWidth / widthPerTab))
   overflowStartIndex.value = shownTabsNum
 }

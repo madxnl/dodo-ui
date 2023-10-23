@@ -46,9 +46,10 @@ export function useValidation<T extends FormData>(initialRules: ValidateRules<T>
     return true
   }
 
-  async function validate() {
+  async function validate(...fields: (keyof T)[]) {
     /** Update all field error messages and return true if valid */
-    const results = await Promise.all(Object.keys(rules).map((k) => validateField(k)))
+    const keys = fields.length ? fields : Object.keys(rules)
+    const results = await Promise.all(keys.map((k) => validateField(k)))
     return results.every((r) => r)
   }
 
@@ -99,5 +100,5 @@ export function useValidation<T extends FormData>(initialRules: ValidateRules<T>
       .replace(/[a-z][A-Z]/g, (match) => `${match[0]} ${match[1]}`)
   }
 
-  return { errors, rules, validate, validateField, clearErrors }
+  return { errors, rules, validate, clearErrors }
 }

@@ -18,11 +18,18 @@
   "type": "module",
   "module": "./dist/dodo-ui.js",
   "main": "./dist/dodo-ui.umd.cjs",
-  "exports": {
-    "import": "./dist/dodo-ui.js",
-    "require": "./dist/dodo-ui.umd.cjs"
-  },
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/dodo-ui.js",
+      "require": "./dist/dodo-ui.umd.cjs"
+    },
+    "./dist/*.css": {
+      "import": "./dist/*.css",
+      "require": "./dist/*.css"
+    }
+  },
   "engines": {
     "node": ">=16.0.0"
   },
