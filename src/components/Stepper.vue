@@ -56,15 +56,17 @@ const props = defineProps<{
     name: string
     slot?: string
     hint?: string
-    submitText?: string
-    incomplete?: never
     filled?: boolean
     validate?: () => Promise<boolean> | boolean
+    submitText?: never
+    incomplete?: never
     submitStep?: never
   }[]
   submit: () => Promise<void> | void
   completed?: -1
 }>()
+
+type Step = (typeof props.steps)[0]
 
 const emit = defineEmits<{
   'update:stepIndex': [index: number]
@@ -72,8 +74,6 @@ const emit = defineEmits<{
 }>()
 
 const currentIndex = ref(0)
-
-type Step = (typeof props.steps)[0]
 
 const currentStep = computed<Step | undefined>(() => {
   return props.steps[currentIndex.value]

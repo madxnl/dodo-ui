@@ -48,7 +48,9 @@ const el = ref<HTMLElement>()
 
 watch(
   () => props.modelValue,
-  () => toggle(!!props.modelValue),
+  () => {
+    toggle(!!props.modelValue)
+  },
   { immediate: true }
 )
 
@@ -75,9 +77,10 @@ function toggle(show: boolean) {
   }
 }
 
-function onClick() {
+function onClick(e: Event) {
   if (props.trigger !== 'hover') {
     toggle(!active.value)
+    e.preventDefault() // prevent double click inside label
   }
 }
 

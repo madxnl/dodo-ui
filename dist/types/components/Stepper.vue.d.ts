@@ -7,10 +7,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
             name: string;
             slot?: string | undefined;
             hint?: string | undefined;
-            submitText?: string | undefined;
-            incomplete?: undefined;
             filled?: boolean | undefined;
             validate?: (() => boolean | Promise<boolean>) | undefined;
+            submitText?: undefined;
+            incomplete?: undefined;
             submitStep?: undefined;
         }[]>;
         required: true;
@@ -34,10 +34,10 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
             name: string;
             slot?: string | undefined;
             hint?: string | undefined;
-            submitText?: string | undefined;
-            incomplete?: undefined;
             filled?: boolean | undefined;
             validate?: (() => boolean | Promise<boolean>) | undefined;
+            submitText?: undefined;
+            incomplete?: undefined;
             submitStep?: undefined;
         }[]>;
         required: true;
