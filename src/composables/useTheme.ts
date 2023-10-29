@@ -1,4 +1,4 @@
-import '../dodo.css'
+import '../dodo.scss'
 
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch'
@@ -21,10 +21,6 @@ export type GapSize = SpacingValue
 export type Spacing = SpacingValue[] | SpacingValue
 
 export function useTheme() {
-  function colorPropRgb(color: ColorProp) {
-    return typeof color === 'string' ? `var(--dodo-rgb-${color})` : color.join(',')
-  }
-
   function colorCss(color: ColorProp) {
     return typeof color === 'string' ? `var(--dodo-color-${color})` : `rgb(${color.join(',')})`
   }
@@ -75,7 +71,6 @@ export function useTheme() {
 
   return {
     colorCss,
-    colorPropRgb,
     gapValue,
     colorHexStr,
     colorRgbValues,

@@ -212,6 +212,6 @@ onBeforeUnmount(() => {
 
 <style module>
 .searchbox {
-  border-bottom: 1px solid rgba(var(--dodo-rgb-foreground), 0.2);
+  border-bottom: 1px solid color-mix(in hsl, var(--dodo-color-foreground) 20%, transparent);
 }
 </style>

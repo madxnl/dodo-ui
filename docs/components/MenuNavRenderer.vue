@@ -39,7 +39,7 @@ defineProps<{
 }
 .menunav > .active {
   /* color: var(--dodo-color-primary); */
-  border-color: rgba(var(--dodo-rgb-primary), 1);
+  border-color: var(--dodo-color-primary);
   opacity: 1;
 }
 </style>

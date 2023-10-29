@@ -1,5 +1,5 @@
 <template>
-  <hr v-if="separator" :class="$style.separator">
+  <hr v-if="separator" :class="$style.separator" />
   <div
     v-bind="$attrs"
     :class="[$style.DropdownItem, active && $style.active, emphasize && $style.emphasize]"
@@ -52,11 +52,10 @@ async function click() {
   position: relative;
 }
 .DropdownItem:hover {
-  background: rgba(var(--dodo-rgb-foreground), 0.025);
+  background: color-mix(in hsl, var(--dodo-color-foreground) 3%, transparent);
 }
 .DropdownItem.active {
-  background: rgba(var(--dodo-rgb-info), 0.15);
-  --text-rgb: var(--dodo-rgb-info);
+  background: color-mix(in hsl, var(--dodo-color-info) 15%, transparent);
 }
 .emphasize .text {
   font-weight: var(--dodo-weight-bold);
@@ -64,6 +63,6 @@ async function click() {
 .separator {
   margin: var(--dodo-gap-1) 0;
   border: 0;
-  border-top: 1px solid rgba(var(--dodo-rgb-foreground), 0.1);
+  border-top: 1px solid color-mix(in hsl, var(--dodo-color-foreground) 10%, transparent);
 }
 </style>

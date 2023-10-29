@@ -98,7 +98,7 @@ async function onClick(e: Event) {
   overflow: hidden;
   transition: all var(--dodo-transition-duration);
   background: rgba(0, 0, 0, 0.1);
-  border: solid rgba(var(--dodo-rgb-background), 0.1);
+  border: solid color-mix(in hsl, var(--dodo-color-background) 10%, transparent);
   border-width: 1px 0;
 }
 .submenu.expanded {
@@ -108,7 +108,6 @@ async function onClick(e: Event) {
 }
 
 .link.active {
-  /* background: rgba(var(--dodo-rgb-background), 0.1); */
   font-weight: var(--dodo-weight-bold) !important;
   opacity: 1;
 }

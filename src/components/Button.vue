@@ -55,11 +55,11 @@ const props = defineProps<{
   disabled?: boolean
 }>()
 
-const { colorPropRgb } = useTheme()
+const { colorCss } = useTheme()
 
 const css = computed(() => {
   let s = ''
-  if (props.color) s += `--bnt-rgb:${colorPropRgb(props.color)};`
+  if (props.color) s += `--button-color:${colorCss(props.color)};`
   return s
 })
 
@@ -90,7 +90,8 @@ defineOptions({
   font: var(--dodo-font-base);
   font-weight: var(--dodo-weight-bold);
   background: var(--dodo-color-background);
-  color: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));
+  --button-color: var(--dodo-color-foreground);
+  color: var(--button-color);
   border-radius: 4px;
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -114,18 +115,18 @@ defineOptions({
   overflow: hidden;
 }
 .solid {
-  background: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));
+  background: var(--button-color);
   color: white;
 }
 .default {
-  border: 1px solid rgba(var(--bnt-rgb, var(--dodo-rgb-foreground)), 0.35);
+  border: 1px solid color-mix(in hsl, var(--button-color) 35%, transparent);
 }
 .rounded {
   border-radius: 99px;
 }
 .text {
   background: transparent;
-  color: rgb(var(--bnt-rgb, var(--dodo-rgb-foreground)));
+  color: var(--button-color);
   box-shadow: none;
 }
 .loading {

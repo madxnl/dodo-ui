@@ -17,7 +17,7 @@ const theme = useTheme()
 
 const css = computed(() => {
   let s = ''
-  if (props.color) s += `--chip-rgb:${theme.colorPropRgb(props.color)};`
+  if (props.color) s += `--chip-color:${theme.colorCss(props.color)};`
   return s
 })
 </script>
@@ -30,8 +30,9 @@ const css = computed(() => {
   height: var(--height);
   line-height: var(--height);
   white-space: nowrap;
-  color: rgb(var(--chip-rgb, var(--dodo-rgb-foreground)));
-  background: rgba(var(--chip-rgb, var(--dodo-rgb-foreground)), 0.15);
+  --chip-color: var(--dodo-color-foreground);
+  color: var(--chip-color);
+  background: color-mix(in hsl, var(--chip-color) 15%, transparent);
   display: inline-flex;
   align-items: center;
   vertical-align: middle;

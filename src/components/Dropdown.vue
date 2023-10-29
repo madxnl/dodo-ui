@@ -151,7 +151,7 @@ provide(dropdownServiceKey, { toggle })
 .content {
   background: white !important;
   border-radius: 4px;
-  border: 1px solid rgba(var(--dodo-rgb-foreground), 0.1);
+  border: 1px solid color-mix(in hsl, var(--dodo-color-foreground) 10%, transparent);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
   overflow: auto;
 }

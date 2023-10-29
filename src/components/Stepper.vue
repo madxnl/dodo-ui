@@ -117,7 +117,7 @@ watch(currentIndex, () => {
 .line {
   flex: 1 1 0;
   width: 2px;
-  background: rgba(var(--dodo-rgb-foreground), 0.5);
+  background: color-mix(in hsl, var(--dodo-color-foreground) 50%, transparent);
   opacity: 0.4;
 }
 .circle {
@@ -135,6 +135,6 @@ watch(currentIndex, () => {
   opacity: 0.6;
 }
 .inactiveStep .circle {
-  background: rgba(var(--dodo-rgb-foreground), 0.5);
+  background: color-mix(in hsl, var(--dodo-color-foreground) 50%, transparent);
 }
 </style>

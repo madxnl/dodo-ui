@@ -27,7 +27,7 @@ useTheme()
   background: white;
   gap: 4px;
   cursor: text;
-  border: 1px solid rgba(var(--dodo-rgb-foreground), 0.3);
+  border: 1px solid color-mix(in hsl, var(--dodo-color-foreground) 30%, transparent);
   border-radius: 4px;
   --height: var(--dodo-button-height);
   min-height: var(--height);

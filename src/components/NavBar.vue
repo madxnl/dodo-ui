@@ -90,10 +90,9 @@ function clickRoot() {
   position: relative;
 }
 .NavBar {
-  background: rgb(var(--dodo-rgb-foreground));
-  background: rgb(var(--dodo-rgb-foreground)) linear-gradient(#ffffff11, #00000011);
+  background: var(--dodo-color-foreground);
+  background: var(--dodo-color-foreground) linear-gradient(#ffffff11, #00000011);
   color: white;
-  --text-rgb: var(--dodo-rgb-background);
   display: flex;
   flex-flow: column;
   overflow-y: auto;
@@ -161,7 +160,7 @@ function clickRoot() {
 .mobileNav {
   display: flex;
   justify-content: space-around;
-  background: rgb(var(--dodo-rgb-foreground));
+  background: var(--dodo-color-foreground);
   min-height: 48px;
   align-items: center;
 }

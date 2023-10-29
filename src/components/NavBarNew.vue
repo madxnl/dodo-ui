@@ -119,7 +119,6 @@ function clickRoot() {
 .NavBar {
   background: var(--dodo-color-foreground);
   color: white;
-  --text-rgb: var(--dodo-rgb-background);
   display: flex;
   flex-flow: column;
   overflow-y: auto;

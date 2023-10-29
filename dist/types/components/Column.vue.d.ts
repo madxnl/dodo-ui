@@ -1,4 +1,5 @@
 import { AlignType, JustifyType } from '../composables';
+import '../dodo.scss';
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
     gap: {
         type: import("vue").PropType<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32">;
