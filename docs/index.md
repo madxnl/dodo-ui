@@ -1,4 +1,4 @@
-<Column class="dodo-fonts">
+<Column>
   <SidebarLayout>
     <template #sidebar>
       <MenuNavRenderer :menu="menu" />

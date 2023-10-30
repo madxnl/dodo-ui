@@ -10,7 +10,6 @@ export type GapSize = SpacingValue;
 export type Spacing = SpacingValue[] | SpacingValue;
 export declare function useTheme(): {
     colorCss: (color: ColorProp) => string;
-    colorPropRgb: (color: ColorProp) => string;
     gapValue: (size: SpacingValue) => string;
     colorHexStr: (color: ColorProp) => string;
     colorRgbValues: (color: ColorProp) => number[];

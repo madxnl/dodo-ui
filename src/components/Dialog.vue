@@ -1,7 +1,7 @@
 <template>
   <teleport to="body">
     <Transition name="Dialog">
-      <div v-if="active" ref="el" :class="[$style.Dialog, 'dodo-fonts']">
+      <div v-if="active" ref="el" :class="[$style.Dialog]">
         <div :class="$style.window">
           <Column padding="4">
             <slot />

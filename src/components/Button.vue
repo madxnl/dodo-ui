@@ -87,7 +87,7 @@ defineOptions({
 .Button {
   border: 0;
   cursor: pointer;
-  font: var(--dodo-font-base);
+  font: inherit;
   font-weight: var(--dodo-weight-bold);
   background: var(--dodo-color-background);
   --button-color: var(--dodo-color-foreground);

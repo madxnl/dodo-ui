@@ -83,9 +83,3 @@ export function useTheme() {
     grow,
   }
 }
-
-export function useBaseFont() {
-  const fontClass = 'dodo-fonts'
-
-  return { fontClass }
-}
