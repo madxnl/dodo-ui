@@ -12,7 +12,7 @@
 
         <Column grow>
           <Column gap="1">
-            <h3>
+            <h3 style="dodo-color-background">
               <span v-if="step === currentStep">{{ step.name }}</span>
               <span v-else class="dodo-fade-secondary">{{ step.name }}</span>
             </h3>
@@ -23,6 +23,8 @@
             <slot :name="step.slot" />
 
             <Row>
+              <Button v-if="currentIndex > 0" variant="text" @click="goPrev"> Back </Button>
+
               <Button
                 v-if="currentIndex < steps.length - 1"
                 :disabled="step.filled === false"
@@ -35,7 +37,6 @@
               <Button v-else color="primary" variant="solid" @click="goNext">
                 <slot name="submit-button-text">Submit</slot>
               </Button>
-              <Button v-if="currentIndex > 0" variant="text" @click="goPrev"> Back </Button>
             </Row>
           </Column>
           <br />
@@ -112,7 +113,7 @@ watch(currentIndex, () => {
 
 <style module>
 .stepper {
-  min-width: 400px;
+  /* min-width: 400px; */
 }
 .line {
   flex: 1 1 0;
