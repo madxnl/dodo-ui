@@ -12,6 +12,15 @@
           { value: 'option3', label: 'Option 3' },
         ]"
       />
+      <Select
+        v-model="selectedMultiple"
+        multiple
+        :options="[
+          { value: 'option1', label: 'Option 1' },
+          { value: 'option2', label: 'Option 2' },
+          { value: 'option3', label: 'Option 3' },
+        ]"
+      />
     </template>
   </ComponentDocsSection>
 </template>
@@ -20,13 +29,23 @@ import { ref } from 'vue'
 import { ComponentDocsSection } from '../components'
 import { Select } from '../dodo'
 
-const exampleSrc = `<Select
+const exampleSrc = `
+<Select
+  v-model="selectedOption"
   :options="[
     { value: 'option1', label: 'Option 1' },
     { value: 'option2', label: 'Option 2' },
     { value: 'option3', label: 'Option 3' },
   ]"
-  v-model="selectedOption"
+/>
+<Select
+  v-model="selectedMultiple"
+  multiple
+  :options="[
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    { value: 'option3', label: 'Option 3' },
+  ]"
 />`
 
 const props = [
@@ -61,4 +80,5 @@ const props = [
 ]
 
 const selectedOption = ref('option1')
+const selectedMultiple = ref(['option1', 'option2'])
 </script>

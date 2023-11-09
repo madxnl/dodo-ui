@@ -64,7 +64,7 @@
           />
         </Row>
         <ScrollContainer>
-          <DropdownItem
+          <MenuItem
             v-for="(option, i) in filteredOptions"
             :key="`${option.value}`"
             :data-selectactive="currentValues.includes(option.value) ? 'true' : undefined"
@@ -75,7 +75,7 @@
             <slot :index="i" :option="option">
               {{ optionText(option) }}
             </slot>
-          </DropdownItem>
+          </MenuItem>
         </ScrollContainer>
       </Column>
     </template>
@@ -83,7 +83,7 @@
 </template>
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
-import { Button, Column, Dropdown, DropdownItem, Field, Icon, Row, ScrollContainer, TextInput } from '.'
+import { Button, Column, Dropdown, Field, Icon, MenuItem, Row, ScrollContainer, TextInput } from '.'
 
 type Option = { value: unknown; label: string }
 
@@ -179,6 +179,8 @@ function clickOption(option: Option) {
       // append to selection
       newValue = currentValues.value.concat(option.value)
     }
+  } else {
+    dropdownActive.value = false
   }
   emit('update:modelValue', newValue)
 }

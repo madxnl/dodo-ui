@@ -1,10 +1,6 @@
 <template>
   <hr v-if="separator" :class="$style.separator" />
-  <div
-    v-bind="$attrs"
-    :class="[$style.DropdownItem, active && $style.active, emphasize && $style.emphasize]"
-    @click="click"
-  >
+  <div v-bind="$attrs" :class="[$style.DropdownItem, active && $style.active, emphasize && $style.emphasize]">
     <slot name="before" />
     <Column gap="0" style="flex: 1">
       <p :class="[$style.text, 'dodo-nowrap']">
@@ -18,10 +14,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { inject } from 'vue'
 import { Column } from '.'
 import { useTheme } from '..'
-import { dropdownServiceKey } from '../composables'
 
 defineProps<{
   /** Active item styling */
@@ -33,12 +27,6 @@ defineProps<{
 }>()
 
 useTheme()
-
-const dropdown = inject(dropdownServiceKey)
-
-async function click() {
-  await dropdown?.toggle(false)
-}
 </script>
 
 <style module>
