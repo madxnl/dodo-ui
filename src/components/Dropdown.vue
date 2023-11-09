@@ -67,13 +67,9 @@ function toggle(show: boolean) {
     nextTick().then(() => {
       updateUntilInactive()
       window.addEventListener('click', onWindowClick, { passive: true, capture: true })
-      window.addEventListener('scroll', onWindowScroll, { passive: true, capture: true })
-      window.addEventListener('resize', onWindowScroll)
     })
   } else {
     window.removeEventListener('click', onWindowClick, { capture: true })
-    window.removeEventListener('scroll', onWindowScroll, { capture: true })
-    window.removeEventListener('resize', onWindowScroll)
   }
 }
 
@@ -106,10 +102,6 @@ function onWindowClick(e: Event) {
     const clickOnDropdown = content.value?.contains(e.target as Node)
     if (clickOnTrigger || clickOnDropdown) return
   }
-  toggle(false)
-}
-
-function onWindowScroll() {
   toggle(false)
 }
 
