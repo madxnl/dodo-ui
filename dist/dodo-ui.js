@@ -1,8 +1,8 @@
-var Te = Object.defineProperty;
-var Ee = (d, t, e) => t in d ? Te(d, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[t] = e;
-var ve = (d, t, e) => (Ee(d, typeof t != "symbol" ? t + "" : t, e), e);
-import { defineComponent as z, openBlock as l, createBlock as V, TransitionGroup as Ae, withCtx as w, renderSlot as $, Transition as we, computed as S, createElementBlock as v, normalizeClass as m, normalizeStyle as J, Fragment as H, createTextVNode as F, toDisplayString as T, createCommentVNode as M, useAttrs as Ne, ref as _, mergeProps as oe, unref as u, createElementVNode as h, onMounted as ee, watchEffect as U, onBeforeUnmount as x, watch as Q, inject as se, provide as re, reactive as me, withModifiers as ne, createVNode as I, resolveDynamicComponent as le, renderList as K, Teleport as ke, nextTick as _e, onUnmounted as Fe, useSlots as ie, getCurrentInstance as De, withDirectives as fe, vShow as Le, vModelText as He, createStaticVNode as de } from "vue";
-const ye = !1, Ql = /* @__PURE__ */ z({
+var ze = Object.defineProperty;
+var Te = (d, t, e) => t in d ? ze(d, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[t] = e;
+var ve = (d, t, e) => (Te(d, typeof t != "symbol" ? t + "" : t, e), e);
+import { defineComponent as T, openBlock as l, createBlock as V, TransitionGroup as Ae, withCtx as w, renderSlot as $, Transition as we, computed as S, createElementBlock as v, normalizeClass as m, normalizeStyle as K, Fragment as L, createTextVNode as F, toDisplayString as A, createCommentVNode as C, useAttrs as Ne, ref as _, mergeProps as oe, unref as u, createElementVNode as h, onMounted as ee, watchEffect as P, onBeforeUnmount as x, watch as Q, inject as ae, provide as re, reactive as me, withModifiers as se, createVNode as I, resolveDynamicComponent as ne, renderList as G, Teleport as ke, nextTick as _e, onUnmounted as Ee, useSlots as ie, getCurrentInstance as Fe, withDirectives as fe, vShow as De, vModelText as Le, createStaticVNode as de } from "vue";
+const ye = !1, Xl = /* @__PURE__ */ T({
   __name: "Animated",
   props: {
     list: { type: Boolean },
@@ -33,7 +33,7 @@ const ye = !1, Ql = /* @__PURE__ */ z({
     }, 8, ["appear", "css"]));
   }
 });
-const Re = /* @__PURE__ */ z({
+const He = /* @__PURE__ */ T({
   __name: "Avatar",
   props: {
     text: {},
@@ -45,7 +45,7 @@ const Re = /* @__PURE__ */ z({
       let s = t.text.trim();
       const y = /\b\w|[A-Z]/g, i = t.text.match(y);
       return i != null && i.length && (s = i.join("")), s.slice(0, 2).toUpperCase();
-    }), r = S(() => {
+    }), a = S(() => {
       const s = e.length, y = p(t.text), i = e[y % s];
       return o.colorCss(i);
     });
@@ -57,24 +57,24 @@ const Re = /* @__PURE__ */ z({
     }
     return (s, y) => (l(), v("span", {
       class: m([s.$style.Avatar, s.round && s.$style.round]),
-      style: J([`--color:${r.value}`, s.image ? `background-image:url(${s.image})` : ""])
+      style: K([`--color:${a.value}`, s.image ? `background-image:url(${s.image})` : ""])
     }, [
-      s.image ? M("", !0) : (l(), v(H, { key: 0 }, [
-        F(T(n.value), 1)
+      s.image ? C("", !0) : (l(), v(L, { key: 0 }, [
+        F(A(n.value), 1)
       ], 64))
     ], 6));
   }
-}), Oe = "dodo-avatar", je = "dodo-avatar-round", qe = {
-  Avatar: Oe,
-  round: je
-}, E = (d, t) => {
+}), Re = "dodo-avatar", Oe = "dodo-avatar-round", je = {
+  Avatar: Re,
+  round: Oe
+}, N = (d, t) => {
   const e = d.__vccOpts || d;
   for (const [o, n] of t)
     e[o] = n;
   return e;
-}, We = {
-  $style: qe
-}, Xl = /* @__PURE__ */ E(Re, [["__cssModules", We]]), Pe = ["disabled", "type"], Ue = /* @__PURE__ */ z({
+}, qe = {
+  $style: je
+}, Yl = /* @__PURE__ */ N(He, [["__cssModules", qe]]), We = ["disabled", "type"], Pe = /* @__PURE__ */ T({
   inheritAttrs: !1,
   __name: "Button",
   props: {
@@ -91,12 +91,12 @@ const Re = /* @__PURE__ */ z({
     const t = d, { colorCss: e } = X(), o = S(() => {
       let s = "";
       return t.color && (s += `--button-color:${e(t.color)};`), s;
-    }), n = Ne(), r = _(!1);
+    }), n = Ne(), a = _(!1);
     async function p(s) {
-      if (!r.value && typeof n.onClick == "function") {
+      if (!a.value && typeof n.onClick == "function") {
         const y = n.onClick(s);
-        y instanceof Promise && (r.value = !0, await y.finally(() => {
-          r.value = !1;
+        y instanceof Promise && (a.value = !0, await y.finally(() => {
+          a.value = !1;
         }));
       }
     }
@@ -107,7 +107,7 @@ const Re = /* @__PURE__ */ z({
       class: [
         s.$style.Button,
         s.$style[t.variant ?? "default"],
-        r.value && s.$style.loading,
+        a.value && s.$style.loading,
         s.small && s.$style.small,
         s.square && s.$style.square,
         s.active && s.$style.active,
@@ -119,29 +119,29 @@ const Re = /* @__PURE__ */ z({
       }, [
         $(s.$slots, "default")
       ], 2),
-      r.value ? (l(), V(u(cl), {
+      a.value ? (l(), V(u(cl), {
         key: 0,
         small: s.small,
         class: m(s.$style.spinner),
         color: "inherit"
-      }, null, 8, ["small", "class"])) : M("", !0)
-    ], 16, Pe));
+      }, null, 8, ["small", "class"])) : C("", !0)
+    ], 16, We));
   }
-}), Ge = "dodo-button", Ke = "dodo-button-content", Je = "dodo-button-solid", Ze = "dodo-button-rounded", Qe = "dodo-button-text", Xe = "dodo-button-loading", Ye = "dodo-button-spinner", xe = "dodo-button-active", et = "dodo-button-small", tt = "dodo-button-square", ot = {
-  Button: Ge,
-  content: Ke,
-  solid: Je,
+}), Ue = "dodo-button", Ge = "dodo-button-content", Ke = "dodo-button-solid", Je = "dodo-button-rounded", Ze = "dodo-button-text", Qe = "dodo-button-loading", Xe = "dodo-button-spinner", Ye = "dodo-button-active", xe = "dodo-button-small", et = "dodo-button-square", tt = {
+  Button: Ue,
+  content: Ge,
+  solid: Ke,
   default: "dodo-button-default",
-  rounded: Ze,
-  text: Qe,
-  loading: Xe,
-  spinner: Ye,
-  active: xe,
-  small: et,
-  square: tt
-}, st = {
-  $style: ot
-}, G = /* @__PURE__ */ E(Ue, [["__cssModules", st]]), Yl = /* @__PURE__ */ z({
+  rounded: Je,
+  text: Ze,
+  loading: Qe,
+  spinner: Xe,
+  active: Ye,
+  small: xe,
+  square: et
+}, ot = {
+  $style: tt
+}, U = /* @__PURE__ */ N(Pe, [["__cssModules", ot]]), xl = /* @__PURE__ */ T({
   __name: "Card",
   props: {
     hoverable: { type: Boolean },
@@ -164,21 +164,21 @@ const Re = /* @__PURE__ */ z({
     ], 2));
   }
 });
-const Ce = Symbol("NavBarService"), Me = Symbol("DropdownService");
-function xl(d) {
+const Me = Symbol("NavBarService"), st = Symbol("DropdownService");
+function ea(d) {
   const t = _(0), e = _(0), o = new ResizeObserver(n);
   function n() {
-    var r, p;
-    t.value = ((r = d.value) == null ? void 0 : r.clientWidth) ?? 0, e.value = ((p = d.value) == null ? void 0 : p.clientHeight) ?? 0;
+    var a, p;
+    t.value = ((a = d.value) == null ? void 0 : a.clientWidth) ?? 0, e.value = ((p = d.value) == null ? void 0 : p.clientHeight) ?? 0;
   }
-  return ee(n), U(() => {
+  return ee(n), P(() => {
     o.disconnect(), d.value && o.observe(d.value), n();
   }), x(() => {
     o.disconnect();
   }), { width: t, height: e, observer: o };
 }
-function Se() {
-  const e = _(window.innerWidth), o = _(window.innerHeight), n = S(() => e.value < 600), r = S(() => e.value >= 600 && e.value < 1200), p = S(() => e.value >= 1200);
+function Ce() {
+  const e = _(window.innerWidth), o = _(window.innerHeight), n = S(() => e.value < 600), a = S(() => e.value >= 600 && e.value < 1200), p = S(() => e.value >= 1200);
   function s() {
     e.value = window.innerWidth, o.value = window.innerHeight;
   }
@@ -188,7 +188,7 @@ function Se() {
     window.removeEventListener("resize", s);
   }), {
     screenSmall: n,
-    screenMedium: r,
+    screenMedium: a,
     screenLarge: p
   };
 }
@@ -206,51 +206,51 @@ function lt(d) {
     o || (o = document.createElement("link"), o.setAttribute("href", d.href), o.setAttribute("rel", "stylesheet"), o.setAttribute("id", e), document.head.appendChild(o)), await document.fonts.ready, t.value = document.fonts.check(`${d.weight} 1em ${d.name}`);
   }), { isReady: t };
 }
-function ea(d) {
+function ta(d) {
   if (!d.match(/^#\w{6}$/))
     throw new Error("Invalid hex color");
   return d.match(/(\w\w)/g).map((t) => parseInt(t, 16)).slice(0, 3);
 }
-const Be = Symbol(Ve.name);
-function Ve(d) {
+const Se = Symbol(Be.name);
+function Be(d) {
   const t = _(null), e = _(0), o = 1e3;
   function n() {
     t.value = null, e.value = Date.now() + o;
   }
-  function r() {
+  function a() {
     location.reload();
   }
   function p(s) {
     !t.value && e.value < Date.now() && (console.error(s), t.value = s);
   }
-  return { ignoreError: n, reloadPage: r, currentError: t, handleCrash: p };
+  return { ignoreError: n, reloadPage: a, currentError: t, handleCrash: p };
 }
-function ta(d) {
+function oa(d) {
   return (t) => {
     var n;
-    const e = Ve();
-    t.provide(Be, e);
+    const e = Be();
+    t.provide(Se, e);
     const { errorHandler: o } = t.config;
-    t.config.errorHandler = (r, p, s) => {
-      if (e.handleCrash(r), o)
-        return o(r, p, s);
-    }, (n = d.router) == null || n.onError((r) => {
-      e.handleCrash(r);
-    }), window.addEventListener("unhandledrejection", (r) => {
-      e.handleCrash(r.reason);
-    }), window.addEventListener("error", (r) => {
-      e.handleCrash(r.error ?? r.message);
+    t.config.errorHandler = (a, p, s) => {
+      if (e.handleCrash(a), o)
+        return o(a, p, s);
+    }, (n = d.router) == null || n.onError((a) => {
+      e.handleCrash(a);
+    }), window.addEventListener("unhandledrejection", (a) => {
+      e.handleCrash(a.reason);
+    }), window.addEventListener("error", (a) => {
+      e.handleCrash(a.error ?? a.message);
     });
   };
 }
 function at() {
-  return se(Be);
+  return ae(Se);
 }
-function oa(d, t) {
+function sa(d, t) {
   if (typeof ResizeObserver > "u")
     return {};
   const e = new ResizeObserver(() => t(d.value));
-  return U(() => {
+  return P(() => {
     d.value && e.observe(d.value);
   }), x(() => {
     e.disconnect();
@@ -261,7 +261,7 @@ function rt(d) {
   return { createAndProvide: () => {
     const n = d();
     return re(t, n), n;
-  }, injectOptional: () => se(t, void 0) };
+  }, injectOptional: () => ae(t, void 0) };
 }
 function X() {
   function d(f) {
@@ -270,11 +270,11 @@ function X() {
   function t(f) {
     if (f instanceof Array)
       return f;
-    const g = getComputedStyle(document.body).getPropertyValue(`--dodo-rgb-${f}`);
-    return g ? g.split(",").map(Number) : [0, 0, 0];
+    const b = getComputedStyle(document.body).getPropertyValue(`--dodo-rgb-${f}`);
+    return b ? b.split(",").map(Number) : [0, 0, 0];
   }
   function e(f) {
-    return "#" + t(f).map((A) => A.toString(16).padStart(2, "0")).join("");
+    return "#" + t(f).map((M) => M.toString(16).padStart(2, "0")).join("");
   }
   function o(f) {
     return `var(--dodo-gap-${f})`;
@@ -282,7 +282,7 @@ function X() {
   function n(f) {
     return f ? `dodo-gap-${f}` : "";
   }
-  function r(f) {
+  function a(f) {
     return f ? `dodo-pad-${f}` : "";
   }
   function p(f) {
@@ -306,16 +306,13 @@ function X() {
     colorHexStr: e,
     colorRgbValues: t,
     gap: n,
-    padding: r,
+    padding: a,
     justify: p,
     align: s,
     wrap: y,
     flex: i,
     grow: c
   };
-}
-function sa() {
-  return { fontClass: "dodo-fonts" };
 }
 class na extends Error {
   constructor(e, o) {
@@ -326,21 +323,21 @@ class na extends Error {
 }
 function la(d) {
   const t = me(d), e = me({});
-  Q(t, () => r());
+  Q(t, () => a());
   async function o(i) {
     const c = t[i];
     if (c) {
-      const f = c.value, g = await s(i, f);
-      if (g)
-        return e[i] = String(g), !1;
+      const f = c.value, b = await s(i, f);
+      if (b)
+        return e[i] = String(b), !1;
     }
     return delete e[i], !0;
   }
   async function n(...i) {
     const c = i.length ? i : Object.keys(t);
-    return (await Promise.all(c.map((g) => o(g)))).every((g) => g);
+    return (await Promise.all(c.map((b) => o(b)))).every((b) => b);
   }
-  async function r() {
+  async function a() {
     return (await Promise.all(Object.keys(e).map((c) => o(c)))).every((c) => c);
   }
   function p() {
@@ -348,22 +345,22 @@ function la(d) {
       delete e[i];
   }
   async function s(i, c) {
-    const f = t[i], g = f.name ?? y(i);
+    const f = t[i], b = f.name ?? y(i);
     if (f.required && !c)
-      return `${g} is required`;
+      return `${b} is required`;
     if (f.isEmail && c != null && (typeof c != "string" || !c.includes("@")))
-      return `${g} is not valid`;
+      return `${b} is not valid`;
     if (typeof c == "string") {
       if (f.minLen != null && c.length < f.minLen)
-        return `${g} must be at least ${f.minLen} characters`;
+        return `${b} must be at least ${f.minLen} characters`;
       if (f.maxLen != null && c.length > f.maxLen)
-        return `${g} must be less than ${f.maxLen} characters`;
+        return `${b} must be less than ${f.maxLen} characters`;
     }
     if (f.validators)
-      for (const A of f.validators) {
-        const k = await A(c, g);
-        if (k)
-          return k;
+      for (const M of f.validators) {
+        const z = await M(c, b);
+        if (z)
+          return z;
       }
   }
   function y(i) {
@@ -371,7 +368,7 @@ function la(d) {
   }
   return { errors: e, rules: t, validate: n, clearErrors: p };
 }
-const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
+const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ T({
   __name: "Checkbox",
   props: {
     modelValue: { type: Boolean },
@@ -383,20 +380,20 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
     function o() {
       t("update:modelValue", e.indeterminate || !e.modelValue);
     }
-    function n(r) {
-      r.target.checked !== e.modelValue && o();
+    function n(a) {
+      a.target.checked !== e.modelValue && o();
     }
-    return (r, p) => (l(), v("span", {
-      class: m([r.$style.Checkbox, r.modelValue && r.$style.checked]),
-      onClick: ne(o, ["stop"])
+    return (a, p) => (l(), v("span", {
+      class: m([a.$style.Checkbox, a.modelValue && a.$style.checked]),
+      onClick: se(o, ["stop"])
     }, [
-      I(u(P), {
-        name: r.indeterminate ? "indeterminate_check_box" : r.modelValue ? "check_box" : "check_box_outline_blank"
+      I(u(W), {
+        name: a.indeterminate ? "indeterminate_check_box" : a.modelValue ? "check_box" : "check_box_outline_blank"
       }, null, 8, ["name"]),
-      $(r.$slots, "default"),
+      $(a.$slots, "default"),
       h("input", {
         type: "checkbox",
-        checked: r.modelValue,
+        checked: a.modelValue,
         onChange: n
       }, null, 40, dt)
     ], 10, it));
@@ -406,7 +403,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   checked: pt
 }, mt = {
   $style: vt
-}, $e = /* @__PURE__ */ E(ct, [["__cssModules", mt]]), ft = /* @__PURE__ */ z({
+}, $e = /* @__PURE__ */ N(ct, [["__cssModules", mt]]), ft = /* @__PURE__ */ T({
   __name: "Chip",
   props: {
     color: {}
@@ -416,9 +413,9 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
       let n = "";
       return t.color && (n += `--chip-color:${e.colorCss(t.color)};`), n;
     });
-    return (n, r) => (l(), V(le(n.$attrs.onClick ? "button" : "div"), {
+    return (n, a) => (l(), V(ne(n.$attrs.onClick ? "button" : "div"), {
       class: m(n.$style.Chip),
-      style: J(o.value)
+      style: K(o.value)
     }, {
       default: w(() => [
         $(n.$slots, "before"),
@@ -437,7 +434,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   text: $t
 }, gt = {
   $style: ht
-}, aa = /* @__PURE__ */ E(ft, [["__cssModules", gt]]), bt = /* @__PURE__ */ z({
+}, aa = /* @__PURE__ */ N(ft, [["__cssModules", gt]]), bt = /* @__PURE__ */ T({
   __name: "Column",
   props: {
     gap: {},
@@ -450,7 +447,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   },
   setup(d) {
     const t = X();
-    return (e, o) => (l(), V(le(e.tag ?? "div"), {
+    return (e, o) => (l(), V(ne(e.tag ?? "div"), {
       class: m([
         e.$style.el,
         u(t).gap(e.gap),
@@ -471,18 +468,18 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   el: wt
 }, _t = {
   $style: kt
-}, W = /* @__PURE__ */ E(bt, [["__cssModules", _t]]), Ct = /* @__PURE__ */ h("h3", null, "Something went wrong", -1), he = `
+}, q = /* @__PURE__ */ N(bt, [["__cssModules", _t]]), Mt = /* @__PURE__ */ h("h3", null, "Something went wrong", -1), he = `
   An unexpected error occurred and the application may not function correctly until the page is reloaded.
   Any unsaved changes will be lost if you choose to reload the page.
-`, ra = /* @__PURE__ */ z({
+`, ra = /* @__PURE__ */ T({
   __name: "CrashDialog",
   setup(d) {
     const t = at(), e = S(() => t.currentError.value), o = _(!1);
-    return U(() => {
+    return P(() => {
       o.value = !!e.value;
-    }), (n, r) => (l(), V(u(xt), { active: o.value }, {
+    }), (n, a) => (l(), V(u(xt), { active: o.value }, {
       controls: w(() => [
-        I(u(G), {
+        I(u(U), {
           variant: "text",
           onClick: u(t).ignoreError
         }, {
@@ -491,7 +488,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
           ]),
           _: 1
         }, 8, ["onClick"]),
-        I(u(G), {
+        I(u(U), {
           variant: "solid",
           color: "info",
           onClick: u(t).reloadPage
@@ -503,24 +500,24 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
         }, 8, ["onClick"])
       ]),
       default: w(() => [
-        Ct,
+        Mt,
         $(n.$slots, "body", {
           error: e.value,
           defaultText: he
         }, () => [
-          h("p", null, T(he))
+          h("p", null, A(he))
         ])
       ]),
       _: 3
     }, 8, ["active"]));
   }
-}), Mt = {
+}), Ct = {
   key: 0,
   style: { width: "0" },
   scope: "col"
 }, St = ["onClick"], Bt = ["onClick"], Vt = { key: 0 }, It = /* @__PURE__ */ h("td", { colspan: "999" }, "No results", -1), zt = [
   It
-], Tt = { colspan: "999" }, Et = { key: 0 }, At = /* @__PURE__ */ z({
+], Tt = { colspan: "999" }, At = { key: 0 }, Nt = /* @__PURE__ */ T({
   __name: "Datatable",
   props: {
     rows: {},
@@ -537,147 +534,147 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   },
   emits: ["update:selection", "update:sortValue"],
   setup(d, { emit: t }) {
-    const e = d, o = _(), n = _([]), r = _(!1);
-    U(() => {
+    const e = d, o = _(), n = _([]), a = _(!1);
+    P(() => {
       o.value = e.sortValue;
-    }), U(() => {
+    }), P(() => {
       n.value = e.selection ?? [];
-    }), Q(o, (a) => {
-      t("update:sortValue", a);
-    }), Q(n, (a) => {
-      t("update:selection", a);
+    }), Q(o, (r) => {
+      t("update:sortValue", r);
+    }), Q(n, (r) => {
+      t("update:selection", r);
     });
     const p = S(() => {
-      var a;
-      return (a = o.value) == null ? void 0 : a.startsWith("-");
-    }), s = S(() => e.columns.filter((a) => !a.disabled)), y = S(() => !!e.selection), i = S(() => {
-      const a = s.value.find(f);
-      return e.sortAsync || !a ? e.rows : e.rows.slice().sort((b, B) => {
-        const L = O(a, b), q = O(a, B), pe = typeof L == "number" && typeof q == "number" ? q - L : `${q}`.localeCompare(`${L}`);
+      var r;
+      return (r = o.value) == null ? void 0 : r.startsWith("-");
+    }), s = S(() => e.columns.filter((r) => !r.disabled)), y = S(() => !!e.selection), i = S(() => {
+      const r = s.value.find(f);
+      return e.sortAsync || !r ? e.rows : e.rows.slice().sort((g, B) => {
+        const D = J(r, g), j = J(r, B), pe = typeof D == "number" && typeof j == "number" ? j - D : `${j}`.localeCompare(`${D}`);
         return p.value ? pe : -pe;
       });
     });
-    function c(a) {
-      if (f(a))
+    function c(r) {
+      if (f(r))
         return p.value ? "arrow_drop_up" : "arrow_drop_down";
     }
-    function f(a) {
-      var b;
-      return ((b = o.value) == null ? void 0 : b.replace("-", "")) === a.sort;
+    function f(r) {
+      var g;
+      return ((g = o.value) == null ? void 0 : g.replace("-", "")) === r.sort;
     }
-    function g(a) {
-      return a.slot || a.name.trim().replace(/\W/g, "");
+    function b(r) {
+      return r.slot || r.name.trim().replace(/\W/g, "");
     }
-    function A(a) {
-      return !!a.sort;
+    function M(r) {
+      return !!r.sort;
     }
-    function k(a) {
-      return a.align ? `text-align:${a.align}` : "";
+    function z(r) {
+      return r.align ? `text-align:${r.align}` : "";
     }
-    function N(a) {
-      return a.width ? `width:${a.width}` : "";
+    function H(r) {
+      return r.width ? `width:${r.width}` : "";
     }
-    async function R(a) {
-      A(a) && (f(a) ? o.value = p.value ? void 0 : "-" + a.sort : o.value = a.sort, e.sortAsync && (r.value = !0, await e.sortAsync(o.value).finally(() => {
-        r.value = !1;
+    async function E(r) {
+      M(r) && (f(r) ? o.value = p.value ? void 0 : "-" + r.sort : o.value = r.sort, e.sortAsync && (a.value = !0, await e.sortAsync(o.value).finally(() => {
+        a.value = !1;
       })));
     }
-    function D(a) {
-      return e.selectBy ? a[e.selectBy] : a;
+    function R(r) {
+      return e.selectBy ? r[e.selectBy] : r;
     }
-    function j(a) {
-      const b = D(a);
-      n.value.includes(b) ? n.value = n.value.filter((B) => B !== b) : n.value = n.value.concat(b);
+    function O(r) {
+      const g = R(r);
+      n.value.includes(g) ? n.value = n.value.filter((B) => B !== g) : n.value = n.value.concat(g);
     }
-    function O(a, b) {
-      return typeof a.value == "function" ? a.value(b) : typeof a.value == "string" ? b[a.value] : "";
+    function J(r, g) {
+      return typeof r.value == "function" ? r.value(g) : typeof r.value == "string" ? g[r.value] : "";
     }
-    function Y(a) {
+    function Y(r) {
       if (!y.value)
         return !1;
-      const b = D(a);
-      return n.value.includes(b);
+      const g = R(r);
+      return n.value.includes(g);
     }
-    const Z = S(() => y.value ? e.rows.filter((a) => n.value.includes(D(a))) : []);
-    function C() {
-      const a = Z.value.length === e.rows.length;
-      n.value = a ? [] : e.rows.map(D);
+    const Z = S(() => y.value ? e.rows.filter((r) => n.value.includes(R(r))) : []);
+    function k() {
+      const r = Z.value.length === e.rows.length;
+      n.value = r ? [] : e.rows.map(R);
     }
-    return (a, b) => (l(), v("div", {
-      class: m([a.$style.Datatable, a.contentLoading && a.$style.loading])
+    return (r, g) => (l(), v("div", {
+      class: m([r.$style.Datatable, r.contentLoading && r.$style.loading])
     }, [
       h("table", null, [
         h("tbody", null, [
           h("tr", {
-            class: m(a.stickyHeader && a.$style.stickyHeader)
+            class: m(r.stickyHeader && r.$style.stickyHeader)
           }, [
-            y.value ? (l(), v("th", Mt, [
+            y.value ? (l(), v("th", Ct, [
               I(u($e), {
-                indeterminate: Z.value.length > 0 && Z.value.length < a.rows.length,
-                "model-value": Z.value.length > 0 && Z.value.length === a.rows.length,
-                "onUpdate:modelValue": C
+                indeterminate: Z.value.length > 0 && Z.value.length < r.rows.length,
+                "model-value": Z.value.length > 0 && Z.value.length === r.rows.length,
+                "onUpdate:modelValue": k
               }, null, 8, ["indeterminate", "model-value"])
-            ])) : M("", !0),
-            (l(!0), v(H, null, K(s.value, (B) => (l(), v("th", {
+            ])) : C("", !0),
+            (l(!0), v(L, null, G(s.value, (B) => (l(), v("th", {
               key: B.name,
               scope: "col",
-              class: m([A(B) ? a.$style.sortable : "", f(B) && a.$style.sortActive]),
-              style: J([k(B), N(B)]),
-              onClick: (L) => R(B)
+              class: m([M(B) ? r.$style.sortable : "", f(B) && r.$style.sortActive]),
+              style: K([z(B), H(B)]),
+              onClick: (D) => E(B)
             }, [
               h("span", {
-                class: m(a.$style.colName)
+                class: m(r.$style.colName)
               }, [
                 h("span", null, [
-                  $(a.$slots, `${g(B)}-header`, { column: B }, () => [
-                    F(T(B.name), 1)
+                  $(r.$slots, `${b(B)}-header`, { column: B }, () => [
+                    F(A(B.name), 1)
                   ])
                 ]),
-                c(B) ? (l(), V(u(P), {
+                c(B) ? (l(), V(u(W), {
                   key: 0,
                   name: c(B),
-                  class: m(a.$style.sortIcon)
-                }, null, 8, ["name", "class"])) : M("", !0)
+                  class: m(r.$style.sortIcon)
+                }, null, 8, ["name", "class"])) : C("", !0)
               ], 2)
             ], 14, St))), 128))
           ], 2),
-          (l(!0), v(H, null, K(i.value, (B, L) => (l(), v("tr", {
-            key: L,
-            class: m([a.rowClick && a.$style.clickableRow, Y(B) && a.$style.rowSelected]),
-            onClick: (q) => a.rowClick && a.rowClick(B)
+          (l(!0), v(L, null, G(i.value, (B, D) => (l(), v("tr", {
+            key: D,
+            class: m([r.rowClick && r.$style.clickableRow, Y(B) && r.$style.rowSelected]),
+            onClick: (j) => r.rowClick && r.rowClick(B)
           }, [
             y.value ? (l(), v("td", Vt, [
               I(u($e), {
                 "model-value": Y(B),
-                "onUpdate:modelValue": (q) => j(B)
+                "onUpdate:modelValue": (j) => O(B)
               }, null, 8, ["model-value", "onUpdate:modelValue"])
-            ])) : M("", !0),
-            (l(!0), v(H, null, K(s.value, (q) => (l(), v("td", {
-              key: q.name,
+            ])) : C("", !0),
+            (l(!0), v(L, null, G(s.value, (j) => (l(), v("td", {
+              key: j.name,
               class: m([]),
-              style: J(k(q))
+              style: K(z(j))
             }, [
-              $(a.$slots, g(q), {
+              $(r.$slots, b(j), {
                 row: B,
-                column: q
+                column: j
               }, () => [
-                F(T(O(q, B)), 1)
+                F(A(J(j, B)), 1)
               ])
             ], 4))), 128))
           ], 10, Bt))), 128)),
-          a.rows.length ? M("", !0) : (l(), v("tr", {
+          r.rows.length ? C("", !0) : (l(), v("tr", {
             key: 0,
-            class: m(a.$style.noResults)
+            class: m(r.$style.noResults)
           }, zt, 2)),
-          a.rows.length && a.showMore ? (l(), v("tr", {
+          r.rows.length && r.showMore ? (l(), v("tr", {
             key: 1,
-            class: m(a.$style.showMore)
+            class: m(r.$style.showMore)
           }, [
             h("td", Tt, [
-              I(u(G), {
+              I(u(U), {
                 variant: "text",
                 color: "info",
-                onClick: a.showMore
+                onClick: r.showMore
               }, {
                 default: w(() => [
                   F("Show more results")
@@ -685,26 +682,26 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
                 _: 1
               }, 8, ["onClick"])
             ])
-          ], 2)) : M("", !0),
-          a.showFooter ? (l(), v("tr", {
+          ], 2)) : C("", !0),
+          r.showFooter ? (l(), v("tr", {
             key: 2,
-            class: m([a.$style.footer, a.stickyHeader && a.$style.stickyFooter])
+            class: m([r.$style.footer, r.stickyHeader && r.$style.stickyFooter])
           }, [
-            y.value ? (l(), v("td", Et)) : M("", !0),
-            (l(!0), v(H, null, K(s.value, (B) => (l(), v("th", {
+            y.value ? (l(), v("td", At)) : C("", !0),
+            (l(!0), v(L, null, G(s.value, (B) => (l(), v("th", {
               key: B.name,
-              style: J(k(B)),
+              style: K(z(B)),
               scope: "col"
             }, [
-              $(a.$slots, `${g(B)}-footer`, { column: B })
+              $(r.$slots, `${b(B)}-footer`, { column: B })
             ], 4))), 128))
-          ], 2)) : M("", !0)
+          ], 2)) : C("", !0)
         ])
       ])
     ], 2));
   }
-}), Nt = "dodo-datatable", Ft = "dodo-datatable-colname", Dt = "dodo-datatable-sortable", Lt = "dodo-datatable-sorticon", Ht = "dodo-datatable-sortactive", Rt = "dodo-datatable-noresults", Ot = "dodo-datatable-showmore", jt = "dodo-datatable-clickablerow", qt = "dodo-datatable-rowselected", Wt = "dodo-datatable-stickyheader", Pt = "dodo-datatable-stickyfooter", Ut = "dodo-datatable-loading", Gt = {
-  Datatable: Nt,
+}), Et = "dodo-datatable", Ft = "dodo-datatable-colname", Dt = "dodo-datatable-sortable", Lt = "dodo-datatable-sorticon", Ht = "dodo-datatable-sortactive", Rt = "dodo-datatable-noresults", Ot = "dodo-datatable-showmore", jt = "dodo-datatable-clickablerow", qt = "dodo-datatable-rowselected", Wt = "dodo-datatable-stickyheader", Pt = "dodo-datatable-stickyfooter", Ut = "dodo-datatable-loading", Gt = {
+  Datatable: Et,
   colName: Ft,
   sortable: Dt,
   sortIcon: Lt,
@@ -718,14 +715,14 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   loading: Ut
 }, Kt = {
   $style: Gt
-}, ia = /* @__PURE__ */ E(At, [["__cssModules", Kt]]), Jt = /* @__PURE__ */ z({
+}, ia = /* @__PURE__ */ N(Nt, [["__cssModules", Kt]]), Jt = /* @__PURE__ */ T({
   __name: "Dialog",
   props: {
     active: { type: Boolean }
   },
   setup(d) {
     const t = d, e = _();
-    return U(() => {
+    return P(() => {
       t.active && e.value && e.value.parentNode.appendChild(e.value);
     }), (o, n) => (l(), V(ke, { to: "body" }, [
       I(we, { name: "Dialog" }, {
@@ -734,12 +731,12 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
             key: 0,
             ref_key: "el",
             ref: e,
-            class: m([o.$style.Dialog, "dodo-fonts"])
+            class: m([o.$style.Dialog])
           }, [
             h("div", {
               class: m(o.$style.window)
             }, [
-              I(u(W), { padding: "4" }, {
+              I(u(q), { padding: "4" }, {
                 default: w(() => [
                   $(o.$slots, "default")
                 ]),
@@ -756,7 +753,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
                 _: 3
               })
             ], 2)
-          ], 2)) : M("", !0)
+          ], 2)) : C("", !0)
         ]),
         _: 3
       })
@@ -771,7 +768,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   "Dialog-leave-to": "dodo-dialog-dialog-leave-to"
 }, Yt = {
   $style: Xt
-}, xt = /* @__PURE__ */ E(Jt, [["__cssModules", Yt]]), eo = /* @__PURE__ */ z({
+}, xt = /* @__PURE__ */ N(Jt, [["__cssModules", Yt]]), eo = /* @__PURE__ */ T({
   __name: "Dropdown",
   props: {
     modelValue: { type: Boolean },
@@ -782,7 +779,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   },
   emits: ["update:modelValue"],
   setup(d, { emit: t }) {
-    const e = d, o = _(!1), n = _(""), r = _(), p = _();
+    const e = d, o = _(!1), n = _(""), a = _(), p = _();
     Q(
       () => e.modelValue,
       () => {
@@ -792,78 +789,75 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
     ), x(() => {
       s(!1);
     });
-    function s(k) {
-      o.value !== k && (e.disabled && k || (o.value = k, t("update:modelValue", k), k ? _e().then(() => {
-        A(), window.addEventListener("click", f, { passive: !0, capture: !0 }), window.addEventListener("scroll", g, { passive: !0, capture: !0 }), window.addEventListener("resize", g);
-      }) : (window.removeEventListener("click", f, { capture: !0 }), window.removeEventListener("scroll", g, { capture: !0 }), window.removeEventListener("resize", g))));
+    function s(M) {
+      o.value !== M && (e.disabled && M || (o.value = M, t("update:modelValue", M), M ? _e().then(() => {
+        b(), window.addEventListener("click", f, { passive: !0, capture: !0 });
+      }) : window.removeEventListener("click", f, { capture: !0 })));
     }
-    function y(k) {
-      e.trigger !== "hover" && (s(!o.value), k.preventDefault());
+    function y(M) {
+      e.trigger !== "hover" && (s(!o.value), M.preventDefault());
     }
     function i() {
       e.trigger === "hover" && s(!0);
     }
-    function c(k) {
-      var j, O;
+    function c(M) {
+      var R, O;
       if (!o.value || e.trigger !== "hover")
         return;
-      const N = k.relatedTarget, R = (j = p.value) == null ? void 0 : j.contains(N), D = (O = r.value) == null ? void 0 : O.contains(N);
-      R || D || s(!1);
+      const z = M.relatedTarget, H = (R = p.value) == null ? void 0 : R.contains(z), E = (O = a.value) == null ? void 0 : O.contains(z);
+      H || E || s(!1);
     }
-    function f(k) {
-      var N, R;
-      if (k.target) {
-        const D = (N = p.value) == null ? void 0 : N.contains(k.target), j = (R = r.value) == null ? void 0 : R.contains(k.target);
-        if (D || j)
+    function f(M) {
+      var z, H;
+      if (M.target) {
+        const E = (z = p.value) == null ? void 0 : z.contains(M.target), R = (H = a.value) == null ? void 0 : H.contains(M.target);
+        if (E || R)
           return;
       }
       s(!1);
     }
-    function g() {
-      s(!1);
-    }
-    function A() {
-      const N = r.value;
-      if (!N)
+    function b() {
+      const z = a.value;
+      if (!z)
         return;
-      const R = N.scrollWidth, D = p.value.getBoundingClientRect(), j = window.innerWidth, O = window.innerHeight, Y = D.bottom + 300 + 16 > O, Z = Math.max(16, Math.min(D.left, j - R - 16)), C = Math.min(600, j - 16 * 2);
-      let a = `left: ${Z}px; max-width:${C}px;`;
-      Y ? a += `bottom: ${O - D.top}px; max-height: ${D.top - 16}px;` : a += `top: ${D.bottom}px; max-height: ${O - D.bottom - 16}px;`, n.value = a, o.value && requestAnimationFrame(A);
+      const H = z.scrollWidth, E = p.value.getBoundingClientRect(), R = window.innerWidth, O = window.innerHeight, J = E.bottom + 300 + 16 > O, Y = Math.max(16, Math.min(E.left, R - H - 16)), Z = Math.min(600, R - 16 * 2);
+      let k = `left: ${Y}px; max-width:${Z}px;`;
+      J ? k += `bottom: ${O - E.top}px; max-height: ${E.top - 16}px;` : k += `top: ${E.bottom}px; max-height: ${O - E.bottom - 16}px;`, n.value = k, o.value && requestAnimationFrame(b);
     }
-    return re(Me, { toggle: s }), (k, N) => (l(), v(H, null, [
+    return re(st, { toggle: s }), (M, z) => (l(), v(L, null, [
       h("div", oe({
         ref_key: "el",
         ref: p,
-        class: [k.$style.trigger, k.disabled && k.$style.disabled]
-      }, k.$attrs, {
+        class: [M.$style.trigger, M.disabled && M.$style.disabled]
+      }, M.$attrs, {
         onClick: y,
         onMouseover: i,
         onMouseleave: c
       }), [
-        $(k.$slots, "default", { isActive: o.value })
+        $(M.$slots, "default", { isActive: o.value })
       ], 16),
       o.value ? (l(), v("div", {
         key: 0,
-        class: m([k.$style.container, "dodo-fonts"]),
-        style: J(n.value)
+        class: m([M.$style.container]),
+        style: K(n.value)
       }, [
         h("div", {
           ref_key: "content",
-          ref: r,
-          class: m(k.$style.content),
+          ref: a,
+          class: m(M.$style.content),
           onMouseleave: c
         }, [
-          I(u(W), {
-            padding: k.padding ?? "2",
-            gap: k.gap ?? "2"
+          I(u(q), {
+            padding: M.padding ?? "2",
+            gap: M.gap ?? "2"
           }, {
             default: w(() => [
-              $(k.$slots, "dropdown", { toggle: s })
+              $(M.$slots, "dropdown", { toggle: s })
             ]),
             _: 3
           }, 8, ["padding", "gap"])
         ], 34)
-      ], 6)) : M("", !0)
+      ], 6)) : C("", !0)
     ], 64));
   }
 }), to = "dodo-dropdown-trigger", oo = "dodo-dropdown-disabled", so = "dodo-dropdown-container", no = "dodo-dropdown-content", lo = {
@@ -873,60 +867,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   content: no
 }, ao = {
   $style: lo
-}, ce = /* @__PURE__ */ E(eo, [["__cssModules", ao]]), ro = {
-  key: 0,
-  class: "dodo-nowrap dodo-fade-secondary"
-}, io = /* @__PURE__ */ z({
-  __name: "DropdownItem",
-  props: {
-    active: { type: Boolean },
-    emphasize: { type: Boolean },
-    separator: { type: Boolean }
-  },
-  setup(d) {
-    const t = se(Me);
-    async function e() {
-      await (t == null ? void 0 : t.toggle(!1));
-    }
-    return (o, n) => (l(), v(H, null, [
-      o.separator ? (l(), v("hr", {
-        key: 0,
-        class: m(o.$style.separator)
-      }, null, 2)) : M("", !0),
-      h("div", oe(o.$attrs, {
-        class: [o.$style.DropdownItem, o.active && o.$style.active, o.emphasize && o.$style.emphasize],
-        onClick: e
-      }), [
-        $(o.$slots, "before"),
-        I(u(W), {
-          gap: "0",
-          style: { flex: "1" }
-        }, {
-          default: w(() => [
-            h("p", {
-              class: m([o.$style.text, "dodo-nowrap"])
-            }, [
-              $(o.$slots, "default")
-            ], 2),
-            o.$slots["text-secondary"] ? (l(), v("p", ro, [
-              $(o.$slots, "text-secondary")
-            ])) : M("", !0)
-          ]),
-          _: 3
-        }),
-        $(o.$slots, "after")
-      ], 16)
-    ], 64));
-  }
-}), co = "dodo-dropdownitem", uo = "dodo-dropdownitem-active", po = "dodo-dropdownitem-emphasize", vo = "dodo-dropdownitem-text", mo = "dodo-dropdownitem-separator", fo = {
-  DropdownItem: co,
-  active: uo,
-  emphasize: po,
-  text: vo,
-  separator: mo
-}, yo = {
-  $style: fo
-}, $o = /* @__PURE__ */ E(io, [["__cssModules", yo]]), ho = /* @__PURE__ */ z({
+}, ce = /* @__PURE__ */ N(eo, [["__cssModules", ao]]), ro = /* @__PURE__ */ T({
   __name: "Field",
   props: {
     disabled: { type: Boolean },
@@ -945,14 +886,14 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
       $(t.$slots, "after")
     ], 2));
   }
-}), go = "dodo-field", bo = "dodo-field-button", wo = "dodo-field-inner", ko = "dodo-field-disabled", _o = {
-  Field: go,
-  button: bo,
-  inner: wo,
-  disabled: ko
-}, Co = {
-  $style: _o
-}, Ie = /* @__PURE__ */ E(ho, [["__cssModules", Co]]), Mo = /* @__PURE__ */ z({
+}), io = "dodo-field", co = "dodo-field-button", uo = "dodo-field-inner", po = "dodo-field-disabled", vo = {
+  Field: io,
+  button: co,
+  inner: uo,
+  disabled: po
+}, mo = {
+  $style: vo
+}, Ve = /* @__PURE__ */ N(ro, [["__cssModules", mo]]), fo = /* @__PURE__ */ T({
   __name: "FluidGrid",
   props: {
     columnSize: {},
@@ -963,15 +904,15 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   },
   setup(d) {
     const t = d, e = X(), o = _(), n = _(99999);
-    let r = null;
+    let a = null;
     const p = new ResizeObserver(() => {
-      r && clearTimeout(r), r = setTimeout(() => {
+      a && clearTimeout(a), a = setTimeout(() => {
         n.value = o.value.clientWidth;
       }, 50);
     });
     ee(() => {
       p.observe(o.value);
-    }), Fe(() => {
+    }), Ee(() => {
       p.disconnect();
     });
     const s = S(() => t.columnSize >= n.value), y = S(() => {
@@ -982,17 +923,17 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
       ref_key: "el",
       ref: o,
       class: m([i.$style.FluidGrid, s.value && i.$style.oneColumn]),
-      style: J(y.value)
+      style: K(y.value)
     }, [
       $(i.$slots, "default")
     ], 6));
   }
-}), So = "dodo-fluidgrid", Bo = "dodo-fluidgrid-onecolumn", Vo = {
-  FluidGrid: So,
-  oneColumn: Bo
-}, Io = {
-  $style: Vo
-}, da = /* @__PURE__ */ E(Mo, [["__cssModules", Io]]), zo = /* @__PURE__ */ z({
+}), yo = "dodo-fluidgrid", $o = "dodo-fluidgrid-onecolumn", ho = {
+  FluidGrid: yo,
+  oneColumn: $o
+}, go = {
+  $style: ho
+}, da = /* @__PURE__ */ N(fo, [["__cssModules", go]]), bo = /* @__PURE__ */ T({
   __name: "Grid",
   props: {
     columnSize: {},
@@ -1014,16 +955,16 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
       $(e.$slots, "default")
     ], 2));
   }
-}), To = "dodo-grid-component", Eo = "dodo-grid-autofill", Ao = {
-  component: To,
-  autoFill: Eo,
+}), wo = "dodo-grid-component", ko = "dodo-grid-autofill", _o = {
+  component: wo,
+  autoFill: ko,
   "col-xs": "dodo-grid-col-xs",
   "col-s": "dodo-grid-col-s",
   "col-m": "dodo-grid-col-m",
   "col-l": "dodo-grid-col-l"
-}, No = {
-  $style: Ao
-}, ca = /* @__PURE__ */ E(zo, [["__cssModules", No]]), ae = "Outlined", ge = "300", Fo = /* @__PURE__ */ z({
+}, Mo = {
+  $style: _o
+}, ca = /* @__PURE__ */ N(bo, [["__cssModules", Mo]]), le = "Outlined", ge = "300", Co = /* @__PURE__ */ T({
   __name: "Icon",
   props: {
     name: {},
@@ -1036,31 +977,31 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
   setup(d) {
     const t = d, e = X(), o = _(), n = lt({
       weight: ge,
-      name: `Material Symbols ${ae}`,
-      href: `https://fonts.googleapis.com/css2?family=Material+Symbols+${ae}:wght,FILL@${ge},0..1`
+      name: `Material Symbols ${le}`,
+      href: `https://fonts.googleapis.com/css2?family=Material+Symbols+${le}:wght,FILL@${ge},0..1`
     });
-    return (r, p) => (l(), v("span", {
+    return (a, p) => (l(), v("span", {
       ref_key: "el",
       ref: o,
-      style: J([r.color ? `color: ${u(e).colorCss(r.color)};` : "", u(n).isReady ? "" : "visibility:hidden"]),
+      style: K([a.color ? `color: ${u(e).colorCss(a.color)};` : "", u(n).isReady ? "" : "visibility:hidden"]),
       class: m([
-        r.$style.icon,
-        "material-symbols-" + ae.toLowerCase(),
-        t.size && r.$style[t.size],
-        t.fill && r.$style.fill
+        a.$style.icon,
+        "material-symbols-" + le.toLowerCase(),
+        t.size && a.$style[t.size],
+        t.fill && a.$style.fill
       ])
-    }, T(r.name), 7));
+    }, A(a.name), 7));
   }
-}), Do = "dodo-icon", Lo = "dodo-icon-fill", Ho = "dodo-icon-xs", Ro = "dodo-icon-s", Oo = "dodo-icon-l", jo = "dodo-icon-xl", qo = {
-  icon: Do,
-  fill: Lo,
-  xs: Ho,
-  s: Ro,
-  l: Oo,
-  xl: jo
-}, Wo = {
-  $style: qo
-}, P = /* @__PURE__ */ E(Fo, [["__cssModules", Wo]]), Po = ["id", "value", "placeholder", "disabled", "maxlength", "type", "name", "autofocus"], ua = /* @__PURE__ */ z({
+}), So = "dodo-icon", Bo = "dodo-icon-fill", Vo = "dodo-icon-xs", Io = "dodo-icon-s", zo = "dodo-icon-l", To = "dodo-icon-xl", Ao = {
+  icon: So,
+  fill: Bo,
+  xs: Vo,
+  s: Io,
+  l: zo,
+  xl: To
+}, No = {
+  $style: Ao
+}, W = /* @__PURE__ */ N(Co, [["__cssModules", No]]), Eo = ["id", "value", "placeholder", "disabled", "maxlength", "type", "name", "autofocus"], ua = /* @__PURE__ */ T({
   __name: "Input",
   props: {
     modelValue: {},
@@ -1079,7 +1020,7 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
     function o() {
       t("update:modelValue", e.value.value);
     }
-    return (n, r) => (l(), v("input", {
+    return (n, a) => (l(), v("input", {
       id: n.id ?? void 0,
       ref_key: "el",
       ref: e,
@@ -1092,16 +1033,16 @@ const it = ["onClick"], dt = ["checked"], ct = /* @__PURE__ */ z({
       name: n.name,
       autofocus: n.autofocus,
       onInput: o
-    }, null, 40, Po));
+    }, null, 40, Eo));
   }
 });
-const Uo = ["for"], Go = { class: "dodo-label-text" }, Ko = {
+const Fo = ["for"], Do = { class: "dodo-label-text" }, Lo = {
   key: 0,
   class: "dodo-color-danger"
-}, Jo = {
+}, Ho = {
   key: 1,
   class: "dodo-fade-secondary"
-}, pa = /* @__PURE__ */ z({
+}, pa = /* @__PURE__ */ T({
   __name: "Label",
   props: {
     text: {},
@@ -1116,13 +1057,61 @@ const Uo = ["for"], Go = { class: "dodo-label-text" }, Ko = {
       class: m(["dodo-label", e.error && "dodo-label--error"]),
       for: t.for
     }, [
-      h("span", Go, T(e.text), 1),
+      h("span", Do, A(e.text), 1),
       $(e.$slots, "default"),
-      e.error ? (l(), v("small", Ko, T(e.error), 1)) : e.hint ? (l(), v("small", Jo, T(e.hint), 1)) : M("", !0)
-    ], 10, Uo));
+      e.error ? (l(), v("small", Lo, A(e.error), 1)) : e.hint ? (l(), v("small", Ho, A(e.hint), 1)) : C("", !0)
+    ], 10, Fo));
   }
 });
-const Zo = /* @__PURE__ */ z({
+const Ro = {
+  key: 0,
+  class: "dodo-nowrap dodo-fade-secondary"
+}, Oo = /* @__PURE__ */ T({
+  __name: "MenuItem",
+  props: {
+    active: { type: Boolean },
+    emphasize: { type: Boolean },
+    separator: { type: Boolean }
+  },
+  setup(d) {
+    return (t, e) => (l(), v(L, null, [
+      t.separator ? (l(), v("hr", {
+        key: 0,
+        class: m(t.$style.separator)
+      }, null, 2)) : C("", !0),
+      h("div", oe(t.$attrs, {
+        class: [t.$style.DropdownItem, t.active && t.$style.active, t.emphasize && t.$style.emphasize]
+      }), [
+        $(t.$slots, "before"),
+        I(u(q), {
+          gap: "0",
+          style: { flex: "1" }
+        }, {
+          default: w(() => [
+            h("p", {
+              class: m([t.$style.text, "dodo-nowrap"])
+            }, [
+              $(t.$slots, "default")
+            ], 2),
+            t.$slots["text-secondary"] ? (l(), v("p", Ro, [
+              $(t.$slots, "text-secondary")
+            ])) : C("", !0)
+          ]),
+          _: 3
+        }),
+        $(t.$slots, "after")
+      ], 16)
+    ], 64));
+  }
+}), jo = "dodo-menuitem-dropdownitem", qo = "dodo-menuitem-active", Wo = "dodo-menuitem-emphasize", Po = "dodo-menuitem-text", Uo = "dodo-menuitem-separator", Go = {
+  DropdownItem: jo,
+  active: qo,
+  emphasize: Wo,
+  text: Po,
+  separator: Uo
+}, Ko = {
+  $style: Go
+}, Jo = /* @__PURE__ */ N(Oo, [["__cssModules", Ko]]), Zo = /* @__PURE__ */ T({
   __name: "NavBarItem",
   props: {
     text: {},
@@ -1137,9 +1126,9 @@ const Zo = /* @__PURE__ */ z({
     ee(() => {
       n.value = !!o.value.closest("[data-mobile-nav]");
     });
-    const r = se(Ce), p = S(() => r == null ? void 0 : r.collapsed.value), s = S(() => r == null ? void 0 : r.renderMobile.value), y = S(() => s.value || !p.value);
+    const a = ae(Me), p = S(() => a == null ? void 0 : a.collapsed.value), s = S(() => a == null ? void 0 : a.renderMobile.value), y = S(() => s.value || !p.value);
     async function i(c) {
-      r && !e.submenu && (r.mobileToggle.value = !1), t.link && await t.link.navigate();
+      a && !e.submenu && (a.mobileToggle.value = !1), t.link && await t.link.navigate();
     }
     return (c, f) => (l(), V(u(ue), {
       text: c.text,
@@ -1147,19 +1136,19 @@ const Zo = /* @__PURE__ */ z({
       side: "right"
     }, {
       default: w(() => [
-        (l(), V(le(c.$slots.submenu ? u(ce) : "div"), null, {
+        (l(), V(ne(c.$slots.submenu ? u(ce) : "div"), null, {
           dropdown: w(() => [
             $(c.$slots, "submenu")
           ]),
           default: w(() => {
-            var g;
+            var b;
             return [
               h("div", {
                 ref_key: "el",
                 ref: o,
                 class: m([
                   c.$style.NavBarItem,
-                  (c.active || ((g = c.link) == null ? void 0 : g.isActive.value)) && c.$style.active,
+                  (c.active || ((b = c.link) == null ? void 0 : b.isActive.value)) && c.$style.active,
                   c.important && c.$style.important,
                   p.value && c.$style.collapsed
                 ]),
@@ -1170,23 +1159,23 @@ const Zo = /* @__PURE__ */ z({
                   class: m(c.$style.icon)
                 }, [
                   $(c.$slots, "icon", {}, () => [
-                    I(u(P), {
+                    I(u(W), {
                       name: c.icon
                     }, null, 8, ["name"])
                   ])
-                ], 2)) : M("", !0),
+                ], 2)) : C("", !0),
                 h("div", {
                   class: m(c.$style.textwrap)
                 }, [
                   h("p", {
                     class: m([c.$style.text, "dodo-nowrap"]),
                     color: "background"
-                  }, T(c.text), 3),
+                  }, A(c.text), 3),
                   c.textSecondary ? (l(), v("p", {
                     key: 0,
                     class: m([c.$style.secondary, "dodo-nowrap"]),
                     color: "background"
-                  }, T(c.textSecondary), 3)) : M("", !0)
+                  }, A(c.textSecondary), 3)) : C("", !0)
                 ], 2)
               ], 2)
             ];
@@ -1207,31 +1196,31 @@ const Zo = /* @__PURE__ */ z({
   secondary: os
 }, ns = {
   $style: ss
-}, be = /* @__PURE__ */ E(Zo, [["__cssModules", ns]]), ls = ["onClick"], as = { style: { "margin-right": "8px" } }, rs = /* @__PURE__ */ z({
+}, be = /* @__PURE__ */ N(Zo, [["__cssModules", ns]]), ls = ["onClick"], as = { style: { "margin-right": "8px" } }, rs = /* @__PURE__ */ T({
   __name: "NavBar",
   props: {
     mobile: { type: Boolean }
   },
   setup(d) {
-    const t = d, { screenLarge: e } = Se(), o = nt("NavBar-collapse", null), n = _(!1), r = S(() => t.mobile || !e.value);
-    re(Ce, { collapsed: o, renderMobile: r, mobileToggle: n });
+    const t = d, { screenLarge: e } = Ce(), o = nt("NavBar-collapse", null), n = _(!1), a = S(() => t.mobile || !e.value);
+    re(Me, { collapsed: o, renderMobile: a, mobileToggle: n });
     function p() {
-      r.value && (n.value = !1);
+      a.value && (n.value = !1);
     }
     return (s, y) => (l(), v("div", {
       class: m([
         s.$style.root,
         u(o) && s.$style.collapsed,
         n.value && s.$style.mobileToggle,
-        r.value && s.$style.mobileMenu
+        a.value && s.$style.mobileMenu
       ]),
-      onClick: ne(p, ["self"])
+      onClick: se(p, ["self"])
     }, [
       n.value ? (l(), v("div", {
         key: 0,
         class: m(s.$style.backdrop),
         onClick: y[0] || (y[0] = (i) => n.value = !1)
-      }, null, 2)) : M("", !0),
+      }, null, 2)) : C("", !0),
       h("div", {
         class: m(s.$style.NavBar)
       }, [
@@ -1243,7 +1232,7 @@ const Zo = /* @__PURE__ */ z({
             $(s.$slots, "navbar-header")
           ]),
           h("div", as, [
-            r.value ? (l(), V(u(G), {
+            a.value ? (l(), V(u(U), {
               key: 0,
               variant: "text",
               square: "",
@@ -1251,12 +1240,12 @@ const Zo = /* @__PURE__ */ z({
               onClick: y[1] || (y[1] = (i) => n.value = !1)
             }, {
               default: w(() => [
-                I(u(P), { name: "close" })
+                I(u(W), { name: "close" })
               ]),
               _: 1
-            })) : M("", !0)
+            })) : C("", !0)
           ])
-        ], 2)) : M("", !0),
+        ], 2)) : C("", !0),
         h("div", {
           class: m(s.$style.middle)
         }, [
@@ -1267,18 +1256,18 @@ const Zo = /* @__PURE__ */ z({
           class: m(s.$style.footer)
         }, [
           $(s.$slots, "navbar-footer"),
-          r.value ? M("", !0) : (l(), V(be, {
+          a.value ? C("", !0) : (l(), V(be, {
             key: 0,
             text: u(o) ? "Expand" : "Collapse",
             icon: u(o) ? "last_page" : "first_page",
             onClick: y[2] || (y[2] = (i) => o.value = !u(o))
           }, null, 8, ["text", "icon"]))
-        ], 2)) : M("", !0)
+        ], 2)) : C("", !0)
       ], 2),
       h("div", {
         class: m(s.$style.wrapMobile)
       }, [
-        s.$slots.main ? (l(), V(u(W), {
+        s.$slots.main ? (l(), V(u(q), {
           key: 0,
           class: m(s.$style.main)
         }, {
@@ -1286,8 +1275,8 @@ const Zo = /* @__PURE__ */ z({
             $(s.$slots, "main")
           ]),
           _: 3
-        }, 8, ["class"])) : M("", !0),
-        r.value ? (l(), v("div", {
+        }, 8, ["class"])) : C("", !0),
+        a.value ? (l(), v("div", {
           key: 1,
           class: m(s.$style.mobileNav),
           "data-mobile-nav": ""
@@ -1299,7 +1288,7 @@ const Zo = /* @__PURE__ */ z({
             icon: "menu",
             onClick: y[3] || (y[3] = (i) => n.value = !n.value)
           })
-        ], 2)) : M("", !0)
+        ], 2)) : C("", !0)
       ], 2)
     ], 10, ls));
   }
@@ -1318,36 +1307,36 @@ const Zo = /* @__PURE__ */ z({
   mobileNav: gs
 }, ws = {
   $style: bs
-}, va = /* @__PURE__ */ E(rs, [["__cssModules", ws]]), ks = ["onClick"], ze = rt(() => {
+}, va = /* @__PURE__ */ N(rs, [["__cssModules", ws]]), ks = ["onClick"], Ie = rt(() => {
   const d = _([]), t = _(""), e = _([]), o = _(!1);
   return Q(d, () => {
     o.value = !1;
   }), { headerText: t, activeItems: d, expandedMenu: e, mobileToggle: o };
 }), _s = (d) => {
-  const t = ze.injectOptional(), e = De(), o = (i) => i ? [i.uid, ...o(i.parent)] : [], n = (i) => {
+  const t = Ie.injectOptional(), e = Fe(), o = (i) => i ? [i.uid, ...o(i.parent)] : [], n = (i) => {
     !i || !t || (t.activeItems.value = o(e), t.headerText.value = d.text.value);
-  }, r = S(() => t == null ? void 0 : t.headerText.value), p = () => {
+  }, a = S(() => t == null ? void 0 : t.headerText.value), p = () => {
     !e || !t || (t.expandedMenu.value.includes(e.uid) ? t.expandedMenu.value = [] : t.expandedMenu.value = o(e));
   }, s = S(() => !e || !t ? !1 : t.activeItems.value.includes(e.uid)), y = S(() => !e || !t ? !1 : t.expandedMenu.value.length ? t.expandedMenu.value.includes(e.uid) : t.activeItems.value.includes(e.uid));
-  return Q(d.active, () => n(d.active.value), { immediate: !0 }), x(() => n(!1)), U(() => {
-    r.value && (document.title = r.value);
-  }), { showAsActive: s, isExpanded: y, toggleExpand: p, headerText: r };
-}, Cs = /* @__PURE__ */ z({
+  return Q(d.active, () => n(d.active.value), { immediate: !0 }), x(() => n(!1)), P(() => {
+    a.value && (document.title = a.value);
+  }), { showAsActive: s, isExpanded: y, toggleExpand: p, headerText: a };
+}, Ms = /* @__PURE__ */ T({
   __name: "NavBarNew",
   setup(d) {
-    const { headerText: t, mobileToggle: e } = ze.createAndProvide(), { screenLarge: o } = Se(), n = S(() => !o.value);
-    function r() {
+    const { headerText: t, mobileToggle: e } = Ie.createAndProvide(), { screenLarge: o } = Ce(), n = S(() => !o.value);
+    function a() {
       e.value = !1;
     }
     return (p, s) => (l(), v("div", {
       class: m([p.$style.root, u(e) && p.$style.mobileToggle, n.value && p.$style.mobileMenu]),
-      onClick: ne(r, ["self"])
+      onClick: se(a, ["self"])
     }, [
       u(e) ? (l(), v("div", {
         key: 0,
         class: m(p.$style.backdrop),
         onClick: s[0] || (s[0] = (y) => e.value = !1)
-      }, null, 2)) : M("", !0),
+      }, null, 2)) : C("", !0),
       h("div", {
         class: m(p.$style.NavBar)
       }, [
@@ -1361,7 +1350,7 @@ const Zo = /* @__PURE__ */ z({
           class: m(p.$style.footer)
         }, [
           $(p.$slots, "navbar-footer")
-        ], 2)) : M("", !0)
+        ], 2)) : C("", !0)
       ], 2),
       h("div", {
         class: m(p.$style.wrapMobile)
@@ -1371,13 +1360,13 @@ const Zo = /* @__PURE__ */ z({
           class: m(p.$style.mobileNav),
           "data-mobile-nav": ""
         }, [
-          h("h5", null, T(u(t)), 1),
+          h("h5", null, A(u(t)), 1),
           I(u(ue), { text: "Toggle menu" }, {
             default: w(() => [
               h("div", {
                 class: m(p.$style.menuButton)
               }, [
-                I(u(P), {
+                I(u(W), {
                   name: "menu",
                   onClick: s[1] || (s[1] = (y) => e.value = !u(e))
                 })
@@ -1385,8 +1374,8 @@ const Zo = /* @__PURE__ */ z({
             ]),
             _: 1
           })
-        ], 2)) : M("", !0),
-        p.$slots.main ? (l(), V(u(W), {
+        ], 2)) : C("", !0),
+        p.$slots.main ? (l(), V(u(q), {
           key: 1,
           class: m(p.$style.main)
         }, {
@@ -1394,25 +1383,25 @@ const Zo = /* @__PURE__ */ z({
             $(p.$slots, "main")
           ]),
           _: 3
-        }, 8, ["class"])) : M("", !0)
+        }, 8, ["class"])) : C("", !0)
       ], 2)
     ], 10, ks));
   }
-}), Ms = "dodo-navbarnew-root", Ss = "dodo-navbarnew-navbar", Bs = "dodo-navbarnew-middle", Vs = "dodo-navbarnew-footer", Is = "dodo-navbarnew-wrapmobile", zs = "dodo-navbarnew-main", Ts = "dodo-navbarnew-backdrop", Es = "dodo-navbarnew-menubutton", As = "dodo-navbarnew-mobilemenu", Ns = "dodo-navbarnew-mobiletoggle", Fs = "dodo-navbarnew-mobilenav", Ds = {
-  root: Ms,
+}), Cs = "dodo-navbarnew-root", Ss = "dodo-navbarnew-navbar", Bs = "dodo-navbarnew-middle", Vs = "dodo-navbarnew-footer", Is = "dodo-navbarnew-wrapmobile", zs = "dodo-navbarnew-main", Ts = "dodo-navbarnew-backdrop", As = "dodo-navbarnew-menubutton", Ns = "dodo-navbarnew-mobilemenu", Es = "dodo-navbarnew-mobiletoggle", Fs = "dodo-navbarnew-mobilenav", Ds = {
+  root: Cs,
   NavBar: Ss,
   middle: Bs,
   footer: Vs,
   wrapMobile: Is,
   main: zs,
   backdrop: Ts,
-  menuButton: Es,
-  mobileMenu: As,
-  mobileToggle: Ns,
+  menuButton: As,
+  mobileMenu: Ns,
+  mobileToggle: Es,
   mobileNav: Fs
 }, Ls = {
   $style: Ds
-}, ma = /* @__PURE__ */ E(Cs, [["__cssModules", Ls]]), Hs = ["href"], Rs = { key: 0 }, Os = /* @__PURE__ */ z({
+}, ma = /* @__PURE__ */ N(Ms, [["__cssModules", Ls]]), Hs = ["href"], Rs = { key: 0 }, Os = /* @__PURE__ */ T({
   __name: "NavItem",
   props: {
     link: {},
@@ -1423,7 +1412,7 @@ const Zo = /* @__PURE__ */ z({
     important: { type: Boolean }
   },
   setup(d) {
-    const t = d, e = S(() => t.link ? u(t.link.isActive) : !1), o = S(() => t.text), { isExpanded: n, showAsActive: r, toggleExpand: p } = _s({ text: o, active: e }), s = ie();
+    const t = d, e = S(() => t.link ? u(t.link.isActive) : !1), o = S(() => t.text), { isExpanded: n, showAsActive: a, toggleExpand: p } = _s({ text: o, active: e }), s = ie();
     async function y(i) {
       s.submenu && p(), t.link && (await t.link.navigate(), i.preventDefault());
     }
@@ -1438,7 +1427,7 @@ const Zo = /* @__PURE__ */ z({
           var f;
           return [
             h("a", {
-              class: m([i.$style.link, u(r) && i.$style.active, i.important && i.$style.important]),
+              class: m([i.$style.link, u(a) && i.$style.active, i.important && i.$style.important]),
               href: u((f = i.link) == null ? void 0 : f.href),
               onClick: y
             }, [
@@ -1446,10 +1435,10 @@ const Zo = /* @__PURE__ */ z({
                 class: m(i.$style.icon)
               }, [
                 $(i.$slots, "icon", {}, () => [
-                  i.icon ? (l(), V(u(P), {
+                  i.icon ? (l(), V(u(W), {
                     key: 0,
                     name: i.icon
-                  }, null, 8, ["name"])) : M("", !0)
+                  }, null, 8, ["name"])) : C("", !0)
                 ])
               ], 2),
               h("div", {
@@ -1457,19 +1446,19 @@ const Zo = /* @__PURE__ */ z({
               }, [
                 h("p", {
                   class: m([i.$style.text, "dodo-nowrap"])
-                }, T(o.value), 3),
+                }, A(o.value), 3),
                 i.textSecondary ? (l(), v("p", {
                   key: 0,
                   class: m([i.$style.secondary, "dodo-nowrap"])
-                }, T(i.textSecondary), 3)) : M("", !0)
+                }, A(i.textSecondary), 3)) : C("", !0)
               ], 2),
               u(s).submenu ? (l(), v("div", Rs, [
-                I(u(P), {
+                I(u(W), {
                   name: u(n) ? "expand_less" : "expand_more",
                   size: "s",
                   style: { margin: "0 -0.25em" }
                 }, null, 8, ["name"])
-              ])) : M("", !0)
+              ])) : C("", !0)
             ], 10, Hs)
           ];
         }),
@@ -1480,7 +1469,7 @@ const Zo = /* @__PURE__ */ z({
         class: m([i.$style.submenu, u(n) && i.$style.expanded])
       }, [
         $(i.$slots, "submenu")
-      ], 2)) : M("", !0)
+      ], 2)) : C("", !0)
     ], 2));
   }
 }), js = "dodo-navitem-el", qs = "dodo-navitem-link", Ws = "dodo-navitem-submenu", Ps = "dodo-navitem-expanded", Us = "dodo-navitem-active", Gs = "dodo-navitem-important", Ks = "dodo-navitem-textwrap", Js = "dodo-navitem-icon", Zs = "dodo-navitem-text", Qs = "dodo-navitem-secondary", Xs = {
@@ -1496,7 +1485,7 @@ const Zo = /* @__PURE__ */ z({
   secondary: Qs
 }, Ys = {
   $style: Xs
-}, fa = /* @__PURE__ */ E(Os, [["__cssModules", Ys]]), xs = /* @__PURE__ */ z({
+}, fa = /* @__PURE__ */ N(Os, [["__cssModules", Ys]]), xs = /* @__PURE__ */ T({
   __name: "Row",
   props: {
     gap: {},
@@ -1526,13 +1515,13 @@ const Zo = /* @__PURE__ */ z({
   el: en
 }, on = {
   $style: tn
-}, te = /* @__PURE__ */ E(xs, [["__cssModules", on]]), sn = /* @__PURE__ */ z({
+}, te = /* @__PURE__ */ N(xs, [["__cssModules", on]]), sn = /* @__PURE__ */ T({
   __name: "ScrollContainer",
   setup(d) {
     const t = S(() => "");
     return (e, o) => (l(), v("div", {
       class: m([e.$style.ScrollContainer]),
-      style: J(t.value)
+      style: K(t.value)
     }, [
       $(e.$slots, "default")
     ], 6));
@@ -1541,13 +1530,13 @@ const Zo = /* @__PURE__ */ z({
   ScrollContainer: nn
 }, an = {
   $style: ln
-}, rn = /* @__PURE__ */ E(sn, [["__cssModules", an]]), dn = {
+}, rn = /* @__PURE__ */ N(sn, [["__cssModules", an]]), dn = {
   key: 0,
   class: "dodo-nowrap"
 }, cn = {
   key: 1,
   class: "dodo-nowrap dodo-fade-secondary"
-}, un = ["disabled"], pn = 12, vn = /* @__PURE__ */ z({
+}, un = ["disabled"], pn = 12, vn = /* @__PURE__ */ T({
   __name: "Select",
   props: {
     options: {},
@@ -1560,109 +1549,109 @@ const Zo = /* @__PURE__ */ z({
   },
   emits: ["update:modelValue"],
   setup(d, { emit: t }) {
-    const e = d, o = S(() => (e.multiple ? [e.modelValue].flat() : [e.modelValue]).filter(R)), n = _(!1), r = _(""), p = _(), s = _(), y = _(), i = _();
-    U(() => {
-      n.value && p.value && (r.value = "", p.value.focus());
-    }), U(() => {
-      r.value && s.value && s.value.$el.querySelector("input").focus();
-    }), U(() => {
+    const e = d, o = S(() => (e.multiple ? [e.modelValue].flat() : [e.modelValue]).filter(E)), n = _(!1), a = _(""), p = _(), s = _(), y = _(), i = _();
+    P(() => {
+      n.value && p.value && (a.value = "", p.value.focus());
+    }), P(() => {
+      a.value && s.value && s.value.$el.querySelector("input").focus();
+    }), P(() => {
       n.value && setTimeout(() => {
-        var b;
-        const C = (b = y.value) == null ? void 0 : b.$el, a = C == null ? void 0 : C.querySelector("[data-selectactive]");
-        a == null || a.scrollIntoView({ block: "center" });
+        var g;
+        const k = (g = y.value) == null ? void 0 : g.$el, r = k == null ? void 0 : k.querySelector("[data-selectactive]");
+        r == null || r.scrollIntoView({ block: "center" });
       }, 0);
     });
-    const c = _(!1), f = S(() => e.options.length > pn), g = S(() => f.value && !c.value ? 6 : e.options.length), A = S(() => r.value || e.options.length >= 10), k = S(() => {
-      const C = r.value.toLowerCase(), a = e.options.filter((L) => `${L.value}|${L.label}`.toLowerCase().includes(C));
+    const c = _(!1), f = S(() => e.options.length > pn), b = S(() => f.value && !c.value ? 6 : e.options.length), M = S(() => a.value || e.options.length >= 10), z = S(() => {
+      const k = a.value.toLowerCase(), r = e.options.filter((D) => `${D.value}|${D.label}`.toLowerCase().includes(k));
       if (!e.multiple)
-        return a;
-      const b = a.filter((L) => o.value.find((q) => j(L, q))), B = a.filter((L) => !b.includes(L));
-      return b.concat(B);
-    }), N = S(() => e.placeholder ? e.placeholder : e.multiple ? "Select one or more" : "Select one");
-    function R(C) {
-      return e.options.find((a) => j(a, C));
+        return r;
+      const g = r.filter((D) => o.value.find((j) => O(D, j))), B = r.filter((D) => !g.includes(D));
+      return g.concat(B);
+    }), H = S(() => e.placeholder ? e.placeholder : e.multiple ? "Select one or more" : "Select one");
+    function E(k) {
+      return e.options.find((r) => O(r, k));
     }
-    function D(C) {
-      let a = C.value;
-      e.multiple && (o.value.includes(a) ? a = o.value.filter((b) => !j(C, b)) : a = o.value.concat(C.value)), t("update:modelValue", a);
+    function R(k) {
+      let r = k.value;
+      e.multiple ? o.value.includes(r) ? r = o.value.filter((g) => !O(k, g)) : r = o.value.concat(k.value) : n.value = !1, t("update:modelValue", r);
     }
-    function j(C, a) {
-      return C.value === a;
+    function O(k, r) {
+      return k.value === r;
     }
-    function O(C) {
-      return C.label || `${C.value}`;
+    function J(k) {
+      return k.label || `${k.value}`;
     }
-    function Y(C) {
-      return o.value.some((a) => j(C, a));
+    function Y(k) {
+      return o.value.some((r) => O(k, r));
     }
-    function Z(C) {
-      var B, L;
-      const a = (B = i.value) == null ? void 0 : B.$el.contains(C.target), b = (L = y.value) == null ? void 0 : L.$el.contains(C.target);
-      n.value = a || b;
+    function Z(k) {
+      var B, D;
+      const r = (B = i.value) == null ? void 0 : B.$el.contains(k.target), g = (D = y.value) == null ? void 0 : D.$el.contains(k.target);
+      n.value = r || g;
     }
     return ee(() => {
       document.addEventListener("focusin", Z);
     }), x(() => {
       document.removeEventListener("focusin", Z);
-    }), (C, a) => C.variant === "buttons" ? (l(), V(u(te), {
+    }), (k, r) => k.variant === "buttons" ? (l(), V(u(te), {
       key: 0,
       gap: "1",
       wrap: ""
     }, {
       default: w(() => [
-        (l(!0), v(H, null, K(C.options.slice(0, g.value), (b, B) => (l(), V(u(G), {
-          key: O(b),
-          color: Y(b) ? "info" : void 0,
-          active: Y(b),
-          variant: Y(b) && !C.multiple ? "solid" : void 0,
-          disabled: C.disabled,
-          small: C.size === "s",
+        (l(!0), v(L, null, G(k.options.slice(0, b.value), (g, B) => (l(), V(u(U), {
+          key: J(g),
+          color: Y(g) ? "info" : void 0,
+          active: Y(g),
+          variant: Y(g) && !k.multiple ? "solid" : void 0,
+          disabled: k.disabled,
+          small: k.size === "s",
           rounded: "",
-          onClick: (L) => D(b)
+          onClick: (D) => R(g)
         }, {
           default: w(() => [
-            C.multiple && Y(b) ? (l(), V(u(P), {
+            k.multiple && Y(g) ? (l(), V(u(W), {
               key: 0,
               name: "check",
               size: "s",
               style: { margin: "-2px" }
-            })) : M("", !0),
-            $(C.$slots, "default", {
-              option: b,
+            })) : C("", !0),
+            $(k.$slots, "default", {
+              option: g,
               index: B
             }, () => [
-              F(T(O(b)), 1)
+              F(A(J(g)), 1)
             ])
           ]),
           _: 2
         }, 1032, ["color", "active", "variant", "disabled", "small", "onClick"]))), 128)),
-        f.value ? (l(), v(H, { key: 0 }, [
-          c.value ? (l(), V(u(G), {
+        f.value ? (l(), v(L, { key: 0 }, [
+          c.value ? (l(), V(u(U), {
             key: 0,
-            small: C.size === "s",
+            small: k.size === "s",
             variant: "text",
             rounded: "",
-            onClick: a[0] || (a[0] = (b) => c.value = !c.value)
+            onClick: r[0] || (r[0] = (g) => c.value = !c.value)
           }, {
             default: w(() => [
               F(" Less "),
-              I(u(P), {
+              I(u(W), {
                 name: "expand_less",
                 size: "s",
                 style: { margin: "-2px" }
               })
             ]),
             _: 1
-          }, 8, ["small"])) : (l(), V(u(G), {
+          }, 8, ["small"])) : (l(), V(u(U), {
             key: 1,
-            small: C.size === "s",
+            small: k.size === "s",
             variant: "text",
             rounded: "",
-            onClick: a[1] || (a[1] = (b) => c.value = !c.value)
+            onClick: r[1] || (r[1] = (g) => c.value = !c.value)
           }, {
             default: w(() => [
-              F(T(C.options.length - g.value) + " more ", 1),
-              I(u(P), {
+              F(A(k.options.length - b.value) + " more ", 1),
+              I(u(W), {
                 name: "expand_more",
                 size: "s",
                 style: { margin: "-2px" }
@@ -1670,35 +1659,35 @@ const Zo = /* @__PURE__ */ z({
             ]),
             _: 1
           }, 8, ["small"]))
-        ], 64)) : M("", !0)
+        ], 64)) : C("", !0)
       ]),
       _: 3
     })) : (l(), V(u(ce), {
       key: 1,
       modelValue: n.value,
-      "onUpdate:modelValue": a[5] || (a[5] = (b) => n.value = b),
-      disabled: C.disabled
+      "onUpdate:modelValue": r[5] || (r[5] = (g) => n.value = g),
+      disabled: k.disabled
     }, {
       dropdown: w(() => [
-        I(u(W), {
+        I(u(q), {
           ref_key: "dropdownEl",
           ref: y,
           style: { "min-height": "0" },
           gap: "0",
-          onMousedown: a[4] || (a[4] = ne(() => {
+          onMousedown: r[4] || (r[4] = se(() => {
           }, ["stop", "prevent"]))
         }, {
           default: w(() => [
             fe(I(u(te), {
               padding: "2",
-              class: m(C.$style.searchbox)
+              class: m(k.$style.searchbox)
             }, {
               default: w(() => [
-                I(u(Rl), {
+                I(u(Ol), {
                   ref_key: "searchEl",
                   ref: s,
-                  modelValue: r.value,
-                  "onUpdate:modelValue": a[3] || (a[3] = (b) => r.value = b),
+                  modelValue: a.value,
+                  "onUpdate:modelValue": r[3] || (r[3] = (g) => a.value = g),
                   type: "search",
                   placeholder: "Search",
                   tabindex: "0",
@@ -1707,22 +1696,22 @@ const Zo = /* @__PURE__ */ z({
               ]),
               _: 1
             }, 8, ["class"]), [
-              [Le, A.value]
+              [De, M.value]
             ]),
             I(u(rn), null, {
               default: w(() => [
-                (l(!0), v(H, null, K(k.value, (b, B) => (l(), V(u($o), {
-                  key: `${b.value}`,
-                  "data-selectactive": o.value.includes(b.value) ? "true" : void 0,
-                  active: o.value.includes(b.value),
-                  onClick: (L) => D(b)
+                (l(!0), v(L, null, G(z.value, (g, B) => (l(), V(u(Jo), {
+                  key: `${g.value}`,
+                  "data-selectactive": o.value.includes(g.value) ? "true" : void 0,
+                  active: o.value.includes(g.value),
+                  onClick: (D) => R(g)
                 }, {
                   default: w(() => [
-                    $(C.$slots, "default", {
+                    $(k.$slots, "default", {
                       index: B,
-                      option: b
+                      option: g
                     }, () => [
-                      F(T(O(b)), 1)
+                      F(A(J(g)), 1)
                     ])
                   ]),
                   _: 2
@@ -1735,40 +1724,40 @@ const Zo = /* @__PURE__ */ z({
         }, 512)
       ]),
       default: w(() => [
-        I(u(Ie), {
+        I(u(Ve), {
           ref_key: "fieldEl",
           ref: i,
           button: "",
-          disabled: C.disabled
+          disabled: k.disabled
         }, {
           after: w(() => [
-            I(u(P), { name: "arrow_drop_down" })
+            I(u(W), { name: "arrow_drop_down" })
           ]),
           default: w(() => [
             o.value.length ? (l(), v("p", dn, [
-              (l(!0), v(H, null, K(o.value, (b, B) => (l(), v(H, null, [
-                B ? (l(), v(H, { key: 0 }, [
+              (l(!0), v(L, null, G(o.value, (g, B) => (l(), v(L, null, [
+                B ? (l(), v(L, { key: 0 }, [
                   F(", ")
-                ], 64)) : M("", !0),
-                R(b) ? $(C.$slots, "default", {
+                ], 64)) : C("", !0),
+                E(g) ? $(k.$slots, "default", {
                   key: 1,
-                  index: C.options.indexOf(R(b)),
-                  option: R(b)
+                  index: k.options.indexOf(E(g)),
+                  option: E(g)
                 }, () => [
-                  F(T(O(R(b))), 1)
-                ]) : (l(), v(H, { key: 2 }, [
-                  F(T(b), 1)
+                  F(A(J(E(g))), 1)
+                ]) : (l(), v(L, { key: 2 }, [
+                  F(A(g), 1)
                 ], 64))
               ], 64))), 256))
-            ])) : (l(), v("p", cn, T(N.value), 1)),
+            ])) : (l(), v("p", cn, A(H.value), 1)),
             fe(h("input", {
               ref_key: "hiddenInput",
               ref: p,
-              "onUpdate:modelValue": a[2] || (a[2] = (b) => r.value = b),
+              "onUpdate:modelValue": r[2] || (r[2] = (g) => a.value = g),
               style: { position: "fixed", "pointer-events": "none", opacity: "0" },
-              disabled: C.disabled
+              disabled: k.disabled
             }, null, 8, un), [
-              [He, r.value]
+              [Le, a.value]
             ])
           ]),
           _: 3
@@ -1781,7 +1770,7 @@ const Zo = /* @__PURE__ */ z({
   searchbox: mn
 }, yn = {
   $style: fn
-}, ya = /* @__PURE__ */ E(vn, [["__cssModules", yn]]), $n = /* @__PURE__ */ z({
+}, ya = /* @__PURE__ */ N(vn, [["__cssModules", yn]]), $n = /* @__PURE__ */ T({
   __name: "SelectButtons",
   props: {
     options: {},
@@ -1796,19 +1785,19 @@ const Zo = /* @__PURE__ */ z({
     function n(s, y) {
       return s.value === y;
     }
-    function r(s) {
+    function a(s) {
       return o.value.some((y) => n(s, y));
     }
     function p(s) {
       let y = s.value;
-      r(s) && e.multiple ? y = o.value.filter((c) => !n(s, c)) : e.multiple && (y = [...o.value, s.value]), t("update:modelValue", y);
+      a(s) && e.multiple ? y = o.value.filter((c) => !n(s, c)) : e.multiple && (y = [...o.value, s.value]), t("update:modelValue", y);
     }
     return (s, y) => (l(), v("div", {
       class: m([s.$style.Select, s.multiple && s.$style.multiple])
     }, [
-      (l(!0), v(H, null, K(s.options, (i, c) => (l(), V(u(G), oe({
+      (l(!0), v(L, null, G(s.options, (i, c) => (l(), V(u(U), oe({
         key: i.label
-      }, r(i) ? { active: !0, color: "info" } : {}, {
+      }, a(i) ? { active: !0, color: "info" } : {}, {
         disabled: s.disabled,
         small: s.small,
         rounded: "",
@@ -1819,7 +1808,7 @@ const Zo = /* @__PURE__ */ z({
             option: i,
             index: c
           }, () => [
-            F(T(i.label || i.value), 1)
+            F(A(i.label || i.value), 1)
           ])
         ]),
         _: 2
@@ -1831,12 +1820,12 @@ const Zo = /* @__PURE__ */ z({
   multiple: gn
 }, wn = {
   $style: bn
-}, $a = /* @__PURE__ */ E($n, [["__cssModules", wn]]), kn = {
+}, $a = /* @__PURE__ */ N($n, [["__cssModules", wn]]), kn = {
   key: 0,
   viewBox: "0 0 48 48"
-}, _n = /* @__PURE__ */ de('<clipPath id="g"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"></path></clipPath><g clip-path="url(#g)"><path fill="#FBBC05" d="M0 37V11l17 13z"></path><path fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z"></path><path fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z"></path><path fill="#4285F4" d="M48 48L17 24l-4-3 35-10z"></path></g>', 2), Cn = [
+}, _n = /* @__PURE__ */ de('<clipPath id="g"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"></path></clipPath><g clip-path="url(#g)"><path fill="#FBBC05" d="M0 37V11l17 13z"></path><path fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z"></path><path fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z"></path><path fill="#4285F4" d="M48 48L17 24l-4-3 35-10z"></path></g>', 2), Mn = [
   _n
-], Mn = {
+], Cn = {
   key: 1,
   viewBox: "0 0 248 204"
 }, Sn = /* @__PURE__ */ h("path", {
@@ -1853,9 +1842,9 @@ const Zo = /* @__PURE__ */ z({
 ], Tn = {
   key: 3,
   viewBox: "2 2 46 46"
-}, En = /* @__PURE__ */ h("path", { d: "M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z" }, null, -1), An = [
-  En
-], Nn = {
+}, An = /* @__PURE__ */ h("path", { d: "M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z" }, null, -1), Nn = [
+  An
+], En = {
   key: 4,
   viewBox: "0 0 14222 14222"
 }, Fn = /* @__PURE__ */ h("circle", {
@@ -1891,7 +1880,7 @@ const Zo = /* @__PURE__ */ z({
   viewBox: "10 10 160 160"
 }, Gn = /* @__PURE__ */ de('<defs><linearGradient id="b" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#57d163"></stop><stop offset="1" stop-color="#23b33a"></stop></linearGradient><filter id="a" width="1.115" height="1.114" x="-.057" y="-.057" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="3.531"></feGaussianBlur></filter></defs><path fill="#b3b3b3" d="m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0" filter="url(#a)"></path><path fill="#fff" d="m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z"></path><path fill="url(#linearGradient1780)" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.559 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.524h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.929z"></path><path fill="url(#b)" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z"></path><path fill="#fff" fill-rule="evenodd" d="M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.666-13.647"></path>', 6), Kn = [
   Gn
-], Jn = /* @__PURE__ */ z({
+], Jn = /* @__PURE__ */ T({
   __name: "SocialIcon",
   props: {
     name: {},
@@ -1903,7 +1892,7 @@ const Zo = /* @__PURE__ */ z({
     return (t, e) => (l(), v("span", {
       class: m([t.$style.SocialIcon, t.small && t.$style.small, t.large && t.$style.large, t.white && t.$style.white])
     }, [
-      t.name === "google" ? (l(), v("svg", kn, Cn)) : t.name === "twitter" ? (l(), v("svg", Mn, Bn)) : t.name === "slack" ? (l(), v("svg", Vn, zn)) : t.white && t.name === "facebook" ? (l(), v("svg", Tn, An)) : t.name === "facebook" ? (l(), v("svg", Nn, Ln)) : t.white && t.name === "linkedin" ? (l(), v("svg", Hn, On)) : t.name === "linkedin" ? (l(), v("svg", jn, Pn)) : t.name === "whatsapp" ? (l(), v("svg", Un, Kn)) : M("", !0)
+      t.name === "google" ? (l(), v("svg", kn, Mn)) : t.name === "twitter" ? (l(), v("svg", Cn, Bn)) : t.name === "slack" ? (l(), v("svg", Vn, zn)) : t.white && t.name === "facebook" ? (l(), v("svg", Tn, Nn)) : t.name === "facebook" ? (l(), v("svg", En, Ln)) : t.white && t.name === "linkedin" ? (l(), v("svg", Hn, On)) : t.name === "linkedin" ? (l(), v("svg", jn, Pn)) : t.name === "whatsapp" ? (l(), v("svg", Un, Kn)) : C("", !0)
     ], 2));
   }
 }), Zn = "dodo-socialicon", Qn = "dodo-socialicon-white", Xn = "dodo-socialicon-small", Yn = "dodo-socialicon-large", xn = {
@@ -1913,7 +1902,7 @@ const Zo = /* @__PURE__ */ z({
   large: Yn
 }, el = {
   $style: xn
-}, ha = /* @__PURE__ */ E(Jn, [["__cssModules", el]]), tl = /* @__PURE__ */ h("path", {
+}, ha = /* @__PURE__ */ N(Jn, [["__cssModules", el]]), tl = /* @__PURE__ */ h("path", {
   stroke: "currentColor",
   fill: "none",
   d: "M 9 1 A 8 8 0 0 1 17 9",
@@ -1927,7 +1916,7 @@ const Zo = /* @__PURE__ */ z({
 }, null, -1), sl = [
   tl,
   ol
-], nl = /* @__PURE__ */ z({
+], nl = /* @__PURE__ */ T({
   __name: "Spinner",
   props: {
     color: { default: void 0 },
@@ -1939,11 +1928,11 @@ const Zo = /* @__PURE__ */ z({
       let n = "";
       return t.color === "inherit" ? n += "color:inherit;" : t.color && (n += `color:${e.colorCss(t.color)};`), n;
     });
-    return (n, r) => (l(), v("div", {
+    return (n, a) => (l(), v("div", {
       class: m([n.$style.Spinner, n.small && n.$style.small, n.large && n.$style.large])
     }, [
       (l(), v("svg", {
-        style: J(o.value),
+        style: K(o.value),
         viewBox: "0 0 18 18"
       }, sl, 4))
     ], 2));
@@ -1954,13 +1943,13 @@ const Zo = /* @__PURE__ */ z({
   large: rl
 }, dl = {
   $style: il
-}, cl = /* @__PURE__ */ E(nl, [["__cssModules", dl]]), ul = { key: 1 }, pl = { key: 0 }, vl = {
+}, cl = /* @__PURE__ */ N(nl, [["__cssModules", dl]]), ul = { key: 1 }, pl = { style: {} }, vl = { key: 0 }, ml = {
   key: 1,
   class: "dodo-fade-secondary"
-}, ml = {
+}, fl = {
   key: 0,
   class: "dodo-fade-secondary"
-}, fl = /* @__PURE__ */ h("br", null, null, -1), yl = /* @__PURE__ */ z({
+}, yl = /* @__PURE__ */ h("br", null, null, -1), $l = /* @__PURE__ */ T({
   __name: "Stepper",
   props: {
     stepIndex: {},
@@ -1971,7 +1960,7 @@ const Zo = /* @__PURE__ */ z({
   emits: ["update:stepIndex", "submit"],
   setup(d, { emit: t }) {
     const e = d, o = _(0), n = S(() => e.steps[o.value]);
-    function r() {
+    function a() {
       o.value--;
     }
     async function p() {
@@ -1984,56 +1973,66 @@ const Zo = /* @__PURE__ */ z({
         o.value++;
       }
     }
-    return U(() => {
+    return P(() => {
       e.stepIndex != null && (o.value = e.stepIndex);
     }), Q(o, () => {
       t("update:stepIndex", o.value);
-    }), (s, y) => (l(), V(u(W), {
+    }), (s, y) => (l(), V(u(q), {
       class: m(s.$style.stepper)
     }, {
       default: w(() => [
-        (l(!0), v(H, null, K(s.steps, (i, c) => (l(), V(u(te), {
+        (l(!0), v(L, null, G(s.steps, (i, c) => (l(), V(u(te), {
           key: i.key,
           align: "stretch",
           gap: "4",
           class: m(c > o.value && s.$style.inactiveStep)
         }, {
           default: w(() => [
-            I(u(W), { align: "center" }, {
+            I(u(q), { align: "center" }, {
               default: w(() => [
                 h("div", {
                   class: m([s.$style.circle])
                 }, [
-                  o.value > c ? (l(), V(u(P), {
+                  o.value > c ? (l(), V(u(W), {
                     key: 0,
                     name: "check"
-                  })) : (l(), v("h3", ul, T(c + 1), 1))
+                  })) : (l(), v("h3", ul, A(c + 1), 1))
                 ], 2),
                 c < s.steps.length - 1 ? (l(), v("div", {
                   key: 0,
                   class: m(s.$style.line)
-                }, null, 2)) : M("", !0)
+                }, null, 2)) : C("", !0)
               ]),
               _: 2
             }, 1024),
-            I(u(W), { grow: "" }, {
+            I(u(q), { grow: "" }, {
               default: w(() => [
-                I(u(W), { gap: "1" }, {
+                I(u(q), { gap: "1" }, {
                   default: w(() => [
-                    h("h3", null, [
-                      i === n.value ? (l(), v("span", pl, T(i.name), 1)) : (l(), v("span", vl, T(i.name), 1))
+                    h("h3", pl, [
+                      i === n.value ? (l(), v("span", vl, A(i.name), 1)) : (l(), v("span", ml, A(i.name), 1))
                     ]),
-                    i.hint ? (l(), v("p", ml, T(i.hint), 1)) : M("", !0)
+                    i.hint ? (l(), v("p", fl, A(i.hint), 1)) : C("", !0)
                   ]),
                   _: 2
                 }, 1024),
-                i === n.value ? (l(), V(u(W), { key: 0 }, {
+                i === n.value ? (l(), V(u(q), { key: 0 }, {
                   default: w(() => [
                     $(s.$slots, i.slot),
                     I(u(te), null, {
                       default: w(() => [
-                        o.value < s.steps.length - 1 ? (l(), V(u(G), {
+                        o.value > 0 ? (l(), V(u(U), {
                           key: 0,
+                          variant: "text",
+                          onClick: a
+                        }, {
+                          default: w(() => [
+                            F(" Back ")
+                          ]),
+                          _: 1
+                        })) : C("", !0),
+                        o.value < s.steps.length - 1 ? (l(), V(u(U), {
+                          key: 1,
                           disabled: i.filled === !1,
                           color: "primary",
                           variant: "solid",
@@ -2045,8 +2044,8 @@ const Zo = /* @__PURE__ */ z({
                             ])
                           ]),
                           _: 2
-                        }, 1032, ["disabled"])) : (l(), V(u(G), {
-                          key: 1,
+                        }, 1032, ["disabled"])) : (l(), V(u(U), {
+                          key: 2,
                           color: "primary",
                           variant: "solid",
                           onClick: p
@@ -2057,24 +2056,14 @@ const Zo = /* @__PURE__ */ z({
                             ])
                           ]),
                           _: 3
-                        })),
-                        o.value > 0 ? (l(), V(u(G), {
-                          key: 2,
-                          variant: "text",
-                          onClick: r
-                        }, {
-                          default: w(() => [
-                            F(" Back ")
-                          ]),
-                          _: 1
-                        })) : M("", !0)
+                        }))
                       ]),
                       _: 2
                     }, 1024)
                   ]),
                   _: 2
-                }, 1024)) : M("", !0),
-                fl
+                }, 1024)) : C("", !0),
+                yl
               ]),
               _: 2
             }, 1024)
@@ -2085,14 +2074,14 @@ const Zo = /* @__PURE__ */ z({
       _: 3
     }, 8, ["class"]));
   }
-}), $l = "dodo-stepper", hl = "dodo-stepper-line", gl = "dodo-stepper-circle", bl = "dodo-stepper-inactivestep", wl = {
-  stepper: $l,
-  line: hl,
-  circle: gl,
-  inactiveStep: bl
-}, kl = {
-  $style: wl
-}, ga = /* @__PURE__ */ E(yl, [["__cssModules", kl]]), _l = ["onClick"], Cl = ["onClick"], Ml = /* @__PURE__ */ h("hr", null, null, -1), Sl = /* @__PURE__ */ z({
+}), hl = "dodo-stepper", gl = "dodo-stepper-line", bl = "dodo-stepper-circle", wl = "dodo-stepper-inactivestep", kl = {
+  stepper: hl,
+  line: gl,
+  circle: bl,
+  inactiveStep: wl
+}, _l = {
+  $style: kl
+}, ga = /* @__PURE__ */ N($l, [["__cssModules", _l]]), Ml = ["onClick"], Cl = ["onClick"], Sl = /* @__PURE__ */ h("hr", null, null, -1), Bl = /* @__PURE__ */ T({
   __name: "Tabs",
   props: {
     tabs: {},
@@ -2100,18 +2089,18 @@ const Zo = /* @__PURE__ */ z({
   },
   emits: ["update:tabIndex"],
   setup(d, { emit: t }) {
-    const e = d, o = _(), n = _(""), r = S(() => e.tabs.find((g) => f(g) === n.value)), p = _(99), s = S(() => e.tabs.slice(0, p.value)), y = S(() => e.tabs.slice(p.value)), i = _();
-    U(() => {
-      !r.value && e.tabs.length && (n.value = f(e.tabs[0]));
+    const e = d, o = _(), n = _(""), a = S(() => e.tabs.find((b) => f(b) === n.value)), p = _(99), s = S(() => e.tabs.slice(0, p.value)), y = S(() => e.tabs.slice(p.value)), i = _();
+    P(() => {
+      !a.value && e.tabs.length && (n.value = f(e.tabs[0]));
     }), ee(() => {
       c(), i.value = setInterval(c, 100);
     }), x(() => {
       clearInterval(i.value);
     });
     function c() {
-      var N;
-      const A = ((N = o.value) == null ? void 0 : N.clientWidth) || 1e3, k = Math.max(1, Math.floor(A / 60));
-      p.value = k;
+      var H;
+      const M = ((H = o.value) == null ? void 0 : H.clientWidth) || 1e3, z = Math.max(1, Math.floor(M / 60));
+      p.value = z;
     }
     Q(
       () => e.tabIndex,
@@ -2120,102 +2109,102 @@ const Zo = /* @__PURE__ */ z({
       },
       { immediate: !0 }
     ), Q(
-      () => r.value,
+      () => a.value,
       () => {
-        r.value && t("update:tabIndex", e.tabs.indexOf(r.value));
+        a.value && t("update:tabIndex", e.tabs.indexOf(a.value));
       },
       { immediate: !0 }
     );
-    function f(g) {
-      return g.slot ?? g.name;
+    function f(b) {
+      return b.slot ?? b.name;
     }
-    return (g, A) => (l(), V(u(W), {
+    return (b, M) => (l(), V(u(q), {
       gap: "4",
       style: { "min-width": "0" }
     }, {
       default: w(() => [
-        I(u(W), { gap: "0" }, {
+        I(u(q), { gap: "0" }, {
           default: w(() => [
             h("div", {
-              class: m(g.$style.bar)
+              class: m(b.$style.bar)
             }, [
               h("div", {
                 ref_key: "tabsDiv",
                 ref: o,
-                class: m([g.$style.tabs])
+                class: m([b.$style.tabs])
               }, [
-                (l(!0), v(H, null, K(s.value, (k, N) => (l(), v("div", {
-                  key: f(k),
-                  class: m([g.$style.tab, n.value === f(k) && g.$style.active, k.disabled && g.$style.disabled]),
-                  onClick: (R) => n.value = f(k)
+                (l(!0), v(L, null, G(s.value, (z, H) => (l(), v("div", {
+                  key: f(z),
+                  class: m([b.$style.tab, n.value === f(z) && b.$style.active, z.disabled && b.$style.disabled]),
+                  onClick: (E) => n.value = f(z)
                 }, [
                   h("h5", {
-                    class: m(g.$style.tabName)
+                    class: m(b.$style.tabName)
                   }, [
-                    $(g.$slots, "tab-title", {
-                      i: N,
-                      tab: k
+                    $(b.$slots, "tab-title", {
+                      i: H,
+                      tab: z
                     }, () => [
-                      F(T(k.name), 1)
+                      F(A(z.name), 1)
                     ])
                   ], 2)
-                ], 10, _l))), 128))
+                ], 10, Ml))), 128))
               ], 2),
               I(u(ce), null, {
                 default: w(() => [
-                  y.value.length > 0 ? (l(), V(u(G), {
+                  y.value.length > 0 ? (l(), V(u(U), {
                     key: 0,
-                    class: m([g.$style.arrow]),
+                    class: m([b.$style.arrow]),
                     variant: "text",
                     small: ""
                   }, {
                     default: w(() => [
-                      I(u(P), {
+                      I(u(W), {
                         name: "more_horiz",
                         size: "l"
                       })
                     ]),
                     _: 1
-                  }, 8, ["class"])) : M("", !0)
+                  }, 8, ["class"])) : C("", !0)
                 ]),
                 dropdown: w(() => [
-                  (l(!0), v(H, null, K(y.value, (k, N) => (l(), v("p", {
-                    key: f(k),
-                    onClick: (R) => n.value = f(k)
+                  (l(!0), v(L, null, G(y.value, (z, H) => (l(), v("p", {
+                    key: f(z),
+                    onClick: (E) => n.value = f(z)
                   }, [
-                    $(g.$slots, "tab-title", {
-                      i: N,
-                      tab: k
+                    $(b.$slots, "tab-title", {
+                      i: H,
+                      tab: z
                     }, () => [
-                      F(T(k.name), 1)
+                      F(A(z.name), 1)
                     ])
                   ], 8, Cl))), 128))
                 ]),
                 _: 3
               })
             ], 2),
-            Ml
+            Sl
           ]),
           _: 3
         }),
-        r.value ? $(g.$slots, r.value.slot ?? "default", {
+        a.value ? $(b.$slots, a.value.slot ?? "default", {
           key: 0,
-          tab: r.value
-        }) : M("", !0)
+          tab: a.value
+        }) : C("", !0)
       ]),
       _: 3
     }));
   }
-}), Bl = "dodo-tabs-bar", Vl = "dodo-tabs", Il = "dodo-tabs-tab", zl = "dodo-tabs-tabname", Tl = "dodo-tabs-active", El = "dodo-tabs-disabled", Al = {
-  bar: Bl,
-  tabs: Vl,
-  tab: Il,
-  tabName: zl,
-  active: Tl,
-  disabled: El
-}, Nl = {
-  $style: Al
-}, ba = /* @__PURE__ */ E(Sl, [["__cssModules", Nl]]), Fl = /* @__PURE__ */ z({
+}), Vl = "dodo-tabs-bar", Il = "dodo-tabs", zl = "dodo-tabs-tab", Tl = "dodo-tabs-tabname", Al = "dodo-tabs-active", Nl = "dodo-tabs-disabled", El = {
+  bar: Vl,
+  tabs: Il,
+  tab: zl,
+  tabName: Tl,
+  active: Al,
+  disabled: Nl
+}, Fl = {
+  $style: El
+}, ba = /* @__PURE__ */ N(Bl, [["__cssModules", Fl]]), Dl = /* @__PURE__ */ T({
   __name: "TextInput",
   props: {
     id: {},
@@ -2235,12 +2224,12 @@ const Zo = /* @__PURE__ */ z({
     function n() {
       o.value.focus();
     }
-    function r() {
+    function a() {
       t("update:modelValue", o.value.value);
     }
-    return U(() => {
+    return P(() => {
       e.autofocus && o.value && o.value.focus();
-    }), (p, s) => (l(), V(u(Ie), {
+    }), (p, s) => (l(), V(u(Ve), {
       class: m([p.$style.TextInput]),
       disabled: p.disabled,
       onClick: n
@@ -2252,7 +2241,7 @@ const Zo = /* @__PURE__ */ z({
         $(p.$slots, "after")
       ]),
       default: w(() => [
-        (l(), V(le(p.rows && p.rows > 1 ? "textarea" : "input"), {
+        (l(), V(ne(p.rows && p.rows > 1 ? "textarea" : "input"), {
           id: p.id,
           ref_key: "el",
           ref: o,
@@ -2266,17 +2255,17 @@ const Zo = /* @__PURE__ */ z({
           name: p.name,
           "tab-index": p.tabIndex,
           autofocus: p.autofocus,
-          onInput: r
+          onInput: a
         }, null, 40, ["id", "value", "class", "placeholder", "disabled", "rows", "maxlength", "type", "name", "tab-index", "autofocus"]))
       ]),
       _: 3
     }, 8, ["class", "disabled"]));
   }
-}), Dl = "dodo-textinput", Ll = {
-  TextInput: Dl
-}, Hl = {
-  $style: Ll
-}, Rl = /* @__PURE__ */ E(Fl, [["__cssModules", Hl]]), Ol = /* @__PURE__ */ z({
+}), Ll = "dodo-textinput", Hl = {
+  TextInput: Ll
+}, Rl = {
+  $style: Hl
+}, Ol = /* @__PURE__ */ N(Dl, [["__cssModules", Rl]]), jl = /* @__PURE__ */ T({
   __name: "Tooltip",
   props: {
     text: {},
@@ -2284,16 +2273,16 @@ const Zo = /* @__PURE__ */ z({
     side: {}
   },
   setup(d) {
-    const t = d, e = _(!1), o = _(""), n = _(), r = _(), p = ie(), s = S(() => t.disabled || !(t.text || p["tooltip-text"]));
+    const t = d, e = _(!1), o = _(""), n = _(), a = _(), p = ie(), s = S(() => t.disabled || !(t.text || p["tooltip-text"]));
     x(i);
     async function y() {
       if (e.value || s.value)
         return;
       e.value = !0, await _e();
-      const c = n.value.getBoundingClientRect(), f = r.value.getBoundingClientRect();
+      const c = n.value.getBoundingClientRect(), f = a.value.getBoundingClientRect();
       t.side, c.bottom + f.height < window.innerHeight;
-      let g = (c.right + c.left - f.width) / 2, A = c.bottom;
-      t.side === "right" ? (g = c.right, A = (c.bottom + c.top - f.height) / 2) : t.side === "top" ? (g = (c.left + c.right - f.width) / 2, A = c.top - f.height) : t.side === "left" && (g = c.left - f.width, A = (c.bottom + c.top - f.height) / 2), A = Math.round(Math.max(Math.min(A, window.innerHeight - f.height), 0)), g = Math.round(Math.max(Math.min(g, window.innerWidth - f.width), 0)), o.value = `left:${g}px;top:${A}px`;
+      let b = (c.right + c.left - f.width) / 2, M = c.bottom;
+      t.side === "right" ? (b = c.right, M = (c.bottom + c.top - f.height) / 2) : t.side === "top" ? (b = (c.left + c.right - f.width) / 2, M = c.top - f.height) : t.side === "left" && (b = c.left - f.width, M = (c.bottom + c.top - f.height) / 2), M = Math.round(Math.max(Math.min(M, window.innerHeight - f.height), 0)), b = Math.round(Math.max(Math.min(b, window.innerWidth - f.width), 0)), o.value = `left:${b}px;top:${M}px`;
     }
     function i() {
       e.value = !1;
@@ -2312,9 +2301,9 @@ const Zo = /* @__PURE__ */ z({
       }, [
         h("div", {
           ref_key: "tooltip",
-          ref: r,
+          ref: a,
           class: m(c.$style.Tooltip),
-          style: J(o.value)
+          style: K(o.value)
         }, [
           h("div", {
             class: m(c.$style.content)
@@ -2323,41 +2312,41 @@ const Zo = /* @__PURE__ */ z({
               class: m(c.$style.text)
             }, [
               $(c.$slots, "tooltip-text", {}, () => [
-                F(T(c.text), 1)
+                F(A(c.text), 1)
               ])
             ], 2)
           ], 2)
         ], 6)
-      ])) : M("", !0)
+      ])) : C("", !0)
     ], 34));
   }
-}), jl = "dodo-tooltip", ql = "dodo-tooltip-content", Wl = "dodo-tooltip-text", Pl = "dodo-tooltip-trigger", Ul = {
-  Tooltip: jl,
-  content: ql,
-  text: Wl,
-  trigger: Pl
-}, Gl = {
-  $style: Ul
-}, ue = /* @__PURE__ */ E(Ol, [["__cssModules", Gl]]);
+}), ql = "dodo-tooltip", Wl = "dodo-tooltip-content", Pl = "dodo-tooltip-text", Ul = "dodo-tooltip-trigger", Gl = {
+  Tooltip: ql,
+  content: Wl,
+  text: Pl,
+  trigger: Ul
+}, Kl = {
+  $style: Gl
+}, ue = /* @__PURE__ */ N(jl, [["__cssModules", Kl]]);
 export {
-  Ql as Animated,
-  Xl as Avatar,
-  G as Button,
-  Yl as Card,
+  Xl as Animated,
+  Yl as Avatar,
+  U as Button,
+  xl as Card,
   $e as Checkbox,
   aa as Chip,
-  W as Column,
+  q as Column,
   ra as CrashDialog,
   ia as Datatable,
   xt as Dialog,
   ce as Dropdown,
-  $o as DropdownItem,
-  Ie as Field,
+  Ve as Field,
   da as FluidGrid,
   ca as Grid,
-  P as Icon,
+  W as Icon,
   ua as Input,
   pa as Label,
+  Jo as MenuItem,
   va as NavBar,
   be as NavBarItem,
   ma as NavBarNew,
@@ -2370,19 +2359,18 @@ export {
   cl as Spinner,
   ga as Stepper,
   ba as Tabs,
-  Rl as TextInput,
+  Ol as TextInput,
   ue as Tooltip,
   na as ValidationError,
-  ta as crashPlugin,
-  Be as crashServiceKey,
-  Me as dropdownServiceKey,
-  Ce as navBarServiceKey,
-  ea as parseColor,
-  sa as useBaseFont,
+  oa as crashPlugin,
+  Se as crashServiceKey,
+  st as dropdownServiceKey,
+  Me as navBarServiceKey,
+  ta as parseColor,
   at as useCrashService,
-  xl as useElementSize,
-  oa as useResizeObserver,
-  Se as useScreenSize,
+  ea as useElementSize,
+  sa as useResizeObserver,
+  Ce as useScreenSize,
   rt as useServiceFactory,
   nt as useSessionStoredRef,
   X as useTheme,

@@ -21,7 +21,4 @@ export declare function useTheme(): {
     flex: (flex?: boolean) => "" | "dodo-flex";
     grow: (grow?: boolean) => "" | "dodo-grow";
 };
-export declare function useBaseFont(): {
-    fontClass: string;
-};
 export {};
