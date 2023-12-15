@@ -3,15 +3,15 @@
     <template v-for="(step, i) in steps" :key="step.key">
       <Row align="stretch" gap="4" :class="i > currentIndex && $style.inactiveStep">
         <Column align="center">
-          <div :class="[$style.circle]">
+          <div :class="[$style.circle]" @click="clickStep(i)">
             <Icon v-if="currentIndex > i" name="check" />
-            <h3 v-else>{{ i + 1 }}</h3>
+            <h3 v-else class="dodo-color-background">{{ i + 1 }}</h3>
           </div>
           <div v-if="i < steps.length - 1" :class="$style.line" />
         </Column>
 
         <Column grow>
-          <Column gap="1">
+          <Column gap="1" @click="clickStep(i)">
             <h3 style="dodo-color-background">
               <span v-if="step === currentStep">{{ step.name }}</span>
               <span v-else class="dodo-fade-secondary">{{ step.name }}</span>
@@ -96,6 +96,11 @@ async function goNext() {
     return
   }
   currentIndex.value++
+}
+
+function clickStep(i: number) {
+  if (i > currentIndex.value) return
+  currentIndex.value = i
 }
 
 useTheme()
