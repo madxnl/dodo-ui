@@ -1,5 +1,5 @@
 <template>
-  <Field :class="[$style.TextInput]" :disabled="disabled" @click="onClick">
+  <Field :class="[$style.TextInput]" :disabled="disabled" @click.self="onClick">
     <!-- @slot Shown before value -->
     <template #before><slot name="before" /></template>
     <component
