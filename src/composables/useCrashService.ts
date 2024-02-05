@@ -11,11 +11,12 @@ export type CrashService = ReturnType<typeof createCrashService>
 
 export type CrashServiceOptions = {
   router: Router | null
+  onError?: (err: unknown) => undefined | boolean
 }
 
 export const crashServiceKey: InjectionKey<CrashService> = Symbol(createCrashService.name)
 
-function createCrashService(_: CrashServiceOptions) {
+function createCrashService(opts: CrashServiceOptions) {
   const currentError = ref(null as unknown | null)
   const ignoredUntil = ref(0)
   const ignoreDuration = 1000
@@ -29,7 +30,12 @@ function createCrashService(_: CrashServiceOptions) {
     location.reload()
   }
 
-  function handleCrash(err: Error | unknown) {
+  function handleCrash(err: unknown) {
+    if (opts.onError) {
+      // If the error handler returns false, we don't want to handle the error
+      const onErrorResult = opts.onError(err)
+      if (onErrorResult === false) return
+    }
     if (!currentError.value && ignoredUntil.value < Date.now()) {
       console.error(err) // eslint-disable-line no-console
       currentError.value = err
