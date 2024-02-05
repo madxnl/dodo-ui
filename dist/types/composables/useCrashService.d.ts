@@ -3,13 +3,14 @@ import { Router } from 'vue-router';
 export type CrashService = ReturnType<typeof createCrashService>;
 export type CrashServiceOptions = {
     router: Router | null;
+    onError?: (err: unknown) => undefined | boolean;
 };
 export declare const crashServiceKey: InjectionKey<CrashService>;
-declare function createCrashService(_: CrashServiceOptions): {
+declare function createCrashService(opts: CrashServiceOptions): {
     ignoreError: () => void;
     reloadPage: () => void;
     currentError: import("vue").Ref<unknown>;
-    handleCrash: (err: Error | unknown) => void;
+    handleCrash: (err: unknown) => void;
 };
 export declare function crashPlugin(opts: CrashServiceOptions): Plugin;
 export declare function useCrashService(): {
