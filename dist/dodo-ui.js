@@ -201,7 +201,11 @@ function at(d) {
   return te(async () => {
     const e = `font-${d.name}-${d.weight}`;
     let i = document.getElementById(e);
-    i || (i = document.createElement("link"), i.setAttribute("href", d.href), i.setAttribute("rel", "stylesheet"), i.setAttribute("id", e), document.head.appendChild(i)), await document.fonts.ready, t.value = document.fonts.check(`${d.weight} 1em ${d.name}`);
+    if (i || (i = document.createElement("link"), i.setAttribute("href", d.href), i.setAttribute("rel", "stylesheet"), i.setAttribute("id", e), document.head.appendChild(i)), !document.fonts) {
+      t.value = !0;
+      return;
+    }
+    await document.fonts.ready, t.value = document.fonts.check(`${d.weight} 1em ${d.name}`);
   }), { isReady: t };
 }
 function xl(d) {

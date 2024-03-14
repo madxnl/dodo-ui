@@ -10,7 +10,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        dir: resolve(__dirname, 'docs-dist')
+        dir: resolve(__dirname, 'docs')
       }
     },
     emptyOutDir: true

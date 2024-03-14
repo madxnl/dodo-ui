@@ -47,5 +47,5 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     extraFileExtensions: ['.vue', '.d.ts']
   },
-  ignorePatterns: ['/docs-dist/', '/dist/', '/old/']
+  ignorePatterns: ['/docs/', '/dist/', '/old/']
 }
