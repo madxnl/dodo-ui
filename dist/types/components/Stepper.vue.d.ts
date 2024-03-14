@@ -1,55 +1,35 @@
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
-    stepIndex: {
-        type: import("vue").PropType<number>;
-    };
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
+    stepIndex?: number | undefined;
     steps: {
-        type: import("vue").PropType<{
-            name: string;
-            slot?: string | undefined;
-            hint?: string | undefined;
-            filled?: boolean | undefined;
-            validate?: (() => boolean | Promise<boolean>) | undefined;
-            submitText?: undefined;
-            incomplete?: undefined;
-            submitStep?: undefined;
-        }[]>;
-        required: true;
-    };
-    submit: {
-        type: import("vue").PropType<() => void | Promise<void>>;
-        required: true;
-    };
-    completed: {
-        type: import("vue").PropType<-1>;
-    };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    'update:stepIndex': (index: number) => void;
+        name: string;
+        slot?: string | undefined;
+        hint?: string | undefined;
+        filled?: boolean | undefined;
+        validate?: (() => boolean | Promise<boolean>) | undefined;
+        submitText?: undefined;
+        incomplete?: undefined;
+        submitStep?: undefined;
+    }[];
+    submit: () => void | Promise<void>;
+    completed?: -1 | undefined;
+}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     submit: () => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    stepIndex: {
-        type: import("vue").PropType<number>;
-    };
+    "update:stepIndex": (index: number) => void;
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
+    stepIndex?: number | undefined;
     steps: {
-        type: import("vue").PropType<{
-            name: string;
-            slot?: string | undefined;
-            hint?: string | undefined;
-            filled?: boolean | undefined;
-            validate?: (() => boolean | Promise<boolean>) | undefined;
-            submitText?: undefined;
-            incomplete?: undefined;
-            submitStep?: undefined;
-        }[]>;
-        required: true;
-    };
-    submit: {
-        type: import("vue").PropType<() => void | Promise<void>>;
-        required: true;
-    };
-    completed: {
-        type: import("vue").PropType<-1>;
-    };
-}>> & {
+        name: string;
+        slot?: string | undefined;
+        hint?: string | undefined;
+        filled?: boolean | undefined;
+        validate?: (() => boolean | Promise<boolean>) | undefined;
+        submitText?: undefined;
+        incomplete?: undefined;
+        submitStep?: undefined;
+    }[];
+    submit: () => void | Promise<void>;
+    completed?: -1 | undefined;
+}>>> & {
     onSubmit?: (() => any) | undefined;
     "onUpdate:stepIndex"?: ((index: number) => any) | undefined;
 }, {}, {}>, Partial<Record<string, (_: {}) => any>> & {
@@ -60,5 +40,14 @@ export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
         $slots: S;
+    };
+};
+type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
+type __VLS_TypePropsToOption<T> = {
+    [K in keyof T]-?: {} extends Pick<T, K> ? {
+        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
+    } : {
+        type: import('vue').PropType<T[K]>;
+        required: true;
     };
 };

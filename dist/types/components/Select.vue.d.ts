@@ -2,55 +2,33 @@ type Option = {
     value: unknown;
     label: string;
 };
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
-    options: {
-        type: import("vue").PropType<Option[]>;
-        required: true;
-    };
-    modelValue: {
-        type: import("vue").PropType<unknown>;
-    };
-    disabled: {
-        type: import("vue").PropType<boolean>;
-    };
-    placeholder: {
-        type: import("vue").PropType<string>;
-    };
-    multiple: {
-        type: import("vue").PropType<boolean>;
-    };
-    variant: {
-        type: import("vue").PropType<"buttons">;
-    };
-    size: {
-        type: import("vue").PropType<"s">;
-    };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
+    /** Array of available options */
+    options: Option[];
+    /** v-model binding */
+    modelValue?: unknown;
+    disabled?: boolean | undefined;
+    /** Set placeholder text */
+    placeholder?: string | undefined;
+    /** Allow multiple select */
+    multiple?: boolean | undefined;
+    variant?: "buttons" | undefined;
+    size?: "s" | undefined;
+}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (v: unknown) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    options: {
-        type: import("vue").PropType<Option[]>;
-        required: true;
-    };
-    modelValue: {
-        type: import("vue").PropType<unknown>;
-    };
-    disabled: {
-        type: import("vue").PropType<boolean>;
-    };
-    placeholder: {
-        type: import("vue").PropType<string>;
-    };
-    multiple: {
-        type: import("vue").PropType<boolean>;
-    };
-    variant: {
-        type: import("vue").PropType<"buttons">;
-    };
-    size: {
-        type: import("vue").PropType<"s">;
-    };
-}>> & {
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
+    /** Array of available options */
+    options: Option[];
+    /** v-model binding */
+    modelValue?: unknown;
+    disabled?: boolean | undefined;
+    /** Set placeholder text */
+    placeholder?: string | undefined;
+    /** Allow multiple select */
+    multiple?: boolean | undefined;
+    variant?: "buttons" | undefined;
+    size?: "s" | undefined;
+}>>> & {
     "onUpdate:modelValue"?: ((v: unknown) => any) | undefined;
 }, {}, {}>, {
     default?(_: {
@@ -62,5 +40,14 @@ export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
         $slots: S;
+    };
+};
+type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
+type __VLS_TypePropsToOption<T> = {
+    [K in keyof T]-?: {} extends Pick<T, K> ? {
+        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
+    } : {
+        type: import('vue').PropType<T[K]>;
+        required: true;
     };
 };

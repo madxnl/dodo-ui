@@ -32,9 +32,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ComputedRef, computed, unref, useSlots } from 'vue'
+import type { ComputedRef } from 'vue'
+import { computed, unref, useSlots } from 'vue'
 import type { NavigationFailure } from 'vue-router'
-import { Icon, IconName, Tooltip, useTheme } from '..'
+import type { IconName } from '..'
+import { Icon, Tooltip, useTheme } from '..'
 import { useNavbar } from './NavBarNew.vue'
 
 const props = defineProps<{

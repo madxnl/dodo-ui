@@ -8,7 +8,8 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ColorProp, useTheme } from '..'
+import type { ColorProp } from '..'
+import { useTheme } from '..'
 
 const theme = useTheme()
 
@@ -21,8 +22,8 @@ const props = withDefaults(
     large?: boolean
   }>(),
   {
-    color: undefined,
-  },
+    color: undefined
+  }
 )
 
 const css = computed(() => {

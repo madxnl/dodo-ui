@@ -7,14 +7,15 @@
       theme.align(align),
       theme.justify(justify),
       theme.wrap(wrap),
-      theme.grow(grow),
+      theme.grow(grow)
     ]"
   >
     <slot />
   </div>
 </template>
 <script lang="ts" setup>
-import { AlignType, JustifyType, SpacingValue, useTheme } from '../composables'
+import type { AlignType, JustifyType, SpacingValue } from '../composables'
+import { useTheme } from '../composables'
 
 defineProps<{
   /**

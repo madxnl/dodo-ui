@@ -3,25 +3,15 @@ export interface Tab {
     disabled?: boolean;
     slot?: string;
 }
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<{
-    tabs: {
-        type: import("vue").PropType<Tab[]>;
-        required: true;
-    };
-    tabIndex: {
-        type: import("vue").PropType<number>;
-    };
-}, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
+    tabs: Tab[];
+    tabIndex?: number | undefined;
+}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:tabIndex": (i: number) => void;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    tabs: {
-        type: import("vue").PropType<Tab[]>;
-        required: true;
-    };
-    tabIndex: {
-        type: import("vue").PropType<number>;
-    };
-}>> & {
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
+    tabs: Tab[];
+    tabIndex?: number | undefined;
+}>>> & {
     "onUpdate:tabIndex"?: ((i: number) => any) | undefined;
 }, {}, {}>, Partial<Record<string, (_: {
     tab: Tab;
@@ -35,5 +25,14 @@ export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
         $slots: S;
+    };
+};
+type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
+type __VLS_TypePropsToOption<T> = {
+    [K in keyof T]-?: {} extends Pick<T, K> ? {
+        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
+    } : {
+        type: import('vue').PropType<T[K]>;
+        required: true;
     };
 };

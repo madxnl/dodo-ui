@@ -1,4 +1,4 @@
-import { Ref } from 'vue';
+import type { Ref } from 'vue';
 type ValidatorReturn = string | null | undefined | boolean;
 type CustomValidator<V> = (value: V, fieldLabel: string) => Promise<ValidatorReturn> | ValidatorReturn;
 export declare class ValidationError extends Error {
@@ -20,7 +20,7 @@ export type ValidateRules<T extends FormData> = {
 };
 export declare function useValidation<T extends FormData>(initialRules: ValidateRules<T>): {
     errors: Partial<Record<keyof T, string>>;
-    rules: import("vue").UnwrapNestedRefs<ValidateRules<T>>;
+    rules: ValidateRules<T>;
     validate: (...fields: (keyof T)[]) => Promise<boolean>;
     clearErrors: () => void;
 };

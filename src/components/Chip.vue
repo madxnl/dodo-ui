@@ -7,7 +7,8 @@
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { ColorProp, useTheme } from '..'
+import type { ColorProp } from '..'
+import { useTheme } from '..'
 
 const props = defineProps<{
   color?: ColorProp

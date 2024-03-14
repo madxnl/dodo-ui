@@ -5,7 +5,7 @@
       hoverable && 'dodo-card--hoverable',
       active && 'dodo-card--active',
       theme.padding(padding),
-      theme.gap(gap),
+      theme.gap(gap)
     ]"
   >
     <slot />
@@ -13,7 +13,8 @@
 </template>
 
 <script lang="ts" setup>
-import { GapSize, useTheme } from '..'
+import type { GapSize } from '..'
+import { useTheme } from '..'
 
 defineProps<{
   hoverable?: boolean

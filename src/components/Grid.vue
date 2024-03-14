@@ -5,14 +5,15 @@
       $style[`col-${columnSize}`],
       autoFill && $style.autoFill,
       theme.gap(gap),
-      theme.padding(padding),
+      theme.padding(padding)
     ]"
   >
     <slot />
   </div>
 </template>
 <script lang="ts" setup>
-import { SpacingValue, useTheme } from '../composables'
+import type { SpacingValue } from '../composables'
+import { useTheme } from '../composables'
 
 type ColumnSize = 'xs' | 's' | 'm' | 'l'
 

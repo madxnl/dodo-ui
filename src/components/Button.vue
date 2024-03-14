@@ -10,7 +10,7 @@
       small && $style.small,
       square && $style.square,
       active && $style.active,
-      rounded && $style.rounded,
+      rounded && $style.rounded
     ]"
     v-bind="{ ...attrs, onClick }"
   >
@@ -20,7 +20,8 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
-import { ColorProp, Spinner, useTheme } from '..'
+import type { ColorProp } from '..'
+import { Spinner, useTheme } from '..'
 
 const props = defineProps<{
   /** Set button color
@@ -80,7 +81,7 @@ async function onClick(event: Event) {
 }
 
 defineOptions({
-  inheritAttrs: false,
+  inheritAttrs: false
 })
 </script>
 <style module>

@@ -7,7 +7,7 @@
           $style.NavBarItem,
           (active || link?.isActive.value) && $style.active,
           important && $style.important,
-          collapsed && $style.collapsed,
+          collapsed && $style.collapsed
         ]"
         @click="onClick"
       >
@@ -27,8 +27,10 @@
   </Tooltip>
 </template>
 <script lang="ts" setup>
-import { computed, ComputedRef, inject, onMounted, ref, useSlots } from 'vue'
-import { Dropdown, Icon, IconName, Tooltip, useTheme } from '..'
+import type { ComputedRef } from 'vue'
+import { computed, inject, onMounted, ref, useSlots } from 'vue'
+import type { IconName } from '..'
+import { Dropdown, Icon, Tooltip, useTheme } from '..'
 import { navBarServiceKey } from '../composables'
 
 const props = defineProps<{
@@ -80,7 +82,7 @@ async function onClick(_: Event) {
 .NavBarItem {
   padding: var(--dodo-gap-1) var(--dodo-gap-4);
   opacity: 0.7;
-  transition: all .1s;
+  transition: all 0.1s;
   cursor: pointer;
   display: flex;
   gap: var(--dodo-gap-2);
@@ -92,7 +94,9 @@ async function onClick(_: Event) {
 .active::before {
   content: '';
   position: absolute;
-  top: 4px; left: -2px; bottom: 4px;
+  top: 4px;
+  left: -2px;
+  bottom: 4px;
   width: 4px;
   border-radius: 99px;
   display: block;

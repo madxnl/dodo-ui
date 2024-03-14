@@ -1,6 +1,6 @@
-import { inject, InjectionKey, Plugin, ref } from 'vue'
-import { Router } from 'vue-router'
-
+import type { InjectionKey, Plugin } from 'vue'
+import { inject, ref } from 'vue'
+import type { Router } from 'vue-router'
 /*
   This plugin listens for any unhandled errors
 

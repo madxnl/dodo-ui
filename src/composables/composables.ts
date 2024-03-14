@@ -1,4 +1,5 @@
-import { computed, InjectionKey, onBeforeUnmount, onMounted, Ref, ref, watch, watchEffect } from 'vue'
+import type { InjectionKey, Ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
 
 export const navBarServiceKey: InjectionKey<{
   collapsed: Ref<boolean | null>
@@ -55,7 +56,7 @@ export function useScreenSize() {
   return {
     screenSmall,
     screenMedium,
-    screenLarge,
+    screenLarge
   }
 }
 

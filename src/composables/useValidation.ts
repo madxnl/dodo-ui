@@ -1,11 +1,15 @@
-import { Ref, reactive, watch } from 'vue'
+import type { Ref } from 'vue'
+import { reactive, watch } from 'vue'
 
 type ValidatorReturn = string | null | undefined | boolean
 type CustomValidator<V> = (value: V, fieldLabel: string) => Promise<ValidatorReturn> | ValidatorReturn
 
 export class ValidationError extends Error {
   name = 'ValidationError'
-  public constructor(public field: string, message?: string) {
+  public constructor(
+    public field: string,
+    message?: string
+  ) {
     super(message)
   }
 }
@@ -25,7 +29,7 @@ export type ValidateRules<T extends FormData> = {
 }
 
 export function useValidation<T extends FormData>(initialRules: ValidateRules<T>) {
-  const rules = reactive(initialRules)
+  const rules = reactive(initialRules) as ValidateRules<T>
   const errors: Partial<Record<keyof T, string>> = reactive({})
 
   // Validate previously invalid fields on change
@@ -36,7 +40,7 @@ export function useValidation<T extends FormData>(initialRules: ValidateRules<T>
     const rule = rules[field]
     if (rule) {
       const value = rule.value
-      const message = await getFieldMessage(field, value)
+      const message = await getFieldMessage(field, value as T[keyof T])
       if (message) {
         errors[field] = String(message)
         return false

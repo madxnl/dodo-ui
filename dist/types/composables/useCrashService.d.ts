@@ -1,5 +1,5 @@
-import { InjectionKey, Plugin } from 'vue';
-import { Router } from 'vue-router';
+import type { InjectionKey, Plugin } from 'vue';
+import type { Router } from 'vue-router';
 export type CrashService = ReturnType<typeof createCrashService>;
 export type CrashServiceOptions = {
     router: Router | null;

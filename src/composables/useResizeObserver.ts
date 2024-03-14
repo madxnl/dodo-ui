@@ -1,4 +1,5 @@
-import { Ref, onBeforeUnmount, watchEffect } from 'vue'
+import type { Ref } from 'vue'
+import { onBeforeUnmount, watchEffect } from 'vue'
 
 export function useResizeObserver(ref: Ref<HTMLElement | undefined>, onResize: (el: HTMLElement) => void) {
   if (typeof ResizeObserver === 'undefined') return {}

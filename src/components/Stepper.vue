@@ -117,9 +117,9 @@ watch(currentIndex, () => {
 </script>
 
 <style module>
-.stepper {
-  /* min-width: 400px; */
-}
+/* .stepper { */
+/* min-width: 400px; */
+/* } */
 .line {
   flex: 1 1 0;
   width: 2px;

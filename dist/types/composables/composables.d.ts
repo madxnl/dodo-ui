@@ -1,4 +1,4 @@
-import { InjectionKey, Ref } from 'vue';
+import type { InjectionKey, Ref } from 'vue';
 export declare const navBarServiceKey: InjectionKey<{
     collapsed: Ref<boolean | null>;
     renderMobile: Ref<boolean>;

@@ -1,4 +1,5 @@
-import { InjectionKey, inject, provide } from 'vue'
+import type { InjectionKey } from 'vue'
+import { inject, provide } from 'vue'
 
 export function useServiceFactory<T>(factory: () => T) {
   const key: InjectionKey<T> = Symbol('ServiceKey')

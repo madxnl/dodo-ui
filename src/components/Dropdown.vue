@@ -22,7 +22,8 @@
 <script lang="ts" setup>
 import { nextTick, onBeforeUnmount, provide, ref, watch } from 'vue'
 import { Column } from '.'
-import { GapSize, dropdownServiceKey } from '../composables'
+import type { GapSize } from '..'
+import { dropdownServiceKey } from '../composables'
 
 const props = defineProps<{
   /** Use v-model to modify dropdown state from outside */

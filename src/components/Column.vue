@@ -8,14 +8,16 @@
       theme.align(align),
       theme.padding(padding),
       theme.wrap(wrap),
-      theme.grow(grow),
+      theme.grow(grow)
     ]"
   >
     <slot />
   </component>
 </template>
 <script lang="ts" setup>
-import { AlignType, JustifyType, SpacingValue, useTheme } from '../composables'
+import type { AlignType, JustifyType, SpacingValue } from '..'
+import { useTheme } from '../composables'
+import '../dodo.scss'
 
 defineProps<{
   /**

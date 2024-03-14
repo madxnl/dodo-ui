@@ -5,7 +5,8 @@
 </template>
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { SpacingValue, useTheme } from '../composables'
+import type { SpacingValue } from '..'
+import { useTheme } from '../composables'
 
 const props = defineProps<{
   /**

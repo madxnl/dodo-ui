@@ -6,7 +6,7 @@
       $style.icon,
       'material-symbols-' + iconStyle.toLowerCase(),
       props.size && $style[props.size],
-      props.fill && $style.fill,
+      props.fill && $style.fill
     ]"
   >
     {{ name }}
@@ -14,7 +14,8 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { ColorProp, IconName, useTheme } from '..'
+import type { ColorProp, IconName } from '..'
+import { useTheme } from '..'
 import { useWebFont } from '../composables'
 
 const props = defineProps<{
@@ -44,7 +45,7 @@ const el = ref<HTMLElement>()
 const webfont = useWebFont({
   weight: iconWeight,
   name: `Material Symbols ${iconStyle}`,
-  href: `https://fonts.googleapis.com/css2?family=Material+Symbols+${iconStyle}:wght,FILL@${iconWeight},0..1`,
+  href: `https://fonts.googleapis.com/css2?family=Material+Symbols+${iconStyle}:wght,FILL@${iconWeight},0..1`
 })
 </script>
 
