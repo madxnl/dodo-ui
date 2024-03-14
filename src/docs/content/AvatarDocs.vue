@@ -12,13 +12,12 @@
 </template>
 <script setup lang="ts">
 import { Avatar } from '@/components'
+import image from '../bird.svg'
 import { ComponentDocsSection } from '../components'
 
 const exampleSrc = `<Avatar text="John Doe" round />
 <Avatar text="A A" />
 <Avatar text="Jane Smith" :image="image" />`
-
-const image = 'https://placekitten.com/64'
 
 const props = [
   {

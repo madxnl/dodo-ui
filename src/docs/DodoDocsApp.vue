@@ -1,13 +1,14 @@
 <template>
-  <DocumentationPage :chapters="chapters" />
+  <DocumentationPage :chapters="chapters.slice()" />
   <CrashDialog />
 </template>
 <script setup lang="ts">
 import type { DefineComponent } from 'vue'
 import { CrashDialog } from '..'
 import DocumentationPage from './DocumentationPage.vue'
-// import Installation from './guide/Installation.vue'
-// import Text from './guide/TextGuide.vue'
+import Color from './content/ColorGuide.vue'
+import Installation from './content/InstallationGuide.vue'
+import Text from './content/TextGuide.vue'
 
 const basename = (path: string) => path.split('/').slice(-1)[0].split('.')[0]
 
@@ -18,7 +19,7 @@ const componentPages = Object.entries(componentDocs).map(([path, module]) => {
   return { title, example }
 })
 
-const composableDocs = import.meta.glob('./composables/*Docs.vue', { eager: true })
+const composableDocs = import.meta.glob('./content/use*.docs.vue', { eager: true })
 const composablePages = Object.entries(composableDocs).map(([path, module]) => {
   const title = basename(path).replace('Docs', '')
   const example = (module as any).default as DefineComponent
@@ -29,9 +30,9 @@ const chapters = [
   {
     title: 'Guide',
     pages: [
-      // { title: 'Installation', example: Installation as DefineComponent },
-      // { title: 'Text', example: Text as DefineComponent },
-      // { title: 'Color', example: Color as DefineComponent }
+      { title: 'Installation', example: Installation as DefineComponent },
+      { title: 'Text', example: Text as DefineComponent },
+      { title: 'Color', example: Color as DefineComponent }
     ]
   },
   {

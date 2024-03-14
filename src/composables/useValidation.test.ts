@@ -15,7 +15,7 @@ test('validateField', async () => {
   const { errors, validate } = useValidation({
     name: { value: name, minLen: 3, maxLen: 10 },
     email: { value: email, required: true, isEmail: true },
-    count: { value: count, required: true, validators: [customMinCount(2)] },
+    count: { value: count, required: true, validators: [customMinCount(2)] }
   })
 
   expect(errors).toEqual({})
@@ -23,9 +23,9 @@ test('validateField', async () => {
   expect(await validate('name')).toBe(false)
   expect(errors).toEqual({ name: 'Name must be at least 3 characters' })
   expect(await validate('email')).toBe(false)
-  expect(errors).toContain({ email: 'Email is required' })
+  expect(errors.email).toEqual('Email is required')
   expect(await validate('count')).toBe(false)
-  expect(errors).toContain({ count: 'Count must be at least 2' })
+  expect(errors.count).toEqual('Count must be at least 2')
 
   Object.assign(data, { name: 'John', email: 'john', count: 2 })
   await validate('name')
@@ -39,7 +39,7 @@ test('validate', async () => {
 
   const { errors, validate } = useValidation({
     name: { value: name, minLen: 3, maxLen: 10 },
-    email: { value: email, required: true, isEmail: true },
+    email: { value: email, required: true, isEmail: true }
   })
 
   expect(await validate()).toBe(false)
@@ -56,7 +56,7 @@ test('Watches value changes', async () => {
 
   const { errors, validate } = useValidation({
     name: { value: name, minLen: 3, maxLen: 10 },
-    email: { value: email, required: true, isEmail: true },
+    email: { value: email, required: true, isEmail: true }
   })
 
   expect(await validate()).toBe(false)
@@ -73,7 +73,7 @@ test('Watches config changes', async () => {
 
   const { errors, validate, rules } = useValidation({
     name: { value: name, minLen: 3, maxLen: 10 },
-    email: { value: email, required: true, isEmail: true },
+    email: { value: email, required: true, isEmail: true }
   })
 
   expect(await validate()).toBe(false)

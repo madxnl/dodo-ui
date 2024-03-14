@@ -83,6 +83,10 @@ export function useWebFont(opts: { weight: string; name: string; href: string })
       link.setAttribute('id', id)
       document.head.appendChild(link)
     }
+    if (!document.fonts) {
+      isReady.value = true
+      return
+    }
     await document.fonts.ready
     isReady.value = document.fonts.check(`${opts.weight} 1em ${opts.name}`)
   })
