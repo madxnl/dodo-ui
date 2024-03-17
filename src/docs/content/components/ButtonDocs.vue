@@ -19,7 +19,7 @@
 </template>
 <script setup lang="ts">
 import { Button, Icon, Row } from '@/components'
-import { ComponentDocsSection } from '../components'
+import { ComponentDocsSection } from '@/docs/components'
 
 const exampleSrc = `<Row wrap>
   <Button color="primary">Primary Button</Button>

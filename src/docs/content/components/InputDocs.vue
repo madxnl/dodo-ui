@@ -10,7 +10,7 @@
 </template>
 <script setup lang="ts">
 import { Input } from '@/components'
-import { ComponentDocsSection } from '../components'
+import { ComponentDocsSection } from '@/docs/components'
 
 const exampleSrc = `<Input placeholder="Enter your name" />`
 

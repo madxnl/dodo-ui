@@ -14,7 +14,7 @@
 </template>
 <script setup lang="ts">
 import { Chip, Row } from '@/components'
-import { ComponentDocsSection } from '../components'
+import { ComponentDocsSection } from '@/docs/components'
 
 const exampleSrc = `<Row>
   <Chip>Default Chip</Chip>

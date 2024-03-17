@@ -33,8 +33,8 @@
   <DocsExample :options="{ template }" />
 </template>
 <script setup lang="ts">
-import { DocsExample } from '../components'
-import BaseTable from '../components/BaseTable.vue'
+import { DocsExample } from '@/docs/components'
+import BaseTable from '@/docs/components/BaseTable.vue'
 
 const template = `
 <Column gap="1" :class="useBaseFont().fontClass">

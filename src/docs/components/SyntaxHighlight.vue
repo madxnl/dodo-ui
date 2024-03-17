@@ -1,39 +1,38 @@
 <template>
-  <pre :class="[$style.SyntaxHighlight, `language-${lang}`]" v-html="html" />
+  <pre ref="el" :class="[$style.SyntaxHighlight, `language-${lang}`]" />
 </template>
 <script setup lang="ts">
 import prism from 'prismjs'
 import 'prismjs/components/prism-typescript'
 import 'prismjs/themes/prism-solarizedlight.min.css'
-import { computed } from 'vue'
+import { onMounted, ref } from 'vue'
 const { highlight, languages } = prism
 
 const props = defineProps<{
   code: string
   lang: 'html' | 'ts'
-  // editable: boolean
 }>()
 
-// const emit = defineEmits<{
-// (e: 'update:code', code: string): void
-// }>()
+const el = ref<HTMLElement>()
 
-const html = computed(() => {
-  return highlight(props.code, languages[props.lang], props.lang)
+onMounted(() => {
+  const result = highlight(props.code, languages[props.lang], props.lang)
+  el.value!.innerHTML = result
 })
-
-// function onInput(e: Event) {
-//   const code = (e.target as HTMLElement).innerText
-//   emit('update:code', code)
-// }
 </script>
 <style module>
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
 pre.SyntaxHighlight {
-  padding: 0;
+  padding: 8px 16px;
+  border-radius: 4px !important;
   margin: 0;
-  background: transparent;
-  font-size: 15px;
+  font-size: 16px;
   border-radius: 0;
   white-space: pre-wrap;
+  font-family: 'Inconsolata', monospace;
+  background: transparent;
+  border: 1px solid hsl(0, 0%, 88%);
+  background: hsl(0, 0%, 92%);
 }
 </style>

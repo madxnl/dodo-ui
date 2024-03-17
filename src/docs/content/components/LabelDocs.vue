@@ -15,7 +15,7 @@
 </template>
 <script setup lang="ts">
 import { Label, TextInput } from '@/components'
-import { ComponentDocsSection } from '../components'
+import { ComponentDocsSection } from '@/docs/components'
 
 const exampleSrc = `<Label text="Name" for="name">
   <TextInput id="name" />

@@ -12,7 +12,8 @@
   </p>
 </template>
 <script setup lang="ts">
-import { Row, useTheme } from '../..'
+import { Row } from '@/components'
+import { useTheme } from '@/composables'
 
 const colors = ['info', 'success', 'warn', 'danger', 'background', 'foreground', 'primary', 'secondary'] as const
 

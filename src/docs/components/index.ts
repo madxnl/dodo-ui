@@ -1,5 +1,6 @@
 export { default as ComponentDocsSection } from './ComponentDocsSection.vue'
 export { default as DocsExample } from './DocsExample.vue'
+export { default as LiveExample } from './LiveExample.vue'
 export { default as MenuNavRenderer } from './MenuNavRenderer.vue'
 export { default as SidebarLayout } from './SidebarLayout.vue'
 export { default as SyntaxHighlight } from './SyntaxHighlight.vue'

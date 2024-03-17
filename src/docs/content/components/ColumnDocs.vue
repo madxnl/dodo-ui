@@ -24,7 +24,7 @@
 </template>
 <script setup lang="ts">
 import { Button, Column, Row } from '@/components'
-import { ComponentDocsSection } from '../components'
+import { ComponentDocsSection } from '@/docs/components'
 
 const exampleSrc = `<Column justify="between" gap="2" padding="4" style="background: lightblue">
   <Button>Button 1</Button>

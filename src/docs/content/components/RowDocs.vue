@@ -23,7 +23,7 @@
 </template>
 <script setup lang="ts">
 import { Button, Column, Row } from '@/components'
-import { ComponentDocsSection } from '../components'
+import { ComponentDocsSection } from '@/docs/components'
 
 const exampleSrc = `<Row justify="between" gap="2" padding="2" style="background: pink">
   <Button>Button 4</Button>

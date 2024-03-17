@@ -14,7 +14,7 @@
 </template>
 <script setup lang="ts">
 import { Button, Tooltip } from '@/components'
-import { ComponentDocsSection } from '../components'
+import { ComponentDocsSection } from '@/docs/components'
 
 const exampleSrc = `<div>
   <Tooltip text="Tooltip text.">

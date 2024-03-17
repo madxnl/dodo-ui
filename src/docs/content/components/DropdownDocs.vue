@@ -18,7 +18,7 @@
 </template>
 <script setup lang="ts">
 import { Button, Dropdown } from '@/components'
-import { ComponentDocsSection } from '../components'
+import { ComponentDocsSection } from '@/docs/components'
 
 const exampleSrc = `<Dropdown>
   <template #default="{ isActive }">

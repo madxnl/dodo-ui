@@ -2,36 +2,18 @@
   <Column gap="4" style="min-width: 0">
     <Column gap="0">
       <div :class="$style.bar">
-        <div ref="tabsDiv" :class="[$style.tabs]">
-          <div
-            v-for="(tab, i) in visibleTabs"
-            :key="keyFor(tab)"
-            :class="[$style.tab, current === keyFor(tab) && $style.active, tab.disabled && $style.disabled]"
-            @click="current = keyFor(tab)"
-          >
-            <h5 :class="$style.tabName">
-              <slot name="tab-title" :i="i" :tab="tab">
-                {{ tab.name }}
-              </slot>
-            </h5>
-          </div>
+        <div
+          v-for="(tab, i) in tabs"
+          :key="keyFor(tab)"
+          :class="[$style.tab, current === keyFor(tab) && $style.active, tab.disabled && $style.disabled]"
+          @click="current = keyFor(tab)"
+        >
+          <h5 :class="$style.tabName">
+            <slot name="tab-title" :i="i" :tab="tab">
+              {{ tab.name }}
+            </slot>
+          </h5>
         </div>
-        <Dropdown>
-          <template #default>
-            <Button v-if="overflowTabs.length > 0" :class="[$style.arrow]" variant="text" small>
-              <Icon name="more_horiz" size="l" />
-            </Button>
-          </template>
-          <template #dropdown>
-            <template v-for="(tab, i) in overflowTabs" :key="keyFor(tab)">
-              <p @click="current = keyFor(tab)">
-                <slot name="tab-title" :i="i" :tab="tab">
-                  {{ tab.name }}
-                </slot>
-              </p>
-            </template>
-          </template>
-        </Dropdown>
       </div>
       <hr />
     </Column>
@@ -42,8 +24,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
-import { Button, Column, Dropdown, Icon } from '.'
+import { computed, ref, watch, watchEffect } from 'vue'
+import { Column } from '.'
 
 export interface Tab {
   name: string
@@ -60,35 +42,14 @@ const emit = defineEmits<{
   (e: 'update:tabIndex', i: number): void
 }>()
 
-const tabsDiv = ref<HTMLElement>()
 const current = ref('')
 const currentTab = computed(() => props.tabs.find((t) => keyFor(t) === current.value))
-const overflowStartIndex = ref(99)
-const visibleTabs = computed(() => props.tabs.slice(0, overflowStartIndex.value))
-const overflowTabs = computed(() => props.tabs.slice(overflowStartIndex.value))
-const interval = ref<ReturnType<typeof setTimeout>>()
 
 watchEffect(() => {
   if (!currentTab.value && props.tabs.length) {
     current.value = keyFor(props.tabs[0])
   }
 })
-
-onMounted(() => {
-  updateOverflow()
-  interval.value = setInterval(updateOverflow, 100)
-})
-
-onBeforeUnmount(() => {
-  clearInterval(interval.value)
-})
-
-function updateOverflow() {
-  const widthPerTab = 60
-  const availableWidth = tabsDiv.value?.clientWidth || 1000
-  const shownTabsNum = Math.max(1, Math.floor(availableWidth / widthPerTab))
-  overflowStartIndex.value = shownTabsNum
-}
 
 watch(
   () => props.tabIndex,
@@ -117,15 +78,9 @@ function keyFor(tab: Tab) {
 .bar {
   display: flex;
   user-select: none;
-}
-.tabs {
-  display: flex;
-  flex-grow: 1;
-  min-width: 0;
+  overflow-x: auto;
 }
 .tab {
-  overflow: hidden;
-  min-width: 0;
   cursor: pointer;
   transition: all var(--dodo-transition-duration, 0.15s);
   white-space: nowrap;

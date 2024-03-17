@@ -37,8 +37,8 @@
 </template>
 <script setup lang="ts">
 import { Datatable } from '@/components'
+import { ComponentDocsSection } from '@/docs/components'
 import { ref } from 'vue'
-import { ComponentDocsSection } from '../components'
 
 const exampleSrc = `<Datatable
   v-model:selection="selection"

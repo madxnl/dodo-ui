@@ -5,14 +5,14 @@
 <script setup lang="ts">
 import type { DefineComponent } from 'vue'
 import { CrashDialog } from '..'
-import DocumentationPage from './DocumentationPage.vue'
+import DocumentationPage from './components/DocumentationPage.vue'
 import Color from './content/ColorGuide.vue'
 import Installation from './content/InstallationGuide.vue'
 import Text from './content/TextGuide.vue'
 
 const basename = (path: string) => path.split('/').slice(-1)[0].split('.')[0]
 
-const componentDocs = import.meta.glob('./content/*Docs.vue', { eager: true })
+const componentDocs = import.meta.glob('./content/components/*Docs.vue', { eager: true })
 const componentPages = Object.entries(componentDocs).map(([path, module]) => {
   const title = basename(path).replace('Docs', '')
   const example = (module as any).default as DefineComponent
@@ -61,4 +61,4 @@ body {
   display: grid;
 }
 </style>
-../../dist/types
+./content/components/ColorGuide.vue./content/components/InstallationGuide.vue./content/components/TextGuide.vue

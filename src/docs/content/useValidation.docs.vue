@@ -14,7 +14,7 @@
 </template>
 <script setup lang="ts">
 import { Column } from '@/components'
-import { SyntaxHighlight } from '../components'
+import { SyntaxHighlight } from '@/docs/components'
 
 const example1 = `const rules = reactive({
   name: { value: ref(''), required: true },

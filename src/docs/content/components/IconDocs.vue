@@ -26,7 +26,7 @@
 </template>
 <script setup lang="ts">
 import { Icon, Row } from '@/components'
-import { ComponentDocsSection } from '../components'
+import { ComponentDocsSection } from '@/docs/components'
 
 const exampleSrc = `<Row wrap>
   <Icon name="favorite" color="info" size="s" fill />
