@@ -7,7 +7,7 @@ defineProps<{
   placeholder?: string
   disabled?: boolean
   maxlength?: number
-  type?: 'text' | 'email' | 'password'
+  type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'number'
   name?: string
   autofocus?: boolean
   label?: string
