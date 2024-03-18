@@ -1,7 +1,13 @@
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
-import { generateScopedName } from './old/vite.config'
+
+export function generateScopedName(name: string, filename: string) {
+  name = name.toLowerCase()
+  const componentName = filename.split('.vue')[0].split('/').slice(-1)[0].toLowerCase()
+  const combined = name === componentName ? name : `${componentName}-${name}`
+  return `dodo-${combined}`
+}
 
 // See:
 // https://vitejs.dev/guide/build.html#library-mode
