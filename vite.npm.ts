@@ -32,7 +32,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, '.')
+      '@': resolve(__dirname, './src')
     }
   },
   css: { modules: { generateScopedName } }

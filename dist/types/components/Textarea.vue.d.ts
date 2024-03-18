@@ -9,12 +9,6 @@ declare const _default: import("vue").DefineComponent<{
     disabled: {
         type: import("vue").PropType<boolean>;
     };
-    maxlength: {
-        type: import("vue").PropType<number>;
-    };
-    type: {
-        type: import("vue").PropType<"number" | "search" | "text" | "email" | "tel" | "password" | "url">;
-    };
     name: {
         type: import("vue").PropType<string>;
     };
@@ -33,8 +27,11 @@ declare const _default: import("vue").DefineComponent<{
     optional: {
         type: import("vue").PropType<boolean>;
     };
-    rows: {
-        type: import("vue").PropType<never>;
+    minRows: {
+        type: import("vue").PropType<number>;
+    };
+    maxRows: {
+        type: import("vue").PropType<number>;
     };
     autocomplete: {
         type: import("vue").PropType<string>;
@@ -52,12 +49,6 @@ declare const _default: import("vue").DefineComponent<{
     disabled: {
         type: import("vue").PropType<boolean>;
     };
-    maxlength: {
-        type: import("vue").PropType<number>;
-    };
-    type: {
-        type: import("vue").PropType<"number" | "search" | "text" | "email" | "tel" | "password" | "url">;
-    };
     name: {
         type: import("vue").PropType<string>;
     };
@@ -76,8 +67,11 @@ declare const _default: import("vue").DefineComponent<{
     optional: {
         type: import("vue").PropType<boolean>;
     };
-    rows: {
-        type: import("vue").PropType<never>;
+    minRows: {
+        type: import("vue").PropType<number>;
+    };
+    maxRows: {
+        type: import("vue").PropType<number>;
     };
     autocomplete: {
         type: import("vue").PropType<string>;
