@@ -1,79 +1,53 @@
-<template>
-  <Field :class="[$style.TextInput]" :disabled="disabled" @click.self="onClick">
-    <!-- @slot Shown before value -->
-    <template #before><slot name="before" /></template>
-    <component
-      :is="rows && rows > 1 ? 'textarea' : 'input'"
-      :id="id"
-      ref="el"
-      :value="modelValue"
-      :class="$style.input"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :rows="rows"
-      :maxlength="maxlength"
-      :type="type"
-      :name="name"
-      :tab-index="tabIndex"
-      :autofocus="autofocus"
-      @input="onChange"
-    />
-    <!-- @slot Shown after value -->
-    <template #after><slot name="after" /></template>
-  </Field>
-</template>
 <script lang="ts" setup>
-import { ref, watchEffect } from 'vue'
-import { Field } from '.'
-import { useTheme } from '../composables'
+import FormItem from './FormItem.vue'
 
-const props = defineProps<{
-  id?: string | null
+defineProps<{
   modelValue?: string | null
+  id?: string | null
   placeholder?: string
   disabled?: boolean
-  rows?: number
   maxlength?: number
-  type?: 'search'
-  tabIndex?: number
+  type?: 'text' | 'email' | 'password'
   name?: string
   autofocus?: boolean
+  label?: string
+  error?: string
+  description?: string
+  optional?: boolean
+  rows?: never
+  autocomplete?: string
 }>()
 
-const el = ref<HTMLInputElement>()
-
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
-}>()
-
-function onClick() {
-  el.value!.focus()
-}
-
-function onChange() {
-  emit('update:modelValue', el.value!.value)
-}
-
-watchEffect(() => {
-  if (props.autofocus && el.value) {
-    el.value.focus()
-  }
-})
-
-useTheme()
+const model = defineModel<string | null>()
 </script>
+
+<template>
+  <FormItem
+    v-slot="{ entryId }"
+    :label="label"
+    :error="error"
+    :description="description"
+    :class="error && $style.error"
+    :optional="optional"
+    :for="id ?? undefined"
+  >
+    <input
+      :id="id ?? entryId"
+      v-model="model"
+      :class="['dodo-formfield', $style.input]"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :maxlength="maxlength"
+      :type="type || 'text'"
+      :name="name"
+      :autofocus="autofocus"
+      :autocomplete="autocomplete"
+    />
+  </FormItem>
+</template>
+
 <style module>
-.TextInput input,
-.TextInput textarea {
-  background: transparent;
-  font: inherit;
-  border: none;
-  outline: none;
-  padding: 0;
-  flex-grow: 1;
-  min-width: 0;
-}
-.TextInput:focus-within {
-  border-color: var(--dodo-color-info);
+.error .input {
+  border-color: var(--dodo-color-danger);
 }
 </style>

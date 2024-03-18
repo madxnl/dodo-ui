@@ -16,7 +16,7 @@
 </template>
 <script setup lang="ts">
 import type { Component, ComponentOptions } from 'vue'
-import { defineComponent, onErrorCaptured, ref, shallowRef, watchEffect } from 'vue'
+import { defineComponent, onErrorCaptured, ref, shallowRef, watch } from 'vue'
 import SyntaxHighlight from './SyntaxHighlight.vue'
 
 const props = defineProps<{
@@ -24,7 +24,7 @@ const props = defineProps<{
   components: Record<string, Component>
   context?: any
   setup?: string
-  exampleSrc?: string
+  hiddenSetup?: string
   template?: string
 }>()
 
@@ -33,23 +33,32 @@ const setup = ref(props.setup)
 const component = shallowRef<Component>()
 const error = ref('')
 
-watchEffect(() => {
+watch(() => [props.template, props.setup], recompile, { immediate: true })
+
+function recompile() {
   error.value = ''
   Object.defineProperties(window, { ref: { value: ref } })
-  const setupFn: Function = window.eval(`() => {${setup.value}}`) // eslint-disable-line no-eval
   component.value = defineComponent({
     components: props.components,
     setup() {
+      const results = props.context || {}
       try {
-        const result = { ...(props.context || {}), ...(setupFn() || {}) }
-        return result
+        if (setup.value) {
+          const setupResults = window.eval(`() => {${setup.value}}`)() // eslint-disable-line no-eval
+          Object.assign(results, setupResults)
+        }
+        if (props.hiddenSetup) {
+          const setupResults = window.eval(`() => {${props.hiddenSetup}}`)() // eslint-disable-line no-eval
+          Object.assign(results, setupResults)
+        }
       } catch (e) {
         error.value = '' + e
       }
+      return results
     },
     template: template.value
   })
-})
+}
 
 onErrorCaptured((err) => {
   error.value = '' + err

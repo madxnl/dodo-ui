@@ -18,7 +18,7 @@
     <div :class="$style.right">
       <template v-for="chapter in chapters">
         <Column v-for="page in chapter.pages" :id="page.title" :key="page.title" :class="$style.chapter">
-          <h2>{{ page.title }}</h2>
+          <h1>{{ page.title }}</h1>
           <br />
           <component :is="page.example" v-if="page.example" />
         </Column>
@@ -55,9 +55,16 @@ function isActive(title: string) {
 const activeLink = ref('')
 const instance = getCurrentInstance()
 
-onMounted(onScroll)
+onMounted(() => {
+  const el = document.getElementById(location.hash.slice(1))
+  el?.scrollIntoView()
 
-function onScroll() {
+  keepHashInSync()
+})
+
+function keepHashInSync() {
+  if (!instance?.isMounted) return
+
   let visibleMax = -9999
   for (const chapter of props.chapters) {
     for (const page of chapter.pages) {
@@ -79,7 +86,7 @@ function onScroll() {
     history.replaceState({}, '', hash || ' ')
   }
 
-  if (instance?.isMounted) requestAnimationFrame(onScroll)
+  setTimeout(keepHashInSync, 100)
 }
 </script>
 

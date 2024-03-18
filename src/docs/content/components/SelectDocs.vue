@@ -1,84 +1,28 @@
 <template>
-  <ComponentDocsSection :example-src="exampleSrc" :props="props">
-    <template #description>
-      <p>A select component that allows users to choose options from a dropdown or a set of buttons.</p>
-    </template>
-    <template #example>
-      <Select
-        v-model="selectedOption"
-        :options="[
-          { value: 'option1', label: 'Option 1' },
-          { value: 'option2', label: 'Option 2' },
-          { value: 'option3', label: 'Option 3' }
-        ]"
-      />
-      <Select
-        v-model="selectedMultiple"
-        multiple
-        :options="[
-          { value: 'option1', label: 'Option 1' },
-          { value: 'option2', label: 'Option 2' },
-          { value: 'option3', label: 'Option 3' }
-        ]"
-      />
-    </template>
-  </ComponentDocsSection>
+  <p>The SimpleSelect component is used to capture text input from the user.</p>
+  <LiveExample
+    template='<SimpleSelect v-model="value" placeholder="Enter value" :options="options" />'
+    :context="{ value, options }"
+    :components="{ SimpleSelect }"
+  />
+  <br />
+  <h4>Label</h4>
+  <p>SimpleSelect also supports all the same props as FormItem, including label and error.</p>
+  <LiveExample
+    template='<SimpleSelect v-model="value" label="Label" error="Some error" :options="options" />'
+    :context="{ value, options }"
+    :components="{ SimpleSelect }"
+  />
 </template>
 <script setup lang="ts">
-import { Select } from '@/components'
-import { ComponentDocsSection } from '@/docs/components'
+import { SimpleSelect } from '@/components'
+import { LiveExample } from '@/docs/components'
 import { ref } from 'vue'
 
-const exampleSrc = `
-<Select
-  v-model="selectedOption"
-  :options="[
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' },
-  ]"
-/>
-<Select
-  v-model="selectedMultiple"
-  multiple
-  :options="[
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' },
-  ]"
-/>`
-
-const props = [
-  {
-    code: 'options: Option[]',
-    description: 'Array of available options'
-  },
-  {
-    code: 'modelValue?: unknown',
-    description: 'v-model binding'
-  },
-  {
-    code: 'disabled?: boolean',
-    description: 'Disables the select component'
-  },
-  {
-    code: 'placeholder?: string',
-    description: 'Set placeholder text'
-  },
-  {
-    code: 'multiple?: boolean',
-    description: 'Allow multiple select'
-  },
-  {
-    code: "variant?: 'buttons'",
-    description: 'Display options as buttons'
-  },
-  {
-    code: "size?: 's'",
-    description: 'Set the size of the select component'
-  }
+const value = ref('1')
+const options = [
+  { value: '1', label: 'Option 1' },
+  { value: '2', label: 'Option 2' },
+  { value: '3', label: 'Option 3' }
 ]
-
-const selectedOption = ref('option1')
-const selectedMultiple = ref(['option1', 'option2'])
 </script>
