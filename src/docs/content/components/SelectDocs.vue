@@ -6,10 +6,10 @@
     :components="{ SimpleSelect }"
   />
   <br />
-  <h4>Label</h4>
-  <p>SimpleSelect also supports all the same props as FormItem, including label and error.</p>
+  <h4>Disabled</h4>
+  <p>SimpleSelect can be disabled using the disabled prop.</p>
   <LiveExample
-    template='<SimpleSelect v-model="value" label="Label" error="Some error" :options="options" />'
+    template='<SimpleSelect v-model="value" :options="options" disabled />'
     :context="{ value, options }"
     :components="{ SimpleSelect }"
   />
