@@ -3,19 +3,13 @@
   <LiveExample
     template='<SimpleSelect v-model="value" placeholder="Enter value" :options="options" />'
     :context="{ value, options }"
-    :components="{ SimpleSelect }"
   />
   <br />
   <h4>Disabled</h4>
   <p>SimpleSelect can be disabled using the disabled prop.</p>
-  <LiveExample
-    template='<SimpleSelect v-model="value" :options="options" disabled />'
-    :context="{ value, options }"
-    :components="{ SimpleSelect }"
-  />
+  <LiveExample template='<SimpleSelect v-model="value" :options="options" disabled />' :context="{ value, options }" />
 </template>
 <script setup lang="ts">
-import { SimpleSelect } from '@/components'
 import { LiveExample } from '@/docs/components'
 import { ref } from 'vue'
 

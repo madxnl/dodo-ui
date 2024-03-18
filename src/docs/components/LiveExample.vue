@@ -15,13 +15,14 @@
   </div>
 </template>
 <script setup lang="ts">
+import * as allComponents from '@/components'
 import type { Component, ComponentOptions } from 'vue'
 import { defineComponent, onErrorCaptured, ref, shallowRef, watch } from 'vue'
 import SyntaxHighlight from './SyntaxHighlight.vue'
 
 const props = defineProps<{
   options?: ComponentOptions
-  components: Record<string, Component>
+  components?: Record<string, Component>
   context?: any
   setup?: string
   hiddenSetup?: string
@@ -39,7 +40,7 @@ function recompile() {
   error.value = ''
   Object.defineProperties(window, { ref: { value: ref } })
   component.value = defineComponent({
-    components: props.components,
+    components: { ...(allComponents as {}), ...(props.components ?? {}) },
     setup() {
       const results = props.context || {}
       try {

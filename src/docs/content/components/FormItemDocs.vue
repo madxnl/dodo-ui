@@ -7,7 +7,6 @@
   <TextInput v-model=&quot;value&quot; placeholder=&quot;Enter value&quot; />
 </FormItem>`"
     :context="{ value }"
-    :components="{ FormItem, TextInput }"
   />
   <br />
   <h4>Error</h4>
@@ -17,7 +16,6 @@
   <TextInput v-model=&quot;value&quot; placeholder=&quot;Enter value&quot; />
 </FormItem>`"
     :context="{ value }"
-    :components="{ FormItem, TextInput }"
   />
   <br />
   <h4>Optional</h4>
@@ -30,11 +28,9 @@
   <TextInput v-model=&quot;value&quot; placeholder=&quot;Enter value&quot; />
 </FormItem>`"
     :context="{ value }"
-    :components="{ FormItem, TextInput }"
   />
 </template>
 <script setup lang="ts">
-import { FormItem, TextInput } from '@/components'
 import { LiveExample } from '@/docs/components'
 import { ref } from 'vue'
 
