@@ -1,5 +1,9 @@
 <template>
-  <component :is="$attrs.onClick ? 'button' : 'div'" :class="$style.Chip" :style="css">
+  <component
+    :is="$attrs.onClick ? 'button' : 'div'"
+    :class="[$style.Chip, variant === 'solid' && $style.solid]"
+    :style="css"
+  >
     <slot name="before" />
     <div :class="$style.text"><slot /></div>
     <slot name="after" />
@@ -11,6 +15,7 @@ import type { ColorProp } from '..'
 
 const props = defineProps<{
   color?: ColorProp
+  variant?: 'solid'
 }>()
 
 const css = computed(() => {
@@ -23,18 +28,18 @@ const css = computed(() => {
 .Chip {
   font: var(--dodo-font-base);
   font-size: var(--dodo-font-small);
-  padding: 0 10px;
-  --height: 28px;
+  padding: 0 12px;
+  --height: 30px;
   height: var(--height);
   line-height: var(--height);
   white-space: nowrap;
-  --chip-color: var(--dodo-color-foreground);
+  --chip-color: var(--dodo-color-text);
   color: var(--chip-color);
   background: color-mix(in oklch, var(--chip-color) 15%, transparent);
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
-  border: 0;
+  border: 1px solid color-mix(in oklch, var(--chip-color) 10%, transparent);
   border-radius: 99px;
   cursor: default;
   box-sizing: border-box;
@@ -43,6 +48,10 @@ const css = computed(() => {
   gap: 4px;
   font-weight: 500;
   max-width: initial;
+}
+.solid {
+  background: var(--chip-color);
+  color: white;
 }
 .text {
   overflow: hidden;

@@ -1,14 +1,16 @@
 <template>
   <div :class="[$style.Select, multiple && $style.multiple]">
-    <Button
+    <Chip
       v-for="(option, i) in options"
       :key="option.label"
-      v-bind="isSelected(option) ? { active: true, color: 'info' } : {}"
+      :color="isSelected(option) ? 'info' : undefined"
+      :variant="!multiple && isSelected(option) ? 'solid' : undefined"
       :disabled="disabled"
       :small="small"
       rounded
       @click="toggle(option)"
     >
+      <Icon v-if="multiple && isSelected(option)" name="check" />
       <!--
         @slot Menu Item footer
         @binding {object} option icon of the menu item
@@ -17,12 +19,13 @@
       <slot :option="option" :index="i">
         {{ option.label || option.value }}
       </slot>
-    </Button>
+    </Chip>
   </div>
 </template>
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { Button } from '.'
+import Chip from './Chip.vue'
+import Icon from './Icon.vue'
 
 const props = defineProps<{
   /** Array of available options */
@@ -82,17 +85,6 @@ function toggle(option: Option) {
   flex-wrap: wrap;
   align-items: center;
   min-width: 0;
-}
-.multiple {
   gap: 4px;
-}
-.Select:not(.multiple) button:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.Select:not(.multiple) button:not(:first-child) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  margin-left: -1px;
 }
 </style>
