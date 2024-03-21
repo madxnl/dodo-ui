@@ -10,7 +10,7 @@ export type Color = [number, number, number]
 export type ThemeColorName =
   | 'info'
   | 'success'
-  | 'warn'
+  | 'warning'
   | 'danger'
   | 'background'
   | 'foreground'
@@ -24,18 +24,6 @@ export type Spacing = SpacingValue[] | SpacingValue
 export function useTheme() {
   function colorCss(color: ColorProp) {
     return typeof color === 'string' ? `var(--dodo-color-${color})` : `rgb(${color.join(',')})`
-  }
-
-  function colorRgbValues(color: ColorProp) {
-    if (color instanceof Array) return color
-    const rgbStr = getComputedStyle(document.body).getPropertyValue(`--dodo-rgb-${color}`)
-    if (!rgbStr) return [0, 0, 0]
-    return rgbStr.split(',').map(Number)
-  }
-
-  function colorHexStr(color: ColorProp) {
-    const rgb = colorRgbValues(color)
-    return '#' + rgb.map((c) => c.toString(16).padStart(2, '0')).join('')
   }
 
   function gapValue(size: SpacingValue) {
@@ -73,8 +61,6 @@ export function useTheme() {
   return {
     colorCss,
     gapValue,
-    colorHexStr,
-    colorRgbValues,
     gap,
     padding,
     justify,

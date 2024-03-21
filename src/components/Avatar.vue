@@ -11,7 +11,7 @@ import { computed } from 'vue'
 import type { ColorProp } from '..'
 import { useTheme } from '..'
 
-const baseColors: ColorProp[] = ['info', 'warn', 'success', 'danger']
+const baseColors: ColorProp[] = ['info', 'warning', 'success', 'danger']
 
 const props = defineProps<{
   text: string

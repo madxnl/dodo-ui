@@ -7,7 +7,7 @@
       <Row wrap>
         <Button color="primary">Primary Button</Button>
         <Button color="success" variant="solid">Solid Button</Button>
-        <Button color="warn" variant="text">Text Button</Button>
+        <Button color="warning" variant="text">Text Button</Button>
         <Button color="danger" :disabled="true">Disabled Button</Button>
         <Button square><Icon name="favorite" /></Button>
         <Button rounded><Icon name="star" /></Button>

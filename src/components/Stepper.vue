@@ -123,7 +123,7 @@ watch(currentIndex, () => {
 .line {
   flex: 1 1 0;
   width: 2px;
-  background: color-mix(in hsl, var(--dodo-color-foreground) 50%, transparent);
+  background: color-mix(in oklch, var(--dodo-color-foreground) 50%, transparent);
   opacity: 0.4;
 }
 .circle {
@@ -141,6 +141,6 @@ watch(currentIndex, () => {
   opacity: 0.6;
 }
 .inactiveStep .circle {
-  background: color-mix(in hsl, var(--dodo-color-foreground) 50%, transparent);
+  background: color-mix(in oklch, var(--dodo-color-foreground) 50%, transparent);
 }
 </style>

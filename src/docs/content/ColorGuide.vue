@@ -1,11 +1,10 @@
 <template>
-  <p>These base colors can be overridden using RGB CSS vars (eg <code>--dodo-rgb-danger: 255,0,0;</code>).</p>
+  <p></p>
   <p>
     <Row>
       <code v-for="c in colors" :key="c" :class="[$style.swatch]" :style="`background-color:${theme.colorCss(c)}`">
         <code :class="c === 'foreground' ? 'dodo-color-background' : 'dodo-color-foreground'">
           {{ c }}
-          {{ theme.colorHexStr(c) }}
         </code>
       </code>
     </Row>
@@ -15,7 +14,7 @@
 import { Row } from '@/components'
 import { useTheme } from '@/composables'
 
-const colors = ['info', 'success', 'warn', 'danger', 'background', 'foreground', 'primary', 'secondary'] as const
+const colors = ['info', 'success', 'warning', 'danger', 'background', 'foreground', 'primary', 'secondary'] as const
 
 const theme = useTheme()
 </script>

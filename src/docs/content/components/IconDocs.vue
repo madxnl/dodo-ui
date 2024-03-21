@@ -29,7 +29,7 @@
   <LiveExample
     template='<Icon name="favorite" size="xs" color="info" />
 <Icon name="favorite" color="success" />
-<Icon name="favorite" color="warn" fill size="l" />
+<Icon name="favorite" color="warning" fill size="l" />
 <Icon name="favorite" color="danger" fill size="xl" />'
   />
 </template>

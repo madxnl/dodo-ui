@@ -33,7 +33,7 @@ const css = computed(() => {
   white-space: nowrap;
   --chip-color: var(--dodo-color-foreground);
   color: var(--chip-color);
-  background: color-mix(in hsl, var(--chip-color) 15%, transparent);
+  background: color-mix(in oklch, var(--chip-color) 15%, transparent);
   display: inline-flex;
   align-items: center;
   vertical-align: middle;

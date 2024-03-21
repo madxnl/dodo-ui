@@ -120,7 +120,7 @@ defineOptions({
   color: white;
 }
 .default {
-  border: 1px solid color-mix(in hsl, var(--button-color) 35%, transparent);
+  border: 1px solid color-mix(in oklch, var(--button-color) 35%, transparent);
 }
 .rounded {
   border-radius: 99px;

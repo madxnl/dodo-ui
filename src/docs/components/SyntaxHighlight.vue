@@ -50,8 +50,7 @@ pre.SyntaxHighlight {
   font-size: 16px;
   white-space: pre-wrap;
   font-family: 'Inconsolata', monospace;
-  border: 1px solid hsl(0, 0%, 88%);
-  background: hsl(0, 0%, 92%);
+  border: 1px solid var(--dodo-color-border);
   box-shadow: none !important;
   background: var(--dodo-color-box) !important;
 }

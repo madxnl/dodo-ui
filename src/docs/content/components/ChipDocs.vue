@@ -7,7 +7,7 @@
       <Row>
         <Chip>Default Chip</Chip>
         <Chip color="info">Info Chip</Chip>
-        <Chip color="warn">Warn Chip</Chip>
+        <Chip color="warning">Warning Chip</Chip>
       </Row>
     </template>
   </ComponentDocsSection>
@@ -19,12 +19,12 @@ import { ComponentDocsSection } from '@/docs/components'
 const exampleSrc = `<Row>
   <Chip>Default Chip</Chip>
   <Chip color="info">Info Chip</Chip>
-  <Chip color="warn">Warn Chip</Chip>
+  <Chip color="warning">Warning Chip</Chip>
 </Row>`
 
 const props = [
   {
-    code: 'color?: "info" | "warn" | "success" | "danger" | "background" | "foreground" | "primary" | "secondary"',
+    code: 'color?: "info" | "warning" | "success" | "danger" | "background" | "foreground" | "primary" | "secondary"',
     description: 'The color of the chip'
   }
 ]

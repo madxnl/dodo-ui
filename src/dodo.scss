@@ -4,17 +4,6 @@
 :root {
   --dodo-spacing: 4px;
 
-  --dodo-color-info: rgb(var(--dodo-rgb-info));
-  --dodo-color-success: rgb(var(--dodo-rgb-success));
-  --dodo-color-warn: rgb(var(--dodo-rgb-warn));
-  --dodo-color-danger: rgb(var(--dodo-rgb-danger));
-  --dodo-color-background: rgb(var(--dodo-rgb-background));
-  --dodo-color-foreground: rgb(var(--dodo-rgb-foreground));
-  --dodo-color-primary: rgb(var(--dodo-rgb-primary));
-  --dodo-color-secondary: rgb(var(--dodo-rgb-secondary));
-
-  --dodo-color-muted: color-mix(in hsl, var(--dodo-color-foreground) 30%, transparent);
-
   --dodo-font-size: 14px;
   --dodo-font-small: 13px;
   --dodo-bold: 500;
@@ -47,15 +36,6 @@
 
   /* Deprecated */
   --dodo-weight-bold: var(--dodo-bold);
-  --dodo-rgb-info: 58, 134, 255;
-  --dodo-rgb-success: 0, 177, 136;
-  --dodo-rgb-warn: 223, 178, 53;
-  --dodo-rgb-warning: var(--dodo-rgb-warn);
-  --dodo-rgb-danger: 255, 0, 83;
-  --dodo-rgb-background: 255, 255, 255;
-  --dodo-rgb-foreground: 9, 30, 40;
-  --dodo-rgb-primary: var(--dodo-rgb-info);
-  --dodo-rgb-secondary: var(--dodo-rgb-success);
 }
 
 /* Layout */
@@ -199,8 +179,8 @@
 .dodo-color-success {
   color: var(--dodo-color-success);
 }
-.dodo-color-warn {
-  color: var(--dodo-color-warn);
+.dodo-color-warning {
+  color: var(--dodo-color-warning);
 }
 .dodo-color-danger {
   color: var(--dodo-color-danger);
@@ -237,7 +217,7 @@ h4,
 h5,
 h6 {
   font-weight: var(--dodo-weight-bold);
-  color: var(--dodo-color-foreground);
+  color: var(--dodo-color-heading);
   font-size: var(--dodo-font-size);
   margin: 0;
 }
@@ -300,7 +280,7 @@ hr {
   opacity: 0.1;
 }
 mark {
-  background: color-mix(in hsl, var(--dodo-color-info) 20%, transparent);
+  background: var(--dodo-color-box);
   padding: 0 2px;
   border-radius: 4px;
 }
@@ -310,9 +290,8 @@ mark {
 .dodo-formfield {
   min-width: 0;
   padding: 2px 8px;
-  box-shadow: 0 1px 2px inset rgba(0, 0, 0, 0.1);
   background: var(--dodo-color-field, white);
-  border: 1px solid color-mix(in hsl, var(--dodo-color-foreground) 30%, transparent);
+  border: 1px solid var(--dodo-color-border);
   border-radius: 4px;
   --height: var(--dodo-button-height);
   min-height: var(--height);

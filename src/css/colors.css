@@ -2,6 +2,7 @@
 
 :root {
   --dodo-white: #ffffff;
+  --dodo-gray: #908896;
   --dodo-black: #091e28;
   --dodo-red: #ff0053;
   --dodo-orange: #dfb235;
@@ -11,16 +12,8 @@
   --dodo-teal: #5bc0de;
   --dodo-pink: #ff5b77;
   --dodo-purple: #613d7c;
-
-  --dodo-gray: #908896;
-  --dodo-gray-light: color-mix(in oklch, var(--dodo-gray) 50%, var(--dodo-white));
-  --dodo-gray-dark: color-mix(in oklch, var(--dodo-gray) 50%, var(--dodo-black));
-
-  /* */
-
-  /* */
-
-  --dodo-spacing: 4px;
+  /* --dodo-gray-light: color-mix(in oklch, var(--dodo-gray) 50%, var(--dodo-white)); */
+  /* --dodo-gray-dark: color-mix(in oklch, var(--dodo-gray) 50%, var(--dodo-black)); */
 }
 
 body {
@@ -34,7 +27,7 @@ body {
   --dodo-color-heading: var(--dodo-black);
   --dodo-color-field: var(--dodo-white);
   --dodo-color-background: color-mix(in oklch, var(--dodo-gray) 10%, var(--dodo-color-field));
-  --dodo-color-text: color-mix(in oklch, var(--dodo-color-heading) 90%, var(--dodo-gray));
+  --dodo-color-text: color-mix(in oklch, var(--dodo-color-heading) 60%, var(--dodo-gray));
   --dodo-color-border: color-mix(in oklch, var(--dodo-gray) 40%, var(--dodo-color-background));
   --dodo-color-box: color-mix(in oklch, var(--dodo-color-border) 30%, var(--dodo-color-background));
 

@@ -53,7 +53,7 @@ const template = `
   <p class="dodo-color-primary">Paragraph with primary color</p>
   <p class="dodo-color-secondary">Paragraph with secondary color</p>
   <p class="dodo-color-danger">Paragraph with danger color</p>
-  <p class="dodo-color-warn">Paragraph with warning color</p>
+  <p class="dodo-color-warning">Paragraph with warning color</p>
   <p class="dodo-color-success">Paragraph with success color</p>
   <p class="dodo-color-info">Paragraph with info color</p>
   <code>Code</code>

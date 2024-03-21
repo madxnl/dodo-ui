@@ -279,7 +279,7 @@ function toggleSelectAll() {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .Datatable .rowSelected {
-  background: color-mix(in hsl, var(--dodo-color-info) 30%, transparent);
+  background: color-mix(in oklch, var(--dodo-color-info) 30%, transparent);
 }
 .stickyHeader,
 .stickyFooter {
