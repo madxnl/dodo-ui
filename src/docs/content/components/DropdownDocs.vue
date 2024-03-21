@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :example-src="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc">
     <template #description>
       <p>A dropdown component.</p>
     </template>
@@ -29,11 +29,4 @@ const exampleSrc = `<Dropdown>
     <button style="width: 200px">Button</button>
   </template>
 </Dropdown>`
-
-const props = [
-  {
-    code: 'todo',
-    description: '-'
-  }
-]
 </script>

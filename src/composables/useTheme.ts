@@ -62,27 +62,33 @@ export function useTheme() {
     wrap,
     flex,
     grow,
-    theme
+    theme,
+    toggleTheme
   }
 }
 
 export const darkModeSetting = ref<'auto' | 'dark' | 'light'>()
 
 const previousTheme = localStorage.getItem('dodotheme') as 'dark' | 'light' | null
+const userTheme = ref(previousTheme)
 
 const preferDark = window.matchMedia('(prefers-color-scheme: dark)')
 const deviceTheme = ref(preferDark.matches ? 'dark' : 'light')
-const defaultTheme = computed(() => (darkModeSetting.value === 'auto' ? deviceTheme : darkModeSetting.value))
-
-const theme = ref(previousTheme || defaultTheme.value || 'light')
-
-preferDark.addEventListener('change', onchange)
 
 function onchange() {
   deviceTheme.value = preferDark.matches ? 'dark' : 'light'
 }
 
+preferDark.addEventListener('change', onchange)
+
+const defaultTheme = computed(() => (darkModeSetting.value === 'auto' ? deviceTheme.value : darkModeSetting.value))
+const theme = computed(() => userTheme.value || defaultTheme.value || 'light')
+
+function toggleTheme() {
+  userTheme.value = theme.value === 'dark' ? 'light' : 'dark'
+}
+
 watchEffect(() => {
-  localStorage.setItem('dodotheme', theme.value ?? '')
+  localStorage.setItem('dodotheme', userTheme.value ?? '')
   document.body.setAttribute('data-dodotheme', theme.value ?? '')
 })

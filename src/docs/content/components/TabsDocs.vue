@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :example-src="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc">
     <template #description>
       <p>A tab navigation component with support for scrolling and custom slot-based content.</p>
     </template>
@@ -37,15 +37,4 @@ const exampleSrc = `<Tabs v-slot="{ tab }" :tabs="[{ name: 'Tab 1' }, { name: 'T
 </Tabs>`
 
 const manyTabs = Array.from({ length: 20 }, (_, i) => ({ name: `Tab ${i + 1}` }))
-
-const props = [
-  {
-    code: 'tabs: Tab[]',
-    description: 'An array of tab objects'
-  },
-  {
-    code: 'tabIndex?: number',
-    description: 'The index of the currently active tab'
-  }
-]
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :example-src="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc">
     <template #description>
       <p>
         The <code>Datatable</code> component is a powerful table component that supports sorting, filtering, pagination,
@@ -65,41 +65,6 @@ const exampleSrc = `<Datatable
   <template #actions>todo</template>
   <template #actions-header="{ column }">{{ column.name }}!</template>
 </Datatable>`
-
-const props = [
-  {
-    code: 'columns: Column[]',
-    description: 'The columns to display in the table.'
-  },
-  {
-    code: 'rows: Row[]',
-    description: 'The rows to display in the table.'
-  },
-  {
-    code: 'row-click?: (row: Row) => void',
-    description: 'A function to call when a row is clicked.'
-  },
-  {
-    code: 'show-more?: () => Promise<void>',
-    description: 'A function to call when the user scrolls to the bottom of the table.'
-  },
-  {
-    code: 'sort-async?: () => Promise<void>',
-    description: 'A function to call when the user sorts a column.'
-  },
-  {
-    code: 'show-footer?: boolean',
-    description: 'Whether to show the footer.'
-  },
-  {
-    code: 'sticky-header?: boolean',
-    description: 'Whether to make the header sticky.'
-  },
-  {
-    code: 'v-model:selection: Row[]',
-    description: 'The selected rows.'
-  }
-]
 
 type Item = { title: string; year: number; rating: string; revenue: number }
 

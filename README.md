@@ -11,6 +11,7 @@
 - Changed gap and padding prop type to use descriptive sizes ('xxs' through 'xxl')
 - Removed label/description props removed from input/textarea (use FormItem)
 - Removed Label component (fully replaced by FormItem)
+- Added ChoiceChips component (replaces SelectButtons)
 
 ## [0.36.0]
 

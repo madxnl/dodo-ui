@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :example-src="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc">
     <template #description>
       <p>A chip component that can be styled with different colors.</p>
     </template>
@@ -21,11 +21,4 @@ const exampleSrc = `<Row>
   <Chip color="info">Info Chip</Chip>
   <Chip color="warning">Warning Chip</Chip>
 </Row>`
-
-const props = [
-  {
-    code: 'color?: "info" | "warning" | "success" | "danger" | "background" | "foreground" | "primary" | "secondary"',
-    description: 'The color of the chip'
-  }
-]
 </script>

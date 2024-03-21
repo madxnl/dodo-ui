@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :example-src="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc">
     <template #description>
       <p>A customizable button component.</p>
     </template>
@@ -31,41 +31,6 @@ const exampleSrc = `<Row wrap>
   <Button small>Small Button</Button>
   <Button color="success" @click="asyncClick">Loading Button</Button>
 </Row>`
-
-const props = [
-  {
-    code: 'color?: ColorProp',
-    description: 'Sets the button color'
-  },
-  {
-    code: "variant?: 'text' | 'solid'",
-    description: 'Sets the button variant'
-  },
-  {
-    code: "type?: 'button' | 'submit'",
-    description: 'Specifies the button type'
-  },
-  {
-    code: 'square?: boolean',
-    description: 'Creates a square button for icons'
-  },
-  {
-    code: 'rounded?: boolean',
-    description: 'Creates a rounded button'
-  },
-  {
-    code: 'small?: boolean',
-    description: 'Changes the button size to small'
-  },
-  {
-    code: 'active?: boolean',
-    description: 'Styles the button as active'
-  },
-  {
-    code: 'disabled?: boolean',
-    description: 'Disables the button'
-  }
-]
 
 async function asyncClick() {
   await new Promise((resolve) => setTimeout(resolve, 1000))

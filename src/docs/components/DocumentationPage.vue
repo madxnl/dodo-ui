@@ -2,7 +2,7 @@
   <div :class="[$style.NavLayout]">
     <Row :class="$style.bar" justify="end" align="start">
       <Column gap="m" padding="m" align="start">
-        <Button variant="text" small square @click="theme = theme === 'dark' ? 'light' : 'dark'">
+        <Button variant="text" small square @click="toggleTheme">
           <Icon :name="theme === 'dark' ? 'dark_mode' : 'light_mode'" />
         </Button>
 
@@ -36,7 +36,7 @@ import { useTheme } from '@/composables'
 import type { DefineComponent } from 'vue'
 import { getCurrentInstance, onMounted, ref } from 'vue'
 
-const { theme } = useTheme()
+const { toggleTheme, theme } = useTheme()
 
 const props = defineProps<{
   chapters: {

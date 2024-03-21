@@ -1,5 +1,5 @@
 <template>
-  <ComponentDocsSection :example-src="exampleSrc" :props="props">
+  <ComponentDocsSection :example-src="exampleSrc">
     <template #description>
       <p>An Tooltip component.</p>
     </template>
@@ -21,11 +21,4 @@ const exampleSrc = `<div>
     <Button>Hover me</Button>
   </Tooltip>
 </div>`
-
-const props = [
-  {
-    code: 'text: String',
-    description: 'The text of the Tooltip'
-  }
-]
 </script>
