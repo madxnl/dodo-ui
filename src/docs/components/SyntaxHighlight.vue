@@ -34,7 +34,7 @@ watchEffect(() => {
     document.head.appendChild(style)
   }
   if (style.getAttribute('data-mode') !== theme.value) {
-    style.setAttribute('data-mode', theme.value)
+    style.setAttribute('data-mode', theme.value || '')
     style.innerHTML = theme.value === 'dark' ? darkTheme : lightTheme
   }
 })

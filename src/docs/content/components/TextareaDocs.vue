@@ -10,7 +10,7 @@
   <br />
   <p>The props <code>min-rows</code> and <code>max-rows</code> props can be used to adjust the number of rows shown.</p>
   <LiveExample
-    template='<Textarea v-model="value" :min-rows="1" :max-rows="5" />'
+    template='<Textarea v-model="value" :min-rows="1" :max-rows="3" />'
     :hidden-setup="`return { value: ref(\`${longText}\`) }`"
   />
 </template>

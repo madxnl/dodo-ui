@@ -1,4 +1,4 @@
-import { ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch'
@@ -66,15 +66,20 @@ export function useTheme() {
   }
 }
 
+export const darkModeSetting = ref<'auto' | 'dark' | 'light'>()
+
+const previousTheme = localStorage.getItem('dodotheme') as 'dark' | 'light' | null
+
 const preferDark = window.matchMedia('(prefers-color-scheme: dark)')
-const userTheme = localStorage.getItem('dodotheme')
-const defaultTheme = preferDark.matches ? 'dark' : 'light'
-const theme = ref(userTheme || defaultTheme)
+const deviceTheme = ref(preferDark.matches ? 'dark' : 'light')
+const defaultTheme = computed(() => (darkModeSetting.value === 'auto' ? deviceTheme : darkModeSetting.value))
+
+const theme = ref(previousTheme || defaultTheme.value || 'light')
 
 preferDark.addEventListener('change', onchange)
 
 function onchange() {
-  theme.value = preferDark.matches ? 'dark' : 'light'
+  deviceTheme.value = preferDark.matches ? 'dark' : 'light'
 }
 
 watchEffect(() => {

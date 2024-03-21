@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div :class="[$style.FormEntry, error && $style.hasError]">
+  <div :class="[$style.FormEntry, error && $style.hasError]" :data-itemerror="error">
     <div v-if="label" :class="$style.labelRow">
       <label :class="$style.label" :for="props.for">
         {{ label }}
