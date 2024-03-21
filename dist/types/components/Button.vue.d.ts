@@ -1,9 +1,8 @@
-import type { ColorProp } from '..';
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /** Set button color
      * @example color="success"
      */
-    color?: ColorProp | undefined;
+    color?: import("..").ThemeColorName | undefined;
     /** Set button variant
      * @example variant="border"
      * @example variant="text"
@@ -34,7 +33,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     /** Set button color
      * @example color="success"
      */
-    color?: ColorProp | undefined;
+    color?: import("..").ThemeColorName | undefined;
     /** Set button variant
      * @example variant="border"
      * @example variant="text"

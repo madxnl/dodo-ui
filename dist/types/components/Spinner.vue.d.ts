@@ -2,7 +2,7 @@ import type { ColorProp } from '..';
 declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToOption<{
     /** Override default spinner color, or inherit text color
      */
-    color?: ColorProp | "inherit" | undefined;
+    color?: import("..").ThemeColorName | "inherit" | undefined;
     small?: boolean | undefined;
     large?: boolean | undefined;
 }>, {
@@ -10,7 +10,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToOption<{
     /** Override default spinner color, or inherit text color
      */
-    color?: ColorProp | "inherit" | undefined;
+    color?: import("..").ThemeColorName | "inherit" | undefined;
     small?: boolean | undefined;
     large?: boolean | undefined;
 }>, {

@@ -1,9 +1,8 @@
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch';
 declare const spacingValues: readonly ["0", "xxs", "xs", "s", "m", "l", "xl", "xxl"];
-export type Color = [number, number, number];
-export type ThemeColorName = 'info' | 'success' | 'warning' | 'danger' | 'background' | 'foreground' | 'primary' | 'secondary';
-export type ColorProp = Color | ThemeColorName;
+export type ThemeColorName = 'red' | 'pink' | 'purple' | 'blue' | 'teal' | 'green' | 'yellow' | 'orange' | 'black' | 'background' | 'gray' | 'foreground' | 'white' | 'info' | 'success' | 'warning' | 'danger' | 'background' | 'foreground' | 'primary' | 'secondary';
+export type ColorProp = ThemeColorName;
 export type SpacingValue = `${(typeof spacingValues)[number]}`;
 export type GapSize = SpacingValue;
 export type Spacing = SpacingValue[] | SpacingValue;
@@ -16,7 +15,7 @@ export declare function useTheme(): {
     wrap: (wrap?: boolean) => "" | "dodo-wrap";
     flex: (flex?: boolean) => "" | "dodo-flex";
     grow: (grow?: boolean) => "" | "dodo-grow";
-    theme: import("vue").ComputedRef<string>;
+    theme: import("vue").ComputedRef<"dark" | "light">;
     toggleTheme: typeof toggleTheme;
 };
 export declare const darkModeSetting: import("vue").Ref<"dark" | "light" | "auto" | undefined>;

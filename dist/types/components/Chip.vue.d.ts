@@ -1,9 +1,8 @@
-import type { ColorProp } from '..';
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
-    color?: ColorProp | undefined;
+    color?: import("..").ThemeColorName | undefined;
     variant?: "solid" | undefined;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
-    color?: ColorProp | undefined;
+    color?: import("..").ThemeColorName | undefined;
     variant?: "solid" | undefined;
 }>>>, {}, {}>, {
     before?(_: {}): any;

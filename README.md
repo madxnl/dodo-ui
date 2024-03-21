@@ -9,9 +9,9 @@
 - Changed color variables, 'warn' is now 'warning' and '-rgb-' vars were removed
 - Added initial support for dark mode using `useTheme`
 - Changed gap and padding prop type to use descriptive sizes ('xxs' through 'xxl')
-- Removed label/description props removed from input/textarea (use FormItem)
-- Removed Label component (fully replaced by FormItem)
-- Added ChoiceChips component (replaces SelectButtons)
+- Removed label/description props from input/textarea (use FormItem)
+- Added ChoiceChips component
+- Removed Input, SelectButtons, Label
 
 ## [0.36.0]
 

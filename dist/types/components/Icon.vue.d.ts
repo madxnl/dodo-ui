@@ -1,4 +1,4 @@
-import type { ColorProp, IconName } from '..';
+import type { IconName } from '..';
 declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /** The icon name
      * @example icon="plus"
@@ -7,7 +7,7 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /** Change icon color
      * @example color="success"
      */
-    color?: ColorProp | undefined;
+    color?: import("..").ThemeColorName | undefined;
     /** Filled variant
      */
     fill?: boolean | undefined;
@@ -22,7 +22,7 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /** Change icon color
      * @example color="success"
      */
-    color?: ColorProp | undefined;
+    color?: import("..").ThemeColorName | undefined;
     /** Filled variant
      */
     fill?: boolean | undefined;
