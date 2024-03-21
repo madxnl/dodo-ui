@@ -3,15 +3,15 @@
   --dodo-color-gray: #908896;
   --dodo-color-black: #091e28;
   --dodo-color-red: #ff0040;
-  --dodo-color-orange: #ff8818;
+  --dodo-color-orange: #e47915;
   --dodo-color-yellow: #e2de00;
   --dodo-color-green: #00a76f;
   --dodo-color-teal: #00b2e9;
-  --dodo-color-blue: #3a86ff;
+  --dodo-color-blue: #5087ff;
   --dodo-color-purple: #985de4;
   --dodo-color-pink: #ff5bc0;
-  /* --dodo-gray-light: color-mix(in oklch, var(--dodo-gray) 50%, var(--dodo-white)); */
-  /* --dodo-gray-dark: color-mix(in oklch, var(--dodo-gray) 50%, var(--dodo-black)); */
+
+  --dodo-mix-mode: lab;
 }
 
 body {
@@ -24,10 +24,10 @@ body {
 
   --dodo-color-heading: var(--dodo-color-black);
   --dodo-color-field: var(--dodo-color-white);
-  --dodo-color-background: color-mix(in oklch, var(--dodo-color-gray) 10%, var(--dodo-color-field));
-  --dodo-color-text: color-mix(in oklch, var(--dodo-color-heading) 60%, var(--dodo-color-gray));
-  --dodo-color-border: color-mix(in oklch, var(--dodo-color-gray) 40%, var(--dodo-color-background));
-  --dodo-color-box: color-mix(in oklch, var(--dodo-color-border) 30%, var(--dodo-color-background));
+  --dodo-color-background: color-mix(in var(--dodo-mix-mode), var(--dodo-color-gray) 10%, var(--dodo-color-field));
+  --dodo-color-text: color-mix(in var(--dodo-mix-mode), var(--dodo-color-heading) 60%, var(--dodo-color-gray));
+  --dodo-color-border: color-mix(in var(--dodo-mix-mode), var(--dodo-color-gray) 40%, var(--dodo-color-background));
+  --dodo-color-box: color-mix(in var(--dodo-mix-mode), var(--dodo-color-border) 30%, var(--dodo-color-background));
 
   --dodo-color-foreground: var(--dodo-color-text);
 

@@ -5,8 +5,20 @@ export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 
 const spacingValues = ['0', 'xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const
 
-export type Color = [number, number, number]
 export type ThemeColorName =
+  | 'red'
+  | 'pink'
+  | 'purple'
+  | 'blue'
+  | 'teal'
+  | 'green'
+  | 'yellow'
+  | 'orange'
+  | 'black'
+  | 'background'
+  | 'gray'
+  | 'foreground'
+  | 'white'
   | 'info'
   | 'success'
   | 'warning'
@@ -15,7 +27,7 @@ export type ThemeColorName =
   | 'foreground'
   | 'primary'
   | 'secondary'
-export type ColorProp = Color | ThemeColorName
+export type ColorProp = ThemeColorName
 export type SpacingValue = `${(typeof spacingValues)[number]}`
 export type GapSize = SpacingValue
 export type Spacing = SpacingValue[] | SpacingValue

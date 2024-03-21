@@ -1,24 +1,16 @@
 <template>
-  <ComponentDocsSection :example-src="exampleSrc">
-    <template #description>
-      <p>A chip component that can be styled with different colors.</p>
-    </template>
-    <template #example>
-      <Row>
-        <Chip>Default Chip</Chip>
-        <Chip color="info">Info Chip</Chip>
-        <Chip color="warning">Warning Chip</Chip>
-      </Row>
-    </template>
-  </ComponentDocsSection>
+  <p>A chip component that can be styled with different colors.</p>
+  <LiveExample :template="exampleSrc" />
 </template>
 <script setup lang="ts">
-import { Chip, Row } from '@/components'
-import { ComponentDocsSection } from '@/docs/components'
+import LiveExample from '@/docs/components/LiveExample.vue'
 
 const exampleSrc = `<Row>
-  <Chip>Default Chip</Chip>
-  <Chip color="info">Info Chip</Chip>
-  <Chip color="warning">Warning Chip</Chip>
+  <Chip>Default</Chip>
+  <Chip color="gray">Gray</Chip>
+  <Chip color="info">Info</Chip>
+  <Chip color="success">Success</Chip>
+  <Chip color="warning">Warning</Chip>
+  <Chip color="danger">Danger</Chip>
 </Row>`
 </script>

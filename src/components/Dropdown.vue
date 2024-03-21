@@ -144,7 +144,7 @@ provide(dropdownServiceKey, { toggle })
 .content {
   background: var(--dodo-color-box) !important;
   border-radius: 4px;
-  border: 1px solid color-mix(in oklch, var(--dodo-color-foreground) 10%, transparent);
+  border: 1px solid color-mix(in var(--dodo-mix-mode), var(--dodo-color-foreground) 10%, transparent);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
   overflow: auto;
 }

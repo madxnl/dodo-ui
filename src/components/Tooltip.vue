@@ -79,7 +79,7 @@ useTheme()
 }
 .content {
   padding: var(--dodo-spacing-xs) var(--dodo-spacing-s);
-  border: 1px solid color-mix(in oklch, var(--dodo-color-foreground) 20%, transparent);
+  border: 1px solid color-mix(in var(--dodo-mix-mode), var(--dodo-color-foreground) 20%, transparent);
   border-radius: 4px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   max-width: 300px;

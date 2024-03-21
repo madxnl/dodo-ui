@@ -100,7 +100,7 @@ async function onClick(e: Event) {
   overflow: hidden;
   transition: all var(--dodo-transition-duration);
   background: rgba(0, 0, 0, 0.1);
-  border: solid color-mix(in oklch, var(--dodo-color-background) 10%, transparent);
+  border: solid color-mix(in var(--dodo-mix-mode), var(--dodo-color-background) 10%, transparent);
   border-width: 1px 0;
 }
 .submenu.expanded {
