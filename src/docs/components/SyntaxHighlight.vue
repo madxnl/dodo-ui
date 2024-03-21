@@ -2,7 +2,7 @@
   <pre ref="el" :class="[$style.SyntaxHighlight, `language-${lang}`]" />
 </template>
 <script setup lang="ts">
-import { useCurrentTheme } from '@/composables'
+import { useTheme } from '@/composables'
 import prism from 'prismjs'
 import 'prismjs/components/prism-typescript'
 import darkTheme from 'prismjs/themes/prism-okaidia.min.css?raw'
@@ -19,7 +19,7 @@ const el = ref<HTMLElement>()
 
 const styleId = 'prism-theme'
 
-const { theme } = useCurrentTheme()
+const { theme } = useTheme()
 
 onMounted(() => {
   const result = highlight(props.code, languages[props.lang], props.lang)

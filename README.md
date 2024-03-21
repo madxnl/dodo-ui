@@ -4,9 +4,14 @@
 
 # Changelog
 
+## [0.37.0]
+
+- Changed color variables, 'warn' is now 'warning' and '-rgb-' vars were removed
+- Added initial support for dark mode with useTheme
+
 ## [0.36.0]
 
-- New components: SimpleSelect, Form, FormItem, Modal, Textarea and updated TextInput
+- Added new components: SimpleSelect, Form, FormItem, Modal, Textarea and updated TextInput
 
 ## [0.35.0]
 

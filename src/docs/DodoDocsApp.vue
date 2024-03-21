@@ -19,7 +19,7 @@ const componentPages = Object.entries(componentDocs).map(([path, module]) => {
   return { title, example }
 })
 
-const composableDocs = import.meta.glob('./content/use*.docs.vue', { eager: true })
+const composableDocs = import.meta.glob('./content/composables/*Docs.vue', { eager: true })
 const composablePages = Object.entries(composableDocs).map(([path, module]) => {
   const title = basename(path).replace('Docs', '')
   const example = (module as any).default as DefineComponent

@@ -21,10 +21,6 @@ export type GapSize = SpacingValue
 export type Spacing = SpacingValue[] | SpacingValue
 
 export function useTheme() {
-  function colorCss(color: ColorProp) {
-    return typeof color === 'string' ? `var(--dodo-color-${color})` : `rgb(${color.join(',')})`
-  }
-
   function gapValue(size: SpacingValue) {
     return `var(--dodo-gap-${size})`
   }
@@ -58,7 +54,6 @@ export function useTheme() {
   }
 
   return {
-    colorCss,
     gapValue,
     gap,
     padding,
@@ -66,7 +61,8 @@ export function useTheme() {
     align,
     wrap,
     flex,
-    grow
+    grow,
+    theme
   }
 }
 
@@ -85,7 +81,3 @@ watchEffect(() => {
   localStorage.setItem('dodotheme', theme.value ?? '')
   document.body.setAttribute('data-dodotheme', theme.value ?? '')
 })
-
-export function useCurrentTheme() {
-  return { theme }
-}

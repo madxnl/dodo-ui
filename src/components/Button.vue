@@ -21,7 +21,7 @@
 <script lang="ts" setup>
 import { computed, ref, useAttrs } from 'vue'
 import type { ColorProp } from '..'
-import { Spinner, useTheme } from '..'
+import { Spinner } from '..'
 
 const props = defineProps<{
   /** Set button color
@@ -56,11 +56,9 @@ const props = defineProps<{
   disabled?: boolean
 }>()
 
-const { colorCss } = useTheme()
-
 const css = computed(() => {
   let s = ''
-  if (props.color) s += `--button-color:${colorCss(props.color)};`
+  if (props.color) s += `--button-color:var(--dodo-color-${props.color});`
   return s
 })
 

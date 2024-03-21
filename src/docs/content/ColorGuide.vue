@@ -1,8 +1,8 @@
 <template>
   <p></p>
   <p>
-    <Row>
-      <code v-for="c in colors" :key="c" :class="[$style.swatch]" :style="`background-color:${theme.colorCss(c)}`">
+    <Row wrap>
+      <code v-for="c in colors" :key="c" :class="[$style.swatch]" :style="`background-color:var(--dodo-color-${c})`">
         <code :class="c === 'foreground' ? 'dodo-color-background' : 'dodo-color-foreground'">
           {{ c }}
         </code>
@@ -12,11 +12,28 @@
 </template>
 <script setup lang="ts">
 import { Row } from '@/components'
-import { useTheme } from '@/composables'
 
-const colors = ['info', 'success', 'warning', 'danger', 'background', 'foreground', 'primary', 'secondary'] as const
-
-const theme = useTheme()
+const colors = [
+  'red',
+  'pink',
+  'purple',
+  'blue',
+  'teal',
+  'green',
+  'yellow',
+  'orange',
+  'info',
+  'success',
+  'warning',
+  'danger',
+  'primary',
+  'secondary',
+  'black',
+  'background',
+  'gray',
+  'foreground',
+  'white'
+] as const
 </script>
 <style module>
 .swatch {

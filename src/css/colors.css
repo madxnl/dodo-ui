@@ -1,34 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
 :root {
-  --dodo-white: #ffffff;
-  --dodo-gray: #908896;
-  --dodo-black: #091e28;
-  --dodo-red: #ff0053;
-  --dodo-orange: #dfb235;
-  --dodo-yellow: #ffd500;
-  --dodo-green: #00b188;
-  --dodo-blue: #3a86ff;
-  --dodo-teal: #5bc0de;
-  --dodo-pink: #ff5b77;
-  --dodo-purple: #613d7c;
+  --dodo-color-white: #ffffff;
+  --dodo-color-gray: #908896;
+  --dodo-color-black: #091e28;
+  --dodo-color-red: #ff0040;
+  --dodo-color-orange: #ff8818;
+  --dodo-color-yellow: #e2de00;
+  --dodo-color-green: #00a76f;
+  --dodo-color-teal: #00b2e9;
+  --dodo-color-blue: #3a86ff;
+  --dodo-color-purple: #985de4;
+  --dodo-color-pink: #ff5bc0;
   /* --dodo-gray-light: color-mix(in oklch, var(--dodo-gray) 50%, var(--dodo-white)); */
   /* --dodo-gray-dark: color-mix(in oklch, var(--dodo-gray) 50%, var(--dodo-black)); */
 }
 
 body {
-  --dodo-color-info: var(--dodo-blue);
-  --dodo-color-success: var(--dodo-green);
-  --dodo-color-warning: var(--dodo-orange);
-  --dodo-color-danger: var(--dodo-red);
-  --dodo-color-primary: var(--dodo-blue);
-  --dodo-color-secondary: var(--dodo-green);
+  --dodo-color-info: var(--dodo-color-blue);
+  --dodo-color-success: var(--dodo-color-green);
+  --dodo-color-warning: var(--dodo-color-orange);
+  --dodo-color-danger: var(--dodo-color-red);
+  --dodo-color-primary: var(--dodo-color-blue);
+  --dodo-color-secondary: var(--dodo-color-green);
 
-  --dodo-color-heading: var(--dodo-black);
-  --dodo-color-field: var(--dodo-white);
-  --dodo-color-background: color-mix(in oklch, var(--dodo-gray) 10%, var(--dodo-color-field));
-  --dodo-color-text: color-mix(in oklch, var(--dodo-color-heading) 60%, var(--dodo-gray));
-  --dodo-color-border: color-mix(in oklch, var(--dodo-gray) 40%, var(--dodo-color-background));
+  --dodo-color-heading: var(--dodo-color-black);
+  --dodo-color-field: var(--dodo-color-white);
+  --dodo-color-background: color-mix(in oklch, var(--dodo-color-gray) 10%, var(--dodo-color-field));
+  --dodo-color-text: color-mix(in oklch, var(--dodo-color-heading) 60%, var(--dodo-color-gray));
+  --dodo-color-border: color-mix(in oklch, var(--dodo-color-gray) 40%, var(--dodo-color-background));
   --dodo-color-box: color-mix(in oklch, var(--dodo-color-border) 30%, var(--dodo-color-background));
 
   --dodo-color-foreground: var(--dodo-color-text);
@@ -38,6 +38,6 @@ body {
 }
 
 [data-dodotheme='dark'] {
-  --dodo-color-heading: var(--dodo-white);
-  --dodo-color-field: var(--dodo-black);
+  --dodo-color-heading: var(--dodo-color-white);
+  --dodo-color-field: var(--dodo-color-black);
 }

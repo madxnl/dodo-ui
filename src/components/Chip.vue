@@ -8,17 +8,14 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import type { ColorProp } from '..'
-import { useTheme } from '..'
 
 const props = defineProps<{
   color?: ColorProp
 }>()
 
-const theme = useTheme()
-
 const css = computed(() => {
   let s = ''
-  if (props.color) s += `--chip-color:${theme.colorCss(props.color)};`
+  if (props.color) s += `--chip-color:var(--dodo-color-${props.color});`
   return s
 })
 </script>

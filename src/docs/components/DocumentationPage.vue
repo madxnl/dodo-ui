@@ -39,11 +39,11 @@
 </template>
 <script lang="ts" setup>
 import { Button, Column, Icon, Row } from '@/components'
-import { useCurrentTheme } from '@/composables'
+import { useTheme } from '@/composables'
 import type { DefineComponent } from 'vue'
 import { getCurrentInstance, onMounted, ref } from 'vue'
 
-const { theme } = useCurrentTheme()
+const { theme } = useTheme()
 
 const props = defineProps<{
   chapters: {

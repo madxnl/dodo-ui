@@ -9,7 +9,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import type { ColorProp } from '..'
-import { useTheme } from '..'
 
 const baseColors: ColorProp[] = ['info', 'warning', 'success', 'danger']
 
@@ -18,8 +17,6 @@ const props = defineProps<{
   image?: string | null
   round?: boolean
 }>()
-
-const theme = useTheme()
 
 const initials = computed(() => {
   let result = props.text.trim()
@@ -33,7 +30,7 @@ const bgcolor = computed(() => {
   const N = baseColors.length
   const hash = hashCode(props.text)
   const color = baseColors[hash % N]
-  return theme.colorCss(color)
+  return `var(--dodo-color-${color}`
 })
 
 function hashCode(s: string) {

@@ -9,9 +9,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import type { ColorProp } from '..'
-import { useTheme } from '..'
-
-const theme = useTheme()
 
 const props = withDefaults(
   defineProps<{
@@ -29,7 +26,7 @@ const props = withDefaults(
 const css = computed(() => {
   let s = ''
   if (props.color === 'inherit') s += 'color:inherit;'
-  else if (props.color) s += `color:${theme.colorCss(props.color)};`
+  else if (props.color) s += `color:var(--dodo-color-${props.color});`
   return s
 })
 </script>

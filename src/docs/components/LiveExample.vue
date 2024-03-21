@@ -38,11 +38,15 @@ watch(() => [props.template, props.setup], recompile, { immediate: true })
 
 function recompile() {
   error.value = ''
-  Object.defineProperties(window, { ref: { value: ref } })
+  const initialContext = { ref }
+  const context = { ...initialContext, ...(props.context || {}) }
+  for (const [k, v] of Object.entries(context)) {
+    Object.defineProperty(window, k, { value: v, writable: true })
+  }
   component.value = defineComponent({
     components: { ...(allComponents as {}), ...(props.components ?? {}) },
     setup() {
-      const results = props.context || {}
+      const results = { ...(props.context || {}) }
       try {
         if (setup.value) {
           const setupResults = window.eval(`() => {${setup.value}}`)() // eslint-disable-line no-eval
