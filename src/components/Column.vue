@@ -21,12 +21,12 @@ import { useTheme } from '../composables'
 defineProps<{
   /**
    * Add spacing between child elements
-   * @example gap="2"
+   * @example gap="xl"
    */
   gap?: SpacingValue
   /**
    * Amount of padding around the content
-   * @example padding="4"
+   * @example padding="xl"
    */
   padding?: SpacingValue
   /**

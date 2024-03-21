@@ -1,5 +1,5 @@
 <template>
-  <Column gap="1">
+  <Column gap="xs">
     <SyntaxHighlight lang="ts" code="class ValidationError extends Error" />
     <SyntaxHighlight lang="ts" code="type FormData = Record<string, unknown>" />
     <SyntaxHighlight lang="ts" code="export type ValidateRules<T extends FormData> = {...}" />

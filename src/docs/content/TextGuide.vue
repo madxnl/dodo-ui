@@ -37,7 +37,7 @@ import { DocsExample } from '@/docs/components'
 import BaseTable from '@/docs/components/BaseTable.vue'
 
 const template = `
-<Column gap="1" :class="useBaseFont().fontClass">
+<Column gap="xs" :class="useBaseFont().fontClass">
   <h1>Header 1</h1>
   <h2>Header 2</h2>
   <h3>Header 3</h3>

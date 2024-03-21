@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-
 :root {
   --dodo-color-white: #ffffff;
   --dodo-color-gray: #908896;
@@ -40,4 +38,62 @@ body {
 [data-dodotheme='dark'] {
   --dodo-color-heading: var(--dodo-color-white);
   --dodo-color-field: var(--dodo-color-black);
+}
+
+.dodo-color-white {
+  color: var(--dodo-color-white);
+}
+.dodo-color-gray {
+  color: var(--dodo-color-gray);
+}
+.dodo-color-black {
+  color: var(--dodo-color-black);
+}
+.dodo-color-red {
+  color: var(--dodo-color-red);
+}
+.dodo-color-orange {
+  color: var(--dodo-color-orange);
+}
+.dodo-color-yellow {
+  color: var(--dodo-color-yellow);
+}
+.dodo-color-green {
+  color: var(--dodo-color-green);
+}
+.dodo-color-teal {
+  color: var(--dodo-color-teal);
+}
+.dodo-color-blue {
+  color: var(--dodo-color-blue);
+}
+.dodo-color-purple {
+  color: var(--dodo-color-purple);
+}
+.dodo-color-pink {
+  color: var(--dodo-color-pink);
+}
+.dodo-color-info {
+  color: var(--dodo-color-info);
+}
+.dodo-color-success {
+  color: var(--dodo-color-success);
+}
+.dodo-color-warning {
+  color: var(--dodo-color-warning);
+}
+.dodo-color-danger {
+  color: var(--dodo-color-danger);
+}
+.dodo-color-background {
+  color: var(--dodo-color-background);
+}
+.dodo-color-foreground {
+  color: var(--dodo-color-foreground);
+}
+.dodo-color-primary {
+  color: var(--dodo-color-primary);
+}
+.dodo-color-secondary {
+  color: var(--dodo-color-secondary);
 }

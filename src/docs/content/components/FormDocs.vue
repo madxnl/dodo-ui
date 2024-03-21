@@ -14,7 +14,7 @@ const template1 = `<Form @submit="onSubmit">
     <Button type="submit">Submit</Button>
 </Form>`
 
-const template2 = `<Form @submit="onSubmit" gap="8">
+const template2 = `<Form @submit="onSubmit" gap="l">
     <p>One</p>
     <p>Two</p>
     <p>Three</p>

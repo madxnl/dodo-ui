@@ -7,7 +7,8 @@
 ## [0.37.0]
 
 - Changed color variables, 'warn' is now 'warning' and '-rgb-' vars were removed
-- Added initial support for dark mode with useTheme
+- Added initial support for dark mode using `useTheme`
+- Changed gap and padding prop type to use descriptive sizes ('xxs' through 'xxl')
 
 ## [0.36.0]
 

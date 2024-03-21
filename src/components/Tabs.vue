@@ -1,5 +1,5 @@
 <template>
-  <Column gap="4" style="min-width: 0">
+  <Column gap="m" style="min-width: 0">
     <Column gap="0">
       <div :class="$style.bar">
         <div

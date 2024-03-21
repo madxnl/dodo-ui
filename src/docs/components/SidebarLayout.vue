@@ -1,11 +1,11 @@
 <template>
   <Row align="stretch" justify="center" style="min-height: 0">
-    <Column tag="aside" :class="$style.sidebar" padding="8">
+    <Column tag="aside" :class="$style.sidebar" padding="l">
       <slot name="sidebar">
         <p>sidebar</p>
       </slot>
     </Column>
-    <Column tag="main" padding="8">
+    <Column tag="main" padding="l">
       <slot></slot>
     </Column>
   </Row>

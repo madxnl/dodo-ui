@@ -10,7 +10,7 @@
     <h4>Props</h4>
     <template v-for="(prop, i) in props" :key="i">
       <hr v-if="i" />
-      <Column gap="1">
+      <Column gap="xs">
         <SyntaxHighlight lang="ts" :code="`${prop.code}`" />
         <p>{{ prop.description }}</p>
       </Column>
@@ -22,7 +22,7 @@
     <h4>Events</h4>
     <template v-for="(prop, i) in props" :key="i">
       <hr v-if="i" />
-      <Column gap="1">
+      <Column gap="xs">
         <SyntaxHighlight lang="ts" :code="`${prop.code}`" />
         <p>{{ prop.description }}</p>
       </Column>
@@ -34,7 +34,7 @@
     <h4>Slots</h4>
     <template v-for="(prop, i) in props" :key="i">
       <hr v-if="i" />
-      <Column gap="1">
+      <Column gap="xs">
         <SyntaxHighlight lang="ts" :code="`${prop.code}`" />
         <p>{{ prop.description }}</p>
       </Column>

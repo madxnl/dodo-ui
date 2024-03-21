@@ -1,7 +1,7 @@
 <template>
   <div :class="[$style.NavLayout]">
     <Row :class="$style.bar" justify="end" align="start">
-      <Column gap="4" padding="4" align="start">
+      <Column gap="m" padding="m" align="start">
         <Button variant="text" small square @click="theme = theme === 'dark' ? 'light' : 'dark'">
           <Icon :name="theme === 'dark' ? 'dark_mode' : 'light_mode'" />
         </Button>
@@ -27,13 +27,6 @@
           <component :is="page.example" v-if="page.example" />
         </Column>
       </template>
-
-      <!-- <Card v-for="page in aichapters" :id="page.title" :key="page.title">
-          <Column gap="8">
-            <h2>{{ page.title }}</h2>
-            <component :is="page.example" v-if="page.example" />
-          </Column>
-        </Card> -->
     </div>
   </div>
 </template>

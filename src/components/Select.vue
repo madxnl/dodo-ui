@@ -1,5 +1,5 @@
 <template>
-  <Row v-if="variant === 'buttons'" gap="1" wrap>
+  <Row v-if="variant === 'buttons'" gap="xs" wrap>
     <Button
       v-for="(option, i) in options.slice(0, numShownButtons)"
       :key="optionText(option)"
@@ -53,7 +53,7 @@
     </Field>
     <template #dropdown>
       <Column ref="dropdownEl" style="min-height: 0" gap="0" @mousedown.stop.prevent="">
-        <Row v-show="showSearch" padding="2" :class="$style.searchbox">
+        <Row v-show="showSearch" padding="s" :class="$style.searchbox">
           <TextInput
             ref="searchEl"
             v-model="search"

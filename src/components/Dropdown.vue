@@ -12,7 +12,7 @@
 
   <div v-if="active" :class="[$style.container]" :style="dropdownStyles">
     <div ref="content" :class="$style.content" @mouseleave="onMouseLeave">
-      <Column :padding="padding ?? '2'" :gap="gap ?? '2'">
+      <Column :padding="padding ?? 's'" :gap="gap ?? 's'">
         <slot name="dropdown" :toggle="toggle" />
       </Column>
     </div>

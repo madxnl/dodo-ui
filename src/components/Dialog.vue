@@ -3,10 +3,10 @@
     <Transition name="Dialog">
       <div v-if="active" ref="el" :class="[$style.Dialog]">
         <div :class="$style.window">
-          <Column padding="4">
+          <Column padding="m">
             <slot />
           </Column>
-          <Row padding="4" justify="end" gap="2">
+          <Row padding="m" justify="end" gap="s">
             <slot name="controls" />
           </Row>
         </div>

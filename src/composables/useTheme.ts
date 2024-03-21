@@ -3,7 +3,7 @@ import { ref, watchEffect } from 'vue'
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 
-const spacingValues = [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 24, 32] as const
+const spacingValues = ['0', 'xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const
 
 export type Color = [number, number, number]
 export type ThemeColorName =
@@ -30,7 +30,7 @@ export function useTheme() {
   }
 
   function padding(size?: SpacingValue) {
-    return size ? `dodo-pad-${size}` : ''
+    return size ? `dodo-padding-${size}` : ''
   }
 
   function justify(type?: JustifyType) {

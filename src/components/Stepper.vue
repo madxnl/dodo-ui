@@ -1,7 +1,7 @@
 <template>
   <Column :class="$style.stepper">
     <template v-for="(step, i) in steps" :key="step.key">
-      <Row align="stretch" gap="4" :class="i > currentIndex && $style.inactiveStep">
+      <Row align="stretch" gap="m" :class="i > currentIndex && $style.inactiveStep">
         <Column align="center">
           <div :class="[$style.circle]" @click="clickStep(i)">
             <Icon v-if="currentIndex > i" name="check" />
@@ -11,7 +11,7 @@
         </Column>
 
         <Column grow>
-          <Column gap="1" @click="clickStep(i)">
+          <Column gap="xs" @click="clickStep(i)">
             <h3 style="dodo-color-background">
               <span v-if="step === currentStep">{{ step.name }}</span>
               <span v-else class="dodo-fade-secondary">{{ step.name }}</span>

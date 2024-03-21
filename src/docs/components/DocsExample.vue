@@ -1,6 +1,6 @@
 <template>
   <Column :class="$style.Example" gap="0">
-    <Column padding="4">
+    <Column padding="m">
       <div ref="el" :class="$style.exampleDiv">
         <slot />
       </div>

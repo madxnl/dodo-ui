@@ -4,7 +4,7 @@
       <p>A container for arranging and aligning multiple child elements in a column.</p>
     </template>
     <template #example>
-      <Column justify="between" gap="2" padding="4" style="background: lightblue">
+      <Column justify="between" gap="s" padding="m" style="background: lightblue">
         <Button>Button 1</Button>
         <Button>Button 2</Button>
         <Row>
@@ -12,7 +12,7 @@
           <Button>Button 4</Button>
         </Row>
       </Column>
-      <Column justify="center" align="end" padding="2" gap="4" style="background: lightblue">
+      <Column justify="center" align="end" padding="s" gap="m" style="background: lightblue">
         <Button>Button 5</Button>
         <Row>
           <Button>Button 6</Button>
@@ -26,7 +26,7 @@
 import { Button, Column, Row } from '@/components'
 import { ComponentDocsSection } from '@/docs/components'
 
-const exampleSrc = `<Column justify="between" gap="2" padding="4" style="background: lightblue">
+const exampleSrc = `<Column justify="between" gap="s" padding="m" style="background: lightblue">
   <Button>Button 1</Button>
   <Button>Button 2</Button>
   <Row>
@@ -34,7 +34,7 @@ const exampleSrc = `<Column justify="between" gap="2" padding="4" style="backgro
     <Button>Button 4</Button>
   </Row>
 </Column>
-<Column justify="center" align="end" padding="2" gap="4" style="background: lightblue">
+<Column justify="center" align="end" padding="s" gap="m" style="background: lightblue">
   <Button>Button 5</Button>
   <Row>
     <Button>Button 6</Button>

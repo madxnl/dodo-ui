@@ -31,7 +31,7 @@ const theme = useTheme()
   color: inherit;
   background: var(--dodo-color-box);
   border-radius: 4px;
-  --card-border-rgb: var(dodo-color-border);
+  --card-border-rgb: var(--dodo-color-border);
   --card-active-color: var(--dodo-color-info);
   border: 1px solid rgb(var(--card-border-rgb));
   box-shadow: 0 2px 2px 0 rgba(var(--card-border-rgb), 0.35);
