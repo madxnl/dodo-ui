@@ -1,3 +1,4 @@
+import { ref, watchEffect } from 'vue'
 import '../dodo.scss'
 
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
@@ -80,6 +81,26 @@ export function useTheme() {
     align,
     wrap,
     flex,
-    grow,
+    grow
   }
+}
+
+const preferDark = window.matchMedia('(prefers-color-scheme: dark)')
+const userTheme = localStorage.getItem('dodotheme')
+const defaultTheme = preferDark.matches ? 'dark' : 'light'
+const theme = ref(userTheme || defaultTheme)
+
+preferDark.addEventListener('change', onchange)
+
+function onchange() {
+  theme.value = preferDark.matches ? 'dark' : 'light'
+}
+
+watchEffect(() => {
+  localStorage.setItem('dodotheme', theme.value ?? '')
+  document.body.setAttribute('data-dodotheme', theme.value ?? '')
+})
+
+export function useCurrentTheme() {
+  return { theme }
 }

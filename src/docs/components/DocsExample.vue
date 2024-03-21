@@ -32,24 +32,24 @@ const el = ref<HTMLElement>()
 </script>
 <style module>
 .Example {
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--dodo-color-border);
 }
 .exampleDiv {
   display: grid;
   gap: var(--dodo-gap-4);
 }
 .code {
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid var(--dodo-color-border);
   border-left: 0;
   margin: 0 !important;
   white-space: pre-wrap !important;
-  background: rgba(0, 0, 0, 0.03) !important;
+  background: var(--dodo-color-border) !important;
   padding: 8px 16px !important;
 }
 .expand {
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid var(--dodo-color-border);
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--dodo-color-border);
   display: grid;
   padding: 4px;
   justify-content: center;
@@ -57,6 +57,6 @@ const el = ref<HTMLElement>()
 }
 .expand:hover {
   color: #000000;
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--dodo-color-border);
 }
 </style>

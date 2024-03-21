@@ -2,10 +2,12 @@
   <pre ref="el" :class="[$style.SyntaxHighlight, `language-${lang}`]" />
 </template>
 <script setup lang="ts">
+import { useCurrentTheme } from '@/composables'
 import prism from 'prismjs'
 import 'prismjs/components/prism-typescript'
-import 'prismjs/themes/prism-solarizedlight.min.css'
-import { onMounted, ref } from 'vue'
+import darkTheme from 'prismjs/themes/prism-okaidia.min.css?raw'
+import lightTheme from 'prismjs/themes/prism-solarizedlight.min.css?raw'
+import { onMounted, ref, watchEffect } from 'vue'
 const { highlight, languages } = prism
 
 const props = defineProps<{
@@ -15,24 +17,42 @@ const props = defineProps<{
 
 const el = ref<HTMLElement>()
 
+const styleId = 'prism-theme'
+
+const { theme } = useCurrentTheme()
+
 onMounted(() => {
   const result = highlight(props.code, languages[props.lang], props.lang)
   el.value!.innerHTML = result
+})
+
+watchEffect(() => {
+  let style = document.getElementById(styleId)
+  if (!style) {
+    style = document.createElement('style')
+    style.id = styleId
+    document.head.appendChild(style)
+  }
+  if (style.getAttribute('data-mode') !== theme.value) {
+    style.setAttribute('data-mode', theme.value)
+    style.innerHTML = theme.value === 'dark' ? darkTheme : lightTheme
+  }
 })
 </script>
 <style module>
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 
 pre.SyntaxHighlight {
-  padding: 8px 16px;
+  padding: 8px 16px !important;
   border-radius: 4px !important;
+  border: 0 !important;
   margin: 0;
   font-size: 16px;
-  border-radius: 0;
   white-space: pre-wrap;
   font-family: 'Inconsolata', monospace;
-  background: transparent;
   border: 1px solid hsl(0, 0%, 88%);
   background: hsl(0, 0%, 92%);
+  box-shadow: none !important;
+  background: var(--dodo-color-box) !important;
 }
 </style>

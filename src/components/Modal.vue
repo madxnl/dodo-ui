@@ -83,6 +83,7 @@ async function afterLeave() {
   box-shadow: var(----popup-shadow);
   box-sizing: border-box;
   transition: transform var(--modal-transition-duration);
+  color: var(--dodo-color-text);
 }
 .enter .modal {
   transform: translateY(-16px);

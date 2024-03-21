@@ -2,6 +2,10 @@
   <div :class="[$style.NavLayout]">
     <Row :class="$style.bar" justify="end" align="start">
       <Column gap="4" padding="4" align="start">
+        <Button variant="text" small square @click="theme = theme === 'dark' ? 'light' : 'dark'">
+          <Icon :name="theme === 'dark' ? 'dark_mode' : 'light_mode'" />
+        </Button>
+
         <Column v-for="(chapter, i) in chapters" :key="i" gap="0">
           <span v-if="chapter.title" :class="$style.chapterTitle">
             {{ chapter.title }}
@@ -34,9 +38,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { Column, Row } from '@/components'
+import { Button, Column, Icon, Row } from '@/components'
+import { useCurrentTheme } from '@/composables'
 import type { DefineComponent } from 'vue'
 import { getCurrentInstance, onMounted, ref } from 'vue'
+
+const { theme } = useCurrentTheme()
 
 const props = defineProps<{
   chapters: {
@@ -97,7 +104,6 @@ function keepHashInSync() {
   gap: 64px;
   min-width: 0;
   min-height: 0;
-  background: rgba(var(--dodo-rgb-foreground), 0.04);
 }
 .chapterTitle,
 .pageLink {
@@ -105,7 +111,7 @@ function keepHashInSync() {
   text-decoration: none;
   font: var(--dodo-font-base);
   font-weight: var(--dodo-weight-bold);
-  color: rgb(var(--dodo-rgb-foreground));
+  color: var(--dodo-color-text);
   padding: 2px 4px;
   transition: 0.1s all;
 }
@@ -122,11 +128,11 @@ function keepHashInSync() {
 }
 .linkActive {
   opacity: 1;
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--dodo-color-box);
 }
 hr {
   margin: 0;
-  border-color: rgba(0, 0, 0, 0.15);
+  border-color: var(--dodo-color-border);
   border-right: 0;
 }
 .bar {

@@ -29,9 +29,9 @@ const theme = useTheme()
 <style>
 .dodo-card {
   color: inherit;
-  background: white;
+  background: var(--dodo-color-box);
   border-radius: 4px;
-  --card-border-rgb: 215, 215, 215;
+  --card-border-rgb: var(dodo-color-border);
   --card-active-color: var(--dodo-color-info);
   border: 1px solid rgb(var(--card-border-rgb));
   box-shadow: 0 2px 2px 0 rgba(var(--card-border-rgb), 0.35);
@@ -47,7 +47,7 @@ const theme = useTheme()
 }
 .dodo-card--hoverable:hover {
   text-decoration: none;
-  --card-border-rgb: 170, 170, 170;
+  --card-border-rgb: var(dodo-color-box);
 }
 .dodo-card--active {
   border-color: var(--card-active-color);

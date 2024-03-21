@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+:root {
+  --dodo-white: #ffffff;
+  --dodo-black: #091e28;
+  --dodo-red: #ff0053;
+  --dodo-orange: #dfb235;
+  --dodo-yellow: #ffd500;
+  --dodo-green: #00b188;
+  --dodo-blue: #3a86ff;
+  --dodo-teal: #5bc0de;
+  --dodo-pink: #ff5b77;
+  --dodo-purple: #613d7c;
+
+  --dodo-gray: #908896;
+  --dodo-gray-light: color-mix(in oklch, var(--dodo-gray) 50%, var(--dodo-white));
+  --dodo-gray-dark: color-mix(in oklch, var(--dodo-gray) 50%, var(--dodo-black));
+
+  /* */
+
+  /* */
+
+  --dodo-spacing: 4px;
+}
+
+body {
+  --dodo-color-info: var(--dodo-blue);
+  --dodo-color-success: var(--dodo-green);
+  --dodo-color-warning: var(--dodo-orange);
+  --dodo-color-danger: var(--dodo-red);
+  --dodo-color-primary: var(--dodo-blue);
+  --dodo-color-secondary: var(--dodo-green);
+
+  --dodo-color-heading: var(--dodo-black);
+  --dodo-color-field: var(--dodo-white);
+  --dodo-color-background: color-mix(in oklch, var(--dodo-gray) 10%, var(--dodo-color-field));
+  --dodo-color-text: color-mix(in oklch, var(--dodo-color-heading) 90%, var(--dodo-gray));
+  --dodo-color-border: color-mix(in oklch, var(--dodo-gray) 40%, var(--dodo-color-background));
+  --dodo-color-box: color-mix(in oklch, var(--dodo-color-border) 30%, var(--dodo-color-background));
+
+  --dodo-color-foreground: var(--dodo-color-text);
+
+  background: var(--dodo-color-background);
+  color: var(--dodo-color-text);
+}
+
+[data-dodotheme='dark'] {
+  --dodo-color-heading: var(--dodo-white);
+  --dodo-color-field: var(--dodo-black);
+}

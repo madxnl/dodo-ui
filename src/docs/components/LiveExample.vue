@@ -76,6 +76,6 @@ onErrorCaptured((err) => {
   padding: 16px;
   gap: 8px;
   border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--dodo-color-border);
 }
 </style>

@@ -4,14 +4,14 @@
       <p>A container for arranging and aligning multiple child elements in a row.</p>
     </template>
     <template #example>
-      <Row justify="between" gap="2" padding="2" style="background: pink">
+      <Row justify="between" gap="2" padding="2" style="background: var(--dodo-color-box)">
         <Button>Button 4</Button>
         <Row>
           <Button>Button 5</Button>
           <Button>Button 6</Button>
         </Row>
       </Row>
-      <Row justify="center" align="start" padding="2" gap="4" style="background: pink">
+      <Row justify="center" align="start" padding="2" gap="4" style="background: var(--dodo-color-box)">
         <Button>Button 1</Button>
         <Column>
           <Button>Button 2</Button>

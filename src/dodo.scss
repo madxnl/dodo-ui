@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import './css/colors.css';
 
 :root {
   --dodo-spacing: 4px;
@@ -44,7 +45,7 @@
   --dodo-shadow-4: 0px 16px 16px rgba(0, 0, 0, 0.1);
   --dodo-shadow-5: 0px 32px 40px rgba(0, 0, 0, 0.1);
 
-  // Deprecated
+  /* Deprecated */
   --dodo-weight-bold: var(--dodo-bold);
   --dodo-rgb-info: 58, 134, 255;
   --dodo-rgb-success: 0, 177, 136;
@@ -310,7 +311,7 @@ mark {
   min-width: 0;
   padding: 2px 8px;
   box-shadow: 0 1px 2px inset rgba(0, 0, 0, 0.1);
-  background: white;
+  background: var(--dodo-color-field, white);
   border: 1px solid color-mix(in hsl, var(--dodo-color-foreground) 30%, transparent);
   border-radius: 4px;
   --height: var(--dodo-button-height);
