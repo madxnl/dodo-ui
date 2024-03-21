@@ -4,7 +4,7 @@
       $style.root,
       collapsed && $style.collapsed,
       mobileToggle && $style.mobileToggle,
-      renderMobile && $style.mobileMenu,
+      renderMobile && $style.mobileMenu
     ]"
     @click.self="clickRoot"
   >
@@ -114,7 +114,7 @@ function clickRoot() {
 .footer {
   display: flex;
   flex-flow: column;
-  padding: var(--dodo-gap-2) 0;
+  padding: var(--dodo-spacing-s) 0;
   align-content: flex-start;
 }
 .header {

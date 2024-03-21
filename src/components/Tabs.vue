@@ -85,7 +85,7 @@ function keyFor(tab: Tab) {
   transition: all var(--dodo-transition-duration, 0.15s);
   white-space: nowrap;
   line-height: 1.7;
-  padding: 0 var(--dodo-gap-2);
+  padding: 0 var(--dodo-spacing-s);
 }
 .tab::first-letter {
   text-transform: uppercase;

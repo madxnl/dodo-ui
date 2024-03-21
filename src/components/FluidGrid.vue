@@ -72,7 +72,7 @@ const css = computed(() => {
 <style module>
 .FluidGrid {
   display: grid;
-  gap: var(--dodo-gap-4);
+  gap: var(--dodo-spacing-m);
   align-items: start;
   grid-template-columns: repeat(var(--fluidgrid-mode, auto-fit), minmax(var(--fluidgrid-size), 1fr));
 }

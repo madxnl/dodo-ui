@@ -36,7 +36,7 @@ const el = ref<HTMLElement>()
 }
 .exampleDiv {
   display: grid;
-  gap: var(--dodo-gap-4);
+  gap: var(--dodo-spacing-m);
 }
 .code {
   border-top: 1px solid var(--dodo-color-border);

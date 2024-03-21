@@ -82,12 +82,12 @@ async function onClick(e: Event) {
 
 <style module>
 .el .link {
-  padding: var(--dodo-gap-2) var(--dodo-gap-4);
+  padding: var(--dodo-spacing-s) var(--dodo-spacing-m);
   opacity: 0.75;
   transition: all 0.1s;
   cursor: pointer;
   display: flex;
-  gap: var(--dodo-gap-2);
+  gap: var(--dodo-spacing-s);
   align-items: center;
   position: relative;
   color: white;
@@ -106,7 +106,7 @@ async function onClick(e: Event) {
 .submenu.expanded {
   opacity: 1;
   max-height: 999px;
-  padding: var(--dodo-gap-2) 0;
+  padding: var(--dodo-spacing-s) 0;
 }
 
 .link.active {

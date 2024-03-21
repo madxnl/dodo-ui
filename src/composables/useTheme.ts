@@ -22,7 +22,7 @@ export type Spacing = SpacingValue[] | SpacingValue
 
 export function useTheme() {
   function gapValue(size: SpacingValue) {
-    return `var(--dodo-gap-${size})`
+    return `var(--dodo-spacing-${size})`
   }
 
   function gap(size?: SpacingValue) {

@@ -57,7 +57,7 @@ const theme = useTheme()
 .el {
   display: flex;
   align-items: center;
-  gap: var(--dodo-gap-2);
+  gap: var(--dodo-spacing-s);
   min-width: 0;
 }
 </style>

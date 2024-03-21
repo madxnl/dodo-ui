@@ -80,12 +80,12 @@ async function onClick(_: Event) {
 
 <style module>
 .NavBarItem {
-  padding: var(--dodo-gap-1) var(--dodo-gap-4);
+  padding: var(--dodo-spacing-xs) var(--dodo-spacing-m);
   opacity: 0.7;
   transition: all 0.1s;
   cursor: pointer;
   display: flex;
-  gap: var(--dodo-gap-2);
+  gap: var(--dodo-spacing-s);
   align-items: center;
   position: relative;
   color: white;

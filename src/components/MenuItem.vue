@@ -31,11 +31,11 @@ useTheme()
 
 <style module>
 .DropdownItem {
-  padding: var(--dodo-gap-2) var(--dodo-gap-4);
+  padding: var(--dodo-spacing-s) var(--dodo-spacing-m);
   transition: all 0.1s;
   cursor: pointer;
   display: flex;
-  gap: var(--dodo-gap-2);
+  gap: var(--dodo-spacing-s);
   align-items: center;
   position: relative;
 }
@@ -49,7 +49,7 @@ useTheme()
   font-weight: var(--dodo-weight-bold);
 }
 .separator {
-  margin: var(--dodo-gap-1) 0;
+  margin: var(--dodo-spacing-xs) 0;
   border: 0;
   border-top: 1px solid color-mix(in oklch, var(--dodo-color-foreground) 10%, transparent);
 }

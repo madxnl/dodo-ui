@@ -186,7 +186,7 @@ function clickRoot() {
   display: flex;
   justify-content: space-between;
   background: var(--dodo-color-foreground);
-  padding: var(--dodo-gap-3) var(--dodo-gap-4);
+  padding: var(--dodo-spacing-3) var(--dodo-spacing-m);
   align-items: center;
   color: white;
 }

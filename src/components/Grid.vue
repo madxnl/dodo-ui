@@ -44,7 +44,7 @@ const theme = useTheme()
 <style module>
 .component {
   display: grid;
-  gap: var(--dodo-gap-4);
+  gap: var(--dodo-spacing-m);
   /* align-items: start; */
   grid-template-columns: repeat(var(--grid-auto-mode, auto-fit), minmax(var(--grid-auto-size), 1fr));
 }

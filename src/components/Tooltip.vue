@@ -72,13 +72,13 @@ useTheme()
 </script>
 <style module>
 .Tooltip {
-  padding: var(--dodo-gap-1);
+  padding: var(--dodo-spacing-xs);
   position: fixed;
   pointer-events: none;
   z-index: 1000;
 }
 .content {
-  padding: var(--dodo-gap-1) var(--dodo-gap-2);
+  padding: var(--dodo-spacing-xs) var(--dodo-spacing-s);
   border: 1px solid color-mix(in oklch, var(--dodo-color-foreground) 20%, transparent);
   border-radius: 4px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);

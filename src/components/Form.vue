@@ -27,6 +27,6 @@ function onSubmit() {
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--dodo-gap-4);
+  gap: var(--dodo-spacing-m);
 }
 </style>

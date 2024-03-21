@@ -10,7 +10,7 @@
 }
 
 .dodo-gap-0 {
-  gap: 0;
+  gap: 0 !important;
 }
 .dodo-gap-xxs {
   gap: var(--dodo-spacing-xxs) !important;
@@ -57,75 +57,6 @@
 }
 .dodo-padding-xxl {
   padding: var(--dodo-spacing-xxl) !important;
-}
-
-/* Layout */
-.dodo-gap-0 {
-  gap: 0 !important;
-}
-.dodo-gap-1 {
-  gap: var(--dodo-spacing) !important;
-}
-.dodo-gap-2 {
-  gap: var(--dodo-gap-2) !important;
-}
-.dodo-gap-4 {
-  gap: var(--dodo-gap-4) !important;
-}
-.dodo-gap-5 {
-  gap: var(--dodo-gap-5) !important;
-}
-.dodo-gap-6 {
-  gap: var(--dodo-gap-6) !important;
-}
-.dodo-gap-8 {
-  gap: var(--dodo-gap-8) !important;
-}
-.dodo-gap-12 {
-  gap: var(--dodo-gap-12) !important;
-}
-.dodo-gap-16 {
-  gap: var(--dodo-gap-16) !important;
-}
-.dodo-gap-24 {
-  gap: var(--dodo-gap-24) !important;
-}
-.dodo-gap-32 {
-  gap: var(--dodo-gap-32) !important;
-}
-
-.dodo-pad-0 {
-  padding: 0 !important;
-}
-.dodo-pad-1 {
-  padding: var(--dodo-spacing) !important;
-}
-.dodo-pad-2 {
-  padding: var(--dodo-gap-2) !important;
-}
-.dodo-pad-4 {
-  padding: var(--dodo-gap-4) !important;
-}
-.dodo-pad-5 {
-  padding: var(--dodo-gap-5) !important;
-}
-.dodo-pad-6 {
-  padding: var(--dodo-gap-6) !important;
-}
-.dodo-pad-8 {
-  padding: var(--dodo-gap-8) !important;
-}
-.dodo-pad-12 {
-  padding: var(--dodo-gap-12) !important;
-}
-.dodo-pad-16 {
-  padding: var(--dodo-gap-16) !important;
-}
-.dodo-pad-24 {
-  padding: var(--dodo-gap-24) !important;
-}
-.dodo-pad-32 {
-  padding: var(--dodo-gap-32) !important;
 }
 
 .dodo-justify-start {
