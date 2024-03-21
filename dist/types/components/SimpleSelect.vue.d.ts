@@ -9,12 +9,12 @@ declare const _default: <T extends string | null | undefined>(__VLS_props: {
     modelValue: T;
     "onUpdate:modelValue"?: ((value: T) => any) | undefined;
     description?: string | undefined;
-    optional?: boolean | undefined;
-    autofocus?: boolean | undefined;
     options: {
         label: string;
         value: T;
     }[];
+    optional?: boolean | undefined;
+    autofocus?: boolean | undefined;
 } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, __VLS_ctx?: {
     attrs: any;
     slots: {};
@@ -31,12 +31,12 @@ declare const _default: <T extends string | null | undefined>(__VLS_props: {
         modelValue: T;
         "onUpdate:modelValue"?: ((value: T) => any) | undefined;
         description?: string | undefined;
-        optional?: boolean | undefined;
-        autofocus?: boolean | undefined;
         options: {
             label: string;
             value: T;
         }[];
+        optional?: boolean | undefined;
+        autofocus?: boolean | undefined;
     } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps;
     expose(exposed: import('vue').ShallowUnwrapRef<{}>): void;
     attrs: any;
@@ -57,12 +57,12 @@ declare const _default: <T extends string | null | undefined>(__VLS_props: {
             modelValue: T;
             "onUpdate:modelValue"?: ((value: T) => any) | undefined;
             description?: string | undefined;
-            optional?: boolean | undefined;
-            autofocus?: boolean | undefined;
             options: {
                 label: string;
                 value: T;
             }[];
+            optional?: boolean | undefined;
+            autofocus?: boolean | undefined;
         } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps;
         expose(exposed: import('vue').ShallowUnwrapRef<{}>): void;
         attrs: any;

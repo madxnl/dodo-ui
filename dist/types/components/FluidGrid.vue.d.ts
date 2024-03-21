@@ -6,14 +6,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     columnSize: number;
     /**
      * Add spacing between child elements
-     * @example gap="2"
+     * @example gap="xl"
      */
-    gap?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /**
      * Amount of padding around the contents.
-     * @example padding="4"
+     * @example padding="xl"
      */
-    padding?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /**
      * Prefer empty columns instead of stretching
      */
@@ -31,14 +31,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     columnSize: number;
     /**
      * Add spacing between child elements
-     * @example gap="2"
+     * @example gap="xl"
      */
-    gap?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /**
      * Amount of padding around the contents.
-     * @example padding="4"
+     * @example padding="xl"
      */
-    padding?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /**
      * Prefer empty columns instead of stretching
      */

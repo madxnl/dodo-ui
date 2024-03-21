@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 import { nextTick, reactive, ref } from 'vue'
-import { useValidation } from '.'
+import { useValidation } from './useValidation'
 
 const customMinCount = (min: number) => (x: number, field: string) => x < min && `${field} must be at least ${min}`
 

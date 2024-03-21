@@ -5,11 +5,10 @@
 </template>
 
 <script lang="ts" setup>
-
 const defaultDuration = 250
 const isTest = false // import.meta.env.MODE === 'test'
 const duration = isTest ? 0 : defaultDuration
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 async function enter(el: Element, done: () => void) {
   if (el instanceof HTMLElement && duration > 0) {

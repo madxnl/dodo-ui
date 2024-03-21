@@ -3,9 +3,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     /** Use v-model to modify dropdown state from outside */
     modelValue?: boolean | undefined;
     /** Change padding around dropdown content */
-    padding?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /** Change gap between dropdown content */
-    gap?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /** (temporaily) disable dropdown functionality */
     disabled?: boolean | undefined;
     /** Change trigger event */
@@ -16,9 +16,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     /** Use v-model to modify dropdown state from outside */
     modelValue?: boolean | undefined;
     /** Change padding around dropdown content */
-    padding?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /** Change gap between dropdown content */
-    gap?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /** (temporaily) disable dropdown functionality */
     disabled?: boolean | undefined;
     /** Change trigger event */

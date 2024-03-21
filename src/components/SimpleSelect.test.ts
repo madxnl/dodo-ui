@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
-import DropdownSelect from './SimpleSelect.vue'
+import Select from './SimpleSelect.vue'
 
 test('select a value', async () => {
   const modelValue = ''
@@ -10,7 +10,7 @@ test('select a value', async () => {
     { label: 'bar', value: 'bar' }
   ]
 
-  const wrapper = mount(DropdownSelect, { props: { modelValue, 'onUpdate:modelValue': onChange, options } })
+  const wrapper = mount(Select, { props: { modelValue, 'onUpdate:modelValue': onChange, options } })
 
   const select = wrapper.find('select')!
   await select.setValue('foo')

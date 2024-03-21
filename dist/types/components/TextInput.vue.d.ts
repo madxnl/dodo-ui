@@ -1,8 +1,5 @@
 declare const _default: import("vue").DefineComponent<{
     modelValue: import("vue").PropType<string | null>;
-    id: {
-        type: import("vue").PropType<string | null>;
-    };
     placeholder: {
         type: import("vue").PropType<string>;
     };
@@ -21,17 +18,8 @@ declare const _default: import("vue").DefineComponent<{
     autofocus: {
         type: import("vue").PropType<boolean>;
     };
-    label: {
-        type: import("vue").PropType<string>;
-    };
     error: {
         type: import("vue").PropType<string>;
-    };
-    description: {
-        type: import("vue").PropType<string>;
-    };
-    optional: {
-        type: import("vue").PropType<boolean>;
     };
     rows: {
         type: import("vue").PropType<never>;
@@ -43,9 +31,6 @@ declare const _default: import("vue").DefineComponent<{
     "update:modelValue": (modelValue: string | null) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
     modelValue: import("vue").PropType<string | null>;
-    id: {
-        type: import("vue").PropType<string | null>;
-    };
     placeholder: {
         type: import("vue").PropType<string>;
     };
@@ -64,17 +49,8 @@ declare const _default: import("vue").DefineComponent<{
     autofocus: {
         type: import("vue").PropType<boolean>;
     };
-    label: {
-        type: import("vue").PropType<string>;
-    };
     error: {
         type: import("vue").PropType<string>;
-    };
-    description: {
-        type: import("vue").PropType<string>;
-    };
-    optional: {
-        type: import("vue").PropType<boolean>;
     };
     rows: {
         type: import("vue").PropType<never>;

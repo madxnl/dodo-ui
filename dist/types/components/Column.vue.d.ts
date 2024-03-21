@@ -2,14 +2,14 @@ import type { AlignType, JustifyType } from '..';
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /**
      * Add spacing between child elements
-     * @example gap="2"
+     * @example gap="xl"
      */
-    gap?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /**
      * Amount of padding around the content
-     * @example padding="4"
+     * @example padding="xl"
      */
-    padding?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /**
      * Grow to take up available space (when nested inside another Row)
      * @example grow
@@ -38,14 +38,14 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
     /**
      * Add spacing between child elements
-     * @example gap="2"
+     * @example gap="xl"
      */
-    gap?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /**
      * Amount of padding around the content
-     * @example padding="4"
+     * @example padding="xl"
      */
-    padding?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "8" | "10" | "12" | "16" | "24" | "32" | undefined;
+    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
     /**
      * Grow to take up available space (when nested inside another Row)
      * @example grow

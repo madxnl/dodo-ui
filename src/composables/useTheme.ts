@@ -72,14 +72,15 @@ export const darkModeSetting = ref<'auto' | 'dark' | 'light'>()
 const previousTheme = localStorage.getItem('dodotheme') as 'dark' | 'light' | null
 const userTheme = ref(previousTheme)
 
-const preferDark = window.matchMedia('(prefers-color-scheme: dark)')
-const deviceTheme = ref(preferDark.matches ? 'dark' : 'light')
-
-function onchange() {
-  deviceTheme.value = preferDark.matches ? 'dark' : 'light'
+const deviceTheme = ref<'dark' | 'light'>()
+if (window.matchMedia) {
+  const preferDark = window.matchMedia('(prefers-color-scheme: dark)')
+  const getDeviceTheme = () => {
+    deviceTheme.value = preferDark.matches ? 'dark' : 'light'
+  }
+  preferDark.addEventListener('change', getDeviceTheme)
+  getDeviceTheme()
 }
-
-preferDark.addEventListener('change', onchange)
 
 const defaultTheme = computed(() => (darkModeSetting.value === 'auto' ? deviceTheme.value : darkModeSetting.value))
 const theme = computed(() => userTheme.value || defaultTheme.value || 'light')

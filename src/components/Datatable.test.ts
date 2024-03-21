@@ -5,12 +5,12 @@ import { Datatable } from '..'
 const rows = [
   { id: 1, name: 'Foo', modified: '2022-01-01' },
   { id: 2, name: 'Bar', modified: '2022-02-01' },
-  { id: 3, name: 'Baz', modified: '2022-01-04' },
+  { id: 3, name: 'Baz', modified: '2022-01-04' }
 ]
 
 const columns = [
   { name: 'Name', value: 'name', sort: 'name' },
-  { name: 'Modified', value: 'modified' },
+  { name: 'Modified', value: 'modified' }
 ]
 
 const findByText = (w: VueWrapper, s: string) => w.findAll('*').find((w) => w.text() === s)!
