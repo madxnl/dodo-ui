@@ -1,5 +1,4 @@
 import { ref, watchEffect } from 'vue'
-import '../dodo.scss'
 
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch'

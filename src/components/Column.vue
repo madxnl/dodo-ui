@@ -17,7 +17,6 @@
 <script lang="ts" setup>
 import type { AlignType, JustifyType, SpacingValue } from '..'
 import { useTheme } from '../composables'
-import '../dodo.scss'
 
 defineProps<{
   /**

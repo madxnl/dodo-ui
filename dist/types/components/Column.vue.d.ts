@@ -1,5 +1,4 @@
 import type { AlignType, JustifyType } from '..';
-import '../dodo.scss';
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /**
      * Add spacing between child elements
