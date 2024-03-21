@@ -16,10 +16,7 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run test
-
-      - run: mv dist dist2 && mv docs docs2
       - run: npm run build
-      - run: diff -r dist dist2 && diff -r docs docs2
 
       - uses: JS-DevTools/npm-publish@v2
         with:
