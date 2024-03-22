@@ -4,7 +4,7 @@
 
 # Changelog
 
-## [0.37.0]
+## [0.37.2]
 
 - Changed color variables, 'warn' is now 'warning' and '-rgb-' vars were removed
 - Added initial support for dark mode using `useTheme`
