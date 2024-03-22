@@ -39,8 +39,8 @@ const theme = useTheme()
   transition: all var(--dodo-transition-duration);
   display: flex;
   flex-direction: column;
-  gap: calc(var(--dodo-spacing) * 4);
-  padding: calc(var(--dodo-spacing) * 6);
+  gap: var(--dodo-spacing-m);
+  padding: var(--dodo-spacing-m);
 }
 .dodo-card--hoverable {
   cursor: pointer;
