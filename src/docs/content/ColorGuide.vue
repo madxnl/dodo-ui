@@ -3,7 +3,7 @@
   <p>
     <Row wrap>
       <code v-for="c in colors" :key="c" :class="[$style.swatch]" :style="`background-color:var(--dodo-color-${c})`">
-        <code :class="c === 'foreground' ? 'dodo-color-background' : 'dodo-color-foreground'">
+        <code :class="c === 'text' ? 'dodo-color-background' : 'dodo-color-text'">
           {{ c }}
         </code>
       </code>
@@ -31,7 +31,7 @@ const colors = [
   'black',
   'background',
   'gray',
-  'foreground',
+  'text',
   'white'
 ] as const
 </script>

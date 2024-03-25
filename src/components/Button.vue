@@ -89,7 +89,7 @@ defineOptions({
   font: inherit;
   font-weight: var(--dodo-weight-bold);
   background: var(--dodo-color-background);
-  --button-color: var(--dodo-color-foreground);
+  --button-color: var(--dodo-color-text);
   color: var(--button-color);
   border-radius: 4px;
   position: relative;

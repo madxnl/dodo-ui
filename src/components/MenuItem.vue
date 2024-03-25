@@ -40,7 +40,7 @@ useTheme()
   position: relative;
 }
 .DropdownItem:hover {
-  background: color-mix(in var(--dodo-mix-mode), var(--dodo-color-foreground) 3%, transparent);
+  background: color-mix(in var(--dodo-mix-mode), var(--dodo-color-text) 3%, transparent);
 }
 .DropdownItem.active {
   background: color-mix(in var(--dodo-mix-mode), var(--dodo-color-info) 15%, transparent);
@@ -51,6 +51,6 @@ useTheme()
 .separator {
   margin: var(--dodo-spacing-xs) 0;
   border: 0;
-  border-top: 1px solid color-mix(in var(--dodo-mix-mode), var(--dodo-color-foreground) 10%, transparent);
+  border-top: 1px solid color-mix(in var(--dodo-mix-mode), var(--dodo-color-text) 10%, transparent);
 }
 </style>

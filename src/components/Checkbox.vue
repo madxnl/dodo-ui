@@ -36,7 +36,7 @@ useTheme()
   cursor: pointer;
   transition: opacity 0.1s;
   opacity: 0.7;
-  color: var(--dodo-color-foreground);
+  color: var(--dodo-color-text);
 }
 .Checkbox input[type='checkbox'] {
   pointer-events: none;

@@ -4,7 +4,11 @@
 
 # Changelog
 
-## [0.37.2]
+## [0.38]
+
+- Removed color-foreground in favour of color-text
+
+## [0.37.3]
 
 - Changed color variables, 'warn' is now 'warning' and '-rgb-' vars were removed
 - Added initial support for dark mode using `useTheme`

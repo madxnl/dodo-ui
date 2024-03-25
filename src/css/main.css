@@ -52,7 +52,7 @@
 
 body {
   font: var(--dodo-font-base);
-  color: var(--dodo-color-foreground);
+  color: var(--dodo-color-text);
   overflow-wrap: break-word;
   hyphens: auto;
 }
@@ -98,7 +98,7 @@ a {
 blockquote {
   margin: 0;
   padding-left: 16px;
-  border-left: 2px solid rgba(var(--dodo-rgb-foreground), 0.25);
+  border-left: 2px solid var(--dodo-color-border);
 }
 small {
   font-size: var(--dodo-font-small) !important;
@@ -146,7 +146,7 @@ mark {
   --height: var(--dodo-button-height);
   min-height: var(--height);
   font: var(--dodo-font-base);
-  color: var(--dodo-color-foreground);
+  color: var(--dodo-color-text);
   box-sizing: border-box;
 }
 .dodo-formfield:focus {

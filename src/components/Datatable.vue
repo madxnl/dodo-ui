@@ -220,7 +220,7 @@ function toggleSelectAll() {
 <style module>
 .Datatable {
   font: var(--dodo-font-base);
-  color: var(--dodo-color-foreground);
+  color: var(--dodo-color-text);
   background: var(--dodo-color-background);
   display: flex;
   flex-flow: column;
