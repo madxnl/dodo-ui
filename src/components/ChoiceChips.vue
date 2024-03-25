@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.Select, multiple && $style.multiple]">
+  <div :class="[$style.ChoiceChips, multiple && $style.multiple]">
     <Chip
       v-for="(option, i) in options"
       :key="option.label"
@@ -80,7 +80,7 @@ function toggle(option: Option) {
 </script>
 
 <style module>
-.Select {
+.ChoiceChips {
   display: flex;
   flex-wrap: wrap;
   align-items: center;

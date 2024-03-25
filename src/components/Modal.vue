@@ -80,7 +80,7 @@ async function afterLeave() {
 .modal {
   width: 480px;
   max-width: calc(100vw - 32px);
-  box-shadow: var(----popup-shadow);
+  box-shadow: var(--dodo-shadow-modal);
   box-sizing: border-box;
   transition: transform var(--modal-transition-duration);
   color: var(--dodo-color-text);

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import './vars.css';
 @import './colors.css';
 @import './layout.css';
 
@@ -13,12 +14,6 @@
 
   --dodo-breakpoint-small: 600;
   --dodo-breakpoint-large: 1200;
-
-  --dodo-shadow-1: 0px 1px 1px rgba(0, 0, 0, 0.1);
-  --dodo-shadow-2: 0px 3px 3px rgba(0, 0, 0, 0.1);
-  --dodo-shadow-3: 0px 6px 6px rgba(0, 0, 0, 0.1);
-  --dodo-shadow-4: 0px 16px 16px rgba(0, 0, 0, 0.1);
-  --dodo-shadow-5: 0px 32px 40px rgba(0, 0, 0, 0.1);
 
   /* Deprecated */
   --dodo-weight-bold: var(--dodo-bold);

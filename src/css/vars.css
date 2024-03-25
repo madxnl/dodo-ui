@@ -1,0 +1,53 @@
+body {
+  /* Color definitions */
+  --dodo-color-white: #ffffff;
+  --dodo-color-gray: #908896;
+  --dodo-color-black: #091e28;
+  --dodo-color-red: #f1003c;
+  --dodo-color-orange: #e68200;
+  --dodo-color-yellow: #d1ce16;
+  --dodo-color-green: #00a76f;
+  --dodo-color-teal: #00b2e9;
+  --dodo-color-blue: #5087ff;
+  --dodo-color-purple: #985de4;
+  --dodo-color-pink: #ff5bc0;
+
+  /* Color label */
+  --dodo-color-info: var(--dodo-color-blue);
+  --dodo-color-success: var(--dodo-color-green);
+  --dodo-color-warning: var(--dodo-color-orange);
+  --dodo-color-danger: var(--dodo-color-red);
+  --dodo-color-primary: var(--dodo-color-blue);
+  --dodo-color-secondary: var(--dodo-color-green);
+
+  /* Color details */
+  --dodo-color-heading: var(--dodo-color-black);
+  --dodo-color-field: var(--dodo-color-white);
+  --dodo-color-background: color-mix(in var(--dodo-mix-mode), var(--dodo-color-gray) 10%, var(--dodo-color-field));
+  --dodo-color-text: color-mix(in var(--dodo-mix-mode), var(--dodo-color-heading) 60%, var(--dodo-color-gray));
+  --dodo-color-border: color-mix(in var(--dodo-mix-mode), var(--dodo-color-gray) 40%, var(--dodo-color-background));
+  --dodo-color-box: color-mix(in var(--dodo-mix-mode), var(--dodo-color-border) 30%, var(--dodo-color-background));
+
+  /* Spacing */
+  --dodo-spacing-m: 16px;
+  --dodo-spacing-s: calc(var(--dodo-spacing-m) / 2);
+  --dodo-spacing-xs: calc(var(--dodo-spacing-s) / 2);
+  --dodo-spacing-xxs: calc(var(--dodo-spacing-xs) / 2);
+  --dodo-spacing-l: calc(var(--dodo-spacing-m) * 2);
+  --dodo-spacing-xl: calc(var(--dodo-spacing-l) * 2);
+  --dodo-spacing-xxl: calc(var(--dodo-spacing-xl) * 2);
+
+  /* Misc settings */
+  --dodo-mix-mode: lab;
+
+  /* Shadow */
+  --dodo-shadow-button: 0px 2px 2px rgba(0, 0, 0, 0.01), 0px 1px 1px rgba(0, 0, 0, 0.02);
+  --dodo-shadow-card: 0px 8px 8px rgba(0, 0, 0, 0.01), 0px 4px 4px rgba(0, 0, 0, 0.02);
+  --dodo-shadow-modal: 0 0 16px rgba(0, 0, 0, 0.08);
+}
+
+[data-dodotheme='dark'] {
+  /* Dark theme */
+  --dodo-color-heading: var(--dodo-color-white);
+  --dodo-color-field: var(--dodo-color-black);
+}

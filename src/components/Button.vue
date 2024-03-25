@@ -93,7 +93,7 @@ defineOptions({
   color: var(--button-color);
   border-radius: 4px;
   position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--dodo-shadow-button);
   user-select: none;
   vertical-align: middle;
   display: inline-flex;
@@ -144,7 +144,7 @@ defineOptions({
 .Button:active,
 .active,
 .Button.loading {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+  box-shadow: none;
 }
 .Button:disabled {
   opacity: 0.5;

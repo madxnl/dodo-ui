@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { expect, test } from 'vitest'
 import { nextTick } from 'vue'
-import Select from './Select.vue'
+import Select from './SelectOld.vue'
 
 const _options = [...Array(20)].map((_, i) => ({ label: 'Option ' + i, value: i }))
 
@@ -10,7 +10,7 @@ const getByText = (wrapper: any, text: string) => wrapper.findAll('*').find((e: 
 test('select a value', async () => {
   const wrapper = mount(Select, {
     props: { options: _options, modelValue: _options[0]!.value },
-    global: { stubs: { teleport: true } },
+    global: { stubs: { teleport: true } }
   })
   // console.log('html:', wrapper.html())
   await getByText(wrapper, _options[0]!.label).trigger('click')
@@ -21,7 +21,7 @@ test('select a value', async () => {
 test('select can be disabled', async () => {
   const wrapper = mount(Select, {
     props: { options: _options, modelValue: _options[0]!.value, disabled: true },
-    global: { stubs: { teleport: true } },
+    global: { stubs: { teleport: true } }
   })
   await getByText(wrapper, _options[0]!.label).trigger('click')
   await nextTick()
@@ -32,7 +32,7 @@ test('search filters options', async () => {
   const wrapper = mount(Select, {
     props: { options: _options, modelValue: _options[0]!.value },
     global: { stubs: { teleport: true } },
-    attachTo: document.body,
+    attachTo: document.body
   })
   await getByText(wrapper, _options[0]!.label).trigger('click')
   await nextTick()
@@ -61,7 +61,7 @@ test('search input visible after character key press', async () => {
   const wrapper = mount(Select, {
     props: { options: _options.slice(0, 5), modelValue: _options[0]!.value },
     global: { stubs: { teleport: true } },
-    attachTo: document.body,
+    attachTo: document.body
   })
   await getByText(wrapper, _options[0]!.label).trigger('click')
   await nextTick()

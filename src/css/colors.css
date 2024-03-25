@@ -1,39 +1,6 @@
 body {
-  --dodo-color-white: #ffffff;
-  --dodo-color-gray: #908896;
-  --dodo-color-black: #091e28;
-  --dodo-color-red: #f1003c;
-  --dodo-color-orange: #e68200;
-  --dodo-color-yellow: #d1ce16;
-  --dodo-color-green: #00a76f;
-  --dodo-color-teal: #00b2e9;
-  --dodo-color-blue: #5087ff;
-  --dodo-color-purple: #985de4;
-  --dodo-color-pink: #ff5bc0;
-
-  --dodo-mix-mode: lab;
-
-  --dodo-color-info: var(--dodo-color-blue);
-  --dodo-color-success: var(--dodo-color-green);
-  --dodo-color-warning: var(--dodo-color-orange);
-  --dodo-color-danger: var(--dodo-color-red);
-  --dodo-color-primary: var(--dodo-color-blue);
-  --dodo-color-secondary: var(--dodo-color-green);
-
-  --dodo-color-heading: var(--dodo-color-black);
-  --dodo-color-field: var(--dodo-color-white);
-  --dodo-color-background: color-mix(in var(--dodo-mix-mode), var(--dodo-color-gray) 10%, var(--dodo-color-field));
-  --dodo-color-text: color-mix(in var(--dodo-mix-mode), var(--dodo-color-heading) 60%, var(--dodo-color-gray));
-  --dodo-color-border: color-mix(in var(--dodo-mix-mode), var(--dodo-color-gray) 40%, var(--dodo-color-background));
-  --dodo-color-box: color-mix(in var(--dodo-mix-mode), var(--dodo-color-border) 30%, var(--dodo-color-background));
-
   background: var(--dodo-color-background);
   color: var(--dodo-color-text);
-}
-
-[data-dodotheme='dark'] {
-  --dodo-color-heading: var(--dodo-color-white);
-  --dodo-color-field: var(--dodo-color-black);
 }
 
 .dodo-color-white {

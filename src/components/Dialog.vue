@@ -52,7 +52,7 @@ watchEffect(() => {
   border-radius: 4px;
   width: 500px;
   max-width: 100%;
-  box-shadow: var(--dodo-shadow-5);
+  box-shadow: var(--dodo-color-modal);
 }
 
 .Dialog-enter-active,

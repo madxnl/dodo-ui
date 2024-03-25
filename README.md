@@ -6,7 +6,8 @@
 
 ## [0.38]
 
-- Removed color-foreground in favour of color-text
+- color-foreground in now color-text
+- Select is deprecated (still exported as SelectOld)
 
 ## [0.37.3]
 

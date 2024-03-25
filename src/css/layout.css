@@ -1,14 +1,3 @@
-:root {
-  --dodo-spacing-0: 0px;
-  --dodo-spacing-xxs: 2px;
-  --dodo-spacing-xs: 4px;
-  --dodo-spacing-s: 8px;
-  --dodo-spacing-m: 16px;
-  --dodo-spacing-l: 32px;
-  --dodo-spacing-xl: 64px;
-  --dodo-spacing-xxl: 128px;
-}
-
 .dodo-gap-0 {
   gap: 0 !important;
 }

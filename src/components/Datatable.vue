@@ -276,7 +276,7 @@ function toggleSelectAll() {
 }
 .clickableRow:hover {
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--dodo-color-button);
 }
 .Datatable .rowSelected {
   background: color-mix(in var(--dodo-mix-mode), var(--dodo-color-info) 30%, transparent);
@@ -284,7 +284,7 @@ function toggleSelectAll() {
 .stickyHeader,
 .stickyFooter {
   position: sticky;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--dodo-color-button);
   background: var(--dodo-color-background);
   z-index: 1;
 }
