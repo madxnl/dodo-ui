@@ -1,11 +1,13 @@
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
+declare function __VLS_template(): {
+    default?(_: {}): any;
+    controls?(_: {}): any;
+};
+declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     active: boolean;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
     active: boolean;
-}>>>, {}, {}>, {
-    default?(_: {}): any;
-    controls?(_: {}): any;
-}>;
+}>>>, {}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

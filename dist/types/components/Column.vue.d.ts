@@ -1,79 +1,81 @@
-import type { AlignType, JustifyType } from '..';
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
+import type { AlignType, JustifyType, SpacingValue } from '..';
+declare function __VLS_template(): {
+    default?(_: {}): any;
+};
+declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /**
      * Add spacing between child elements
      * @example gap="xl"
      */
-    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    gap?: SpacingValue;
     /**
      * Amount of padding around the content
      * @example padding="xl"
      */
-    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    padding?: SpacingValue;
     /**
      * Grow to take up available space (when nested inside another Row)
      * @example grow
      */
-    grow?: boolean | undefined;
+    grow?: boolean;
     /**
      * Align content along main direction (horizontal for Row, vertical for Column)
      * @example justify="space-between"
      */
-    justify?: JustifyType | undefined;
+    justify?: JustifyType;
     /**
      * Aligns children along cross-axis direction
      * @example align="end"
      */
-    align?: AlignType | undefined;
+    align?: AlignType;
     /**
      * Wrap contents over instead of shrinking
      * @example wrap
      */
-    wrap?: boolean | undefined;
+    wrap?: boolean;
     /**
      * HTML tag to use for the container
      * @example tag="section"
      */
-    tag?: string | undefined;
+    tag?: string;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
     /**
      * Add spacing between child elements
      * @example gap="xl"
      */
-    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    gap?: SpacingValue;
     /**
      * Amount of padding around the content
      * @example padding="xl"
      */
-    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    padding?: SpacingValue;
     /**
      * Grow to take up available space (when nested inside another Row)
      * @example grow
      */
-    grow?: boolean | undefined;
+    grow?: boolean;
     /**
      * Align content along main direction (horizontal for Row, vertical for Column)
      * @example justify="space-between"
      */
-    justify?: JustifyType | undefined;
+    justify?: JustifyType;
     /**
      * Aligns children along cross-axis direction
      * @example align="end"
      */
-    align?: AlignType | undefined;
+    align?: AlignType;
     /**
      * Wrap contents over instead of shrinking
      * @example wrap
      */
-    wrap?: boolean | undefined;
+    wrap?: boolean;
     /**
      * HTML tag to use for the container
      * @example tag="section"
      */
-    tag?: string | undefined;
-}>>>, {}, {}>, {
-    default?(_: {}): any;
-}>;
+    tag?: string;
+}>>>, {}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

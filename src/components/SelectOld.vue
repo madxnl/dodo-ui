@@ -18,10 +18,10 @@
     </Button>
     <template v-if="tooManyButtons">
       <Button v-if="revealMore" :small="size === 's'" variant="text" rounded @click="revealMore = !revealMore">
-        Less <Icon name="expand_less" size="s" style="margin: -2px" />
+        Less <Icon name="keyboard_arrow_up" size="s" style="margin: -2px" />
       </Button>
       <Button v-else :small="size === 's'" variant="text" rounded @click="revealMore = !revealMore">
-        {{ options.length - numShownButtons }} more <Icon name="expand_more" size="s" style="margin: -2px" />
+        {{ options.length - numShownButtons }} more <Icon name="keyboard_arrow_down" size="s" style="margin: -2px" />
       </Button>
     </template>
   </Row>

@@ -21,7 +21,7 @@
         </div>
 
         <div v-if="slots.submenu">
-          <Icon :name="isExpanded ? 'expand_less' : 'expand_more'" size="s" style="margin: 0 -0.25em" />
+          <Icon :name="isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'" size="s" style="margin: 0 -0.25em" />
         </div>
       </a>
     </Tooltip>

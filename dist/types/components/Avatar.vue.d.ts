@@ -1,11 +1,11 @@
 declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     text: string;
-    image?: string | null | undefined;
-    round?: boolean | undefined;
+    image?: string | null;
+    round?: boolean;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
     text: string;
-    image?: string | null | undefined;
-    round?: boolean | undefined;
+    image?: string | null;
+    round?: boolean;
 }>>>, {}, {}>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

@@ -1,4 +1,4 @@
-import type { IconName } from '..';
+import type { ColorProp, IconName } from '..';
 declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /** The icon name
      * @example icon="plus"
@@ -7,13 +7,13 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /** Change icon color
      * @example color="success"
      */
-    color?: import("..").ThemeColorName | undefined;
+    color?: ColorProp;
     /** Filled variant
      */
-    fill?: boolean | undefined;
-    small?: -1 | undefined;
-    large?: -1 | undefined;
-    size?: "s" | "xs" | "m" | "l" | "xl" | undefined;
+    fill?: boolean;
+    small?: -1;
+    large?: -1;
+    size?: "xs" | "s" | "m" | "l" | "xl";
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
     /** The icon name
      * @example icon="plus"
@@ -22,13 +22,13 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /** Change icon color
      * @example color="success"
      */
-    color?: import("..").ThemeColorName | undefined;
+    color?: ColorProp;
     /** Filled variant
      */
-    fill?: boolean | undefined;
-    small?: -1 | undefined;
-    large?: -1 | undefined;
-    size?: "s" | "xs" | "m" | "l" | "xl" | undefined;
+    fill?: boolean;
+    small?: -1;
+    large?: -1;
+    size?: "xs" | "s" | "m" | "l" | "xl";
 }>>>, {}, {}>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

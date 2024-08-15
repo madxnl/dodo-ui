@@ -1,23 +1,26 @@
+import type { GapSize } from '@/composables';
 declare function close(): void;
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
+declare function __VLS_template(): {
+    default?(_: {
+        close: typeof close;
+    }): any;
+};
+declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     open: boolean;
-    size?: "S" | "L" | undefined;
-    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
-    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    size?: "S" | "L";
+    padding?: GapSize;
+    gap?: GapSize;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     close: () => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
     open: boolean;
-    size?: "S" | "L" | undefined;
-    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
-    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    size?: "S" | "L";
+    padding?: GapSize;
+    gap?: GapSize;
 }>>> & {
     onClose?: (() => any) | undefined;
-}, {}, {}>, {
-    default?(_: {
-        close: typeof close;
-    }): any;
-}>;
+}, {}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

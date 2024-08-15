@@ -1,69 +1,71 @@
-import type { AlignType, JustifyType } from '../composables';
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
+import type { AlignType, JustifyType, SpacingValue } from '../composables';
+declare function __VLS_template(): {
+    default?(_: {}): any;
+};
+declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /**
      * Add spacing between child elements
      * @example gap="s"
      */
-    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    gap?: SpacingValue;
     /**
      * Amount of padding around the contents
      * @example padding="xl"
      */
-    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    padding?: SpacingValue;
     /**
      * Align content along main direction (horizontal for Row, vertical for Column)
      * @example justify="space-between"
      */
-    justify?: JustifyType | undefined;
+    justify?: JustifyType;
     /**
      * Aligns children along cross-axis direction
      * @example align="end"
      */
-    align?: AlignType | undefined;
+    align?: AlignType;
     /**
      * Child elements will wrap instead of shrinking
      * @example wrap
      */
-    wrap?: boolean | undefined;
+    wrap?: boolean;
     /**
      * Grow to take up available space
      * @example grow
      */
-    grow?: boolean | undefined;
+    grow?: boolean;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
     /**
      * Add spacing between child elements
      * @example gap="s"
      */
-    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    gap?: SpacingValue;
     /**
      * Amount of padding around the contents
      * @example padding="xl"
      */
-    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    padding?: SpacingValue;
     /**
      * Align content along main direction (horizontal for Row, vertical for Column)
      * @example justify="space-between"
      */
-    justify?: JustifyType | undefined;
+    justify?: JustifyType;
     /**
      * Aligns children along cross-axis direction
      * @example align="end"
      */
-    align?: AlignType | undefined;
+    align?: AlignType;
     /**
      * Child elements will wrap instead of shrinking
      * @example wrap
      */
-    wrap?: boolean | undefined;
+    wrap?: boolean;
     /**
      * Grow to take up available space
      * @example grow
      */
-    grow?: boolean | undefined;
-}>>>, {}, {}>, {
-    default?(_: {}): any;
-}>;
+    grow?: boolean;
+}>>>, {}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

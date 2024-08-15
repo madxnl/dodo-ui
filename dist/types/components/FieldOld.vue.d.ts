@@ -1,17 +1,14 @@
-import type { GapSize } from '..';
 declare function __VLS_template(): {
+    before?(_: {}): any;
     default?(_: {}): any;
+    after?(_: {}): any;
 };
 declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOption<{
-    hoverable?: boolean;
-    active?: boolean;
-    gap?: GapSize;
-    padding?: GapSize;
+    disabled?: boolean;
+    button?: boolean;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
-    hoverable?: boolean;
-    active?: boolean;
-    gap?: GapSize;
-    padding?: GapSize;
+    disabled?: boolean;
+    button?: boolean;
 }>>>, {}, {}>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;

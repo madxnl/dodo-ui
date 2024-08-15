@@ -1,7 +1,7 @@
 var Le = Object.defineProperty;
 var He = (d, o, e) => o in d ? Le(d, o, { enumerable: !0, configurable: !0, writable: !0, value: e }) : d[o] = e;
-var $e = (d, o, e) => (He(d, typeof o != "symbol" ? o + "" : o, e), e);
-import { defineComponent as V, openBlock as a, createBlock as _, TransitionGroup as Oe, withCtx as b, renderSlot as h, Transition as re, computed as S, createElementBlock as v, normalizeClass as m, normalizeStyle as G, Fragment as D, createTextVNode as T, toDisplayString as F, createCommentVNode as M, useAttrs as Ue, ref as w, mergeProps as ie, unref as f, createElementVNode as $, onMounted as x, watchEffect as U, onBeforeUnmount as ee, watch as K, inject as de, provide as ce, reactive as he, withModifiers as le, createVNode as I, resolveDynamicComponent as ue, renderList as P, Teleport as Se, nextTick as Be, onUnmounted as je, useSlots as ne, getCurrentInstance as _e, withDirectives as te, vShow as qe, vModelText as Ve, vModelSelect as We, createStaticVNode as pe, mergeModels as ze, useModel as Ie, vModelDynamic as Pe } from "vue";
+var $e = (d, o, e) => He(d, typeof o != "symbol" ? o + "" : o, e);
+import { defineComponent as V, openBlock as a, createBlock as S, TransitionGroup as Oe, withCtx as b, renderSlot as h, Transition as re, computed as _, createElementBlock as v, normalizeClass as m, normalizeStyle as G, Fragment as D, createTextVNode as T, toDisplayString as F, createCommentVNode as M, useAttrs as Ue, ref as w, mergeProps as ie, unref as f, createElementVNode as $, onMounted as x, watchEffect as U, onBeforeUnmount as ee, watch as K, inject as de, provide as ce, reactive as he, withModifiers as le, createVNode as I, resolveDynamicComponent as ue, renderList as P, Teleport as _e, nextTick as Be, onUnmounted as je, useSlots as ne, getCurrentInstance as Se, withDirectives as te, vShow as qe, vModelText as Ve, vModelSelect as We, createStaticVNode as pe, mergeModels as ze, useModel as Ie, vModelDynamic as Pe } from "vue";
 const ge = !1, ja = /* @__PURE__ */ V({
   __name: "Animated",
   props: {
@@ -9,7 +9,7 @@ const ge = !1, ja = /* @__PURE__ */ V({
     appear: { type: Boolean }
   },
   setup(d) {
-    return (o, e) => o.list ? (a(), _(Oe, {
+    return (o, e) => o.list ? (a(), S(Oe, {
       key: 0,
       name: "dodo",
       appear: o.appear,
@@ -19,7 +19,7 @@ const ge = !1, ja = /* @__PURE__ */ V({
         h(o.$slots, "default")
       ]),
       _: 3
-    }, 8, ["appear", "css"])) : (a(), _(re, {
+    }, 8, ["appear", "css"])) : (a(), S(re, {
       key: 1,
       appear: o.appear,
       name: "dodo",
@@ -40,18 +40,17 @@ const ge = !1, ja = /* @__PURE__ */ V({
     round: { type: Boolean }
   },
   setup(d) {
-    const o = ["info", "warning", "success", "danger"], e = d, l = S(() => {
+    const o = ["info", "warning", "success", "danger"], e = d, l = _(() => {
       let s = e.text.trim();
       const u = /\b\w|[A-Z]/g, i = e.text.match(u);
       return i != null && i.length && (s = i.join("")), s.slice(0, 2).toUpperCase();
-    }), t = S(() => {
+    }), t = _(() => {
       const s = o.length, u = r(e.text);
       return `var(--dodo-color-${o[u % s]}`;
     });
     function r(s) {
       let u = 0;
-      for (let i = 0; i < s.length; ++i)
-        u = 997 * (u % 1e6) + 11 * s.charCodeAt(i);
+      for (let i = 0; i < s.length; ++i) u = 997 * (u % 1e6) + 11 * s.charCodeAt(i);
       return u;
     }
     return (s, u) => (a(), v("span", {
@@ -87,7 +86,7 @@ const ge = !1, ja = /* @__PURE__ */ V({
     disabled: { type: Boolean }
   },
   setup(d) {
-    const o = d, e = S(() => {
+    const o = d, e = _(() => {
       let s = "";
       return o.color && (s += `--button-color:var(--dodo-color-${o.color});`), s;
     }), l = Ue(), t = w(!1);
@@ -118,7 +117,7 @@ const ge = !1, ja = /* @__PURE__ */ V({
       }, [
         h(s.$slots, "default")
       ], 2),
-      t.value ? (a(), _(f(Zn), {
+      t.value ? (a(), S(f(Zn), {
         key: 0,
         small: s.small,
         class: m(s.$style.spinner),
@@ -176,7 +175,7 @@ function Wa(d) {
   }), { width: o, height: e, observer: l };
 }
 function Fe() {
-  const e = w(window.innerWidth), l = w(window.innerHeight), t = S(() => e.value < 600), r = S(() => e.value >= 600 && e.value < 1200), s = S(() => e.value >= 1200);
+  const e = w(window.innerWidth), l = w(window.innerHeight), t = _(() => e.value < 600), r = _(() => e.value >= 600 && e.value < 1200), s = _(() => e.value >= 1200);
   function u() {
     e.value = window.innerWidth, l.value = window.innerHeight;
   }
@@ -209,8 +208,7 @@ function fo(d) {
   }), { isReady: o };
 }
 function Pa(d) {
-  if (!d.match(/^#\w{6}$/))
-    throw new Error("Invalid hex color");
+  if (!d.match(/^#\w{6}$/)) throw new Error("Invalid hex color");
   return d.match(/(\w\w)/g).map((o) => parseInt(o, 16)).slice(0, 3);
 }
 const Ae = Symbol(Te.name);
@@ -234,8 +232,7 @@ function Ga(d) {
     o.provide(Ae, e);
     const { errorHandler: l } = o.config;
     o.config.errorHandler = (r, s, u) => {
-      if (e.handleCrash(r), l)
-        return l(r, s, u);
+      if (e.handleCrash(r), l) return l(r, s, u);
     }, (t = d.router) == null || t.onError((r) => {
       e.handleCrash(r);
     }), window.addEventListener("unhandledrejection", (r) => {
@@ -249,8 +246,7 @@ function yo() {
   return de(Ae);
 }
 function Ka(d, o) {
-  if (typeof ResizeObserver > "u")
-    return {};
+  if (typeof ResizeObserver > "u") return {};
   const e = new ResizeObserver(() => o(d.value));
   return U(() => {
     d.value && e.observe(d.value);
@@ -310,7 +306,7 @@ if (window.matchMedia) {
   };
   d.addEventListener("change", o), o();
 }
-const go = S(() => be.value === "auto" ? Ne.value : be.value), ve = S(() => me.value || go.value || "light");
+const go = _(() => be.value === "auto" ? Ne.value : be.value), ve = _(() => me.value || go.value || "light");
 function bo() {
   me.value = ve.value === "dark" ? "light" : "dark";
 }
@@ -362,8 +358,7 @@ function Za(d) {
     if (y.validators)
       for (const A of y.validators) {
         const z = await A(p, C);
-        if (z)
-          return z;
+        if (z) return z;
       }
   }
   function i(n) {
@@ -401,23 +396,23 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       }, null, 40, wo)
     ], 2));
   }
-}), Mo = "dodo-checkbox", Co = "dodo-checkbox-checked", So = {
+}), Mo = "dodo-checkbox", Co = "dodo-checkbox-checked", _o = {
   Checkbox: Mo,
   checked: Co
 }, Bo = {
-  $style: So
-}, we = /* @__PURE__ */ E(ko, [["__cssModules", Bo]]), _o = /* @__PURE__ */ V({
+  $style: _o
+}, we = /* @__PURE__ */ E(ko, [["__cssModules", Bo]]), So = /* @__PURE__ */ V({
   __name: "Chip",
   props: {
     color: {},
     variant: {}
   },
   setup(d) {
-    const o = d, e = S(() => {
+    const o = d, e = _(() => {
       let l = "";
       return o.color && (l += `--chip-color:var(--dodo-color-${o.color});`), l;
     });
-    return (l, t) => (a(), _(ue(l.$attrs.onClick ? "button" : "div"), {
+    return (l, t) => (a(), S(ue(l.$attrs.onClick ? "button" : "div"), {
       class: m([l.$style.Chip, l.variant === "solid" && l.$style.solid]),
       style: G(e.value)
     }, {
@@ -439,7 +434,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   text: Io
 }, Fo = {
   $style: Eo
-}, Ao = /* @__PURE__ */ E(_o, [["__cssModules", Fo]]), ae = "Outlined", ke = "300", To = /* @__PURE__ */ V({
+}, Ao = /* @__PURE__ */ E(So, [["__cssModules", Fo]]), ae = "Outlined", ke = "300", To = /* @__PURE__ */ V({
   __name: "Icon",
   props: {
     name: {},
@@ -487,7 +482,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   },
   emits: ["update:modelValue"],
   setup(d, { emit: o }) {
-    const e = d, l = o, t = S(() => e.multiple ? [e.modelValue].flat() : [e.modelValue]);
+    const e = d, l = o, t = _(() => e.multiple ? [e.modelValue].flat() : [e.modelValue]);
     function r(i, n) {
       return i.value === n;
     }
@@ -499,9 +494,9 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       s(i) && e.multiple ? n = t.value.filter((y) => !r(i, y)) : e.multiple && (n = [...t.value, i.value]), l("update:modelValue", n);
     }
     return (i, n) => (a(), v("div", {
-      class: m([i.$style.Select, i.multiple && i.$style.multiple])
+      class: m([i.$style.ChoiceChips, i.multiple && i.$style.multiple])
     }, [
-      (a(!0), v(D, null, P(i.options, (p, y) => (a(), _(Ao, {
+      (a(!0), v(D, null, P(i.options, (p, y) => (a(), S(Ao, {
         key: p.label,
         color: s(p) ? "info" : void 0,
         variant: !i.multiple && s(p) ? "solid" : void 0,
@@ -511,7 +506,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
         onClick: (C) => u(p)
       }, {
         default: b(() => [
-          i.multiple && s(p) ? (a(), _(O, {
+          i.multiple && s(p) ? (a(), S(O, {
             key: 0,
             name: "check"
           })) : M("", !0),
@@ -526,8 +521,8 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       }, 1032, ["color", "variant", "disabled", "small", "onClick"]))), 128))
     ], 2));
   }
-}), Wo = "dodo-choicechips-select", Po = {
-  Select: Wo
+}), Wo = "dodo-choicechips", Po = {
+  ChoiceChips: Wo
 }, Go = {
   $style: Po
 }, Qa = /* @__PURE__ */ E(qo, [["__cssModules", Go]]), Ko = /* @__PURE__ */ V({
@@ -543,7 +538,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   },
   setup(d) {
     const o = oe();
-    return (e, l) => (a(), _(ue(e.tag ?? "div"), {
+    return (e, l) => (a(), S(ue(e.tag ?? "div"), {
       class: m([
         e.$style.el,
         f(o).gap(e.gap),
@@ -570,10 +565,10 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
 `, Xa = /* @__PURE__ */ V({
   __name: "CrashDialog",
   setup(d) {
-    const o = yo(), e = S(() => o.currentError.value), l = w(!1);
+    const o = yo(), e = _(() => o.currentError.value), l = w(!1);
     return U(() => {
       l.value = !!e.value;
-    }), (t, r) => (a(), _(f(Bt), { active: l.value }, {
+    }), (t, r) => (a(), S(f(Bt), { active: l.value }, {
       controls: b(() => [
         I(f(X), {
           variant: "text",
@@ -640,10 +635,10 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     }), K(r, (c) => {
       l("update:selection", c);
     });
-    const u = S(() => {
+    const u = _(() => {
       var c;
       return (c = t.value) == null ? void 0 : c.startsWith("-");
-    }), i = S(() => e.columns.filter((c) => !c.disabled)), n = S(() => !!e.selection), p = S(() => {
+    }), i = _(() => e.columns.filter((c) => !c.disabled)), n = _(() => !!e.selection), p = _(() => {
       const c = i.value.find(C);
       return e.sortAsync || !c ? e.rows : e.rows.slice().sort((g, B) => {
         const R = Z(c, g), q = Z(c, B), ye = typeof R == "number" && typeof q == "number" ? q - R : `${q}`.localeCompare(`${R}`);
@@ -686,12 +681,11 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       return typeof c.value == "function" ? c.value(g) : typeof c.value == "string" ? g[c.value] : "";
     }
     function Y(c) {
-      if (!n.value)
-        return !1;
+      if (!n.value) return !1;
       const g = H(c);
       return r.value.includes(g);
     }
-    const Q = S(() => n.value ? e.rows.filter((c) => r.value.includes(H(c))) : []);
+    const Q = _(() => n.value ? e.rows.filter((c) => r.value.includes(H(c))) : []);
     function k() {
       const c = Q.value.length === e.rows.length;
       r.value = c ? [] : e.rows.map(H);
@@ -726,7 +720,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
                     T(F(B.name), 1)
                   ])
                 ]),
-                y(B) ? (a(), _(f(O), {
+                y(B) ? (a(), S(f(O), {
                   key: 0,
                   name: y(B),
                   class: m(c.$style.sortIcon)
@@ -820,7 +814,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     const o = d, e = w();
     return U(() => {
       o.active && e.value && e.value.parentNode.appendChild(e.value);
-    }), (l, t) => (a(), _(Se, { to: "body" }, [
+    }), (l, t) => (a(), S(_e, { to: "body" }, [
       I(re, { name: "Dialog" }, {
         default: b(() => [
           l.active ? (a(), v("div", {
@@ -862,9 +856,9 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   "Dialog-leave-active": "dodo-dialog-dialog-leave-active",
   "Dialog-enter-from": "dodo-dialog-dialog-enter-from",
   "Dialog-leave-to": "dodo-dialog-dialog-leave-to"
-}, St = {
+}, _t = {
   $style: Ct
-}, Bt = /* @__PURE__ */ E(wt, [["__cssModules", St]]), _t = /* @__PURE__ */ V({
+}, Bt = /* @__PURE__ */ E(wt, [["__cssModules", _t]]), St = /* @__PURE__ */ V({
   __name: "Dropdown",
   props: {
     modelValue: { type: Boolean },
@@ -898,8 +892,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     }
     function y(z) {
       var H, j;
-      if (!t.value || e.trigger !== "hover")
-        return;
+      if (!t.value || e.trigger !== "hover") return;
       const L = z.relatedTarget, J = (H = u.value) == null ? void 0 : H.contains(L), N = (j = s.value) == null ? void 0 : j.contains(L);
       J || N || i(!1);
     }
@@ -907,15 +900,13 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       var L, J;
       if (z.target) {
         const N = (L = u.value) == null ? void 0 : L.contains(z.target), H = (J = s.value) == null ? void 0 : J.contains(z.target);
-        if (N || H)
-          return;
+        if (N || H) return;
       }
       i(!1);
     }
     function A() {
       const L = s.value;
-      if (!L)
-        return;
+      if (!L) return;
       const J = L.scrollWidth, N = u.value.getBoundingClientRect(), H = window.innerWidth, j = window.innerHeight, Z = N.bottom + 300 + 16 > j, Y = Math.max(16, Math.min(N.left, H - J - 16)), Q = Math.min(600, H - 16 * 2);
       let k = `left: ${Y}px; max-width:${Q}px;`;
       Z ? k += `bottom: ${j - N.top}px; max-height: ${N.top - 16}px;` : k += `top: ${N.bottom}px; max-height: ${j - N.bottom - 16}px;`, r.value = k, t.value && requestAnimationFrame(A);
@@ -963,8 +954,8 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   content: Et
 }, At = {
   $style: Ft
-}, Re = /* @__PURE__ */ E(_t, [["__cssModules", At]]), Tt = /* @__PURE__ */ V({
-  __name: "Field",
+}, Re = /* @__PURE__ */ E(St, [["__cssModules", At]]), Tt = /* @__PURE__ */ V({
+  __name: "FieldOld",
   props: {
     disabled: { type: Boolean },
     button: { type: Boolean }
@@ -982,7 +973,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       h(o.$slots, "after")
     ], 2));
   }
-}), Nt = "dodo-field", Rt = "dodo-field-button", Dt = "dodo-field-inner", Lt = "dodo-field-disabled", Ht = {
+}), Nt = "dodo-fieldold-field", Rt = "dodo-fieldold-button", Dt = "dodo-fieldold-inner", Lt = "dodo-fieldold-disabled", Ht = {
   Field: Nt,
   button: Rt,
   inner: Dt,
@@ -1011,7 +1002,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     }), je(() => {
       s.disconnect();
     });
-    const u = S(() => o.columnSize >= t.value), i = S(() => {
+    const u = _(() => o.columnSize >= t.value), i = _(() => {
       let n = `--fluidgrid-size:${o.columnSize}px;`;
       return o.autoFill && (n += "--fluidgrid-mode:auto-fill;"), o.gap && (n += `gap:${e.gapValue(o.gap)};`), o.padding && (n += `padding:${e.gapValue(o.padding)};`), n;
     });
@@ -1061,7 +1052,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     optional: { type: Boolean }
   },
   setup(d) {
-    const o = d, e = ne(), l = _e();
+    const o = d, e = ne(), l = Se();
     return x(() => {
       if (!e.default)
         throw new Error("FormEntry requires a default slot");
@@ -1190,7 +1181,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   separator: ws
 }, Ms = {
   $style: ks
-}, Cs = /* @__PURE__ */ E(ys, [["__cssModules", Ms]]), Ss = /* @__PURE__ */ V({
+}, Cs = /* @__PURE__ */ E(ys, [["__cssModules", Ms]]), _s = /* @__PURE__ */ V({
   __name: "Modal",
   props: {
     open: { type: Boolean },
@@ -1205,7 +1196,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       var n;
       (n = t.value) == null || n.showModal();
     });
-    const r = S(() => e.open);
+    const r = _(() => e.open);
     K(r, (n) => {
       if (n) {
         const p = window.innerWidth - document.body.clientWidth;
@@ -1222,7 +1213,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     async function i() {
       document.body.style.removeProperty("padding-right"), document.body.style.removeProperty("overflow");
     }
-    return (n, p) => (a(), _(re, {
+    return (n, p) => (a(), S(re, {
       appear: "",
       "enter-from-class": n.$style.enter,
       "leave-to-class": n.$style.enter,
@@ -1253,15 +1244,15 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       _: 3
     }, 8, ["enter-from-class", "leave-to-class"]));
   }
-}), Bs = "dodo-modal-background", _s = "dodo-modal-enter", Vs = "dodo-modal", zs = "dodo-modal-s", Is = "dodo-modal-l", Es = {
+}), Bs = "dodo-modal-background", Ss = "dodo-modal-enter", Vs = "dodo-modal", zs = "dodo-modal-s", Is = "dodo-modal-l", Es = {
   background: Bs,
-  enter: _s,
+  enter: Ss,
   modal: Vs,
   S: zs,
   L: Is
 }, Fs = {
   $style: Es
-}, tr = /* @__PURE__ */ E(Ss, [["__cssModules", Fs]]), As = /* @__PURE__ */ V({
+}, tr = /* @__PURE__ */ E(_s, [["__cssModules", Fs]]), As = /* @__PURE__ */ V({
   __name: "NavBarItem",
   props: {
     text: {},
@@ -1276,17 +1267,17 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     x(() => {
       t.value = !!l.value.closest("[data-mobile-nav]");
     });
-    const r = de(Ee), s = S(() => r == null ? void 0 : r.collapsed.value), u = S(() => r == null ? void 0 : r.renderMobile.value), i = S(() => u.value || !s.value);
+    const r = de(Ee), s = _(() => r == null ? void 0 : r.collapsed.value), u = _(() => r == null ? void 0 : r.renderMobile.value), i = _(() => u.value || !s.value);
     async function n(p) {
       r && !e.submenu && (r.mobileToggle.value = !1), o.link && await o.link.navigate();
     }
-    return (p, y) => (a(), _(f(fe), {
+    return (p, y) => (a(), S(f(fe), {
       text: p.text,
       disabled: i.value,
       side: "right"
     }, {
       default: b(() => [
-        (a(), _(ue(p.$slots.submenu ? f(Re) : "div"), null, {
+        (a(), S(ue(p.$slots.submenu ? f(Re) : "div"), null, {
           dropdown: b(() => [
             h(p.$slots, "submenu")
           ]),
@@ -1352,7 +1343,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     mobile: { type: Boolean }
   },
   setup(d) {
-    const o = d, { screenLarge: e } = Fe(), l = vo("NavBar-collapse", null), t = w(!1), r = S(() => o.mobile || !e.value);
+    const o = d, { screenLarge: e } = Fe(), l = vo("NavBar-collapse", null), t = w(!1), r = _(() => o.mobile || !e.value);
     ce(Ee, { collapsed: l, renderMobile: r, mobileToggle: t });
     function s() {
       r.value && (t.value = !1);
@@ -1382,7 +1373,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
             h(u.$slots, "navbar-header")
           ]),
           $("div", qs, [
-            r.value ? (a(), _(f(X), {
+            r.value ? (a(), S(f(X), {
               key: 0,
               variant: "text",
               square: "",
@@ -1406,7 +1397,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
           class: m(u.$style.footer)
         }, [
           h(u.$slots, "navbar-footer"),
-          r.value ? M("", !0) : (a(), _(Ce, {
+          r.value ? M("", !0) : (a(), S(Ce, {
             key: 0,
             text: f(l) ? "Expand" : "Collapse",
             icon: f(l) ? "last_page" : "first_page",
@@ -1417,7 +1408,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       $("div", {
         class: m(u.$style.wrapMobile)
       }, [
-        u.$slots.main ? (a(), _(f(W), {
+        u.$slots.main ? (a(), S(f(W), {
           key: 0,
           class: m(u.$style.main)
         }, {
@@ -1463,18 +1454,18 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     l.value = !1;
   }), { headerText: o, activeItems: d, expandedMenu: e, mobileToggle: l };
 }), nl = (d) => {
-  const o = De.injectOptional(), e = _e(), l = (n) => n ? [n.uid, ...l(n.parent)] : [], t = (n) => {
+  const o = De.injectOptional(), e = Se(), l = (n) => n ? [n.uid, ...l(n.parent)] : [], t = (n) => {
     !n || !o || (o.activeItems.value = l(e), o.headerText.value = d.text.value);
-  }, r = S(() => o == null ? void 0 : o.headerText.value), s = () => {
+  }, r = _(() => o == null ? void 0 : o.headerText.value), s = () => {
     !e || !o || (o.expandedMenu.value.includes(e.uid) ? o.expandedMenu.value = [] : o.expandedMenu.value = l(e));
-  }, u = S(() => !e || !o ? !1 : o.activeItems.value.includes(e.uid)), i = S(() => !e || !o ? !1 : o.expandedMenu.value.length ? o.expandedMenu.value.includes(e.uid) : o.activeItems.value.includes(e.uid));
+  }, u = _(() => !e || !o ? !1 : o.activeItems.value.includes(e.uid)), i = _(() => !e || !o ? !1 : o.expandedMenu.value.length ? o.expandedMenu.value.includes(e.uid) : o.activeItems.value.includes(e.uid));
   return K(d.active, () => t(d.active.value), { immediate: !0 }), ee(() => t(!1)), U(() => {
     r.value && (document.title = r.value);
   }), { showAsActive: u, isExpanded: i, toggleExpand: s, headerText: r };
 }, al = /* @__PURE__ */ V({
   __name: "NavBarNew",
   setup(d) {
-    const { headerText: o, mobileToggle: e } = De.createAndProvide(), { screenLarge: l } = Fe(), t = S(() => !l.value);
+    const { headerText: o, mobileToggle: e } = De.createAndProvide(), { screenLarge: l } = Fe(), t = _(() => !l.value);
     function r() {
       e.value = !1;
     }
@@ -1525,7 +1516,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
             _: 1
           })
         ], 2)) : M("", !0),
-        s.$slots.main ? (a(), _(f(W), {
+        s.$slots.main ? (a(), S(f(W), {
           key: 1,
           class: m(s.$style.main)
         }, {
@@ -1562,7 +1553,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     important: { type: Boolean }
   },
   setup(d) {
-    const o = d, e = S(() => o.link ? f(o.link.isActive) : !1), l = S(() => o.text), { isExpanded: t, showAsActive: r, toggleExpand: s } = nl({ text: l, active: e }), u = ne();
+    const o = d, e = _(() => o.link ? f(o.link.isActive) : !1), l = _(() => o.text), { isExpanded: t, showAsActive: r, toggleExpand: s } = nl({ text: l, active: e }), u = ne();
     async function i(n) {
       u.submenu && s(), o.link && (await o.link.navigate(), n.preventDefault());
     }
@@ -1585,7 +1576,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
                 class: m(n.$style.icon)
               }, [
                 h(n.$slots, "icon", {}, () => [
-                  n.icon ? (a(), _(f(O), {
+                  n.icon ? (a(), S(f(O), {
                     key: 0,
                     name: n.icon
                   }, null, 8, ["name"])) : M("", !0)
@@ -1604,7 +1595,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
               ], 2),
               f(u).submenu ? (a(), v("div", wl, [
                 I(f(O), {
-                  name: f(t) ? "expand_less" : "expand_more",
+                  name: f(t) ? "keyboard_arrow_up" : "keyboard_arrow_down",
                   size: "s",
                   style: { margin: "0 -0.25em" }
                 }, null, 8, ["name"])
@@ -1622,12 +1613,12 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       ], 2)) : M("", !0)
     ], 2));
   }
-}), Ml = "dodo-navitem-el", Cl = "dodo-navitem-link", Sl = "dodo-navitem-submenu", Bl = "dodo-navitem-expanded", _l = "dodo-navitem-active", Vl = "dodo-navitem-important", zl = "dodo-navitem-textwrap", Il = "dodo-navitem-icon", El = "dodo-navitem-text", Fl = "dodo-navitem-secondary", Al = {
+}), Ml = "dodo-navitem-el", Cl = "dodo-navitem-link", _l = "dodo-navitem-submenu", Bl = "dodo-navitem-expanded", Sl = "dodo-navitem-active", Vl = "dodo-navitem-important", zl = "dodo-navitem-textwrap", Il = "dodo-navitem-icon", El = "dodo-navitem-text", Fl = "dodo-navitem-secondary", Al = {
   el: Ml,
   link: Cl,
-  submenu: Sl,
+  submenu: _l,
   expanded: Bl,
-  active: _l,
+  active: Sl,
   important: Vl,
   textwrap: zl,
   icon: Il,
@@ -1668,7 +1659,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
 }, se = /* @__PURE__ */ E(Nl, [["__cssModules", Ll]]), Hl = /* @__PURE__ */ V({
   __name: "ScrollContainer",
   setup(d) {
-    const o = S(() => "");
+    const o = _(() => "");
     return (e, l) => (a(), v("div", {
       class: m([e.$style.ScrollContainer]),
       style: G(o.value)
@@ -1687,7 +1678,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   key: 1,
   class: "dodo-nowrap dodo-fade-secondary"
 }, Gl = ["disabled"], Kl = 12, Jl = /* @__PURE__ */ V({
-  __name: "Select",
+  __name: "SelectOld",
   props: {
     options: {},
     modelValue: {},
@@ -1699,7 +1690,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   },
   emits: ["update:modelValue"],
   setup(d, { emit: o }) {
-    const e = d, l = o, t = S(() => (e.multiple ? [e.modelValue].flat() : [e.modelValue]).filter(N)), r = w(!1), s = w(""), u = w(), i = w(), n = w(), p = w();
+    const e = d, l = o, t = _(() => (e.multiple ? [e.modelValue].flat() : [e.modelValue]).filter(N)), r = w(!1), s = w(""), u = w(), i = w(), n = w(), p = w();
     U(() => {
       r.value && u.value && (s.value = "", u.value.focus());
     }), U(() => {
@@ -1711,13 +1702,12 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
         c == null || c.scrollIntoView({ block: "center" });
       }, 0);
     });
-    const y = w(!1), C = S(() => e.options.length > Kl), A = S(() => C.value && !y.value ? 6 : e.options.length), z = S(() => s.value || e.options.length >= 10), L = S(() => {
+    const y = w(!1), C = _(() => e.options.length > Kl), A = _(() => C.value && !y.value ? 6 : e.options.length), z = _(() => s.value || e.options.length >= 10), L = _(() => {
       const k = s.value.toLowerCase(), c = e.options.filter((R) => `${R.value}|${R.label}`.toLowerCase().includes(k));
-      if (!e.multiple)
-        return c;
+      if (!e.multiple) return c;
       const g = c.filter((R) => t.value.find((q) => j(R, q))), B = c.filter((R) => !g.includes(R));
       return g.concat(B);
-    }), J = S(() => e.placeholder ? e.placeholder : e.multiple ? "Select one or more" : "Select one");
+    }), J = _(() => e.placeholder ? e.placeholder : e.multiple ? "Select one or more" : "Select one");
     function N(k) {
       return e.options.find((c) => j(c, k));
     }
@@ -1743,13 +1733,13 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       document.addEventListener("focusin", Q);
     }), ee(() => {
       document.removeEventListener("focusin", Q);
-    }), (k, c) => k.variant === "buttons" ? (a(), _(f(se), {
+    }), (k, c) => k.variant === "buttons" ? (a(), S(f(se), {
       key: 0,
       gap: "xs",
       wrap: ""
     }, {
       default: b(() => [
-        (a(!0), v(D, null, P(k.options.slice(0, A.value), (g, B) => (a(), _(f(X), {
+        (a(!0), v(D, null, P(k.options.slice(0, A.value), (g, B) => (a(), S(f(X), {
           key: Z(g),
           color: Y(g) ? "info" : void 0,
           active: Y(g),
@@ -1760,7 +1750,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
           onClick: (R) => H(g)
         }, {
           default: b(() => [
-            k.multiple && Y(g) ? (a(), _(f(O), {
+            k.multiple && Y(g) ? (a(), S(f(O), {
               key: 0,
               name: "check",
               size: "s",
@@ -1776,7 +1766,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
           _: 2
         }, 1032, ["color", "active", "variant", "disabled", "small", "onClick"]))), 128)),
         C.value ? (a(), v(D, { key: 0 }, [
-          y.value ? (a(), _(f(X), {
+          y.value ? (a(), S(f(X), {
             key: 0,
             small: k.size === "s",
             variant: "text",
@@ -1786,13 +1776,13 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
             default: b(() => [
               T(" Less "),
               I(f(O), {
-                name: "expand_less",
+                name: "keyboard_arrow_up",
                 size: "s",
                 style: { margin: "-2px" }
               })
             ]),
             _: 1
-          }, 8, ["small"])) : (a(), _(f(X), {
+          }, 8, ["small"])) : (a(), S(f(X), {
             key: 1,
             small: k.size === "s",
             variant: "text",
@@ -1802,7 +1792,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
             default: b(() => [
               T(F(k.options.length - A.value) + " more ", 1),
               I(f(O), {
-                name: "expand_more",
+                name: "keyboard_arrow_down",
                 size: "s",
                 style: { margin: "-2px" }
               })
@@ -1812,7 +1802,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
         ], 64)) : M("", !0)
       ]),
       _: 3
-    })) : (a(), _(f(Re), {
+    })) : (a(), S(f(Re), {
       key: 1,
       modelValue: r.value,
       "onUpdate:modelValue": c[5] || (c[5] = (g) => r.value = g),
@@ -1833,7 +1823,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
               class: m(k.$style.searchbox)
             }, {
               default: b(() => [
-                I(f(Sa), {
+                I(f(_a), {
                   ref_key: "searchEl",
                   ref: i,
                   modelValue: s.value,
@@ -1850,7 +1840,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
             ]),
             I(f(ql), null, {
               default: b(() => [
-                (a(!0), v(D, null, P(L.value, (g, B) => (a(), _(f(Cs), {
+                (a(!0), v(D, null, P(L.value, (g, B) => (a(), S(f(Cs), {
                   key: `${g.value}`,
                   "data-selectactive": t.value.includes(g.value) ? "true" : void 0,
                   active: t.value.includes(g.value),
@@ -1874,7 +1864,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
         }, 512)
       ]),
       default: b(() => [
-        I(f(Ut), {
+        I(Ut, {
           ref_key: "fieldEl",
           ref: p,
           button: "",
@@ -1916,7 +1906,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       _: 3
     }, 8, ["modelValue", "disabled"]));
   }
-}), Zl = "dodo-select-searchbox", Ql = {
+}), Zl = "dodo-selectold-searchbox", Ql = {
   searchbox: Zl
 }, Xl = {
   $style: Ql
@@ -1938,11 +1928,11 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   },
   emits: ["update:modelValue"],
   setup(d, { emit: o }) {
-    const e = d, l = o, t = S({
+    const e = d, l = o, t = _({
       get: () => e.modelValue,
       set: (r) => l("update:modelValue", r)
     });
-    return (r, s) => (a(), _(ds, {
+    return (r, s) => (a(), S(ds, {
       class: m(r.error && r.$style.error),
       label: r.label,
       error: r.error,
@@ -2024,19 +2014,19 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
 ], Mn = {
   key: 5,
   viewBox: "0 0 24 24"
-}, Cn = /* @__PURE__ */ $("path", { d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" }, null, -1), Sn = [
+}, Cn = /* @__PURE__ */ $("path", { d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" }, null, -1), _n = [
   Cn
 ], Bn = {
   key: 6,
   viewBox: "6 6 36 36"
-}, _n = /* @__PURE__ */ $("path", {
+}, Sn = /* @__PURE__ */ $("path", {
   fill: "#0288D1",
   d: "M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z"
 }, null, -1), Vn = /* @__PURE__ */ $("path", {
   fill: "#FFF",
   d: "M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"
 }, null, -1), zn = [
-  _n,
+  Sn,
   Vn
 ], In = {
   key: 7,
@@ -2055,7 +2045,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     return (o, e) => (a(), v("span", {
       class: m([o.$style.SocialIcon, o.small && o.$style.small, o.large && o.$style.large, o.white && o.$style.white])
     }, [
-      o.name === "google" ? (a(), v("svg", an, dn)) : o.name === "twitter" ? (a(), v("svg", cn, pn)) : o.name === "slack" ? (a(), v("svg", mn, fn)) : o.white && o.name === "facebook" ? (a(), v("svg", yn, hn)) : o.name === "facebook" ? (a(), v("svg", gn, kn)) : o.white && o.name === "linkedin" ? (a(), v("svg", Mn, Sn)) : o.name === "linkedin" ? (a(), v("svg", Bn, zn)) : o.name === "whatsapp" ? (a(), v("svg", In, Fn)) : M("", !0)
+      o.name === "google" ? (a(), v("svg", an, dn)) : o.name === "twitter" ? (a(), v("svg", cn, pn)) : o.name === "slack" ? (a(), v("svg", mn, fn)) : o.white && o.name === "facebook" ? (a(), v("svg", yn, hn)) : o.name === "facebook" ? (a(), v("svg", gn, kn)) : o.white && o.name === "linkedin" ? (a(), v("svg", Mn, _n)) : o.name === "linkedin" ? (a(), v("svg", Bn, zn)) : o.name === "whatsapp" ? (a(), v("svg", In, Fn)) : M("", !0)
     ], 2));
   }
 }), Tn = "dodo-socialicon", Nn = "dodo-socialicon-white", Rn = "dodo-socialicon-small", Dn = "dodo-socialicon-large", Ln = {
@@ -2087,7 +2077,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     large: { type: Boolean }
   },
   setup(d) {
-    const o = d, e = S(() => {
+    const o = d, e = _(() => {
       let l = "";
       return o.color === "inherit" ? l += "color:inherit;" : o.color && (l += `color:var(--dodo-color-${o.color});`), l;
     });
@@ -2125,7 +2115,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   },
   emits: ["update:stepIndex", "submit"],
   setup(d, { emit: o }) {
-    const e = d, l = o, t = w(0), r = S(() => e.steps[t.value]);
+    const e = d, l = o, t = w(0), r = _(() => e.steps[t.value]);
     function s() {
       t.value--;
     }
@@ -2146,11 +2136,11 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       e.stepIndex != null && (t.value = e.stepIndex);
     }), K(t, () => {
       l("update:stepIndex", t.value);
-    }), (n, p) => (a(), _(f(W), {
+    }), (n, p) => (a(), S(f(W), {
       class: m(n.$style.stepper)
     }, {
       default: b(() => [
-        (a(!0), v(D, null, P(n.steps, (y, C) => (a(), _(f(se), {
+        (a(!0), v(D, null, P(n.steps, (y, C) => (a(), S(f(se), {
           key: y.key,
           align: "stretch",
           gap: "m",
@@ -2163,7 +2153,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
                   class: m([n.$style.circle]),
                   onClick: (A) => i(C)
                 }, [
-                  t.value > C ? (a(), _(f(O), {
+                  t.value > C ? (a(), S(f(O), {
                     key: 0,
                     name: "check"
                   })) : (a(), v("h3", Xn, F(C + 1), 1))
@@ -2189,12 +2179,12 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
                   ]),
                   _: 2
                 }, 1032, ["onClick"]),
-                y === r.value ? (a(), _(f(W), { key: 0 }, {
+                y === r.value ? (a(), S(f(W), { key: 0 }, {
                   default: b(() => [
                     h(n.$slots, y.slot),
                     I(f(se), null, {
                       default: b(() => [
-                        t.value > 0 ? (a(), _(f(X), {
+                        t.value > 0 ? (a(), S(f(X), {
                           key: 0,
                           variant: "text",
                           onClick: s
@@ -2204,7 +2194,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
                           ]),
                           _: 1
                         })) : M("", !0),
-                        t.value < n.steps.length - 1 ? (a(), _(f(X), {
+                        t.value < n.steps.length - 1 ? (a(), S(f(X), {
                           key: 1,
                           disabled: y.filled === !1,
                           color: "primary",
@@ -2217,7 +2207,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
                             ])
                           ]),
                           _: 2
-                        }, 1032, ["disabled"])) : (a(), _(f(X), {
+                        }, 1032, ["disabled"])) : (a(), S(f(X), {
                           key: 2,
                           color: "primary",
                           variant: "solid",
@@ -2261,7 +2251,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   },
   emits: ["update:tabIndex"],
   setup(d, { emit: o }) {
-    const e = d, l = o, t = w(""), r = S(() => e.tabs.find((u) => s(u) === t.value));
+    const e = d, l = o, t = w(""), r = _(() => e.tabs.find((u) => s(u) === t.value));
     U(() => {
       !r.value && e.tabs.length && (t.value = s(e.tabs[0]));
     }), K(
@@ -2280,7 +2270,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     function s(u) {
       return u.slot ?? u.name;
     }
-    return (u, i) => (a(), _(f(W), {
+    return (u, i) => (a(), S(f(W), {
       gap: "m",
       style: { "min-width": "0" }
     }, {
@@ -2366,7 +2356,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   error: ka
 }, Ca = {
   $style: Ma
-}, Sa = /* @__PURE__ */ E(ba, [["__cssModules", Ca]]), Ba = ["placeholder", "disabled", "name", "autofocus", "rows", "autocomplete"], _a = /* @__PURE__ */ V({
+}, _a = /* @__PURE__ */ E(ba, [["__cssModules", Ca]]), Ba = ["placeholder", "disabled", "name", "autofocus", "rows", "autocomplete"], Sa = /* @__PURE__ */ V({
   __name: "Textarea",
   props: /* @__PURE__ */ ze({
     modelValue: {},
@@ -2387,8 +2377,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     const o = d, e = Ie(d, "modelValue"), l = w(null), t = w(o.minRows);
     function r() {
       const i = o.maxRows && o.maxRows > 0 ? o.maxRows : 12, n = o.minRows && o.minRows > 0 ? o.minRows : 4, p = l.value;
-      if (!p)
-        return n;
+      if (!p) return n;
       let y = n;
       for (p.style.overflow = "hidden", p.setAttribute("rows", `${y}`); p.scrollHeight > p.offsetHeight && y < i; )
         p.setAttribute("rows", `${++y}`);
@@ -2421,7 +2410,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
   error: za
 }, Ea = {
   $style: Ia
-}, ur = /* @__PURE__ */ E(_a, [["__cssModules", Ea]]), Fa = /* @__PURE__ */ V({
+}, ur = /* @__PURE__ */ E(Sa, [["__cssModules", Ea]]), Fa = /* @__PURE__ */ V({
   __name: "Tooltip",
   props: {
     text: {},
@@ -2429,11 +2418,10 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
     side: {}
   },
   setup(d) {
-    const o = d, e = w(!1), l = w(""), t = w(), r = w(), s = ne(), u = S(() => o.disabled || !(o.text || s["tooltip-text"]));
+    const o = d, e = w(!1), l = w(""), t = w(), r = w(), s = ne(), u = _(() => o.disabled || !(o.text || s["tooltip-text"]));
     ee(n);
     async function i() {
-      if (e.value || u.value)
-        return;
+      if (e.value || u.value) return;
       e.value = !0, await Be();
       const p = t.value.getBoundingClientRect(), y = r.value.getBoundingClientRect();
       o.side, p.bottom + y.height < window.innerHeight;
@@ -2451,7 +2439,7 @@ const wo = ["checked"], ko = /* @__PURE__ */ V({
       onMouseleave: n
     }, [
       h(p.$slots, "default"),
-      e.value ? (a(), _(Se, {
+      e.value ? (a(), S(_e, {
         key: 0,
         to: "body"
       }, [
@@ -2497,7 +2485,7 @@ export {
   Ya as Datatable,
   Bt as Dialog,
   Re as Dropdown,
-  Ut as Field,
+  Ut as FieldOld,
   xa as FluidGrid,
   er as Form,
   ds as FormItem,
@@ -2511,13 +2499,13 @@ export {
   nr as NavItem,
   se as Row,
   ql as ScrollContainer,
-  ar as Select,
-  rr as SimpleSelect,
+  rr as Select,
+  ar as SelectOld,
   ir as SocialIcon,
   Zn as Spinner,
   dr as Stepper,
   cr as Tabs,
-  Sa as TextInput,
+  _a as TextInput,
   ur as Textarea,
   fe as Tooltip,
   Ja as ValidationError,

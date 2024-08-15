@@ -1,23 +1,25 @@
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
-    /** Active item styling */
-    active?: boolean | undefined;
-    /** Emphasize item styling */
-    emphasize?: boolean | undefined;
-    /** Show separator above item */
-    separator?: boolean | undefined;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
-    /** Active item styling */
-    active?: boolean | undefined;
-    /** Emphasize item styling */
-    emphasize?: boolean | undefined;
-    /** Show separator above item */
-    separator?: boolean | undefined;
-}>>>, {}, {}>, {
+declare function __VLS_template(): {
     before?(_: {}): any;
     default?(_: {}): any;
     "text-secondary"?(_: {}): any;
     after?(_: {}): any;
-}>;
+};
+declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOption<{
+    /** Active item styling */
+    active?: boolean;
+    /** Emphasize item styling */
+    emphasize?: boolean;
+    /** Show separator above item */
+    separator?: boolean;
+}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
+    /** Active item styling */
+    active?: boolean;
+    /** Emphasize item styling */
+    emphasize?: boolean;
+    /** Show separator above item */
+    separator?: boolean;
+}>>>, {}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

@@ -7,9 +7,9 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /** Render icon in a single color
      * @example color="success"
      */
-    white?: boolean | undefined;
-    small?: boolean | undefined;
-    large?: boolean | undefined;
+    white?: boolean;
+    small?: boolean;
+    large?: boolean;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
     /** Social icon name
      * @example icon="google"
@@ -18,9 +18,9 @@ declare const _default: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /** Render icon in a single color
      * @example color="success"
      */
-    white?: boolean | undefined;
-    small?: boolean | undefined;
-    large?: boolean | undefined;
+    white?: boolean;
+    small?: boolean;
+    large?: boolean;
 }>>>, {}, {}>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

@@ -1,77 +1,35 @@
-declare const _default: <T extends string | null | undefined>(__VLS_props: {
-    name?: string | undefined;
-    label?: string | undefined;
-    disabled?: boolean | undefined;
-    error?: string | undefined;
-    autocomplete?: string | undefined;
-    placeholder?: string | undefined;
-    id?: string | null | undefined;
-    modelValue: T;
-    "onUpdate:modelValue"?: ((value: T) => any) | undefined;
-    description?: string | undefined;
-    options: {
-        label: string;
-        value: T;
-    }[];
-    optional?: boolean | undefined;
-    autofocus?: boolean | undefined;
-} & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, __VLS_ctx?: {
-    attrs: any;
-    slots: {};
-    emit: (evt: "update:modelValue", value: T) => void;
-} | undefined, __VLS_expose?: ((exposed: import('vue').ShallowUnwrapRef<{}>) => void) | undefined, __VLS_setup?: Promise<{
-    props: {
-        name?: string | undefined;
-        label?: string | undefined;
-        disabled?: boolean | undefined;
-        error?: string | undefined;
-        autocomplete?: string | undefined;
-        placeholder?: string | undefined;
-        id?: string | null | undefined;
-        modelValue: T;
+declare const _default: <T extends string | undefined | null>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_Prettify<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: __VLS_Prettify<Pick<Partial<{}> & Omit<{
         "onUpdate:modelValue"?: ((value: T) => any) | undefined;
-        description?: string | undefined;
+    } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & Readonly<import("vue").ExtractPropTypes<{}>> & {
+        "onUpdate:modelValue"?: ((value: T) => any) | undefined;
+    }, never>, "onUpdate:modelValue"> & {
+        modelValue: T;
         options: {
             label: string;
             value: T;
         }[];
-        optional?: boolean | undefined;
-        autofocus?: boolean | undefined;
-    } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps;
-    expose(exposed: import('vue').ShallowUnwrapRef<{}>): void;
+        id?: string | null;
+        placeholder?: string;
+        disabled?: boolean;
+        name?: string;
+        autofocus?: boolean;
+        label?: string;
+        error?: string;
+        description?: string;
+        optional?: boolean;
+        autocomplete?: string;
+    }> & import("vue").PublicProps;
+    expose(exposed: import("vue").ShallowUnwrapRef<{}>): void;
     attrs: any;
-    slots: {};
-    emit: (evt: "update:modelValue", value: T) => void;
+    slots: ReturnType<() => {}>;
+    emit: ((evt: "update:modelValue", value: T) => void) & {};
 }>) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
     [key: string]: any;
 }> & {
-    __ctx?: {
-        props: {
-            name?: string | undefined;
-            label?: string | undefined;
-            disabled?: boolean | undefined;
-            error?: string | undefined;
-            autocomplete?: string | undefined;
-            placeholder?: string | undefined;
-            id?: string | null | undefined;
-            modelValue: T;
-            "onUpdate:modelValue"?: ((value: T) => any) | undefined;
-            description?: string | undefined;
-            options: {
-                label: string;
-                value: T;
-            }[];
-            optional?: boolean | undefined;
-            autofocus?: boolean | undefined;
-        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps;
-        expose(exposed: import('vue').ShallowUnwrapRef<{}>): void;
-        attrs: any;
-        slots: {};
-        emit: (evt: "update:modelValue", value: T) => void;
-    } | undefined;
+    __ctx?: Awaited<typeof __VLS_setup>;
 };
 export default _default;
-type __VLS_OmitKeepDiscriminatedUnion<T, K extends keyof any> = T extends any ? Pick<T, Exclude<keyof T, K>> : never;
 type __VLS_Prettify<T> = {
     [K in keyof T]: T[K];
 } & {};

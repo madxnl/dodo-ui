@@ -1,21 +1,23 @@
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
-    label?: string | undefined;
-    error?: string | undefined;
-    description?: string | undefined;
-    for?: string | undefined;
-    optional?: boolean | undefined;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
-    label?: string | undefined;
-    error?: string | undefined;
-    description?: string | undefined;
-    for?: string | undefined;
-    optional?: boolean | undefined;
-}>>>, {}, {}>, {
+declare function __VLS_template(): {
     default?(_: {
         error: string | undefined;
         entryId: string;
     }): any;
-}>;
+};
+declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOption<{
+    label?: string;
+    error?: string;
+    description?: string;
+    for?: string;
+    optional?: boolean;
+}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
+    label?: string;
+    error?: string;
+    description?: string;
+    for?: string;
+    optional?: boolean;
+}>>>, {}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

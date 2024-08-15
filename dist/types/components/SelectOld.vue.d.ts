@@ -2,18 +2,32 @@ type Option = {
     value: unknown;
     label: string;
 };
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
+declare function __VLS_template(): {
+    default?(_: {
+        option: Option;
+        index: number;
+    }): any;
+    default?(_: {
+        index: number;
+        option: Option;
+    }): any;
+    default?(_: {
+        index: number;
+        option: Option;
+    }): any;
+};
+declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /** Array of available options */
     options: Option[];
     /** v-model binding */
     modelValue?: unknown;
-    disabled?: boolean | undefined;
+    disabled?: boolean;
     /** Set placeholder text */
-    placeholder?: string | undefined;
+    placeholder?: string;
     /** Allow multiple select */
-    multiple?: boolean | undefined;
-    variant?: "buttons" | undefined;
-    size?: "s" | undefined;
+    multiple?: boolean;
+    variant?: "buttons";
+    size?: "s";
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (v: unknown) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
@@ -21,21 +35,17 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     options: Option[];
     /** v-model binding */
     modelValue?: unknown;
-    disabled?: boolean | undefined;
+    disabled?: boolean;
     /** Set placeholder text */
-    placeholder?: string | undefined;
+    placeholder?: string;
     /** Allow multiple select */
-    multiple?: boolean | undefined;
-    variant?: "buttons" | undefined;
-    size?: "s" | undefined;
+    multiple?: boolean;
+    variant?: "buttons";
+    size?: "s";
 }>>> & {
     "onUpdate:modelValue"?: ((v: unknown) => any) | undefined;
-}, {}, {}>, {
-    default?(_: {
-        index: number;
-        option: Option;
-    }): any;
-}>;
+}, {}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {

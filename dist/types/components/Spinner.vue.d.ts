@@ -2,21 +2,21 @@ import type { ColorProp } from '..';
 declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToOption<{
     /** Override default spinner color, or inherit text color
      */
-    color?: import("..").ThemeColorName | "inherit" | undefined;
-    small?: boolean | undefined;
-    large?: boolean | undefined;
+    color?: "inherit" | ColorProp;
+    small?: boolean;
+    large?: boolean;
 }>, {
     color: undefined;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToOption<{
     /** Override default spinner color, or inherit text color
      */
-    color?: import("..").ThemeColorName | "inherit" | undefined;
-    small?: boolean | undefined;
-    large?: boolean | undefined;
+    color?: "inherit" | ColorProp;
+    small?: boolean;
+    large?: boolean;
 }>, {
     color: undefined;
 }>>>, {
-    color: 'inherit' | ColorProp;
+    color: "inherit" | ColorProp;
 }, {}>;
 export default _default;
 type __VLS_WithDefaults<P, D> = {

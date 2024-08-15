@@ -1,5 +1,9 @@
+import type { SpacingValue } from '../composables';
 type ColumnSize = 'xs' | 's' | 'm' | 'l';
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToOption<{
+declare function __VLS_template(): {
+    default?(_: {}): any;
+};
+declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOption<{
     /**
      * Desired maximum size in pixels for columns (eg 300)
      * @example grow
@@ -9,16 +13,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
      * Add spacing between child elements
      * @example gap="xl"
      */
-    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    gap?: SpacingValue;
     /**
      * Amount of padding around the contents
      * @example padding="xl"
      */
-    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    padding?: SpacingValue;
     /**
      * Prefer empty columns instead of stretching
      */
-    autoFill?: boolean | undefined;
+    autoFill?: boolean;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
     /**
      * Desired maximum size in pixels for columns (eg 300)
@@ -29,19 +33,18 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
      * Add spacing between child elements
      * @example gap="xl"
      */
-    gap?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    gap?: SpacingValue;
     /**
      * Amount of padding around the contents
      * @example padding="xl"
      */
-    padding?: "0" | "s" | "xxs" | "xs" | "m" | "l" | "xl" | "xxl" | undefined;
+    padding?: SpacingValue;
     /**
      * Prefer empty columns instead of stretching
      */
-    autoFill?: boolean | undefined;
-}>>>, {}, {}>, {
-    default?(_: {}): any;
-}>;
+    autoFill?: boolean;
+}>>>, {}, {}>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
 type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
