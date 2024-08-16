@@ -7,7 +7,7 @@
     </Column>
 
     <div :class="$style.expand" @click="showCode = !showCode">
-      <Icon :name="showCode ? 'expand_less' : 'expand_more'" />
+      <Icon :name="showCode ? 'keyboard_arrow_up' : 'keyboard_arrow_down'" />
     </div>
 
     <template v-if="exampleSrc && showCode">
