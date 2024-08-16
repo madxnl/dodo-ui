@@ -50,7 +50,7 @@ async function afterLeave() {
 
 <template>
   <Transition appear :enter-from-class="$style.enter" :leave-to-class="$style.enter" @after-leave="afterLeave">
-    <dialog v-if="open" ref="dialogElem" :class="$style.background" @click="onClick">
+    <dialog v-if="open" ref="dialogElem" :class="$style.background" @click="onClick" @cancel.prevent="close">
       <Card :class="[$style.modal, size && $style[size]]" :padding="padding" :gap="gap">
         <slot :close="close">Modal slot</slot>
       </Card>

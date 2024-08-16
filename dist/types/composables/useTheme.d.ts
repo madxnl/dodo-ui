@@ -1,9 +1,8 @@
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch';
-declare const spacingValues: readonly ["0", "xxs", "xs", "s", "m", "l", "xl", "xxl"];
+export type SpacingValue = '0' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 export type ThemeColorName = 'red' | 'pink' | 'purple' | 'blue' | 'teal' | 'green' | 'yellow' | 'orange' | 'black' | 'background' | 'gray' | 'text' | 'white' | 'info' | 'success' | 'warning' | 'danger' | 'primary' | 'secondary';
 export type ColorProp = ThemeColorName;
-export type SpacingValue = `${(typeof spacingValues)[number]}`;
 export type GapSize = SpacingValue;
 export type Spacing = SpacingValue[] | SpacingValue;
 export declare function useTheme(): {
