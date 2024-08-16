@@ -3,7 +3,7 @@ import { computed, ref, watchEffect } from 'vue'
 export type JustifyType = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
 export type AlignType = 'start' | 'end' | 'center' | 'baseline' | 'stretch'
 
-const spacingValues = ['0', 'xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const
+export type SpacingValue = '0' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl'
 
 export type ThemeColorName =
   | 'red'
@@ -26,7 +26,6 @@ export type ThemeColorName =
   | 'primary'
   | 'secondary'
 export type ColorProp = ThemeColorName
-export type SpacingValue = `${(typeof spacingValues)[number]}`
 export type GapSize = SpacingValue
 export type Spacing = SpacingValue[] | SpacingValue
 

@@ -12,8 +12,6 @@
 </template>
 <script setup lang="ts">
 import { Column, Row } from '@/components'
-
-defineProps<{}>()
 </script>
 <style module>
 .sidebar {

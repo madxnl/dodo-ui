@@ -44,7 +44,7 @@ function recompile() {
     Object.defineProperty(window, k, { value: v, writable: true })
   }
   component.value = defineComponent({
-    components: { ...(allComponents as {}), ...(props.components ?? {}) },
+    components: { ...(allComponents as object), ...(props.components ?? {}) },
     setup() {
       const results = { ...(props.context || {}) }
       try {
