@@ -49,11 +49,11 @@ function recompile() {
       const results = { ...(props.context || {}) }
       try {
         if (setup.value) {
-          const setupResults = window.eval(`() => {${setup.value}}`)() // eslint-disable-line no-eval
+          const setupResults = window.eval(`() => {${setup.value}}`)()
           Object.assign(results, setupResults)
         }
         if (props.hiddenSetup) {
-          const setupResults = window.eval(`() => {${props.hiddenSetup}}`)() // eslint-disable-line no-eval
+          const setupResults = window.eval(`() => {${props.hiddenSetup}}`)()
           Object.assign(results, setupResults)
         }
       } catch (e) {
