@@ -5,14 +5,14 @@
     </template>
     <template #example>
       <Row wrap>
-        <Button color="primary">Primary Button</Button>
+        <Button><Icon name="home" /> Default Button</Button>
         <Button color="success" variant="solid">Solid Button</Button>
-        <Button color="warning" variant="text">Text Button</Button>
-        <Button color="danger" :disabled="true">Disabled Button</Button>
+        <Button color="warning" variant="link">Text Button</Button>
+        <Button variant="solid" color="danger" :disabled="true">Disabled Button</Button>
         <Button square><Icon name="favorite" /></Button>
-        <Button rounded><Icon name="star" /></Button>
-        <Button small>Small Button</Button>
-        <Button color="success" @click="asyncClick">Loading Button</Button>
+        <Button round variant="solid" color="danger"><Icon name="star" /></Button>
+        <Button size="s">Small Button</Button>
+        <Button color="success" @click="asyncClick">Async click</Button>
       </Row>
     </template>
   </ComponentDocsSection>
@@ -22,14 +22,14 @@ import { Button, Icon, Row } from '@/components'
 import { ComponentDocsSection } from '@/docs/components'
 
 const exampleSrc = `<Row wrap>
-  <Button color="primary">Primary Button</Button>
+  <Button><Icon name="home" /> Default Button</Button>
   <Button color="success" variant="solid">Solid Button</Button>
-  <Button color="warning" variant="text">Text Button</Button>
-  <Button color="danger" :disabled="true">Disabled Button</Button>
+  <Button color="warning" variant="link">Text Button</Button>
+  <Button variant="solid" color="danger" :disabled="true">Disabled Button</Button>
   <Button square><Icon name="favorite" /></Button>
-  <Button rounded><Icon name="star" /></Button>
-  <Button small>Small Button</Button>
-  <Button color="success" @click="asyncClick">Loading Button</Button>
+  <Button round variant="solid" color="danger"><Icon name="star" /></Button>
+  <Button size="s">Small Button</Button>
+  <Button color="success" @click="asyncClick">Async click</Button>
 </Row>`
 
 async function asyncClick() {

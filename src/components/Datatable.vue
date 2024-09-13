@@ -55,7 +55,7 @@
 
         <tr v-if="rows.length && showMore" :class="$style.showMore">
           <td colspan="999">
-            <Button variant="text" color="info" @click="showMore">Show more results</Button>
+            <Button variant="link" color="info" @click="showMore">Show more results</Button>
           </td>
         </tr>
 

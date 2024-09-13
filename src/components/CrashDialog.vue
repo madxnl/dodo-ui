@@ -7,7 +7,7 @@
       </p>
     </slot>
     <template #controls>
-      <Button variant="text" @click="service.ignoreError">Ignore</Button>
+      <Button variant="clear" @click="service.ignoreError">Ignore</Button>
       <Button variant="solid" color="info" @click="service.reloadPage">Reload page</Button>
     </template>
   </Dialog>

@@ -7,8 +7,8 @@
       :active="isSelected(option)"
       :variant="isSelected(option) && !multiple ? 'solid' : undefined"
       :disabled="disabled"
-      :small="size === 's'"
-      rounded
+      :size="size"
+      round
       @click="clickOption(option)"
     >
       <Icon v-if="multiple && isSelected(option)" name="check" size="s" style="margin: -2px" />
@@ -17,10 +17,10 @@
       </slot>
     </Button>
     <template v-if="tooManyButtons">
-      <Button v-if="revealMore" :small="size === 's'" variant="text" rounded @click="revealMore = !revealMore">
+      <Button v-if="revealMore" :size="size" variant="link" round @click="revealMore = !revealMore">
         Less <Icon name="keyboard_arrow_up" size="s" style="margin: -2px" />
       </Button>
-      <Button v-else :small="size === 's'" variant="text" rounded @click="revealMore = !revealMore">
+      <Button v-else :size="size" variant="link" round @click="revealMore = !revealMore">
         {{ options.length - numShownButtons }} more <Icon name="keyboard_arrow_down" size="s" style="margin: -2px" />
       </Button>
     </template>

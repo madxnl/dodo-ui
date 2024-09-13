@@ -23,7 +23,7 @@
             <slot :name="step.slot" />
 
             <Row>
-              <Button v-if="currentIndex > 0" variant="text" @click="goPrev"> Back </Button>
+              <Button v-if="currentIndex > 0" variant="link" @click="goPrev"> Back </Button>
 
               <Button
                 v-if="currentIndex < steps.length - 1"

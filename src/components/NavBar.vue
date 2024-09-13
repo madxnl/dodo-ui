@@ -18,7 +18,7 @@
         </div>
 
         <div style="margin-right: 8px">
-          <Button v-if="renderMobile" variant="text" square color="background" @click="mobileToggle = false">
+          <Button v-if="renderMobile" variant="link" square color="background" @click="mobileToggle = false">
             <Icon name="close" />
           </Button>
         </div>

@@ -6,10 +6,11 @@
 :root {
   --dodo-font-size: 14px;
   --dodo-font-small: 13px;
+  --dodo-font-large: 16px;
   --dodo-bold: 500;
   --dodo-font-base: var(--dodo-font-size) Inter, sans-serif;
 
-  --dodo-button-height: 36px;
+  --dodo-button-height: 40px;
   --dodo-transition-duration: 0.15s;
 
   --dodo-breakpoint-small: 600;
