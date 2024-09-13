@@ -2,7 +2,7 @@
   <div :class="[$style.NavLayout]">
     <Row :class="$style.bar" justify="end" align="start">
       <Column gap="m" padding="m" align="start">
-        <Button variant="text" small square @click="toggleTheme">
+        <Button variant="clear" size="s" square @click="toggleTheme">
           <Icon :name="theme === 'dark' ? 'dark_mode' : 'light_mode'" />
         </Button>
 
