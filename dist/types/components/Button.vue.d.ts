@@ -1,4 +1,4 @@
-import type { ColorProp } from '..';
+import { type ColorProp } from '@madxnl/dodo-ui';
 declare function __VLS_template(): {
     default?(_: {}): any;
 };
@@ -8,10 +8,10 @@ declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOp
      */
     color?: ColorProp;
     /** Set button variant
-     * @example variant="border"
-     * @example variant="text"
+     * @example variant="solid"
+     * @example variant="link"
      */
-    variant?: "text" | "solid";
+    variant?: "default" | "solid" | "clear" | "link";
     /** Set button type to 'submit' to trigger form submit
      * @example type="submit"
      */
@@ -19,30 +19,27 @@ declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOp
     /** Square button for icons
      * @example square
      */
-    square?: boolean;
-    /** Square button for icons
-     * @example square
-     */
-    rounded?: boolean;
-    /** Change button size
-     * @example small
-     */
-    small?: boolean;
+    size?: "s" | "m" | "l";
     /** Style button as active
      * @example active
      */
     active?: boolean;
     disabled?: boolean;
+    loading?: boolean;
+    round?: boolean;
+    square?: boolean;
+    small?: "deprecated";
+    rounded?: "deprecated";
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToOption<{
     /** Set button color
      * @example color="success"
      */
     color?: ColorProp;
     /** Set button variant
-     * @example variant="border"
-     * @example variant="text"
+     * @example variant="solid"
+     * @example variant="link"
      */
-    variant?: "text" | "solid";
+    variant?: "default" | "solid" | "clear" | "link";
     /** Set button type to 'submit' to trigger form submit
      * @example type="submit"
      */
@@ -50,20 +47,17 @@ declare const __VLS_component: import("vue").DefineComponent<__VLS_TypePropsToOp
     /** Square button for icons
      * @example square
      */
-    square?: boolean;
-    /** Square button for icons
-     * @example square
-     */
-    rounded?: boolean;
-    /** Change button size
-     * @example small
-     */
-    small?: boolean;
+    size?: "s" | "m" | "l";
     /** Style button as active
      * @example active
      */
     active?: boolean;
     disabled?: boolean;
+    loading?: boolean;
+    round?: boolean;
+    square?: boolean;
+    small?: "deprecated";
+    rounded?: "deprecated";
 }>>>, {}, {}>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;
