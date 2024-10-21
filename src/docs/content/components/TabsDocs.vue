@@ -1,27 +1,10 @@
 <template>
-  <ComponentDocsSection :example-src="exampleSrc">
-    <template #description>
-      <p>A tab navigation component with support for scrolling and custom slot-based content.</p>
-    </template>
-    <template #example>
-      <Tabs v-slot="{ tab }" :tabs="[{ name: 'Tab 1' }, { name: 'Tab 2' }, { name: 'Tab 3', disabled: true }]">
-        <template v-if="tab.name === 'Tab 1'">
-          <p>Content for Tab 1</p>
-        </template>
-        <template v-if="tab.name === 'Tab 2'">
-          <p>Content for Tab 2</p>
-        </template>
-      </Tabs>
+  <p>A tab navigation component with support for scrolling and custom slot-based content.</p>
 
-      <Tabs v-slot="{ tab }" :tabs="manyTabs">
-        <p>Content for {{ tab.name }} out of many</p>
-      </Tabs>
-    </template>
-  </ComponentDocsSection>
+  <DocsExample :example-src="exampleSrc" :context="{ manyTabs }" />
 </template>
 <script setup lang="ts">
-import { Tabs } from '@/components'
-import { ComponentDocsSection } from '@/docs/components'
+import { DocsExample } from '@/docs/components'
 
 const exampleSrc = `<Tabs v-slot="{ tab }" :tabs="[{ name: 'Tab 1' }, { name: 'Tab 2' }, { name: 'Tab 3', disabled: true }]">
   <template v-if="tab.name === 'Tab 1'">

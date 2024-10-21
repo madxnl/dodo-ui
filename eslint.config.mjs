@@ -27,6 +27,8 @@ export default tseslint.config(
       'vue/singleline-html-element-content-newline': 'off',
       'vue/max-attributes-per-line': 'off',
       'vue/multi-word-component-names': 'off',
+      'vue/no-reserved-component-names': 'off',
+      'vue/no-unused-components': 'off',
       'vue/no-v-html': 'off',
       'vue/no-undef-components': 'error',
       'vue/html-quotes': 'off',

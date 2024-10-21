@@ -3,6 +3,7 @@
     <Column padding="m">
       <div ref="el" :class="$style.exampleDiv">
         <slot />
+        <Example />
       </div>
     </Column>
 
@@ -17,15 +18,25 @@
   </Column>
 </template>
 <script setup lang="ts">
-import type { ComponentOptions } from 'vue'
+import { type ComponentOptions, defineComponent } from 'vue'
 import { ref } from 'vue'
-import { Column, Icon } from '../..'
+import { Column, Icon } from '@/components'
+import * as components from '@/components'
 import SyntaxHighlight from './SyntaxHighlight.vue'
 
-defineProps<{
+const props = defineProps<{
   options?: ComponentOptions
   exampleSrc?: string
+  context?: any
 }>()
+
+const Example = defineComponent({
+  components: components as any,
+  setup() {
+    return { ...props.context }
+  },
+  template: props.exampleSrc ?? '<div />'
+})
 
 const showCode = ref(false)
 const el = ref<HTMLElement>()

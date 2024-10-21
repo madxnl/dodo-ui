@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { Spinner, type ColorProp } from '@madxnl/dodo-ui'
+import { Spinner } from '@/components'
+import type { ColorProp } from '@/composables'
 import { computed, ref, useAttrs } from 'vue'
 
 const props = defineProps<{
