@@ -142,9 +142,9 @@ provide(dropdownServiceKey, { toggle })
   z-index: 100;
 }
 .content {
-  background: var(--dodo-color-box) !important;
+  background: var(--dodo-color-card) !important;
   border-radius: 4px;
-  border: 1px solid color-mix(in var(--dodo-mix-mode), var(--dodo-color-text) 10%, transparent);
+  border: 1px solid color-mix(in lab, var(--dodo-color-text) 10%, transparent);
   box-shadow: var(--dodo-shadow-menu);
   overflow: auto;
 }

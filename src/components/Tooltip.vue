@@ -79,7 +79,7 @@ useTheme()
 }
 .content {
   padding: var(--dodo-spacing-xs) var(--dodo-spacing-s);
-  border: 1px solid color-mix(in var(--dodo-mix-mode), var(--dodo-color-text) 20%, transparent);
+  border: 1px solid color-mix(in lab, var(--dodo-color-text) 20%, transparent);
   border-radius: 4px;
   box-shadow: var(--dodo-shadow-menu);
   max-width: 300px;

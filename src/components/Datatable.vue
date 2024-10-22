@@ -279,7 +279,7 @@ function toggleSelectAll() {
   box-shadow: var(--dodo-color-button);
 }
 .Datatable .rowSelected {
-  background: color-mix(in var(--dodo-mix-mode), var(--dodo-color-info) 30%, transparent);
+  background: color-mix(in lab, var(--dodo-color-info) 30%, transparent);
 }
 .stickyHeader,
 .stickyFooter {

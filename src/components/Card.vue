@@ -29,28 +29,29 @@ const theme = useTheme()
 <style>
 .dodo-card {
   color: inherit;
-  background: var(--dodo-color-box);
-  border-radius: 4px;
-  --card-border-rgb: var(--dodo-color-border);
+  background: var(--dodo-color-card);
+  border-radius: 16px;
   --card-active-color: var(--dodo-color-info);
-  border: 1px solid rgb(var(--card-border-rgb));
-  box-shadow: var(--dodo-shadow-card);
   overflow: hidden;
-  transition: all var(--dodo-transition-duration);
+  transition: box-shadow var(--dodo-transition-duration);
   display: flex;
   flex-direction: column;
   gap: var(--dodo-spacing-m);
   padding: var(--dodo-spacing-m);
+  padding: var(--dodo-spacing-l);
+  color: var(--dodo-color-foreground);
+  outline: 2px solid transparent;
+  overflow: inherit;
 }
 .dodo-card--hoverable {
-  cursor: pointer;
-}
-.dodo-card--hoverable:hover {
   text-decoration: none;
-  --card-border-rgb: var(dodo-color-box);
+  cursor: pointer;
+  box-shadow: var(--dodo-shadow-hoverable);
+}
+.dodo-card--hoverable:hover:not(:active) {
+  box-shadow: var(--dodo-shadow-hover);
 }
 .dodo-card--active {
-  border-color: var(--card-active-color);
-  box-shadow: inset 0 0 0 1px var(--card-active-color);
+  outline: 2px solid var(--card-active-color);
 }
 </style>

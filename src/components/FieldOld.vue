@@ -27,7 +27,7 @@ useTheme()
   background: white;
   gap: 4px;
   cursor: text;
-  border: 1px solid color-mix(in var(--dodo-mix-mode), var(--dodo-color-text) 30%, transparent);
+  border: 1px solid color-mix(in lab, var(--dodo-color-text) 30%, transparent);
   border-radius: 4px;
   --height: var(--dodo-button-height);
   min-height: var(--height);

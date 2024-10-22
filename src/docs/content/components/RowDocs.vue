@@ -1,5 +1,6 @@
 <template>
   <p>A container for arranging and aligning multiple child elements in a row.</p>
+  <br />
   <DocsExample :example-src="exampleSrc" />
 </template>
 <script setup lang="ts">

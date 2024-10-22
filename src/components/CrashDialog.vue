@@ -1,21 +1,22 @@
 <template>
-  <Dialog :active="showDialog">
+  <Modal :open="showDialog" @close="service.ignoreError">
     <h3>Something went wrong</h3>
     <slot name="body" :error="lastError" :default-text="defaultText">
       <p>
         {{ defaultText }}
       </p>
     </slot>
-    <template #controls>
-      <Button variant="clear" @click="service.ignoreError">Ignore</Button>
+    <br />
+    <Row justify="end" gap="s">
+      <Button @click="service.ignoreError">Ignore</Button>
       <Button variant="solid" color="info" @click="service.reloadPage">Reload page</Button>
-    </template>
-  </Dialog>
+    </Row>
+  </Modal>
 </template>
 
 <script lang="ts" setup>
 import { computed, ref, watchEffect } from 'vue'
-import { Button, Dialog, useCrashService } from '..'
+import { Button, Modal, Row, useCrashService } from '..'
 
 const service = useCrashService()
 const lastError = computed(() => service.currentError.value)

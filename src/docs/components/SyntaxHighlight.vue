@@ -52,6 +52,6 @@ pre.SyntaxHighlight {
   font-family: 'Inconsolata', monospace;
   border: 1px solid var(--dodo-color-border);
   box-shadow: none !important;
-  background: var(--dodo-color-box) !important;
+  background: var(--dodo-color-card) !important;
 }
 </style>

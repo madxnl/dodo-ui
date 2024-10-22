@@ -90,7 +90,6 @@ async function afterLeave() {
   box-sizing: border-box;
   transition: transform var(--modal-transition-duration);
   color: var(--dodo-color-text);
-  padding: var(--dodo-spacing-m);
   gap: var(--dodo-spacing-m);
 }
 .enter .modal {

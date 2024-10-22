@@ -35,11 +35,11 @@ const css = computed(() => {
   white-space: nowrap;
   --chip-color: var(--dodo-color-text);
   color: var(--chip-color);
-  background: color-mix(in var(--dodo-mix-mode), var(--chip-color) 15%, transparent);
+  background: color-mix(in lab, var(--chip-color) 15%, transparent);
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
-  border: 1px solid color-mix(in var(--dodo-mix-mode), var(--chip-color) 10%, transparent);
+  border: 1px solid color-mix(in lab, var(--chip-color) 10%, transparent);
   border-radius: 99px;
   cursor: default;
   box-sizing: border-box;

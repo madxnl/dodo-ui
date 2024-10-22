@@ -121,7 +121,7 @@ function keepHashInSync() {
 }
 .linkActive {
   opacity: 1;
-  background: var(--dodo-color-box);
+  background: var(--dodo-color-card);
 }
 hr {
   margin: 0;

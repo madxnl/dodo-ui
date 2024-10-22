@@ -11,7 +11,7 @@
   --dodo-font-base: var(--dodo-font-size) Inter, sans-serif;
 
   --dodo-button-height: 40px;
-  --dodo-transition-duration: 0.15s;
+  --dodo-transition-duration: 0.1s;
 
   --dodo-breakpoint-small: 600;
   --dodo-breakpoint-large: 1200;
@@ -126,7 +126,7 @@ hr {
   opacity: 0.1;
 }
 mark {
-  background: var(--dodo-color-box);
+  background: var(--dodo-color-card);
   padding: 0 2px;
   border-radius: 4px;
 }
