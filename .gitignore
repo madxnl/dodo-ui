@@ -28,3 +28,6 @@ old
 
 test-results/
 playwright-report/
+
+dist/
+docs/
