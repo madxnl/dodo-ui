@@ -125,5 +125,6 @@ function onToggle(e: ToggleEvent) {
   top: 0;
   margin: 0;
   overflow: visible;
+  z-index: 100;
 }
 </style>
