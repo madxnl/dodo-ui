@@ -1,151 +1,129 @@
-<template>
-  <div
-    ref="el"
-    :class="[$style.trigger, disabled && $style.disabled]"
-    v-bind="$attrs"
-    @click="onClick"
-    @mouseover="onMouseOver"
-    @mouseleave="onMouseLeave"
-  >
-    <slot :is-active="active" />
-  </div>
-
-  <div v-if="active" :class="[$style.container]" :style="dropdownStyles">
-    <div ref="content" :class="$style.content" @mouseleave="onMouseLeave">
-      <Column :padding="padding ?? 's'" :gap="gap ?? 's'">
-        <slot name="dropdown" :toggle="toggle" />
-      </Column>
-    </div>
-  </div>
-</template>
-
 <script lang="ts" setup>
-import { nextTick, onBeforeUnmount, provide, ref, watch } from 'vue'
-import { Column } from '.'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import type { GapSize } from '..'
-import { dropdownServiceKey } from '../composables'
+import Card from './Card.vue'
+
+declare module 'vue' {
+  interface HTMLAttributes {
+    popover?: boolean
+  }
+}
 
 const props = defineProps<{
-  /** Use v-model to modify dropdown state from outside */
-  modelValue?: boolean
-  /** Change padding around dropdown content */
+  open?: boolean
   padding?: GapSize
-  /** Change gap between dropdown content */
   gap?: GapSize
-  /** (temporaily) disable dropdown functionality */
   disabled?: boolean
-  /** Change trigger event */
-  trigger?: 'hover'
 }>()
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void
+  (e: 'update:open', value: boolean): void
 }>()
 
-const active = ref(false)
-const dropdownStyles = ref('')
-const content = ref<HTMLElement>()
+defineSlots<{
+  trigger(props: { toggle: () => void; open: boolean }): void
+  content(props: { close: () => void }): void
+}>()
+
+const isOpen = ref(false)
+const triggerRect = ref<DOMRect>()
+const contentRect = ref<DOMRect>()
 const el = ref<HTMLElement>()
+const dialogElem = ref<HTMLDialogElement>()
 
-watch(
-  () => props.modelValue,
-  () => {
-    toggle(!!props.modelValue)
-  },
-  { immediate: true }
-)
-
-onBeforeUnmount(() => {
-  toggle(false)
+const positionCss = computed(() => {
+  if (!triggerRect.value || !contentRect.value) return ''
+  const margin = 16
+  const distance = 2
+  const contentWidth = contentRect.value.width
+  const trigger = triggerRect.value
+  const windowWidth = window.innerWidth
+  const windowHeight = window.innerHeight
+  const spaceBelow = windowHeight - margin - trigger.bottom - distance
+  const dropdownAbove = spaceBelow < 300
+  const left = Math.max(margin, Math.min(trigger.left, windowWidth - contentWidth - 2 * margin))
+  const maxWidth = Math.min(600, windowWidth - margin * 2)
+  let top = trigger.bottom + distance
+  let maxHeight = spaceBelow
+  if (dropdownAbove) {
+    top = trigger.top - contentRect.value.height - distance
+    maxHeight = trigger.top - margin - distance
+  }
+  return {
+    left: `${Math.round(left)}px`,
+    top: `${Math.round(top)}px`,
+    maxWidth: `${Math.round(maxWidth)}px`,
+    maxHeight: `${Math.round(maxHeight)}px`
+  }
 })
 
-function toggle(show: boolean) {
-  if (active.value === show) return
-  if (props.disabled && show) return
-  active.value = show
-  emit('update:modelValue', show)
-  if (show) {
-    nextTick().then(() => {
-      updateUntilInactive()
-      window.addEventListener('click', onWindowClick, { passive: true, capture: true })
-    })
-  } else {
-    window.removeEventListener('click', onWindowClick, { capture: true })
-  }
+onBeforeUnmount(close)
+
+watch(() => [dialogElem.value, props.open], onPropChange, { immediate: true })
+
+function onPropChange() {
+  if (props.open !== isOpen.value) toggle()
 }
 
-function onClick(e: Event) {
-  if (props.trigger !== 'hover') {
-    toggle(!active.value)
-    e.preventDefault() // prevent double click inside label
-  }
+function toggle() {
+  if (!props.disabled) dialogElem.value?.togglePopover()
 }
 
-function onMouseOver() {
-  if (props.trigger === 'hover') {
-    toggle(true)
-  }
+function show() {
+  if (!props.disabled && !isOpen.value) dialogElem.value?.showPopover()
 }
 
-function onMouseLeave(e: MouseEvent) {
-  if (!active.value || props.trigger !== 'hover') return
-  const cur = e.relatedTarget as HTMLElement
-  const clickOnTrigger = el.value?.contains(cur)
-  const clickOnDropdown = content.value?.contains(cur)
-  if (clickOnTrigger || clickOnDropdown) return
-  toggle(false)
-}
-
-function onWindowClick(e: Event) {
-  // Clicking anywhere outside the dropdown closes it
-  if (e.target) {
-    const clickOnTrigger = el.value?.contains(e.target as Node)
-    const clickOnDropdown = content.value?.contains(e.target as Node)
-    if (clickOnTrigger || clickOnDropdown) return
-  }
-  toggle(false)
+function close() {
+  dialogElem.value?.hidePopover()
 }
 
 function updateUntilInactive() {
-  const margin = 16
-  const contentEl = content.value
-  if (!contentEl) return
-  const contentWidth = contentEl.scrollWidth
-  const buttonRect = el.value!.getBoundingClientRect()
-  const windowWidth = window.innerWidth
-  const windowHeight = window.innerHeight
-  const dropdownAbove = buttonRect.bottom + 300 + margin > windowHeight
-  const left = Math.max(margin, Math.min(buttonRect.left, windowWidth - contentWidth - margin))
-  const maxWidth = Math.min(600, windowWidth - margin * 2)
-  let styles = `left: ${left}px; max-width:${maxWidth}px;`
-  if (dropdownAbove) {
-    styles += `bottom: ${windowHeight - buttonRect.top}px; max-height: ${buttonRect.top - margin}px;`
-  } else {
-    styles += `top: ${buttonRect.bottom}px; max-height: ${windowHeight - buttonRect.bottom - margin}px;`
+  triggerRect.value = el.value?.getBoundingClientRect()
+  contentRect.value = dialogElem.value?.getBoundingClientRect()
+  if (isOpen.value) requestAnimationFrame(updateUntilInactive)
+}
+
+function onToggle(e: ToggleEvent) {
+  isOpen.value = e.newState === 'open'
+  emit('update:open', isOpen.value)
+  if (isOpen.value) {
+    updateUntilInactive()
   }
-  dropdownStyles.value = styles
-
-  if (active.value) requestAnimationFrame(updateUntilInactive)
 }
-
-provide(dropdownServiceKey, { toggle })
 </script>
+<template>
+  <div ref="el" :class="$style.dropdown">
+    <slot name="trigger" :open="isOpen" :toggle="show"> Trigger </slot>
 
+    <div
+      ref="dialogElem"
+      popover
+      :class="$style.dialog"
+      :style="positionCss"
+      @cancel.prevent="close"
+      @toggle="onToggle"
+    >
+      <Card v-if="isOpen" :class="$style.content" :padding="padding" :gap="gap">
+        <slot name="content" :close="close">Modal slot</slot>
+      </Card>
+    </div>
+  </div>
+</template>
 <style module>
-.trigger:not(.disabled) {
-  cursor: pointer;
-  min-width: 0;
-}
-.container {
-  position: fixed;
-  display: flex;
-  z-index: 100;
+.dropdown {
+  display: grid;
 }
 .content {
-  background: var(--dodo-color-card) !important;
-  border-radius: 4px;
-  border: 1px solid color-mix(in lab, var(--dodo-color-text) 10%, transparent);
-  box-shadow: var(--dodo-shadow-menu);
-  overflow: auto;
+  box-shadow: var(--dodo-shadow-modal);
+}
+.dialog {
+  border: none;
+  padding: 0;
+  background: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 0;
+  overflow: visible;
 }
 </style>

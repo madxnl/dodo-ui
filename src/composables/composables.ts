@@ -7,10 +7,6 @@ export const navBarServiceKey: InjectionKey<{
   mobileToggle: Ref<boolean>
 }> = Symbol('NavBarService')
 
-export const dropdownServiceKey: InjectionKey<{
-  toggle(active: boolean): void
-}> = Symbol('DropdownService')
-
 export function useElementSize(el: Ref<Element | undefined>) {
   const width = ref(0)
   const height = ref(0)

@@ -36,9 +36,8 @@ const theme = useTheme()
   transition: box-shadow var(--dodo-transition-duration);
   display: flex;
   flex-direction: column;
-  gap: var(--dodo-spacing-m);
+  gap: var(--dodo-spacing-s);
   padding: var(--dodo-spacing-m);
-  padding: var(--dodo-spacing-l);
   color: var(--dodo-color-foreground);
   outline: 2px solid transparent;
   overflow: inherit;

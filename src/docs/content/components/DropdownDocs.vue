@@ -5,13 +5,21 @@
 <script setup lang="ts">
 import { DocsExample } from '@/docs/components'
 
-const exampleSrc = `<Dropdown>
-  <template #default="{ isActive }">
-    <Button :color="isActive ? 'primary' : undefined">Dropdown</Button>
-  </template>
-  <template #dropdown>
-    <p>Dropdown content</p>
-    <button style="width: 200px">Button</button>
-  </template>
-</Dropdown>`
+const exampleSrc = `
+<Row>
+  <Dropdown>
+    <template #trigger="{ toggle, open }">
+      <Button :color="open ? 'primary' : undefined" @click="toggle">
+        Open dropdown
+        <Icon name="keyboard_arrow_down" />
+      </Button>
+    </template>
+    
+    <template #content="{ close }">
+      <p>Dropdown content</p>
+      <Button @click="close">Cancel</Button>
+    </template>
+  </Dropdown>
+</Row>
+`
 </script>

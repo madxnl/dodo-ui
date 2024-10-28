@@ -29,5 +29,5 @@ old
 test-results/
 playwright-report/
 
-dist/
-docs/
+/dist/
+/docs/
