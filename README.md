@@ -4,6 +4,10 @@
 
 # Changelog
 
+## [0.40]
+
+- Improved Dropdown component to use popover, fixes issue dropdown behind Modal
+
 ## [0.39]
 
 - removed FieldOld, SelectOld, Dialog (use Modal)
