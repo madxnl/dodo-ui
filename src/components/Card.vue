@@ -28,11 +28,9 @@ const theme = useTheme()
 
 <style>
 .dodo-card {
-  color: inherit;
   background: var(--dodo-color-card);
   border-radius: 16px;
   --card-active-color: var(--dodo-color-info);
-  overflow: hidden;
   transition: box-shadow var(--dodo-transition-duration);
   display: flex;
   flex-direction: column;

@@ -1,7 +1,7 @@
 <template>
   <Column gap="m" style="min-width: 0">
     <Column gap="0">
-      <div :class="$style.bar">
+      <div :class="[$style.bar, theme.gap(gap)]">
         <div
           v-for="(tab, i) in tabs"
           :key="keyFor(tab)"
@@ -26,6 +26,7 @@
 <script lang="ts" setup>
 import { computed, ref, watch, watchEffect } from 'vue'
 import { Column } from '.'
+import { useTheme, type GapSize } from '@/composables'
 
 export interface Tab {
   name: string
@@ -36,12 +37,12 @@ export interface Tab {
 const props = defineProps<{
   tabs: Tab[]
   tabIndex?: number
+  gap?: GapSize
 }>()
 
-const emit = defineEmits<{
-  (e: 'update:tabIndex', i: number): void
-}>()
+const emit = defineEmits<(e: 'update:tabIndex', i: number) => void>()
 
+const theme = useTheme()
 const current = ref('')
 const currentTab = computed(() => props.tabs.find((t) => keyFor(t) === current.value))
 
