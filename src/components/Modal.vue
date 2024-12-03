@@ -5,7 +5,7 @@ import Card from './Card.vue'
 
 const props = defineProps<{
   open: boolean
-  size?: 'S' | 'L'
+  size?: 'S' | 'M' | 'L' | 'XL'
   padding?: GapSize
   gap?: GapSize
 }>()
@@ -33,7 +33,7 @@ watch(open, (value) => {
 
 function onPointerdown(e: MouseEvent) {
   const el = dialogElem.value!
-  if (e.target === el) {
+  if (e.target === el && e.clientX < el.scrollWidth) {
     close()
   }
 }
@@ -49,48 +49,51 @@ async function afterLeave() {
 </script>
 
 <template>
-  <Transition appear :enter-from-class="$style.enter" :leave-to-class="$style.enter" @after-leave="afterLeave">
-    <dialog
-      v-if="open"
-      ref="dialogElem"
-      :class="$style.background"
-      @pointerdown="onPointerdown"
-      @cancel.prevent="close"
-    >
-      <Card :class="[$style.modal, size && $style[size]]" :padding="padding" :gap="gap">
-        <slot :close="close">Modal slot</slot>
-      </Card>
-    </dialog>
-  </Transition>
+  <Teleport to="body">
+    <Transition appear :enter-from-class="$style.enter" :leave-to-class="$style.enter" @after-leave="afterLeave">
+      <dialog v-if="open" ref="dialogElem" :class="$style.dialog" @cancel.prevent="close" @pointerdown="onPointerdown">
+        <div :class="[$style.modal, size && $style[size]]">
+          <Card :class="$style.card" :padding="padding ?? 'l'" :gap="gap ?? 'm'">
+            <slot :close="close">Modal slot</slot>
+          </Card>
+        </div>
+      </dialog>
+    </Transition>
+  </Teleport>
 </template>
 
 <style module>
 :root {
   --modal-transition-duration: 0.2s;
 }
-.background {
+.dialog::backdrop {
   background: rgba(0, 0, 0, 0.25);
-  transition: opacity var(--modal-transition-duration);
-  border: none;
+}
+.dialog {
+  margin: 0;
+  border: 0;
   min-width: 100%;
   min-height: 100%;
-  display: grid;
-  place-items: center;
-}
-.background::backdrop {
+  box-sizing: border-box;
   background: none;
+  transition: opacity var(--modal-transition-duration);
+  display: grid;
+  grid-template-rows: 1fr [modal] auto 2fr;
+  justify-content: center;
 }
 .enter {
   opacity: 0;
 }
 .modal {
+  grid-row: modal;
   width: 480px;
-  max-width: calc(100vw - 32px);
-  box-shadow: var(--dodo-shadow-modal);
-  box-sizing: border-box;
+  max-width: 100%;
+  margin: var(--dodo-spacing-l);
   transition: transform var(--modal-transition-duration);
+}
+.card {
+  box-shadow: var(--dodo-shadow-modal);
   color: var(--dodo-color-text);
-  gap: var(--dodo-spacing-m);
 }
 .enter .modal {
   transform: translateY(-16px);
@@ -100,5 +103,8 @@ async function afterLeave() {
 }
 .L {
   width: 640px;
+}
+.XL {
+  width: 960px;
 }
 </style>

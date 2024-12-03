@@ -39,7 +39,8 @@ watch(() => [props.template, props.setup], recompile, { immediate: true })
 function recompile() {
   error.value = ''
   const initialContext = { ref }
-  const context = { ...initialContext, ...(props.context || {}) }
+  const addedContext = typeof props.context === 'function' ? props.context() : props.context || {}
+  const context = { ...initialContext, ...addedContext }
   for (const [k, v] of Object.entries(context)) {
     Object.defineProperty(window, k, { value: v, writable: true })
   }
