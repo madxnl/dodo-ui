@@ -105,6 +105,7 @@ defineOptions({
 .card {
   box-shadow: var(--dodo-shadow-modal);
   color: var(--dodo-color-text);
+  overflow: hidden;
 }
 .enter .modal {
   transform: translateY(-16px);
