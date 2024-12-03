@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { GapSize } from '@/composables'
-import { computed, ref, watch, watchEffect } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import Card from './Card.vue'
 
 const props = defineProps<{
@@ -22,15 +22,6 @@ watchEffect(() => {
 
 const open = computed(() => props.open)
 
-watch(open, (value) => {
-  if (value) {
-    // Hide the body scrollbar while the modal is open
-    const scrollbarWidth = window.innerWidth - document.body.clientWidth
-    document.body.style.setProperty('padding-right', `${scrollbarWidth}px`)
-    document.body.style.setProperty('overflow', `hidden`)
-  }
-})
-
 function onPointerdown(e: MouseEvent) {
   const el = dialogElem.value!
   if (e.target === el && e.clientX < el.scrollWidth) {
@@ -42,11 +33,6 @@ function close() {
   emit('close')
 }
 
-async function afterLeave() {
-  document.body.style.removeProperty('padding-right')
-  document.body.style.removeProperty('overflow')
-}
-
 defineOptions({
   inheritAttrs: false
 })
@@ -54,7 +40,7 @@ defineOptions({
 
 <template>
   <Teleport to="body">
-    <Transition appear :enter-from-class="$style.enter" :leave-to-class="$style.enter" @after-leave="afterLeave">
+    <Transition appear :enter-from-class="$style.enter" :leave-to-class="$style.enter">
       <dialog
         v-if="open"
         v-bind="$attrs"
