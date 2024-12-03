@@ -75,7 +75,7 @@ defineOptions({
   box-sizing: border-box;
   transition: opacity var(--modal-transition-duration);
   display: grid;
-  grid-template-rows: 1fr [modal] auto 2fr;
+  grid-template-rows: 5vh [modal] auto;
   justify-content: center;
 }
 .enter {
