@@ -7,7 +7,7 @@ const props = defineProps<{
   disabled?: boolean
   name?: string
   autofocus?: boolean
-  error?: string
+  error?: string | boolean
   minRows?: number
   maxRows?: number
   autocomplete?: string
@@ -70,6 +70,7 @@ onBeforeUnmount(() => {
   resize: none;
   padding: 8px 12px;
 }
+[data-itemerror] .textarea,
 .error .textarea {
   border-color: var(--dodo-color-danger);
 }
