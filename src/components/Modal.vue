@@ -46,12 +46,23 @@ async function afterLeave() {
   document.body.style.removeProperty('padding-right')
   document.body.style.removeProperty('overflow')
 }
+
+defineOptions({
+  inheritAttrs: false
+})
 </script>
 
 <template>
   <Teleport to="body">
     <Transition appear :enter-from-class="$style.enter" :leave-to-class="$style.enter" @after-leave="afterLeave">
-      <dialog v-if="open" ref="dialogElem" :class="$style.dialog" @cancel.prevent="close" @pointerdown="onPointerdown">
+      <dialog
+        v-if="open"
+        v-bind="$attrs"
+        ref="dialogElem"
+        :class="$style.dialog"
+        @cancel.prevent="close"
+        @pointerdown="onPointerdown"
+      >
         <div :class="[$style.modal, size && $style[size]]">
           <Card :class="$style.card" :padding="padding ?? 'l'" :gap="gap ?? 'm'">
             <slot :close="close">Modal slot</slot>
@@ -67,15 +78,15 @@ async function afterLeave() {
   --modal-transition-duration: 0.2s;
 }
 .dialog::backdrop {
-  background: rgba(0, 0, 0, 0.25);
+  background: none;
 }
 .dialog {
+  background: rgba(0, 0, 0, 0.25);
   margin: 0;
   border: 0;
   min-width: 100%;
   min-height: 100%;
   box-sizing: border-box;
-  background: none;
   transition: opacity var(--modal-transition-duration);
   display: grid;
   grid-template-rows: 1fr [modal] auto 2fr;

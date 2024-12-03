@@ -9,7 +9,7 @@ import { LiveExample } from '@/docs/components'
 import { ref } from 'vue'
 
 const context = {
-  modalOpen: ref(true),
+  modalOpen: ref(false),
   modalOpen2: ref(false)
 }
 
