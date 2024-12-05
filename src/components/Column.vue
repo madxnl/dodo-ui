@@ -6,6 +6,7 @@
       theme.gap(gap),
       theme.padding(padding),
       theme.align(align),
+      theme.justify(justify),
       theme.padding(padding),
       theme.wrap(wrap),
       theme.grow(grow)
