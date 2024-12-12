@@ -13,7 +13,6 @@
 
     <template v-if="exampleSrc && showCode">
       <SyntaxHighlight :code="exampleSrc.trim()" :class="$style.code" lang="html" />
-      <!-- <SyntaxHighlight v-if="setup" :code="setup.toString()" :class="$style.code" lang="ts" /> -->
     </template>
   </Column>
 </template>
@@ -33,7 +32,7 @@ const props = defineProps<{
 const Example = defineComponent({
   components: components as any,
   setup() {
-    return { ...props.context }
+    if (props.context) return { ...(props.context as any) }
   },
   template: props.exampleSrc ?? '<div />'
 })
