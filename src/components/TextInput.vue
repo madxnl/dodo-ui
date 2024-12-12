@@ -25,7 +25,7 @@ const model = defineModel<string | null>()
     :type="type || 'text'"
     :name="name"
     :autofocus="autofocus"
-    :autocomplete="autocomplete"
+    :autocomplete="autocomplete ?? 'off'"
   />
 </template>
 
