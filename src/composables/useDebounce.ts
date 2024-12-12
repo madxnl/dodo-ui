@@ -15,7 +15,6 @@ export function useDebounce<T, A extends unknown[]>(func: (...args: A) => T | Pr
   function trigger(...args: A) {
     cancel()
     timeout.value = setTimeout(async () => {
-      console.log('debounced call', delayMs)
       timeout.value = undefined
       await func(...args)
     }, delayMs)
