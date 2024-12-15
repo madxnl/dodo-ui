@@ -2,8 +2,8 @@
   <div :class="[$style.NavLayout]">
     <Row :class="$style.bar" justify="end" align="start">
       <Column gap="m" padding="m" align="start">
-        <Button variant="clear" size="s" square @click="toggleTheme">
-          <Icon :name="theme === 'dark' ? 'dark_mode' : 'light_mode'" />
+        <Button variant="clear" size="s" square aria-label="Toggle dark mode" @click="toggleTheme">
+          <Icon :name="theme === 'dark' ? 'light_mode' : 'dark_mode'" />
         </Button>
 
         <Column v-for="(chapter, i) in chapters" :key="i" gap="0">
