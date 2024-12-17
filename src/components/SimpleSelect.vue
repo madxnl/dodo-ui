@@ -40,7 +40,13 @@ const model = computed({
     :for="id ?? undefined"
   >
     <div :class="$style.select">
-      <select :id="id ?? entryId" v-model="model" :disabled="disabled" :class="['dodo-formfield']">
+      <select
+        :id="id ?? entryId"
+        :value="model"
+        :disabled="disabled"
+        :class="['dodo-formfield']"
+        @change="model = ($event.target as HTMLSelectElement).value as T"
+      >
         <option v-for="option in options" :key="option.label" :value="option.value">
           {{ option.label }}
         </option>

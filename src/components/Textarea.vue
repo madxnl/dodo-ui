@@ -2,7 +2,6 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 const props = defineProps<{
-  modelValue?: string | null
   placeholder?: string
   disabled?: boolean
   name?: string
@@ -53,7 +52,7 @@ onBeforeUnmount(() => {
 <template>
   <textarea
     ref="textarea"
-    v-model="model"
+    :value="model"
     :class="['dodo-formfield', error && $style.error, $style.textarea]"
     :placeholder="placeholder"
     :disabled="disabled"
@@ -62,6 +61,7 @@ onBeforeUnmount(() => {
     :rows="rowsCalculated"
     :autocomplete="autocomplete"
     resize="false"
+    @input="model = ($event.target as HTMLTextAreaElement).value"
   />
 </template>
 
