@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getCurrentInstance, onBeforeUnmount, ref, watch } from 'vue'
+import { onBeforeUnmount, ref, watch } from 'vue'
 import type { GapSize } from '..'
 import Card from './Card.vue'
 
@@ -25,7 +25,6 @@ defineSlots<{
   content(props: { close: () => void }): void
 }>()
 
-const componentId = `dropdown-${getCurrentInstance()?.uid}`
 const isOpen = ref(false)
 const triggerEl = ref<HTMLElement>()
 const contentElem = ref<HTMLElement>()
@@ -37,6 +36,7 @@ function computeCss() {
   positionCss.value = ''
   if (!triggerEl.value || !contentElem.value) return
   const triggerRect = triggerEl.value.getBoundingClientRect()
+  const contentRect = contentElem.value.getBoundingClientRect()
 
   const margin = 16
   const distance = 4
@@ -53,10 +53,10 @@ function computeCss() {
   const top = dropdownAbove ? triggerRect.top - height - distance : triggerRect.bottom + distance
 
   const availableWidth = window.innerWidth - 2 * margin
-  const triggerWidth = triggerRect.right - triggerRect.left
-  const maxWidth = Math.max(triggerWidth, Math.min(maxWidthBase, availableWidth))
-  const maxLeft = window.innerWidth - triggerWidth - 2 * margin
-  const minWidth = triggerWidth
+  const minWidth = triggerRect.right - triggerRect.left
+  const maxWidth = Math.max(minWidth, Math.min(maxWidthBase, availableWidth))
+  const width = Math.min(maxWidth, contentRect.width)
+  const maxLeft = window.innerWidth - width - 2 * margin
   const left = Math.max(margin, Math.min(triggerRect.left, maxLeft))
 
   positionCss.value = `
@@ -106,11 +106,11 @@ function onToggle(e: ToggleEvent) {
 </script>
 <template>
   <div :class="$style.dropdown">
-    <div ref="triggerEl" :class="$style.trigger" :popovertarget="componentId">
+    <div ref="triggerEl" :class="$style.trigger">
       <slot name="trigger" :open="isOpen" :toggle="show"> Trigger </slot>
     </div>
 
-    <div :id="componentId" ref="dialogElem" popover :class="$style.dialog" :style="positionCss" @toggle="onToggle">
+    <div ref="dialogElem" popover :class="$style.dialog" :style="positionCss" @toggle="onToggle">
       <Card v-if="isOpen" :class="$style.card" padding="0">
         <div ref="contentElem" :class="$style.content">
           <slot name="content" :close="close">Modal slot</slot>

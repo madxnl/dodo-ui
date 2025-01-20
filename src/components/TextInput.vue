@@ -17,7 +17,7 @@ const model = defineModel<string | null>()
 
 <template>
   <input
-    :value="model"
+    v-model="model"
     :class="['dodo-formfield', error && $style.error, $style.input]"
     :placeholder="placeholder"
     :disabled="disabled"
@@ -26,7 +26,6 @@ const model = defineModel<string | null>()
     :name="name"
     :autofocus="autofocus"
     :autocomplete="autocomplete ?? 'off'"
-    @input="model = ($event.target as HTMLInputElement).value"
   />
 </template>
 

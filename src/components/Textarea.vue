@@ -52,7 +52,7 @@ onBeforeUnmount(() => {
 <template>
   <textarea
     ref="textarea"
-    :value="model"
+    v-model="model"
     :class="['dodo-formfield', error && $style.error, $style.textarea]"
     :placeholder="placeholder"
     :disabled="disabled"
@@ -61,7 +61,6 @@ onBeforeUnmount(() => {
     :rows="rowsCalculated"
     :autocomplete="autocomplete"
     resize="false"
-    @input="model = ($event.target as HTMLTextAreaElement).value"
   />
 </template>
 
