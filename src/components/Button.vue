@@ -101,7 +101,7 @@ async function onClick(event: Event) {
   font-weight: var(--dodo-weight-bold);
   background: var(--dodo-color-background);
   color: var(--button-color);
-  border-radius: 8px;
+  border-radius: var(--dodo-radius-m);
   position: relative;
   user-select: none;
   vertical-align: middle;

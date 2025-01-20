@@ -26,29 +26,29 @@ defineProps<{
 const theme = useTheme()
 </script>
 
-<style>
-.dodo-card {
+<style module>
+.card {
   background: var(--dodo-color-card);
-  border-radius: 16px;
+  border-radius: var(--dodo-radius-l);
   --card-active-color: var(--dodo-color-info);
   transition: box-shadow var(--dodo-transition-duration);
   display: flex;
   flex-direction: column;
   gap: var(--dodo-spacing-s);
   padding: var(--dodo-spacing-m);
-  color: var(--dodo-color-foreground);
+  color: var(--dodo-color-text);
   outline: 2px solid transparent;
   overflow: inherit;
 }
-.dodo-card--hoverable {
+.card--hoverable {
   text-decoration: none;
   cursor: pointer;
   box-shadow: var(--dodo-shadow-hoverable);
 }
-.dodo-card--hoverable:hover:not(:active) {
+.card--hoverable:hover:not(:active) {
   box-shadow: var(--dodo-shadow-hover);
 }
-.dodo-card--active {
+.card--active {
   outline: 2px solid var(--card-active-color);
 }
 </style>

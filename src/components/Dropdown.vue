@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import { getCurrentInstance, onBeforeUnmount, ref, watch } from 'vue'
 import type { GapSize } from '..'
 import Card from './Card.vue'
 
@@ -25,37 +25,49 @@ defineSlots<{
   content(props: { close: () => void }): void
 }>()
 
+const componentId = `dropdown-${getCurrentInstance()?.uid}`
 const isOpen = ref(false)
-const triggerRect = ref<DOMRect>()
-const contentRect = ref<DOMRect>()
-const el = ref<HTMLElement>()
+const triggerEl = ref<HTMLElement>()
+const contentElem = ref<HTMLElement>()
 const dialogElem = ref<HTMLDialogElement>()
 
-const positionCss = computed(() => {
-  if (!triggerRect.value || !contentRect.value) return ''
+const positionCss = ref('')
+
+function computeCss() {
+  positionCss.value = ''
+  if (!triggerEl.value || !contentElem.value) return
+  const triggerRect = triggerEl.value.getBoundingClientRect()
+
   const margin = 16
-  const distance = 2
-  const contentWidth = contentRect.value.width
-  const trigger = triggerRect.value
-  const windowWidth = window.innerWidth
-  const windowHeight = window.innerHeight
-  const spaceBelow = windowHeight - margin - trigger.bottom - distance
-  const dropdownAbove = spaceBelow < 300
-  const left = Math.max(margin, Math.min(trigger.left, windowWidth - contentWidth - 2 * margin))
-  const maxWidth = Math.min(600, windowWidth - margin * 2)
-  let top = trigger.bottom + distance
-  let maxHeight = spaceBelow
-  if (dropdownAbove) {
-    top = trigger.top - contentRect.value.height - distance
-    maxHeight = trigger.top - margin - distance
-  }
-  return {
-    left: `${Math.round(left)}px`,
-    top: `${Math.round(top)}px`,
-    maxWidth: `${Math.round(maxWidth)}px`,
-    maxHeight: `${Math.round(maxHeight)}px`
-  }
-})
+  const distance = 4
+  // const minSpaceBelow = 500
+  const maxWidthBase = 600
+
+  const spaceBelow = window.innerHeight - margin - triggerRect.bottom - distance
+  const contentHeight = contentElem.value.scrollHeight
+  const spaceAbove = triggerRect.top - margin - distance
+  const dropdownAbove = spaceBelow < spaceAbove && contentHeight + distance > spaceBelow
+  const space = dropdownAbove ? spaceAbove : spaceBelow
+  const maxHeight = Math.min(space, 600)
+  const height = Math.min(contentHeight, maxHeight)
+  const top = dropdownAbove ? triggerRect.top - height - distance : triggerRect.bottom + distance
+
+  const availableWidth = window.innerWidth - 2 * margin
+  const triggerWidth = triggerRect.right - triggerRect.left
+  const maxWidth = Math.max(triggerWidth, Math.min(maxWidthBase, availableWidth))
+  const maxLeft = window.innerWidth - triggerWidth - 2 * margin
+  const minWidth = triggerWidth
+  const left = Math.max(margin, Math.min(triggerRect.left, maxLeft))
+
+  positionCss.value = `
+    left: ${Math.round(left)}px;
+    top: ${Math.round(top)}px;
+    min-width: ${Math.round(minWidth)}px;
+    max-width: ${Math.round(maxWidth)}px;
+    max-height: ${Math.round(maxHeight)}px;
+  `
+  // max-width: ${Math.round(maxWidth)}px;
+}
 
 onBeforeUnmount(close)
 
@@ -78,33 +90,31 @@ function close() {
 }
 
 function updateUntilInactive() {
-  triggerRect.value = el.value?.getBoundingClientRect()
-  contentRect.value = dialogElem.value?.getBoundingClientRect()
+  computeCss()
   if (isOpen.value) requestAnimationFrame(updateUntilInactive)
 }
 
 function onToggle(e: ToggleEvent) {
-  isOpen.value = e.newState === 'open'
-  emit('update:open', isOpen.value)
-  if (isOpen.value) {
+  const opened = e.newState === 'open'
+  if (isOpen.value === opened) return
+  isOpen.value = opened
+  emit('update:open', opened)
+  if (opened) {
     updateUntilInactive()
   }
 }
 </script>
 <template>
-  <div ref="el" :class="$style.dropdown">
-    <slot name="trigger" :open="isOpen" :toggle="show"> Trigger </slot>
+  <div :class="$style.dropdown">
+    <div ref="triggerEl" :class="$style.trigger" :popovertarget="componentId">
+      <slot name="trigger" :open="isOpen" :toggle="show"> Trigger </slot>
+    </div>
 
-    <div
-      ref="dialogElem"
-      popover
-      :class="$style.dialog"
-      :style="positionCss"
-      @cancel.prevent="close"
-      @toggle="onToggle"
-    >
-      <Card v-if="isOpen" :class="$style.content" :padding="padding" :gap="gap">
-        <slot name="content" :close="close">Modal slot</slot>
+    <div :id="componentId" ref="dialogElem" popover :class="$style.dialog" :style="positionCss" @toggle="onToggle">
+      <Card v-if="isOpen" :class="$style.card" padding="0">
+        <div ref="contentElem" :class="$style.content">
+          <slot name="content" :close="close">Modal slot</slot>
+        </div>
       </Card>
     </div>
   </div>
@@ -113,10 +123,12 @@ function onToggle(e: ToggleEvent) {
 .dropdown {
   display: grid;
 }
-.content {
-  box-shadow: var(--dodo-shadow-modal);
+.trigger {
+  display: grid;
 }
 .dialog {
+  display: flex;
+  flex-direction: column;
   border: none;
   padding: 0;
   background: none;
@@ -126,5 +138,17 @@ function onToggle(e: ToggleEvent) {
   margin: 0;
   overflow: visible;
   z-index: 100;
+}
+.card {
+  box-shadow: var(--dodo-shadow-modal);
+  overflow: hidden;
+}
+.content {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  overflow: auto;
+  display: grid;
+  gap: var(--dodo-spacing-s);
+  padding: var(--dodo-spacing-m);
 }
 </style>

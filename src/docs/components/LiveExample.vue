@@ -80,7 +80,7 @@ onErrorCaptured((err) => {
   display: grid;
   padding: 16px;
   gap: 8px;
-  border-radius: 4px;
+  border-radius: var(--dodo-radius-s);
   border: 1px solid var(--dodo-color-border);
 }
 </style>

@@ -44,7 +44,7 @@ function hashCode(s: string) {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: var(--dodo-radius-s);
   width: 28px;
   height: 28px;
   background: var(--color);

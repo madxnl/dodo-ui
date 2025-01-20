@@ -92,7 +92,7 @@ async function onClick(e: Event) {
   position: relative;
   color: white;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: var(--dodo-radius-s);
 }
 .submenu {
   opacity: 0;
@@ -127,7 +127,9 @@ async function onClick(e: Event) {
   height: 24px;
   display: block;
   background: var(--dodo-color-primary);
-  border-radius: 0 4px 4px 0;
+  border-radius: var(--dodo-radius-s);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 .submenu .active::before {
   display: none;

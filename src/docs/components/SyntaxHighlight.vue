@@ -44,7 +44,7 @@ watchEffect(() => {
 
 pre.SyntaxHighlight {
   padding: 8px 16px !important;
-  border-radius: 4px !important;
+  border-radius: var(--dodo-radius-s) !important;
   border: 0 !important;
   margin: 0;
   font-size: 16px;

@@ -81,7 +81,7 @@ onMounted(() => {
   background-color: var(--dodo-color-danger);
   color: white;
   font-weight: 500;
-  border-radius: 4px;
+  border-radius: var(--dodo-radius-s);
   padding: 4px 8px;
   position: relative;
   top: 4px;
