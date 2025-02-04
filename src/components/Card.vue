@@ -1,9 +1,9 @@
 <template>
   <div
     :class="[
-      'dodo-card',
-      hoverable && 'dodo-card--hoverable',
-      active && 'dodo-card--active',
+      $style.card,
+      hoverable && $style.hoverable,
+      active && $style.active,
       theme.padding(padding),
       theme.gap(gap)
     ]"
@@ -26,7 +26,7 @@ defineProps<{
 const theme = useTheme()
 </script>
 
-<style module>
+<style module lang="scss">
 .card {
   background: var(--dodo-color-card);
   border-radius: var(--dodo-radius-l);
@@ -40,15 +40,15 @@ const theme = useTheme()
   outline: 2px solid transparent;
   overflow: inherit;
 }
-.card--hoverable {
+.active {
+  outline: 2px solid var(--card-active-color);
+}
+.hoverable {
   text-decoration: none;
   cursor: pointer;
   box-shadow: var(--dodo-shadow-hoverable);
 }
-.card--hoverable:hover:not(:active) {
+.hoverable:hover {
   box-shadow: var(--dodo-shadow-hover);
-}
-.card--active {
-  outline: 2px solid var(--card-active-color);
 }
 </style>
