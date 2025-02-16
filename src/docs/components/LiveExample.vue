@@ -73,11 +73,13 @@ onErrorCaptured((err) => {
 </script>
 <style module>
 .container {
-  display: grid;
+  display: flex;
+  flex-flow: column;
   gap: 8px;
 }
 .result {
-  display: grid;
+  display: flex;
+  flex-flow: column;
   padding: 16px;
   gap: 8px;
   border-radius: var(--dodo-radius-s);

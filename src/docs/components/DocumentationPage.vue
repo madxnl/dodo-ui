@@ -140,7 +140,8 @@ hr {
 .chapter {
   max-width: 740px;
   font-size: 15px;
-  display: grid;
+  display: flex;
+  flex-flow: column;
   /* gap: 256px; */
   padding: 128px 0;
 }

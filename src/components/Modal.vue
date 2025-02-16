@@ -2,6 +2,7 @@
 import type { GapSize } from '@/composables'
 import { computed, ref, watchEffect } from 'vue'
 import Card from './Card.vue'
+import { useCssModule } from 'vue'
 
 const props = defineProps<{
   open: boolean
@@ -14,17 +15,28 @@ const emit = defineEmits<{
   close: []
 }>()
 
+const css = useCssModule()
 const dialogElem = ref<HTMLDialogElement>()
 
 watchEffect(() => {
-  dialogElem.value?.showModal()
+  if (dialogElem.value) {
+    dialogElem.value.showModal()
+  }
 })
+
+function afterEnter() {
+  document.body.classList.add(css.hidescroll)
+}
+
+function beforeLeave() {
+  document.body.classList.remove(css.hidescroll)
+}
 
 const open = computed(() => props.open)
 
-function onPointerdown(e: MouseEvent) {
-  const el = dialogElem.value!
-  if (e.target === el && e.clientX < el.scrollWidth) {
+function onClickDialog(e: MouseEvent) {
+  const clickBackdrop = e.target === dialogElem.value
+  if (clickBackdrop) {
     close()
   }
 }
@@ -40,14 +52,20 @@ defineOptions({
 
 <template>
   <Teleport to="body">
-    <Transition appear :enter-from-class="$style.enter" :leave-to-class="$style.enter">
+    <Transition
+      appear
+      :enter-from-class="$style.enter"
+      :leave-to-class="$style.enter"
+      @after-enter="afterEnter"
+      @before-leave="beforeLeave"
+    >
       <dialog
         v-if="open"
         v-bind="$attrs"
         ref="dialogElem"
         :class="$style.dialog"
         @cancel.prevent="close"
-        @pointerdown="onPointerdown"
+        @click="onClickDialog"
       >
         <div :class="[$style.modal, size && $style[size]]">
           <Card :class="$style.card" :padding="padding ?? 'l'" :gap="gap ?? 'm'">
@@ -104,5 +122,8 @@ defineOptions({
 }
 .XL {
   width: 960px;
+}
+.hidescroll {
+  overflow: hidden;
 }
 </style>
